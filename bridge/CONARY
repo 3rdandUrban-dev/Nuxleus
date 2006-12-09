@@ -1,0 +1,7 @@
+stateversion 2
+name bridge:source
+version /nuxleus.rpath.org@rpl:devel/1164549220.992:0.1.5-1
+branch /nuxleus.rpath.org@rpl:devel
+2
+2cdc0d766c9705c64bbe4db742d0de9b bridge.recipe 80c4932eda4fb84d55ac99ddd1f84f4de347c16d config /nuxleus.rpath.org@rpl:devel/0.1.5-1
+646fb197bb0de77e94690916f721f462 bridge-0.1.5.tar.gz 4093c2d4802e3a030700b89d6ddda12da02743c6 autosource /nuxleus.rpath.org@rpl:devel/0.1.5-1
