@@ -1,0 +1,17 @@
+stateversion 2
+name Saxon.NET:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1165634039.789:8.8Nsvn-40
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+12
+188caea6e5359e24c0b90d86b6a1b3e5 gac-install-list f41e1fec4f6913c06ac66d3636e745f500a9eef5 config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-16
+801d8270c8b31d2f015e6a106234ea5d makefile 573358f8a97a100565de8741bad4edc0fa67297e config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-40
+10e4c823eb2fec36cea4bd103a188e34 cli-gac bb196fe3f3e18454d7441d79943ef9d47d30557c config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-25
+166371402f50e56bbe1f7f15250f02b6 saxon8.dll 3d1fc0b42f7a544475c6ed364e0e57628171a877 _ /nuxleus.rpath.org@rpl:devel/8.8Nsvn-2
+169809c75525a08c435a709663f80238 saxon.pc 846978de8f589694242f90fbcb59f21973fdc682 config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-15
+54d55f0ec4070f9c4df80d8052c599ab query 0070030749293fb30708d5b294a040e297376252 config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-7
+fccee2ba4524e86435aa74c381ac1c25 transform 63934b2c8667433b80f11379a31898b463f596f7 config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-7
+4af0a4735ef4ad17f26d489a0410625d cli-gac-handler 8af3f6d070ebd10e2686931c2e2f9d65b3c037d7 config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-29
+be2e8b5d047e82605fd9b3ff1dec4d60 saxongac 9a7f2e21b5441eedbe46a5c335bb5fb1c3946b9b config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-15
+308c0029fb95f1812130ea5b31ad96f1 gacinstalllist f41e1fec4f6913c06ac66d3636e745f500a9eef5 config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-23
+f6aedda0bbf8bd1e4e1ec985819b9c4f build.sh 6fdb411147b304a11f6e9ff4cea5abffe28ad1cc config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-2
+4899863c956dd3c0090c467aa3927308 Saxon.NET.recipe 6febe3ec8d7adfce54453bda96dcee983559fb06 config /nuxleus.rpath.org@rpl:devel/8.8Nsvn-38
