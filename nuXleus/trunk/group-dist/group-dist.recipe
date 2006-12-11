@@ -1,0 +1,442 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Dist(GroupRecipe):
+    name = 'group-dist'
+    version = '0.1.6'
+
+    depCheck = True
+    checkOnlyByDefaultDeps = True
+    checkPathConflicts=True
+
+    def startGroup(r, name, parentGroup, depCheck=False, byDefault=True,
+                   checkPathConflicts=None):
+        # creates group named "name", adds it to the toplevel group,
+        # and sets the current group to that name.  calls to r.add()
+        # will use the current group by default.
+
+        # note: byDefault applies to whether the group is included by
+        # default in its parent group, not whether the troves in
+        # the group are added by default. (use the setByDefault() command
+        # to get that)
+
+        # get all the the default for the new group from its parent group.
+        r.setDefaultGroup(parentGroup)
+        r.createGroup(name, autoResolve=False, depCheck=depCheck,
+                      byDefault=True, checkPathConflicts=checkPathConflicts)
+        r.addNewGroup(name, groupName=parentGroup, byDefault=byDefault)
+        r.setDefaultGroup(name)
+
+    def setup(r):
+
+        groupLabel='nuxleus.rpath.org@nux:1'
+        compatLabel='nuxleus.rpath.org@nux:1-compat'
+        xenLabel='nuxleus.rpath.org@nux:1-xen'
+
+        # Set up special flavors required in one place to ease maintenance
+        if Arch.x86:
+            gccFlavor = None
+            glibcFlavor32 = None # needed so we can control addition of troves with use=
+            grubFlavor = None
+            kernelFlavorUP = '!kernel.smp is: x86(cmov,i486,i586,i686)'
+            if Use.xen:
+                glibcFlavor = 'xen is: x86(i486,i586,i686)'
+                kernelLabel = xenLabel
+                if Use.dom0:
+                    if Use.domU:
+                        print "This recipe may be built with dom0 or domU, but cannot use both.\n"
+                        sys.exit(1)
+                    releaseFlavor = 'xen,dom0'
+                    kernelFlavor = 'xen,dom0,kernel.smp,!kernel.pae is: x86(i486,i586,i686)'
+                    kernelFlavorPAE = 'xen,dom0,kernel.smp,kernel.pae is: x86(i486,i586,i686)'
+                if Use.domU:
+                    releaseFlavor = 'xen,domU'
+                    kernelFlavor = 'xen,domU,kernel.smp,!kernel.pae is: x86(i486,i586,i686)'
+                    kernelFlavorPAE = 'xen,domU,kernel.smp,kernel.pae is: x86(i486,i586,i686)'
+            else:
+                kernelLabel = groupLabel
+                glibcFlavor = 'is: x86(i486,i586,i686)'
+                releaseFlavor = None
+                kernelFlavor = 'kernel.smp is: x86(cmov,i486,i586,i686)'
+        elif Arch.x86_64:
+            kernelFlavorUP = '!kernel.smp'
+            gccFlavor = 'is: x86 x86_64'
+            grubFlavor = 'grub.static is: x86'
+            if Use.xen:
+                glibcFlavor = 'xen'
+                glibcFlavor32 = 'xen is: x86(i486,i586,i686)'
+                kernelLabel = xenLabel
+                if Use.dom0:
+                    if Use.domU:
+                        print "This recipe may be built with dom0 or domU, but cannot use both.\n"
+                        sys.exit(1)
+                    releaseFlavor = 'xen,dom0'
+                    kernelFlavor = 'xen,dom0,!kernel.pae,kernel.smp'
+                if Use.domU:
+                    releaseFlavor = 'xen,domU'
+                    kernelFlavor = 'xen,domU,!kernel.pae,kernel.smp'
+            else:
+                kernelLabel = groupLabel
+                glibcFlavor = None
+                glibcFlavor32 = 'is: x86(i486,i586,i686)'
+                releaseFlavor = None
+                kernelFlavor = 'kernel.smp'
+
+
+        r.createGroup('group-os', checkPathConflicts=False)
+        # turn off checkPathConflicts bc not everything in group-os can/should
+        # coexist on the same system
+
+        r.addNewGroup('group-dist', groupName='group-os')
+        r.startGroup('group-core', parentGroup='group-dist', depCheck=True)
+        r.add('acl:lib')
+        r.add('acl:runtime')
+        r.add('ash:runtime')
+        r.add('attr:lib')
+        r.add('attr:runtime')
+        r.add('authconfig:runtime')
+        r.add('bash:runtime')
+        r.add('bzip2:lib')
+        r.add('bzip2:runtime')
+        r.add('chkconfig:lib')
+        r.add('chkconfig:runtime')
+        r.add('conary:data')
+        r.add('conary:python')
+        r.add('conary:runtime')
+        r.add('coreutils:runtime')
+        r.add('cpio:runtime')
+        r.add('cracklib:lib')
+        r.add('cyrus-sasl:lib')
+        r.add('db:lib')
+        r.add('dev:runtime')
+        r.add('dhclient:runtime')
+        r.add('dhclient:lib')
+        r.add('diffutils:runtime')
+        r.add('distro-release', flavor=releaseFlavor)
+        r.add('e2fsprogs:data')
+        r.add('e2fsprogs:lib')
+        r.add('e2fsprogs:runtime')
+        r.add('file:data')
+        r.add('file:lib')
+        r.add('file:runtime')
+        r.add('filesystem:runtime')
+        r.add('findutils:runtime')
+        r.add('gawk:data')
+        r.add('gawk:runtime')
+        r.add('gdbm:lib')
+        r.add('glib:lib')
+        r.add('glib:data')
+        r.add('glibc:lib', flavor=glibcFlavor)
+        r.add('glibc:runtime', flavor=glibcFlavor)
+        r.add('glibc:locale', flavor=glibcFlavor)
+        r.add('glibc:lib', flavor=glibcFlavor32, use=Arch.x86_64)
+        r.add('gmp:lib')
+        r.add('gpm:lib')
+        r.add('gpm:runtime')
+        r.add('grep:runtime')
+        r.add('grub:data', flavor=grubFlavor)
+        r.add('grub:runtime', flavor=grubFlavor)
+        r.add('gzip:runtime')
+        r.add('hotplug:runtime')
+        r.add('hwdata:data')
+        r.add('hwdata:lib')
+        r.add('hwdata:runtime')
+        r.add('info-daemon')
+        r.add('info-disk')
+        r.add('info-emerge')
+        r.add('info-floppy')
+        r.add('info-kmem')
+        r.add('info-lock')
+        r.add('info-lp')
+        r.add('info-mail')
+        r.add('info-tty')
+        r.add('info-users')
+        r.add('info-utmp')
+        r.add('info-uucp')
+        r.add('initscripts:runtime')
+        r.add('iproute:lib')
+        r.add('iproute:runtime')
+        r.add('iptables:lib')
+        r.add('iptables:runtime')
+        r.add('iputils:runtime')
+        r.add('kbd:lib')
+        r.add('kbd:runtime')
+        r.add('kernel:runtime', kernelLabel, flavor=kernelFlavor, byDefault=False)
+        if not Use.dom0 and not Use.domU:
+            r.add('kernel:runtime', kernelLabel, flavor=kernelFlavorUP, byDefault=False)
+        r.add('krb5:lib')
+        r.add('krb5:data')
+        r.add('kudzu:python')
+        r.add('kudzu:runtime')
+        r.add('libelf:lib')
+        r.add('libgcc:lib', flavor=gccFlavor, source='gcc')
+        r.add('libstdc++:lib', flavor=gccFlavor, source='gcc')
+        r.add('libtermcap:lib')
+        r.add('libuser:lib')
+        r.add('libuser:python')
+        r.add('libuser:runtime')
+        r.add('mdadm:runtime')
+        r.add('mingetty:runtime')
+        r.add('mkinitrd:runtime')
+        r.add('mktemp:runtime')
+        r.add('module-init-tools:runtime')
+        r.add('ncurses:data')
+        r.add('ncurses:lib')
+        r.add('ncurses:runtime')
+        r.add('net-tools:runtime')
+        r.add('newt:lib')
+        r.add('openssl:config')
+        r.add('openssl:data')
+        r.add('openssl:lib')
+        r.add('pam:data')
+        r.add('pam:lib')
+        r.add('passwd:runtime')
+        r.add('pcre:lib')
+        r.add('popt:lib')
+        r.add('procps:lib')
+        r.add('procps:runtime')
+        r.add('psmisc:runtime')
+        r.add('pycrypto:python')
+        r.add('python:devel')
+        r.add('python:devellib')
+        r.add('python:lib')
+        r.add('python:runtime')
+        r.add('readline:lib')
+        r.add('rhpl:data')
+        r.add('rhpl:python')
+        r.add('rhpl:runtime')
+        r.add('rootfiles:runtime')
+        r.add('sed:runtime')
+        r.add('setup:runtime')
+        r.add('shadow:runtime')
+        r.add('slang:lib')
+        r.add('sqlite:lib')
+        r.add('sysklogd:runtime')
+        r.add('sysfsutils:lib')
+        r.add('sysfsutils:runtime')
+        r.add('system-config-mouse:data')
+        r.add('system-config-mouse:runtime')
+        r.add('system-config-securitylevel:runtime')
+        r.add('sysvinit:runtime')
+        r.add('tar:runtime')
+        r.add('termcap:runtime')
+        r.add('tmpwatch:runtime')
+        r.add('tzdata:data')
+        r.add('udev:data')
+        r.add('udev:lib')
+        r.add('udev:runtime')
+        r.add('usermode:runtime')
+        r.add('util-linux:data')
+        r.add('util-linux:runtime')
+        r.add('vim-minimal:runtime', source='vim')
+        r.add('wireless-tools:lib')
+        r.add('zlib:lib')
+
+
+        # Start group-machine-root
+
+        r.startGroup('group-machine-root', parentGroup='group-os',
+                     byDefault=False)
+        r.add('MAKEDEV')
+        r.add('attr:lib')
+        r.add('acl:lib')
+        r.add('automake')
+        r.add('autoconf')
+        r.add('bash')
+        r.add('binutils')
+        r.add('bison')
+        r.add('byacc')
+        r.add('bzip2')
+        r.add('conary')
+        r.add('conary-build', source='conary')
+        r.add('conary-policy')
+        r.add('coreutils')
+        r.add('cpio')
+        r.add('cracklib:lib')
+        r.add('db')
+        r.add('dev')
+        r.add('diffutils')
+        r.add('distro-release', flavor=releaseFlavor)
+        r.add('e2fsprogs')
+        r.add('ed')
+        r.add('elementtree')
+        r.add('elfutils')
+        r.add('expat:lib')
+        r.add('filesystem')
+        r.add('file')
+        r.add('findutils')
+        r.add('flex')
+        r.add('fontconfig:lib')
+        r.add('freetype:lib')
+        r.add('gawk')
+        r.add('gdbm:lib')
+        r.add('gcc', flavor=gccFlavor)
+        r.add('gcc-c++', flavor=gccFlavor, source='gcc')
+        r.add('libgcc', flavor=gccFlavor, source='gcc')
+        r.add('libstdc++', flavor=gccFlavor, source='gcc')
+        r.add('gettext')
+        r.add('glibc:runtime', flavor=glibcFlavor)
+        r.add('glibc:lib', flavor=glibcFlavor)
+        r.add('glibc:devel', flavor=glibcFlavor)
+        r.add('glibc:devellib', flavor=glibcFlavor)
+        r.add('gmp:lib')
+        r.add('grep')
+        r.add('gzip')
+        r.add('kid')
+        r.add('krb5')
+        r.add('libelf')
+        r.add('libjpeg:lib')
+        r.add('libpng:lib')
+        r.add('libtermcap')
+        r.add('libtiff:lib')
+        r.add('libtool')
+        r.add('linux-kernel-headers')
+        r.add('make')
+        r.add('m4')
+        r.add('mktemp')
+        r.add('ncurses:lib')
+        r.add('ncurses:data')
+        r.add('openssl')
+        r.add('pam')
+        r.add('patch')
+        r.add('perl')
+        r.add('pcre')
+        r.add('popt')
+        r.add('pycrypto:python')
+        r.add('python:lib')
+        r.add('python:runtime')
+        r.add('python:devel')
+        r.add('python:devellib')
+        r.add('python-setuptools:python')
+        r.add('python-setuptools:runtime')
+        r.add('readline:lib')
+        r.add('sed')
+        r.add('setup')
+        r.add('sgmlop:python')
+        r.add('slang:lib')
+        r.add('sqlite')
+        r.add('tar')
+        r.add('texinfo')
+        r.add('tzdata:data')
+        r.add('unzip')
+        r.add('util-linux')
+        r.add('zlib')
+        r.add('glibc:lib', flavor=glibcFlavor32, use=Arch.x86_64)
+        r.add('glibc:devellib', flavor=glibcFlavor32, use=Arch.x86_64)
+
+
+        r.startGroup('group-turbogears', parentGroup='group-os',
+                     byDefault=False)
+        r.add('Cheetah')
+        r.add('CherryPy')
+        r.add('ConfigObj')
+        r.add('FormEncode')
+        r.add('Paste')
+        r.add('PasteDeploy')
+        r.add('PasteScript')
+        r.add('PyProtocols')
+        r.add('RuleDispatch')
+        r.add('simplejson')
+        r.add('SQLObject')
+        r.add('TurboGears')
+        r.add('TurboJson')
+        r.add('TurboKid')
+        r.add('nose', byDefault=False)
+        r.add('TestGears', byDefault=False)
+
+
+        r.startGroup('group-xorg-minimal', parentGroup='group-live-images')
+        r.removeComponents(['devel', 'devellib'])
+        # troves we want
+        r.add('info-nobody')
+        r.add('info-sys')
+        r.add('info-wheel')
+        r.add('which')
+        r.add('xinitrc')
+        r.add('xorg-x11')
+        r.add('xorg-x11-fonts')
+        r.add('xorg-x11-tools')
+        r.add('xorg-x11-xfs')
+        r.add('xscreensaver')
+        r.add('xterm')
+
+        # dependencies for those troves
+        r.add('atk:lib')
+        r.add('cairo:lib')
+        r.add('chkfontpath:runtime')
+        r.add('expat:lib')
+        r.add('fontconfig:lib')
+        r.add('fontconfig:runtime')
+        r.add('freetype:lib')
+        r.add('gtk:data')
+        r.add('gtk:lib')
+        r.add('gtk:runtime')
+        r.add('libglade:lib')
+        r.add('libglade:data')
+        r.add('libjpeg:lib')
+        r.add('libpng:lib')
+        r.add('libtiff:lib')
+        r.add('libxml2:lib')
+        r.add('pango:data')
+        r.add('pango:lib')
+        r.add('perl:lib')
+        r.add('perl:runtime')
+        r.add('ttmkfdir:runtime')
+        r.add('utempter:lib')
+
+        if Use.dom0:
+            # A fairly small dom0 group which can be used for ISO images.
+            r.startGroup('group-dom0-server', parentGroup='group-os', depCheck=True,
+                          byDefault=False)
+
+            # What we need...
+            r.addNewGroup('group-core')
+
+            r.startGroup('group-dom0', parentGroup='group-dom0-server')
+
+            r.add('kernel:runtime', kernelLabel, flavor=kernelFlavor)
+            # What we want...
+            r.add('bridge-utils')
+            r.add('dmidecode:runtime')
+            r.add('ethtool:runtime')
+            r.add('httpd:runtime')
+            r.add('httpd:lib')
+            r.add('jfsutils:runtime')
+            r.add('lvm2:runtime')
+            r.add('openssh-server:runtime')
+            r.add('openssh-client:runtime')
+            r.add('openssh:runtime')
+            r.add('pciutils:runtime')
+            r.add('reiserfsprogs:runtime')
+            r.add('vnc:runtime')
+            r.add('wget')
+            r.add('xen')
+            r.add('xfsprogs:lib')
+            r.add('xfsprogs:runtime')
+
+            # The deps to make it all work...
+            r.add('apr:lib')
+            r.add('apr-util:lib')
+            r.add('device-mapper:lib')
+            r.add('device-mapper:runtime')
+            r.add('expat:lib')
+            r.add('fontconfig:lib')
+            r.add('fontconfig:runtime')
+            r.add('freetype:lib')
+            r.add('info-apache')
+            r.add('info-sshd')
+            r.add('libpng:lib')
+            r.add('mailcap:runtime')
+            r.add('make:runtime')
+            r.add('mod_python')
+            r.add('openldap:data')
+            r.add('openldap:lib')
+            r.add('perl:lib')
+            r.add('perl:runtime')
+            r.add('SDL:lib')
+            r.add('tcp_wrappers:lib')
+            r.add('xorg-x11:lib')
+            r.add('xorg-x11:data')
