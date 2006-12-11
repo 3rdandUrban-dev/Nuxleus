@@ -1,0 +1,3 @@
+#Mon Dec 11 15:09:48 MST 2006
+eclipse.preferences.version=1
+ENABLED_DECORATORS=org.eclipse.jdt.ui.override.decorator\:true,org.eclipse.jdt.ui.interface.decorator\:false,org.eclipse.mylar.bugzilla.ui.decorator.task\:true,org.eclipse.mylar.ui.decorator.interest\:true,org.eclipse.mylar.jira.ui.decorator.task\:true,org.eclipse.mylar.tasklist.ui.decorator.repositories\:true,org.eclipse.mylar.team.changeset.decorator\:true,org.eclipse.pde.ui.binaryProjectDecorator\:false,org.eclipse.team.cvs.ui.decorator\:true,org.eclipse.ui.LinkedResourceDecorator\:true,
