@@ -1,4 +1,5 @@
-#Mon Dec 11 09:58:01 MST 2006
+#Mon Dec 11 22:42:26 MST 2006
 eclipse.preferences.version=1
 tipsAndTricks=true
-platformState=1165155214582
+platformState=1165155214602
+EXIT_PROMPT_ON_CLOSE_LAST_WINDOW=false
