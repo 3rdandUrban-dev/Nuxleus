@@ -1,0 +1,11 @@
+stateversion 2
+name subversion:source
+version /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@rpl:devel//nux:devel/1165634584.296:1.4.2-0.0.1
+branch /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@rpl:devel//nux:devel
+6
+72456027a23fd431f3059b3976a770ec useraccess 65a0ec153d5072e206595aaa3253b4d3b988f8a5 config /conary.rpath.com@rpl:devel/1.2.3-8
+2482b7d4f62d3624439ddaa01b9adfd8 subversion-deps-1.4.2.tar.bz2 92960f117ddf3364f92e627adaad7c10318553e2 autosource /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@rpl:devel/1.4.2-0.0.1
+e43470e6156cd2182e57a8159da74ecd subversion.recipe 88aaf7c26bb166c9a337179e1cba211849bbb865 config /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@rpl:devel/1.4.2-0.0.1
+8aa120edd8c9047420b9f5aa76012b1c README.quickstart d001ae70b0c979a990267e03e7371c70ddb4b63f config /conary.rpath.com@rpl:devel/1.2.3-8
+ad9b45c940fca61503293b0f8b821ba4 subversion.conf 0aab834ce12ac0ba20295cf0bdb221641cfdb37f config /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@rpl:devel/1.4.0-0.0.7
+5e41f95adce496c74809fd981249ce92 subversion-1.4.2.tar.bz2 7c6b8aa3bb6d9bf616492cd44f6d5e6caa1df30c autosource /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@rpl:devel/1.4.2-0.0.1

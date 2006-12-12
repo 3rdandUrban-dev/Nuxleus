@@ -1,0 +1,85 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+# Get python version from this label
+loadInstalled('python.recipe')
+
+class Subversion(AutoPackageRecipe):
+    name = 'subversion'
+    version = '1.4.2'
+
+    buildRequires = [ 
+        'autoconf:runtime', 
+        'libtool:runtime', 
+        'python:devel',
+        'python:runtime', 
+        'db:devel', 
+        'apr:devel',
+        'apr-util:devel', 
+        'neon:devel', 
+        'httpd:devel',
+        'swig:runtime', 
+        'which:runtime', 
+        'krb5:devellib',
+        'expat:devel', 
+        'libxml2:devel', 
+        'zlib:devel',
+        'gettext:runtime', 
+        'krb5:devel', 
+        'httpd:runtime',
+        'e2fsprogs:devel', 
+        'openldap:devel', 
+        'perl:runtime',
+        'openssl:devel', 
+        'ruby:runtime', 
+        'openssl:runtime', 
+        'pkgconfig:devel'
+       ]
+
+    if Use.builddocs:
+        buildRequires.extend(['texinfo:runtime', 'docbook-xsl:data'])
+
+    def unpack(r):
+        r.disableParallelMake()
+
+        # svnparentpath is the directory containing the repositories
+
+        r.macros.svnparentpath = '%(servicedir)s/subversion'
+        r.macros.svnconfdir = '%(sysconfdir)s/subversion'
+
+        r.macros.pydir = Python.sitepkgs
+        r.macros.swigdirs = "swig_pydir=%(pydir)s/libsvn swig_pydir_extra=%(pydir)s/svn"
+
+        r.addArchive('http://subversion.tigris.org/downloads/subversion-%(version)s.tar.bz2')
+        r.addArchive('http://subversion.tigris.org/downloads/subversion-deps-%(version)s.tar.bz2')
+        r.addSource('subversion.conf', dest='%(sysconfdir)s/httpd/conf.d/subversion.conf')
+        r.addSource('useraccess', dest='%(svnconfdir)s/useraccess')
+        r.addSource('README.quickstart', dest='%(thisdocdir)s/README.quickstart')
+
+        r.Replace(('SVN_PARENT_PATH','%(svnparentpath)s'),('SVN_CONF_DIR','%(svnconfdir)s'),
+                  '%(sysconfdir)s/httpd/conf.d/subversion.conf',
+                  '%(svnconfdir)s/useraccess',
+                  '%(thisdocdir)s/README.quickstart')
+
+        r.Create('%(svnconfdir)s/users')
+
+    def configure(r):
+        r.Configure('--with-ssl --enable-dav --enable-so')
+
+#    def makeinstall(r):
+#        r.MakeInstall()
+#        r.Make('swig-py %(swigdirs)s')
+#        r.Make('install-swig-py %(swigdirs)s', preMake='DESTDIR=%(destdir)s')
+#        r.MakeDirs('%(svnparentpath)s')
+#
+#    def policy(r):
+#        r.PackageSpec('mod_dav_svn',
+#                      '%(sysconfdir)s/httpd/conf.d/subversion.conf',
+#                      '%(libdir)s/httpd/',
+#                      '%(svnconfdir)s/')
+#        r.ComponentSpec('python', '%(libdir)s/libsvn_swig_py.*', '%(pydir)s/')
+#
+#        r.ExcludeDirectories(exceptions='%(svnparentpath)s')

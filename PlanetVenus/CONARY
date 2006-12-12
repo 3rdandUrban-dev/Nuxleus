@@ -1,0 +1,9 @@
+stateversion 2
+name PlanetVenus:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1165721442.055:bzr-1.2
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+4
+b27dbba37d88b934314a96e1048bba31 makefile 42af06d9a662a289a9f73190c2915f11a8feb778 config /nuxleus.rpath.org@rpl:devel/bzr-1
+0b10659689ace692cf4231d9263d3d29 build.sh f622ee0b0501a2bcad18badda13d1ff28dac7347 config /nuxleus.rpath.org@rpl:devel/bzr-1
+8d8dad34f892142a99e9429502802cee PlanetVenus-bzr.tar.gz aadd01a326923548ae55a7c53d1b2652b8bf75f2 _ /nuxleus.rpath.org@rpl:devel//nux:devel/bzr-1.2
+03147d0ea646d49752f1f7fa2c20d644 PlanetVenus.recipe 5c172cb3c8faab6f6803a3653f098f65442141d4 config /nuxleus.rpath.org@rpl:devel//nux:devel/bzr-1.1

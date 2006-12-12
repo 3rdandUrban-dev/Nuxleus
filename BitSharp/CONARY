@@ -1,0 +1,7 @@
+stateversion 2
+name BitSharp:source
+version /nuxleus.rpath.org@nux:devel/1165870781.913:svn-2
+branch /nuxleus.rpath.org@nux:devel
+2
+6b389b97e1fe352a6d3e12a3918cff37 BitSharp.recipe 773eda35a81598359ceb605f39f247abbb6a4b26 config /nuxleus.rpath.org@nux:devel/svn-1
+c47af48ed3e67800d737128a47303c93 build.sh a7d355e13ce2fb39ca1529bfc43ac8bbb710b435 config /nuxleus.rpath.org@nux:devel/svn-1
