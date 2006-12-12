@@ -1,7 +1,0 @@
-stateversion 2
-name Amplee:source
-version /nuxleus.rpath.org@rpl:devel/1164548998.237:0.3.4-1
-branch /nuxleus.rpath.org@rpl:devel
-2
-e9b6bd37a8dab5807767f477239bc154 amplee-0.3.4.tar.gz 57b08dcb9b7990faef0b9f54a188df795b172651 autosource /nuxleus.rpath.org@rpl:devel/0.3.4-1
-f45bcb5af9043e9244305e91d203d109 Amplee.recipe 1703ff7ac6b388aa1fe1a0667abe5ca4252cb6c0 config /nuxleus.rpath.org@rpl:devel/0.3.4-1

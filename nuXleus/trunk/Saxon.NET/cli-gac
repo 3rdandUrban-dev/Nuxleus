@@ -1,7 +1,0 @@
-file	%(taghandlerdir)s/cli-gac
-name	cli-gac
-description	Files installed into and out of the GAC
-implements      files update
-implements      files preremove
-include         /usr/lib/.[^/]*$
-
