@@ -21,6 +21,7 @@ class Ikvmbin(AutoPackageRecipe):
         r.Install('gac-install-list', '%(libdir)s/cli-gac/ikvm.gacinstall')
         r.Config('%(libdir)s/cli-gac/ikvm.gacinstall')
         r.addSource('ikvm.pc')
+	r.Install('ikvm.pc', '%(libdir)s/pkgconfig/ikvm.pc')
         
         r.MakeInstall()
 

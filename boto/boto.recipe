@@ -6,7 +6,7 @@
 
 class Boto(PackageRecipe):
     name = 'boto'
-    version = '0.4b'
+    version = '0.6c'
 
     buildRequires = [ 'python-setuptools:python' ]
 

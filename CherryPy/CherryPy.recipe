@@ -6,7 +6,7 @@
 
 class CherryPy(PackageRecipe):
     name = 'CherryPy'
-    version = '3.0.0beta2'
+    version = '3.0.0RC1'
 
     # For some reason we cannot deploy the package when elementtree is not
     # explicitely stated here. But CherryPy does not require ElementTree
@@ -14,9 +14,8 @@ class CherryPy(PackageRecipe):
     buildRequires = [ 
             'python-setuptools:python', 
             'elementtree:python', 
-            'mod_python:python' 
     ]
 
     def setup(r):
-        r.addArchive('http://download.cherrypy.org/cherrypy/3.0beta2/CherryPy-3.0.0beta2.tar.gz')
+        r.addArchive('http://download.cherrypy.org/cherrypy/3.0RC1/%(name)s-%(version)s.tar.gz')
         r.PythonSetup()

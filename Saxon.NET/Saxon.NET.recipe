@@ -24,10 +24,12 @@ class SaxonNET(AutoPackageRecipe):
         r.addSource('build.sh')
         r.addSource('saxon8.dll')
         r.addSource('gacinstalllist')
+	r.addSource('saxon.pc')
+	r.Install('saxon.pc',
+		'%(libdir)s/pkgconfig/saxon.pc')
         r.Install('gacinstalllist', 
                   '%(libdir)s/cli-gac/saxon.gacinstall')
         r.Config('%(libdir)s/cli-gac/saxon.gacinstall')
-        r.addSource('saxon.pc')
 
         r.Make()
         r.MakeInstall()

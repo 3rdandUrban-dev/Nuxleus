@@ -6,9 +6,9 @@
 
 class bridge(PackageRecipe):
     name = 'bridge'
-    version = '0.1.5'
+    version = '0.2.0'
 
-    buildRequires = [ 'python-setuptools:python']
+    buildRequires = [ 'python-setuptools:python', 'Amara:python' ]
 
     def setup(r):
         r.addArchive('http://defuze.org/oss/%(name)s/%(name)s-%(version)s.tar.gz')
