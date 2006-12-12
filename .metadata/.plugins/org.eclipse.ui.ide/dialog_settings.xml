@@ -8,18 +8,18 @@
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
 	</section>
-	<section name="ChooseWorkspaceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="293"/>
-		<item key="DIALOG_FONT_NAME" value="1|Tahoma|8|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma"/>
-		<item key="DIALOG_HEIGHT" value="244"/>
-		<item key="DIALOG_Y_ORIGIN" value="222"/>
-		<item key="DIALOG_WIDTH" value="438"/>
+	<section name="org.eclipse.ui.views.problem">
 	</section>
 	<section name="ResourceNavigator">
 		<item key="ResourceWorkingSetFilter.STORE_WORKING_SET" value="Aggregate for window 1165798692906"/>
 		<item key="ResourceViewer.STORE_SORT_TYPE" value="1"/>
 	</section>
-	<section name="org.eclipse.ui.views.problem">
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="293"/>
+		<item key="DIALOG_HEIGHT" value="244"/>
+		<item key="DIALOG_FONT_NAME" value="1|Tahoma|8|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma"/>
+		<item key="DIALOG_Y_ORIGIN" value="222"/>
+		<item key="DIALOG_WIDTH" value="438"/>
 	</section>
 	<section name="BasicNewProjectResourceWizard">
 	</section>
