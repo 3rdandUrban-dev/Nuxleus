@@ -11,6 +11,7 @@ class FilesetNuxleusCore(FilesetRecipe):
     def setup(r):
         ver = 'nuxleus.rpath.org@nux:devel'
 
+		r.addFile('/bin/bash', 'bash:runtime', versionStr = ver)
         r.addFile('/sbin/nash', 'mkinitrd:runtime', versionStr = ver)
         r.addFile('/sbin/insmod', 'module-init-tools:runtime', versionStr = ver)
         r.addFile('/sbin/{udev.static,udevstart}', 'udev:runtime', versionStr = ver)
