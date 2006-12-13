@@ -4,22 +4,22 @@
 # A copy is available at http://www.rpath.com/permanent/mit-license.html
 #
 
-class Ikvmbin(AutoPackageRecipe):
+class IkvmGenerics(AutoPackageRecipe):
 
-    buildRequires = [ 'mono:runtime', 'mono:lib', 'pkgconfig:devel', 'cli-gac-tag' ]
+    buildRequires = [ 'mono:runtime', 'mono:lib', 'pkgconfig:devel' ]
 
-    name = "ikvmbin"
+    name = "ikvm-generics"
     version = "0.32.0.0"
 
     def setup(r):
         r.addArchive('http://www.frijters.net/%(name)s-%(version)s.zip')
         r.addSource('makefile')
-	r.addSource('ikvm-dev')
-        r.addSource('ikvmc-dev')
-        r.addSource('ikvmstub-dev')
+	r.addSource('ikvm-generics')
+        r.addSource('ikvmc-generics')
+        r.addSource('ikvmstub-generics')
 	r.Install('gac-install-list', '%(libdir)s/cli-gac/ikvm.gacinstall')
-        r.addSource('ikvm-dev.pc')
-	r.Install('ikvm-dev.pc', '%(libdir)s/pkgconfig/ikvm-dev.pc')
+        r.addSource('ikvm-generics.pc')
+	r.Install('ikvm-generics.pc', '%(libdir)s/pkgconfig/ikvm-generics.pc')
         
         r.MakeInstall()
 
