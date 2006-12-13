@@ -9,24 +9,19 @@ class Ikvmbin(AutoPackageRecipe):
     buildRequires = [ 'mono:runtime', 'mono:lib', 'pkgconfig:devel', 'cli-gac-tag' ]
 
     name = "ikvmbin"
-    version = "0.30.0.0"
+    version = "0.32.0.0"
 
     def setup(r):
         r.addArchive('http://www.frijters.net/%(name)s-%(version)s.zip')
         r.addSource('makefile')
-	r.addSource('ikvm')
-        r.addSource('ikvmc')
-        r.addSource('ikvmstub')
-        r.addSource('gac-install-list')
+	r.addSource('ikvm-dev')
+        r.addSource('ikvmc-dev')
+        r.addSource('ikvmstub-dev')
 	r.Install('gac-install-list', '%(libdir)s/cli-gac/ikvm.gacinstall')
-        r.Config('%(libdir)s/cli-gac/ikvm.gacinstall')
-        r.addSource('ikvm.pc')
-	r.Install('ikvm.pc', '%(libdir)s/pkgconfig/ikvm.pc')
+        r.addSource('ikvm-dev.pc')
+	r.Install('ikvm-dev.pc', '%(libdir)s/pkgconfig/ikvm-dev.pc')
         
         r.MakeInstall()
-
-        r.Requires('%(libdir)s/cli-gac/ikvm.gacinstall', 'cli-gac-tag')
-        r.TagSpec('cli-gac', '%(libdir)s/cli-gac/ikvm.gacinstall')
 
         
 
