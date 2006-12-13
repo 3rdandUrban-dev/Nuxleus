@@ -1,0 +1,32 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Ikvmbin(AutoPackageRecipe):
+
+    buildRequires = [ 'mono:runtime', 'mono:lib', 'pkgconfig:devel', 'cli-gac-tag' ]
+
+    name = "ikvmbin"
+    version = "0.30.0.0"
+
+    def setup(r):
+        r.addArchive('http://www.frijters.net/%(name)s-%(version)s.zip')
+        r.addSource('makefile')
+	r.addSource('ikvm')
+        r.addSource('ikvmc')
+        r.addSource('ikvmstub')
+        r.addSource('gac-install-list')
+	r.Install('gac-install-list', '%(libdir)s/cli-gac/ikvm.gacinstall')
+        r.Config('%(libdir)s/cli-gac/ikvm.gacinstall')
+        r.addSource('ikvm.pc')
+	r.Install('ikvm.pc', '%(libdir)s/pkgconfig/ikvm.pc')
+        
+        r.MakeInstall()
+
+        r.Requires('%(libdir)s/cli-gac/ikvm.gacinstall', 'cli-gac-tag')
+        r.TagSpec('cli-gac', '%(libdir)s/cli-gac/ikvm.gacinstall')
+
+        
+
