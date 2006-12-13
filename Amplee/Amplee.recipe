@@ -8,7 +8,7 @@ class Amplee(PackageRecipe):
     name = 'Amplee'
     version = '0.3.6'
 
-    buildRequires = [ 'python-setuptools:python', 'Atomixlib:python', 'Genser:python', 'bridge:python' ]
+    buildRequires = [ 'python-setuptools:python', 'bridge:python' ]
 
     def setup(r):
         r.addArchive('http://www.defuze.org/oss/amplee/amplee-%(version)s.tar.gz')
