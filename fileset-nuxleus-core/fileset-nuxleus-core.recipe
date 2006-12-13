@@ -1,0 +1,17 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class FilesetNuxleusCore(FilesetRecipe):
+    name = 'fileset-nuxleus-core'
+    version = '0.1'
+
+    def setup(r):
+        ver = 'conary.rpath.com@rpl:1'
+
+        r.addFile('/sbin/nash', 'mkinitrd:runtime', versionStr = ver)
+        r.addFile('/sbin/insmod', 'module-init-tools:runtime', versionStr = ver)
+        r.addFile('/sbin/{udev.static,udevstart}', 'udev:runtime', versionStr = ver)
+        r.addFile('/usr/lib/syslinux/isolinux.bin', 'syslinux:lib', versionStr = ver)
