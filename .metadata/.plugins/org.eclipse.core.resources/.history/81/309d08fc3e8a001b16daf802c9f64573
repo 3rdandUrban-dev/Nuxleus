@@ -1,6 +1,0 @@
-stateversion 2
-name group-dist:source
-version /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@nux:devel/1165075001.877:1.0.5-0.2
-branch /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@nux:devel
-1
-96fdd8f750678923ae0b9dc5aec4dc02 group-dist.recipe e32e299bcdece71edec17dc6404bf24f12116041 config /conary.rpath.com@rpl:devel//1/1.0.5-0.2

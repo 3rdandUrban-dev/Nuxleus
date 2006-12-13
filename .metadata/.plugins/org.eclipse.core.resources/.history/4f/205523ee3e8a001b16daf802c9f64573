@@ -1,7 +1,0 @@
-stateversion 2
-name CherryPy:source
-version /nuxleus.rpath.org@rpl:devel/1164549621.947:3.0.0beta2-4
-branch /nuxleus.rpath.org@rpl:devel
-2
-f150f0cded277ee88ba1b849cb472895 CherryPy.recipe 757c7eb283bb175720888c59de01b1718fdf342d config /nuxleus.rpath.org@rpl:devel/3.0.0beta2-4
-aaa6c01574aa7cccf4a218beff6822d8 CherryPy-3.0.0beta2.tar.gz 56cca1f88f49191c286d0a4ee80122eb82c273d8 autosource /nuxleus.rpath.org@rpl:devel/3.0.0beta2-1

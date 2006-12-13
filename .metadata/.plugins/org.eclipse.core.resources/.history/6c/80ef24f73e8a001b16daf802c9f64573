@@ -1,3 +1,0 @@
-#!/bin/sh
-cd /usr/lib/saxon
-gacutil -i saxon8.dll -package saxon
