@@ -4,11 +4,11 @@
 # A copy is available at http://www.rpath.com/permanent/mit-license.html
 #
 
-class Ikvmbin(AutoPackageRecipe):
+class IkvmDev(AutoPackageRecipe):
 
-    buildRequires = [ 'mono:runtime', 'mono:lib', 'pkgconfig:devel', 'cli-gac-tag' ]
+    buildRequires = [ 'mono:runtime', 'mono:lib', 'pkgconfig:devel' ]
 
-    name = "ikvmbin"
+    name = "ikvm-dev"
     version = "0.32.0.0"
 
     def setup(r):
