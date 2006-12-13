@@ -6,10 +6,10 @@
 
 class FilesetNuxleusCore(FilesetRecipe):
     name = 'fileset-nuxleus-core'
-    version = '0.1'
+    version = '0.1.1'
 
     def setup(r):
-        ver = 'conary.rpath.com@rpl:1'
+        ver = 'nuxleus.rpath.org@nux:devel'
 
         r.addFile('/sbin/nash', 'mkinitrd:runtime', versionStr = ver)
         r.addFile('/sbin/insmod', 'module-init-tools:runtime', versionStr = ver)
