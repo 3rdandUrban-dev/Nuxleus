@@ -7,9 +7,7 @@
 class CliGacTag(PackageRecipe):
     name = 'cli-gac-tag'
     version = '0.0.1'
-    buildRequires = [ 
-            'mono:devel',
-    ]
+    buildRequires = [ 'mono:runtime' ]
 
     def setup(r):
         r.addSource('cli-gac', macros=True,
