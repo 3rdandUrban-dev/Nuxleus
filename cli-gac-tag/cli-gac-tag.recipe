@@ -14,4 +14,6 @@ class CliGacTag(PackageRecipe):
                     dest='%(tagdescriptiondir)s/cli-gac')
         r.addSource('cli-gac-handler', macros=True,
                     dest='%(taghandlerdir)s/cli-gac', mode=0755)
+        
+        r.Requires('%(taghandlerdir)s/cli-gac', 'mono:runtime')
 
