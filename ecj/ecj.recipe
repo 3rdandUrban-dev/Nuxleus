@@ -1,0 +1,25 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Ecj(AutoPackageRecipe):
+
+    buildRequires = [
+	'ikvmbin:lib',
+	'mono:lib'
+	]
+
+    name = "ecj"
+    version = "3.3M3"
+
+    def unpack(r):
+        r.addSource('http://ftp.osuosl.org/pub/eclipse/eclipse/downloads/drops/S-3.3M3-200611021715/ecj.jar')
+    	r.addSource('makefile')
+	r.addSource('ecj')    
+    def configure(r):
+        pass
+        
+    def make(r):
+        pass
