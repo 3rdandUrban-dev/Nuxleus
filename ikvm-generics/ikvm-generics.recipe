@@ -12,12 +12,11 @@ class IkvmGenerics(AutoPackageRecipe):
     version = "0.32.0.0"
 
     def setup(r):
-        r.addArchive('http://www.frijters.net/%(name)s-%(version)s.zip')
+        r.addArchive('http://www.frijters.net/ikvmbin-generics-%(version)s.zip')
         r.addSource('makefile')
 	r.addSource('ikvm-generics')
         r.addSource('ikvmc-generics')
         r.addSource('ikvmstub-generics')
-	r.Install('gac-install-list', '%(libdir)s/cli-gac/ikvm.gacinstall')
         r.addSource('ikvm-generics.pc')
 	r.Install('ikvm-generics.pc', '%(libdir)s/pkgconfig/ikvm-generics.pc')
         
