@@ -86,9 +86,9 @@ class Dist(GroupRecipe):
                 kernelFlavor = 'kernel.smp'
 
 
-        	r.createGroup('group-os', checkPathConflicts=False)
-        	# turn off checkPathConflicts bc not everything in group-os can/should
-        	# coexist on the same system
+		r.createGroup('group-os', checkPathConflicts=False)
+		# turn off checkPathConflicts bc not everything in group-os can/should
+		# coexist on the same system
 
 		r.addNewGroup('group-dist', groupName='group-os')
 		r.startGroup('group-core', parentGroup='group-dist', depCheck=True)
@@ -247,8 +247,7 @@ class Dist(GroupRecipe):
 		r.add('rsh:runtime')
 
 		# nuxleus core packages
-		r.startGroup('group-nuxleus', parentGroup='group-dist',
-		              byDefault=True)
+		r.startGroup('group-nuxleus', parentGroup='group-dist', byDefault=True)
 		r.add('ipce:lib')
 		r.add('ipce:runtime')
 		r.add('mono:lib')
@@ -303,9 +302,7 @@ class Dist(GroupRecipe):
 
 
 				
-		r.startGroup('group-nuxleus-devel', parentGroup='group-dist',
-		              byDefault=False)
-
+		r.startGroup('group-nuxleus-devel', parentGroup='group-dist', byDefault=False)
 		r.add('unzip:runtime')
 		r.add('openssh-server:runtime')
 		r.add('cli-gac-tag')
@@ -334,8 +331,7 @@ class Dist(GroupRecipe):
 		r.add('bzip2:lib')
 		r.add('bzip2:runtime')
 	
-        	r.startGroup('group-devel', parentGroup='group-dist',
-                     byDefault=False)
+		r.startGroup('group-devel', parentGroup='group-dist', byDefault=False)
 		r.add('MAKEDEV')
 		r.add('attr:lib')
 		r.add('acl:lib')
