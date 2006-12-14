@@ -86,9 +86,9 @@ class Dist(GroupRecipe):
                 kernelFlavor = 'kernel.smp'
 
 
-        r.createGroup('group-os', checkPathConflicts=False)
-        # turn off checkPathConflicts bc not everything in group-os can/should
-        # coexist on the same system
+        	r.createGroup('group-os', checkPathConflicts=False)
+        	# turn off checkPathConflicts bc not everything in group-os can/should
+        	# coexist on the same system
 
 		r.addNewGroup('group-dist', groupName='group-os')
 		r.startGroup('group-core', parentGroup='group-dist', depCheck=True)
@@ -328,13 +328,13 @@ class Dist(GroupRecipe):
 		r.add('pkgconfig')
 			
 		r.startGroup('group-ext', parentGroup='group-dist', byDefault=False)
-		r.add('group-nuxleus-devel')
+		#r.add('group-nuxleus-devel')
 		r.add('rails')
 		r.add('gem')
 		r.add('bzip2:lib')
 		r.add('bzip2:runtime')
 	
-        r.startGroup('group-devel', parentGroup='group-dist',
+        	r.startGroup('group-devel', parentGroup='group-dist',
                      byDefault=False)
 		r.add('MAKEDEV')
 		r.add('attr:lib')
