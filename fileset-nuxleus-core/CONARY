@@ -1,6 +1,6 @@
 stateversion 2
 name fileset-nuxleus-core:source
-version /nuxleus.rpath.org@rpl:devel//nux:devel/1165634288.088:0.1-1
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1166046322.027:0.1.1-0.2
 branch /nuxleus.rpath.org@rpl:devel//nux:devel
 1
-16cd52d50e9fd87d5d11da59f3819aa1 fileset-nuxleus-core.recipe 3d4340fe2da1ee8821e36688ad36d040ceae46f2 config /nuxleus.rpath.org@rpl:devel/0.1-1
+16cd52d50e9fd87d5d11da59f3819aa1 fileset-nuxleus-core.recipe c357a717fb32938e88f1ce5e61bd4c132eb60109 config /nuxleus.rpath.org@rpl:devel//nux:devel/0.1.1-0.2
