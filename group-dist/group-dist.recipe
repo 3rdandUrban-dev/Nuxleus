@@ -5,14 +5,14 @@
 #
 
 class Dist(GroupRecipe):
-	name = 'group-dist'
-	version = '0.1.6'
-	
-	depCheck = True
-	checkOnlyByDefaultDeps = True
-	checkPathConflicts=True
+    name = 'group-dist'
+    version = '0.1.6'
 
-	def startGroup(r, name, parentGroup, depCheck=False, byDefault=True,
+    depCheck = True
+    checkOnlyByDefaultDeps = True
+    checkPathConflicts=True
+
+    def startGroup(r, name, parentGroup, depCheck=False, byDefault=True,
                    checkPathConflicts=None):
         # creates group named "name", adds it to the toplevel group,
         # and sets the current group to that name.  calls to r.add()
@@ -30,7 +30,7 @@ class Dist(GroupRecipe):
         r.addNewGroup(name, groupName=parentGroup, byDefault=byDefault)
         r.setDefaultGroup(name)
 
-	def setup(r):
+    def setup(r):
 
         groupLabel='nuxleus.rpath.org@nux:devel'
         compatLabel='nuxleus.rpath.org@nux:devel-compat'
@@ -86,14 +86,14 @@ class Dist(GroupRecipe):
                 kernelFlavor = 'kernel.smp'
 
 
-		r.createGroup('group-os', checkPathConflicts=False)
-		# turn off checkPathConflicts bc not everything in group-os can/should
-		# coexist on the same system
+        r.createGroup('group-os', checkPathConflicts=False)
+        # turn off checkPathConflicts bc not everything in group-os can/should
+        # coexist on the same system
 
-		r.addNewGroup('group-dist', groupName='group-os')
-		r.startGroup('group-core', parentGroup='group-dist', depCheck=True)
-		#r.add('group-raa', 'raa.rpath.org@rpl:1', '', groupName = 'group-core')
-		r.add('acl:lib')
+        r.addNewGroup('group-dist', groupName='group-os')
+        r.startGroup('group-core', parentGroup='group-dist', depCheck=True)
+        #r.add('group-raa', 'raa.rpath.org@rpl:1', '', groupName = 'group-core')
+	r.add('acl:lib')
 		r.add('acl:runtime')
 		r.add('ash:runtime')
 		r.add('attr:lib')
@@ -245,10 +245,11 @@ class Dist(GroupRecipe):
 		r.add('wireless-tools:lib')
 		r.add('zlib:lib')
 		r.add('rsh:runtime')
-
-		# nuxleus core packages
-		r.startGroup('group-nuxleus', parentGroup='group-dist', byDefault=True)
-		r.add('ipce:lib')
+	
+	# nuxleus core packages
+	r.startGroup('group-nuxleus', parentGroup='group-dist',
+	              byDefault=True)
+	r.add('ipce:lib')
 		r.add('ipce:runtime')
 		r.add('mono:lib')
 		r.add('mono:runtime')
@@ -299,40 +300,22 @@ class Dist(GroupRecipe):
 		r.add('sgmlop:python')	
 		r.add('PyXML:python')
 		r.add('wget:runtime')
-
-
-				
-		r.startGroup('group-nuxleus-devel', parentGroup='group-dist', byDefault=False)
-		r.add('unzip:runtime')
-		r.add('openssh-server:runtime')
-		r.add('cli-gac-tag')
-		r.add('Saxon.NET:runtime')
-		r.add('Saxon.NET:lib')
-		r.add('Saxon.NET:devellib')
-		r.add('mono:devel')
-		r.add('fxsl')
-		r.add('ikvmbin:runtime')
-		r.add('ikvmbin:lib')
-		r.add('ikvmbin:devellib')
-		r.add('openldap')
-		r.add('make:runtime')
-		r.add('mailcap')
-		r.add('info-sshd')
-		r.add('darcs:runtime')
-		r.add('curl:lib')
-		r.add('expat:lib')
-		r.add('expat:runtime')
-		r.add('pkgconfig')
-			
-		r.startGroup('group-ext', parentGroup='group-dist', byDefault=False)
-		#r.add('group-nuxleus-devel')
-		r.add('rails')
+	
+	r.startGroup('group-nuxleus-devel', parentGroup='group-dist', byDefault=True)
+	r.add('rails')
 		r.add('gem')
 		r.add('bzip2:lib')
 		r.add('bzip2:runtime')
 	
-		r.startGroup('group-devel', parentGroup='group-dist', byDefault=False)
-		r.add('MAKEDEV')
+	r.startGroup('group-ext', parentGroup='group-dist', byDefault=True)
+	r.add('ruby:runtime')
+	r.add('ruby:lib')
+	r.add('rails')
+	r.add('gem')
+	
+        r.startGroup('group-devel', parentGroup='group-dist',
+                     byDefault=False)
+        r.add('MAKEDEV')
 		r.add('attr:lib')
 		r.add('acl:lib')
 		r.add('automake')
