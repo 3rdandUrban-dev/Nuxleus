@@ -5,17 +5,17 @@
 #
 
 class IronPythonCommunityEdition(AutoPackageRecipe):
-    name = 'ipce'
-    version = 'r4'
+    name = 'IronPython-MS-Dev'
+    version = '1.1a1'
 
     buildRequires = [ 
         'PyXML:python', 
-        'mono:lib', 
+        'mono:lib',
+		'mono:runtime',
         'sgmlop:python',
         'pycrypto:python'
        ]
 
-    def unpack(r):
-        r.addArchive('%(name)s-%(version)s.tar.gz')
-    def configure(r):
-        pass
+    def setup(r):
+        r.addArchive('http://s3.amazonaws.com/IronPython/IronPython-%(version)s-Bin.zip')
+        r.addSource('makefile')
