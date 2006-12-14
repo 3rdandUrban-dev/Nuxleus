@@ -5,14 +5,14 @@
 #
 
 class Dist(GroupRecipe):
-    name = 'group-dist'
-    version = '0.1.6'
+	name = 'group-dist'
+	version = '0.1.6'
+	
+	depCheck = True
+	checkOnlyByDefaultDeps = True
+	checkPathConflicts=True
 
-    depCheck = True
-    checkOnlyByDefaultDeps = True
-    checkPathConflicts=True
-
-    def startGroup(r, name, parentGroup, depCheck=False, byDefault=True,
+	def startGroup(r, name, parentGroup, depCheck=False, byDefault=True,
                    checkPathConflicts=None):
         # creates group named "name", adds it to the toplevel group,
         # and sets the current group to that name.  calls to r.add()
@@ -30,7 +30,7 @@ class Dist(GroupRecipe):
         r.addNewGroup(name, groupName=parentGroup, byDefault=byDefault)
         r.setDefaultGroup(name)
 
-    def setup(r):
+	def setup(r):
 
         groupLabel='nuxleus.rpath.org@nux:devel'
         compatLabel='nuxleus.rpath.org@nux:devel-compat'
