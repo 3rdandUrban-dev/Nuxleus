@@ -19,3 +19,6 @@ class IronPythonCommunityEdition(AutoPackageRecipe):
     def setup(r):
         r.addArchive('http://s3.amazonaws.com/IronPython/IronPython-%(version)s-Bin.zip')
         r.addSource('makefile')
+        r.addSource('ipy-dev', macros=True, dest='%(bindir)s/ipy-dev', mode=0755)
+        r.addSource('ipyw-dev', macros=True, dest='%(bindir)s/ipyw-dev', mode=0755)
+        r.addSource('site.py', macros=True, dest='%(libdir)s/ironpython-1.1-dev/Lib/site.py')
