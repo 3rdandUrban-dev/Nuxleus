@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<project name="saxon8" default="all">
+	<property name="pathsep" value=":" />
+	<property overwrite="false" name="signoption" value="-keyfile:X5.snk" />
+
+	<if test="${platform::is-win32()}">
+		<property name="pathsep" value=";" />
+	</if>
+
+	<target name="checkout">
+		<exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/latest8.8/bj Saxon" />
+	</target>
+	<target name="allsources">
+		<if test="${platform::is-win32()}">
+			<exec program="cmd" commandline="/c dir /s/b Saxon\*.java > allsources.lst" />
+		</if>
+		<!-- Can't seem to figure out how to get the find command to work properly -->
+		<!-- on Linux. For now, will simply run this from the commandline -->
+		<!-- find Saxon/ -name *.java > allsources.lst -->
+                <!--<if test="${platform::is-unix()}">
+                        <exec program="find">
+				<arg value="-name *.java" />
+				<arg value="> allsources.lst"/>
+			</exec>
+                </if>-->
+	</target>
+	<target name="cp.depends" depends="allsources">
+		<property name="classpathstub.dir" value="/usr/lib/ikvm" />
+		<property name="saxon8.dir" value="${nant.project.basedir}/Saxon" />
+		<property name="allsources" value="allsources.lst" />
+	</target>
+	
+	<target name="classes" depends="cp.depends" description="Saxon8 Java Classes">
+		<delete>
+			<fileset basedir="${saxon8.dir}">
+				<include name="**.class"/>
+			</fileset>
+		</delete>
+		<delete>
+			<fileset basedir=".">
+				<include name="**.class"/>
+			</fileset>
+		</delete>
+		<exec program="ecj" commandline="-g -1.5 -nowarn -cp ${classpathstub.dir}/IKVM.GNU.Classpath.jar${pathsep}${classpathstub.dir}/IKVM.Runtime.jar${pathsep}./jars/dom4j-1.6.1.jar${pathsep}./jars/xom-1.1.jar${pathsep}./jars/jdom.jar${pathsep}${classpathstub.dir}/mscorlib.jar${pathsep}/${classpathstub.dir}/System.jar${pathsep}${classpathstub.dir}/System.Xml.jar @${allsources}" useruntimeengine="false" />
+	</target>
+	
+	<target name="saxon8" depends="classes">
+		<exec program="ikvmc" useruntimeengine="false">
+			<arg value="-version:8.8.0.4" />
+			<arg value="${signoption}" />
+			<arg value="-compressresources" />
+			<arg value="-opt:fields" />
+			<arg value="-strictfinalfieldsemantics" />
+			<arg value="-out:saxon8.dll" />
+			<!--<arg value="-remap:map.xml" />-->
+			<arg value="-exclude:exclude.lst" />
+			<arg value="-target:library" />
+			<arg value="-recurse:./jars/*.jar" />
+			
+			<arg value="-recurse:${saxon8.dir}/*.class" />
+			<arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.dll" />
+			<arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.Xml.dll" />
+			<arg value="-resource:META-INF/MANIFEST.MF=META-INF/MANIFEST.MF" />
+		</exec>
+		<copy file="saxon8.dll" tofile="../bin/saxon8.dll.new" />
+		<if test="${nant.platform.win32}">
+			<call target="peverify-classpath"/>
+		</if>
+		<copy file="saxon8.dll" todir="../release/vendor/Saxonica/Saxon8/bin" />
+		<delete file="saxon8.dll.new" />
+	</target>
+	
+	<target name="all">
+		<call target="checkout" />
+		<call target="classes" />
+		<call target="saxon8" />
+	</target>
+	
+	<target name="clean">
+		<!--<delete failonerror="false" file="allsources.lst" />-->
+		<delete failonerror="false" file="saxon8.dll" />
+		<delete failonerror="false" dir="Saxon" />
+	</target>
+</project>
+
+
