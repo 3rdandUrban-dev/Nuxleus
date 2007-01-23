@@ -1,0 +1,64 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class GDataNet(AutoPackageRecipe):
+
+    buildRequires = [ 'mono:runtime', 'mono:lib', 'pkgconfig:devel', 'cli-gac-tag' ]
+
+    name = "GData.NET"
+    version = "1093"
+
+    def setup(r):
+        r.addArchive('http://google-gdata.googlecode.com/files/gdata.net.%(version)s.zip')
+
+        r.Run('cd %(builddir)s/cs; make; make install')
+	r.Run('mkdir -p %(destdir)s%(libdir)s/gdata')
+	r.Run('find %(builddir)s/cs -name "*.dll" -exec cp -dp {} %(destdir)s%(libdir)s/gdata/ \;')
+	r.Run('find %(builddir)s/cs -name "*.exe" -exec cp -dp {} %(destdir)s%(libdir)s/gdata/ \;')
+	
+	r.addSource('gd.blogger')
+	r.Install('gd.blogger', '%(bindir)s/gd.blogger', mode=0755)
+	r.addSource('gd.gbase_customertool')
+	r.Install('gd.gbase_customertool', '%(bindir)s/gd.gbase_customertool', mode=0755)
+	r.addSource('gd.gbase_querytool')
+	r.Install('gd.gbase_querytool', '%(bindir)s/gd.gbase_querytool', mode=0755)
+	r.addSource('gd.spreadsheet')
+	r.Install('gd.spreadsheet', '%(bindir)s/gd.spreadsheet', mode=0755)
+	r.addSource('gd.calendar')
+	r.Install('gd.calendar', '%(bindir)s/gd.calendar', mode=0755)
+	r.addSource('gd.gbase_demo')
+	r.Install('gd.gbase_demo', '%(bindir)s/gd.gbase_demo', mode=0755)
+	r.addSource('gd.insertsample')
+	r.Install('gd.insertsample', '%(bindir)s/gd.insertsample', mode=0755)
+	r.addSource('gd.updatesample')
+	r.Install('gd.updatesample', '%(bindir)s/gd.updatesample', mode=0755)
+	r.addSource('gd.codesearch')
+	r.Install('gd.codesearch', '%(bindir)s/gd.codesearch', mode=0755)
+	r.addSource('gd.readsample')
+	r.Install('gd.readsample', '%(bindir)s/gd.readsample', mode=0755)
+	r.addSource('gd.gbase_queryexample')
+	r.Install('gd.gbase_queryexample', '%(bindir)s/gd.gbase_queryexample', mode=0755)
+	r.addSource('gdata.pc')
+	r.Install('gdata.pc', '%(libdir)s/pkgconfig/gdata.pc')
+	
+	r.addSource('gac-install-list')
+	r.Install('gac-install-list', '%(libdir)s/cli-gac/gdata.gacinstall')
+	r.Config('%(libdir)s/cli-gac/gdata.gacinstall')
+
+	#r.Run('find %(destdir)s%(libdir)s/gdata/ -name "*.dll" > gac-install-list')
+        #r.Install('gac-install-list', '%(libdir)s/cli-gac/gdata.gacinstall')
+        #r.Config('%(libdir)s/cli-gac/gdata.gacinstall')
+
+        r.Requires(exceptDeps=r'CIL\:\ Google\.GData\.Calendar\(1\.0\.9\.3\)')
+	r.Requires(exceptDeps=r'CIL\:\ Google\.GData\.Client\(1\.0\.9\.3\)')
+	r.Requires(exceptDeps=r'CIL\:\ Google\.GData\.CodeSearch\(1\.0\.9\.3\)')
+	r.Requires(exceptDeps=r'CIL\:\ Google\.GData\.Extensions\(1\.0\.9\.3\)')
+	r.Requires(exceptDeps=r'CIL\:\ Google\.GData\.GoogleBase\(1\.0\.9\.3\)')
+	r.Requires(exceptDeps=r'CIL\:\ Google\.GData\.Spreadsheets\(1\.0\.9\.3\)')
+	r.Requires(exceptDeps=r'CIL\:\ Microsoft\.VisualBasic\(7\.0\.5000\.0\)')
+
+	r.Requires('%(libdir)s/cli-gac/gdata.gacinstall', 'cli-gac-tag')
+        r.TagSpec('cli-gac', '%(libdir)s/cli-gac/gdata.gacinstall')

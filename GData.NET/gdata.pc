@@ -1,0 +1,14 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib/gdata
+
+Name: Google Data Libraries for the .NET Platform
+Description: Integrated support for the GData API providing data level access to Google Calendar, Base, Blogger, Docs & Spreadsheets, Code, as well as extended search capabilities for your applications.
+
+Version: 1.0.9.3
+Libs:   -r:${libdir}/Google.GData.Calendar.dll \
+	-r:${libdir}/Google.GData.Client.dll \
+	-r:${libdir}/Google.GData.CodeSearch.dll \
+	-r:${libdir}/Google.GData.Extensions.dll \
+	-r:${libdir}/Google.GData.GoogleBase.dll \
+	-r:${libdir}/Google.GData.Spreadsheets.dll

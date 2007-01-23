@@ -1,0 +1,20 @@
+stateversion 2
+name GData.NET:source
+version /nuxleus.rpath.org@nux:devel/1169290517.715:1093-3
+branch /nuxleus.rpath.org@nux:devel
+15
+c7c3e7dce6077135844777dfc28f4391 gd.blogger 419844adafa8a9385fb3c4561257d66fe0f49631 config /nuxleus.rpath.org@nux:devel/1093-3
+b3574d7d972812d652e5fe68c067be5e gd.gbase_demo c800548bfd5a3252cbecfabfeb0b5e2a286efcec config /nuxleus.rpath.org@nux:devel/1093-3
+673d43810c382ceed6e4b9b2cdc2afd2 gd.spreadsheet ca754ab22e0e1520b8819bcd432bce7d0192d8bd config /nuxleus.rpath.org@nux:devel/1093-3
+0ec0ff29bb72aedd658989e2822e9177 gd.gbase_queryexample fbfc3b78eaf1bf76f49890556a4c9bbba7de7482 config /nuxleus.rpath.org@nux:devel/1093-3
+4658f8470c332290bd4d10bea4764f99 GData.NET.recipe 0708160808a653c2f530efa7e0db9d0a7aff868b config /nuxleus.rpath.org@nux:devel/1093-3
+c712e20d0bcfa631344f7bcdca0db076 gac-install-list b0caf784876d3432dd086ad00c122c1224415e0f config /nuxleus.rpath.org@nux:devel/1093-3
+95ce6b7d5566ab51b1119148b0593587 gd.gbase_customertool 6569c666d62c833c54eb576700785444ac261981 config /nuxleus.rpath.org@nux:devel/1093-3
+d831015a78c0779df6b0f1a3379720ca gd.calendar 98bc7cd9cf4e4d539ec9c2eef489fa5f106eddad config /nuxleus.rpath.org@nux:devel/1093-3
+16a2ce9a8083a8f9dd2597a29160c6b3 gd.readsample 5d567c1d22bdab1a76e68fc077b0423dac46b538 config /nuxleus.rpath.org@nux:devel/1093-3
+952be3fcb134d7246640dbc0f297be35 gd.insertsample c4dbbf9af42edea63c5df8bac4d21be2e6521298 config /nuxleus.rpath.org@nux:devel/1093-3
+a7ed36eb60e2fd20f8e86086e1e8d592 gdata.net.1093.zip e12eba2786944782e60bbd00da3672e3d2ee39e4 autosource /nuxleus.rpath.org@nux:devel/1093-1
+0d173886ef7efb3e48d590cf0f9d8c10 gd.gbase_querytool 3f1a63518b5116a1fd8b7bdfa4a58840a030263d config /nuxleus.rpath.org@nux:devel/1093-3
+948aec8e4223982c8b5c5ff930f708f9 gd.updatesample e668bb596cbc3a97284208d683ca159a17e9c728 config /nuxleus.rpath.org@nux:devel/1093-3
+c5bdc5982db814b614692a04ab22cab6 gdata.pc 782c3c1bc5e952f8c180efe5d050a30c4aaa5c6d config /nuxleus.rpath.org@nux:devel/1093-3
+937af868c0c647d126d008692632e1a4 gd.codesearch ecac338e8ff4d41a1c98ff59d3633a3b78346b8e config /nuxleus.rpath.org@nux:devel/1093-3
