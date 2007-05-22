@@ -1,0 +1,7 @@
+stateversion 2
+name mod_mono:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1179493063.408:1.2.4-0.2
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+2
+f19fd3b64ec2607a9e4cc3d34d6e5167 mod_mono-1.2.4.tar.bz2 5e2786fb4f73ec36537370d76d9e905106fa288a autosource /nuxleus.rpath.org@rpl:devel//nux:devel/1.2.4-0.1
+b34f4da2c26beec8faa1a840b710b3fd mod_mono.recipe a51512977832b69f26fe316e6d5f9c3c04043735 config /nuxleus.rpath.org@rpl:devel//nux:devel/1.2.4-0.2

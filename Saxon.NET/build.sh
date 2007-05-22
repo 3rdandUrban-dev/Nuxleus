@@ -1,7 +1,9 @@
-SAXONAPILIB=https://svn.sourceforge.net/svnroot/saxon/latest8.8/bn/src/api/
-SAXONCMD=https://svn.sourceforge.net/svnroot/saxon/latest8.8/bn/src/cmd/
+#!/bin/bash
+
+SAXONAPILIB=https://svn.sourceforge.net/svnroot/saxon/latest8.9/bn/csource/api/
+SAXONCMD=https://svn.sourceforge.net/svnroot/saxon/latest8.9/bn/csource/cmd/
 DIST=Saxon.NET
-VERSION=8.8Nsvn
+VERSION=8.9Nsvn
 
 update () {
   if [ ! -d $2 ]; then

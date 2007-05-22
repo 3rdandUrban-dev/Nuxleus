@@ -4,18 +4,36 @@
 # A copy is available at http://www.rpath.com/permanent/mit-license.html
 #
 
-class IronPythonCommunityEdition(AutoPackageRecipe):
+class IronPythonCommunityEdition(PackageRecipe):
     name = 'ipce'
-    version = 'r4'
+    version = 'r5'
 
     buildRequires = [ 
         'PyXML:python', 
         'mono:lib', 
+	'mono:runtime',
         'sgmlop:python',
-        'pycrypto:python'
+        'pycrypto:python',
+	'paramiko:python'
        ]
 
-    def unpack(r):
-        r.addArchive('%(name)s-%(version)s.tar.gz')
-    def configure(r):
-        pass
+    def setup(r):
+        r.addArchive('http://go-mono.com/sources/ipce/IPCE-%(version)s.zip')
+	#r.addArchive('%(name)-%(version)s.tar.gz')
+	r.addSource('makefile')
+	r.addSource('ipy')
+	r.addSource('ipyw')
+	r.addPatch('site.py.patch')
+	r.addPatch('cgi.py.patch')
+	r.addSource('ipce.pc')
+	r.Install('ipce.pc', '%(libdir)s/pkgconfig/ipce.pc')
+
+	#r.addSource('gac-install-list')
+	#r.Install('gac-install-list', '%(libdir)s/cli-gac/ipce.gacinstall')
+	#r.Config('%(libdir)s/cli-gac/ipce.gacinstall')
+
+	r.MakeInstall()
+
+	#r.Requires('%(libdir)s/cli-gac/ipce.gacinstall', 'cli-gac-tag:runtime')
+
+	#r.TagSpec('cli-gac', '%(libdir)s/cli-gac/ipce.gacinstall')

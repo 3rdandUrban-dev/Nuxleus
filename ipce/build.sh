@@ -1,3 +1,4 @@
+#!/bin/bash
 IPCE=https://svn.sourceforge.net/svnroot/fepy/IPCE
 
 update () {
@@ -11,7 +12,7 @@ update () {
 echo 'Updating IPCE'
 update $IPCE IPCE
 
-cd rPath/
+cd IPCE/
 ./download.sh
 ./build.sh
 V=`svnversion`

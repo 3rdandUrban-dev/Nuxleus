@@ -1,0 +1,19 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Mod_mono(CPackageRecipe):
+
+    buildRequires = [ 'gawk:runtime', 'mono:runtime', 'pkgconfig:devel', 'mono:lib', 'apr:devel' ]
+
+    name = "mod_mono"
+    version = "1.2.4"
+
+    def setup(r):
+        r.addArchive('http://go-mono.com/sources/%(name)s/%(name)s-%(version)s.tar.bz2')
+	r.Configure()
+	#r.Configure('--with-apr-config=/usr/bin/apu-1-config')
+	r.Make()
+	r.MakeInstall()

@@ -6,7 +6,7 @@
 
 class Mono(CPackageRecipe):
     name = 'mono'
-    version = '1.2.2'
+    version = '1.2.4'
     buildRequires = [ 
             'zlib:devel', 
             'glib:devel', 
@@ -15,16 +15,21 @@ class Mono(CPackageRecipe):
     ]
 
     def setup(r):
-        r.addArchive('http://go-mono.com/sources/mono/%(name)s-%(version)s.tar.gz')
+        r.addArchive('http://go-mono.com/sources/mono/%(name)s-%(version)s.tar.bz2')
 
-        r.Configure()
-        # do not add spurious builddir RPATH entry
+        r.Configure('-enable-minimal=profiler')
+        if Use.xen:
+		r.Configure('--with-xen_opt=yes')
+	# do not add spurious builddir RPATH entry
         r.Replace(('^runpath_var=.*', 'runpath_var=""'),
                   ('^hardcode_libdir_flag_spec=.*',
                    'hardcode_libdir_flag_spec=""'), 'libtool')
-        r.Make()
+	#r.Run('cd %(builddir)s/tools/locale-builder; pwd; make minimal MINIMAL_LOCALES=en_US;')
+	#r.Run('cd %(builddir)s')
+        r.Make('CFLAGS=-Os')
 
         r.MakeInstall()
+	#r.Run('strip %(bindir)s/mono')
         r.Move('%(datadir)s/{jay,libgc-mono}', '%(thisdocdir)s/')
 
         # RPM scripts are not necessary
@@ -38,6 +43,20 @@ class Mono(CPackageRecipe):
         # implicit requirement on the mono interpreter
         r.Provides('file', '%(bindir)s/mono')
         r.Requires('%(bindir)s/mono', r'.*\.(dll|exe)')
+
+	
+	#r.PackageSpec('mono-minimal','%(bindir)s/mono',
+	#			     '%(libdir)s/mono/2.0/mscorlib.dll',
+	#			     '%(libdir)s/mono/2.0/mscorlib.mdb',
+	#			     '%(libdir)s/mono/2.0/System.dll',
+	#			     '%(libdir)s/mono/2.0/System.Xml.dll',
+	#			     '%(libdir)s/mono/1.0/mscorlib.dll',
+	#			     '%(libdir)s/mono/1.0/mscorlib.mdb',
+	#			     '%(libdir)s/mono/1.0/System.dll',
+	#			     '%(libdir)s/mono/1.0/System.Xml.dll',
+	#			     '%(libdir)s/mono/gac/System/.*',
+	#			     '%(libdir)s/mono/gac/System.Xml/.*',
+	#			     '%(sysconfdir)s/mono/.*')
 
         r.ComponentSpec('devel', '%(bindir)s/monodis',
                                  '%(mandir)s/man1/monodis.1.*',

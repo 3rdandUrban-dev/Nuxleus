@@ -8,7 +8,7 @@
 	</if>
 
 	<target name="checkout">
-		<exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/latest8.8/bj Saxon" />
+		<exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/latest8.9/bj Saxon" />
 	</target>
 	<target name="allsources">
 		<if test="${platform::is-win32()}">
@@ -41,7 +41,7 @@
 				<include name="**.class"/>
 			</fileset>
 		</delete>
-		<exec program="ecj" commandline="-g -1.5 -nowarn -cp ${classpathstub.dir}/IKVM.GNU.Classpath.jar${pathsep}${classpathstub.dir}/IKVM.Runtime.jar${pathsep}./jars/dom4j-1.6.1.jar${pathsep}./jars/xom-1.1.jar${pathsep}./jars/jdom.jar${pathsep}${classpathstub.dir}/mscorlib.jar${pathsep}/${classpathstub.dir}/System.jar${pathsep}${classpathstub.dir}/System.Xml.jar @${allsources}" useruntimeengine="false" />
+		<exec program="ecj" commandline="-g -1.5 -nowarn -cp ${classpathstub.dir}/IKVM.GNU.Classpath.jar${pathsep}${classpathstub.dir}/IKVM.Runtime.jar$${pathsep}./jars/ant.jar${pathsep}./jars/stax-api-1.0.1.jar${pathsep}./jars/dom4j-1.6.1.jar${pathsep}./jars/xom-1.1.jar${pathsep}./jars/servlet.jar${pathsep}./jars/jdom-1.0.jar${pathsep}${classpathstub.dir}/mscorlib.jar${pathsep}/${classpathstub.dir}/System.jar${pathsep}${classpathstub.dir}/System.Xml.jar @${allsources}" useruntimeengine="false" />
 	</target>
 	
 	<target name="saxon8" depends="classes">
