@@ -6,7 +6,7 @@
 
 class SaxonNET(AutoPackageRecipe):
     name = 'Saxon.NET'
-    version = '8.8Nsvn'
+    version = '8.9.0.3'
 
     buildRequires = [
         'mono:lib',
@@ -18,18 +18,20 @@ class SaxonNET(AutoPackageRecipe):
        ]
 
     def setup(r):
-        r.addSource('makefile')
+        r.addArchive('build.tar.gz')
+	r.addSource('makefile')
+	r.addSource('X5.snk')
 	r.addSource('transform')
         r.addSource('query')
         r.addSource('build.sh')
-        r.addSource('saxon8.dll')
 	r.addSource('saxon.pc')
+	r.addSource('Model.cs.patch')
+	r.addSource('saxon8.dll')
 	r.Install('saxon.pc', '%(libdir)s/pkgconfig/saxon.pc')
-
         r.addSource('gacinstalllist')
 	r.Install('gacinstalllist', '%(libdir)s/cli-gac/saxon.gacinstall')
         r.Config('%(libdir)s/cli-gac/saxon.gacinstall')
-
+	#r.Run('cd build; nant -t:mono-1.0')
         r.Make()
         r.MakeInstall()
 

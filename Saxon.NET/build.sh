@@ -3,7 +3,7 @@
 SAXONAPILIB=https://svn.sourceforge.net/svnroot/saxon/latest8.9/bn/csource/api/
 SAXONCMD=https://svn.sourceforge.net/svnroot/saxon/latest8.9/bn/csource/cmd/
 DIST=Saxon.NET
-VERSION=8.9Nsvn
+VERSION=8.9.0.3
 
 update () {
   if [ ! -d $2 ]; then

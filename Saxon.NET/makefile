@@ -1,9 +1,9 @@
-CSC=gmcs
+CSC=mcs
 
 all:Saxon.Api.dll Transform.exe Query.exe
 
 Saxon.Api.dll: getsvn
-	$(CSC) -t:library -out:Saxon.Api.dll -pkg:ikvm -r:saxon8.dll -out:Saxon.Api.dll -recurse:api/*.cs
+	$(CSC) -t:library -keyfile:X5.snk -out:Saxon.Api.dll -pkg:ikvm -r:saxon8.dll -out:Saxon.Api.dll -recurse:api/*.cs
 
 Transform.exe: Saxon.Api.dll
 	$(CSC) -t:exe -r:saxon8.dll -pkg:ikvm -out:Transform.exe cmd/Transform.cs
@@ -13,7 +13,7 @@ Query.exe: Saxon.Api.dll
         
 getsvn:
 	sh ./build.sh
-        
+	patch api/Saxon.Api/Model.cs < Model.cs.patch        
 install: 
 	mkdir -p ${DESTDIR}/usr/bin
 	mkdir -p ${DESTDIR}/usr/lib/saxon
