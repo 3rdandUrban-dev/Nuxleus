@@ -21,7 +21,6 @@ Saxon/net/sf/saxon/type/UnresolvedReferenceException.java
 Saxon/net/sf/saxon/type/Untyped.java
 Saxon/net/sf/saxon/type/AnyType.java
 Saxon/net/sf/saxon/type/SimpleType.java
-Saxon/net/sf/saxon/ant/AntTransform.java
 Saxon/net/sf/saxon/number/Numberer.java
 Saxon/net/sf/saxon/number/Numberer_en.java
 Saxon/net/sf/saxon/number/Numberer_fr.java

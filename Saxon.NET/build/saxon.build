@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="saxon8" default="all">
 	<property name="pathsep" value=":" />
-	<property overwrite="false" name="signoption" value="-keyfile:X5.snk" />
+	<property overwrite="false" name="signoption" value="-keyfile:Extf.Net.snk" />
 
 	<if test="${platform::is-win32()}">
 		<property name="pathsep" value=";" />
@@ -23,6 +23,9 @@
 				<arg value="> allsources.lst"/>
 			</exec>
                 </if>-->
+		<if test="${platform::is-unix()}">
+                        <exec program="sh" commandline="./prep.sh"/>>
+                </if>
 	</target>
 	<target name="cp.depends" depends="allsources">
 		<property name="classpathstub.dir" value="/usr/lib/ikvm" />
@@ -41,7 +44,7 @@
 				<include name="**.class"/>
 			</fileset>
 		</delete>
-		<exec program="ecj" commandline="-g -1.5 -nowarn -cp ${classpathstub.dir}/IKVM.GNU.Classpath.jar${pathsep}${classpathstub.dir}/IKVM.Runtime.jar$${pathsep}./jars/ant.jar${pathsep}./jars/stax-api-1.0.1.jar${pathsep}./jars/dom4j-1.6.1.jar${pathsep}./jars/xom-1.1.jar${pathsep}./jars/servlet.jar${pathsep}./jars/jdom-1.0.jar${pathsep}${classpathstub.dir}/mscorlib.jar${pathsep}/${classpathstub.dir}/System.jar${pathsep}${classpathstub.dir}/System.Xml.jar @${allsources}" useruntimeengine="false" />
+		<exec program="ecj" commandline="-g -1.5 -nowarn -cp ${classpathstub.dir}/IKVM.GNU.Classpath.jar${pathsep}${classpathstub.dir}/IKVM.Runtime.jar${pathsep}./jars/stax-api-1.0.1.jar${pathsep}./jars/dom4j-1.6.1.jar${pathsep}./jars/xom-1.1.jar${pathsep}./jars/servlet.jar${pathsep}./jars/jdom-1.0.jar${pathsep}${classpathstub.dir}/mscorlib.jar${pathsep}/${classpathstub.dir}/System.jar${pathsep}${classpathstub.dir}/System.Xml.jar @${allsources}" useruntimeengine="false" />
 	</target>
 	
 	<target name="saxon8" depends="classes">
