@@ -1,0 +1,18 @@
+--- Saxon/net/sf/saxon/number/Numberer_fr.java	2007-06-12 11:34:12.000000000 +0000
++++ Saxon/net/sf/saxon/number/Numberer_fr.new.java	2007-06-12 10:30:12.000000000 +0000
+@@ -27,7 +27,7 @@
+ 
+ 	private static String[] frenchDays = { "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" };
+ 
+-	private static String[] frenchMonths = { "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre" };
++	private static String[] frenchMonths = { "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Avril", "Septembre", "Octobre", "Novembre", "Décembre" };
+ 
+ 	/*
+ 	 * (non-Javadoc)
+@@ -256,4 +256,4 @@
+ //
+ // Contributor(s): 	Laurent Bourbeau, for the elaboration of JUnit tests
+ //					and Jean-Grégoire Djénandji, for acceptance testing.
+-//
+\ No newline at end of file
++//
