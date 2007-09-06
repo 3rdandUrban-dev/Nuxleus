@@ -6,11 +6,14 @@
 
 class bridge(PackageRecipe):
     name = 'bridge'
-    version = '0.2.1'
+    version = 'svnr541'
 
-    buildRequires = [ 'python-setuptools:python', 'Amara:python' ]
+    buildRequires = ['Amara:python' ]
 
     def setup(r):
-        r.addArchive('http://defuze.org/oss/%(name)s/%(name)s-%(version)s.tar.gz')
-        r.PythonSetup()
+        r.addArchive('%(name)s-%(version)s.tar.gz')
+	r.Environment('PYTHONPATH', '%(destdir)s/usr/lib/python2.5/site-packages')
+        r.Run('mkdir -p %(destdir)s/usr/lib/python2.5/site-packages')
+        r.Run('/usr/bin/python2.5 setup.py install --root=%(destdir)s')
+        
 

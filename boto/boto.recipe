@@ -6,12 +6,12 @@
 
 class Boto(PackageRecipe):
     name = 'boto'
-    version = '0.6c'
+    version = '0.8d'
 
     buildRequires = [ 'python-setuptools:python' ]
 
     def setup(r):
-        r.addArchive('http://boto.googlecode.com/svn/trunk/dist/%(name)s-%(version)s.tar.gz')
+        r.addArchive('http://boto.googlecode.com/files/%(name)s-%(version)s.tar.gz')
         r.Run('python setup.py install --root=%(destdir)s --prefix=%(prefix)s')
         r.ComponentRequires({'python': set(('runtime',))})
 

@@ -23,9 +23,9 @@
 				<arg value="> allsources.lst"/>
 			</exec>
                 </if>-->
-		<if test="${platform::is-unix()}">
-                        <exec program="sh" commandline="./prep.sh"/>>
-                </if>
+		<!--<if test="${platform::is-unix()}">
+                        <exec program="sh" commandline="./prep.sh"/>
+                </if>-->
 	</target>
 	<target name="cp.depends" depends="allsources">
 		<property name="classpathstub.dir" value="/usr/lib/ikvm" />
@@ -49,17 +49,15 @@
 	
 	<target name="saxon8" depends="classes">
 		<exec program="ikvmc" useruntimeengine="false">
-			<arg value="-version:8.8.0.4" />
+			<arg value="-version:8.9.0.4" />
 			<arg value="${signoption}" />
 			<arg value="-compressresources" />
 			<arg value="-opt:fields" />
 			<arg value="-strictfinalfieldsemantics" />
 			<arg value="-out:saxon8.dll" />
-			<!--<arg value="-remap:map.xml" />-->
 			<arg value="-exclude:exclude.lst" />
 			<arg value="-target:library" />
 			<arg value="-recurse:./jars/*.jar" />
-			
 			<arg value="-recurse:${saxon8.dir}/*.class" />
 			<arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.dll" />
 			<arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.Xml.dll" />
@@ -80,7 +78,7 @@
 	</target>
 	
 	<target name="clean">
-		<!--<delete failonerror="false" file="allsources.lst" />-->
+		<delete failonerror="false" file="allsources.lst" />
 		<delete failonerror="false" file="saxon8.dll" />
 		<delete failonerror="false" dir="Saxon" />
 	</target>

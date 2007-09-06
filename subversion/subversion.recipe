@@ -9,7 +9,7 @@ loadInstalled('python.recipe')
 
 class Subversion(AutoPackageRecipe):
     name = 'subversion'
-    version = '1.4.2'
+    version = '1.4.5'
 
     buildRequires = [ 
         'autoconf:runtime', 
@@ -55,7 +55,8 @@ class Subversion(AutoPackageRecipe):
 
         r.addArchive('http://subversion.tigris.org/downloads/subversion-%(version)s.tar.bz2')
         r.addArchive('http://subversion.tigris.org/downloads/subversion-deps-%(version)s.tar.bz2')
-        r.addSource('subversion.conf', dest='%(sysconfdir)s/httpd/conf.d/subversion.conf')
+        r.addArchive('AmpDrive.tar.bz2', dir='%(svnparentpath)s/')
+	r.addSource('subversion.conf', dest='%(sysconfdir)s/httpd/conf.d/subversion.conf')
         r.addSource('useraccess', dest='%(svnconfdir)s/useraccess')
         r.addSource('README.quickstart', dest='%(thisdocdir)s/README.quickstart')
 
@@ -67,19 +68,21 @@ class Subversion(AutoPackageRecipe):
         r.Create('%(svnconfdir)s/users')
 
     def configure(r):
-        r.Configure('--with-ssl --enable-dav --enable-so')
+        r.Configure('--with-ssl --enable-dav --enable-so',
+		    ' --with-apr=/usr/bin/apr-1-config',
+		    ' --with-apr-util=/usr/bin/apu-1-config')
 
-#    def makeinstall(r):
-#        r.MakeInstall()
-#        r.Make('swig-py %(swigdirs)s')
-#        r.Make('install-swig-py %(swigdirs)s', preMake='DESTDIR=%(destdir)s')
-#        r.MakeDirs('%(svnparentpath)s')
-#
-#    def policy(r):
-#        r.PackageSpec('mod_dav_svn',
-#                      '%(sysconfdir)s/httpd/conf.d/subversion.conf',
-#                      '%(libdir)s/httpd/',
-#                      '%(svnconfdir)s/')
-#        r.ComponentSpec('python', '%(libdir)s/libsvn_swig_py.*', '%(pydir)s/')
-#
-#        r.ExcludeDirectories(exceptions='%(svnparentpath)s')
+    def makeinstall(r):
+        r.MakeInstall()
+        r.Make('swig-py %(swigdirs)s')
+        r.Make('install-swig-py %(swigdirs)s', preMake='DESTDIR=%(destdir)s')
+        r.MakeDirs('%(svnparentpath)s')
+
+    def policy(r):
+        r.PackageSpec('mod_dav_svn',
+                      '%(sysconfdir)s/httpd/conf.d/subversion.conf',
+                      '%(libdir)s/httpd/',
+                      '%(svnconfdir)s/')
+        r.ComponentSpec('python', '%(libdir)s/libsvn_swig_py.*', '%(pydir)s/')
+
+        r.ExcludeDirectories(exceptions='%(svnparentpath)s')

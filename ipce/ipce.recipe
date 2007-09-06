@@ -6,19 +6,17 @@
 
 class IronPythonCommunityEdition(PackageRecipe):
     name = 'ipce'
-    version = 'r5'
+    version = 'r6'
 
     buildRequires = [ 
         'PyXML:python', 
         'mono:lib', 
 	'mono:runtime',
-        'sgmlop:python',
-        'pycrypto:python',
-	'paramiko:python'
+	'mono:devel'
        ]
 
     def setup(r):
-        r.addArchive('http://go-mono.com/sources/ipce/IPCE-%(version)s.zip')
+        r.addArchive('http://mono.ximian.com/monobuild/preview/sources/IPCE/IPCE-%(version)s.zip')
 	#r.addArchive('%(name)-%(version)s.tar.gz')
 	r.addSource('makefile')
 	r.addSource('ipy')
@@ -33,7 +31,8 @@ class IronPythonCommunityEdition(PackageRecipe):
 	#r.Config('%(libdir)s/cli-gac/ipce.gacinstall')
 
 	r.MakeInstall()
-
+	r.Requires(exceptions=r'\.*(py)')
+        r.Provides(exceptions=r'\.*(py)')
 	#r.Requires('%(libdir)s/cli-gac/ipce.gacinstall', 'cli-gac-tag:runtime')
 
 	#r.TagSpec('cli-gac', '%(libdir)s/cli-gac/ipce.gacinstall')

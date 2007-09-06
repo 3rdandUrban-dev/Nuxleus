@@ -1,3 +1,5 @@
+#!/bin/bash
+
 BZRBASEURI=http://intertwingly.net/code
 BZRREPO=venus
 DIST=PlanetVenus

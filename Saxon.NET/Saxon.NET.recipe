@@ -6,7 +6,7 @@
 
 class SaxonNET(AutoPackageRecipe):
     name = 'Saxon.NET'
-    version = '8.9.0.3'
+    version = '8.9.0.4'
 
     buildRequires = [
         'mono:lib',
@@ -14,11 +14,12 @@ class SaxonNET(AutoPackageRecipe):
         'mono:devel',
         'ikvmbin:lib',
         'ikvmbin:runtime',
+	'mono:cil',
         'cli-gac-tag:runtime'
        ]
 
     def setup(r):
-        r.addArchive('build.tar.gz')
+        #r.addArchive('build.tar.gz')
 	r.addSource('makefile')
 	r.addSource('X5.snk')
 	r.addSource('transform')

@@ -1,5 +1,5 @@
 --- Saxon/net/sf/saxon/number/Numberer_de.java	2007-06-12 11:34:12.000000000 +0000
-+++ Saxon/net/sf/saxon/number/Numberer_de.new.java	2007-06-12 10:37:22.000000000 +0000
++++ Saxon/net/sf/saxon/number/Numberer_de.java	2007-06-12 10:37:22.000000000 +0000
 @@ -60,10 +60,7 @@
          }
      }

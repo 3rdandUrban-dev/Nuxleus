@@ -1,0 +1,8 @@
+stateversion 2
+name rake:source
+version /ruby.rpath.org@rpl:devel//1//nuxleus.rpath.org@nux:devel/1188845366.468:0.7.3-1.1
+branch /ruby.rpath.org@rpl:devel//1//nuxleus.rpath.org@nux:devel
+3
+439387ba274e93a23079a347ba16fe21 rake.recipe 78a3af2e49a0c2ca6c02b47eaf92bb0fd3080689 config /ruby.rpath.org@rpl:devel/0.7.3-1
+acbf1013e401e3a4c5395171e5ab8119 rake-0.7.3.tgz 9d3c3effe13e915cb377c91a454e5a704382fe51 autosource /ruby.rpath.org@rpl:devel/0.7.3-1
+0f89984f1d7d1e98961fac2f10153fd2 addShebang.patch 6c5305658f1860edd354ece46a4f40af77d40bd4 config /ruby.rpath.org@rpl:devel/0.7.0-1

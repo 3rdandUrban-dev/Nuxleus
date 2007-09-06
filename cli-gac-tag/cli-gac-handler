@@ -26,7 +26,8 @@ case "$type" in
                 for file in $@; do
                    for name in `cat $file`; do
                         cd `dirname $name` 
-                        /usr/bin/gacutil -i `basename $name` -package `basename ${file%%.*}`
+                        #/usr/bin/mono --aot `basename $name`
+			/usr/bin/gacutil -i `basename $name` -package `basename ${file%%.*}`
                    done
                 done
                 ;;

@@ -6,7 +6,7 @@
 
 class Mono(CPackageRecipe):
     name = 'mono'
-    version = '1.2.4'
+    version = '1.2.5'
     buildRequires = [ 
             'zlib:devel', 
             'glib:devel', 
@@ -15,15 +15,24 @@ class Mono(CPackageRecipe):
     ]
 
     def setup(r):
-        r.addArchive('http://go-mono.com/sources/mono/%(name)s-%(version)s.tar.bz2')
+        #r.addArchive('http://mono.ximian.com/monobuild/preview/sources/mono/%(name)s-%(version)s.tar.bz2')
+	r.addArchive('http://go-mono.com/sources-stable/%(name)s-%(version)s.tar.bz2')
+	
+	conf = '--with-preview=yes'
 
-        r.Configure('-enable-minimal=profiler')
+	if Use.minimal:
+        	conf += ' --enable-minimal=profiler'
         if Use.xen:
-		r.Configure('--with-xen_opt=yes')
+		conf += ' --with-xen_opt=yes'
+	if Use.moonlight:
+		conf += ' --with-preview=yes'
+
+	r.Configure(conf)
+
 	# do not add spurious builddir RPATH entry
-        r.Replace(('^runpath_var=.*', 'runpath_var=""'),
-                  ('^hardcode_libdir_flag_spec=.*',
-                   'hardcode_libdir_flag_spec=""'), 'libtool')
+        #r.Replace(('^runpath_var=.*', 'runpath_var=""'),
+        #          ('^hardcode_libdir_flag_spec=.*',
+        #           'hardcode_libdir_flag_spec=""'), 'libtool')
 	#r.Run('cd %(builddir)s/tools/locale-builder; pwd; make minimal MINIMAL_LOCALES=en_US;')
 	#r.Run('cd %(builddir)s')
         r.Make('CFLAGS=-Os')

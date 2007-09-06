@@ -1,0 +1,31 @@
+<!-- vim:set ft=xml: -->
+<project name="IronRuby">
+    <csc target="library" output="Microsoft.Scripting.dll">
+        <sources>
+            <include name="microsoft.scripting/**/*.cs"/>
+        </sources>
+        <resources dynamicprefix="true">
+            <include name="microsoft.scripting/**/*.resx"/>
+        </resources>
+        <references>
+            <include name="System.Configuration.dll"/>
+        </references>
+    </csc>
+    <csc target="library" output="Ruby.dll">
+        <sources>
+            <include name="ironruby/**/*.cs"/>
+        </sources>
+        <references>
+            <include name="Microsoft.Scripting.dll"/>
+        </references>
+    </csc>
+    <csc target="exe" output="rbx.exe">
+        <sources>
+            <include name="../utils/ironruby.console/**/*.cs"/>
+        </sources>
+        <references>
+            <include name="Microsoft.Scripting.dll"/>
+            <include name="Ruby.dll"/>
+        </references>
+    </csc>
+</project>

@@ -1,3 +1,4 @@
+#!/bin/sh
 SVNREPO=http://svn.myrealbox.com/source/trunk/bitsharp/src/
 DIST=BitSharp
 VERSION=svn
@@ -14,3 +15,5 @@ echo 'Updating BitSharp'
 update $SVNREPO bitsharp
 
 svn export bitsharp/ BitSharp
+tar zcfv BitSharp.tar.gz BitSharp
+rm -rf BitSharp

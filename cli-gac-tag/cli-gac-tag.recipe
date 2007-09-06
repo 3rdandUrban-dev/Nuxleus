@@ -7,7 +7,7 @@
 class CliGacTag(PackageRecipe):
     name = 'cli-gac-tag'
     version = '0.0.1'
-    buildRequires = [ 'mono:runtime' ]
+    buildRequires = [ 'fileset-mono-minimal' ]
 
     def setup(r):
         r.addSource('cli-gac', macros=True,
@@ -15,5 +15,5 @@ class CliGacTag(PackageRecipe):
         r.addSource('cli-gac-handler', macros=True,
                     dest='%(taghandlerdir)s/cli-gac', mode=0755)
         
-        r.Requires('%(taghandlerdir)s/cli-gac', 'mono:runtime')
+        r.Requires('%(taghandlerdir)s/cli-gac', 'fileset-mono-minimal')
 

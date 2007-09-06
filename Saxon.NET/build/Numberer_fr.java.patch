@@ -1,5 +1,5 @@
 --- Saxon/net/sf/saxon/number/Numberer_fr.java	2007-06-12 11:34:12.000000000 +0000
-+++ Saxon/net/sf/saxon/number/Numberer_fr.new.java	2007-06-12 10:30:12.000000000 +0000
++++ Saxon/net/sf/saxon/number/Numberer_fr.java	2007-06-12 10:30:12.000000000 +0000
 @@ -27,7 +27,7 @@
  
  	private static String[] frenchDays = { "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" };

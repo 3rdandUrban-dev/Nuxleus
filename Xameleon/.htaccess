@@ -1,0 +1,5 @@
+AddType	application/x-ms-manifest	.manifest
+AddType application/x-ms-application	.application
+AddType	application/octet-stream	.deploy .exe .dll
+AddType application/atom+xml		.atom .feed
+AddType application/atomsvc+xml		.service

@@ -1,4 +1,4 @@
 
 install: 
-	mkdir -p ${DESTDIR}/srv/www/html/planet
-	cp -r ./* ${DESTDIR}/srv/www/html/planet
+	mkdir -p ${DESTDIR}/srv/web/MyPlanet
+	cp -r ./* ${DESTDIR}/srv/web/MyPlanet

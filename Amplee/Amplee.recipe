@@ -6,18 +6,18 @@
 
 class Amplee(PackageRecipe):
     name = 'Amplee'
-    version = '0.3.6'
+    version = 'svn.r248'
 
     buildRequires = [ 
 	    'python-setuptools:python', 
 	    'bridge:python', 
 	    'CherryPy:python', 
 	    'boto:python', 
-	    'mutagen:python'
+	    'mutagen:python',
+	    'uuid:lib'	
     ]
 
     def setup(r):
-        r.addArchive('http://www.defuze.org/oss/amplee/amplee-%(version)s.tar.gz')
-        r.Run('python setup.py install --root=%(destdir)s --prefix=%(prefix)s')
-        r.ComponentRequires({'python': set(('runtime',))})
-
+        #r.addArchive('http://www.defuze.org/oss/amplee/amplee-%(version)s.tar.gz')
+	r.addArchive('%(name)s-%(version)s.tar.gz')
+	r.PythonSetup()

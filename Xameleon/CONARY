@@ -1,0 +1,10 @@
+stateversion 2
+name Xameleon:source
+version /nuxleus.rpath.org@nux:devel/1189038565.463:0.2.3.svnr935-4
+branch /nuxleus.rpath.org@nux:devel
+5
+fb9643db0ff2680b3f91ce9501542974 .htaccess c7e7fe1b7fd3eb0f69e0144e7bf559a1737078a0 config /nuxleus.rpath.org@nux:devel/0.2.3.svnr935-1
+0bc6ef3af2eda291dd623f326dbd5232 fxsl-xslt2.tar.gz 573ac2123a93027be7c008ce4cf4e8d39a1cacc7 _ /nuxleus.rpath.org@nux:devel/0.2.3.svnr935-3
+aee07c9a3fd22bdbeb0d1469c569d6ea build.sh 30f0c430449f9dd6d8cbb6b4b1d5344d1d38e950 config /nuxleus.rpath.org@nux:devel/0.2.3.svnr935-3
+cdba9486ceb0a5f3450a7b1ed298a82b Xameleon-0.2.3.svnr935.tar.gz 96b030c5c05df917b3f1f863f5c87959e0f7e88a _ /nuxleus.rpath.org@nux:devel/0.2.3.svnr935-3
+2722badb44115d6604daec7492a6197d Xameleon.recipe d797d52a1d371a847fde01ef79bc07c8e657ba0f config /nuxleus.rpath.org@nux:devel/0.2.3.svnr935-4

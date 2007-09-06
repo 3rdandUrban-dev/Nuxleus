@@ -1,0 +1,14 @@
+stateversion 2
+name IronRuby:source
+version /nuxleus.rpath.org@nux:devel/1188770933.817:svnr24M-9
+branch /nuxleus.rpath.org@nux:devel
+9
+eedabb7037077e3e2f0d1a898cc792eb IronRuby-svnr24M.tar.gz ac454740aa322e0281d6c88eb247f14ca12ce222 _ /nuxleus.rpath.org@nux:devel/svnr24M-7
+27a84422dd51c35a41c0cfe9f486ed67 gacinstalllist bad029505dfd70b361747a2dfbf85bb95fc6ed30 config /nuxleus.rpath.org@nux:devel/svnr24-1
+0f99b3380c4109c0795c320f65b57e75 build.sh 2c66782efd310f0bf9eb6bc6c9f8bd33685f3ea8 config /nuxleus.rpath.org@nux:devel/svnr24M-7
+07ccef70830f1c5feb7cdfa0eb3ce3ce IronRuby.recipe e6acbc886f35639a94687966103056d069b6c825 config /nuxleus.rpath.org@nux:devel/svnr24M-9
+620ce00b6b8d721ca3863aa4e1b0dd0a makefile 9a961618bd7000f5caee5ae95831094f8227b640 config /nuxleus.rpath.org@nux:devel/svnr24M-7
+9b16b85e8e53e60a19fff2d7cf665dac ironruby.pc 1e671eeb2c7610f4dbc77c53c83d9c204121d923 config /nuxleus.rpath.org@nux:devel/svnr24M-7
+9ce38a55325497856047f96b90d7c62b rbx c2d259af8399772a8e7cd2b22d3f38c4f0216d0f config /nuxleus.rpath.org@nux:devel/svnr24M-4
+c35313091a27fbae8b648fa8f132d8c0 staticObject.patch feb9d595bd61d6c9af1d65a7051b5dff918ca471 config /nuxleus.rpath.org@nux:devel/svnr24M-7
+7d33a972833eaa0ebc608c898f5f519c IronRuby.build 40af11f3ac6793be22667ab425f396887fa6165f config /nuxleus.rpath.org@nux:devel/svnr24-1

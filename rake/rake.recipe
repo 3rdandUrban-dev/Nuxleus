@@ -1,0 +1,29 @@
+#
+# rake.recipe
+#
+class Rake(PackageRecipe):
+
+    name = 'rake'
+    version = '0.7.3'
+
+    buildRequires = [ 'ruby:runtime' ]
+
+    def setup(r):
+
+        # Get the source
+        r.addArchive('http://rubyforge.org/frs/download.php/19879/%(name)s-%(version)s.tgz')
+        # Apply a patch to add the shebang line to bin/rake
+        r.addPatch('addShebang.patch')
+
+        # Install required libraries in site_ruby directory
+        r.Install('lib/*', '%(libdir)s/ruby/site_ruby/')
+
+        # Install 'binary' for rake (really just a wrapper script)
+        r.Install('bin/*', '%(bindir)s/', mode=0755)
+
+        # XXX: remove this line when Conary has this added to AutoDoc policy
+        r.Doc('MIT-LICENSE')
+
+        # XXX: remove this line when Conary has Ruby Dep Support
+        r.Requires('ruby:runtime', ('.*/.*\.rb', '%(bindir)s/rake') )
+

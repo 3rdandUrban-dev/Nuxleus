@@ -6,17 +6,21 @@
 
 class BitSharp(AutoPackageRecipe):
     name = 'BitSharp'
-    version = 'svn'
+    version = 'PreBeta2'
 
     buildRequires = [
-        'mono:lib',
-        'mono:runtime',
-        'mono:devel',
+        'mono:runtime'
        ]
 
     def setup(r):
-        r.addSource('makefile')
-        r.addSource('build.sh')
-	r.Make()
-	r.MakeInstall() 
-
+        #r.addArchive('BitSharp.tar.gz')
+	r.addArchive('http://www.monotorrent.com/Files/MonoTorrent.%(version)s.zip')
+	#r.Make()
+	r.Install('MonoTorrent/MonoTorrent.Client.dll', '%(libdir)s/MonoTorrent/MonoTorrent.Client.dll')
+	r.Install('MonoTorrent/MonoTorrent.Common.dll', '%(libdir)s/MonoTorrent/MonoTorrent.Common.dll')
+	#r.Install('Mono.Security.dll', '%(libdir)s/BitSharp/Mono.Security.dll')
+	#r.Install('Tracker.dll', '%(libdir)s/BitSharp/Tracker.dll')
+	r.Install('MonoTorrent/MonoTorrent.exe', '%(libdir)s/MonoTorrent.exe')
+	#r.Install('TrackerApp.exe', '%(libdir)s/BitSharp/TrackerApp.exe')
+	r.addSource('monotorrent', macros=True, dest='%(bindir)s/monotorrent', mode=0755)
+	#r.addSource('monotorrent-tracker', macros=True, dest='%(bindir)s/monotorrent-tracker', mode=0755)

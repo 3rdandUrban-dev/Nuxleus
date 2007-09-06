@@ -6,15 +6,15 @@
 loadSuperClass('binarypackage=conary.rpath.com@rpl:devel')
 class Vsb(BinaryPackageRecipe):
     name = 'vsb'
-    version = '08dec2006'
+    version = '24jan2007'
 
     buildRequires = [
         
        ]
 
     def unpack(r):
-        r.macros.apacheparentpath = '/srv/www/html'
-        r.addArchive('http://vistascript.net/vistascript/downloads/%(name)s-%(version)s.zip', dir='%(apacheparentpath)s/%(name)s/')
+        r.macros.apacheparentpath = '/srv/web/apps/xbap'
+        r.addArchive('%(name)s-%(version)s.tar.gz', dir='%(apacheparentpath)s/%(name)s/')
 	r.addSource('.htaccess', dest='%(apacheparentpath)s/%(name)s/.htaccess')
         r.Requires(exceptions=r'\.*(vs|exe|dll|xbap|zip|st|deploy)')
         r.Provides(exceptions=r'\.*(vs|exe|dll|xbap|zip|st|deploy)')
