@@ -1,0 +1,24 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class MonoFastCgi(PackageRecipe):
+    name = 'mono-fastcgi'
+    version = 'svnr1426'
+
+    buildRequires = [ 
+        'mono:lib', 
+	'mono:runtime',
+	'gawk:runtime', 
+	'mono:devel', 
+	'pkgconfig:devel'
+       ]
+
+    def setup(r):
+	r.addArchive('%(name)s-%(version)s.tar.gz')
+	r.Run('./autogen.sh --prefix=/usr')
+	r.Configure()
+	r.Make()
+	r.MakeInstall()

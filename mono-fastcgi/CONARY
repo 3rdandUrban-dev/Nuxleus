@@ -1,0 +1,8 @@
+stateversion 2
+name mono-fastcgi:source
+version /nuxleus.rpath.org@nux:devel/1187426480.560:svnr1426-1
+branch /nuxleus.rpath.org@nux:devel
+3
+0784825439bf6b140a180a8d0a1e94dd mono-fastcgi-svnr1426.tar.gz 69cb7eecaa78624550262d453cd408988cc304a7 _ /nuxleus.rpath.org@nux:devel/svnr1426-1
+39fb89b748422e6439eb94123fdc3636 build.sh d52a2f906484b2338c4c303e76f381aad147b0b5 config /nuxleus.rpath.org@nux:devel/svnr1369-1
+1d7b5a014a0e685491537c5f6dc0c2fe mono-fastcgi.recipe 42b454e1fd1e18b6dfa0d69c9cf55958ae083211 config /nuxleus.rpath.org@nux:devel/svnr1426-1
