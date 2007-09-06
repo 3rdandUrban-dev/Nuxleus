@@ -1,0 +1,42 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class MonoFastCgi(PackageRecipe):
+    	name = 'python25'
+    	version = '2.5.1'
+	buildRequires = [
+		'zlib:devel', 'bzip2:devel', 
+		'db:devel', 'gdbm:devel', 'ncurses:devel',
+		'libtermcap:devel', 'gcc:devel',
+		'xorg-x11:devel', 'libstdc++:devel',
+		'sqlite:devel', 'subversion:runtime', 'binutils:runtime', 'coreutils:runtime', 'glibc:devel', 'openssl:devel', 'readline:devel', 'tcl:devel', 'tk:devel' ]
+
+    	def setup(r):
+		r.addArchive('http://www.python.org/ftp/python/%(version)s/Python-%(version)s.tar.bz2')
+		r.Configure('--enable-unicode=ucs4 --enable-shared')
+		r.Make()
+		r.MakeInstall()
+		r.Remove('/usr/bin/python')
+		r.Remove('/usr/bin/python-config')
+		r.Remove('/usr/bin/pydoc')
+		#r.Remove('/usr/bin/smtpd.py')
+		#r.MakeDirs('/opt/python25/bin')
+		#r.Symlink('/usr/bin/python2.5', '/opt/python25/bin/python')
+                #r.Move('/usr/bin/python-config', '/opt/python25/bin/python-config')
+                #r.Move('/usr/bin/pydoc', '/opt/python25/bin/pydoc')
+                #r.Move('/usr/bin/smtpd.py', '/opt/python25/bin/smtpd.py')
+		r.ComponentSpec('tk', '%(libdir)s/python.*/lib-dynload/_tkinter.so')
+		r.ComponentSpec('tk', '%(libdir)s/python.*/lib-tk/.*')
+		r.ComponentSpec('lib', '%(libdir)s/python.*/.*')
+		r.PackageSpec('idle', '%(bindir)s/idle')
+		r.PackageSpec('idle', '%(libdir)s/python.*/idlelib/.*')
+		r.Provides('file', '/usr/local/bin/python')
+		r.Provides('file', '/usr/local/bin/python-config')
+		r.Requires('python:tk', '%(bindir)s/idle')
+		r.Requires('python:tk', '%(libdir)s/python.*/idlelib/idle.py')
+		r.Requires(exceptDeps=('.*/(test/test_tcl.pyc?|config/(Setup|Makefile))', 'python: _tkinter'))
+		r.Requires(exceptDeps=('.*/(test/test_tcl.pyc?|pydoc.pyc?)', 'python: Tkinter'))
+		r.Requires(exceptDeps=r'PyXML:python')

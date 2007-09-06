@@ -1,0 +1,7 @@
+stateversion 2
+name Kamaelia:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1168275383.354:0.5.0-3.1
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+2
+aa5f9abfcddc19b4187e5d160c6bdf01 Kamaelia.recipe 2880308ee38e8ca2db916ca8ec18a2fd26881730 config /nuxleus.rpath.org@rpl:devel//nux:devel/0.5.0-3.1
+52edf9cfefb84ef6e1f19409d590f75a Kamaelia-0.5.0.tar.gz a4f1665523e3f3bbb58a3a04036f362e32c69827 autosource /nuxleus.rpath.org@rpl:devel/0.5.0-1

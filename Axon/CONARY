@@ -1,0 +1,7 @@
+stateversion 2
+name Axon:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1168275146.573:1.5.1-3
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+2
+24653aa987e558df827a332b59b7bfb5 Axon.recipe 071de2a47d1167a7197737925f924c5788de10d8 config /nuxleus.rpath.org@rpl:devel/1.5.1-3
+9c722028ae42e16088d8699686b10097 Axon-1.5.1.tar.gz 85a5fa38c72bbddb72e6d6c12f131afd158eac91 autosource /nuxleus.rpath.org@rpl:devel/1.5.1-1

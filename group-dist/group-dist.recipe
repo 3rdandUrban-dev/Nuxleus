@@ -6,7 +6,7 @@
 
 class Dist(GroupRecipe):
     name = 'group-dist'
-    version = '0.2.3.1'
+    version = '0.2.3.2'
 
     depCheck = True
     checkOnlyByDefaultDeps = True
@@ -336,7 +336,10 @@ class Dist(GroupRecipe):
 	r.add('cvs')
 	r.add('openssh-server')
 	r.add('debugedit:runtime')
-	
+	r.add('http_load')
+	r.add('http_get')
+	r.add('http_ping')
+
         r.startGroup('group-super-power-developer', parentGroup='group-dist',
                      byDefault=True, depCheck=False)
         r.add('MAKEDEV')
