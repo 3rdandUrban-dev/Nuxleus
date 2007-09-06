@@ -15,7 +15,7 @@ echo 'Updating SVN'
 update $REPO $NAME
 V=`svnversion $NAME`
 PROJECTREVISION=$NAME-$VERSION.svnr$V
-EXPORTDIR=wwwroot
+EXPORTDIR=webapp
 svn export $NAME $EXPORTDIR
 mkdir -p transform/functions/fxsl-xslt2/
 svn export $NAME/transform/functions/fxsl-xslt2/f transform/functions/fxsl-xslt2/f

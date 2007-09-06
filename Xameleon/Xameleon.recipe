@@ -6,7 +6,7 @@
 loadSuperClass('binarypackage=conary.rpath.com@rpl:devel')
 class Xameleon(BinaryPackageRecipe):
     name = 'Xameleon'
-    version = '0.2.3.svnr935'
+    version = '0.2.3.svnr939'
 
     buildRequires = [
         
