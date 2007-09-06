@@ -14,4 +14,4 @@ class HttpLoad(CPackageRecipe):
     def setup(r):
 	r.addArchive('http://www.acme.com/software/%(name)s/%(name)s-%(version)s.tar.gz')
 	r.Make()
-	r.MakeInstall()
+	r.Install('http_load', '%(bindir)s/http_load')	
