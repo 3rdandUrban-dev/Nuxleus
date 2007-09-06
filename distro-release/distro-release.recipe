@@ -6,14 +6,14 @@
 
 class DistroRelease(PackageRecipe):
     name = 'distro-release'
-    version = '0.2.3'
+    version = '0.2.3.2'
 
     if Use.bootstrap:
         clearBuildReqs()
 
     def setup(r):
-        release = "nuXleus Web Application & Messaging Server release %(version)s" %r.macros
-        issue = 'nuXleus Web Appplication & Messaging Server release %(version)s\nKernel \\r on an \\m\n'
+        release = "nuXleus Web Application, Services, & Messaging Server release %(version)s" %r.macros
+        issue = 'nuXleus Web Appplication, Services, & Messaging Server release %(version)s\nKernel \\r on an \\m\n'
 
         r.addArchive('use.tar.gz')
         r.Create('%(sysconfdir)s/distro-release', contents=release)

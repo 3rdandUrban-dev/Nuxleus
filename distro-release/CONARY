@@ -1,7 +1,7 @@
 stateversion 2
 name distro-release:source
-version /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@nux:devel/1188768941.605:0.2.3-0.0.1
+version /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@nux:devel/1189089966.322:0.2.3.2-0.0.1
 branch /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@nux:devel
 2
-2d1712d87e79371b60a4f1d6a21d7358 distro-release.recipe 69a6ada750699f188fefa05668d7df1cbe1c3992 config /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@nux:devel/0.2.3-0.0.1
+2d1712d87e79371b60a4f1d6a21d7358 distro-release.recipe 39d642299a395d39ed2822a0c9bc330782422084 config /conary.rpath.com@rpl:devel//1//nuxleus.rpath.org@nux:devel/0.2.3.2-0.0.1
 61af2edb622ff2d0e0905c3108786884 use.tar.gz f027a2f45025b46f80b1d07fbb8f7a67efee64f2 _ /conary.rpath.com@rpl:devel//1/1.0.4-0.2
