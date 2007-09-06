@@ -1,5 +1,9 @@
 stateversion 2
 name nuxleus:source
-version @NEW@
+version /nuxleus.rpath.org@nux:devel/1189109698.831:0.2.3.2.svnr3918-1
 branch /nuxleus.rpath.org@nux:devel
-0
+4
+10cedfd2a5b54280d6b8af17162db082 .htaccess 889447e9208299f29a0b5820769e42f656edf4f0 config /nuxleus.rpath.org@nux:devel/0.2.3.2.svnr3918-1
+3b952d346643db083d44a83f58ac8ee8 nuxleus-0.2.3.2.svnr3918.tar.gz a5e2e1eaa0df27d87a365cda592e739dc3200af5 _ /nuxleus.rpath.org@nux:devel/0.2.3.2.svnr3918-1
+ce2ffdc827ae496bcf591c5ce286904b build.sh e3976372fd4779fe07edc898c07b3919facc9e3e config /nuxleus.rpath.org@nux:devel/0.2.3.2.svnr3918-1
+d1d581146805f19e0ab11776805ba7e3 nuxleus.recipe 187b6b3133f712ef1b979e1d0b4ba3f8e39790f1 config /nuxleus.rpath.org@nux:devel/0.2.3.2.svnr3918-1
