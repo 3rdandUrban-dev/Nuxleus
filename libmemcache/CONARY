@@ -1,0 +1,7 @@
+stateversion 2
+name libmemcache:source
+version /nuxleus.rpath.org@nux:devel/1184883473.238:1.4.0.rc2-1
+branch /nuxleus.rpath.org@nux:devel
+2
+f5b7685f8fa76dad8a1d9c1d22cce6f1 libmemcache-1.4.0.rc2.tar.bz2 6b5620351fdf627a8dcf19894b8e47d2c65313f0 autosource /nuxleus.rpath.org@nux:devel/1.4.0.rc2-1
+d24472ac744ab1aea88ce0249a7f77f8 libmemcache.recipe 1c8f34b03d8c67244a90a13b5424c0946db9195f config /nuxleus.rpath.org@nux:devel/1.4.0.rc2-1

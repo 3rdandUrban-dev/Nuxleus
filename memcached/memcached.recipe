@@ -1,0 +1,14 @@
+#
+# Copyright (c) 2007 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class MemCached(AutoPackageRecipe):
+    name = 'memcached'
+    version = '1.2.2'
+
+    buildRequires = [ 'libevent:devel', ]
+
+    def unpack(r):
+        r.addArchive('http://www.danga.com/memcached/dist/')

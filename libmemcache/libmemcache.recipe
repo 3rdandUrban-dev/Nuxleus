@@ -1,0 +1,18 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class LibMemcache(AutoPackageRecipe):
+
+    buildRequires = ['memcached:runtime', 'psmisc:runtime' ]
+
+    name = "libmemcache"
+    version = "1.4.0.rc2"
+
+    def setup(r):
+        r.addArchive('http://people.freebsd.org/~seanc/%(name)s/%(name)s-%(version)s.tar.bz2')
+	r.Configure()
+	r.Make()
+	r.MakeInstall()

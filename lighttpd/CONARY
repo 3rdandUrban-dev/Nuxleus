@@ -1,0 +1,9 @@
+stateversion 2
+name lighttpd:source
+version /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1189050313.576:1.4.17-0.1
+branch /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel
+4
+c0c227d6682df7465303eba5b14ee682 lighttpd.conf 50ce3318ac145b5926ada04910b05b2e64410b1b config /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1.4.16-0.2
+a2e64733df310179f027f3e8e8df703c lighttpd-1.4.11-ssl-buffer-fix.patch 98110d430e9e5383048cfe7ee44dcd5f65562125 config /conary.rpath.com@rpl:devel/1.4.11-6
+a3f7a05b28e9228d64baf32be9e1696a lighttpd-1.4.17.tar.bz2 97e406c4eb3ab09706cdd0ffdaf2272ad37526dc autosource /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1.4.17-0.1
+fe2bce82fbf0a78f7e2bb7efc9fe55b2 lighttpd.recipe ac0c6598a4d6bd34bca0e67df1b943a643966201 config /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1.4.17-0.1
