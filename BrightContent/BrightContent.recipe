@@ -1,0 +1,25 @@
+#
+# Copyright (c) 2005-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class BrightContent(PackageRecipe):
+    name = 'BrightContent'
+    version = 'svn.r133'
+
+    buildRequires = [ 
+	'python-setuptools:python',
+	'4Suite:python',
+	'Paste:python',
+	'Amara:python',
+	'Amplee:python',
+	'python-dateutil:python' 
+    ]
+
+    def setup(r):
+	r.addArchive('%(name)s-%(version)s.tar.gz')
+        r.Run('python setup.py install --root=%(destdir)s --prefix=%(prefix)s')
+        r.ComponentRequires({'python': set(('runtime',))})
+	r.Requires(exceptDeps=r'python\:\ paste')
+
