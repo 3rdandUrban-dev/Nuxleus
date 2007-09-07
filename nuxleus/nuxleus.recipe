@@ -6,7 +6,7 @@
 loadSuperClass('binarypackage=conary.rpath.com@rpl:devel')
 class Nuxleus(BinaryPackageRecipe):
     name = 'nuxleus'
-    version = '0.2.3.2.svnr3918'
+    version = '0.2.3.2.svnr3924'
 
     buildRequires = [
         
@@ -14,8 +14,10 @@ class Nuxleus(BinaryPackageRecipe):
 
     def unpack(r):
         r.macros.nuxleusparentpath = '/'
-	r.macros.publicwebroot = 'wwwroot/public_web'
-        r.addArchive('%(name)s-%(version)s.tar.gz', dir='%(nuxleusparentpath)s/')
+	r.macros.publicwebroot = '/srv/wwwroot/public_web'
+        r.addArchive('%(name)s-%(version)s.tar.gz', dir='%(nuxleusparentpath)s')
 	r.addSource('.htaccess', dest='%(nuxleusparentpath)s/%(publicwebroot)s/.htaccess')
-        r.Requires(exceptions=r'\.*(py|vs|exe|dll|xbap|zip|st|deploy|xaml|xml|xsl|xslt|op|omx|config|aspx|asmx|asax)')
+        r.addSource('nux')
+	r.Install('nux', '%(bindir)s/nux')
+	r.Requires(exceptions=r'\.*(py|vs|exe|dll|xbap|zip|st|deploy|xaml|xml|xsl|xslt|op|omx|config|aspx|asmx|asax)')
         r.Provides(exceptions=r'\.*(py|vs|exe|dll|xbap|zip|st|deploy|xaml|xml|xsl|xslt|op|omx|config|aspx|asmx|asax)')
