@@ -3,8 +3,11 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/lib/ikvm
 
 Name: IKVM.NET
-Description: An implementation of Java for Mono and the Microsoft .NET Framework
+Description: An implementation of a Java VM and Compiler for Mono and the Microsoft .NET Framework developed by Jeroen Frijters (http://weblog.ikvm.net)
 
-Version: 0.32.0.3
+Version: 0.36.0.0
 Libs:   -r:${libdir}/IKVM.Runtime.dll \
-        -r:${libdir}/IKVM.GNU.Classpath.dll
+        -r:${libdir}/IKVM.OpenJDK.Classpath.dll \
+	-r:${libdir}/JVM.DLL \
+	-r:${libdir}/IKVM.AWT.WinForms.dll \
+	-r:${libdir}/ikvm-native.dll \
