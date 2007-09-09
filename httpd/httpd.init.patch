@@ -1,0 +1,49 @@
+--- httpd.init.rpm	2005-10-12 19:59:51.000000000 -0400
++++ httpd.init	2005-10-12 20:19:09.000000000 -0400
+@@ -2,7 +2,7 @@
+ #
+ # httpd        Startup script for the Apache HTTP Server
+ #
+-# chkconfig: - 85 15
++# chkconfig: 345 23 15
+ # description: Apache is a World Wide Web server.  It is used to serve \
+ #	       HTML files and CGI.
+ # processname: httpd
+@@ -24,6 +24,29 @@
+ # mod_ssl needs a pass-phrase from the user.
+ INITLOG_ARGS=""
+ 
++# checks if mod_ssl can start successfully
++SSLCONF="%(htconfdir)s/conf.d/ssl.conf"
++PEMDIR="%(sysconfdir)s/ssl/pem"
++function check_modssl() {
++    if [ ! -f $SSLCONF ] ; then return 0 ; fi
++    if [ ! -d $PEMDIR ] ; then return 1 ; fi
++
++    # we only check for the default configuration, one certificate and
++    # one key in separate files, named localhost.{crt,key}
++    certfile=$(egrep '^\s*SSLCertificateFile' $SSLCONF | awk '{print $2}' | head -1)
++    keyfile=$(egrep '^\s*SSLCertificateKeyFile' $SSLCONF | awk '{print $2}' | head -1)
++    if [ -z "$certfile" -o -z "$keyfile" ] ; then return 0 ; fi
++    if [ -f $certfile -o -f $keyfile ] ; then return 0 ; fi
++    if [ "$(basename $certfile)" != "localhost.crt" ] ; then return 0 ; fi
++    if [  "$(basename $keyfile)" != "localhost.key" ] ; then return 0 ; fi
++
++    # create the dummy self signed certificate
++    make dummy-localhost.crt -C $PEMDIR >/dev/null 2>&1
++    install -m 0640 -g apache -D $PEMDIR/localhost.key $keyfile
++    install -m 0644 -g apache -D $PEMDIR/localhost.crt $certfile
++    return 0
++}
++
+ # Set HTTPD=/usr/sbin/httpd.worker in /etc/sysconfig/httpd to use a server
+ # with the thread-based "worker" MPM; BE WARNED that some modules may not
+ # work correctly with a thread-based MPM; notably PHP will refuse to start.
+@@ -59,6 +82,7 @@
+ start() {
+         echo -n $"Starting $prog: "
+         check13 || exit 1
++	check_modssl
+         LANG=$HTTPD_LANG daemon $httpd $OPTIONS
+         RETVAL=$?
+         echo

@@ -1,0 +1,146 @@
+#!/bin/bash
+#
+# httpd        Startup script for the Apache HTTP Server
+#
+# chkconfig: 345 23 15
+# description: Apache is a World Wide Web server.  It is used to serve \
+#	       HTML files and CGI.
+# processname: httpd
+# config: /etc/httpd/conf/httpd.conf
+# config: /etc/sysconfig/httpd
+# pidfile: /var/run/httpd.pid
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+if [ -f /etc/sysconfig/httpd ]; then
+        . /etc/sysconfig/httpd
+fi
+
+# Start httpd in the C locale by default.
+HTTPD_LANG=${HTTPD_LANG-"C"}
+
+# This will prevent initlog from swallowing up a pass-phrase prompt if
+# mod_ssl needs a pass-phrase from the user.
+INITLOG_ARGS=""
+
+# checks if mod_ssl can start successfully
+SSLCONF="/etc/httpd/conf.d/ssl.conf"
+PEMDIR="/etc/ssl/pem"
+function check_modssl() {
+    if [ ! -f $SSLCONF ] ; then return 0 ; fi
+    if [ ! -d $PEMDIR ] ; then return 1 ; fi
+
+    # we only check for the default configuration, one certificate and
+    # one key in separate files, named localhost.{crt,key}
+    certfile=$(egrep '^\s*SSLCertificateFile' $SSLCONF | awk '{print $2}' | head -1)
+    keyfile=$(egrep '^\s*SSLCertificateKeyFile' $SSLCONF | awk '{print $2}' | head -1)
+    if [ -z "$certfile" -o -z "$keyfile" ] ; then return 0 ; fi
+    if [ -f $certfile -o -f $keyfile ] ; then return 0 ; fi
+    if [ "$(basename $certfile)" != "localhost.crt" ] ; then return 0 ; fi
+    if [  "$(basename $keyfile)" != "localhost.key" ] ; then return 0 ; fi
+
+    # create the dummy self signed certificate
+    make dummy-localhost.crt -C $PEMDIR >/dev/null 2>&1
+    install -m 0640 -g apache -D $PEMDIR/localhost.key $keyfile
+    install -m 0644 -g apache -D $PEMDIR/localhost.crt $certfile
+    return 0
+}
+
+# Set HTTPD=/usr/sbin/httpd.worker in /etc/sysconfig/httpd to use a server
+# with the thread-based "worker" MPM; BE WARNED that some modules may not
+# work correctly with a thread-based MPM; notably PHP will refuse to start.
+
+# Path to the apachectl script, server binary, and short-form for messages.
+apachectl=/usr/sbin/apachectl
+httpd=${HTTPD-/usr/sbin/httpd}
+prog=httpd
+pidfile=${PIDFILE-/var/run/httpd.pid}
+lockfile=${LOCKFILE-/var/lock/subsys/httpd}
+RETVAL=0
+
+# check for 1.3 configuration
+check13 () {
+	CONFFILE=/etc/httpd/conf/httpd.conf
+	GONE="(ServerType|BindAddress|Port|AddModule|ClearModuleList|"
+	GONE="${GONE}AgentLog|RefererLog|RefererIgnore|FancyIndexing|"
+	GONE="${GONE}AccessConfig|ResourceConfig)"
+	if LANG=C grep -Eiq "^[[:space:]]*($GONE)" $CONFFILE; then
+		echo
+		echo 1>&2 " Apache 1.3 configuration directives found"
+		echo 1>&2 " please read %(thisdocdir)s/migration.html"
+		failure "Apache 1.3 config directives test"
+		echo
+		exit 1
+	fi
+}
+
+# The semantics of these two functions differ from the way apachectl does
+# things -- attempting to start while running is a failure, and shutdown
+# when not running is also a failure.  So we just do it the way init scripts
+# are expected to behave here.
+start() {
+        echo -n $"Starting $prog: "
+        check13 || exit 1
+	check_modssl
+        LANG=$HTTPD_LANG daemon $httpd $OPTIONS
+        RETVAL=$?
+        echo
+        [ $RETVAL = 0 ] && touch ${lockfile}
+        return $RETVAL
+}
+stop() {
+	echo -n $"Stopping $prog: "
+	killproc $httpd
+	RETVAL=$?
+	echo
+	[ $RETVAL = 0 ] && rm -f ${lockfile} ${pidfile}
+}
+reload() {
+    echo -n $"Reloading $prog: "
+    if ! LANG=$HTTPD_LANG $httpd $OPTIONS -t >&/dev/null; then
+        RETVAL=$?
+        echo $"not reloading due to configuration syntax error"
+        failure $"not reloading $httpd due to configuration syntax error"
+    else
+        killproc $httpd -USR1
+        RETVAL=$?
+    fi
+    echo
+}
+
+# See how we were called.
+case "$1" in
+  start)
+	start
+	;;
+  stop)
+	stop
+	;;
+  status)
+        status $httpd
+	RETVAL=$?
+	;;
+  restart)
+	stop
+	start
+	;;
+  condrestart)
+	if [ -f ${pidfile} ] ; then
+		stop
+		start
+	fi
+	;;
+  reload)
+        reload
+	;;
+  graceful|help|configtest|fullstatus)
+	$apachectl $@
+	RETVAL=$?
+	;;
+  *)
+	echo $"Usage: $prog {start|stop|restart|condrestart|reload|status|fullstatus|graceful|help|configtest}"
+	exit 1
+esac
+
+exit $RETVAL

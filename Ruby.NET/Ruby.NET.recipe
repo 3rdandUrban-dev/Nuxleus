@@ -12,11 +12,12 @@ class RubydotNET(CPackageRecipe):
     'mono:devel',
     'pkgconfig:devel',
     'mono:lib',
+    'mono:cil',
     'cli-gac-tag:runtime'
     ]
 
     name = "Ruby.NET"
-    version = "svnr74"
+    version = "svnr86"
 
     def setup(r):
         r.addArchive('%(name)s-%(version)s.tar.gz')

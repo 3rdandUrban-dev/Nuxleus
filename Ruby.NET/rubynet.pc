@@ -5,7 +5,7 @@ libdir=${exec_prefix}/lib/rubynet
 Name: Ruby.NET
 Description: The Ruby.NET Compiler and Runtime
 
-Version: 0.8.2.r70
+Version: 0.8.2.r86
 Libs:   -r:${libdir}/Interop.IWshRuntimeLibrary.dll \
         -r:${libdir}/QUT.PERWAPI.dll \
         -r:${libdir}/QUT.ShiftReduceParser.dll \

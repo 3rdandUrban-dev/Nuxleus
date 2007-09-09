@@ -22,3 +22,5 @@ class LightTPD(AutoPackageRecipe):
         r.Install('doc/rc.lighttpd.redhat', '%(initdir)s/lighttpd')
         r.Install('doc/sysconfig.lighttpd', '%(sysconfdir)s/sysconfig/lighttpd')
 	r.Install('lighttpd.conf', '%(sysconfdir)s/lighttpd/lighttpd.conf')
+
+	r.TagSpec('initscript', '%(initdir)s/')
