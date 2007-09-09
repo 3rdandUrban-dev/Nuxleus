@@ -17,7 +17,7 @@ class RubydotNET(CPackageRecipe):
     ]
 
     name = "IronRuby"
-    version = "svnr24M"
+    version = "svnr30M"
 
     def setup(r):
         r.addArchive('%(name)s-%(version)s.tar.gz')
