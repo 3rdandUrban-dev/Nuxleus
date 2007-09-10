@@ -1,0 +1,7 @@
+stateversion 2
+name http_get:source
+version /nuxleus.rpath.org@nux:devel/1189083557.359:29jun2005-1
+branch /nuxleus.rpath.org@nux:devel
+2
+d3b28dae1f5c3ca5bd7f1b7526c1ca79 http_get.recipe 4d031113c3389feb3c5205e3027ae5c6dc77a3e6 config /nuxleus.rpath.org@nux:devel/29jun2005-1
+e4964a7effbb99d4b90386bf934cfd4d http_get_29jun2005.tar.gz e627b3021771bde0fb7857911adefca1733f8d3b autosource /nuxleus.rpath.org@nux:devel/29jun2005-1
