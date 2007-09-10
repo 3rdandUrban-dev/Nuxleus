@@ -7,7 +7,6 @@ Description: An implementation of a Java VM and Compiler for Mono and the Micros
 
 Version: 0.36.0.0
 Libs:   -r:${libdir}/IKVM.Runtime.dll \
-        -r:${libdir}/IKVM.OpenJDK.Classpath.dll \
+        -r:${libdir}/IKVM.OpenJDK.ClassLibrary.dll \
 	-r:${libdir}/JVM.DLL \
 	-r:${libdir}/IKVM.AWT.WinForms.dll \
-	-r:${libdir}/ikvm-native.dll \

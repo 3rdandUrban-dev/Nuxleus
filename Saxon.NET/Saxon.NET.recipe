@@ -21,7 +21,7 @@ class SaxonNET(AutoPackageRecipe):
     def setup(r):
         #r.addArchive('build.tar.gz')
 	r.addSource('makefile')
-	r.addSource('X5.snk')
+	r.addSource('Extf.Net.snk')
 	r.addSource('transform')
         r.addSource('query')
         r.addSource('build.sh')

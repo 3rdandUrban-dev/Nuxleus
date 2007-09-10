@@ -3,7 +3,7 @@ CSC=mcs
 all:Saxon.Api.dll Transform.exe Query.exe
 
 Saxon.Api.dll: getsvn
-	$(CSC) -t:library -keyfile:X5.snk -out:Saxon.Api.dll -pkg:ikvm -r:saxon8.dll -out:Saxon.Api.dll -recurse:api/*.cs
+	$(CSC) -t:library -keyfile:Extf.Net.snk -out:Saxon.Api.dll -pkg:ikvm -r:saxon8.dll -out:Saxon.Api.dll -recurse:api/*.cs
 
 Transform.exe: Saxon.Api.dll
 	$(CSC) -t:exe -r:saxon8.dll -pkg:ikvm -out:Transform.exe cmd/Transform.cs

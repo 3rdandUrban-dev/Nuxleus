@@ -44,7 +44,7 @@
 				<include name="**.class"/>
 			</fileset>
 		</delete>
-		<exec program="ecj" commandline="-g -1.5 -nowarn -cp ${classpathstub.dir}/IKVM.GNU.Classpath.jar${pathsep}${classpathstub.dir}/IKVM.Runtime.jar${pathsep}./jars/stax-api-1.0.1.jar${pathsep}./jars/dom4j-1.6.1.jar${pathsep}./jars/xom-1.1.jar${pathsep}./jars/servlet.jar${pathsep}./jars/jdom-1.0.jar${pathsep}${classpathstub.dir}/mscorlib.jar${pathsep}/${classpathstub.dir}/System.jar${pathsep}${classpathstub.dir}/System.Xml.jar @${allsources}" useruntimeengine="false" />
+		<exec program="ecj" commandline="-g -1.5 -nowarn -cp ${classpathstub.dir}/IKVM.OpenJDK.ClassLibrary.jar${pathsep}${classpathstub.dir}/IKVM.Runtime.jar${pathsep}./jars/stax-api-1.0.1.jar${pathsep}./jars/dom4j-1.6.1.jar${pathsep}./jars/xom-1.1.jar${pathsep}./jars/servlet.jar${pathsep}./jars/jdom-1.0.jar${pathsep}${classpathstub.dir}/mscorlib.jar${pathsep}/${classpathstub.dir}/System.jar${pathsep}${classpathstub.dir}/System.Xml.jar @${allsources}" useruntimeengine="false" />
 	</target>
 	
 	<target name="saxon8" depends="classes">
@@ -67,7 +67,7 @@
 		<if test="${nant.platform.win32}">
 			<call target="peverify-classpath"/>
 		</if>
-		<copy file="saxon8.dll" todir="../release/vendor/Saxonica/Saxon8/bin" />
+		<copy file="saxon8.dll" todir="../" />
 		<delete file="saxon8.dll.new" />
 	</target>
 	
