@@ -1,12 +1,13 @@
 stateversion 2
 name Ruby.NET:source
-version /nuxleus.rpath.org@nux:devel/1189381162.412:svnr86-2
+version /nuxleus.rpath.org@nux:devel/1189556976.720:svnr87-2
 branch /nuxleus.rpath.org@nux:devel
-7
+8
 068b753a9419328ddc68390f34c22e5b build.sh f50039898c5bfce8554aa37c346215e12676c138 config /nuxleus.rpath.org@nux:devel/svnr70-1
-188019dc7136236d3676dabb74feaad6 Ruby.NET.recipe 6fef0af26608c18adc2fb71caa6792f02f60024a config /nuxleus.rpath.org@nux:devel/svnr86-2
-21fa0f751ed0b94657eec7c3829b9aed rubynet d347fa7be143fede0691bca84b20063bc92eceed config /nuxleus.rpath.org@nux:devel/svnr70-2
-32bb276e7dbfa514efed157fa066d4d3 Ruby.NET-svnr86.tar.gz 5ddbd0049dd5f216f886721db74a96942b733a42 _ /nuxleus.rpath.org@nux:devel/svnr86-1
+1303267817676a7be8a3d69bac13f225 Ruby.NET-svnr87.tar.gz 6070daf73af8771ab5bcfbeef0e4957f25fdf481 _ /nuxleus.rpath.org@nux:devel/svnr87-1
+188019dc7136236d3676dabb74feaad6 Ruby.NET.recipe 6d7b59d967d9a7c9919ee5ce431bb93b24fb29bb config /nuxleus.rpath.org@nux:devel/svnr87-1
+21fa0f751ed0b94657eec7c3829b9aed rubynet 230cd9296e063c0d4813b108273559699571b0b7 config /nuxleus.rpath.org@nux:devel/svnr87-2
 b66edd1bbc43d4552e526d9107767af2 rubynet.pc c501dc59576cbb7ba9d586261cfa8dcfb139837c config /nuxleus.rpath.org@nux:devel/svnr86-1
 ce01681da5408d75c1df95c571ea9381 gacinstalllist 0baab7c6cb2246e19bd9d68797f9a0773bef378a config /nuxleus.rpath.org@nux:devel/svnr70-3
 d5c323830e6a0330eabe07c84e3882a1 rubynetc e09f5d4bfe6d6517b706652693cc77e5223a540f config /nuxleus.rpath.org@nux:devel/svnr70-2
+db0840f7970e5448ce80d9273230982f rubylib-1.8.tar.bz2 edf29980ca0d8e3468d8a22e73f6ad5e56b41529 _ /nuxleus.rpath.org@nux:devel/svnr87-1

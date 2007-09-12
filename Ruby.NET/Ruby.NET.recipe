@@ -17,10 +17,11 @@ class RubydotNET(CPackageRecipe):
     ]
 
     name = "Ruby.NET"
-    version = "svnr86"
+    version = "svnr87"
 
     def setup(r):
         r.addArchive('%(name)s-%(version)s.tar.gz')
+	r.addArchive('rubylib-1.8.tar.bz2', dir='%(libdir)s/rubynet/')
         r.addSource('rubynet')
         r.addSource('rubynetc')
         r.addSource('rubynet.pc')
@@ -49,5 +50,6 @@ class RubydotNET(CPackageRecipe):
         r.Requires(exceptDeps=r'CIL\:\ QUT\.SymbolWriter\(0\.0\.0\.0\)')
         
         r.Requires('%(libdir)s/cli-gac/rubynet.gacinstall', 'cli-gac-tag:runtime')
-        
+        r.Requires(exceptions=r'\.*(rb)')
+        r.Provides(exceptions=r'\.*(rb)')        
         r.TagSpec('cli-gac', '%(libdir)s/cli-gac/rubynet.gacinstall')
