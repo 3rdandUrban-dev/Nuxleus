@@ -1,0 +1,8 @@
+stateversion 2
+name pastebin:source
+version /nuxleus.rpath.org@nux:devel/1189555218.933:0.60-1
+branch /nuxleus.rpath.org@nux:devel
+3
+03d78a3f82958e605b11f4ecbe2e5c0f paste be97cabffefa99610eab30a9000983af033b5ecc config /nuxleus.rpath.org@nux:devel/0.60-1
+3c550d66aab919a2da77370ba97bab91 pastebin.recipe ed525cab288c3203a461db3a0c4abdadaf4e555d config /nuxleus.rpath.org@nux:devel/0.60-1
+f0455306b83808236ac9dab85b4f56d7 pastebin.tar.gz 4e366206992a980a210f9ac4cee1720f933fd4ca autosource /nuxleus.rpath.org@nux:devel/0.60-1
