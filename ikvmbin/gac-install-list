@@ -1,7 +1,6 @@
-/usr/lib/ikvm/IKVM.OpenJDK.Classpath.dll
+/usr/lib/ikvm/IKVM.OpenJDK.ClassLibrary.dll
 /usr/lib/ikvm/IKVM.Runtime.dll
 /usr/lib/ikvm/IKVM.AWT.WinForms.dll
-/usr/lib/ikvm/JVM.DLL
 /usr/lib/ikvm/ikvm-native.dll
 /usr/lib/ikvm/ICSharpCode.SharpZipLib.dll
 

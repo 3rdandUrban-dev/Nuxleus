@@ -6,10 +6,10 @@
 
 class Ikvmbin(AutoPackageRecipe):
 
-    buildRequires = ['mono:devel', 'mono:cil', 'mono:runtime', 'mono:lib', 'pkgconfig:devel', 'cli-gac-tag' ]
+    buildRequires = ['mono:devel', 'mono:runtime', 'mono:lib', 'pkgconfig:devel', 'cli-gac-tag' ]
 
     name = "ikvmbin"
-    version = "0.36.0.0"
+    version = "0.36.0.2"
 
     def setup(r):
         r.addArchive('http://www.frijters.net/%(name)s-%(version)s.zip')

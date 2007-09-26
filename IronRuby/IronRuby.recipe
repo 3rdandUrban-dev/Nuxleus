@@ -12,12 +12,11 @@ class RubydotNET(CPackageRecipe):
     'mono:devel',
     'pkgconfig:devel',
     'mono:lib',
-    'mono:cil',
     'cli-gac-tag:runtime'
     ]
 
     name = "IronRuby"
-    version = "svnr30M"
+    version = "svnr33M"
 
     def setup(r):
         r.addArchive('%(name)s-%(version)s.tar.gz')

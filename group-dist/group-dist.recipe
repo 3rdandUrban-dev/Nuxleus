@@ -6,7 +6,7 @@
 
 class Dist(GroupRecipe):
     name = 'group-dist'
-    version = '0.2.3.2'
+    version = '0.2.3.4'
 
     depCheck = True
     checkOnlyByDefaultDeps = True

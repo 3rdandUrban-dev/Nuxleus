@@ -8,14 +8,15 @@ class Ecj(AutoPackageRecipe):
 
     buildRequires = [
 	'ikvmbin:lib',
-	'mono:lib'
+	'mono:lib',
+	'mono:devel'
 	]
 
     name = "ecj"
-    version = "3.3RC1"
+    version = "3.4M2"
 
     def unpack(r):
-        r.addSource('http://ftp.osuosl.org/pub/eclipse/eclipse/downloads/drops/S-3.3RC1-200705171700/ecj.jar')
+        r.addSource('http://ftp.osuosl.org/pub/eclipse/eclipse/downloads/drops/S-3.4M2-200709210919/ecj-3.4M2.jar')
     	r.addSource('makefile')
 	r.addSource('ecj')    
     def configure(r):

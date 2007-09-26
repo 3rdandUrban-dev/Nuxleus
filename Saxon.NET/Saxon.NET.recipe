@@ -14,7 +14,6 @@ class SaxonNET(AutoPackageRecipe):
         'mono:devel',
         'ikvmbin:lib',
         'ikvmbin:runtime',
-	'mono:cil',
         'cli-gac-tag:runtime'
        ]
 
