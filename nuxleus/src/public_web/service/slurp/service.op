@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/transform/base.xslt"?>
+<service:operation xmlns:at="http://atomictalk.org" xmlns:metadata="http://xameleon.org/service/metadata" xmlns:header="http://xameleon.org/service/http/header" xmlns:service="http://xameleon.org/service" xmlns:operation="http://xameleon.org/service/operation" xmlns:proxy="http://xameleon.org/service/proxy" xmlns:param="http://xameleon.org/service/session/param">
+  <param:uri>{query-string:uri}</param:uri>
+  <param:form-data>year_start=&amp;year_end=&amp;s=Lawrence%20Lessig&amp;format=</param:form-data>
+  <operation:slurp>
+    <proxy:post-to-uri uri="{$uri}" form-data="{$form-data}"/>
+  </operation:slurp>
+</service:operation>
