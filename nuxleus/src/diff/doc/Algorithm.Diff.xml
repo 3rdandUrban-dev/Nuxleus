@@ -1,0 +1,16 @@
+<Namespace Name="Algorithm.Diff">
+  <Docs>
+    <summary>The Algorithm.Diff namespace contains classes for performing diffs, patches, and merges on arbitrary lists of data.</summary>
+    <remarks><div>
+<para>Use the <see cref="T:Algorithm.Diff.Diff" /> class to compare two arbitrary lists of data.  Normally the lists will be of characters, to perform a character-level comparison, or of strings, to perform a line-by-line comparison, of two strings.  However, any object type may be used, and comparisons among objects in the lists will be made with the Equals method of the objects.  Comparisons can also be performed according to a user-supplied IComparer and IHashCodeProvider.</para>
+
+<para>For three-way diffs, see the <see cref="T:Algorithm.Diff.Merge" /> class.</para>
+
+<para>The <see cref="T:Algorithm.Diff.Patch" /> class is used to store a compact representation of a Diff, containing only what is needed to transform the first list into the second list.  For string-based lists, it can be serialized into and deserialzed from an XML format.</para>
+
+<para>The <see cref="T:Algorithm.Diff.Merge" /> class represents a set of diffs against a shared original list.  It is used to merge multiple revisions of the same document, for instance in performing n-way diffs.</para>
+
+<para>The Diff class was translated into C# from the Perl module Algorithm::Diff. The Algorithm::Diff documentation says: "It uses an intelligent algorithm similar to (or identical to) the one used by the Unix "diff" program.  It is guaranteed to find the *smallest possible* set of differences."</para>
+</div></remarks>
+  </Docs>
+</Namespace>

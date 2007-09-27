@@ -1,0 +1,425 @@
+body
+{
+    margin:0px;
+    padding:0px;
+    font-family: 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
+    font-size:100%;
+    text-align: left;
+    color:#003366;
+    background-color:#FFF;
+}
+
+img
+{
+    border:0;
+}
+
+a
+{
+    margin:0px 1px;
+    padding:0px 3px;
+    color:#990000;
+    background-color:inherit;
+    text-decoration:none;
+}
+
+a:hover
+{
+    color:#990000;
+    background-color:inherit;
+    text-decoration:underline;
+}
+
+ul
+{
+    display:block;
+    list-style-type:none;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+
+li
+{
+    display:inline;
+    width:auto;
+    font-size:medium;
+}
+
+ul.list li
+{
+    display: block;
+}
+
+ul.TtoB li
+{
+    display:block;
+}
+
+ul.LtoR li
+{
+    display:inline;
+    text-align: left;
+}
+
+ul.LtoR li:first-child
+{
+    margin-left:5px;
+}
+
+ul.RtoL li
+{
+    text-align: right;
+}
+
+.base
+{
+}
+
+.meta
+{
+    text-align:center;
+    color:#999;
+    background-color:inherit;
+    padding-top:5px;
+    padding-bottom:5px;
+    width:95%;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+.meta-borders
+{
+    border-top: 1px dotted #4A618C;
+    border-bottom: 1px dotted #4A618C;
+}
+
+.last
+
+#header
+{
+    position:relative;
+    z-index:1;
+}
+
+#top-navigation
+{
+    border-top:3px #993300 solid;
+    padding:0px;
+    z-index:5;
+    width:100%;
+/* background:#FFF url("/static/images/gradient.png") top repeat-x; */
+}
+
+#top-navigation > ul
+{
+    padding-top:.15em;
+    padding-left:.25em;
+    width:auto;
+}
+
+#top-navigation li > a
+{
+    padding:0px;
+    color:#993300;
+    background-color:inherit;
+    text-decoration:none;
+    letter-spacing:.25em;
+}
+
+#top-navigation li > a:hover
+{
+    color:#FFCC00;
+    background-color:inherit;
+}
+
+#top-navigation li.selected > a
+{
+    padding:4px 2px 1px 5px;
+    color:#993300;
+    background-color:inherit;
+    border-right:0px;
+    border-left:0px;
+    letter-spacing:0.35em;
+}
+
+#top-navigation li.selected > a:hover
+{
+    color:#FFCC00;
+    background-color:inherit;
+}
+
+#top-navigation li.selected
+{
+    color:#333;
+    background-color:inherit;
+    border-right:0px;
+    border-left:0px;
+    letter-spacing:0.35em;
+    margin-left:.25em;
+}
+
+#top-navigation li.top-level
+{
+    letter-spacing:.75em;
+}
+
+#info
+{
+    padding:1px;
+    margin-right:auto;
+    margin-left:auto;
+    width:97%;
+    margin-top:5px;
+    margin-bottom:2px;
+}
+
+#info li
+{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+#footer
+{
+    position:relative;
+    z-index:1;
+}
+
+#title
+{
+    margin:3px 0px;
+    font-size:large;
+}
+
+#openid-login
+{
+    position:absolute;
+    top:-1px;
+    right:0;
+}
+
+#openid-text
+{
+    width:20em;
+    height:1.3em;
+    font-size:small;
+    border: 1px solid #CC6600;
+    color: #CC6600;
+    background-color: #FFF;
+    padding:.25em;
+    margin:0;
+}
+
+#openid-submit
+{
+    width:5em;
+    height:1.8em;
+    padding:.15em;
+    font-size:small;
+    border: 1px solid #CC6600;
+    color: #CC6600;
+    background-color: #FFF;
+    margin-top:2px;
+}
+
+.last
+{
+    margin-right:0px;
+}
+
+li.date label
+{
+    color:#993300;
+    background-color:inherit;
+    letter-spacing:.20em;
+    font-weight:600;
+    margin-right:.25em;
+}
+
+#sub-nav
+{
+    text-align:left;
+    width:99%;
+    padding:0px;
+    margin-top:0px;
+    border-top:1px solid #993300;
+    border-bottom:1px solid #993300;
+    margin:.25em auto 0;
+    z-index:1;
+    position:relative;
+}
+
+#sub-nav > ul
+{
+    padding:.25em 0;
+    margin:0;
+}
+
+#sub-nav li, #sub-nav li.selected
+{
+    margin:0 .5em;
+}
+
+#sub-nav li a
+{
+    color:#555;
+    text-decoration:none;
+    background-color:inherit;
+    padding:0px .5em;
+    letter-spacing:.25em;
+    border-right:1px solid #EEE;
+    border-left:1px solid #EEE;
+}
+
+#sub-nav li a:hover
+{
+    color:#993300;
+    background-color:inherit;
+    border-right:1px solid #CC6600;
+    border-left:1px solid #CC6600;
+}
+
+#sub-nav li.selected a
+{
+    color:#993300;
+    border:1px solid #993300;
+    border-bottom:0px;
+    border-top:0px;
+    background-color:#FFF;
+    padding:.33em 1em .3em;
+    font-weight:600;
+}
+
+#sub-nav li.selected a:hover
+{
+    color:#993300;
+    border:1px solid #000;
+    border-bottom:0px;
+    border-top:0px;
+    background-color:#FFF;
+}
+
+#instance
+{
+    position:absolute;
+    top:3.4em;
+    text-align:left;
+    z-index:0;
+    width:100%;
+}
+
+#instance > ul
+{
+    margin-right:auto;
+    margin-left:auto;
+    width:99%;
+}
+
+#footer
+{
+    z-index:1;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom:0;
+}
+
+#fixed-footer
+{
+    z-index:1;
+}
+
+#date
+{
+    position:absolute;
+    top:.35em;
+    right:0;
+}
+
+#copyright
+{
+    z-index:10;
+    text-align:center;
+    margin-top:0px;
+    background-color:#FFF;
+    padding:2px 0px 2px 0px;
+    color:#993300;
+}
+
+#copyright li
+{
+    font-size:small;
+}
+
+#copyright a
+{
+    text-decoration:underline;
+    font-weight:600;
+}
+
+#copyright a:hover
+{
+    color:#330000;
+    background-color:inherit;
+}
+
+.title
+{
+    font-size:xx-large;
+    color:#3C5569;
+    background-color:inherit;
+}
+
+#search, #search li
+{
+    display:inline;
+    text-align:right;
+}
+
+#search > ul
+{
+    margin:0px 5px;
+    padding:0px 5px;
+}
+
+#myMap
+{
+    position: absolute;
+    left:0px;
+    bottom:1px;
+    width: 100%;
+    height: 270px;
+    z-index: 1;
+    border-top:1px solid #CC6600;
+    border-bottom:1px solid #CC6600;
+}
+
+#geo-location
+{
+    text-align:center;
+    padding:3px 0;
+    width:100%;
+    border-bottom:2px solid #993300;
+    z-index:10;
+    text-align:center;
+    margin-top:0px;
+    background-color:#FFF;
+    color:#993300;
+}
+
+#control-center
+{
+    background: #CC6600 url(/images/SonicRadar-Logo-Vinyl.jpg) 50% 0px repeat-x;
+    color:#003366;
+    border-top:2px #FFF solid;
+    border-bottom:2px #993300 solid;
+    font-size:small;
+    height: 142px;
+}
+
+#control-center li
+{
+    padding:0px 2px 0px 2px;
+    margin:0px;
+}

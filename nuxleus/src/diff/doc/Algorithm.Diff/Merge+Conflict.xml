@@ -1,0 +1,34 @@
+<Type Name="Merge+Conflict" FullName="Algorithm.Diff.Merge+Conflict">
+  <TypeSignature Language="C#" Value="public class Conflict : System.Collections.IEnumerable" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.IEnumerable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Members>
+    
+  <Member MemberName="Ranges">
+      <MemberSignature Language="C#" Value="public Algorithm.Diff.Range[] Ranges { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Algorithm.Diff.Range[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>A list of Range objects, each of which represents one of the ways this portion of the original document was revised.</summary>
+        <value>An array of Range objects.</value>
+        <remarks>It is currently impossible to determine which range object corresponds to which Diff/Patch or document provided to the constructor of this Merge.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>A segment of a document returned by <see cref="M:Algorithm.Diff.Merge.MergeLists" /> for which there were conflicts among the revisions.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+</Type>
