@@ -16,6 +16,7 @@ using System.IO;
 using System.Xml;
 using System.Net;
 using System.Text;
+using Xameleon.Bucker;
 
 namespace Xameleon.HttpApplication
 {
@@ -29,6 +30,7 @@ namespace Xameleon.HttpApplication
         AspNetXameleonConfiguration _xameleonConfiguration = AspNetXameleonConfiguration.GetConfig();
         AspNetAwsConfiguration _awsConfiguration = AspNetAwsConfiguration.GetConfig();
         AspNetBungeeAppConfiguration _bungeeAppConfguration = AspNetBungeeAppConfiguration.GetConfig();
+	AspNetQueueServerConfiguration _queueServerConfiguration = AspNetQueueServerConfiguration.GetConfig();
         XsltTransformationManager _xsltTransformationManager;
         Transform.Transform _transform = new Transform.Transform();
         Processor _processor = new Processor();
@@ -41,6 +43,7 @@ namespace Xameleon.HttpApplication
         BaseXsltContext _baseXsltContext;
         String _baseUri;
         HashAlgorithm _hashAlgorithm = HashAlgorithm.SHA1;
+	QueueClient _queueClient = null;
 
 
         protected void Application_Start(object sender, EventArgs e)
@@ -52,6 +55,10 @@ namespace Xameleon.HttpApplication
                 _useMemCached = true;
                 _memcachedClient = new Client(new MemcachedClient(), AspNetMemcachedConfiguration.GetConfig());
             }
+
+	    _queueClient = new QueueClient(_queueServerConfiguration.IP, 
+	    				   _queueServerConfiguration.Port);
+	    _queueClient.Connect();
 
             string baseUri = (string)_xameleonConfiguration.PreCompiledXslt.BaseUri;
             if (baseUri != String.Empty)
@@ -96,6 +103,7 @@ namespace Xameleon.HttpApplication
             Application["as_namedXsltHashtable"] = _namedXsltHashtable;
             Application["as_globalXsltParams"] = _globalXsltParams;
             Application["as_debug"] = _DEBUG;
+	    Application["as_queueclient"] = _queueClient;
 
         }
 
@@ -108,6 +116,7 @@ namespace Xameleon.HttpApplication
             Application["namedXsltHashtable"] = Application["as_namedXsltHashtable"];
             Application["globalXsltParams"] = Application["as_globalXsltParams"];
             Application["debug"] = Application["as_debug"];
+	    Application["queueclient"] = Application["as_queueclient"];
         }
 
         protected void Application_EndRequest(object sender, EventArgs e)
@@ -129,6 +138,9 @@ namespace Xameleon.HttpApplication
 
         protected void Application_End(object sender, EventArgs e)
         {
+	  if(_queueClient != null) {
+	    _queueClient.Disconnect();
+	  }
             SockIOPool.GetInstance().Shutdown();
         }
     }

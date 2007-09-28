@@ -20,7 +20,7 @@ namespace Xameleon.Configuration {
     [ConfigurationProperty("port", IsRequired = true)]
     public int Port {
       get {
-        return Convert.ToInt32(this["port"] as string);
+        return (int)this["port"];
       }
     }
   }

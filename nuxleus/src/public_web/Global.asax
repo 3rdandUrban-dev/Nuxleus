@@ -1,4 +1,5 @@
-﻿<%--<%@ Application Inherits="Xameleon.HttpApplication.Global" Language="C#" %>--%>
+<%@ Application Inherits="Xameleon.HttpApplication.Global" Language="C#" %>
+﻿<%--
 <%@ Application Language="C#" %>
 <%@ Import Namespace="System" %>
 <%@ Import Namespace="System.Data" %>
@@ -125,3 +126,4 @@
 </script>
 
 
+--%>
