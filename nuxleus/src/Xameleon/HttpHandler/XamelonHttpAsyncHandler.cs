@@ -67,7 +67,7 @@ namespace Xameleon.HttpHandler
             _context = context;
             _httpMethod = _context.Request.HttpMethod;
             _memcachedClient = (Client)context.Application["memcached"];
-            _queueClient = (QueueClient)Application["queueclient"];
+            _queueClient = (QueueClient)context.Application["queueclient"];
             _xslTransformationManager = (XsltTransformationManager)context.Application["xslTransformationManager"];
             _transform = _xslTransformationManager.Transform;
             _xsltParams = (Hashtable)context.Application["globalXsltParams"];

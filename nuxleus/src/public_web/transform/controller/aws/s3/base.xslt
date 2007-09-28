@@ -43,6 +43,7 @@
     xmlns:aws-conn="clitype:Xameleon.Utility.S3.AWSAuthConnection?partialname=Xameleon"
     xmlns:aws-gen="clitype:Xameleon.Utility.S3.QueryStringAuthGenerator?partialname=Xameleon"
     xmlns:s3object="clitype:Xameleon.Utility.S3.S3Object?partialname=Xameleon"
+    xmlns:queue="http://xameleon.org/service/queue" 
     xmlns:amazonaws="http://s3.amazonaws.com/doc/2006-03-01/"
     xmlns:html="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="#all">
@@ -104,6 +105,10 @@
   </xsl:template>
 
   <xsl:template match="operation:test">
+    <xsl:apply-templates />
+  </xsl:template>
+  
+  <xsl:template match="operation:queue">
     <xsl:apply-templates />
   </xsl:template>
 
