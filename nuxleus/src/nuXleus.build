@@ -5,7 +5,7 @@
       <sources>
         <include name="Xameleon/**/*.cs"/>
         <include name="Xameleon/HttpHandler/XameleonAsyncHttpHandler.cs"/>
-        <include name="VendorExtensions/Mono/xsp/Mono.WebServer/*.cs"/>
+        <include name="Vendor/Mono/xsp/Mono.WebServer/*.cs"/>
       </sources>
       <resources dynamicprefix="true">
         <include name="Xameleon/Properties/**/*.resx"/>
@@ -65,6 +65,7 @@
       <references>
         <include name="./public_web/bin/Xameleon.dll"/>
         <include name="System.dll"/>
+	<include name="./Dependencies/agsXMPP.dll"/>
       </references>
     </csc>
   </target>
@@ -82,7 +83,7 @@
   <target name="Watcher" depends="Nuxleus">
     <csc target="exe" output="./public_web/bin/Watcher.exe">
       <sources>
-        <include name="Nuxleus.FileSystemWatcher/Watcher.cs"/>
+        <include name="FileSystemWatcher/Watcher.cs"/>
       </sources>
       <references>
         <include name="./public_web/bin/Nuxleus.dll"/>
