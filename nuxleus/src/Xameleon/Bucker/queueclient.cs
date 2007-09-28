@@ -16,6 +16,30 @@ using System.Threading;
 
 namespace Xameleon.Bucker
 {
+
+  public delegate string TransmitQueueMessage(MessageInfo info);
+
+  public class MessageInfo {
+    private QueueClient q = null;
+    private IMessage m = null;
+
+    public MessageInfo() {}
+    public MessageInfo(QueueClient qc, IMessage m) {
+      this.q = qc;
+      this.m = m;
+    }
+
+    public QueueClient Client {
+      get { return q; }
+      set { q = value; }
+    }
+    
+    public IMessage Message {
+      get { return m; }
+      set { m = value; }
+    }
+  }
+
   /// <summary>
   /// Wrapper carrying necessary information when using the asynchronous methods
   /// of the QueueClient class.
@@ -221,5 +245,9 @@ namespace Xameleon.Bucker
       }
     }
 
+    public static string Transmit(MessageInfo info) {
+      info.Client.Send(info.Message);
+      return info.Client.Recv();
+    }
   }
 }

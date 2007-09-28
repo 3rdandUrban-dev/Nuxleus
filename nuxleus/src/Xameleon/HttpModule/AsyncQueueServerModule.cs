@@ -29,16 +29,16 @@ namespace Xameleon.HttpModule {
        HttpResponse Response = HttpContext.Current.Response;
        Response.Write(pm.Serialize());
 
-       //TransmitQueueMessage t = new TransmitQueueMessage(QueueClient.Transmit);
-       //return t.BeginInvoke(new MessageInfo(qs, pm), null, null);
+       TransmitQueueMessage t = new TransmitQueueMessage(QueueClient.Transmit);
+       return t.BeginInvoke(new MessageInfo(qs, pm), null, null);
        //TODO:MDP TEMP HACK UNTIL SYLVAIN RETURNS AND I CAN FIGURE OUT WHAT HE'S DOING HERE
-       return (IAsyncResult)source;
+       //return (IAsyncResult)source;
        
      }
 
      void EndPreRequestHandlerExecute(IAsyncResult ar) { 
-       //TransmitQueueMessage t =  (TransmitQueueMessage)ar.AsyncState;
-       //t.EndInvoke(ar);
+       TransmitQueueMessage t =  (TransmitQueueMessage)ar.AsyncState;
+       t.EndInvoke(ar);
      }
 
      public void Dispose() { }
