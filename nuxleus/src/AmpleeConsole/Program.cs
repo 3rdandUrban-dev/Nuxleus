@@ -38,7 +38,7 @@ public class Test
         e.Updated = DateTime.UtcNow;
 
         Link l = new Link();
-        l.Mediatype = "text/plain";
+        l.MediaType = "text/plain";
         l.Rel = "alternate";
         l.Length = 12;
         l.Href = "http://blah.entry.txt";
