@@ -19,13 +19,15 @@ namespace Xameleon.HttpHandler
 {
     public class XameleonEventHandler : IHttpHandler
     {
-      public void ProcessRequest(HttpContext context) {
-      }
+        public void ProcessRequest(HttpContext context)
+        {
+        }
 
-     
-      public bool IsReusable {
-        get { return false; }
-      }
+
+        public bool IsReusable
+        {
+            get { return false; }
+        }
 
     }
 }

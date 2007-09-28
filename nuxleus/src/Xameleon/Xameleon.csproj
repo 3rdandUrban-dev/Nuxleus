@@ -215,6 +215,7 @@
     <Compile Include="Document\DocumentResult.cs" />
     <Compile Include="Document\S3Document.cs" />
     <Compile Include="Function\HashcodeGenerator.cs" />
+    <Compile Include="Function\QueueManager.cs" />
     <Compile Include="Function\HttpSgmlToXml.cs" />
     <Compile Include="Function\HttpAtompubUtils.cs" />
     <Compile Include="Function\HttpWebRequest.cs" />

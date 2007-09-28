@@ -7,6 +7,7 @@ using Saxon.Api;
 using Xameleon.ResultDocumentHandler;
 using System.Text;
 using System.Web.SessionState;
+using Xameleon.Bucker;
 
 namespace Xameleon.Transform
 {

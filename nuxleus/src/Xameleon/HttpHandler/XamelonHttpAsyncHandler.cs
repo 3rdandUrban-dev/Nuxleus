@@ -22,6 +22,7 @@ using Xameleon.Transform;
 using System.Collections.Generic;
 using Xameleon.Memcached;
 using Xameleon.Cryptography;
+using Xameleon.Bucker;
 
 namespace Xameleon.HttpHandler
 {
@@ -31,6 +32,7 @@ namespace Xameleon.HttpHandler
 
         XsltTransformationManager _xslTransformationManager;
         MemcachedClient _memcachedClient;
+        QueueClient _queueClient;
         Transform.Transform _transform;
         TextWriter _writer;
         StringBuilder _builder;
@@ -65,6 +67,7 @@ namespace Xameleon.HttpHandler
             _context = context;
             _httpMethod = _context.Request.HttpMethod;
             _memcachedClient = (Client)context.Application["memcached"];
+            _queueClient = (QueueClient)Application["queueclient"];
             _xslTransformationManager = (XsltTransformationManager)context.Application["xslTransformationManager"];
             _transform = _xslTransformationManager.Transform;
             _xsltParams = (Hashtable)context.Application["globalXsltParams"];
