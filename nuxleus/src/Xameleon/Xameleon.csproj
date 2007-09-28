@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\amplee-integration\WebApp\bin\</OutputPath>
+    <OutputPath>..\public_web\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,29 +39,41 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IKVM.GNU.Classpath, Version=0.34.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+    <Reference Include="agsXMPP, Version=0.9.5.0, Culture=neutral, PublicKeyToken=ff839b81f1debe86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\IKVM.GNU.Classpath.dll</HintPath>
+      <HintPath>..\Dependencies\agsXMPP.dll</HintPath>
     </Reference>
-    <Reference Include="IKVM.Runtime, Version=0.34.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.ClassLibrary, Version=0.36.0.2, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\IKVM.OpenJDK.ClassLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=0.36.0.2, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\IKVM.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="IronPython, Version=2.0.0.200, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="IronMath, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\IronMath.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\IronPython.dll</HintPath>
     </Reference>
-    <Reference Include="IronPython.Modules, Version=2.0.0.200, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\IronPython.Modules.dll</HintPath>
+      <HintPath>..\Dependencies\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Lucene.Net, Version=2.0.0.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Lucene.Net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Scripting, Version=1.0.0.200, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Microsoft.Scripting.dll</HintPath>
+      <HintPath>..\Dependencies\Memcached.ClientLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -69,15 +81,23 @@
     </Reference>
     <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\trunk\Dependencies\Mono.Security.dll</HintPath>
+      <HintPath>..\Dependencies\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Mvp.Xml.dll</HintPath>
     </Reference>
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Saxon.Api.dll</HintPath>
+    </Reference>
     <Reference Include="saxon8, Version=8.9.0.3, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\saxon8.dll</HintPath>
+    </Reference>
+    <Reference Include="SgmlReaderDll, Version=1.7.2818.38825, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\SgmlReaderDll.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -86,54 +106,58 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
+    <Reference Include="Upnp, Version=0.5.0.0, Culture=neutral, PublicKeyToken=3dd7fb49887d64a2, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Upnp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\applicationserver.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\applicationserver.cs">
       <Link>WebServer\Mono.WebServer\applicationserver.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\baseapplicationhost.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\baseapplicationhost.cs">
       <Link>WebServer\Mono.WebServer\baseapplicationhost.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\baserequestbroker.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\baserequestbroker.cs">
       <Link>WebServer\Mono.WebServer\baserequestbroker.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\iapplicationhost.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\iapplicationhost.cs">
       <Link>WebServer\Mono.WebServer\iapplicationhost.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\initialworkerrequest.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\initialworkerrequest.cs">
       <Link>WebServer\Mono.WebServer\initialworkerrequest.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\iwebsource.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\iwebsource.cs">
       <Link>WebServer\Mono.WebServer\iwebsource.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\lingeringnetworkstream.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\lingeringnetworkstream.cs">
       <Link>WebServer\Mono.WebServer\lingeringnetworkstream.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\monoworkerrequest.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\monoworkerrequest.cs">
       <Link>WebServer\Mono.WebServer\monoworkerrequest.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\xspapplicationhost.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\xspapplicationhost.cs">
       <Link>WebServer\Mono.WebServer\xspapplicationhost.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\xspworkerrequest.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\xspworkerrequest.cs">
       <Link>WebServer\Mono.WebServer\xspworkerrequest.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\VPathToHost.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\VPathToHost.cs">
       <Link>WebServer\Mono.WebServer\VPathToHost.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\XSPWebSource.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\XSPWebSource.cs">
       <Link>WebServer\Mono.WebServer\XSPWebSource.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\XSPRequestBroker.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\XSPRequestBroker.cs">
       <Link>WebServer\Mono.WebServer\XSPRequestBroker.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\XSPWorker.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\XSPWorker.cs">
       <Link>WebServer\Mono.WebServer\XSPWorker.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\HttpErrors.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\HttpErrors.cs">
       <Link>WebServer\Mono.WebServer\HttpErrors.cs</Link>
     </Compile>
-    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\Paths.cs">
+    <Compile Include="..\vendor\mono\xsp\mono.webserver\Paths.cs">
       <Link>WebServer\Mono.WebServer\Paths.cs</Link>
     </Compile>
     <Compile Include="Amplee\Categories.cs" />
@@ -187,6 +211,7 @@
     <Compile Include="Document\S3Document.cs" />
     <Compile Include="Function\HashcodeGenerator.cs" />
     <Compile Include="Function\HttpSgmlToXml.cs" />
+    <Compile Include="Function\HttpAtompubUtils.cs" />
     <Compile Include="Function\HttpWebRequest.cs" />
     <Compile Include="Function\S3ObjectCompare.cs" />
     <Compile Include="Function\HttpResponseCollection.cs" />
@@ -241,24 +266,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Utility\S3\README" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GlobalClip\GlobalClip.csproj">
-      <Project>{9B9C08A7-0E8A-45AA-AEB4-7A5796DB1C26}</Project>
-      <Name>GlobalClip</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VendorExtensions\GotDotNet\SgmlReader\sgmlreaderdll\SgmlReaderDll8.csproj">
-      <Project>{499527FF-AE52-450F-B3E3-4AD53E1712AD}</Project>
-      <Name>SgmlReaderDll8</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VendorExtensions\memcached\memecacheddotnet\clientlib\Memcached.ClientLibrary.csproj">
-      <Project>{4770D032-9B06-450D-8B00-7200D8330397}</Project>
-      <Name>Memcached.ClientLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\VendorExtensions\Saxonica\Saxon.Api\Saxon.Api.csproj">
-      <Project>{A0598E7E-BF5D-4E6A-91A2-6E6A63CC9F9E}</Project>
-      <Name>Saxon.Api</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -21,10 +21,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\public_web\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\docs\Nuxleus.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,6 +45,19 @@
     <Compile Include="FileSystem\Watcher.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Process\DarcsProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Process\SVNProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RevisionControl\RevisionControlManager.cs" />
+    <Compile Include="Diff\Diff.cs" />
+    <Compile Include="Diff\Merge.cs" />
+    <Compile Include="Diff\Patch.cs" />
+    <Compile Include="Diff\StructuredDiff.cs" />
+    <Compile Include="Diff\TextDiff.cs" />
+    <Compile Include="Diff\UnifiedDiff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
