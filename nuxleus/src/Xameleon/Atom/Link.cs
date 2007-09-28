@@ -70,7 +70,7 @@ namespace Xameleon.Atom
             }
         }
 
-        public string Mediatype
+        public string MediaType
         {
             get
             {
@@ -117,9 +117,9 @@ namespace Xameleon.Atom
                 doc.InsertBefore(decl, doc.DocumentElement);
                 doc.AppendChild(root);
 
-                if ((this.Mediatype != null) && (this.Mediatype != String.Empty))
+                if ((this.MediaType != null) && (this.MediaType != String.Empty))
                 {
-                    root.SetAttribute("type", this.Mediatype);
+                    root.SetAttribute("type", this.MediaType);
                 }
 
                 if ((this.Hreflang != null) && (this.Hreflang != String.Empty))
@@ -159,7 +159,7 @@ namespace Xameleon.Atom
                 this.Rel = el.GetAttribute("rel");
                 this.Hreflang = el.GetAttribute("hreflang");
                 this.Title = el.GetAttribute("title");
-                this.Mediatype = el.GetAttribute("type");
+                this.MediaType = el.GetAttribute("type");
                 this.Href = el.GetAttribute("href");
                 string length = el.GetAttribute("length");
                 if (length != String.Empty)

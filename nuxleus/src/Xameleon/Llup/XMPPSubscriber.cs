@@ -6,6 +6,7 @@ using System.Threading;
 
 using agsXMPP;
 using agsXMPP.protocol.client;
+using Xameleon.Atom;
 
 namespace Xameleon.Llup
 {
