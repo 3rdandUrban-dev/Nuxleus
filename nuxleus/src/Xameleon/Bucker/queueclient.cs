@@ -38,30 +38,26 @@ namespace Xameleon.Bucker
       get { return m; }
       set { m = value; }
     }
+
   }
 
   /// <summary>
   /// Wrapper carrying necessary information when using the asynchronous methods
   /// of the QueueClient class.
   /// </summary>
-  internal class MessageState
+  public class MessageState
   {
+    private int bufSize = 4096;
     private ManualResetEvent ev = null;
     private Socket sock = null;
-    private byte[] buffer = new byte[1024];
+    private byte[] buffer = new byte[4096];
     public StringBuilder sb = new StringBuilder();
+    private bool dismiss = false;
 
-    public MessageState(Socket sock) {
-      this.sock = sock;
-    }
+    public MessageState() {}
 
     public MessageState(ManualResetEvent ev) {
       this.ev = ev;
-    }
-
-    public MessageState(Socket sock, ManualResetEvent ev) {
-      this.ev = ev;
-      this.sock = sock;
     }
 
     /// <summary>
@@ -104,6 +100,19 @@ namespace Xameleon.Bucker
     public byte[] Buffer {
       get {
 	return this.buffer;
+      }
+    }
+
+    public bool Dismiss {
+      get { return dismiss; }
+      set { dismiss = value; }
+    }
+
+    public int BufferSize {
+      get { return bufSize; }
+      set { 
+	bufSize = value;
+	buffer = new byte[bufSize];
       }
     }
   }
@@ -169,7 +178,8 @@ namespace Xameleon.Bucker
     /// <param name="ev">Synchronisation event used by the calling thread.</param>
     public void AsyncSend(string xml, ManualResetEvent ev) {
       byte[] buffer = System.Text.Encoding.ASCII.GetBytes(xml);
-      MessageState ms = new MessageState(this._sock, ev);
+      MessageState ms = new MessageState(ev);
+      ms.Sock = this._sock;
       this._sock.BeginSend(buffer, buffer.Length, 0, SocketFlags.None,
 			   new AsyncCallback(this.SendCallback), ms);
     }
@@ -220,14 +230,13 @@ namespace Xameleon.Bucker
 
     /// <summary> 
     /// Asynchronously read from the queue and put the content into 
-    /// the provided StringBuilder.
-    /// <param name="sb">Hold the read content.</param>  
-    /// <param name="ev">Synchronisation event used by the calling thread.</param>  
+    /// the provided MessageState.
     /// </summary>   
-    public void AsyncRecv(StringBuilder sb, ManualResetEvent ev) {
-      MessageState ms = new MessageState(this._sock, ev);
-      ms.Data = sb;
-      this._sock.BeginReceive(ms.Buffer, 0, 1024, 0,
+    public void AsyncRecv(MessageState ms) {
+      if(ms.Sock == null) {
+	ms.Sock = this._sock;
+      }
+      this._sock.BeginReceive(ms.Buffer, 0, ms.BufferSize, 0,
 			      new AsyncCallback(this.ReceiveCallback), ms);
     }
 
@@ -236,8 +245,11 @@ namespace Xameleon.Bucker
       int bytesRead = ms.Sock.EndReceive(ar);
 
       if (bytesRead > 0) {
-            ms.Data.Append(Encoding.ASCII.GetString(ms.Buffer, 0, bytesRead));
-	    ms.Sock.BeginReceive(ms.Buffer, 0, 1024, 0, new AsyncCallback(ReceiveCallback), ms);
+	if(!ms.Dismiss) {
+	  ms.Data.Append(Encoding.ASCII.GetString(ms.Buffer, 0, bytesRead));
+	}
+	ms.Sock.BeginReceive(ms.Buffer, 0, ms.BufferSize, 0, 
+			     new AsyncCallback(ReceiveCallback), ms);
       } else {
 	if(ms.Event != null){
 	  ms.Event.Set();
