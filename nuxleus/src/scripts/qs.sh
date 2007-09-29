@@ -4,7 +4,7 @@
 #
 PID_FILE=/tmp/qs.pid
 PORT=9876
-MEMCACHED_SERVERS=127.0.0.1:7878
+MEMCACHED_SERVERS=127.0.0.1:11211
 
 function check_status  {
     if [ -f $PID_FILE ]; then

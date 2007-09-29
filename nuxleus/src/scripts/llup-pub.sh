@@ -40,7 +40,8 @@ case $1 in
 start)
   
   echo "Starting the llup publisher server on port $PORT against queue server at $QUEUE_SERVER and monitoring $2"
-   llup-queue-publisher.py -s $QUEUE_SERVER -q $2 -i $PID_FILE -v -f 5.0 &
+  # add -v to the line below to enable logging to the console
+   llup-queue-publisher.py -s $QUEUE_SERVER -q $2 -i $PID_FILE -f 5.0 &
 ;;
 
 stop)
