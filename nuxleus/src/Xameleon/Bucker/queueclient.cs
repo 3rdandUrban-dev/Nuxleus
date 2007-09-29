@@ -125,6 +125,7 @@ namespace Xameleon.Bucker
   {
     private IPEndPoint endpoint = null;
     private Socket _sock = null;
+    private bool completed = false;
 
     public QueueClient(IPEndPoint ipe) {
       this.endpoint = ipe;
@@ -154,11 +155,16 @@ namespace Xameleon.Bucker
       }
     }
 
+    public bool IsCompleted {
+      get { return completed; }
+    }
+
     /// <summary> 
     /// Send a message as an XML string.
     /// </summary>   
     /// <param name="xml">Message representation as an XML string.</param>
     public void Send(string xml) {
+      completed = false;
       byte[] buffer = System.Text.Encoding.UTF8.GetBytes(xml);
       this._sock.Send(buffer, buffer.Length, SocketFlags.None);
     }
@@ -221,6 +227,8 @@ namespace Xameleon.Bucker
   
       int res = this._sock.Receive(buffer, 0, size, SocketFlags.None);
 
+      completed = true;
+
       if(res > 0){
 	return Encoding.ASCII.GetString(buffer, 0, res);
       }
@@ -251,6 +259,7 @@ namespace Xameleon.Bucker
 	ms.Sock.BeginReceive(ms.Buffer, 0, ms.BufferSize, 0, 
 			     new AsyncCallback(ReceiveCallback), ms);
       } else {
+	completed = true;
 	if(ms.Event != null){
 	  ms.Event.Set();
 	}

@@ -2,6 +2,6 @@
 <?xml-stylesheet type="text/xsl" href="/transform/base.xslt"?>
 <service:operation xmlns:at="http://atomictalk.org" xmlns:metadata="http://xameleon.org/service/metadata" xmlns:header="http://xameleon.org/service/http/header" xmlns:service="http://xameleon.org/service" xmlns:operation="http://xameleon.org/service/operation" xmlns:queue="http://xameleon.org/service/queue" xmlns:param="http://xameleon.org/service/session/param">
   <operation:queue>
-    <queue:push message-queue="foo" message="bar"/>
+    <queue:push message-queue="test" message="bar"/>
   </operation:queue>
 </service:operation>

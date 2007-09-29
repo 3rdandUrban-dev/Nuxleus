@@ -1,5 +1,6 @@
 using System;
 using System.Web;
+using System.Text;
 using Xameleon.Bucker;
 
 namespace Xameleon.Function
@@ -9,22 +10,17 @@ namespace Xameleon.Function
 
         public static string Push(HttpContext context, string queueName, string message)
         {
-            QueueClient qs = context.Application["queueclient"] as QueueClient;
-            if (qs != null)
-            {
-                return Push(qs, queueName, message);
-            }
-            else
-                return "no queue client available";
+	  return Push(queueName, message);
         }
 
-        private static string Push(QueueClient qs, string queueName, string message)
+        private static string Push(string queueName, string message)
         {
-            qs.Send(message);
-            MessageState ms = new MessageState();
-            ms.Dismiss = true; // we are not interested in storing the response
-            qs.AsyncRecv(ms);
-            return "message sent";
+	  PushMessage pm = new PushMessage();
+	  pm.QueueId = queueName;
+	  pm.Payload = Convert.ToBase64String(Encoding.ASCII.GetBytes(message));
+	  
+	  QueueClientPool.Enqueue(pm);
+	  return "message sent";
         }
 
         //public static void Push(HttpContext context, object message) {
