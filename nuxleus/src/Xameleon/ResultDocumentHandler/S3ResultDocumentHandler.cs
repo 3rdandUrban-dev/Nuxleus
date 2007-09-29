@@ -2,7 +2,7 @@
 using System.Collections;
 using Saxon.Api;
 
-namespace Xameleon.ResultDocumentHandler {
+namespace Nuxleus.ResultDocumentHandler {
 
     ///<summary>
     ///</summary>

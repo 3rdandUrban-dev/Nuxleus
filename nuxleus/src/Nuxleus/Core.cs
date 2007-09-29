@@ -4,10 +4,8 @@ using System.Text;
 
 namespace Nuxleus
 {
-    class Core
+    public class Core
     {
-        static void Main(string[] args)
-        {
-        }
+        public Core() { }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Xameleon.Transform {
+namespace Nuxleus.Transform {
 
   public class BaseXsltContext {
     Uri _BaseXsltUri;

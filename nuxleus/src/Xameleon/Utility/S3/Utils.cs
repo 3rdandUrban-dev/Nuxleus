@@ -18,7 +18,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Xml;
 
-namespace Xameleon.Utility.S3
+namespace Nuxleus.Utility.S3
 {
     public enum CallingFormat
     {

@@ -4,8 +4,8 @@ using net.sf.saxon.value;
 using Saxon.Api;
 using Sgml;
 using System.Web;
-using Xameleon.Memcached;
-using Xameleon.Transform;
+using Nuxleus.Memcached;
+using Nuxleus.Transform;
 using System.IO;
 using System.Text;
 
@@ -55,7 +55,7 @@ namespace Xameleon.Function
         {
             Client memcachedClient = (Client)context.Application["memcached"];
             string decodedUri = HttpUtility.UrlDecode(uri);
-            string eTag = Context.GenerateETag(decodedUri, Xameleon.Cryptography.HashAlgorithm.SHA1);
+            string eTag = Context.GenerateETag(decodedUri, Nuxleus.Cryptography.HashAlgorithm.SHA1);
             string xhtmlDocString = (string)memcachedClient.Get(eTag);
             SgmlReader sr = new SgmlReader();
             XmlDocument xDoc = new XmlDocument();

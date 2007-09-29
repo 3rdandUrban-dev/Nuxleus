@@ -1,4 +1,4 @@
-<%@ Application Inherits="Xameleon.HttpApplication.Global" Language="C#" %>
+<%@ Application Inherits="Nuxleus.Web.HttpApplication.Global" Language="C#" %>
 ﻿<%--
 <%@ Application Language="C#" %>
 <%@ Import Namespace="System" %>

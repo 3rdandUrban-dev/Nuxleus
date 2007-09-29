@@ -13,7 +13,7 @@ using System;
 using System.Collections;
 using System.Text;
 
-namespace Xameleon.Utility.S3
+namespace Nuxleus.Utility.S3
 {
     public class S3Object
     {

@@ -3,16 +3,16 @@ using System.Threading;
 using System.Web;
 using System.IO;
 
-namespace Xameleon.Transform {
+namespace Nuxleus.Transform {
 
   public class TransformServiceAsyncResult : IAsyncResult {
 
     Boolean _isCompleted;
     AsyncCallback cb = null;
     Object _asyncState;
-    internal HttpContext _context = null;
+    public HttpContext _context = null;
 
-    internal TransformServiceAsyncResult(AsyncCallback cb, Object extraData) {
+    public TransformServiceAsyncResult(AsyncCallback cb, Object extraData) {
       this.cb = cb;
       _asyncState = extraData;
       _isCompleted = false;
@@ -44,7 +44,7 @@ namespace Xameleon.Transform {
       }
     }
 
-    internal void CompleteCall() {
+    public void CompleteCall() {
       _isCompleted = true;
       if (cb != null) {
         cb(this);

@@ -3,21 +3,29 @@ using System.Collections;
 using System.Diagnostics;
 using System.Web;
 
-namespace Xameleon.Function {
+namespace Xameleon.Function
+{
 
-    public class HttpRequestCollection {
+    public class HttpRequestCollection
+    {
 
         static string notSet = "not-set";
 
-        public static string GetValue(HttpRequest request, string type, string key) {
-            try {
-                switch (type) {
+        public static string GetValue(HttpRequest request, string type, string key)
+        {
+            try
+            {
+                switch (type)
+                {
                     case "cookie":
-                        if (request.Cookies.Count > 0) {
+                        if (request.Cookies.Count > 0)
+                        {
                             IEnumerator enumerator = request.Cookies.GetEnumerator();
-                            for (int i = 0; enumerator.MoveNext(); i++) {
+                            for (int i = 0; enumerator.MoveNext(); i++)
+                            {
                                 string local = request.Cookies.AllKeys[i].ToString();
-                                if (local == key) {
+                                if (local == key)
+                                {
                                     return request.Cookies[local].Value;
                                 }
                             }
@@ -26,11 +34,14 @@ namespace Xameleon.Function {
                         return notSet;
 
                     case "form":
-                        if (request.Form.Count > 0) {
+                        if (request.Form.Count > 0)
+                        {
                             IEnumerator enumerator = request.Form.GetEnumerator();
-                            for (int i = 0; enumerator.MoveNext(); i++) {
+                            for (int i = 0; enumerator.MoveNext(); i++)
+                            {
                                 string local = request.Form.AllKeys[i].ToString();
-                                if (local == key) {
+                                if (local == key)
+                                {
                                     return request.Form[local];
                                 }
                             }
@@ -39,11 +50,14 @@ namespace Xameleon.Function {
                         return notSet;
 
                     case "query-string":
-                        if (request.QueryString.Count > 0) {
+                        if (request.QueryString.Count > 0)
+                        {
                             IEnumerator enumerator = request.QueryString.GetEnumerator();
-                            for (int i = 0; enumerator.MoveNext(); i++) {
+                            for (int i = 0; enumerator.MoveNext(); i++)
+                            {
                                 string local = request.QueryString.AllKeys[i].ToString();
-                                if (local == key) {
+                                if (local == key)
+                                {
                                     return request.QueryString[local];
                                 }
                             }
@@ -51,11 +65,14 @@ namespace Xameleon.Function {
                         }
                         return notSet;
                     case "server-variable":
-                        if (request.ServerVariables.Count > 0) {
+                        if (request.ServerVariables.Count > 0)
+                        {
                             IEnumerator enumerator = request.ServerVariables.GetEnumerator();
-                            for (int i = 0; enumerator.MoveNext(); i++) {
+                            for (int i = 0; enumerator.MoveNext(); i++)
+                            {
                                 string local = request.ServerVariables.AllKeys[i].ToString();
-                                if (local == key) {
+                                if (local == key)
+                                {
                                     return request.ServerVariables[local];
                                 }
                             }
@@ -64,11 +81,14 @@ namespace Xameleon.Function {
                         return notSet;
 
                     case "header":
-                        if (request.Headers.Count > 0) {
+                        if (request.Headers.Count > 0)
+                        {
                             IEnumerator enumerator = request.ServerVariables.GetEnumerator();
-                            for (int i = 0; enumerator.MoveNext(); i++) {
+                            for (int i = 0; enumerator.MoveNext(); i++)
+                            {
                                 string local = request.ServerVariables.AllKeys[i].ToString();
-                                if (local == key) {
+                                if (local == key)
+                                {
                                     return request.ServerVariables[local];
                                 }
                             }
@@ -79,8 +99,10 @@ namespace Xameleon.Function {
                     default:
                         return notSet;
                 }
-                
-            } catch (Exception e) {
+
+            }
+            catch (Exception e)
+            {
                 Debug.WriteLine("Error: " + e.Message);
                 return e.Message;
             }

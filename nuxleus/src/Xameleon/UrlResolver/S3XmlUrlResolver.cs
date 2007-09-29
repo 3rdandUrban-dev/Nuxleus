@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Xml;
 
-namespace Xameleon.UrlResolver {
+namespace Nuxleus.UrlResolver {
     ///<summary>
     ///</summary>
     public class S3XmlResolver : XmlUrlResolver {

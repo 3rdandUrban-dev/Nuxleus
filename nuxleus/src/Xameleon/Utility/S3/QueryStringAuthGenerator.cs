@@ -14,7 +14,7 @@ using System.Collections;
 using System.Text;
 using System.Web;
 
-namespace Xameleon.Utility.S3 {
+namespace Nuxleus.Utility.S3 {
     /// This class mimics the behavior of AWSAuthConnection, except instead of actually performing
     /// the operation, QueryStringAuthGenerator will return URLs with query string parameters that
     /// can be used to do the same thing.  These parameters include an expiration date, so that

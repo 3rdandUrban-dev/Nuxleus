@@ -1,6 +1,6 @@
 using System;
 
-namespace Xameleon.Transform {
+namespace Nuxleus.Transform {
 
   public partial class Transform {
 

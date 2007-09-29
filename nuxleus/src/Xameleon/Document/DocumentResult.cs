@@ -1,6 +1,6 @@
 ﻿using javax.xml.transform;
 
-namespace Xameleon.Document {
+namespace Nuxleus.Document {
 
     class DocumentResult : Result {
 

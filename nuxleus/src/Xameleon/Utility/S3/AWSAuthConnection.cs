@@ -15,7 +15,7 @@ using System.Text;
 using System.Web;
 using System.IO;
 
-namespace Xameleon.Utility.S3
+namespace Nuxleus.Utility.S3
 {
     /// An interface into the S3 system.  It is initially configured with
     /// authentication and connection parameters and exposes methods to access and

@@ -14,7 +14,7 @@ using System.Net;
 using System.IO;
 using System.Text;
 
-namespace Xameleon.Utility.S3
+namespace Nuxleus.Utility.S3
 {
     public class GetResponse : Response
     {

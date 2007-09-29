@@ -14,7 +14,7 @@ using System.Collections;
 using System.Text;
 using System.Xml;
 
-namespace Xameleon.Utility.S3
+namespace Nuxleus.Utility.S3
 {
     public class CommonPrefixEntry
     {

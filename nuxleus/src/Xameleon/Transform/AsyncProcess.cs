@@ -4,12 +4,11 @@ using System.IO;
 using System.Web;
 using System.Xml;
 using Saxon.Api;
-using Xameleon.ResultDocumentHandler;
+using Nuxleus.ResultDocumentHandler;
 using System.Text;
 using System.Web.SessionState;
-using Xameleon.Bucker;
 
-namespace Xameleon.Transform
+namespace Nuxleus.Transform
 {
 
     ///<summary>

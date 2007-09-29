@@ -4,17 +4,17 @@ using System.IO;
 using Saxon.Api;
 using System.Collections.Specialized;
 using System.Web;
-using Xameleon.Configuration;
+using Nuxleus.Configuration;
 using System.Net;
-using Xameleon.Properties;
+using Nuxleus.Properties;
 using Xameleon.Function;
 using System.Collections;
 using Memcached.ClientLibrary;
 using System.Text;
-using Xameleon.Cryptography;
+using Nuxleus.Cryptography;
 using System.Reflection;
 
-namespace Xameleon.Transform
+namespace Nuxleus.Transform
 {
 
     public struct Context

@@ -13,7 +13,7 @@ using System;
 using System.Net;
 using System.Text;
 
-namespace Xameleon.Utility.S3
+namespace Nuxleus.Utility.S3
 {
     public class Response
     {
