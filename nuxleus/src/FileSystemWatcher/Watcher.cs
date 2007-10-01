@@ -21,8 +21,7 @@ namespace Nuxleus
                 return;
             }
             Console.WriteLine(args[1]);
-            //_fileSystemWatcher = new Watcher(args[1], "", Console.Out);
-            Run(_fileSystemWatcher = new Watcher(args[1], "", Console.Out));
+            Run(_fileSystemWatcher = (new Watcher(args[1], "", Console.Out)));
         }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]

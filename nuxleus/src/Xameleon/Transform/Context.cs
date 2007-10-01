@@ -6,7 +6,6 @@ using System.Collections.Specialized;
 using System.Web;
 using Nuxleus.Configuration;
 using System.Net;
-//using Nuxleus.Properties;
 using Xameleon.Function;
 using System.Collections;
 using Memcached.ClientLibrary;
