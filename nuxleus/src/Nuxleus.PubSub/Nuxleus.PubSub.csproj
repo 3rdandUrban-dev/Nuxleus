@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.20706</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuxleus.Pub</RootNamespace>
+    <AssemblyName>Nuxleus.Pub</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\docs\Nuxleus.Pub.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="agsXMPP, Version=0.9.5.0, Culture=neutral, PublicKeyToken=ff839b81f1debe86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\agsXMPP.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Amplee\Categories.cs" />
+    <Compile Include="Amplee\Category.cs" />
+    <Compile Include="Amplee\Collection.cs" />
+    <Compile Include="Amplee\Member.cs" />
+    <Compile Include="Amplee\Service.cs" />
+    <Compile Include="Amplee\StoreManager.cs" />
+    <Compile Include="Amplee\Workspace.cs" />
+    <Compile Include="Atom\Author.cs" />
+    <Compile Include="Atom\Category.cs" />
+    <Compile Include="Atom\Entry.cs" />
+    <Compile Include="Atom\ForeignElement.cs" />
+    <Compile Include="Atom\Link.cs" />
+    <Compile Include="Atom\TextConstruct.cs" />
+    <Compile Include="Bucker\ClientPool.cs" />
+    <Compile Include="Bucker\createqueue.cs" />
+    <Compile Include="Bucker\deletemessage.cs" />
+    <Compile Include="Bucker\deletequeue.cs" />
+    <Compile Include="Bucker\getmessage.cs" />
+    <Compile Include="Bucker\listmessages.cs" />
+    <Compile Include="Bucker\listqueue.cs" />
+    <Compile Include="Bucker\message.cs" />
+    <Compile Include="Bucker\pushmessage.cs" />
+    <Compile Include="Bucker\queueclient.cs" />
+    <Compile Include="Llup\Notification.cs" />
+    <Compile Include="Llup\XMPPSubscriber.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Extf.Net.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
+      <Project>{76489AFC-B3D6-40E4-AA45-840D069E4F43}</Project>
+      <Name>Nuxleus.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.IO\Nuxleus.IO.csproj">
+      <Project>{76B51906-3D94-412F-B943-84CD2A41AE11}</Project>
+      <Name>Nuxleus.IO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
