@@ -83,6 +83,22 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.Authentication" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Extension.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Authentication/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Xameleon.dll"/>
+        <include name="System.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+        <include name="System.EnterpriseServices.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Configuration" depends="init Xameleon">
     <csc target="library" output="${build.dir}/Nuxleus.Configuration.dll">
       <sources>
