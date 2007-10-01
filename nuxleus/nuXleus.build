@@ -95,7 +95,7 @@
     </csc>
   </target>
   <target name="Nuxleus.Authentication" depends="init Nuxleus.Utility">
-    <csc target="library" output="${build.dir}/Nuxleus.Extension.dll">
+    <csc target="library" output="${build.dir}/Nuxleus.Authentication.dll">
       <sources>
         <include name="${source.dir}/Nuxleus.Authentication/**/*.cs"/>
       </sources>
@@ -142,7 +142,22 @@
   <target name="Nuxleus.Extension" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.dll">
       <sources>
-        <include name="${source.dir}/Nuxleus.Cryptography/**/*.cs"/>
+        <include name="${source.dir}/Nuxleus.Extension/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+        <include name="System.EnterpriseServices.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="Nuxleus.Extension.Silverlight" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Extension.Silverlight.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Extension.Silverlight/**/*.cs"/>
       </sources>
       <references>
         <include name="System.dll"/>
@@ -317,9 +332,11 @@
     <call target="XSP"/>
     <call target="AmpleeTest"/>
     <call target="LLUPTest"/>
+    <call target="Nuxleus.Authentication"/>
     <call target="Nuxleus.Configuration"/>
-    <call target="Nuxleus.Cryptography"/>
     <call target="Nuxleus.Extension"/>
+    <call target="Nuxleus.Cryptography"/>
+    <!-- <call target="Nuxleus.Extension.Silverlight"/> -->
     <call target="Nuxleus.IO"/>
     <call target="Nuxleus.Messaging"/>
     <call target="Nuxleus.Process"/>
