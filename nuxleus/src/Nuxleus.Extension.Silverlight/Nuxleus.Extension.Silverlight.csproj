@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.20706</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3EC9EEB0-71CA-4F71-BF8E-AAF0365D4234}</ProjectGuid>
+    <ProjectGuid>{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuxleus.Service</RootNamespace>
-    <AssemblyName>Nuxleus.Service</AssemblyName>
+    <RootNamespace>Nuxleus.Extension.Silverlight</RootNamespace>
+    <AssemblyName>Nuxleus.Extension.Silverlight</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,11 +17,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>src\build\bin\</OutputPath>
+    <OutputPath>..\build\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>src\docs\Nuxleus.Service.XML</DocumentationFile>
+    <DocumentationFile>..\docs\Nuxleus.Service.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
