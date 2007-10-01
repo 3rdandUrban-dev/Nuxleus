@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Xml;
 using System.IO;
-using Xameleon.Amplee;
-using Xameleon.Atom;
-using Xameleon.Cryptography;
+using Nuxleus.PubSub;
+using Nuxleus.Atom;
+using Nuxleus.Cryptography;
 
 public class Test
 {
