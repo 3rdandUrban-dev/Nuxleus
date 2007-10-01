@@ -33,6 +33,29 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Authentication", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension", "src\Nuxleus.Extension\Nuxleus.Extension.csproj", "{3EC9EEB0-71CA-4F71-BF8E-AAF0365D4234}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "_WebApp.Base_", "src\_WebApp.Base_\", "{A595239B-E70E-409B-92DF-5FCB238909A0}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "3.5"
+		ProjectReferences = "{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}|Nuxleus.Web.dll;{0FFD8B77-2852-4CB0-9B85-29424C40FC44}|Nuxleus.Configuration.dll;{76489AFC-B3D6-40E4-AA45-840D069E4F43}|Nuxleus.Cryptography.dll;{76B51906-3D94-412F-B943-84CD2A41AE11}|Nuxleus.IO.dll;{62B71546-D55D-4B35-9D84-CDF8ED555E52}|Nuxleus.Process.dll;{AED10FB5-FA04-4C28-9BF4-26C2278175E7}|Nuxleus.Messaging.dll;{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}|Nuxleus.Pub.dll;{3D54F988-AF1D-4B5C-A013-C85525926692}|Nuxleus.Utility.dll;{A800D9F1-D877-4076-99BA-CBD73BCFB203}|Xameleon.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/_WebApp.Base_"
+		Debug.AspNetCompiler.PhysicalPath = "src\_WebApp.Base_\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\_WebApp.Base_\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/_WebApp.Base_"
+		Release.AspNetCompiler.PhysicalPath = "src\_WebApp.Base_\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\_WebApp.Base_\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "1102"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Silverlight", "src\Nuxleus.Extension.Silverlight\Nuxleus.Extension.Silverlight.csproj", "{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -203,6 +226,26 @@ Global
 		{3EC9EEB0-71CA-4F71-BF8E-AAF0365D4234}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3EC9EEB0-71CA-4F71-BF8E-AAF0365D4234}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3EC9EEB0-71CA-4F71-BF8E-AAF0365D4234}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A595239B-E70E-409B-92DF-5FCB238909A0}.Debug|.NET.ActiveCfg = Debug|.NET
+		{A595239B-E70E-409B-92DF-5FCB238909A0}.Debug|.NET.Build.0 = Debug|.NET
+		{A595239B-E70E-409B-92DF-5FCB238909A0}.Debug|Any CPU.ActiveCfg = Debug|.NET
+		{A595239B-E70E-409B-92DF-5FCB238909A0}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
+		{A595239B-E70E-409B-92DF-5FCB238909A0}.Debug|Mixed Platforms.Build.0 = Debug|.NET
+		{A595239B-E70E-409B-92DF-5FCB238909A0}.Release|.NET.ActiveCfg = Debug|.NET
+		{A595239B-E70E-409B-92DF-5FCB238909A0}.Release|.NET.Build.0 = Debug|.NET
+		{A595239B-E70E-409B-92DF-5FCB238909A0}.Release|Any CPU.ActiveCfg = Debug|.NET
+		{A595239B-E70E-409B-92DF-5FCB238909A0}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
+		{A595239B-E70E-409B-92DF-5FCB238909A0}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}.Release|.NET.ActiveCfg = Release|Any CPU
+		{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
