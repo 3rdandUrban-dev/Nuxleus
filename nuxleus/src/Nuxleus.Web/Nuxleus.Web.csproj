@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.20706</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuxleus.Web</RootNamespace>
+    <AssemblyName>Nuxleus.Web</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\src\Nuxleus.Web.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IKVM.OpenJDK.ClassLibrary, Version=0.36.0.2, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\IKVM.OpenJDK.ClassLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=0.36.0.2, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Memcached.ClientLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Mono.Posix.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Saxon.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="saxon8, Version=8.9.0.4, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\saxon8.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\ApplicationServer.cs">
+      <Link>WebServer\Mono.WebServer\ApplicationServer.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\BaseApplicationHost.cs">
+      <Link>WebServer\Mono.WebServer\BaseApplicationHost.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\BaseRequestBroker.cs">
+      <Link>WebServer\Mono.WebServer\BaseRequestBroker.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\HttpErrors.cs">
+      <Link>WebServer\Mono.WebServer\HttpErrors.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\IApplicationHost.cs">
+      <Link>WebServer\Mono.WebServer\IApplicationHost.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\InitialWorkerRequest.cs">
+      <Link>WebServer\Mono.WebServer\InitialWorkerRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\IWebSource.cs">
+      <Link>WebServer\Mono.WebServer\IWebSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\LingeringNetworkStream.cs">
+      <Link>WebServer\Mono.WebServer\LingeringNetworkStream.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\MonoWorkerRequest.cs">
+      <Link>WebServer\Mono.WebServer\MonoWorkerRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\Paths.cs">
+      <Link>WebServer\Mono.WebServer\Paths.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\VPathToHost.cs">
+      <Link>WebServer\Mono.WebServer\VPathToHost.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPApplicationHost.cs">
+      <Link>WebServer\Mono.WebServer\XSPApplicationHost.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPRequestBroker.cs">
+      <Link>WebServer\Mono.WebServer\XSPRequestBroker.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPWebSource.cs">
+      <Link>WebServer\Mono.WebServer\XSPWebSource.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPWorker.cs">
+      <Link>WebServer\Mono.WebServer\XSPWorker.cs</Link>
+    </Compile>
+    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPWorkerRequest.cs">
+      <Link>WebServer\Mono.WebServer\XSPWorkerRequest.cs</Link>
+    </Compile>
+    <Compile Include="WebServer\WebServer.cs" />
+    <Compile Include="HttpApplication\Global.cs" />
+    <Compile Include="HttpHandler\NuxleusEventHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpHandler.cs" />
+    <Compile Include="HttpModule\AsyncQueueServerModule.cs" />
+    <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">
+      <Project>{0FFD8B77-2852-4CB0-9B85-29424C40FC44}</Project>
+      <Name>Nuxleus.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
+      <Project>{76489AFC-B3D6-40E4-AA45-840D069E4F43}</Project>
+      <Name>Nuxleus.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.IO\Nuxleus.IO.csproj">
+      <Project>{76B51906-3D94-412F-B943-84CD2A41AE11}</Project>
+      <Name>Nuxleus.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
+      <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
+      <Name>Nuxleus.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Process\Nuxleus.Process.csproj">
+      <Project>{62B71546-D55D-4B35-9D84-CDF8ED555E52}</Project>
+      <Name>Nuxleus.Process</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
+      <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>
+      <Name>Nuxleus.PubSub</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Utility\Nuxleus.Utility.csproj">
+      <Project>{3D54F988-AF1D-4B5C-A013-C85525926692}</Project>
+      <Name>Nuxleus.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xameleon\Xameleon.csproj">
+      <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
+      <Name>Xameleon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Extf.Net.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
