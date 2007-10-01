@@ -67,33 +67,6 @@
       </references>
     </csc>
   </target>
-  <target name="AmpleeTest" depends="init Nuxleus.Web Nuxleus.Cryptography Nuxleus.PubSub Nuxleus.IO">
-    <csc target="exe" output="${build.dir}/AmpleeTest.exe">
-      <sources>
-        <include name="${source.dir}/AmpleeConsole/Program.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Web.dll"/>
-        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-        <include name="${build.dir}/Nuxleus.PubSub.dll"/>
-        <include name="${build.dir}/Nuxleus.IO.dll"/>
-        <include name="System.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="LLUPTest" depends="init Nuxleus.Web Nuxleus.PubSub">
-    <csc target="exe" output="${build.dir}/LLUPTest.exe">
-      <sources>
-        <include name="${source.dir}/LLUPConsole/Program.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Web.dll"/>
-        <include name="${build.dir}/Nuxleus.PubSub.dll"/>
-        <include name="System.dll"/>
-        <include name="${dependencies.dir}/agsXMPP.dll"/>
-      </references>
-    </csc>
-  </target>
   <target name="Nuxleus.Authentication" depends="init Nuxleus.Utility">
     <csc target="library" output="${build.dir}/Nuxleus.Authentication.dll">
       <sources>
@@ -330,8 +303,6 @@
     <call target="init"/>
     <call target="Xameleon"/>
     <call target="XSP"/>
-    <call target="AmpleeTest"/>
-    <call target="LLUPTest"/>
     <call target="Nuxleus.Authentication"/>
     <call target="Nuxleus.Configuration"/>
     <call target="Nuxleus.Extension"/>
