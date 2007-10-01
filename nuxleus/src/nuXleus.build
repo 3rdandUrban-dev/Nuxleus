@@ -213,7 +213,7 @@
     <csc target="library" output="${build.dir}/Nuxleus.Web.dll">
       <sources>
         <include name="Nuxleus.Web/**/*.cs"/>
-        <include name="Vendor/Mono/xsp/Mono.WebServer/*.cs"/>
+        <include name="Dependencies/Vendor/Mono/xsp/Mono.WebServer/*.cs"/>
       </sources>
       <references>
         <include name="System.dll"/>
