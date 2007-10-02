@@ -6,10 +6,8 @@ using System.Net;
 
 namespace Nuxleus.Authentication
 {
-
-    public class Facebook
+  public static class Facebook
     {
-        public Facebook() { }
         /// <summary>
         /// Authenticate a user to Facebook allowing for  usage of the Facebook API.
         /// </summary>
@@ -23,7 +21,7 @@ namespace Nuxleus.Authentication
         /// <param name="password">Clear text password for the user.</param>
         /// <param name="authToken">Token returned by the call at auth.createToken </param>
         /// <param name="apiKey">Public key to the application the user wishes to access</param>
-        /// <returns>Does not return anything.</returns>
+        /// <returns>Returns nothing.</returns>
         public static void Authenticate(string email, string password, string authToken, string apiKey)
         {
             // First we grab the needed cookies to perform the login
@@ -48,8 +46,8 @@ namespace Nuxleus.Authentication
             body.Close();
             HttpWebResponse s1 = (HttpWebResponse)r1.GetResponse();
 
-            s0.Close();
-            s1.Close();
+	    s0.Close();
+	    s1.Close();
         }
     }
 }
