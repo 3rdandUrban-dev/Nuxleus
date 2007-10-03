@@ -65,6 +65,68 @@
   <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Authentication\Nuxleus.Authentication.csproj">
+      <Project>{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}</Project>
+      <Name>Nuxleus.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">
+      <Project>{0FFD8B77-2852-4CB0-9B85-29424C40FC44}</Project>
+      <Name>Nuxleus.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
+      <Project>{76489AFC-B3D6-40E4-AA45-840D069E4F43}</Project>
+      <Name>Nuxleus.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Extension.Amp.Fm\Nuxleus.Extension.Amp.Fm.csproj">
+      <Project>{284A2E2B-6FD6-4650-A001-AC9D64D31EBF}</Project>
+      <Name>Nuxleus.Extension.Amp.Fm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Extension.Silverlight\Nuxleus.Extension.Silverlight.csproj">
+      <Project>{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}</Project>
+      <Name>Nuxleus.Extension.Silverlight</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Extension\Nuxleus.Extension.csproj">
+      <Project>{3EC9EEB0-71CA-4F71-BF8E-AAF0365D4234}</Project>
+      <Name>Nuxleus.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.IO\Nuxleus.IO.csproj">
+      <Project>{76B51906-3D94-412F-B943-84CD2A41AE11}</Project>
+      <Name>Nuxleus.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
+      <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
+      <Name>Nuxleus.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Process\Nuxleus.Process.csproj">
+      <Project>{62B71546-D55D-4B35-9D84-CDF8ED555E52}</Project>
+      <Name>Nuxleus.Process</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
+      <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>
+      <Name>Nuxleus.PubSub</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Service\Nuxleus.Service.csproj">
+      <Project>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</Project>
+      <Name>Nuxleus.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Utility\Nuxleus.Utility.csproj">
+      <Project>{3D54F988-AF1D-4B5C-A013-C85525926692}</Project>
+      <Name>Nuxleus.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Web.Services\Nuxleus.Web.Services.csproj">
+      <Project>{1CCD9440-9E26-4731-8F89-224690867EB2}</Project>
+      <Name>Nuxleus.Web.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Web\Nuxleus.Web.csproj">
+      <Project>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</Project>
+      <Name>Nuxleus.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xameleon\Xameleon.csproj">
+      <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
+      <Name>Xameleon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,1 +1,1 @@
-<%@ WebService Class="Xameleon.Service.Authenticate" %>
+<%@ WebService Class="Nuxleus.Service.Authenticate" %>
