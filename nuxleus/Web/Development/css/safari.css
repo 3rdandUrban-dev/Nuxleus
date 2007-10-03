@@ -1,0 +1,33 @@
+#sub-nav {
+ margin-top:0em;
+ margin-bottom: .15em; 
+}
+#view {
+  padding:.03em .25em;
+}
+#view > ul > li > a {
+  padding:.1em .35em;
+}
+#sub-nav-menu a {
+padding:.2em .5em 0;
+}
+#sub-nav-menu a:hover {
+padding:.3em .5em .1em;
+}
+#top-nav-menu .domain a {
+  padding:.05em .5em;
+  margin-left:.5em;
+}
+.menu {
+ padding:.1em 0 .15em; 
+}
+.menu a {
+  padding:.2em .5em .1em;
+}
+.menu a:hover {
+  padding:.25em .5em .18em;
+}
+.menu li.selected a {
+  padding:.4em .5em .35em;
+  margin-right:.25em;
+}

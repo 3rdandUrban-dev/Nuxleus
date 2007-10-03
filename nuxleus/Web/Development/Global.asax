@@ -1,0 +1,1 @@
+<%@ Application Inherits="Nuxleus.Web.HttpApplication.Global" Language="C#" %>
