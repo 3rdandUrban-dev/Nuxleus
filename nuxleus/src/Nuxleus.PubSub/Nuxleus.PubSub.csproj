@@ -8,8 +8,8 @@
     <ProjectGuid>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuxleus.Pub</RootNamespace>
-    <AssemblyName>Nuxleus.Pub</AssemblyName>
+    <RootNamespace>Nuxleus.PubSub</RootNamespace>
+    <AssemblyName>Nuxleus.PubSub</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
