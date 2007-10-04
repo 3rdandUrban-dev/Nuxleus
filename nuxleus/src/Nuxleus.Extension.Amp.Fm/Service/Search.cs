@@ -59,21 +59,10 @@ namespace Nuxleus.Extension.Amp.Fm
         private ArrayList search(string searchPhrase, TYPE type, params string[] additionalSearchParams)
         {
             ArrayList entityList = new ArrayList();
-            Entity entity1 = new Entity();
-            Entity entity2 = new Entity();
-            Entity entity3 = new Entity();
-
-            entity1.Scheme = "http://amp.fm/";
-            entity2.Scheme = "http://amp.fm/";
-            entity3.Scheme = "http://amp.fm/";
-
-            entity1.Term = "pearljam";
-            entity2.Term = "foobarfighters";
-            entity3.Term = "elliottesmith";
-
-            entity1.Label = "Pearl Jam";
-            entity2.Label = "FooBar Fighters";
-            entity3.Label = "Elliotte Smith";
+            string scheme = "http://amp.fm/";
+            Entity entity1 = new Entity("pearljam", "Pearl Jam", scheme);
+            Entity entity2 = new Entity("foobarfighters", "FooBar Fighters", scheme);
+            Entity entity3 = new Entity("elliottesmith", "Elliotte Smith", scheme);
 
             entityList.Add(entity1);
             entityList.Add(entity2);
