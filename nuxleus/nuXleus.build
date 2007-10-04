@@ -25,15 +25,15 @@
         <include name="${source.dir}/Xameleon/Properties/**/*.resx"/>
       </resources>
       <references>
-	<include name="${build.dir}/Nuxleus.IO.dll"/>
-	<include name="${build.dir}/Nuxleus.Authentication.dll"/>
-	<include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-	<include name="${build.dir}/Nuxleus.Configuration.dll"/>
-	<include name="${build.dir}/Nuxleus.Extension.dll"/>
-	<include name="${build.dir}/Nuxleus.PubSub.dll"/>
-	<include name="${build.dir}/Nuxleus.Process.dll"/>
-	<include name="${build.dir}/Nuxleus.Utility.dll"/>
-	<include name="${build.dir}/Nuxleus.Messaging.dll"/>
+        <include name="${build.dir}/Nuxleus.IO.dll"/>
+        <include name="${build.dir}/Nuxleus.Authentication.dll"/>
+        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
+        <include name="${build.dir}/Nuxleus.Configuration.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.dll"/>
+        <include name="${build.dir}/Nuxleus.PubSub.dll"/>
+        <include name="${build.dir}/Nuxleus.Process.dll"/>
+        <include name="${build.dir}/Nuxleus.Utility.dll"/>
+        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
         <include name="System.Drawing.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.dll"/>
@@ -95,7 +95,7 @@
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
         <include name="System.Web.dll"/>
-	<include name="System.Configuration.dll"/>
+        <include name="System.Configuration.dll"/>
       </references>
     </csc>
   </target>
@@ -114,13 +114,27 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.Entity" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Entity.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Entity/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Extension" depends="init Nuxleus.Cryptography ">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.dll">
       <sources>
         <include name="${source.dir}/Nuxleus.Extension/**/*.cs"/>
       </sources>
       <references>
-	<include name="${build.dir}/Nuxleus.Cryptography.dll"/>
+        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
         <include name="System.dll"/>
         <include name="System.Collections.dll"/>
         <include name="System.Collections.Generic.dll"/>
@@ -147,6 +161,22 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.Extension.Amp.Fm" depends="init Nuxleus.Entity">
+    <csc target="library" output="${build.dir}/Nuxleus.Extension.Amp.Fm.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Extension.Amp.Fm/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Entity.dll"/>
+        <include name="System.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+        <include name="System.EnterpriseServices.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.IO" depends="init Nuxleus.Configuration Nuxleus.Process">
     <csc target="library" output="${build.dir}/Nuxleus.IO.dll">
       <sources>
@@ -155,8 +185,8 @@
       <references>
         <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
         <include name="${build.dir}/Nuxleus.Configuration.dll"/>
-	<include name="${build.dir}/Nuxleus.Process.dll"/>
-	<include name="System.dll"/>
+        <include name="${build.dir}/Nuxleus.Process.dll"/>
+        <include name="System.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
         <include name="System.Configuration.dll"/>
@@ -194,8 +224,8 @@
       </sources>
       <references>
         <include name="${dependencies.dir}/agsXMPP.dll"/>
-	<include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-	<include name="${build.dir}/Nuxleus.IO.dll"/>
+        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
+        <include name="${build.dir}/Nuxleus.IO.dll"/>
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
@@ -311,7 +341,9 @@
     <call target="Nuxleus.Authentication"/>
     <call target="Nuxleus.Configuration"/>
     <call target="Nuxleus.Extension"/>
+    <call target="Nuxleus.Entity"/>
     <call target="Nuxleus.Cryptography"/>
+    <call target="Nuxleus.Extension.Amp.Fm"/>
     <!-- <call target="Nuxleus.Extension.Silverlight"/> -->
     <call target="Nuxleus.IO"/>
     <call target="Nuxleus.Messaging"/>
