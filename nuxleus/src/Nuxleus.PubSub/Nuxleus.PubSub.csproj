@@ -44,13 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Amplee\Categories.cs" />
-    <Compile Include="Amplee\Category.cs" />
-    <Compile Include="Amplee\Collection.cs" />
-    <Compile Include="Amplee\Member.cs" />
-    <Compile Include="Amplee\Service.cs" />
-    <Compile Include="Amplee\StoreManager.cs" />
-    <Compile Include="Amplee\Workspace.cs" />
     <Compile Include="Atom\Author.cs" />
     <Compile Include="Atom\Category.cs" />
     <Compile Include="Atom\Entry.cs" />

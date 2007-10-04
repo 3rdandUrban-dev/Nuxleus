@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.20706</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{284A2E2B-6FD6-4650-A001-AC9D64D31EBF}</ProjectGuid>
+    <ProjectGuid>{511566A4-21DC-45E3-A3F8-84763000C72E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuxleus.Extension.Amp.Fm</RootNamespace>
-    <AssemblyName>Nuxleus.Extension.Amp.Fm</AssemblyName>
+    <RootNamespace>Nuxleus.Entity</RootNamespace>
+    <AssemblyName>Nuxleus.Entity</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
@@ -19,11 +19,10 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\build\bin\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\docs\Nuxleus.Extension.Amp.Fm.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,30 +34,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service\Search.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Entity\Entity.cs" />
+    <Compile Include="Entity\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Amp.Fm\Amp.Fm.csproj">
-      <Project>{9C3416B6-BFCF-4775-9C92-C53EB479A664}</Project>
-      <Name>Amp.Fm</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Entity\Nuxleus.Entity.csproj">
-      <Project>{511566A4-21DC-45E3-A3F8-84763000C72E}</Project>
-      <Name>Nuxleus.Entity</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

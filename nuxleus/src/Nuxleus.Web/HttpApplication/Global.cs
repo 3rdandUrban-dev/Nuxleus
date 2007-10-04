@@ -20,7 +20,6 @@ using Nuxleus.Bucker;
 
 namespace Nuxleus.Web.HttpApplication
 {
-
     public class Global : System.Web.HttpApplication
     {
         bool _useMemCached = false;
@@ -43,7 +42,7 @@ namespace Nuxleus.Web.HttpApplication
         BaseXsltContext _baseXsltContext;
         String _baseUri;
         HashAlgorithm _hashAlgorithm = HashAlgorithm.SHA1;
-        
+
         protected void Application_Start(object sender, EventArgs e)
         {
             if (_xameleonConfiguration.DebugMode == "yes") _DEBUG = true;
@@ -55,9 +54,9 @@ namespace Nuxleus.Web.HttpApplication
             }
 
             QueueClientPool.Init(_queueServerConfiguration.PoolSize,
-				 _queueServerConfiguration.IP,
-				 _queueServerConfiguration.Port,
-				 _queueServerConfiguration.Threshold);
+                 _queueServerConfiguration.IP,
+                 _queueServerConfiguration.Port,
+                 _queueServerConfiguration.Threshold);
 
             string baseUri = (string)_xameleonConfiguration.PreCompiledXslt.BaseUri;
             if (baseUri != String.Empty)
@@ -137,8 +136,8 @@ namespace Nuxleus.Web.HttpApplication
 
         protected void Application_End(object sender, EventArgs e)
         {
-	  QueueClientPool.Shutdown();
-	  SockIOPool.GetInstance().Shutdown();
+            QueueClientPool.Shutdown();
+            SockIOPool.GetInstance().Shutdown();
         }
     }
 }
