@@ -417,16 +417,16 @@
   </binding>
   <service name="Search">
     <port name="SearchSoap" binding="s0:SearchSoap">
-      <soap:address location="http://192.168.1.102:8080/service/search/default.asmx" />
+      <soap:address location="http://dev.amp.fm:8080/service/search/default.asmx" />
     </port>
     <port name="SearchSoap12" binding="s0:SearchSoap12">
-      <soap12:address location="http://192.168.1.102:8080/service/search/default.asmx" />
+      <soap12:address location="http://dev.amp.fm:8080/service/search/default.asmx" />
     </port>
     <port name="SearchHttpGet" binding="s0:SearchHttpGet">
-      <http:address location="http://192.168.1.102:8080/service/search/default.asmx" />
+      <http:address location="http://dev.amp.fm:8080/service/search/default.asmx" />
     </port>
     <port name="SearchHttpPost" binding="s0:SearchHttpPost">
-      <http:address location="http://192.168.1.102:8080/service/search/default.asmx" />
+      <http:address location="http://dev.amp.fm:8080/service/search/default.asmx" />
     </port>
   </service>
 </definitions>
