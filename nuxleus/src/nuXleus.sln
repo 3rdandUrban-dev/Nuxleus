@@ -84,6 +84,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Entity", "Nuxleus.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Semantics", "Nuxleus.Semantics\Nuxleus.Semantics.csproj", "{974C6733-57CB-4474-B773-E14E701FE3EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Language", "Nuxleus.Language\Nuxleus.Language.csproj", "{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Command", "Nuxleus.Command\Nuxleus.Command.csproj", "{091EC796-27A0-4EDF-9286-B7ABF7981769}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -324,6 +328,26 @@ Global
 		{974C6733-57CB-4474-B773-E14E701FE3EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{974C6733-57CB-4474-B773-E14E701FE3EA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{974C6733-57CB-4474-B773-E14E701FE3EA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}.Release|.NET.ActiveCfg = Release|Any CPU
+		{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Release|.NET.ActiveCfg = Release|Any CPU
+		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

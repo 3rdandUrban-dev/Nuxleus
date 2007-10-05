@@ -40,21 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Format\Base64FormatProvider.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utility\S3\AWSAuthConnection.cs" />
-    <Compile Include="Utility\S3\Bucket.cs" />
-    <Compile Include="Utility\S3\CommonPrefixEntry.cs" />
-    <Compile Include="Utility\S3\GetResponse.cs" />
-    <Compile Include="Utility\S3\GetTimeStamp.cs" />
-    <Compile Include="Utility\S3\ListAllMyBucketsResponse.cs" />
-    <Compile Include="Utility\S3\ListBucketResponse.cs" />
-    <Compile Include="Utility\S3\ListEntry.cs" />
-    <Compile Include="Utility\S3\Owner.cs" />
-    <Compile Include="Utility\S3\QueryStringAuthGenerator.cs" />
-    <Compile Include="Utility\S3\Response.cs" />
-    <Compile Include="Utility\S3\S3Object.cs" />
-    <Compile Include="Utility\S3\Utils.cs" />
+    <Compile Include="**\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />

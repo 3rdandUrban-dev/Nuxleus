@@ -44,24 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Atom\Author.cs" />
-    <Compile Include="Atom\Category.cs" />
-    <Compile Include="Atom\Entry.cs" />
-    <Compile Include="Atom\ForeignElement.cs" />
-    <Compile Include="Atom\Link.cs" />
-    <Compile Include="Atom\TextConstruct.cs" />
-    <Compile Include="Bucker\ClientPool.cs" />
-    <Compile Include="Bucker\createqueue.cs" />
-    <Compile Include="Bucker\deletemessage.cs" />
-    <Compile Include="Bucker\deletequeue.cs" />
-    <Compile Include="Bucker\getmessage.cs" />
-    <Compile Include="Bucker\listmessages.cs" />
-    <Compile Include="Bucker\listqueue.cs" />
-    <Compile Include="Bucker\message.cs" />
-    <Compile Include="Bucker\pushmessage.cs" />
-    <Compile Include="Bucker\queueclient.cs" />
-    <Compile Include="Llup\Notification.cs" />
-    <Compile Include="Llup\XMPPSubscriber.cs" />
+    <Compile Include="Atom\*.cs" />
+    <Compile Include="Bucker\*.cs" />
+    <Compile Include="Llup\*.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
