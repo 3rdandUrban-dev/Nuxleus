@@ -53,8 +53,6 @@ namespace Nuxleus.Web.HttpHandler
       HttpRequest req = context.Request;
       HttpResponse resp = context.Response;
 
-      Console.WriteLine(req.Path);
-
       IList<string> matches = new List<string>();
       string[] tokens = req.Path.Trim('/').ToLower().Split('/');
       string current = Directory.GetCurrentDirectory();
