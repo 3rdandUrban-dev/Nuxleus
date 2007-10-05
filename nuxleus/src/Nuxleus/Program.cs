@@ -14,16 +14,18 @@ namespace ConsoleApplication1
         {
             Search search = new Search();
             object[] searchResults = search.SearchArtist("pearl jam");
-            
+
             IEnumerator entityArray = searchResults.GetEnumerator();
 
             while (entityArray.MoveNext())
             {
                 object[] entity = (object[])entityArray.Current;
-                XmlElement term = (XmlElement)entity[1];
-                XmlElement label = (XmlElement)entity[2];
-                XmlElement scheme = (XmlElement)entity[3];
-                Console.WriteLine("{0}: {1}{2}", label.InnerText, scheme.InnerText, term.InnerText);
+                Console.WriteLine
+                        ("{0}: {1}{2}",
+                        ((XmlElement)entity[2]).InnerText,
+                        ((XmlElement)entity[3]).InnerText,
+                        ((XmlElement)entity[1]).InnerText
+                        );
             }
         }
     }

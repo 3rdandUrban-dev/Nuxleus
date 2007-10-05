@@ -146,10 +146,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.1.102:8080/service/search/default.asmx%3fwsdl">
+    <WebReferenceUrl Include="http://dev.amp.fm:8080/service/search/%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\Amp.Fm\</RelPath>
-      <UpdateFromURL>http://192.168.1.102:8080/service/search/default.asmx%3fwsdl</UpdateFromURL>
+      <UpdateFromURL>http://dev.amp.fm:8080/service/search/%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

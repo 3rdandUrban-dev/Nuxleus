@@ -60,6 +60,7 @@ namespace Nuxleus.Extension.Amp.Fm
         {
             ArrayList entityList = new ArrayList();
             string scheme = "http://amp.fm/";
+            Entity entity0 = new Entity("search", searchPhrase, scheme);
             Entity entity1 = new Entity("pearljam", "Pearl Jam", scheme);
             Entity entity2 = new Entity("foobarfighters", "FooBar Fighters", scheme);
             Entity entity3 = new Entity("elliottesmith", "Elliotte Smith", scheme);
