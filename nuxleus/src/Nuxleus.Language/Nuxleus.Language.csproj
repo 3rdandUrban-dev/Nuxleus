@@ -5,15 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.20706</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</ProjectGuid>
+    <ProjectGuid>{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuxleus.Service</RootNamespace>
-    <AssemblyName>Nuxleus.Service</AssemblyName>
+    <RootNamespace>Nuxleus.Language</RootNamespace>
+    <AssemblyName>Nuxleus.Language</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\docs\Nuxleus.Service.xml</DocumentationFile>
+    <DocumentationFile>..\docs\Nuxleus.Language.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,40 +32,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Saxon.Api.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\*.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Clipboard\*.cs" />
+    <Compile Include="Provider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">
-      <Project>{0FFD8B77-2852-4CB0-9B85-29424C40FC44}</Project>
-      <Name>Nuxleus.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.IO\Nuxleus.IO.csproj">
-      <Project>{76B51906-3D94-412F-B943-84CD2A41AE11}</Project>
-      <Name>Nuxleus.IO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Utility\Nuxleus.Utility.csproj">
-      <Project>{3D54F988-AF1D-4B5C-A013-C85525926692}</Project>
-      <Name>Nuxleus.Utility</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Extf.Net.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

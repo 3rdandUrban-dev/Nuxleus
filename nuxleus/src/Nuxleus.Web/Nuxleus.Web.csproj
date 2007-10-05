@@ -119,12 +119,9 @@
       <Link>WebServer\Mono.WebServer\XSPWorkerRequest.cs</Link>
     </Compile>
     <Compile Include="WebServer\WebServer.cs" />
-    <Compile Include="HttpApplication\Global.cs" />
-    <Compile Include="HttpHandler\NuxleusEventHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpHandler.cs" />
-    <Compile Include="HttpModule\AsyncQueueServerModule.cs" />
-    <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs" />
+    <Compile Include="HttpApplication\*.cs" />
+    <Compile Include="HttpHandler\*.cs" />
+    <Compile Include="HttpModule\*.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

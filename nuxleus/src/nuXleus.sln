@@ -82,6 +82,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amp.Fm", "Amp.Fm\Amp.Fm.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Entity", "Nuxleus.Entity\Nuxleus.Entity.csproj", "{511566A4-21DC-45E3-A3F8-84763000C72E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Semantics", "Nuxleus.Semantics\Nuxleus.Semantics.csproj", "{974C6733-57CB-4474-B773-E14E701FE3EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -312,6 +314,16 @@ Global
 		{511566A4-21DC-45E3-A3F8-84763000C72E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{511566A4-21DC-45E3-A3F8-84763000C72E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{511566A4-21DC-45E3-A3F8-84763000C72E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{974C6733-57CB-4474-B773-E14E701FE3EA}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{974C6733-57CB-4474-B773-E14E701FE3EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{974C6733-57CB-4474-B773-E14E701FE3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{974C6733-57CB-4474-B773-E14E701FE3EA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{974C6733-57CB-4474-B773-E14E701FE3EA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{974C6733-57CB-4474-B773-E14E701FE3EA}.Release|.NET.ActiveCfg = Release|Any CPU
+		{974C6733-57CB-4474-B773-E14E701FE3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{974C6733-57CB-4474-B773-E14E701FE3EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{974C6733-57CB-4474-B773-E14E701FE3EA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{974C6733-57CB-4474-B773-E14E701FE3EA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
