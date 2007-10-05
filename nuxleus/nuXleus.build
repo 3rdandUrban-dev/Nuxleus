@@ -193,6 +193,17 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.Language" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Language.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Language/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Xml.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Messaging" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Messaging.dll">
       <sources>
@@ -231,6 +242,17 @@
         <include name="System.Xml.dll"/>
         <include name="System.Web.dll"/>
         <include name="System.Configuration.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="Nuxleus.Semantics" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Semantics.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Semantics/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Xml.dll"/>
       </references>
     </csc>
   </target>
@@ -350,9 +372,11 @@
     <call target="Nuxleus.Extension.Amp.Fm"/>
     <!-- <call target="Nuxleus.Extension.Silverlight"/> -->
     <call target="Nuxleus.IO"/>
+    <call target="Nuxleus.Language"/>
     <call target="Nuxleus.Messaging"/>
     <call target="Nuxleus.Process"/>
     <call target="Nuxleus.PubSub"/>
+    <call target="Nuxleus.Semantics"/>
     <call target="Nuxleus.Service"/>
     <call target="Nuxleus.Utility"/>
     <call target="Nuxleus.Web"/>
