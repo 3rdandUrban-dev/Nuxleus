@@ -307,13 +307,14 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus" depends="init Xameleon">
-    <csc target="library" output="${build.dir}/Nuxleus.dll">
+  <target name="Nuxleus" depends="init Xameleon Nuxleus.Entity">
+    <csc target="exe" output="${build.dir}/Nuxleus.exe">
       <sources>
         <include name="${source.dir}/Nuxleus/**/*.cs"/>
       </sources>
       <references>
         <include name="${build.dir}/Xameleon.dll"/>
+        <include name="${build.dir}/Nuxleus.Entity.dll"/>
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>

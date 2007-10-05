@@ -31,7 +31,7 @@ namespace Nuxleus.Extension.Amp.Fm
             Description = "Returns a list of artists that contain the specified search phrase",
             EnableSession = false)]
         [XmlInclude(typeof(Entity))]
-        public ArrayList SearchArtist(string artistName, params string[] additionalSearchParams)
+        public ArrayList SearchArtist(string artistName)
         {
             return search(artistName, TYPE.ARTIST);
         }
@@ -40,23 +40,23 @@ namespace Nuxleus.Extension.Amp.Fm
             Description = "Returns a list of genres that contain the specified search phrase",
             EnableSession = false)]
         [XmlInclude(typeof(Entity))]
-        public ArrayList SearchGenre(string genre, params string[] additionalSearchParams)
+        public ArrayList SearchGenre(string genre)
         {
-            return search(genre, TYPE.GENRE, additionalSearchParams);
+            return search(genre, TYPE.GENRE);
         }
 
         [WebMethod(
             Description = "Returns a list of media files whos associated lyrics contain the specified search phrase",
             EnableSession = false)]
         [XmlInclude(typeof(Entity))]
-        public ArrayList SearchLyrics(string searchPhrase, params string[] additionalSearchParams)
+        public ArrayList SearchLyrics(string searchPhrase)
         {
-            return search(searchPhrase, TYPE.LYRICS, additionalSearchParams);
+            return search(searchPhrase, TYPE.LYRICS);
         }
 
         [WebMethod]
         [XmlInclude(typeof(Entity))]
-        private ArrayList search(string searchPhrase, TYPE type, params string[] additionalSearchParams)
+        private ArrayList search(string searchPhrase, TYPE type)
         {
             ArrayList entityList = new ArrayList();
             string scheme = "http://amp.fm/";
