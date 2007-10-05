@@ -234,12 +234,15 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Service" depends="init">
+  <target name="Nuxleus.Service" depends="init Nuxleus.Utility Nuxleus.Configuration">
     <csc target="library" output="${build.dir}/Nuxleus.Service.dll">
       <sources>
         <include name="${source.dir}/Nuxleus.Service/**/*.cs"/>
       </sources>
       <references>
+        <include name="${dependencies.dir}/Saxon.Api.dll"/>
+        <include name="${build.dir}/Nuxleus.Utility.dll"/>
+        <include name="${build.dir}/Nuxleus.Configuration.dll"/>
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
