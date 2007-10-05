@@ -15,21 +15,9 @@
     xmlns:exsl="http://exslt.org/common" 
     xmlns:ppl="http://personplacething.info/people"
     exclude-result-prefixes="#all">
-
-    <xsl:import href="./controller/atomicxml/base.xslt" />
-    <xsl:import href="./controller/aws/s3/base.xslt" />
-    <xsl:import href="./controller/proxy/base.xslt" />
-    <xsl:import href="./controller/atom/base.xslt" />
     
-    <xsl:import href="./functions/amazonaws/funcset-s3.xslt" />
-    <xsl:import href="./functions/funcset-dateTime.xslt" />
-    <xsl:import href="./functions/funcset-Util.xslt" />
-    <xsl:import href="./functions/aspnet/session.xslt" />
-    <xsl:import href="./functions/aspnet/server.xslt" />
-    <xsl:import href="./functions/aspnet/request-stream.xslt" />
-    <xsl:import href="./functions/aspnet/response-stream.xslt" />
-    <xsl:import href="./functions/aspnet/timestamp.xslt" />
-    <xsl:import href="./controller/message-queue/base.xslt" />
+    <xsl:import href="./controller/base.xslt" />
+    <xsl:import href="./functions/base.xslt" />
     
     <xsl:param name="current-context" />
     <xsl:param name="response" select="aspnet-context:Response($current-context)" />

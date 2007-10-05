@@ -71,7 +71,7 @@
   <xsl:variable name="browser" select="aspnet-request:Browser($request)"/>
   <xsl:variable name="q">"</xsl:variable>
 
-  <xsl:template match="header:*">
+<!--   <xsl:template match="header:*">
     <xsl:param name="sorted-list" as="clitype:System.Collections.SortedList"/>
     <xsl:variable name="key" select="local-name() cast as xs:untypedAtomic"/>
     <xsl:variable name="value" select=". cast as xs:untypedAtomic"/>
@@ -102,7 +102,7 @@
         content-type="{if (empty($content-type)) then response:get-content-type($response) else 'not-set'}">
       <xsl:apply-templates/>
     </message>
-  </xsl:template>
+  </xsl:template> -->
 
   <xsl:template match="operation:test">
     <xsl:apply-templates />
