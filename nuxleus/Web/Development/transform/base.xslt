@@ -12,7 +12,9 @@
     xmlns:browser="clitype:System.Web.HttpBrowserCapabilities?partialname=System.Web"
     xmlns:timestamp="clitype:System.DateTime" xmlns:uri="clitype:System.Uri?partialname=System"
     xmlns:func="http://atomictalk.org/function"
-    xmlns:exsl="http://exslt.org/common" exclude-result-prefixes="#all">
+    xmlns:exsl="http://exslt.org/common" 
+    xmlns:ppl="http://personplacething.info/people"
+    exclude-result-prefixes="#all">
 
     <xsl:import href="./controller/atomicxml/base.xslt" />
     <xsl:import href="./controller/aws/s3/base.xslt" />
