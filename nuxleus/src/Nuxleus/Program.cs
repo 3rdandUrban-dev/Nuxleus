@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Nuxleus.Amp.Fm;
 using System.Collections;
+using Nuxleus.Amp.Fm;
 using Nuxleus;
 using System.Xml;
 
@@ -13,7 +13,7 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             Search search = new Search();
-            object[] searchResults = search.SearchArtist("pearl jam");
+            object[] searchResults = search.SearchArtist(args[0]);
 
             IEnumerator entityArray = searchResults.GetEnumerator();
 
