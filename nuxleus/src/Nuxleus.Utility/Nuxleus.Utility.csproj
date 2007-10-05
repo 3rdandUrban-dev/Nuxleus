@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Format\Base64FormatProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\S3\AWSAuthConnection.cs" />
     <Compile Include="Utility\S3\Bucket.cs" />

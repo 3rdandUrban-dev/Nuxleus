@@ -1,24 +1,32 @@
 using System;
 using System.Configuration;
 
-namespace X5 {
+namespace Nuxleus.Service
+{
 
-    public partial class GlobalClip {
+    public partial class GlobalClip
+    {
 
-        private string GC_PUBLIC_KEY {
-            get {
+        private string GC_PUBLIC_KEY
+        {
+            get
+            {
                 return this._GC_PUBLIC_KEY;
             }
-            set {
+            set
+            {
                 this._GC_PUBLIC_KEY = value;
             }
         }
 
-        private string GC_PRIVATE_KEY {
-            get {
+        private string GC_PRIVATE_KEY
+        {
+            get
+            {
                 return this._GC_PRIVATE_KEY;
             }
-            set {
+            set
+            {
                 this._GC_PRIVATE_KEY = value;
             }
         }

@@ -1,16 +1,22 @@
 using System;
 
-namespace X5 {
-    public partial class GlobalClip {
-        public ClipboardCollection<ClipItem> ClipCopy {
-            get {
+namespace Nuxleus.Service
+{
+    public partial class GlobalClip
+    {
+        public ClipboardCollection<ClipItem> ClipCopy
+        {
+            get
+            {
                 _ClipCopy = new ClipboardCollection<ClipItem>();
                 return this._ClipCopy;
             }
         }
 
-        public ClipboardCollection<ClipItem> ClipPaste {
-            get {
+        public ClipboardCollection<ClipItem> ClipPaste
+        {
+            get
+            {
                 _ClipPaste = new ClipboardCollection<ClipItem>();
                 return this._ClipPaste;
             }

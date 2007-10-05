@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace X5 {
+namespace Nuxleus.Service
+{
 
-    public class ClipData<T> {
+    public class ClipData<T>
+    {
         /// <summary>
         /// 
         /// </summary>
-        public ClipData () { }
+        public ClipData() { }
 
         /// <summary>
         /// 

@@ -2,42 +2,56 @@ using System;
 using System.Configuration;
 using System.Web.Configuration;
 using System.Collections.Specialized;
-using Extf.Net.Configuration;
-using Extf.Net;
-using com.amazon.s3;
+using Nuxleus.Configuration;
+using Nuxleus.Utility.S3;
 
-namespace X5 {
+namespace Nuxleus.Service
+{
 
-    public partial class GlobalClip {
+    public partial class GlobalClip
+    {
 
-        public bool Init () {
+        public bool Init()
+        {
             /// This is a hack. FIXME FIRST.
-            try {
-                if (InitMode(SetMode(this.AppMode))) {
+            try
+            {
+                if (InitMode(SetMode(this.AppMode)))
+                {
 
-                    try {
+                    try
+                    {
                         this.Connect = new AWSAuthConnection(GC_PUBLIC_KEY, GC_PRIVATE_KEY);
                         this.Connected = true;
                         return true;
-                    } catch {
+                    }
+                    catch
+                    {
                         throw;
                     }
-                } else {
+                }
+                else
+                {
                     return false;
                 }
-            } catch {
+            }
+            catch
+            {
                 throw;
             }
         }
 
 
-        public int SetMode (int mode) {
+        public int SetMode(int mode)
+        {
             return (this.AppMode = mode);
         }
 
-        private bool InitMode (int mode) {
+        private bool InitMode(int mode)
+        {
             // 'bout as agile as a turtle...  but it will work for now.
-            switch (mode) {
+            switch (mode)
+            {
                 case 0:
                     return AspNetMode();
                 case 1:
@@ -58,16 +72,20 @@ namespace X5 {
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool AspNetMode () {
+        private bool AspNetMode()
+        {
             // This is an UGLY, crumbly, break at the first sign of anything human hack! 
             // FIXME BEFORE FIRST!!!!!
-            try {
+            try
+            {
                 NameValueCollection appSet_Private_Public_Keys = WebConfigurationManager.AppSettings;
                 this.GC_PUBLIC_KEY = appSet_Private_Public_Keys[1];
                 this.GC_PRIVATE_KEY = appSet_Private_Public_Keys[0];
                 InitSessionVarDefaults();
                 return true;
-            } catch {
+            }
+            catch
+            {
                 throw;
             }
         }
@@ -75,13 +93,17 @@ namespace X5 {
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool ConsoleMode () {
-            try {
+        private bool ConsoleMode()
+        {
+            try
+            {
                 this.GC_PUBLIC_KEY = Environment.GetEnvironmentVariable("AWS_PUBLIC_KEY_ID");
                 this.GC_PRIVATE_KEY = Environment.GetEnvironmentVariable("AWS_PRIVATE_KEY_ID");
                 InitSessionVarDefaults();
                 return true;
-            } catch {
+            }
+            catch
+            {
                 throw;
             }
 
@@ -91,7 +113,8 @@ namespace X5 {
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool DynamicMode () {
+        private bool DynamicMode()
+        {
             throw new Exception(rm.GetString("TODO"));
         }
 
@@ -99,11 +122,13 @@ namespace X5 {
         /// 
         /// </summary>
         /// <returns></returns>
-        private bool WinAppMode () {
+        private bool WinAppMode()
+        {
             throw new Exception(rm.GetString("TODO"));
         }
-        
-        private void InitSessionVarDefaults () {
+
+        private void InitSessionVarDefaults()
+        {
             if (this.FilePrefix == null) this.FilePrefix = "_anonymous_";
             if (this.SessionId == null) this.SessionId = "_default_";
             if (this.DateHash == null) this.DateHash = DateTime.Now.Date.ToShortDateString().GetHashCode().ToString(provider);

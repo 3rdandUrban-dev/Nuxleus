@@ -1,27 +1,32 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using com.amazon.s3;
+using Nuxleus.Utility.S3;
 
-namespace X5 {
+namespace Nuxleus.Service
+{
 
-    public class ClipItem {
+    public class ClipItem
+    {
         /// <summary>
         /// 
         /// </summary>
 
-        public ClipItem () { }
+        public ClipItem() { }
         /// <summary>
         /// 
         /// </summary>
         private string _Data;
 
-        public string Data {
+        public string Data
+        {
 
-            get {
+            get
+            {
                 return this._Data;
             }
-            set {
+            set
+            {
                 this._Data = value;
             }
         }
@@ -31,12 +36,15 @@ namespace X5 {
         /// </summary>
         private SortedList _MetaData = new SortedList();
 
-        public SortedList MetaData {
-            get {
+        public SortedList MetaData
+        {
+            get
+            {
                 return this._MetaData;
             }
 
-            set {
+            set
+            {
 
                 this._MetaData = value;
             }

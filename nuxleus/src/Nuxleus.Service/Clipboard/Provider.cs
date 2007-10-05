@@ -1,94 +1,122 @@
 using System;
 using System.IO;
-using com.amazon.s3;
+using Nuxleus.Utility.S3;
 
-namespace X5 {
-    public partial class GlobalClip {
+namespace Nuxleus.Service
+{
+    public partial class GlobalClip
+    {
 
-        public AWSAuthConnection Connect {
-            get {
+        public AWSAuthConnection Connect
+        {
+            get
+            {
                 return this._Connect;
             }
-            set {
+            set
+            {
 
                 this._Connect = value;
             }
         }
         private bool _Connected = false;
-        private bool Connected {
-            get {
+        private bool Connected
+        {
+            get
+            {
                 return this._Connected;
             }
-            set {
+            set
+            {
 
                 this._Connected = value;
             }
         }
 
-        public string BaseHost {
-            get {
+        public string BaseHost
+        {
+            get
+            {
                 return this._BaseHost;
             }
-            set {
+            set
+            {
                 this._BaseHost = value;
             }
         }
 
 
 
-        public string StorageBase {
-            get {
+        public string StorageBase
+        {
+            get
+            {
                 return this._StorageBase;
             }
-            set {
+            set
+            {
                 this._StorageBase = value;
             }
         }
 
 
 
-        public string FilePrefix {
-            get {
+        public string FilePrefix
+        {
+            get
+            {
                 return this._FilePrefix;
             }
-            set {
+            set
+            {
                 this._FilePrefix = value;
             }
         }
 
 
-        public string SessionId {
-            get {
+        public string SessionId
+        {
+            get
+            {
                 return this._SessionId;
             }
-            set {
+            set
+            {
                 this._SessionId = value;
             }
         }
 
-        public string DateHash {
-            get {
+        public string DateHash
+        {
+            get
+            {
                 return _DateHash;
             }
-            set {
+            set
+            {
                 this._DateHash = value;
             }
         }
 
-        public string KeyPrefix {
-            get {
+        public string KeyPrefix
+        {
+            get
+            {
                 return this._KeyPrefix;
             }
 
-            set {
+            set
+            {
                 this._KeyPrefix = value;
             }
         }
 
 
-        public AWSAuthConnection Clipboard () {
+        public AWSAuthConnection Clipboard()
+        {
             if (Connected) return Connect;
-            else {
+            else
+            {
                 this.Init();
                 this.Connected = true;
                 return Connect;

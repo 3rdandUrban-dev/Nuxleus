@@ -3,34 +3,41 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Saxon.Api;
-using com.amazon.s3;
+using Nuxleus.Utility.S3;
 
-namespace X5 {
+namespace Nuxleus.Service
+{
 
     [Serializable]
-    public class GlobalClipSerializer {
+    public class GlobalClipSerializer
+    {
 
-        public GlobalClipSerializer () {}
+        public GlobalClipSerializer() { }
         private XmlTextWriter _OutputWriter;
 
-        public void SetOutputWriter (XmlTextWriter writer) {
+        public void SetOutputWriter(XmlTextWriter writer)
+        {
             this._OutputWriter = writer;
         }
 
-        private XmlTextWriter GetOutputWriter () {
+        private XmlTextWriter GetOutputWriter()
+        {
             return this._OutputWriter;
         }
 
-        public void ToXml (ListBucketResponse list, String storage) {
+        public void ToXml(ListBucketResponse list, String storage)
+        {
             XmlTextWriter XWriter = this.GetOutputWriter();
             XWriter.WriteStartDocument();
             XWriter.Formatting = Formatting.Indented;
             XWriter.Indentation = 2;
             XWriter.WriteStartElement("bucket");
             XWriter.WriteAttributeString("name", storage);
-            foreach (ListEntry entry in list.Entries) {
+            foreach (ListEntry entry in list.Entries)
+            {
                 Owner o = entry.Owner;
-                if (o == null) {
+                if (o == null)
+                {
                     o = new Owner("", "");
                 }
                 XWriter.WriteStartElement("File");
@@ -48,16 +55,19 @@ namespace X5 {
             XWriter.Close();
         }
 
-        public void ToAtom (ListBucketResponse list, String storage) {
+        public void ToAtom(ListBucketResponse list, String storage)
+        {
             XmlTextWriter XWriter = this.GetOutputWriter();
             XWriter.WriteStartDocument();
             XWriter.Formatting = Formatting.Indented;
             XWriter.Indentation = 2;
             XWriter.WriteStartElement("feed", "http://www.w3.org/2005/Atom");
             //XWriter.WriteAttributeString("name", storage);
-            foreach (ListEntry entry in list.Entries) {
+            foreach (ListEntry entry in list.Entries)
+            {
                 Owner o = entry.Owner;
-                if (o == null) {
+                if (o == null)
+                {
                     o = new Owner("", "");
                 }
                 XWriter.WriteStartElement("entry");

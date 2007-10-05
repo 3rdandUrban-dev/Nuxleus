@@ -2,11 +2,13 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using Extf.Net.IO;
-using com.amazon.s3;
+using Nuxleus.Utility.S3;
+using Nuxleus.Utility.Format;
 
-namespace X5 {
-    public partial class GlobalClip {
+namespace Nuxleus.Service
+{
+    public partial class GlobalClip
+    {
         private AWSAuthConnection _Connect;
         private string _BaseHost;
         private string _StorageBase;
@@ -22,19 +24,22 @@ namespace X5 {
         private string _GC_PRIVATE_KEY;
 
         public enum Mode { AspNet, Console, WinApp, Dynamic };
-        
+
         private int _Mode = (int)Mode.AspNet;
 
-        private int AppMode {
-            get {
+        private int AppMode
+        {
+            get
+            {
                 return this._Mode;
             }
-            set {
+            set
+            {
                 this._Mode = value;
             }
         }
 
-        private Formatter_Base64 provider = new Formatter_Base64();
+        private Base64FormatProvider provider = new Base64FormatProvider();
 
         private Stream _Output;
         private ListBucketResponse _List;

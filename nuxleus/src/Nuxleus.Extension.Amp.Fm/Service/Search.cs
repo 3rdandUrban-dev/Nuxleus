@@ -65,6 +65,7 @@ namespace Nuxleus.Extension.Amp.Fm
             Entity entity2 = new Entity("foobarfighters", "FooBar Fighters", scheme);
             Entity entity3 = new Entity("elliottesmith", "Elliotte Smith", scheme);
 
+            entityList.Add(entity0);
             entityList.Add(entity1);
             entityList.Add(entity2);
             entityList.Add(entity3);

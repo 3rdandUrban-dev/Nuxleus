@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Saxon.Api.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
@@ -40,13 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\Authenticate.cs">
+    <Compile Include="Authentication\*.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Clipboard\*.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Clipboard\" />
+    <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">
+      <Project>{0FFD8B77-2852-4CB0-9B85-29424C40FC44}</Project>
+      <Name>Nuxleus.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.IO\Nuxleus.IO.csproj">
+      <Project>{76B51906-3D94-412F-B943-84CD2A41AE11}</Project>
+      <Name>Nuxleus.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Utility\Nuxleus.Utility.csproj">
+      <Project>{3D54F988-AF1D-4B5C-A013-C85525926692}</Project>
+      <Name>Nuxleus.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

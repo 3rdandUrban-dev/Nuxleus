@@ -1,13 +1,14 @@
 using System;
-using Extf.Net;
-using Extf.Net.Configuration;
+using Nuxleus.Configuration;
 
 [assembly: CLSCompliant(true)]
-namespace X5 {
+namespace Nuxleus.Service
+{
 
-    public partial class GlobalClip {
+    public partial class GlobalClip
+    {
 
-        public GlobalClip () { }
+        public GlobalClip() { }
 
     }
 }
