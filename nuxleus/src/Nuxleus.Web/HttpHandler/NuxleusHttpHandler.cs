@@ -29,7 +29,7 @@ namespace Nuxleus.Web.HttpHandler
         {
             HttpRequest req = context.Request;
             HttpResponse resp = context.Response;
-
+	    /*
             string title = req.Form["title"];
             string location = req.Form["location"];
             DateTime startDate = DateTime.Parse(req.Form["startdate"]);
@@ -93,6 +93,7 @@ namespace Nuxleus.Web.HttpHandler
             info.MemcachedResourceInfo = memInfo;
 
             Store.Process(info);
+	    */
         }
 
         public bool IsReusable

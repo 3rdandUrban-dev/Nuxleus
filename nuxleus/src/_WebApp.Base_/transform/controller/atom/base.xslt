@@ -22,8 +22,6 @@
     </xsl:template>
     
     <xsl:function name="func:build-atom-entry">
-        <xsl:variable name="atom-entry" select="http-atompub-utils:GenerateEntry($current-context)"/>
-        <xsl:message select="$atom-entry"></xsl:message>
     </xsl:function>
    
 </xsl:transform>

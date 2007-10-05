@@ -386,5 +386,57 @@
   </target>
   <target name="clean">
     <delete dir="${build.dir}" failonerror="false"/>
-  </target>
+  </target> 
+<!-- This does not work yet quite well unfortunately
+  <target name="nuxdoc" description="Build Nuxleus SDK documentation">
+        <echo message="Building Nuxleus SDK documentation" />
+  	<ndoc>      
+	  <assemblies basedir="${build.dir}">
+            <include name="Nuxleus.dll" />
+        <include name="Nuxleus.Authentication.dll"/>
+        <include name="Nuxleus.Configuration.dll"/>
+        <include name="Nuxleus.Cryptography.dll"/>
+        <include name="Nuxleus.Entity.dll"/>
+        <include name="Nuxleus.Extension.dll"/>
+        <include name="Nuxleus.Extension.Amp.Fm.dll"/>
+        <include name="Nuxleus.IO.dll"/>
+        <include name="Nuxleus.Messaging.dll"/>
+        <include name="Nuxleus.Process.dll"/>
+        <include name="Nuxleus.PubSub.dll"/>
+        <include name="Nuxleus.Service.dll"/>
+        <include name="Nuxleus.Utility.dll"/>
+        <include name="Nuxleus.Web.dll"/>
+        <include name="Xameleon.dll"/>
+	  </assemblies>
+	  <summaries basedir="${build.dir}">
+            <include name="NamespaceSummary.xml" />
+	  </summaries>
+	  <documenters>
+            <documenter name="MSDN">
+              <property name="OutputDirectory" value="doc" />
+              <property name="HtmlHelpName" value="Nuxleus" />            
+	      <property name="HtmlHelpCompilerFilename" value="hhc.exe" />
+              <property name="IncludeFavorites" value="False" />
+              <property name="Title" value="An NDoc Documented Class Library" />
+              <property name="SplitTOCs" value="False" />
+              <property name="DefaulTOC" value="" />
+              <property name="ShowVisualBasic" value="False" />
+              <property name="ShowMissingSummaries" value="True" />
+              <property name="ShowMissingRemarks" value="True" />
+              <property name="ShowMissingParams" value="True" />
+              <property name="ShowMissingReturns" value="True" />
+              <property name="ShowMissingValues" value="True" />
+              <property name="DocumentInternals" value="False" />
+              <property name="DocumentProtected" value="True" />
+              <property name="DocumentPrivates" value="False" />
+              <property name="DocumentEmptyNamespaces" value="False" />
+              <property name="IncludeAssemblyVersion" value="True" />
+            </documenter>
+	  </documenters> 
+	  <referencepaths>
+	    <include name="${dependencies.dir}" />
+	    </referencepaths>
+	</ndoc>
+	</target>
+-->
 </project>
