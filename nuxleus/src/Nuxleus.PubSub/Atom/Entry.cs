@@ -8,294 +8,102 @@
 // 
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Xml;
 using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Nuxleus.Atom
 {
-    public class AtomEntry
+  [XmlRootAttribute("entry", Namespace="http://www.w3.org/2005/Atom", IsNullable=false)]
+    public class Entry
     {
-        private string id = null;
-        private string title = null;
-        private DateTime? updated = null;
-        private DateTime? published = null;
-        private DateTime? edited = null;
-        private IList<Link> links = new List<Link>();
-        private IList<Author> authors = new List<Author>();
-        private TextConstruct summary = null;
-        private TextConstruct rights = null;
-        private TextConstruct content = null;
+      private static XmlSerializerNamespaces xmlns = null;
 
-        public AtomEntry() { }
+      [XmlAttribute("lang", Form=System.Xml.Schema.XmlSchemaForm.Qualified, 
+		    Namespace="http://www.w3.org/XML/1998/namespace")]
+	public string Lang;
 
-        public string Id
-        {
-            get
-            {
-                return this.id;
-            }
-            set
-            {
-                this.id = value;
-            }
-        }
+      [XmlAttribute("base", Form=System.Xml.Schema.XmlSchemaForm.Qualified, 
+		    Namespace="http://www.w3.org/XML/1998/namespace")]
+	public string Base;
 
-        public string Title
-        {
-            get
-            {
-                return this.title;
-            }
-            set
-            {
-                this.title = value;
-            }
-        }
+      [XmlElement (ElementName="id", IsNullable=false)]
+	public string Id;
 
-        public DateTime? Updated
-        {
-            get
-            {
-                return this.updated;
-            }
-            set
-            {
-                this.updated = value;
-            }
-        }
+      	[XmlElement (ElementName="title", IsNullable=false)]
+	public string Title;
 
-        public DateTime? Published
-        {
-            get
-            {
-                return this.published;
-            }
-            set
-            {
-                this.published = value;
-            }
-        }
+      	[XmlElement (ElementName="icon")]
+	public string Icon;
+      
+      	[XmlElement (ElementName="logo")]
+	public string Logo;
 
-        public DateTime? Edited
-        {
-            get
-            {
-                return this.edited;
-            }
-            set
-            {
-                this.edited = value;
-            }
-        }
+      [XmlElement (Type=typeof(DateTime), ElementName="published")]
+	public DateTime? Published;
 
-        public IList<Link> Links
-        {
-            get
-            {
-                return this.links;
-            }
-        }
+      	[XmlElement (Type=typeof(DateTime),ElementName="updated")]
+	public DateTime? Updated = DateTime.UtcNow;
 
-        public IList<Author> Authors
-        {
-            get
-            {
-                return this.authors;
-            }
-        }
+      [XmlElement (Type=typeof(DateTime), ElementName="edited", 
+		   Namespace = "http://www.w3.org/2007/app")]
+      public DateTime? Edited;
 
-        public TextConstruct Summary
-        {
-            get
-            {
-                return this.summary;
-            }
-            set
-            {
-                this.summary = value;
-            }
-        }
+      [XmlElement (Type=typeof(Author), ElementName="author")]
+	public Author[] Authors;
 
-        public TextConstruct Rights
-        {
-            get
-            {
-                return this.rights;
-            }
-            set
-            {
-                this.rights = value;
-            }
-        }
+      [XmlElement (Type=typeof(Contributor), ElementName="contributor")]
+	public Contributor[] Contributors;
+      
+      [XmlElement (Type=typeof(Category), ElementName="category")]
+	public Category[] Categories;
+      
+      [XmlElement (Type=typeof(Link), ElementName="link")]
+	public Link[] Links;
+      
+      [XmlElement (Type=typeof(Nuxleus.Atom.Summary), ElementName="summary")]
+	public Nuxleus.Atom.Summary Summary;
 
-        public TextConstruct Content
-        {
-            get
-            {
-                return this.content;
-            }
-            set
-            {
-                this.content = value;
-            }
-        }
+      [XmlElement (Type=typeof(Nuxleus.Atom.Rights), ElementName="rights")]
+	public Nuxleus.Atom.Rights Rights;
 
-        public XmlDocument Document
-        {
-            get
-            {
-                XmlDocument doc = new XmlDocument();
-                XmlDeclaration decl = doc.CreateXmlDeclaration("1.0", "utf-8", null);
+      [XmlElement (Type=typeof(Nuxleus.Atom.Content), ElementName="content")]
+      public Nuxleus.Atom.Content Content;
 
-                XmlElement root = doc.CreateElement("atom", "entry", "http://www.w3.org/2005/Atom");
-                doc.InsertBefore(decl, doc.DocumentElement);
-                doc.AppendChild(root);
+      [XmlElement (DataType="ulong", ElementName="total", 
+		   Namespace="http://purl.org/syndication/thread/1.0")]
+      public ulong? TotalResponses;
+      
+      [XmlElement (Type=typeof(Nuxleus.Atom.InReplyTo), ElementName="in-reply-to", 
+		   Namespace="http://purl.org/syndication/thread/1.0")]
+      public Nuxleus.Atom.InReplyTo InReplyTo;
 
-                XmlElement e = null;
-
-                if (this.Id != null)
-                {
-                    e = doc.CreateElement("atom", "id", "http://www.w3.org/2005/Atom");
-                    e.InnerText = this.Id;
-                    root.AppendChild(e);
-                }
-
-                if (this.Title != null)
-                {
-                    e = doc.CreateElement("atom", "title", "http://www.w3.org/2005/Atom");
-                    e.InnerText = this.Title;
-                    root.AppendChild(e);
-                }
-
-                if (this.Updated.HasValue)
-                {
-                    e = doc.CreateElement("atom", "updated", "http://www.w3.org/2005/Atom");
-                    e.InnerText = this.Updated.Value.ToString("o");
-                    root.AppendChild(e);
-                }
-
-                if (this.Published.HasValue)
-                {
-                    e = doc.CreateElement("atom", "published", "http://www.w3.org/2005/Atom");
-                    e.InnerText = this.Published.Value.ToString("o");
-                    root.AppendChild(e);
-                }
-
-                if (this.Edited.HasValue)
-                {
-                    e = doc.CreateElement("app", "edited", "http://www.w3.org/2007/app");
-                    e.InnerText = this.Edited.Value.ToString("o");
-                    root.AppendChild(e);
-                }
-
-                XmlNode node = null;
-
-                foreach (Author author in this.Authors)
-                {
-                    node = doc.ImportNode(author.Node, true);
-                    root.AppendChild(node);
-                }
-
-                foreach (Link link in this.Links)
-                {
-                    node = doc.ImportNode(link.Node, true);
-                    root.AppendChild(node);
-                }
-
-                if (this.Summary != null)
-                {
-                    node = doc.ImportNode(this.Summary.Node, true);
-                    root.AppendChild(node);
-                }
-
-                if (this.Content != null)
-                {
-                    node = doc.ImportNode(this.Content.Node, true);
-                    root.AppendChild(node);
-                }
-
-                return doc;
-            }
-
-            set
-            {
-                this.Node = value.DocumentElement;
-            }
-        }
-
-        public XmlNode Node
-        {
-            get
-            {
-                XmlDocument doc = this.Document;
-                return doc.DocumentElement;
-            }
-            set
-            {
-                XmlDocument doc = value.OwnerDocument;
-                XmlNamespaceManager nsmgr = new XmlNamespaceManager(doc.NameTable);
-                nsmgr.AddNamespace("atom", "http://www.w3.org/2005/Atom");
-                nsmgr.AddNamespace("app", "http://www.w3.org/2007/app");
-
-                XmlNode root = value;
-
-                XmlNode e = root.SelectSingleNode("./atom:id", nsmgr);
-                if (e != null)
-                {
-                    this.Id = e.InnerText;
-                }
-
-                e = root.SelectSingleNode("./atom:updated", nsmgr);
-                if (e != null)
-                {
-                    this.Updated = DateTime.Parse(e.InnerText);
-                }
-
-                e = root.SelectSingleNode("./atom:published", nsmgr);
-                if (e != null)
-                {
-                    this.Published = DateTime.Parse(e.InnerText);
-                }
-
-                e = root.SelectSingleNode("./app:edited", nsmgr);
-                if (e != null)
-                {
-                    this.Edited = DateTime.Parse(e.InnerText);
-                }
-
-                XmlNodeList links = root.SelectNodes("./atom:link", nsmgr);
-                foreach (XmlNode link in links)
-                {
-                    Link l = new Link();
-                    l.Node = link;
-                    this.Links.Add(l);
-                }
-
-                XmlNodeList authors = root.SelectNodes("./atom:author", nsmgr);
-                foreach (XmlNode author in authors)
-                {
-                    Author a = new Author();
-                    a.Node = author;
-                    this.Authors.Add(a);
-                }
-
-                e = root.SelectSingleNode("./atom:content", nsmgr);
-                if (e != null)
-                {
-                    this.Content = new TextConstruct();
-                    this.Content.Node = e;
-                }
-
-                e = root.SelectSingleNode("./atom:summary", nsmgr);
-                if (e != null)
-                {
-                    this.Summary = new TextConstruct();
-                    this.Summary.Node = e;
-                }
-            }
-        }
+      
+      public static Entry Parse(string xml) {
+	XmlReader reader = XmlReader.Create(new StringReader(xml));
+	XmlSerializer serializer = new XmlSerializer(typeof(Entry));
+	return (Entry)serializer.Deserialize(reader);
+      }
+      
+      public static Entry Parse(Stream stream) {
+	XmlSerializer serializer = new XmlSerializer(typeof(Entry));
+	return (Entry)serializer.Deserialize(stream);
+      }
+      
+      public override string ToString() {
+	if(xmlns == null) {
+	  xmlns = new XmlSerializerNamespaces();
+	  xmlns.Add(String.Empty, "http://www.w3.org/2005/Atom");
+	  xmlns.Add("app", "http://www.w3.org/2007/app");
+	  xmlns.Add("thr", "http://purl.org/syndication/thread/1.0");
+	}
+	StringBuilder sb = new StringBuilder();
+	StringWriter writer = new StringWriter(sb);
+	XmlSerializer serializer = new XmlSerializer(typeof(Entry));
+	serializer.Serialize(writer, this);
+	return sb.ToString();
+      }
     }
+
 }

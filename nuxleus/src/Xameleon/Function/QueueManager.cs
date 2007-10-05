@@ -15,7 +15,9 @@ namespace Xameleon.Function
 
         private static string Push(string queueName, string message)
         {
-            PushMessage pm = new PushMessage();
+            Message pm = new Message();
+	    pm.Op = new Operation();
+	    pm.Op.Type = OperationType.PushMessage;
             pm.QueueId = queueName;
             pm.Payload = Convert.ToBase64String(Encoding.ASCII.GetBytes(message));
 

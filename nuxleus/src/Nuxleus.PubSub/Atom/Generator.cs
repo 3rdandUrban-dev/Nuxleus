@@ -1,5 +1,5 @@
 //
-// category.cs: 
+// generator.cs: 
 //
 // Author:
 //   Sylvain Hellegouarch (sh@defuze.org)
@@ -13,15 +13,15 @@ using System.Xml.Serialization;
 
 namespace Nuxleus.Atom
 {
-    public class Category
+    public class Generator
     {
-      	[XmlAttribute ("term")]
-	public string Term;
+      	[XmlAttribute ("uri")]
+	public string Uri;
 
-      	[XmlAttribute ("scheme")]
-	public string Scheme;
+      	[XmlAttribute ("version")]
+	public string Version;
 
-      	[XmlAttribute ("label")]
-	public string Label;
+      [XmlText]
+      public string Text;
     }
 }

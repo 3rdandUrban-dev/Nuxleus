@@ -18,7 +18,7 @@ namespace Nuxleus.Bucker
     // see http://www.mono-project.com/Coding_Guidelines#Locking_and_Threading
     static object lockobj = new object ();
 
-    private static Queue<IMessage> messages = new Queue<IMessage>();
+    private static Queue<Message> messages = new Queue<Message>();
     private static Queue<QueueClient>freeClients = new Queue<QueueClient>();
     private static Queue<QueueClient>busyClients = new Queue<QueueClient>();
     private static bool run = false;
@@ -73,7 +73,7 @@ namespace Nuxleus.Bucker
       }
     }
 
-    public static void Enqueue(IMessage message) {
+    public static void Enqueue(Message message) {
       if(!run) {
 	throw new InvalidOperationException("The pool is not running");
       }
@@ -86,7 +86,7 @@ namespace Nuxleus.Bucker
     public static void Process() {
       while(run) {
 	for(int i=0;i<freeClients.Count;i++){
-	  IMessage m = null;
+	  Message m = null;
 
 	  lock(lockobj) {
 	    if(messages.Count > 0) {

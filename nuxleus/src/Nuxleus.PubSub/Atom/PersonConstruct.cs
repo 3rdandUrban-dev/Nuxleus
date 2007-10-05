@@ -1,5 +1,5 @@
 //
-// category.cs: 
+// personconstruct.cs: 
 //
 // Author:
 //   Sylvain Hellegouarch (sh@defuze.org)
@@ -13,15 +13,15 @@ using System.Xml.Serialization;
 
 namespace Nuxleus.Atom
 {
-    public class Category
+    public class PersonConstruct
     {
-      	[XmlAttribute ("term")]
-	public string Term;
+      	[XmlElement ("name")]
+	public string Name;
 
-      	[XmlAttribute ("scheme")]
-	public string Scheme;
+      	[XmlElement ("email")]
+	public string Email;
 
-      	[XmlAttribute ("label")]
-	public string Label;
+      	[XmlElement ("uri")]
+	public string Uri;
     }
 }

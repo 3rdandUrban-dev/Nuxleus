@@ -21,10 +21,10 @@ namespace Nuxleus.Bucker
 
   public class MessageInfo {
     private QueueClient q = null;
-    private IMessage m = null;
+    private Message m = null;
 
     public MessageInfo() {}
-    public MessageInfo(QueueClient qc, IMessage m) {
+    public MessageInfo(QueueClient qc, Message m) {
       this.q = qc;
       this.m = m;
     }
@@ -34,7 +34,7 @@ namespace Nuxleus.Bucker
       set { q = value; }
     }
     
-    public IMessage Message {
+    public Message Message {
       get { return m; }
       set { m = value; }
     }
@@ -173,8 +173,8 @@ namespace Nuxleus.Bucker
     /// Send a message instance.
     /// </summary>   
     /// <param name="m">Message instance.</param>
-    public void Send(IMessage m) {
-      this.Send(m.Serialize());
+    public void Send(Message m) {
+      this.Send(m.ToString());
     }
 
     /// <summary> 
@@ -195,8 +195,8 @@ namespace Nuxleus.Bucker
     /// </summary> 
     /// <param name="m">Message instance.</param>  
     /// <param name="ev">Synchronisation event used by the calling thread.</param>
-    public void AsyncSend(IMessage m, ManualResetEvent ev) {
-      this.AsyncSend(m.Serialize(), ev);
+    public void AsyncSend(Message m, ManualResetEvent ev) {
+      this.AsyncSend(m.ToString(), ev);
     }
 
     private void SendCallback(IAsyncResult ar) {
