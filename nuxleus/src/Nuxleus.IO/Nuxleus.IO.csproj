@@ -38,12 +38,30 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Memcached.ClientLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Saxon.Api.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clipboard\Cache.cs" />
+    <Compile Include="Clipboard\Clipboard.cs" />
+    <Compile Include="Clipboard\ClipData.cs" />
+    <Compile Include="Clipboard\ClipItem.cs" />
+    <Compile Include="Clipboard\Copy.cs" />
+    <Compile Include="Clipboard\Credentials.cs" />
+    <Compile Include="Clipboard\GlobalClip.cs" />
+    <Compile Include="Clipboard\Init.cs" />
+    <Compile Include="Clipboard\Paste.cs" />
+    <Compile Include="Clipboard\Provider.cs" />
+    <Compile Include="Clipboard\Resources.cs" />
+    <Compile Include="Clipboard\Serializer.cs" />
+    <Compile Include="Clipboard\SessionVariables.cs" />
     <Compile Include="Diff\Diff.cs" />
     <Compile Include="Diff\Merge.cs" />
     <Compile Include="Diff\Patch.cs" />
@@ -73,6 +91,10 @@
     <ProjectReference Include="..\Nuxleus.Process\Nuxleus.Process.csproj">
       <Project>{62B71546-D55D-4B35-9D84-CDF8ED555E52}</Project>
       <Name>Nuxleus.Process</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Utility\Nuxleus.Utility.csproj">
+      <Project>{3D54F988-AF1D-4B5C-A013-C85525926692}</Project>
+      <Name>Nuxleus.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
