@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AmazonWebServices\AWSAuthConnection.cs" />
     <Compile Include="Facebook\Facebook.cs" />
+    <Compile Include="OpenID\OpenID.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
