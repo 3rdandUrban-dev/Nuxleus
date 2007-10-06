@@ -65,7 +65,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Development", "..\Web\Devel
 		Debug.AspNetCompiler.PhysicalPath = "..\Web\Development\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Development\"
 		Debug.AspNetCompiler.Updateable = "true"
-Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/Development"
@@ -87,6 +87,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Language", "Nuxleus.Language\Nuxleus.Language.csproj", "{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Command", "Nuxleus.Command\Nuxleus.Command.csproj", "{091EC796-27A0-4EDF-9286-B7ABF7981769}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Build", "Nuxleus.Build\Nuxleus.Build.csproj", "{A605AE3C-C79F-43F4-8979-2624544DFC84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -348,6 +350,16 @@ Global
 		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Release|Any CPU.Build.0 = Release|Any CPU
 		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{091EC796-27A0-4EDF-9286-B7ABF7981769}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A605AE3C-C79F-43F4-8979-2624544DFC84}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{A605AE3C-C79F-43F4-8979-2624544DFC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A605AE3C-C79F-43F4-8979-2624544DFC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A605AE3C-C79F-43F4-8979-2624544DFC84}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A605AE3C-C79F-43F4-8979-2624544DFC84}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A605AE3C-C79F-43F4-8979-2624544DFC84}.Release|.NET.ActiveCfg = Release|Any CPU
+		{A605AE3C-C79F-43F4-8979-2624544DFC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A605AE3C-C79F-43F4-8979-2624544DFC84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A605AE3C-C79F-43F4-8979-2624544DFC84}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A605AE3C-C79F-43F4-8979-2624544DFC84}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
