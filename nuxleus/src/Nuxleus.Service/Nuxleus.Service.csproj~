@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.20706</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{64C1203C-1912-4FE0-BA73-01BA2B0758E4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuxleus.FileSystem</RootNamespace>
-    <AssemblyName>Watcher</AssemblyName>
+    <RootNamespace>Nuxleus.Service</RootNamespace>
+    <AssemblyName>Nuxleus.Service</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\docs\FileSystemWatcher.xml</DocumentationFile>
+    <DocumentationFile>..\docs\Nuxleus.Service.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,18 +33,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Watcher.cs" />
+    <Compile Include="Authentication\Authenticate.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.Service\Nuxleus.Service.csproj">
-      <Project>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</Project>
-      <Name>Nuxleus.Service</Name>
-    </ProjectReference>
+    <Folder Include="Clipboard\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

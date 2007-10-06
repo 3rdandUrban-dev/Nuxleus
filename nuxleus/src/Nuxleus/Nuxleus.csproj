@@ -6,7 +6,7 @@
     <ProductVersion>9.0.20706</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B0D68D3E-8ACE-4F33-9E85-F32CED622614}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Nuxleus</RootNamespace>
     <AssemblyName>Nuxleus</AssemblyName>
@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="Agent\Core.cs" />
     <Compile Include="Core.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
