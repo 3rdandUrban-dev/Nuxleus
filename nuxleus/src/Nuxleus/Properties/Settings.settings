@@ -1,9 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Nuxleus.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="Nuxleus_Amp_Fm_Search" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://dev.amp.fm:8080/service/search/default.asmx</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

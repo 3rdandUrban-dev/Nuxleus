@@ -22,15 +22,5 @@ namespace Nuxleus.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://dev.amp.fm:8080/service/search/default.asmx")]
-        public string Nuxleus_Amp_Fm_Search {
-            get {
-                return ((string)(this["Nuxleus_Amp_Fm_Search"]));
-            }
-        }
     }
 }

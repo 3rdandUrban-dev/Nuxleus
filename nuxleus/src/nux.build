@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project name="Xameleon" default="all">
   <property name="project.version" value="0.2.3.4"/>
-  <property name="source.dir" value="./src"/>
-  <property name="dependencies.dir" value="./src/Dependencies"/>
-  <property name="build.dir" value="./src/build/bin"/>
-  <property name="prod.web.install.dir" value="./Web/Production"/>
-  <property name="dev.web.install.dir" value="./Web/Development"/>
-  <property name="test.web.install.dir" value="./Web/Test"/>
+  <property name="source.dir" value="."/>
+  <property name="dependencies.dir" value="./Dependencies"/>
+  <property name="build.dir" value="./build/bin"/>
+  <property name="prod.web.install.dir" value="../Web/Production"/>
+  <property name="dev.web.install.dir" value="../Web/Development"/>
+  <property name="test.web.install.dir" value="../Web/Test"/>
   <target name="init">
     <mkdir dir="${build.dir}" failonerror="false"/>
   </target>
@@ -69,6 +69,23 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus" depends="init Xameleon Nuxleus.Entity">
+    <csc target="library" output="${build.dir}/Nuxleus.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Xameleon.dll"/>
+        <include name="${build.dir}/Nuxleus.Entity.dll"/>
+        <include name="System.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+        <include name="System.EnterpriseServices.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Authentication" depends="init Nuxleus.Utility">
     <csc target="library" output="${build.dir}/Nuxleus.Authentication.dll">
       <sources>
@@ -85,6 +102,20 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.Build" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Build.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Build/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Configuration.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Configuration" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Configuration.dll">
       <sources>
@@ -96,6 +127,21 @@
         <include name="System.Xml.dll"/>
         <include name="System.Web.dll"/>
         <include name="System.Configuration.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="Nuxleus.Command" depends="init">
+    <csc target="exe" output="${build.dir}/nux.exe">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Command/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+        <include name="System.EnterpriseServices.dll"/>
       </references>
     </csc>
   </target>
@@ -177,18 +223,21 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.IO" depends="init Nuxleus.Configuration Nuxleus.Process">
+  <target name="Nuxleus.IO" depends="init Nuxleus.Configuration Nuxleus.Process Nuxleus.Utility">
     <csc target="library" output="${build.dir}/Nuxleus.IO.dll">
       <sources>
         <include name="${source.dir}/Nuxleus.IO/**/*.cs"/>
       </sources>
       <references>
         <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+        <include name="${dependencies.dir}/Saxon.Api.dll"/>
+        <include name="${build.dir}/Nuxleus.Utility.dll"/>
         <include name="${build.dir}/Nuxleus.Configuration.dll"/>
         <include name="${build.dir}/Nuxleus.Process.dll"/>
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
         <include name="System.Configuration.dll"/>
       </references>
     </csc>
@@ -264,9 +313,11 @@
       <references>
         <include name="${dependencies.dir}/Saxon.Api.dll"/>
         <include name="${build.dir}/Nuxleus.Utility.dll"/>
+        <include name="${build.dir}/Nuxleus.Process.dll"/>
         <include name="${build.dir}/Nuxleus.Configuration.dll"/>
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
+        <include name="System.ServiceProcess.dll"/>
         <include name="System.Xml.dll"/>
         <include name="System.Web.dll"/>
         <include name="System.Web.Services.dll"/>
@@ -332,30 +383,13 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus" depends="init Xameleon Nuxleus.Entity">
-    <csc target="exe" output="${build.dir}/Nuxleus.exe">
-      <sources>
-        <include name="${source.dir}/Nuxleus/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Xameleon.dll"/>
-        <include name="${build.dir}/Nuxleus.Entity.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
   <target name="Watcher" depends="init Nuxleus">
     <csc target="exe" output="${build.dir}/Watcher.exe">
       <sources>
         <include name="${source.dir}/FileSystemWatcher/Watcher.cs"/>
       </sources>
       <references>
-        <include name="${build.dir}/Nuxleus.IO.dll"/>
+        <include name="${build.dir}/Nuxleus.Service.dll"/>
         <include name="System.dll"/>
       </references>
     </csc>
@@ -365,10 +399,12 @@
     <call target="Xameleon"/>
     <call target="XSP"/>
     <call target="Nuxleus.Authentication"/>
+    <call target="Nuxleus.Build"/>
     <call target="Nuxleus.Configuration"/>
     <call target="Nuxleus.Extension"/>
     <call target="Nuxleus.Entity"/>
     <call target="Nuxleus.Cryptography"/>
+    <call target="Nuxleus.Command"/>
     <call target="Nuxleus.Extension.Amp.Fm"/>
     <!-- <call target="Nuxleus.Extension.Silverlight"/> -->
     <call target="Nuxleus.IO"/>
@@ -464,6 +500,6 @@
 	    <include name="${dependencies.dir}" />
 	    </referencepaths>
 	</ndoc>
-	</target>
+	</target>nant 
 -->
 </project>

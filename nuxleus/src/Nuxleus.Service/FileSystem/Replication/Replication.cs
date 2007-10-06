@@ -50,7 +50,7 @@ namespace Nuxleus.Service
         public ReplicationService()
         {
             CanPauseAndContinue = true;
-            CanHandleSessionChangeEvent = true;
+            //CanHandleSessionChangeEvent = true;
             ServiceName = "ReplicationService";
         }
 
