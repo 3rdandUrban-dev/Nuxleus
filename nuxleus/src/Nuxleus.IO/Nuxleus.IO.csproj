@@ -62,18 +62,11 @@
     <Compile Include="Clipboard\Resources.cs" />
     <Compile Include="Clipboard\Serializer.cs" />
     <Compile Include="Clipboard\SessionVariables.cs" />
-    <Compile Include="Diff\Diff.cs" />
-    <Compile Include="Diff\Merge.cs" />
-    <Compile Include="Diff\Patch.cs" />
-    <Compile Include="Diff\StructuredDiff.cs" />
-    <Compile Include="Diff\TextDiff.cs" />
-    <Compile Include="Diff\UnifiedDiff.cs" />
     <Compile Include="FileSystem\Watcher.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Memcached\Memcached.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RevisionControl\RevisionControlManager.cs" />
     <Compile Include="Storage\FS.cs" />
     <Compile Include="Storage\FSStorage.cs" />
     <Compile Include="Storage\IStorage.cs" />
