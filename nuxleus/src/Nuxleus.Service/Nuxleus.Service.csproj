@@ -50,7 +50,6 @@
     <Compile Include="Authentication\*.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Clipboard\*.cs" />
     <Compile Include="FileSystem\Replication\Replication.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -80,6 +79,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Clipboard\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
