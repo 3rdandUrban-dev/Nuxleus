@@ -198,6 +198,8 @@ namespace Nuxleus.Bucker
 		    IsNullable=false)]
   public class Message
   {
+    private static XmlWriterSettings settings = null;
+
     [XmlAttribute("lang", Form=System.Xml.Schema.XmlSchemaForm.Qualified, 
 		  Namespace="http://www.w3.org/XML/1998/namespace")]
     public string Lang;
@@ -252,7 +254,14 @@ namespace Nuxleus.Bucker
 
     public override string ToString() {
       StringBuilder sb = new StringBuilder();
-      StringWriter writer = new StringWriter(sb);
+
+      if(settings == null) {
+	settings = new XmlWriterSettings();
+	settings.Indent = false;
+	settings.OmitXmlDeclaration = true;
+      }
+
+      XmlWriter writer = XmlWriter.Create(sb, settings);
       XmlSerializer serializer = new XmlSerializer(typeof(Message));
       serializer.Serialize(writer, this);
       return sb.ToString();

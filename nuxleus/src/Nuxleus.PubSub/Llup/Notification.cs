@@ -13,6 +13,7 @@ namespace Nuxleus.Llup
     public class Notification
     {
       private static XmlSerializerNamespaces xmlns = null;
+      private static XmlWriterSettings settings = null;
 
 	[XmlElement (ElementName="recipient")]
 	public string Recipient;
@@ -61,9 +62,15 @@ namespace Nuxleus.Llup
 	  xmlns.Add("llup", "http://www.x2x2x.org/llup");
 	  xmlns.Add(String.Empty, "http://www.w3.org/2005/Atom");
 	}
-	
+
+	if(settings == null) {
+	  settings = new XmlWriterSettings();
+	  settings.Indent = false;
+	  settings.OmitXmlDeclaration = true;
+	}
+
 	StringBuilder sb = new StringBuilder();
-	StringWriter writer = new StringWriter(sb);
+	XmlWriter writer = XmlWriter.Create(sb, settings);
 	XmlSerializer serializer = new XmlSerializer(typeof(Notification));
 	serializer.Serialize(writer, this, xmlns);
 	return sb.ToString();
