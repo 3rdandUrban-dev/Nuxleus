@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{20A5D77E-E1EA-47E9-80CE-96FC138399C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Echo", "Echo", "{35BBD746-7586-40B8-BADE-0E00917C991D}"
@@ -9,11 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{699FD8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{65E7E013-F28B-4EAA-9876-5D113A80C629}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{BB00112F-C1ED-48E6-B19C-D7C977F4AC6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chat", "Chat", "{38EDFCAC-8EFC-4209-9BF4-C4F4CBB0A00D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{8EF3542A-B5ED-4CC1-B6E0-F17C8526E17A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{DA61A52A-8722-46CC-A93F-C98C822B9D67}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoCryptService", "Demos\Echo\EchoCryptService\EchoCryptService.csproj", "{6F3E0292-6C57-4AE8-B653-D8671A4D14E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoSocketService", "Demos\Echo\EchoSocketService\EchoSocketService.csproj", "{5A92571E-8466-48F3-AB25-F8D095FA5B31}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{BB00112F-C1ED-48E6-B19C-D7C977F4AC6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoFormServer", "Demos\Echo\EchoFormServer\EchoFormServer.csproj", "{79EB90DE-AAB2-4674-8A7E-7236795DBA2F}"
 EndProject
@@ -28,12 +34,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoWindowsServiceServer", "Demos\Echo\EchoWindowsServiceServer\EchoWindowsServiceServer.csproj", "{2A6F8E3E-7857-4724-B7DE-7F853082CDAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoFormClientSynch", "Demos\Echo\EchoFormClientSynch\EchoFormClientSynch.csproj", "{0FC1F03D-2D00-4B0B-AF01-5BBF6FEBED8D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chat", "Chat", "{38EDFCAC-8EFC-4209-9BF4-C4F4CBB0A00D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{8EF3542A-B5ED-4CC1-B6E0-F17C8526E17A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{DA61A52A-8722-46CC-A93F-C98C822B9D67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatClient", "Demos\Chat\ChatClient\ChatClient.csproj", "{5D0BE1BF-74BD-4C08-81DE-47A27D045A74}"
 EndProject
