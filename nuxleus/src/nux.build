@@ -427,6 +427,26 @@
       </references>
     </csc>
   </target>
+  <target name="System.Messaging" depends="init">
+    <csc target="library" output="${build.dir}/System.Messaging.dll">
+      <sources>
+        <include name="${dependencies.dir}/Vendor/Mono/mcs/build/common/*.cs"/>
+        <include name="${dependencies.dir}/Vendor/Mono/mcs/class/System.Messaging/System.Messaging/**/*.cs"/>
+        <include name="${dependencies.dir}/Vendor/Mono/mcs/class/System.Messaging/System.Messaging.Design/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.ServiceProcess.dll"/>
+        <include name="System.Configuration.dll"/>
+        <include name="System.Configuration.Install.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Drawing.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+        <include name="System.Windows.Forms.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="all">
     <call target="init"/>
     <call target="Xameleon"/>
@@ -454,6 +474,7 @@
     <call target="Nuxleus"/>
     <call target="Watcher"/>
     <call target="ReplicationService"/>
+    <call target="System.Messaging"/>
   </target>
   <target name="production" depends="all">
     <copy todir="${prod.web.install.dir}" overwrite="true">
