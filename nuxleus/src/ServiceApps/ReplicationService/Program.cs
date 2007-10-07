@@ -14,13 +14,9 @@ namespace Nuxleus.Service
         // The main entry point for the process
         static void Main(string[] args)
         {
-
             ServiceBase[] ServicesToRun;
-
             ServicesToRun = new ServiceBase[] { new FileSystemWatcherService("foo") };
-
             ServiceBase.Run(ServicesToRun);
-
         }
     }
 }

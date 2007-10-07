@@ -430,7 +430,9 @@
   <target name="System.Messaging" depends="init">
     <csc target="library" output="${build.dir}/System.Messaging.dll">
       <sources>
-        <include name="${dependencies.dir}/Vendor/Mono/mcs/build/common/*.cs"/>
+        <include name="${dependencies.dir}/Vendor/Mono/mcs/build/common/Locale.cs"/>
+        <include name="${dependencies.dir}/Vendor/Mono/mcs/build/common/MonoTODOAttribute.cs"/>
+        <include name="${dependencies.dir}/ModifiedFiles/Consts.cs"/>
         <include name="${dependencies.dir}/Vendor/Mono/mcs/class/System.Messaging/System.Messaging/**/*.cs"/>
         <include name="${dependencies.dir}/Vendor/Mono/mcs/class/System.Messaging/System.Messaging.Design/**/*.cs"/>
       </sources>
