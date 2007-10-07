@@ -1,0 +1,100 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{79EB90DE-AAB2-4674-8A7E-7236795DBA2F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EchoFormServer</RootNamespace>
+    <AssemblyName>EchoFormServer</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmEchoServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEchoServer.Designer.cs">
+      <DependentUpon>frmEchoServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmEchoServer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmEchoServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Source\ALAZ.SystemEx.NetEx\ALAZ.SystemEx.NetEx.csproj">
+      <Project>{25162422-3B32-4FB3-8A99-6BCFBE30D9AE}</Project>
+      <Name>ALAZ.SystemEx.NetEx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Source\ALAZ.SystemEx\ALAZ.SystemEx.csproj">
+      <Project>{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2}</Project>
+      <Name>ALAZ.SystemEx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EchoCryptService\EchoCryptService.csproj">
+      <Project>{6F3E0292-6C57-4AE8-B653-D8671A4D14E6}</Project>
+      <Name>EchoCryptService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EchoForm\EchoFormTemplate.csproj">
+      <Project>{8B7FCE2F-AB20-4486-8002-4D981D856CB9}</Project>
+      <Name>EchoFormTemplate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EchoSocketService\EchoSocketService.csproj">
+      <Project>{5A92571E-8466-48F3-AB25-F8D095FA5B31}</Project>
+      <Name>EchoSocketService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

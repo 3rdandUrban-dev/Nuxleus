@@ -1,0 +1,66 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{03466540-41CD-428D-944E-77E74C0EEED3}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EchoConsoleClient</RootNamespace>
+    <AssemblyName>EchoConsoleClient</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Source\ALAZ.SystemEx.NetEx\ALAZ.SystemEx.NetEx.csproj">
+      <Project>{25162422-3B32-4FB3-8A99-6BCFBE30D9AE}</Project>
+      <Name>ALAZ.SystemEx.NetEx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Source\ALAZ.SystemEx\ALAZ.SystemEx.csproj">
+      <Project>{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2}</Project>
+      <Name>ALAZ.SystemEx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EchoCryptService\EchoCryptService.csproj">
+      <Project>{6F3E0292-6C57-4AE8-B653-D8671A4D14E6}</Project>
+      <Name>EchoCryptService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EchoSocketService\EchoSocketService.csproj">
+      <Project>{5A92571E-8466-48F3-AB25-F8D095FA5B31}</Project>
+      <Name>EchoSocketService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
