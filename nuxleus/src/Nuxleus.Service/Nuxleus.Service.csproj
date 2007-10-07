@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
@@ -54,6 +55,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="FileSystem\RevisionControl\RevisionControlManager.cs" />
+    <Compile Include="FileSystem\Watcher\FileSystemWatcherService.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FileSystem\Watcher\Watcher.cs">
       <SubType>Component</SubType>
     </Compile>

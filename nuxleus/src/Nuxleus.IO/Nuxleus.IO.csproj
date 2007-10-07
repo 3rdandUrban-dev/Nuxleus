@@ -89,6 +89,14 @@
       <Project>{3D54F988-AF1D-4B5C-A013-C85525926692}</Project>
       <Name>Nuxleus.Utility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Vendor\Nuxleus.Vendor.csproj">
+      <Project>{350B7FF7-7D9E-486C-986C-1772E9672A88}</Project>
+      <Name>Nuxleus.Vendor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Socket\" />
+    <Folder Include="Thread\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

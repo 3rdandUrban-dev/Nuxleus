@@ -223,7 +223,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.IO" depends="init Nuxleus.Configuration Nuxleus.Process Nuxleus.Utility">
+  <target name="Nuxleus.IO" depends="init Nuxleus.Configuration Nuxleus.Process Nuxleus.Utility Nuxleus.Vendor">
     <csc target="library" output="${build.dir}/Nuxleus.IO.dll">
       <sources>
         <include name="${source.dir}/Nuxleus.IO/**/*.cs"/>
@@ -316,6 +316,8 @@
         <include name="${build.dir}/Nuxleus.Process.dll"/>
         <include name="${build.dir}/Nuxleus.Configuration.dll"/>
         <include name="System.dll"/>
+        <include name="System.Configuration.dll"/>
+        <include name="System.Configuration.Install.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.ServiceProcess.dll"/>
         <include name="System.Xml.dll"/>
@@ -334,6 +336,22 @@
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
         <include name="System.Web.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="Nuxleus.Vendor" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Vendor.dll">
+      <sources>
+        <exclude name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx/Properties/AssemblyInfo.cs"/>
+        <include name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx/**/*.cs"/>
+        <include name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx.NetEx/SocketsEx/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Windows.Forms.dll"/>
       </references>
     </csc>
   </target>
@@ -383,14 +401,29 @@
       </references>
     </csc>
   </target>
-  <target name="Watcher" depends="init Nuxleus">
+  <target name="Watcher" depends="init Nuxleus Nuxleus.Service">
     <csc target="exe" output="${build.dir}/Watcher.exe">
       <sources>
-        <include name="${source.dir}/FileSystemWatcher/Watcher.cs"/>
+        <include name="${source.dir}/ConsoleApps/FileSystemWatcher/Watcher.cs"/>
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Service.dll"/>
         <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="ReplicationService" depends="init Nuxleus Nuxleus.Service">
+    <csc target="exe" output="${build.dir}/ReplicationService.exe">
+      <sources>
+        <include name="${source.dir}/ConsoleApps/ReplicationService/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Service.dll"/>
+        <include name="System.dll"/>
+        <include name="System.ServiceProcess.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
       </references>
     </csc>
   </target>
@@ -415,10 +448,12 @@
     <call target="Nuxleus.Semantics"/>
     <call target="Nuxleus.Service"/>
     <call target="Nuxleus.Utility"/>
+    <call target="Nuxleus.Vendor"/>
     <call target="Nuxleus.Web"/>
     <!-- <call target="Nuxleus.Web.Services"/> -->
     <call target="Nuxleus"/>
     <call target="Watcher"/>
+    <call target="ReplicationService"/>
   </target>
   <target name="production" depends="all">
     <copy todir="${prod.web.install.dir}" overwrite="true">
