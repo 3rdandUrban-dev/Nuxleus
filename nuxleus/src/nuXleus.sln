@@ -90,7 +90,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Command", "Nuxleus.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Build", "Nuxleus.Build\Nuxleus.Build.csproj", "{A605AE3C-C79F-43F4-8979-2624544DFC84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplicationService", "ConsoleApps\ReplicationService\ReplicationService.csproj", "{DC9DABBE-3A78-4847-A494-73970802E651}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplicationService", "ServiceApps\ReplicationService\ReplicationService.csproj", "{DC9DABBE-3A78-4847-A494-73970802E651}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Vendor", "Nuxleus.Vendor\Nuxleus.Vendor.csproj", "{350B7FF7-7D9E-486C-986C-1772E9672A88}"
 EndProject

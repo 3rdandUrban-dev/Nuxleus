@@ -415,7 +415,7 @@
   <target name="ReplicationService" depends="init Nuxleus Nuxleus.Service">
     <csc target="exe" output="${build.dir}/ReplicationService.exe">
       <sources>
-        <include name="${source.dir}/ConsoleApps/ReplicationService/**/*.cs"/>
+        <include name="${source.dir}/ServiceApps/ReplicationService/**/*.cs"/>
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Service.dll"/>
