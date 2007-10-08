@@ -17,7 +17,6 @@ namespace Xameleon.Function
         {
 	  // The actual Queue Message to send
 	  Message pm = new Message();
-	  pm.Op = new Operation();
 	  pm.Op.Type = OperationType.PushMessage;
 	  pm.QueueId = queueName;
 	  pm.Payload = Convert.ToBase64String(Encoding.ASCII.GetBytes(message));

@@ -259,7 +259,8 @@ namespace Nuxleus.Bucker
 	if(!ms.Dismiss) {
 	  ms.Data.Append(Encoding.UTF8.GetString(ms.Buffer, 0, bytesRead));
 	  try {
-	    Message m = Message.Parse(ms.Data.ToString());
+	    char[] charsToTrim = {'\r', '\n'};
+	    Message m = Message.Parse(ms.Data.ToString().TrimEnd(charsToTrim));
 	    ms.OnMessageReceived(new MessageStateEventArgs(m));
 	  } catch (XmlException xe) {
 	    // Basically this means the data we have read was not yet the full response

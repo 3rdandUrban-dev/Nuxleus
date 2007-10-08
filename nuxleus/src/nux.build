@@ -265,7 +265,7 @@
         <include name="System.Xml.dll"/>
       </references>
     </csc>
-  </target>
+  </target>  
   <target name="Nuxleus.Logging" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Logging.dll">
       <sources>
@@ -277,7 +277,8 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Messaging" depends="init">
+<<<<<<< .mine
+  <target name="Nuxleus.Messaging" depends="init Nuxleus.PubSub">
     <csc target="library" output="${build.dir}/Nuxleus.Messaging.dll">
       <sources>
         <include name="${source.dir}/Nuxleus.Messaging/**/*.cs"/>
@@ -285,6 +286,9 @@
       <references>
         <include name="System.dll"/>
         <include name="System.Xml.dll"/>
+        <include name="${build.dir}/Nuxleus.PubSub.dll"/>
+        <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
+        <include name="${dependencies.dir}/ALAZ.SystemEx.dll"/>
       </references>
     </csc>
   </target>

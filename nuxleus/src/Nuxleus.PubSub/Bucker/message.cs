@@ -231,7 +231,7 @@ namespace Nuxleus.Bucker
     public string[] Queues;
 
     [XmlElement (ElementName="op", Type=typeof(Operation))]
-    public Operation Op = null;
+    public Operation Op = new Operation();
 
     [XmlElement (ElementName="error", Type=typeof(Error))]
     public Error Error = null;
@@ -252,6 +252,14 @@ namespace Nuxleus.Bucker
       return (Message)serializer.Deserialize(stream);
     }
 
+    public static Message Parse(byte[] bytes) {
+      MemoryStream stream = new MemoryStream(bytes);
+      XmlSerializer serializer = new XmlSerializer(typeof(Message));
+      Message m = (Message)serializer.Deserialize(stream);
+      stream.Close();
+      return m;
+    }
+
     public override string ToString() {
       StringBuilder sb = new StringBuilder();
 
@@ -265,6 +273,14 @@ namespace Nuxleus.Bucker
       XmlSerializer serializer = new XmlSerializer(typeof(Message));
       serializer.Serialize(writer, this);
       return sb.ToString();
+    }
+
+    public static byte[] Serialize(Message message) {
+      return Encoding.UTF8.GetBytes(message.ToString());
+    }
+
+    public static byte[] Serialize(Message message, Encoding encoding) {
+      return encoding.GetBytes(message.ToString());
     }
   }
 }
