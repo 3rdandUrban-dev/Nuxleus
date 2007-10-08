@@ -266,6 +266,17 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.Logging" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Logging.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Logging/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Xml.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Messaging" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Messaging.dll">
       <sources>
@@ -480,6 +491,7 @@
     <call target="Nuxleus.Extension.Silverlight"/>
     <call target="Nuxleus.IO"/>
     <call target="Nuxleus.Language"/>
+    <call target="Nuxleus.Logging"/>
     <call target="Nuxleus.Messaging"/>
     <call target="Nuxleus.Process"/>
     <call target="Nuxleus.PubSub"/>
