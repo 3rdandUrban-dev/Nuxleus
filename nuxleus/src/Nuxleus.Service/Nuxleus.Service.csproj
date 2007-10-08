@@ -34,6 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ALAZ.SystemEx, Version=1.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\ALAZ.SystemEx.dll</HintPath>
+    </Reference>
+    <Reference Include="ALAZ.SystemEx.NetEx, Version=1.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\ALAZ.SystemEx.NetEx.dll</HintPath>
+    </Reference>
     <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Saxon.Api.dll</HintPath>
@@ -72,6 +80,10 @@
     <ProjectReference Include="..\Nuxleus.IO\Nuxleus.IO.csproj">
       <Project>{76B51906-3D94-412F-B943-84CD2A41AE11}</Project>
       <Name>Nuxleus.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
+      <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
+      <Name>Nuxleus.Messaging</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Process\Nuxleus.Process.csproj">
       <Project>{62B71546-D55D-4B35-9D84-CDF8ED555E52}</Project>

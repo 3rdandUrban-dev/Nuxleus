@@ -10,44 +10,30 @@ using System.Text;
 using System.Runtime.Remoting;
 using System.Runtime.Remoting.Messaging;
 using System.Configuration.Install;
+using Nuxleus.Messaging;
 
 namespace Nuxleus.Service
 {
     public class ReplicationService : ServiceBase
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
-        private Container components = null;
+        Container components = null;
+        MessageQueueServer _messageQueueServer;
 
-        public ReplicationService()
+        public ReplicationService(int port)
         {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
+            _messageQueueServer = new MessageQueueServer(port);
         }
 
         // The main entry point for the process
         public static void Main(object[] args)
         {
-            if (args.Length == 1 && (string)args[0] == "-standalone")
-            {
-                ReplicationService svc = new ReplicationService();
-
-                svc.OnStart(null);
-
-                Thread.Sleep(3000);
-
-                svc.OnStop();
-            }
-            else
-            {
-                ServiceBase[] ServicesToRun;
-
-                ServicesToRun = new ServiceBase[] { new ReplicationService() };
-
-                ServiceBase.Run(ServicesToRun);
-            }
+            ServiceBase[] ServicesToRun;
+            ServicesToRun = new ServiceBase[] { new ReplicationService((int)args[0]) };
+            ServiceBase.Run(ServicesToRun);
         }
+
 
         /// <summary> 
         /// Required method for Designer support - do not modify 
@@ -56,7 +42,7 @@ namespace Nuxleus.Service
         private void InitializeComponent()
         {
             components = new Container();
-            this.ServiceName = "Replication Service";
+            this.ServiceName = "nuXleus File Replication Service";
         }
 
         /// <summary>
@@ -81,7 +67,8 @@ namespace Nuxleus.Service
         {
             try
             {
-                Log.Write("Starting Service...");
+                Log.Write("Starting nuXleus File Replication Service...");
+                _messageQueueServer.Start();
             }
             catch (Exception ex)
             {
@@ -96,7 +83,8 @@ namespace Nuxleus.Service
         {
             try
             {
-                Log.Write("Stopping Service...");
+                Log.Write("Stopping nuXleus File Replication Service...");
+                _messageQueueServer.Stop();
                 this.Dispose();
             }
             catch (Exception ex)

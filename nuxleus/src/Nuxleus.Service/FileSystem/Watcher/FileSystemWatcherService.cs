@@ -19,7 +19,7 @@ namespace Nuxleus.Service
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private Container components = null;
+        Container components = null;
         Watcher _fileSystemWatcher;
         TextWriter _writer;
         StringBuilder _builder;

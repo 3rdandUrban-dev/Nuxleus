@@ -15,7 +15,7 @@ namespace Nuxleus.Service
         static void Main(string[] args)
         {
             ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[] { new FileSystemWatcherService("foo") };
+            ServicesToRun = new ServiceBase[] { new ReplicationService(3369) };
             ServiceBase.Run(ServicesToRun);
         }
     }
