@@ -156,7 +156,7 @@ namespace Nuxleus.RevisionControl
 
         private void ProcessQueue(Queue queue, OperationType operation)
         {
-            while (queue.Count >= 0)
+            while (queue.Count != 0)
             {
                 switch (operation)
                 {
