@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent.cs" />
     <Compile Include="AmazonWebServices\AWSAuthConnection.cs" />
     <Compile Include="Facebook\Facebook.cs" />
     <Compile Include="OpenID\OpenID.cs" />
@@ -50,6 +51,9 @@
       <Project>{3D54F988-AF1D-4B5C-A013-C85525926692}</Project>
       <Name>Nuxleus.Utility</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Extf.Net.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -41,7 +41,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.Service\Nuxleus.Service.csproj">
+    <ProjectReference Include="..\..\Nuxleus.Service\Nuxleus.Service.csproj">
       <Project>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</Project>
       <Name>Nuxleus.Service</Name>
     </ProjectReference>

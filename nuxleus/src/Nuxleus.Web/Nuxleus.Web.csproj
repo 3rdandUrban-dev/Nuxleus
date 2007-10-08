@@ -118,6 +118,7 @@
     <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPWorkerRequest.cs">
       <Link>WebServer\Mono.WebServer\XSPWorkerRequest.cs</Link>
     </Compile>
+    <Compile Include="Agent.cs" />
     <Compile Include="WebServer\WebServer.cs" />
     <Compile Include="HttpApplication\*.cs" />
     <Compile Include="HttpHandler\*.cs" />

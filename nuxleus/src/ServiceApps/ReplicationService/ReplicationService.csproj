@@ -42,11 +42,11 @@
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.IO\Nuxleus.IO.csproj">
+    <ProjectReference Include="..\..\Nuxleus.IO\Nuxleus.IO.csproj">
       <Project>{76B51906-3D94-412F-B943-84CD2A41AE11}</Project>
       <Name>Nuxleus.IO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Service\Nuxleus.Service.csproj">
+    <ProjectReference Include="..\..\Nuxleus.Service\Nuxleus.Service.csproj">
       <Project>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</Project>
       <Name>Nuxleus.Service</Name>
     </ProjectReference>

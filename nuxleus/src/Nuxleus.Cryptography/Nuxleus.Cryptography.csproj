@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent.cs" />
     <Compile Include="Cryptography\Hash.cs" />
     <Compile Include="Cryptography\HashcodeGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

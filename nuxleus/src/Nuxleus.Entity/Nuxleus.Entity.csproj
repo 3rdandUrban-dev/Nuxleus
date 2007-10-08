@@ -38,6 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent.cs" />
     <Compile Include="Entity\Entity.cs" />
     <Compile Include="Entity\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

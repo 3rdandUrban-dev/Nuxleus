@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Web.Configuration;
 using System.Web.Services;
 using System.Web;
-using Nuxleus;
+using Nuxleus.Entity;
 using System.Xml.Serialization;
 
 namespace Nuxleus.Extension.Amp.Fm
@@ -21,7 +21,7 @@ namespace Nuxleus.Extension.Amp.Fm
         [WebMethod(
             Description = "Returns a list of media file titles that contain the specified search phrase",
             EnableSession = false)]
-        [XmlInclude(typeof(Entity))]
+        [XmlInclude(typeof(Entity.Entity))]
         public ArrayList SearchTitle(string searchPhrase, params string[] additionalSearchParams)
         {
             return search(searchPhrase, TYPE.TITLE);
@@ -30,7 +30,7 @@ namespace Nuxleus.Extension.Amp.Fm
         [WebMethod(
             Description = "Returns a list of artists that contain the specified search phrase",
             EnableSession = false)]
-        [XmlInclude(typeof(Entity))]
+        [XmlInclude(typeof(Entity.Entity))]
         public ArrayList SearchArtist(string artistName)
         {
             return search(artistName, TYPE.ARTIST);
@@ -39,7 +39,7 @@ namespace Nuxleus.Extension.Amp.Fm
         [WebMethod(
             Description = "Returns a list of genres that contain the specified search phrase",
             EnableSession = false)]
-        [XmlInclude(typeof(Entity))]
+        [XmlInclude(typeof(Entity.Entity))]
         public ArrayList SearchGenre(string genre)
         {
             return search(genre, TYPE.GENRE);
@@ -48,22 +48,22 @@ namespace Nuxleus.Extension.Amp.Fm
         [WebMethod(
             Description = "Returns a list of media files whos associated lyrics contain the specified search phrase",
             EnableSession = false)]
-        [XmlInclude(typeof(Entity))]
+        [XmlInclude(typeof(Entity.Entity))]
         public ArrayList SearchLyrics(string searchPhrase)
         {
             return search(searchPhrase, TYPE.LYRICS);
         }
 
         [WebMethod]
-        [XmlInclude(typeof(Entity))]
+        [XmlInclude(typeof(Entity.Entity))]
         private ArrayList search(string searchPhrase, TYPE type)
         {
             ArrayList entityList = new ArrayList();
             string scheme = "http://amp.fm/";
-            Entity entity0 = new Entity("search", searchPhrase, scheme);
-            Entity entity1 = new Entity("pearljam", "Pearl Jam", scheme);
-            Entity entity2 = new Entity("foobarfighters", "FooBar Fighters", scheme);
-            Entity entity3 = new Entity("elliottesmith", "Elliotte Smith", scheme);
+            Entity.Entity entity0 = new Entity.Entity("search", searchPhrase, scheme);
+            Entity.Entity entity1 = new Entity.Entity("pearljam", "Pearl Jam", scheme);
+            Entity.Entity entity2 = new Entity.Entity("foobarfighters", "FooBar Fighters", scheme);
+            Entity.Entity entity3 = new Entity.Entity("elliottesmith", "Elliotte Smith", scheme);
 
             entityList.Add(entity0);
             entityList.Add(entity1);

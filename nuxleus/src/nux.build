@@ -174,7 +174,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Extension" depends="init Nuxleus.Cryptography ">
+  <target name="Nuxleus.Extension" depends="init Nuxleus.Cryptography">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.dll">
       <sources>
         <include name="${source.dir}/Nuxleus.Extension/**/*.cs"/>
@@ -189,6 +189,19 @@
         <include name="System.Web.dll"/>
         <include name="System.Web.Services.dll"/>
         <include name="System.EnterpriseServices.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="Nuxleus.Extension.Community" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Extension.Community.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Extension.Community/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
       </references>
     </csc>
   </target>
@@ -401,7 +414,7 @@
       </references>
     </csc>
   </target>
-  <target name="Watcher" depends="init Nuxleus Nuxleus.Service">
+  <target name="FileSystemWatcher" depends="init Nuxleus Nuxleus.Service">
     <csc target="exe" output="${build.dir}/Watcher.exe">
       <sources>
         <include name="${source.dir}/ConsoleApps/FileSystemWatcher/Watcher.cs"/>
@@ -453,6 +466,7 @@
     <call target="init"/>
     <call target="Xameleon"/>
     <call target="XSP"/>
+    <call target="Nuxleus"/>
     <call target="Nuxleus.Authentication"/>
     <call target="Nuxleus.Build"/>
     <call target="Nuxleus.Configuration"/>
@@ -460,8 +474,10 @@
     <call target="Nuxleus.Entity"/>
     <call target="Nuxleus.Cryptography"/>
     <call target="Nuxleus.Command"/>
+    <call target="Nuxleus.Extension"/>
+    <call target="Nuxleus.Extension.Community"/>
     <call target="Nuxleus.Extension.Amp.Fm"/>
-    <!-- <call target="Nuxleus.Extension.Silverlight"/> -->
+    <call target="Nuxleus.Extension.Silverlight"/>
     <call target="Nuxleus.IO"/>
     <call target="Nuxleus.Language"/>
     <call target="Nuxleus.Messaging"/>
@@ -472,9 +488,8 @@
     <call target="Nuxleus.Utility"/>
     <call target="Nuxleus.Vendor"/>
     <call target="Nuxleus.Web"/>
-    <!-- <call target="Nuxleus.Web.Services"/> -->
-    <call target="Nuxleus"/>
-    <call target="Watcher"/>
+    <call target="Nuxleus.Web.Services"/>
+    <call target="FileSystemWatcher"/>
     <call target="ReplicationService"/>
     <call target="System.Messaging"/>
   </target>

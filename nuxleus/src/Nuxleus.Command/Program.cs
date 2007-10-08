@@ -4,7 +4,7 @@ using System.Collections;
 using Nuxleus;
 using Nuxleus.Amp.Fm;
 
-namespace Nuxleus
+namespace Nuxleus.Command
 {
     public class Command
     {

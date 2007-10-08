@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent.cs" />
     <Compile Include="Diff\Diff.cs" />
     <Compile Include="Diff\Merge.cs" />
     <Compile Include="Diff\Patch.cs" />

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent.cs" />
     <Compile Include="Process\DarcsProcess.cs">
       <SubType>Component</SubType>
     </Compile>

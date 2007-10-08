@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.20706</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</ProjectGuid>
+    <ProjectGuid>{E93FCC90-2594-45FF-9B5F-407ECB3E7939}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuxleus.Messaging</RootNamespace>
-    <AssemblyName>Nuxleus.Messaging</AssemblyName>
+    <RootNamespace>Nuxleus.Extension.Community</RootNamespace>
+    <AssemblyName>Nuxleus.Extension.Community</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
@@ -23,7 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\docs\Nuxleus.Messaging.XML</DocumentationFile>
+    <DocumentationFile>..\docs\Nuxleus.Extension.Community.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
