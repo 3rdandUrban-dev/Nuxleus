@@ -18,8 +18,8 @@ using ALAZ.SystemEx.ThreadingEx;
 
 namespace Nuxleus.Messaging {
   public delegate void MessageEventHandler(ISocketConnection sender, IMessage m);
-  public delegate void QueueEventHandler(object sender);
-  public delegate void QueueFailureEventHandler(object sender, Exception ex);
+  public delegate void QueueEventHandler(ISocketConnection sender);
+  public delegate void QueueFailureEventHandler(ISocketConnection sender, Exception ex);
 
   public class MessageQueueService : BaseSocketService {
     private ISocketConnection connection = null;
@@ -47,14 +47,14 @@ namespace Nuxleus.Messaging {
       connection = e.Connection;
       connection.BeginReceive();
       if(Connected != null) {
-	Connected(this);
+	Connected(this.Connection);
       }
       ConnectEvent.Set();
     }
 
     public override void OnSent(MessageEventArgs e) {
       if(Sent != null) {
-	Sent(this);
+	Sent(e.Connection);
       }
       SentEvent.Set();
     }
@@ -72,14 +72,14 @@ namespace Nuxleus.Messaging {
 
     public override void OnDisconnected(ConnectionEventArgs e) {
       if(Disconnected != null) {
-	Disconnected(this);
+	Disconnected(this.Connection);
       }
       DisconnectEvent.Set();
     }
 
     public override void OnException(ExceptionEventArgs e) {
       if(Failure != null) {
-	Failure(this, e.Exception);
+	Failure(this.Connection, e.Exception);
       }
       ExceptionEvent.Set();
     }

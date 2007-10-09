@@ -278,7 +278,7 @@
     </csc>
   </target>
   <target name="Nuxleus.Messaging" depends="init Nuxleus.PubSub Nuxleus.Vendor">
-    <csc target="library" output="${build.dir}/Nuxleus.Messaging.dll" debug="true">
+    <csc target="library" output="${build.dir}/Nuxleus.Messaging.dll">
       <sources>
         <include name="${source.dir}/Nuxleus.Messaging/**/*.cs"/>
       </sources>

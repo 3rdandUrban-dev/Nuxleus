@@ -1,6 +1,15 @@
-
+//
+// BuckerServerService.cs: Bucker queue service implementation
+// See: http://trac.defuze.org/wiki/bucker
+//
+// Author:
+//   Sylvain Hellegouarch (sh@3rdandurban.com)
+//
+// Copyright (C) 2007, Sylvain Hellegouarch
+// 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Memcached.ClientLibrary;
 using Nuxleus.Bucker;
 
@@ -9,15 +18,17 @@ using ALAZ.SystemEx.NetEx.SocketsEx;
 namespace  Nuxleus.Messaging.QS {
   public class BuckerServerService {
     private static DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToUniversalTime();
+    private static char[] comma = {','};
 
     private MessageQueueService service = null;
     private MemcachedClient mc = null;
     private string rootQueueId = null;
+    private IList<IntPtr> clientsToDisconnect = new List<IntPtr>();
 
     public BuckerServerService(string[] servers, string rootQueueId) {
       this.rootQueueId = rootQueueId;
 
-      SockIOPool pool = SockIOPool.GetInstance();
+      SockIOPool pool = SockIOPool.GetInstance("bucker-queue-server");
       pool.SetServers(servers);
       pool.InitConnections = 3;
       pool.MinConnections = 3;
@@ -36,22 +47,50 @@ namespace  Nuxleus.Messaging.QS {
       mc.Add(rootQueueId, String.Empty);
     }
 
+    public void Close() {
+      SockIOPool pool = SockIOPool.GetInstance("bucker-queue-server");
+      pool.Shutdown();
+    }
+
     public MessageQueueService Service {
       get { return service; }
       set {
 	service = value;
 	service.Received += new MessageEventHandler(this.MessageReceived);
-	service.Connected += new QueueEventHandler(this.ClientConnected);
+	service.Sent += new QueueEventHandler(this.MessageSent);
+	//service.Connected += new QueueEventHandler(this.ClientConnected);
 	service.Failure += new QueueFailureEventHandler(this.FailureRaised);
       }
     }
 
-    private void FailureRaised(object sender, Exception ex) {
+    private void FailureRaised(ISocketConnection sender, Exception ex) {
       Console.WriteLine(ex.ToString());
+      
+      // since the client generated an exceptipon we will disconnect it
+      // as soon as the error message below is sent
+      clientsToDisconnect.Add(sender.SocketHandle);
+
+      // we warn the client something happened
+      Nuxleus.Bucker.Message m = new Nuxleus.Bucker.Message();
+      m.Type = "error";
+      m.Op = null;
+      m.Error = new Nuxleus.Bucker.Error();
+      m.Error.Type = "internal-server-error";
+      m.Error.Code = 500;
+      sender.BeginSend(Nuxleus.Bucker.Message.Serialize(m));
     }
 
-    private void ClientConnected(object sender) {
-      Console.WriteLine("connected");
+    private void ClientConnected(ISocketConnection sender) {
+      // nothing
+    }
+
+    private void MessageSent(ISocketConnection sender) {
+      // In case the last message sent to the client was to warn it an error occured
+      // we should have its handle in there and just close the connection
+      if(clientsToDisconnect.Contains(sender.SocketHandle)) {
+	clientsToDisconnect.Remove(sender.SocketHandle);
+	sender.BeginDisconnect();
+      }
     }
 
     private Nuxleus.Bucker.Message CheckQueueId(string queueId) {
@@ -178,7 +217,6 @@ namespace  Nuxleus.Messaging.QS {
       if(queues.Contains(qid)) {
 	queues = queues.Replace(qid, "");
 	queues = queues.Replace(",,", "");
-	char[] comma = {','};
 	queues = queues.Trim(comma);
 	mc.Set(rootQueueId, queues);
       } 
@@ -293,7 +331,6 @@ namespace  Nuxleus.Messaging.QS {
       if(keys.Contains(m.MessageId)) {
 	keys = keys.Replace(m.MessageId, "");
 	keys = keys.Replace(",,", "");
-	char[] comma = {','};
 	keys = keys.Trim(comma);
 	mc.Set(m.QueueId, keys);
       }
@@ -337,7 +374,6 @@ namespace  Nuxleus.Messaging.QS {
 	  if(unread.Contains(m.MessageId)) {
 	    unread = unread.Replace(m.MessageId, "");
 	    unread = unread.Replace(",,", "");
-	    char[] comma = {','};
 	    unread = unread.Trim(comma);
 	    mc.Set(unreadKey, unread);
 	  }
@@ -378,18 +414,20 @@ namespace  Nuxleus.Messaging.QS {
     }
 
     private void MessageReceived(ISocketConnection sender, IMessage message) {
+      if(clientsToDisconnect.Contains(sender.SocketHandle)) {
+	// if the client has been scheduled to be closed we don't process any of its
+	// incoming data
+	return;
+      }
+
       Nuxleus.Bucker.Message m = Nuxleus.Bucker.Message.Parse(message.InnerMessage);
       Nuxleus.Bucker.Message responseToSend = null;
 
+      Console.WriteLine(m.ToString());
+
       switch(m.Op.Type) {
-      case OperationType.NewQueue:
-	responseToSend = HandleNewQueueRequest(m);
-	break;
-      case OperationType.DeleteQueue:
-	responseToSend = HandleDeleteQueueRequest(m);
-	break;
-      case OperationType.ListQueues:
-	responseToSend = HandleListQueuesRequest(m);
+      case OperationType.GetMessage:
+	responseToSend = HandleGetMessageRequest(m);
 	break;
       case OperationType.ListMessages:
 	responseToSend = HandleListMessagesRequest(m);
@@ -400,8 +438,22 @@ namespace  Nuxleus.Messaging.QS {
       case OperationType.DeleteMessage:
 	responseToSend = HandleDeleteMessageRequest(m);
 	break;
-      case OperationType.GetMessage:
-	responseToSend = HandleGetMessageRequest(m);
+      case OperationType.NewQueue:
+	responseToSend = HandleNewQueueRequest(m);
+	break;
+      case OperationType.DeleteQueue:
+	responseToSend = HandleDeleteQueueRequest(m);
+	break;
+      case OperationType.ListQueues:
+	responseToSend = HandleListQueuesRequest(m);
+	break;
+      default:
+	responseToSend = new Nuxleus.Bucker.Message();
+	responseToSend.Type = "error";
+	responseToSend.Op = null;
+	responseToSend.Error = new Nuxleus.Bucker.Error();
+	responseToSend.Error.Type = "operation-not-allowed";
+	responseToSend.Error.Code = 405;
 	break;
       }
 

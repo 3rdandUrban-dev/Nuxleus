@@ -17,6 +17,7 @@ using System.Text;
 namespace Nuxleus.Bucker
 {
   public enum OperationType {
+    Unknown,
     ListQueues,
     NewQueue,
     DeleteQueue,
@@ -78,12 +79,15 @@ namespace Nuxleus.Bucker
       }
     }
 
-    OperationType type;
+    OperationType type = OperationType.Unknown;
     [XmlIgnoreAttribute()]
     public OperationType Type {
       get { return type; }
       set { type = value; }
     }
+
+    [XmlAnyElement]
+    public XmlElement[] ForeignElements;
 
     [XmlElement ("new-queue")]
     public string NewQueue {
