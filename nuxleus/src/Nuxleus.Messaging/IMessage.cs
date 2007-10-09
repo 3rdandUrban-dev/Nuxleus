@@ -19,15 +19,9 @@ namespace Nuxleus.Messaging {
     string Id { get; set; }
 
     /// <summary>
-    /// The payload really is the message body itself and it is up
-    /// to each implementation of this interface to provide any
-    /// meaning in the context it is used.
+    /// Actual message depending on the implementation of
+    /// this interface.
     /// </summary>
-    object Payload { get; set; }
-
-    byte[] Serialize();
-
-    void Deserialize(byte[] data); 
-    void Deserialize(string data); 
+    byte[] InnerMessage { get; set; }
   }
 }

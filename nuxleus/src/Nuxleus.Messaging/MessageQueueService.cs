@@ -1,5 +1,6 @@
 //
-// IMessageQueue.cs: Bucker message queue
+// QueueService.cs: Defines the service class used by the different clients or servers
+// to perform tasks upon socket events.
 //
 // Author:
 //   Sylvain Hellegouarch (sh@3rdandurban.com)
@@ -15,8 +16,8 @@ using System.Threading;
 using ALAZ.SystemEx.NetEx.SocketsEx;
 using ALAZ.SystemEx.ThreadingEx;
 
-namespace Nuxleus.Messaging.QS {
-  public delegate void MessageEventHandler(IMessage m);
+namespace Nuxleus.Messaging {
+  public delegate void MessageEventHandler(ISocketConnection sender, IMessage m);
   public delegate void QueueEventHandler(object sender);
   public delegate void QueueFailureEventHandler(object sender, Exception ex);
 
@@ -45,7 +46,6 @@ namespace Nuxleus.Messaging.QS {
     public override void OnConnected(ConnectionEventArgs e) {
       connection = e.Connection;
       connection.BeginReceive();
-      Console.WriteLine("Connected");
       if(Connected != null) {
 	Connected(this);
       }
@@ -53,7 +53,6 @@ namespace Nuxleus.Messaging.QS {
     }
 
     public override void OnSent(MessageEventArgs e) {
-      Console.WriteLine("Sent");
       if(Sent != null) {
 	Sent(this);
       }
@@ -61,18 +60,17 @@ namespace Nuxleus.Messaging.QS {
     }
 
     public override void OnReceived(MessageEventArgs e) {
-      Console.WriteLine("Received");
       IMessage m = new Message();
-      m.Deserialize(e.Buffer);
+      m.InnerMessage = new byte[e.Buffer.Length];
+      Array.Copy(e.Buffer, m.InnerMessage, e.Buffer.Length);
       if(Received != null) {
-	Received(m);
+	Received(e.Connection, m);
       }
       ReceivedEvent.Set();
       connection.BeginReceive();
     }
 
     public override void OnDisconnected(ConnectionEventArgs e) {
-      Console.WriteLine("Disconnected");
       if(Disconnected != null) {
 	Disconnected(this);
       }
@@ -80,7 +78,6 @@ namespace Nuxleus.Messaging.QS {
     }
 
     public override void OnException(ExceptionEventArgs e) {
-      Console.WriteLine(String.Format("Error {0}", e.Exception.ToString()));
       if(Failure != null) {
 	Failure(this, e.Exception);
       }

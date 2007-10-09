@@ -278,7 +278,7 @@
     </csc>
   </target>
   <target name="Nuxleus.Messaging" depends="init Nuxleus.PubSub Nuxleus.Vendor">
-    <csc target="library" output="${build.dir}/Nuxleus.Messaging.dll">
+    <csc target="library" output="${build.dir}/Nuxleus.Messaging.dll" debug="true">
       <sources>
         <include name="${source.dir}/Nuxleus.Messaging/**/*.cs"/>
       </sources>
@@ -287,6 +287,7 @@
         <include name="System.Xml.dll"/>
         <include name="${build.dir}/Nuxleus.PubSub.dll"/>
         <include name="${build.dir}/Nuxleus.Vendor.dll"/>
+        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
 <!--         <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
         <include name="${dependencies.dir}/ALAZ.SystemEx.dll"/> -->
       </references>

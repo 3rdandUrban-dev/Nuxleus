@@ -16,12 +16,7 @@ namespace Nuxleus.Messaging {
     string Id { get; set; }
 
     void Send(IMessage message);
-
-    /// <summary>
-    /// shortcut version to avoid having to create
-    /// a full message.
-    /// </summary>
-    void Send(object payload);
+    void Send(byte[] data);
 
     void Open();
     void Close();

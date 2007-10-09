@@ -23,7 +23,7 @@ namespace Nuxleus.Service
         {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
-            _messageQueueServer = new MessageQueueServer(port);
+            _messageQueueServer = new MessageQueueServer(port, "\n");
         }
 
         // The main entry point for the process
