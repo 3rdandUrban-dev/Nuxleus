@@ -1,0 +1,107 @@
+using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.ServiceProcess;
+using System.IO;
+using System.Threading;
+using System.Reflection;
+using System.Text;
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Messaging;
+using System.Configuration.Install;
+using Nuxleus.Messaging;
+using Nuxleus.Messaging.QS;
+
+namespace Nuxleus.Service
+{
+    public class BuckerQueueServerService : ServiceBase
+    {
+        Container components = null;
+        MessageQueueServer _messageQueueServer;
+	BuckerServerService buckerHandler = null;
+
+	public BuckerQueueServerService(int port, string[] memcachedServers, string topLevelQueueId)
+	  {
+            // This call is required by the Windows.Forms Component Designer.
+            InitializeComponent();
+            _messageQueueServer = new MessageQueueServer(port, "\r\n\r\n");
+	    buckerHandler = new BuckerServerService(memcachedServers, topLevelQueueId);
+	    buckerHandler.Service = _messageQueueServer.Service;
+        }
+
+        // The main entry point for the process
+        public static void Main(object[] args)
+        {
+            ServiceBase[] ServicesToRun;
+	    string[] memcachedServers = ((string)args[1]).Split(':');
+	    string topLevelQueueId = (string)args[2];
+            ServicesToRun = new ServiceBase[] { new BuckerQueueServerService((int)args[0], memcachedServers, topLevelQueueId) };
+            ServiceBase.Run(ServicesToRun);
+        }
+
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            components = new Container();
+            this.ServiceName = "nuXleus queue server";
+        }
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
+
+        /// <summary>
+        /// Set things in motion so your service can do its work.
+        /// </summary>
+        protected override void OnStart(string[] args)
+        {
+            try
+            {
+                Log.Write("Starting nuXleus queue server...");
+                _messageQueueServer.Start();
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex);
+            }
+        }
+
+        /// <summary>
+        /// Stop this service.
+        /// </summary>
+        protected override void OnStop()
+        {
+            try
+            {
+                Log.Write("Stopping nuXleus queue server...");
+		buckerHandler.Close();
+                _messageQueueServer.Stop();
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Log.Write(ex);
+            }
+        }
+
+
+
+    }
+
+}
