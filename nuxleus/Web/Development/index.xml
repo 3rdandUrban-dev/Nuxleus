@@ -6,8 +6,7 @@
   http://www.opensource.org/licenses/mit-license.php for specific detail.
 -->
 <my:session xmlns:my="http://xameleon.org/my">
-  <my:page
-      xmlns="http://www.w3.org/1999/xhtml"
+  <my:page xmlns="http://www.w3.org/1999/xhtml"
       xmlns:page="http://atomictalk.org/page"
       xmlns:service="http://atomictalk.org/page/service"
       xmlns:output="http://atomictalk.org/page/output"
@@ -22,7 +21,6 @@
       xmlns:variable="http://atomictalk.org/page/variable"
       xmlns:model="http://atomictalk.org/page/model"
       xmlns:html="http://www.w3.org/1999/xhtml"
-      xmlns:doc="http://atomictalk.org/feed/doc"
       xmlns:app="http://purl.org/atom/app#"
       xmlns:atom="http://www.w3.org/2005/Atom">
     <page:config>
@@ -37,14 +35,14 @@
         <variable:page>
           <property:title>@@date@@ : @@$domain.label$@@</property:title>
         </variable:page>
-        <variable:date>August 13th, 2007</variable:date>
+        <variable:date>July 30th, 2007</variable:date>
         <variable:protocol>http://</variable:protocol>
         <variable:space>&#160;</variable:space>
         <variable:dot>.</variable:dot>
         <variable:colon>:</variable:colon>
         <variable:domain>
           <property:name>localhost</property:name>
-          <property:label>(son(ic()ra)dar)</property:label>
+          <property:label>amp.fm</property:label>
         </variable:domain>
         <variable:location>
           <property:base>@@$base-uri$@@</property:base>
@@ -55,17 +53,17 @@
       <page:advice>
         <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
         <advice:page-title>@@domain.label@@::@@date@@</advice:page-title>
-        <advice:date>August 25th, 2007</advice:date>
+        <advice:date>October 9th, 2007</advice:date>
         <advice:protocol>http://</advice:protocol>
         <advice:space>&#160;</advice:space>
         <advice:dot>.</advice:dot>
         <advice:colon>:</advice:colon>
-        <!-- <advice:port>9998</advice:port> -->
-        <advice:domain-name>dev.amp</advice:domain-name>
+        <advice:port>9999</advice:port>
+        <advice:domain-name>localhost</advice:domain-name>
         <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
         <!-- |$$test:@@sub-domain@@IfTrue:@@sub-domain@@@@dot@@IfFalse:@@empty@@$$| -->
         <advice:domain.label>amp.fm</advice:domain.label>
-        <advice:root>fm</advice:root>
+        <!-- <advice:root>com</advice:root> -->
         <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
         <advice:service-gateway>@@base-uri@@/service</advice:service-gateway>
         <advice:openid-gateway>/service/gatekeeper/login?</advice:openid-gateway>
@@ -82,7 +80,7 @@
         <advice:long>resource:ip-location/long</advice:long>
         <advice:max-depth>8</advice:max-depth>
         <advice:google-maps.key>ABQIAAAAEPQGOws5xNa--1d-oQQDjhTGATBBJj1ek54YiRFsu72FXrsCiBTXTbpwI990CeZRoqCkI4KdcuGiLQ</advice:google-maps.key>
-        <advice:search.box.label>Search @@domain.label@@ for...</advice:search.box.label>
+        <advice:search.box.label>Search @@domain.label@@ For...</advice:search.box.label>
         <advice:openid.label>Authenticate w/ OpenID</advice:openid.label>
         <advice:browser compare="xsl:vendor" compare-with="Microsoft">ie</advice:browser>
         <advice:browser compare="xsl:vendor" compare-with="Transformiix">mozilla</advice:browser>
@@ -104,10 +102,6 @@
         <advice:atom>application/atom+xml</advice:atom>
         <advice:bungee.app>fc0e61d2-0dea-4e3e-bc5f-4a9a29d70d74</advice:bungee.app>
         <advice:bungee.grid>http://grid-den.bungeegrid.com</advice:bungee.grid>
-        <advice:source>CityLights.mp3</advice:source>
-        <advice:volume>0.6</advice:volume>
-        <advice:play>true</advice:play>
-        <advice:background>00AAAAAA</advice:background>
       </page:advice>
     </page:config>
     <page:service>
@@ -173,333 +167,116 @@
         <head:include fileType="css" href="@@static@@/css/base.css" />
         <head:include fileType="css" href="@@static@@/css/transparency.css" />
         <head:include fileType="css" href="@@static-css-browser@@.css" />
-        <head:include fileType="javascript" src="/blog/js/jquery.js" />
-        <head:include fileType="javascript" src="/blog/js/jquery.jsmaps.js" />
-        <head:include fileType="javascript" src="/blog/js/blog.js" />
-        <head:include fileType="javascript" src="/blog/js/geo.js" />
-        <head:include fileType="javascript" src="/js/Silverlight.js" />
-        <head:include fileType="javascript" src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=5" />
-        <head:include fileType="javascript">
-          function createAudio()
-          {
-            Silverlight.createObject(
-              "Page.xaml", document.getElementById("AudioHost"), "Audio",
-              { width: "128", height: "22", version:"1.1.20724", background: "#00000000", isWindowless: "true" }, { },
-              "name=Audio,source=@@source@@,background=@@background@@,volume=@@volume@@,play=@@play@@");
-          }
-          </head:include>
-        <head:include fileType="javascript">
-          <![CDATA[
-          var map = null;
-          var pinPoint = null;
-           var pinPixel = null;
-                    
-           function GetMap()
-           {
-              map = new VEMap('myMap');
-              map.LoadMap(new VELatLong(34.118875035799, -118.3003306388855), 14 );
-              AddPin();
-           }
-           function getInfo()
-           {
-              if (map.IsBirdseyeAvailable())
-              {
-                  var be = map.GetBirdseyeScene();
-                  var info = "ID: " + be.GetID() + "\n";
-                  info += "thumbnail: " + be.GetThumbnailFilename()+ "\n";
-                  info += "orientation: " + be.GetOrientation()+ "\n";
-                  info += "height: " + be.GetHeight() + "\n";
-                  info += "width: " + be.GetWidth() + "\n";
-                  var pixel = be.LatLongToPixel(map.GetCenter(), map.GetZoomLevel());
-                  info += "LatLongToPixel: " + pixel.x + ", " + pixel.y + "\n";
-  
-                  // Check to see if the current birdseye view contains the pushpin pixel point.
-                  info += "contains pixel " + pinPixel.x + ", " + pinPixel.y + ": " + be.ContainsPixel(pinPixel.x, pinPixel.y, map.GetZoomLevel()) + "\n";
-                  
-                  // Check to see if the current view contains the pushpin LatLong.
-                  info += "contains latlong " + pinPoint + ": " + be.ContainsLatLong(pinPoint) + "\n";
-                  
-                  // This method may return null, depending on the selected view and map style.
-                  info += "latlong: " + map.PixelToLatLong(pixel);
-                  alert(info);
-              }
-              else
-              {
-                  alert("Bird's eye images are not available at this location and zoom level.");
-              }
-           }
-           
-           function AddPin()
-           {
-              // Add a new pushpin to the center of the map.
-              pinPoint = map.GetCenter();
-              pinPixel = map.LatLongToPixel(pinPoint);
-              map.AddPushpin(pinPoint);
-           }
-         ]]>
-        </head:include>
-        <head:include fileType="javascript" src="/js/Silverlight.js" />
       </page:head>
       <page:body>
         <!-- <body:onload action="document.getElementById('@@bungee.app@@').src='@@bungee.grid@@/v507.24/runtime?cmd=run&amp;deployId=26662C8D-61CD-4DEB-A1E9-1C18BD08BFB3&amp;w=800&amp;h=400&amp;z=fc0e61d2-0dea-4e3e-bc5f-4a9a29d70d74'"/> -->
-        <body:onload action="GetMap();"/>
         <body:html>
           <ul>
             <li id="view">
               <ul class="list RtoL menu">
-                <li>
-                  <a href="@@base-uri@@/fan">Fan</a>
+                <li class="selected">
+                  <a href="@@base-uri@@/support/">Help/Support</a>
                 </li>
+                <li>Language:</li>
                 <li>
-                  <a href="@@base-uri@@/musician/">Musician</a>
+                  <a href="@@base-uri@@/tag/">en</a>
                 </li>
+                <li>Theme:</li>
                 <li>
-                  <a href="@@base-uri@@/audio_production/">Audio Production</a>
+                  <a href="@@base-uri@@/tag/">Default</a>
                 </li>
+                <li>Account:</li>
                 <li>
-                  <a href="@@base-uri@@/venue/">Venue</a>
+                  <a href="@@base-uri@@/tag/">Create New</a>
                 </li>
-                <li>
-                  <a href="@@base-uri@@/label/">Label</a>
-                </li>
-                <!-- <li id="AudioHost">
-                  <script type="text/javascript">createAudio();</script>
-                </li> -->
               </ul>
             </li>
             <li class="base" id="header">
               <ul class="list bg-fade">
-                <li class="base" id="top-navigation">
-                  <ul id="d5e35" class="list LtoR">
-                    <li id="d5e38">
-                      <a href="http://dev.amp.fm/" id="d5e39">
-                        <doc:date/>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="base" id="location-search" style="z-index:10">
-                  <ul id="d5e42" class="list LtoR">
-                    <li id="d5e44" style="margin-left:5px;">
-                      <a href="http://dev.amp.fm/">
-                        <img alt="" height="84" src="/images/AmpFM-script.png" width="265"/>
-                      </a>
-                    </li>
-                    <li class="base width login" id="openid">
-                      <ul class="list RtoL">
-                        <!-- <li>
-                          <a href="/login">Login w/ OpenID</a>
+                <li class="base" id="top-nav">
+                  <ul class="list LtoR width">
+                    <li>
+                      <ul id="top-nav-menu" class="list menu">
+                        <li class="top-level domain selected">
+                          <a href="@@base-uri@@">@@domain.label@@</a>
                         </li>
-                        <li>
-                          <a href="http://openid.name/account/signup">Create Account</a>
-                        </li> -->
-                        <form style="margin:0px;padding:0px;" method="get"
-                            action="http://www.google.com/custom"
-                            target="_top">
-                          <input type="hidden" name="domains" value="amp.fm" />
-                          <input id="query" type="text" name="q" size="50" maxlength="255"
-                              value="@@search.box.label@@"
-                              onclick="if (this.value == '@@search.box.label@@') this.value = ''; return true;"
-                              onblur="if (this.value == '') this.value = '@@search.box.label@@'; return true;" />
-                          <button class="Button submit">
-                            <span class="ButtonLabel">Search</span>
-                          </button>
-                          <input type="hidden" name="client" value="pub-5176870901224890" />
-                          <input type="hidden" name="forid" value="1" />
-                          <input type="hidden" name="ie" value="UTF-8" />
-                          <input type="hidden" name="oe" value="UTF-8" />
-                          <input type="hidden" name="safe" value="active" />
-                          <input type="hidden" name="cof"
-                              value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1;" />
-                          <input type="hidden" name="hl" value="en" />
-                          <input type="hidden" name="sitesearch" value="amp.fm" checked="checked" />
-                        </form>
                       </ul>
                     </li>
                   </ul>
                 </li>
-                <li class="base" id="sub-nav-top" style="z-index:0">
-                  <ul id="navigation" class="list LtoR">
-                    <li id="home" class="selected">
-                      <a href="./" id="d5e50">On The Air</a>
-                    </li>
-                    <li id="music">
-                      <a href="/charts" id="d5e53">View the Latest Charts</a>
-                    </li>
-                    <li id="music">
-                      <a href="/music" id="d5e53">Find New Music</a>
-                    </li>
-                    <li id="film">
-                      <a href="/concerts" id="d5e56">Find Local Concerts</a>
-                    </li>
-                    <li id="film">
-                      <a href="/interact" id="d5e56">Interact w/ Other Fans</a>
+                <li class="base width" id="sub-nav">
+                  <ul class="list LtoR border-top border-bottom">
+                    <li>
+                      <ul id="sub-nav-menu" class="list menu small">
+                        <li>
+                          <a href="@@base-uri@@/blog/">"What's on the Radar?" Blog</a>
+                        </li>
+                        <li>
+                          <a href="@@base-uri@@/find-a-band/">Browse-by-Location</a>
+                        </li>
+                        <li>
+                          <a href="@@base-uri@@/find-a-show/">Browse-by-Genre</a>
+                        </li>
+                        <li>
+                          <a href="@@base-uri@@/off-the-record/">Off-the-Record</a>
+                        </li>
+                        <!-- <li class="base width" id="openid">
+                          <label>
+                            <a style="border:0" class="no-bg-color" href="/what_is_openid">What is OpenID?</a>
+                          </label>
+                          <form id="openid-login" method="get" action="@@openid-gateway@@" target="_top">
+                            <input id="openid-text" type="text" name="uname" class="single-input" maxlength="255"
+                                value="@@openid.label@@"
+                                onclick="if (this.value == '@@openid.label@@') this.value = ''; return true;"
+                                onblur="if (this.value == '') this.value = '@@openid.label@@'; return true;" />
+                            <input type="hidden" name="return_location" value="http://sonicradar.com/?" />
+                            <input id="openid-submit" class="single-input-submit" type="submit" value="Login" />
+                            <button class="Button submit">
+                              <span class="ButtonLabel">Submit</span>
+                            </button>
+
+                          </form>
+                        </li> -->
+                      </ul>
                     </li>
                   </ul>
                 </li>
+                <!-- <li class="base" id="title">
+                  <ul class="list LtoR">
+                    <li id="search-box" class="transparency-90">
+                      <form id="openid-login" method="get" action="@@search-summary@@" target="_top">
+                        <input class="single-input" type="text" name="search" maxlength="255"
+                            value="@@search.box.label@@"
+                            onclick="if (this.value == '@@search.box.label@@') this.value = ''; return true;"
+                            onblur="if (this.value == '') this.value = '@@search.box.label@@'; return true;" />
+                        <input class="single-input-submit" type="submit" value="Search" />
+                      </form>
+                    </li>
+                  </ul>
+                </li> -->
+                
               </ul>
             </li>
+            <li class="base" id="instance">
 
-            <li class="base" id="instance" style="width:100%;">
-              <ul style="width:100%;">
-                <li class="base width" id="login">
-                  <ul class="RtoL">
-                    <li>
-                      <a href="/login">Login w/ OpenID</a>
-                    </li>
-                    <li>
-                      <a href="http://openid.name/account/signup">Create Account</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <div id="myMap" style="position:relative; height:275px;width:99%;margin-right:auto;margin-left:auto;border-top:1px solid #CC6600;border-bottom:1px solid #CC6600;"/>
-                </li>
-                <li style="width:auto;margin-left:.75em;margin-right:220px;">
-                  <h1>ON THE AIR</h1>
-                  <!-- <div class="cities" style="background-color:#FFE; border:1px solid #990000; padding:.75em;width:auto;margin-right:100px;">
-                    <ul class="current">
-                      <li>
-                        <a href="/region/new_york">New York</a>
-                      </li>
-                      <li>
-                        <a href="/region/la">Los Angeles</a>
-                      </li>
-                      <li>
-                        <a href="/region/chicago">Chicago</a>
-                      </li>
-                      <li>
-                        <a href="/region/austin">Austin</a>
-                      </li>
-                      <li>
-                        <a href="/region/slc">Salt Lake City</a>
-                      </li>
-                      <li>
-                        <a href="/region/london">London</a>
-                      </li>
-                      <li>
-                        <a href="/region/boston">Boston</a>
-                      </li>
-                      <li>
-                        <a href="/region/san_francisco">San Francisco</a>
-                      </li>
-                      <li>
-                        <a href="/region/seattle">Seattle</a>
-                      </li>
-                      <li>
-                        <a href="/region/dc">Washington DC</a>
-                      </li>
-                      <li>
-                        <a href="/region/detroit">Detroit</a>
-                      </li>
-                      <li>
-                        <a href="/region/atlanta">Atlanta</a>
-                      </li>
-                      <li>
-                        <a href="/region/minneapolis">Minneapolis</a>
-                      </li>
-                      <li>
-                        <a href="/region/portland">Portland</a>
-                      </li>
-                      <li>
-                        <a href="/region/san_diego">San Diego</a>
-                      </li>
-                      <li>
-                        <a href="/region/houston">Houston</a>
-                      </li>
-                      <li>
-                        <a href="/region/san_jose">San Jose</a>
-                      </li>
-                      <li>
-                        <a href="/region/denver">Denver</a>
-                      </li>
-                      <li>
-                        <a href="/region/pittsburgh">Pittsburgh</a>
-                      </li>
-                      <li>
-                        <a href="/region/orlando">Orlando</a>
-                      </li>
-                      <li>
-                        <a href="/region/cleveland">Cleveland</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div style="width:728px;height:150px;">
-                    <h4 style="text-align:left">Paid Advertisements</h4>
-                    <iframe src="/google-468x60.html" style="width:728px;height:150px;margin:0;padding:0;border:0;"
-                        marginwidth="0" marginheight="0" scrolling="no">//*hack*//</iframe>
-                  </div> -->
-                  <object type="application/x-shockwave-flash"
-                      data="http://dev.amp.fm/mediaplayer/button/musicplayer.swf?playlist_url=allshows.xspf"
-                      width="17" height="17">
-                    <param name="movie"
-                        value="http://dev.amp.fm/mediaplayer/button/musicplayer.swf?playlist_url=allshows.xspf" />
-                    <img src="noflash.gif"
-                        width="17" height="17" alt="" />
-                  </object>
-
-                </li>
-                <li style="width:auto;">
-                  <ul>
-                    <li style="width:245px;position:absolute;right:0;top:320px;">
-                      <a href="http://www.musiciansfriend.com">
-                        <img style="margin-left:0px;margin-bottom:10px;" alt="" src="/images/10390273.gif"/>
-                      </a>
-                    </li>
-                    <li style="width:180px;position:absolute;right:.75em;top:385px;padding-bottom:50px;border-left:1px solid #666;">
-                      <div style="width:170px;height:60px;margin:.5em 0 0 .75em;padding:0;border:0;font-size:medium;text-align:right;">
-                        <a href="http://www.musiciansfriend.com">Up to 64% Off Massive M-Audio Sale on Refurbished Gear!</a>
-                      </div>
-                      <h2>From the amp.fm Blogosphere</h2>
-                      <doc:feed href="/feed.xml" characterCount="300"/>
-                      <h4>Paid Advertisements</h4>
-                      <iframe src="/google-adsense.html" style="width:160px;height:600px;margin:1em 0 1em .75em;padding:0;border:0;"
-                          marginwidth="0" marginheight="0" scrolling="no">//*hack*//</iframe>
-
-                    </li>
-                  </ul>
-                </li>
-              </ul>
             </li>
             <li class="base" id="footer">
               <ul class="list">
-                <li id="search-box" class="border-top">
-                  <!-- <form id="search" method="get" action="@@search-summary@@" target="_top">
-                    <input id="search-text" class="single-input" type="text" name="search" maxlength="255"
-                        value="@@search.box.label@@"
-                        onclick="if (this.value == '@@search.box.label@@') this.value = ''; return true;"
-                        onblur="if (this.value == '') this.value = '@@search.box.label@@'; return true;" />
-                    <button class="Button submit">
-                      <span class="ButtonLabel">Submit</span>
-                    </button>
-                  </form> -->
-                  <form style="margin:0px;padding:0px;" method="get"
-                      action="http://www.google.com/custom"
-                      target="_top">
-                    <input type="hidden" name="domains" value="amp.fm" />
-                    <input id="query" type="text" name="q" size="32" maxlength="255"
-                        value="@@search.box.label@@"
-                        onclick="if (this.value == '@@search.box.label@@') this.value = ''; return true;"
-                        onblur="if (this.value == '') this.value = '@@search.box.label@@'; return true;" />
-                    <input id="go" type="submit" name="sa" value="Search" />
-                    <input type="hidden" name="client" value="pub-5176870901224890" />
-                    <input type="hidden" name="forid" value="1" />
-                    <input type="hidden" name="ie" value="UTF-8" />
-                    <input type="hidden" name="oe" value="UTF-8" />
-                    <input type="hidden" name="safe" value="active" />
-                    <input type="hidden" name="cof"
-                        value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1;" />
-                    <input type="hidden" name="hl" value="en" />
-                    <input type="hidden" name="sitesearch" value="amp.fm" checked="checked" />
-                  </form>
+                <li class="base width border-top" id="control-center">
+                  <ul class="list RtoL">
+                    <li>
+                      <ul id="control-center-nav" class="list menu">
+                        <li id="layer-listen"/>
+                      </ul>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </li>
           </ul>
-          <script type="text/javascript"
-              src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
         </body:html>
       </page:body>
     </page:output>
   </my:page>
 </my:session>
+

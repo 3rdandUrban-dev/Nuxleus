@@ -1,7 +1,28 @@
 body {
-
+  margin:0px;
+  padding:0px;
+  font-family: 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
+  font-size:100%;
+  text-align: left;
+  color:#333;
+  background: #FFF url(/images/GrooveAutomata-ACGR-Amp.fm-.jpg) 50% 25% repeat-y;
+  background-attachment: fixed;
 }
-
+img {
+  border:0;
+}
+a {
+  margin:0px .25em;
+  padding:0px .5em;
+  color:#990000;
+  background-color:inherit;
+  text-decoration:none;
+}
+a:hover {
+  color:#990000;
+  background-color:inherit;
+  text-decoration:underline;
+}
 ul {
   display:block;
   list-style-type:none;
@@ -32,4 +53,420 @@ ul.RtoL li {
   margin:0;
   padding:0;
 }
+.meta {
+  text-align:center;
+  color:#999;
+  background-color:inherit;
+  padding-top:5px;
+  padding-bottom:5px;
+  width:95%;
+  margin-right:auto;
+  margin-left:auto;
+}
+.meta-borders {
+  border-top: 1px dotted #4A618C;
+  border-bottom: 1px dotted #4A618C;
+}
+.menu {
+  padding:.15em 0;
+  margin:0;
+  width:auto;
+  background-color:transparent;
+}
+.menu li, .menu a {
+  padding:0;
+  margin:0;
+  width:auto;
+}
+.menu a {
+  color:#333;
+  text-decoration:none;
+  background-color:#FFF;
+  padding:.15em .5em .1em;
+  border-right:1px solid #999;
+  border-left:1px solid #999;
+  margin:0 .25em;
+}
+.menu a:hover {
+  color:#FFF;
+  background-color: #CC6600;
+  padding:.2em .5em .15em;
+  border-right:1px solid #CC6600;
+  border-left:1px solid #CC6600;
+}
+.menu li.selected a {
+  color:#993300;
+  border-left:1px solid #CC6600;
+  border-right:1px solid #CC6600;
+  background-color:#FFF;
+  padding:.2em .5em .3em;
+  margin:.25em 0;
+  font-weight:600;
+}
+.border-top {
+  border-top:1px solid #1E250D;
+}
+.border-top-white {
+  border-top:1px solid #FFF;
+}
+.border-bottom {
+  border-bottom:1px solid #1E250D;
+}
+.border-gray {
+  border-color:#999;
+}
+.LtoR-menu-margin {
+  margin:.15em .25em;
+}
+.LtoR-menu-padding {
+  padding:0;
+}
+.width {
+  margin-right:auto;
+  margin-left:auto;
+  width:99%;
+}
+li.top-level a {
+  color:#CC6600;
+  background-color:transparent;
+}
+.small li, .font-small a {
+  font-size:small;
+  color:#666;
+}
+.small li {
+  font-size:small;
+  color:#333;
+}
+.small a.selected {
+  border-color: #CC6600;
+  color:#993300;
+  padding-top:.15em;
+  padding-bottom:.15em;
+}
+a.no-border {
+  border:1px solid #FFF;
+}
 
+#today > ul {
+  margin:1em .5em 0;
+  border-bottom:solid 1px #333;
+  width:auto;
+}
+#today li {
+  
+}
+#header {
+  z-index:1;
+}
+#top-nav {
+  border-top:3px #4B5731 solid;
+    background-color: #86B93E;
+}
+#top-nav > ul {
+
+}
+#top-nav-menu li a {
+ margin-left:.35em;
+}
+#top-nav-menu li.selected a:hover {
+  color:#1E250D;
+  background-color: #FFF;
+  border-color:#1E250D;
+}
+#top-nav-menu li.selected a {
+  padding-top:.35em;
+  padding-bottom:.15em;
+  border-color:#1E250D;
+  color:#1E250D;
+  background-color: #FFF;
+  font-size:large;
+}
+#top-nav-menu .domain a {
+  background-color:#FFF;
+  color:#666;
+  padding:0 .75em .05em;
+  margin-left:.5em;
+  border-color:#CCC;
+}
+#top-nav-menu .domain a:hover {
+  background-color:inherit;
+  color:#333;
+  border-color:#999;
+}
+
+#view {
+  position:fixed;
+  top:0;
+  right:.5em;
+  z-index:5;
+  border:1px solid #1E250D;
+  border-top:0;
+  background-color: #FFF;
+  padding:.02em .25em;
+}
+
+#view li {
+  margin:.15em 0;
+}
+#view > ul {
+  padding:.1em .25em .25em;
+  margin:0;
+}
+#view > ul > li {
+  color:#333;
+  background-color:inherit;
+  padding:0;
+  font-size: small;
+  
+}
+#view > ul > li.selected > a {
+  border-right:1px solid #1E250D;
+  border-left:1px solid #1E250D;
+  padding:0 .5em;
+  color:#993300;
+  background-color:#FFF;
+  margin-right:.5em
+}
+#view > ul > li.selected > a:hover {
+  color:#CC6600;
+  background-color:inherit;
+}
+#view > ul > li > a:hover {
+  color:#FFF;
+  background-color:#4B5731;
+}
+#view > ul > li > a {
+  color:#4B5731;
+  background-color:inherit;
+  padding:.1em .35em;
+  border:0;
+  margin:.15em .15em .15em 0;
+}
+#sub-nav-menu {
+  margin:0 0 .1em;
+  padding:.1em .15em;
+  color:#663300;
+}
+#bottom-nav-menu {
+  margin:0 0 .1em;
+  padding:.1em .15em;
+  background-color:#FFF;
+  color:#663300;
+}
+#action-nav {
+  position: relative;
+}
+#action-nav > ul {
+ 
+}
+#action-nav-menu {
+  background-color:#FFF;
+  color:#CC6600;
+  width:100%;
+  display:block;
+}
+
+#title {
+  position:relative;
+  height: 175px;
+  background: #993300 url(http://cmj.amp.fm/2007/images/GrooveAutomata-ACGR-Amp.fm-.jpg) 50% 55% no-repeat;
+  padding:0;
+  margin:0 auto;
+  width:99%;
+  border-top: 2px solid #CC6600;
+  border-bottom: 2px solid #CC6600;
+  
+}
+#title > ul > li {
+  padding:0;
+  width:100%;
+}
+#title h2 {
+  font-size: x-large;
+  color:#FFF;
+  margin-bottom:.25em;
+  margin-left:.5em;
+  position:absolute;
+  bottom:0;
+  left:0;
+}
+#instance {
+  text-align:left;
+  z-index:0;
+}
+#entries {
+  width:98%;
+  margin-right:auto;
+  margin-left: auto;
+  margin-bottom:3em;
+}
+#footer {
+  z-index:1;
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom:0;
+  border-bottom:3px solid #993300;
+}
+#date {
+  font-size: medium;
+  color:#993300;
+  font-weight:600;
+}
+#geo-location {
+  text-align:center;
+  padding:3px 0;
+  width:100%;
+  border-bottom:2px solid #993300;
+  z-index:10;
+  text-align:center;
+  margin-top:0px;
+  background-color:#FFF;
+  color:#993300;
+}
+#layer-listen {
+  padding:0;
+  margin:0;
+}
+#info {
+  padding:1px;
+  margin-right:auto;
+  margin-left:auto;
+  width:97%;
+  margin-top:5px;
+  margin-bottom:2px;
+}
+#info li {
+  margin-top:0px;
+  margin-bottom:0px;
+}
+#openid-login {
+  display:inline;
+}
+.single-input {
+  width:24em;
+  font-size:small;
+  border:1px solid #FFF;
+  background-color:#CC6600;
+  color:#FFF;
+  padding:.2em .3em;
+  font-weight:600;
+}
+.single-input-submit {
+  border:1px solid #FFF;
+  background-color:#FFCC33;
+  color:#993300;
+  font-size:small;
+  padding-top:.1em;
+  padding-bottom:.1em;
+}
+.small li.selected a {
+  border-color: #CC6600;
+  color:#993300;
+  background-color:#FFF;
+  padding-top:.4em;
+  padding-bottom:.35em;
+  padding-right:.55em;
+}
+.small li.selected a:hover {
+  color:#CC6600;
+  background-color:#FFF;
+}
+#openid_login {
+   /* background: url(/images/login-bg.gif) no-repeat;
+   background-color: #fff;
+   background-position: 0 50%; */
+}
+#openid_login > a.openid_spacer {
+ margin-left: 1.1em; 
+}
+#sub-nav {
+  position:relative;
+}
+#sub-nav > ul {
+padding:.25em 0;
+margin:0;
+width:100%;
+background-color:#C8F417;
+}
+#sub-nav-menu {
+padding:0;
+margin:0;
+width:100%;
+}
+#sub-nav-menu > ul {
+margin:0 .5em;
+}
+#sub-nav-menu a {
+padding:.5em .5em .35em;
+border-color:#FFF;
+color:#1E250D;
+font-weight:600;
+background-color:Transparent;
+}
+#sub-nav-menu a:hover {
+color:#FFF;
+background-color: #4B5731;
+}
+#search-box {
+ position:absolute;
+ bottom:.2em;
+ right:0;
+ left:0;
+ text-align:center;
+ margin:0 auto;
+ width:99%;
+ height:auto;
+}
+#openid {
+ text-align:right;
+ position:absolute;
+ bottom:.28em;
+ right:0; 
+
+}
+#openid-text {
+ border-color:#666;
+ font-size: 1em;
+ color:#333;
+ background-color:#FFF;
+ padding:1px 3px 1px 19px;
+ background: url(/images/login-bg.gif) no-repeat;
+ background-position: 2px 50%;
+ width:250px;
+}
+#openid-submit {
+ border-color:#993300; 
+ background-color:#CC6600;
+ color:#FFF;
+}
+#sub-nav-foo {
+  position:relative;
+  
+}
+#sub-nav-foo > ul {
+  padding:.15em 0;
+  margin:0;
+  width:100%;
+}
+.Button {
+ font-size:1em; 
+ border: 1px solid #666;
+ background: url(/images/button_bkd.gif) 0 120% repeat-x;
+}
+.ButtonLabel {
+color: #333;
+cursor:pointer;
+}
+#sub-nav-menu a.no-bg-color {
+ padding:0 5px 0 0;
+}
+#sub-nav-menu a.no-bg-color:hover {
+ color:#CC6600;
+ text-decoration: underline; 
+ padding:0 5px 0 0;
+}
+#bg-fade {
+   background-color: #86B93E; 
+}
