@@ -244,18 +244,20 @@
                     <li>
                       <ul id="sub-nav-menu" class="list menu small">
                         <li>
-                          <a href="@@base-uri@@/blog/">"What's on the Radar?" Blog</a>
+                          <a href="@@base-uri@@/local-scene/">Local Scene</a>
                         </li>
                         <li>
-                          <a href="@@base-uri@@/find-a-band/">Browse-by-Location</a>
+                          <a href="@@base-uri@@/region/">Regions</a>
                         </li>
                         <li>
-                          <a href="@@base-uri@@/find-a-show/">Browse-by-Genre</a>
+                          <a href="@@base-uri@@/events/">Events</a>
                         </li>
                         <li>
-                          <a href="@@base-uri@@/off-the-record/">Off-the-Record</a>
+                          <a href="@@base-uri@@/genres/">Genres</a>
                         </li>
-
+                        <li>
+                          <a href="@@base-uri@@/off-the-record/">"Off-the-Record" Lounge</a>
+                        </li>
                       </ul>
                     </li>
                   </ul>
