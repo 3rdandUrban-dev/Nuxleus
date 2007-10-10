@@ -14,6 +14,7 @@ using System.Collections.Generic;
 namespace Nuxleus.Messaging {
   public interface IMessageQueue {
     string Id { get; set; }
+    MessageQueueService Service { get; }
 
     void Send(IMessage message);
     void Send(byte[] data);

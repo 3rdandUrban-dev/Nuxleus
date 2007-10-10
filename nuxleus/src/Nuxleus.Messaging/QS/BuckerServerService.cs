@@ -64,8 +64,6 @@ namespace  Nuxleus.Messaging.QS {
     }
 
     private void FailureRaised(ISocketConnection sender, Exception ex) {
-      Console.WriteLine(ex.ToString());
-      
       // since the client generated an exceptipon we will disconnect it
       // as soon as the error message below is sent
       clientsToDisconnect.Add(sender.SocketHandle);

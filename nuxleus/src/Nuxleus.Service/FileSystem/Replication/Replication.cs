@@ -11,6 +11,7 @@ using System.Runtime.Remoting;
 using System.Runtime.Remoting.Messaging;
 using System.Configuration.Install;
 using Nuxleus.Messaging;
+using Nuxleus.Messaging.Replication;
 
 namespace Nuxleus.Service
 {
@@ -18,12 +19,15 @@ namespace Nuxleus.Service
     {
         Container components = null;
         MessageQueueServer _messageQueueServer;
+	ReplicationHandler handler = null;
 
         public ReplicationService(int port)
         {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
             _messageQueueServer = new MessageQueueServer(port, "\n");
+	    handler = new ReplicationHandler();
+	    handler.Service = _messageQueueServer.Service;
         }
 
         // The main entry point for the process

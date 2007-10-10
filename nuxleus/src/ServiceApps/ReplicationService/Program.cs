@@ -2,9 +2,9 @@
 using System.IO;
 using System.Threading;
 using System.Reflection;
-using Nuxleus.Service;
 using System.ServiceProcess;
 using System.Runtime.Remoting;
+using Nuxleus.Service;
 
 namespace Nuxleus.Service
 {
