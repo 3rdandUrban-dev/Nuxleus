@@ -5,7 +5,8 @@
   LICENSE: The code contained in this file is licensed under The MIT License. Please see
   http://www.opensource.org/licenses/mit-license.php for specific detail.
 -->
-<my:session xmlns:my="http://xameleon.org/my">
+<my:session
+    xmlns:my="http://xameleon.org/my">
   <my:page xmlns="http://www.w3.org/1999/xhtml"
       xmlns:page="http://atomictalk.org/page"
       xmlns:service="http://atomictalk.org/page/service"
@@ -24,7 +25,10 @@
       xmlns:app="http://purl.org/atom/app#"
       xmlns:atom="http://www.w3.org/2005/Atom">
     <page:config>
-      <page:output type="xhtml-strict" cdata-section-elements="script" indent="no">
+      <page:output
+          type="xhtml-strict"
+          cdata-section-elements="script"
+          indent="no">
         <output:xhtml-strict>
           <output:doctype-system>-//W3C//DTD XHTML 1.0 Strict//EN</output:doctype-system>
           <output:doctype-public>http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</output:doctype-public>
@@ -53,20 +57,21 @@
       <page:advice>
         <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
         <advice:page-title>@@domain.label@@::@@date@@</advice:page-title>
-        <advice:date>October 9th, 2007</advice:date>
+        <advice:date>October 10th, 2007</advice:date>
         <advice:protocol>http://</advice:protocol>
         <advice:space>&#160;</advice:space>
         <advice:dot>.</advice:dot>
         <advice:colon>:</advice:colon>
-        <advice:port>9999</advice:port>
-        <advice:domain-name>localhost</advice:domain-name>
+        <!-- <advice:port>9999</advice:port> -->
+        <advice:domain-name>dev.amp</advice:domain-name>
         <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
         <!-- |$$test:@@sub-domain@@IfTrue:@@sub-domain@@@@dot@@IfFalse:@@empty@@$$| -->
         <advice:domain.label>amp.fm</advice:domain.label>
-        <!-- <advice:root>com</advice:root> -->
+        <advice:root>fm</advice:root>
         <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
         <advice:service-gateway>@@base-uri@@/service</advice:service-gateway>
-        <advice:openid-gateway>/service/gatekeeper/login?</advice:openid-gateway>
+        <advice:openid-gateway>/gatekeeper/login?</advice:openid-gateway>
+        <advice:openid.return_location>http://dev.amp.fm/?</advice:openid.return_location>
         <advice:search-summary>/summary?</advice:search-summary>
         <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
         <advice:location>frontpage</advice:location>
@@ -105,14 +110,18 @@
       </page:advice>
     </page:config>
     <page:service>
-      <service:ip-location href="@@service-gateway@@/ipgeolocator/geocode" />
-      <service:language-selector href="@@TODO@@" />
+      <service:ip-location
+          href="@@service-gateway@@/ipgeolocator/geocode" />
+      <service:language-selector
+          href="@@TODO@@" />
     </page:service>
     <page:model>
-      <model:lang binding="@@atom@@">
+      <model:lang
+          binding="@@atom@@">
         @@TODO|$comment: Data that binds a language code with the proper URI to gain access to content in the specified language$|@@ 
       </model:lang>
-      <model:menu binding="@@atom@@">
+      <model:menu
+          binding="@@atom@@">
         @@TODO|$comment: $|@@
       </model:menu>
     </page:model>
@@ -155,27 +164,53 @@
       </view:menu>
     </page:view>
     <page:resource>
-      <resource:ip-location type="string" src="@@service-gateway@@@@service:ip-location@@" />
-      <resource:help-support type="page" href="@@base-uri@@/support/" label="Help/Support" />
-      <resource:create-new-account type="page" href="@@base-uri@@/create-new-account/" label="Create New" />
-      <resource:login type="page" href="@@base-uri@@/login/" label="Login" />
-      <resource:lang type="string" src="@src@" label="model:lang/$@@language@@/@label" />
+      <resource:ip-location
+          type="string"
+          src="@@service-gateway@@@@service:ip-location@@" />
+      <resource:help-support
+          type="page"
+          href="@@base-uri@@/support/"
+          label="Help/Support" />
+      <resource:create-new-account
+          type="page"
+          href="@@base-uri@@/create-new-account/"
+          label="Create New" />
+      <resource:login
+          type="page"
+          href="@@base-uri@@/login/"
+          label="Login" />
+      <resource:lang
+          type="string"
+          src="@src@"
+          label="model:lang/$@@language@@/@label" />
     </page:resource>
     <page:output>
       <page:head>
         <head:title>@@page-title@@</head:title>
-        <head:include fileType="css" href="@@static@@/css/base.css" />
-        <head:include fileType="css" href="@@static@@/css/transparency.css" />
-        <head:include fileType="css" href="@@static-css-browser@@.css" />
+        <head:include
+            fileType="css"
+            href="@@static@@/css/base.css" />
+        <head:include
+            fileType="css"
+            href="@@static@@/css/transparency.css" />
+        <head:include
+            fileType="css"
+            href="@@static-css-browser@@.css" />
       </page:head>
       <page:body>
         <!-- <body:onload action="document.getElementById('@@bungee.app@@').src='@@bungee.grid@@/v507.24/runtime?cmd=run&amp;deployId=26662C8D-61CD-4DEB-A1E9-1C18BD08BFB3&amp;w=800&amp;h=400&amp;z=fc0e61d2-0dea-4e3e-bc5f-4a9a29d70d74'"/> -->
         <body:html>
           <ul>
-            <li id="view">
-              <ul class="list RtoL menu">
-                <li class="selected">
-                  <a href="@@base-uri@@/support/">Help/Support</a>
+            <li
+                id="view">
+              <ul
+                  class="list RtoL menu">
+                <li
+                    class="selected">
+                  <a
+                      href="@@base-uri@@/support/">
+                      Help/Support
+                  </a>
                 </li>
                 <li>Language:</li>
                 <li>
@@ -220,28 +255,13 @@
                         <li>
                           <a href="@@base-uri@@/off-the-record/">Off-the-Record</a>
                         </li>
-                        <!-- <li class="base width" id="openid">
-                          <label>
-                            <a style="border:0" class="no-bg-color" href="/what_is_openid">What is OpenID?</a>
-                          </label>
-                          <form id="openid-login" method="get" action="@@openid-gateway@@" target="_top">
-                            <input id="openid-text" type="text" name="uname" class="single-input" maxlength="255"
-                                value="@@openid.label@@"
-                                onclick="if (this.value == '@@openid.label@@') this.value = ''; return true;"
-                                onblur="if (this.value == '') this.value = '@@openid.label@@'; return true;" />
-                            <input type="hidden" name="return_location" value="http://sonicradar.com/?" />
-                            <input id="openid-submit" class="single-input-submit" type="submit" value="Login" />
-                            <button class="Button submit">
-                              <span class="ButtonLabel">Submit</span>
-                            </button>
 
-                          </form>
-                        </li> -->
                       </ul>
                     </li>
                   </ul>
                 </li>
-                <!-- <li class="base" id="title">
+                <!-- 
+                <li class="base" id="title">
                   <ul class="list LtoR">
                     <li id="search-box" class="transparency-90">
                       <form id="openid-login" method="get" action="@@search-summary@@" target="_top">
@@ -253,12 +273,28 @@
                       </form>
                     </li>
                   </ul>
-                </li> -->
-                
+                </li> 
+                -->
               </ul>
             </li>
             <li class="base" id="instance">
-
+              <ul>
+                <li class="base width" id="openid">
+                  <label>
+                    <a style="border:0" class="no-bg-color" href="/what_is_openid">What is OpenID?</a>
+                  </label>
+                  <form id="openid-login" method="get" action="@@openid-gateway@@" target="_top">
+                    <input id="openid-text" type="text" name="uname" class="single-input" maxlength="255"
+                        value="@@openid.label@@"
+                        onclick="if (this.value == '@@openid.label@@') this.value = ''; return true;"
+                        onblur="if (this.value == '') this.value = '@@openid.label@@'; return true;" />
+                    <input type="hidden" name="return_location" value="@@openid.return_location@@" />
+                    <button class="Button submit">
+                      <span class="ButtonLabel">Submit</span>
+                    </button>
+                  </form>
+                </li>
+              </ul>
             </li>
             <li class="base" id="footer">
               <ul class="list">

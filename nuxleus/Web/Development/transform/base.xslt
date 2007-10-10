@@ -25,7 +25,7 @@
     <xsl:param name="server" select="aspnet-context:Server($current-context)" />
     <xsl:param name="session" select="aspnet-context:Session($current-context)" />
     <xsl:param name="timestamp" select="aspnet-context:Timestamp($current-context)" />
-    <xsl:param name="aws-config" select="document('./aws.xml')/aws" />
+    <xsl:param name="aws-config" select="document('./aws.config')/aws" />
     <xsl:param name="aws-default-key-pair-name" select="'primary'" />
     <xsl:param name="aws-default-key-pair-set"
         select="$aws-config/key[@friendly-name = $aws-default-key-pair-name]" />
