@@ -235,6 +235,7 @@
                         <li class="top-level domain selected">
                           <a href="@@base-uri@@">@@domain.label@@</a>
                         </li>
+                        <li>Now Playing: FooBar Fighters > "Foo Bar Baz Boom"</li>
                       </ul>
                     </li>
                   </ul>
