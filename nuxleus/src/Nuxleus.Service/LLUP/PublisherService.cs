@@ -11,34 +11,37 @@ using System.Runtime.Remoting;
 using System.Runtime.Remoting.Messaging;
 using System.Configuration.Install;
 using Nuxleus.Messaging;
-using Nuxleus.Messaging.QS;
+using Nuxleus.Messaging.LLUP;
 
 namespace Nuxleus.Service
 {
-    public class BuckerQueueServerService : ServiceBase
+    public class LLUPPublisherService : ServiceBase
     {
         Container components = null;
-        MessageServer server;
-	BuckerServerHandler buckerHandler = null;
+        MessageServer pubServer = null;
+        MessageServer busServer = null;
+	PublisherHandler pub = null;
 
-	public BuckerQueueServerService(int port, string[] memcachedServers, string topLevelQueueId)
+
+	public LLUPPublisherService(int pubPort, int busPort)
 	  {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
-            server = new MessageServer(port, "\r\n\r\n");
-	    buckerHandler = new BuckerServerHandler(memcachedServers, topLevelQueueId);
-	    buckerHandler.Service = server.Service;
+
+            pubServer = new MessageServer(pubPort, "\r\n");
+            busServer = new MessageServer(busPort, "\r\n");
+
+	    pub = new PublisherHandler();
+	    
+	    pub.ReceiverService = pubServer.Service;
+	    pub.DispatcherService = busServer.Service;
         }
 
         // The main entry point for the process
         public static void Main(object[] args)
         {
             ServiceBase[] ServicesToRun;
-	    string[] memcachedServers = ((string)args[1]).Split(':');
-	    string topLevelQueueId = (string)args[2];
-            ServicesToRun = new ServiceBase[] { new BuckerQueueServerService((int)args[0], 
-									     memcachedServers, 
-									     topLevelQueueId) };
+            ServicesToRun = new ServiceBase[] { new LLUPPublisherService((int)args[0], (int)args[1]) };
             ServiceBase.Run(ServicesToRun);
         }
 
@@ -50,7 +53,7 @@ namespace Nuxleus.Service
         private void InitializeComponent()
         {
             components = new Container();
-            this.ServiceName = "nuXleus queue server";
+            this.ServiceName = "nuXleus llup publisher servers";
         }
 
         /// <summary>
@@ -75,8 +78,9 @@ namespace Nuxleus.Service
         {
             try
             {
-                Log.Write("Starting nuXleus queue server...");
-		server.Start();
+                Log.Write("Starting nuXleus llup publisher servers...");
+		busServer.Start();
+                pubServer.Start();
             }
             catch (Exception ex)
             {
@@ -91,9 +95,9 @@ namespace Nuxleus.Service
         {
             try
             {
-                Log.Write("Stopping nuXleus queue server...");
-		buckerHandler.Close();
-                server.Stop();
+                Log.Write("Stopping nuXleus llup publisher servers...");
+                pubServer.Stop();
+		busServer.Stop();
                 this.Dispose();
             }
             catch (Exception ex)

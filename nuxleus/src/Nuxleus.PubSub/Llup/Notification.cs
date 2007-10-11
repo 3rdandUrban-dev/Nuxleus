@@ -15,6 +15,9 @@ namespace Nuxleus.Llup
       private static XmlSerializerNamespaces xmlns = null;
       private static XmlWriterSettings settings = null;
 
+      [XmlElement (ElementName="id")]
+      public string Id;
+
 	[XmlElement (ElementName="recipient")]
 	public string Recipient;
 
@@ -56,6 +59,14 @@ namespace Nuxleus.Llup
 	return (Notification)serializer.Deserialize(stream);
       }
       
+      public static Notification Parse(byte[] bytes) {
+	MemoryStream stream = new MemoryStream(bytes);
+	XmlSerializer serializer = new XmlSerializer(typeof(Notification));
+	Notification m = (Notification)serializer.Deserialize(stream);
+	stream.Close();
+	return m;
+      }
+
       public override string ToString() {
 	if(xmlns == null) {
 	  xmlns = new XmlSerializerNamespaces();
@@ -74,6 +85,14 @@ namespace Nuxleus.Llup
 	XmlSerializer serializer = new XmlSerializer(typeof(Notification));
 	serializer.Serialize(writer, this, xmlns);
 	return sb.ToString();
+      }
+
+      public static byte[] Serialize(Notification notification) {
+	return Encoding.UTF8.GetBytes(notification.ToString());
+      }
+
+      public static byte[] Serialize(Notification notification, Encoding encoding) {
+	return encoding.GetBytes(notification.ToString());
       }
     }
 }

@@ -11,34 +11,42 @@ using System.Runtime.Remoting;
 using System.Runtime.Remoting.Messaging;
 using System.Configuration.Install;
 using Nuxleus.Messaging;
-using Nuxleus.Messaging.QS;
+using Nuxleus.Messaging.LLUP;
 
 namespace Nuxleus.Service
 {
-    public class BuckerQueueServerService : ServiceBase
+    public class LLUPRouterService : ServiceBase
     {
         Container components = null;
-        MessageServer server;
-	BuckerServerHandler buckerHandler = null;
+        MessageClient boundTo = null;
+        MessageServer servingOn = null;
+	RouterHandler router = null; 
 
-	public BuckerQueueServerService(int port, string[] memcachedServers, string topLevelQueueId)
+	// Using the default filtering, ie. forward all notifications.
+	public LLUPRouterService(string ipToBind, int portToBind, int servingPort)
+	  : this(ipToBind, portToBind, servingPort, null) {
+	}
+	    
+	public LLUPRouterService(string ipToBind, int portToBind, int servingPort, IRouterFilter filter)
 	  {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
-            server = new MessageServer(port, "\r\n\r\n");
-	    buckerHandler = new BuckerServerHandler(memcachedServers, topLevelQueueId);
-	    buckerHandler.Service = server.Service;
+
+            boundTo = new MessageClient(ipToBind, portToBind, "\r\n");
+            servingOn = new MessageServer(servingPort, "\r\n");
+
+	    router = new RouterHandler();
+	    router.ReceiverService = boundTo.Service;
+	    router.FilterService = servingOn.Service;
+	    if(filter != null)
+	      router.Filter = filter;
         }
 
         // The main entry point for the process
         public static void Main(object[] args)
         {
             ServiceBase[] ServicesToRun;
-	    string[] memcachedServers = ((string)args[1]).Split(':');
-	    string topLevelQueueId = (string)args[2];
-            ServicesToRun = new ServiceBase[] { new BuckerQueueServerService((int)args[0], 
-									     memcachedServers, 
-									     topLevelQueueId) };
+            ServicesToRun = new ServiceBase[] { new LLUPPublisherService((int)args[0], (int)args[1]) };
             ServiceBase.Run(ServicesToRun);
         }
 
@@ -50,7 +58,7 @@ namespace Nuxleus.Service
         private void InitializeComponent()
         {
             components = new Container();
-            this.ServiceName = "nuXleus queue server";
+            this.ServiceName = "nuXleus llup router servers";
         }
 
         /// <summary>
@@ -75,8 +83,9 @@ namespace Nuxleus.Service
         {
             try
             {
-                Log.Write("Starting nuXleus queue server...");
-		server.Start();
+                Log.Write("Starting nuXleus llup router servers...");
+                servingOn.Start();
+		boundTo.Open();
             }
             catch (Exception ex)
             {
@@ -91,9 +100,9 @@ namespace Nuxleus.Service
         {
             try
             {
-                Log.Write("Stopping nuXleus queue server...");
-		buckerHandler.Close();
-                server.Stop();
+                Log.Write("Stopping nuXleus llup router servers...");
+		boundTo.Close();
+                servingOn.Stop();
                 this.Dispose();
             }
             catch (Exception ex)

@@ -442,6 +442,40 @@
       </references>
     </csc>
   </target>
+  <target name="LLUPRouterService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+    <csc target="exe" output="${build.dir}/LLUPRouterService.exe">
+      <sources>
+        <include name="${source.dir}/ServiceApps/LLUP/Router.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Service.dll"/>
+        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
+        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+        <include name="System.dll"/>
+        <include name="System.ServiceProcess.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="LLUPPublisherService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+    <csc target="exe" output="${build.dir}/LLUPPublisherService.exe">
+      <sources>
+        <include name="${source.dir}/ServiceApps/LLUP/Publisher.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Service.dll"/>
+        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
+        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+        <include name="System.dll"/>
+        <include name="System.ServiceProcess.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="ReplicationService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/ReplicationService.exe">
       <sources>
@@ -530,6 +564,8 @@
     <call target="FileSystemWatcher"/>
     <call target="ReplicationService"/>
     <call target="QueueServerService"/>
+    <call target="LLUPPublisherService"/>
+    <call target="LLUPRouterService"/>
     <call target="System.Messaging"/>
   </target>
   <target name="production" depends="all">

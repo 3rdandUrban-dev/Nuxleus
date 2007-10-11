@@ -18,16 +18,16 @@ namespace Nuxleus.Service
     public class ReplicationService : ServiceBase
     {
         Container components = null;
-        MessageQueueServer _messageQueueServer;
+        MessageServer server;
 	ReplicationHandler handler = null;
 
         public ReplicationService(int port)
         {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
-            _messageQueueServer = new MessageQueueServer(port, "\n");
+            server = new MessageServer(port, "\n");
 	    handler = new ReplicationHandler();
-	    handler.Service = _messageQueueServer.Service;
+	    handler.Service = server.Service;
         }
 
         // The main entry point for the process
@@ -72,7 +72,7 @@ namespace Nuxleus.Service
             try
             {
                 Log.Write("Starting nuXleus File Replication Service...");
-                _messageQueueServer.Start();
+                server.Start();
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace Nuxleus.Service
             try
             {
                 Log.Write("Stopping nuXleus File Replication Service...");
-                _messageQueueServer.Stop();
+                server.Stop();
                 this.Dispose();
             }
             catch (Exception ex)
