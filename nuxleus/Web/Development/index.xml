@@ -37,17 +37,17 @@
       <page:advice>
         <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
         <advice:page-title>@@domain.label@@::@@date@@</advice:page-title>
-        <advice:date>October 10th, 2007</advice:date>
+        <advice:date>October 11th, 2007</advice:date>
         <advice:protocol>http://</advice:protocol>
         <advice:space>&#160;</advice:space>
         <advice:dot>.</advice:dot>
         <advice:colon>:</advice:colon>
-        <!-- <advice:port>9999</advice:port> -->
-        <advice:domain-name>dev.amp</advice:domain-name>
+        <advice:port>9999</advice:port>
+        <advice:domain-name>localhost</advice:domain-name>
         <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
         <!-- |$$test:@@sub-domain@@IfTrue:@@sub-domain@@@@dot@@IfFalse:@@empty@@$$| -->
         <advice:domain.label>amp.fm</advice:domain.label>
-        <advice:root>fm</advice:root>
+        <!-- <advice:root>fm</advice:root> -->
         <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
         <advice:service-gateway>@@base-uri@@/service</advice:service-gateway>
         <advice:openid-gateway>/gatekeeper/login?</advice:openid-gateway>
@@ -221,11 +221,6 @@
               <ul class="list">
                 <li class="base width border-top transparency-90" id="control-center">
                   <ul class="list RtoL">
-                    <li>
-                      <ul id="control-center-nav" class="list menu">
-                        <li id="layer-listen"/>
-                      </ul>
-                    </li>
                     <li class="selected">
                       <a href="@@base-uri@@/support/">
                       Help/Support
@@ -249,6 +244,11 @@
                     <li class="selected">
                       <a href="@@base-uri@@/home/friends/">
                       My Friends
+                      </a>
+                    </li>
+                    <li class="selected">
+                      <a href="@@base-uri@@/home/friends/">
+                      My Feed Subscriptions
                       </a>
                     </li>
                     <li class="selected">
