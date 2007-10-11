@@ -32,6 +32,7 @@
     exclude-result-prefixes="#all">
 
   <xsl:import href="./atomicxml/base.xslt" />
+  <xsl:import href="./atompub/base.xslt" />
   <xsl:import href="./aws/s3/base.xslt" />
   <xsl:import href="./proxy/base.xslt" />
   <xsl:import href="./atom/base.xslt" />

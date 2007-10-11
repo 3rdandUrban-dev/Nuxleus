@@ -13,5 +13,5 @@
     <xsl:param name="request"/>
     <xsl:value-of select="request-stream:ContentType($request)"/>
   </xsl:function>
-  
+
 </xsl:transform>
