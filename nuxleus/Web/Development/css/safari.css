@@ -1,6 +1,5 @@
 #sub-nav {
- margin-top:0em;
- margin-bottom: .15em; 
+ 
 }
 #view {
   padding:.03em .25em;
@@ -8,12 +7,12 @@
 #view > ul > li > a {
   padding:.1em .35em;
 }
-#sub-nav-menu a {
+/* #sub-nav-menu a {
 padding:.3em .5em 0;
 }
 #sub-nav-menu a:hover {
 padding:.35em .5em .2em;
-}
+} */
 #top-nav-menu .domain a {
   padding:.05em .5em;
   margin-left:.5em;
