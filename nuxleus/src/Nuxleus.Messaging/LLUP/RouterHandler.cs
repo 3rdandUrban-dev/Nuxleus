@@ -84,12 +84,11 @@ namespace  Nuxleus.Messaging.LLUP {
 
     /// <summary>
     /// The FilterHandler is in charge of deciding whether or not an 
-    /// incoming notification can be propagated down the stream or not.
-    /// based on any criteria available.
+    /// incoming notification can be propagated down the stream or not
+    /// based on the filter set.
     /// By default all notifications are forwarded as-is. Your application
-    /// shoud inherit from this class and simply re-implement the
-    /// ProcessNotification method in order to make the filtering more
-    /// intelligent and appropriate for your requirements.
+    /// shoud implement IRouterFilter and set the Filter property
+    /// to an instance of your own filter class.
     /// </summary>
     public FilterHandler() {
       filter = new DefaultRouterFilter();
