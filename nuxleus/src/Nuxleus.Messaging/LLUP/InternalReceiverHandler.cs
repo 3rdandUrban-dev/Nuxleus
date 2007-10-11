@@ -60,11 +60,6 @@ namespace  Nuxleus.Messaging.LLUP {
 
     private void BlipReceived(ISocketConnection sender, IMessage message) {
       Notification n = Notification.Parse(message.InnerMessage);
-      // The publisher always ensure that each notification has its llup:id 
-      // element set so that consumers can decide whether or not
-      // they have already processed a notification
-      // The form of the id doesn't matter as long as it's unique.
-      n.Id = Guid.NewGuid().ToString();
       postOffice.Post(n);
     }
   }

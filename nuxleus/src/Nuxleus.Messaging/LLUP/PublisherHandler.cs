@@ -103,7 +103,7 @@ namespace  Nuxleus.Messaging.LLUP {
     public BlipPostOffice PostOffice {
       set { 
 	postOffice = value; 
-	postOffice.Mailbox += new BlipPostedHandler(this.BlipReceived);
+	postOffice.Mailbox += new BlipPostedHandler(this.BlipToDispatch);
       }
     }
 
@@ -131,7 +131,12 @@ namespace  Nuxleus.Messaging.LLUP {
       }
     }
 
-    private void BlipReceived(Notification n) {
+    private void BlipToDispatch(Notification n) {
+      // The publisher always ensure that each notification has its llup:id 
+      // element set so that consumers can decide whether or not
+      // they have already processed a notification
+      // The form of the id doesn't matter as long as it's unique.
+      n.Id = Guid.NewGuid().ToString();
       SendToAll(n);
     }
 
