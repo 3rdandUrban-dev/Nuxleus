@@ -6,7 +6,7 @@
   http://www.opensource.org/licenses/mit-license.php for specific detail.
 -->
 <my:session xmlns:my="http://xameleon.org/my">
-  <my:page xmlns="http://www.w3.org/1999/xhtml" xmlns:page="http://atomictalk.org/page" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/head" xmlns:body="http://atomictalk.org/page/body" xmlns:advice="http://aspectxml.org/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:resource="http://atomictalk.org/page/resource" xmlns:property="http://atomictalk.org/page/property" xmlns:variable="http://atomictalk.org/page/variable" xmlns:model="http://atomictalk.org/page/model" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:app="http://purl.org/atom/app#" xmlns:atom="http://www.w3.org/2005/Atom">
+  <my:page xmlns="http://www.w3.org/1999/xhtml" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:page="http://atomictalk.org/page" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/head" xmlns:body="http://atomictalk.org/page/body" xmlns:advice="http://aspectxml.org/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:resource="http://atomictalk.org/page/resource" xmlns:property="http://atomictalk.org/page/property" xmlns:variable="http://atomictalk.org/page/variable" xmlns:model="http://atomictalk.org/page/model" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:app="http://purl.org/atom/app#" xmlns:atom="http://www.w3.org/2005/Atom">
     <page:config>
       <page:output type="xhtml-strict" cdata-section-elements="script" indent="no">
         <output:xhtml-strict>
@@ -221,25 +221,28 @@
 
                 <li class="base transparency-90" id="info">
                   <ul class="list LtoR">
-                    <li id="amp-fm-info-box">
-                      <img src="/images/amp.fm.icon-big.png" width="256" height="256"/>
-                    </li>
                     <li id="acgr-info-box">
                           <img src="/images/CMJ_Comp07_cover-small.jpg" width="256" height="256"/>
                     </li>
                     <li id="amp-fm-info-box">
-                      <img src="/images/3rdWorld-icon.png" width="256" height="256"/>
+                      <img src="/images/ruatcmj.png" width="256" height="256"/>
                     </li>
                     <li id="grooveautomata-info-box">
                         <img src="/images/GrooveAutomata.jpg" width="256" height="256"/>
                     </li>
+                    <li id="amp-fm-info-box">
+                      <img src="/images/3rdWorld-icon.png" width="256" height="256"/>
+                    </li>
+                    
                   </ul>
                 </li>
 
               </ul>
             </li>
             <li class="base" id="instance">
-              <ul>
+              <ul class="base transparency-90">
+                <li><h1>blog@amp.fm</h1></li>
+                <doc:feed href="/feed/feed.xml" characterCount="400"/>
                 <!-- <li class="base width" id="openid">
                   <label>
                     <a style="border:0" class="no-bg-color" href="/what_is_openid">What is OpenID?</a>

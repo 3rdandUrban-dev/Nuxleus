@@ -13,6 +13,7 @@
     xmlns:view="http://atomictalk.org/page/view" xmlns:form="http://atomictalk.org/page/view/form"
     xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common"
     xmlns:resource="http://atomictalk.org/page/resource"
+    xmlns:doc="http://atomictalk.org/feed/doc"
     xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#"
     xmlns:atompub="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt"
@@ -185,6 +186,26 @@
     <xsl:template match="body:html">
         <xsl:apply-templates />
     </xsl:template>
+    
+    <xsl:template match="doc:feed">
+      <xsl:apply-templates select="document(@href)/atom:feed/atom:entry">
+        <xsl:with-param name="cCount" select="@characterCount"/>
+      </xsl:apply-templates>
+    </xsl:template>
+
+    <xsl:template match="doc:date">
+
+      <xsl:value-of select="document('/date.xml')/date/current"/>
+    </xsl:template>
+
+    <xsl:template match="doc:html[@type = 'screen-scrape']">
+      <xsl:apply-templates select="document(@href)//html:div[@id = current()/@id]"/>
+    </xsl:template>
+
+    <xsl:template match="doc:html[@type = 'full-text']">
+      <xsl:apply-templates select="document(@href)//html:*[contains(text(), @query]"/>
+    </xsl:template>
+    
 
     <xsl:template match="page:content[@src]">
         <xsl:apply-templates select="document(@src)" />
