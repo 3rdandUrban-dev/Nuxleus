@@ -46,6 +46,7 @@
         <advice:domain-name>localhost</advice:domain-name>
         <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
         <!-- |$$test:@@sub-domain@@IfTrue:@@sub-domain@@@@dot@@IfFalse:@@empty@@$$| -->
+        <advice:location.label>world</advice:location.label>
         <advice:domain.label>amp.fm</advice:domain.label>
         <!-- <advice:root>fm</advice:root> -->
         <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
@@ -55,7 +56,6 @@
         <advice:search-summary>/summary?</advice:search-summary>
         <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
         <advice:location>frontpage</advice:location>
-        <advice:location.label>front page</advice:location.label>
         <advice:current-location.label>Austin, TX</advice:current-location.label>
         <advice:static>@@base-uri@@</advice:static>
         <advice:static-css-browser>@@static@@/css/@@browser@@</advice:static-css-browser>
@@ -158,9 +158,8 @@
                     <li>
                       <ul id="top-nav-menu" class="list menu">
                         <li class="top-level domain selected">
-                          <a href="@@base-uri@@">@@domain.label@@</a>
+                          <a href="@@base-uri@@">@@location.label@@<span>@</span>@@domain.label@@</a>
                         </li>
-
                       </ul>
                     </li>
                   </ul>
@@ -169,14 +168,17 @@
                   <ul class="list LtoR border-top border-bottom">
                     <li id="sub-nav-menu" >
                       <ul class="list RtoL">
-                        <li class="selected">
+                        <!-- <li class="selected">
                           <a href="@@base-uri@@/local-scene/">Local Scene</a>
-                        </li>
+                        </li> -->
                         <li class="selected">
                           <a href="@@base-uri@@/region/">Regions</a>
                         </li>
                         <li class="selected">
                           <a href="@@base-uri@@/events/">Events</a>
+                        </li>
+                        <li class="selected">
+                          <a href="@@base-uri@@/events/">Charts</a>
                         </li>
                         <li class="selected">
                           <a href="@@base-uri@@/genres/">Genres</a>
@@ -188,18 +190,52 @@
                     </li>
                   </ul>
                 </li>
-                <li class="base" id="title">
+                <li class="base" id="title-summary">
                   <ul class="list LtoR">
+                    <li id="title-head">
+                      <h2>Hello, World!</h2>
+                    </li>
+                  </ul>
+                </li>
+                <li class="base" id="title">
+                  <ul class="list TtoB"> 
                     <li id="search-box" class="transparency-90">
                       <form id="openid-login" method="get" action="@@search-summary@@" target="_top">
-                        <input id="openid-text" class="single-input" type="text" name="search" maxlength="255" value="@@search.box.label@@" onclick="if (this.value == '@@search.box.label@@') this.value = ''; return true;" onblur="if (this.value == '') this.value = '@@search.box.label@@'; return true;" />
+                        <input id="openid-text" class="single-input" type="text" name="search" maxlength="255" />
                         <button class="Button submit">
                           <span class="ButtonLabel">Search</span>
                         </button>
                       </form>
                     </li>
+                    <li id="search-categories">
+                      <ul class="list LtoR">
+                        <li class="selected"><a href="#foo">Everything</a></li>
+                        <li><a href="#foo">Events</a></li>
+                        <li><a href="#foo">Genre</a></li>
+                        <li><a href="#foo">Charts</a></li>
+                        <li><a href="#foo">On This Page</a></li>
+                      </ul>
+                    </li>
                   </ul>
                 </li>
+
+                <li class="base transparency-90" id="info">
+                  <ul class="list LtoR">
+                    <li id="amp-fm-info-box">
+                      <img src="/images/amp.fm.icon-big.png" width="256" height="256"/>
+                    </li>
+                    <li id="acgr-info-box">
+                          <img src="/images/CMJ_Comp07_cover-small.jpg" width="256" height="256"/>
+                    </li>
+                    <li id="amp-fm-info-box">
+                      <img src="/images/3rdWorld-icon.png" width="256" height="256"/>
+                    </li>
+                    <li id="grooveautomata-info-box">
+                        <img src="/images/GrooveAutomata.jpg" width="256" height="256"/>
+                    </li>
+                  </ul>
+                </li>
+
               </ul>
             </li>
             <li class="base" id="instance">
