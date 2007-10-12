@@ -37,18 +37,18 @@
       <page:advice>
         <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
         <advice:page-title>@@domain.label@@::@@date@@</advice:page-title>
-        <advice:date>October 11th, 2007</advice:date>
+        <advice:date>October 12th, 2007</advice:date>
         <advice:protocol>http://</advice:protocol>
         <advice:space>&#160;</advice:space>
         <advice:dot>.</advice:dot>
         <advice:colon>:</advice:colon>
-        <advice:port>9999</advice:port>
-        <advice:domain-name>localhost</advice:domain-name>
+        <!-- <advice:port>9999</advice:port> -->
+        <advice:domain-name>dev.amp</advice:domain-name>
         <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
         <!-- |$$test:@@sub-domain@@IfTrue:@@sub-domain@@@@dot@@IfFalse:@@empty@@$$| -->
         <advice:location.label>world</advice:location.label>
         <advice:domain.label>amp.fm</advice:domain.label>
-        <!-- <advice:root>fm</advice:root> -->
+        <advice:root>fm</advice:root>
         <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
         <advice:service-gateway>@@base-uri@@/service</advice:service-gateway>
         <advice:openid-gateway>/gatekeeper/login?</advice:openid-gateway>
@@ -230,9 +230,9 @@
                     <li id="grooveautomata-info-box">
                         <img src="/images/GrooveAutomata.jpg" width="256" height="256"/>
                     </li>
-                    <li id="amp-fm-info-box">
+                    <!-- <li id="amp-fm-info-box">
                       <img src="/images/3rdWorld-icon.png" width="256" height="256"/>
-                    </li>
+                    </li> -->
                     
                   </ul>
                 </li>
