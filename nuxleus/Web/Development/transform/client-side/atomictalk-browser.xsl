@@ -370,7 +370,7 @@
   <xsl:template match="atom:author"/>
   <xsl:template match="atom:content">
     <xsl:param name="cCount"/>
-    <p style="padding-left:1em;font-size:small">
+    <p style="font-size:small">
       <xsl:copy-of select="substring(., 1, $cCount)"/> ... [<a href="{../atom:link[@rel = 'self']/@href}">more</a>]
     </p>
   </xsl:template>

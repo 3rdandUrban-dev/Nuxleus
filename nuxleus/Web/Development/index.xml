@@ -166,7 +166,7 @@
                 </li>
                 <li class="base width transparency-90" id="sub-nav">
                   <ul class="list LtoR border-top border-bottom">
-                    <li id="sub-nav-menu" >
+                    <li id="sub-nav-menu">
                       <ul class="list RtoL">
                         <!-- <li class="selected">
                           <a href="@@base-uri@@/local-scene/">Local Scene</a>
@@ -190,15 +190,11 @@
                     </li>
                   </ul>
                 </li>
-                <li class="base" id="title-summary">
-                  <ul class="list LtoR">
-                    <li id="title-head">
-                      <h2>Hello, World!</h2>
-                    </li>
-                  </ul>
-                </li>
                 <li class="base" id="title">
-                  <ul class="list TtoB"> 
+                  <ul class="list TtoB">
+                    <li id="logo">
+                      <img src="http://amp.fm/Amp.FM.png" width="300" height="64"/>
+                    </li>
                     <li id="search-box" class="transparency-90">
                       <form id="openid-login" method="get" action="@@search-summary@@" target="_top">
                         <input id="openid-text" class="single-input" type="text" name="search" maxlength="255" />
@@ -209,19 +205,28 @@
                     </li>
                     <li id="search-categories">
                       <ul class="list LtoR">
-                        <li class="selected"><a href="#foo">Everything</a></li>
-                        <li><a href="#foo">Events</a></li>
-                        <li><a href="#foo">Genre</a></li>
-                        <li><a href="#foo">Charts</a></li>
-                        <li><a href="#foo">On This Page</a></li>
+                        <li class="selected">
+                          <a href="#foo">Everything</a>
+                        </li>
+                        <li>
+                          <a href="#foo">Events</a>
+                        </li>
+                        <li>
+                          <a href="#foo">Genre</a>
+                        </li>
+                        <li>
+                          <a href="#foo">Charts</a>
+                        </li>
+                        <li>
+                          <a href="#foo">On This Page</a>
+                        </li>
                       </ul>
                     </li>
                   </ul>
                 </li>
-
-                <li class="base transparency-90" id="info">
-                  <ul class="list LtoR">
-                    <li id="acgr-info-box">
+  
+                
+<!--                 <li id="acgr-info-box">
                           <img src="/images/CMJ_Comp07_cover-small.jpg" width="256" height="256"/>
                     </li>
                     <li id="amp-fm-info-box">
@@ -229,32 +234,60 @@
                     </li>
                     <li id="grooveautomata-info-box">
                         <img src="/images/GrooveAutomata.jpg" width="256" height="256"/>
-                    </li>
-                    <!-- <li id="amp-fm-info-box">
+                    </li> 
+                    <li id="amp-fm-info-box">
                       <img src="/images/3rdWorld-icon.png" width="256" height="256"/>
-                    </li> -->
-                    
+                    </li>  -->
+                <li id="image-nav">
+                  <ul class="TtoB">
+
+                    <li class="base transparency-90" id="info">
+                      <ul class="list LtoR">
+
+                        <!-- <li id="local-art" class="transparency-90">
+                          <a href="http://grooveautomata.com/">GrooveAutomata</a>, <a href="http://amp.fm/">Amp.fm</a>, &amp; <a href="/acgr">ACGR</a> @ <a href="http://cmj.amp.fm/2007">CMJ</a> by <a href="/jake">Jacob Joaquin</a> | Original Artwork Credit: <a href="http://www.flickr.com/photos/flattop341/233457860/">Graffiti Artists Dream</a> by <a href="http://www.flickr.com/photos/flattop341/">flattop341</a>
+                        </li> -->
+                        <!-- <li id="local-art" class="transparency-90">
+                          <a href="http://farm1.static.flickr.com/94/238781740_d1f6659be3_o.jpg">Rain</a> by <a href="/jake">Jacob Joaquin</a>
+                        </li> -->
+                        <li id="local-art" class="transparency-90">
+                          <a href="/images/bottoms_up.jpg">Bottums Up</a> by <a href="/sylvain">Sylvain Hellegouarch</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li id="view-categories">
+                      <ul class="list LtoR">
+                        <li class="selected">
+                          <a href="#foo">Local Art &amp; Imagery</a>
+                        </li>
+                        <li>
+                          <a href="#foo">Latest News</a>
+                        </li>
+                        <li>
+                          <a href="#foo">Events Map</a>
+                        </li>
+                        <li>
+                          <a href="#foo">Playlists Map</a>
+                        </li>
+                      </ul>
+                    </li>
                   </ul>
                 </li>
-
               </ul>
             </li>
             <li class="base" id="instance">
-              <ul class="base transparency-90">
-                <li><h1>blog@amp.fm</h1></li>
-                <doc:feed href="/feed/feed.xml" characterCount="400"/>
-                <!-- <li class="base width" id="openid">
-                  <label>
-                    <a style="border:0" class="no-bg-color" href="/what_is_openid">What is OpenID?</a>
-                  </label>
-                  <form id="openid-login" method="get" action="@@openid-gateway@@" target="_top">
-                    <input id="openid-text" type="text" name="uname" class="single-input" maxlength="255" value="@@openid.label@@" onclick="if (this.value == '@@openid.label@@') this.value = ''; return true;" onblur="if (this.value == '') this.value = '@@openid.label@@'; return true;" />
-                    <input type="hidden" name="return_location" value="@@openid.return_location@@" />
-                    <button class="Button submit">
-                      <span class="ButtonLabel">Submit</span>
-                    </button>
-                  </form>
-                </li> --></ul>
+              <ul id="content" class="base transparency-90 list LtoR">
+                <li id="left">
+                  <doc:feed href="/feed/feed.xml" characterCount="400"/>
+                </li>
+                <li id="center">
+                  <h2>Hello, World!</h2>
+                  <doc:feed href="/feed/feed.xml" characterCount="400"/>
+                </li>
+                <li id="right">
+                  <doc:feed href="/feed/feed.xml" characterCount="400"/>
+                </li>
+              </ul>
             </li>
             <li class="base" id="footer">
               <ul class="list">
