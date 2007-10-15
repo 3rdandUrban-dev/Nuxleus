@@ -1,6 +1,8 @@
 using System;
 using System.Web;
 using System.Text;
+using Nuxleus.Llup;
+using Nuxleus.Atom;
 using Nuxleus.Bucker;
 
 namespace Xameleon.Function
@@ -15,11 +17,24 @@ namespace Xameleon.Function
 
         private static string Push(string queueName, string message)
         {
+	  // Notification
+	  Notification n = new Notification();
+	  n.Action = "publish";
+	  n.Expires = DateTime.Now.AddHours(1);
+	  n.Categories = new Category[2];
+	  n.Categories[0] = new Category();
+	  n.Categories[0].Term = message;
+	  n.Categories[1] = new Category();
+	  n.Categories[1].Term = "indie";
+
 	  // The actual Queue Message to send
 	  Message pm = new Message();
 	  pm.Op.Type = OperationType.PushMessage;
 	  pm.QueueId = queueName;
-	  pm.Payload = Convert.ToBase64String(Encoding.ASCII.GetBytes(message));
+
+	  Console.WriteLine(queueName);
+	  Console.WriteLine(n.ToString());
+	  pm.Payload = Convert.ToBase64String(Notification.Serialize(n));
 
 	  // An event handler
 	  MessageEvent me = new MessageEvent();

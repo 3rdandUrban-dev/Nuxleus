@@ -510,10 +510,27 @@
       </references>
     </csc>
   </target>
+  <target name="QSToLLUPService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+    <csc target="exe" output="${build.dir}/QueueServerService.exe">
+      <sources>
+        <include name="${source.dir}/ServiceApps/QueueServerService/QsToLLUPBridge.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Service.dll"/>
+        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
+        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+        <include name="System.dll"/>
+        <include name="System.ServiceProcess.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="QueueServerService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/QueueServerService.exe">
       <sources>
-        <include name="${source.dir}/ServiceApps/QueueServerService/**/*.cs"/>
+        <include name="${source.dir}/ServiceApps/QueueServerService/Program.cs"/>
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Service.dll"/>
@@ -581,6 +598,7 @@
     <call target="FileSystemWatcher"/>
     <call target="ReplicationService"/>
     <call target="QueueServerService"/>
+    <call target="QSToLLUPService"/>
     <call target="LLUPPublisherService"/>
     <call target="LLUPRouterService"/>
     <call target="LLUPSubscriberService"/>

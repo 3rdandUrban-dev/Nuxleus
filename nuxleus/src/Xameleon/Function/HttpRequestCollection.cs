@@ -95,7 +95,17 @@ namespace Xameleon.Function
                             return notSet;
                         }
                         return notSet;
-
+		case "file":
+		  if(request.Files.Count > 0)
+		    {
+		      foreach (string fieldName in request.Files.AllKeys)
+			{
+			  if(fieldName == key) {
+			    return fieldName;
+			  }
+			}
+		    }
+		  return notSet;
                     default:
                         return notSet;
                 }

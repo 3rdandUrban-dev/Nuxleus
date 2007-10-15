@@ -47,6 +47,8 @@ namespace Nuxleus.Llup
 		     Namespace="http://www.w3.org/2005/Atom")]
 	public Link[] Links;
 
+      [XmlElement(ElementName="point", Namespace="http://www.georss.org/georss")]
+      public string Coordinates;
       
       public static Notification Parse(string xml) {
 	XmlReader reader = XmlReader.Create(new StringReader(xml));
@@ -71,6 +73,7 @@ namespace Nuxleus.Llup
 	if(xmlns == null) {
 	  xmlns = new XmlSerializerNamespaces();
 	  xmlns.Add("llup", "http://www.x2x2x.org/llup");
+	  xmlns.Add("georss", "http://www.georss.org/georss");
 	  xmlns.Add(String.Empty, "http://www.w3.org/2005/Atom");
 	}
 

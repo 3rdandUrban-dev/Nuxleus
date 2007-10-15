@@ -30,7 +30,19 @@
     <xsl:param name="content-encoding" as="xs:string"/>
     <xsl:sequence select="response-stream:set_ContentEncoding($response, $content-encoding)"/>
   </xsl:function>
-
+  
+  <xsl:function name="response:set-status-code">
+    <xsl:param name="response"/>
+    <xsl:param name="code" as="xs:integer"/>
+    <xsl:sequence select="response-stream:set_StatusCode($response, 302)"/>
+  </xsl:function>
+    
+  <xsl:function name="response:set-location">
+    <xsl:param name="response"/>
+    <xsl:param name="uri" as="xs:string"/>
+    <xsl:sequence select="response-stream:set_RedirectLocation($response, $uri)"/>
+  </xsl:function>
+    
   <xsl:function name="response:get-content-type">
     <xsl:param name="response"/>
     <xsl:sequence select="response-stream:ContentType($response)"/>

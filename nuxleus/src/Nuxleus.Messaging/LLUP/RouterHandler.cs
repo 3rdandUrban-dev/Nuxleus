@@ -139,6 +139,7 @@ namespace  Nuxleus.Messaging.LLUP {
 
     private void FailureRaised(ISocketConnection sender, Exception ex) {
       // here we should log the exception
+      Console.WriteLine(ex.ToString());
 
       // we disconnect the faulty client
       sender.BeginDisconnect();

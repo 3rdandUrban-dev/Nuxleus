@@ -58,7 +58,7 @@ namespace Nuxleus.Messaging {
       connection = e.Connection;
       connection.BeginReceive();
       if(Connected != null) {
-	Connected(this.Connection);
+	Connected(e.Connection);
       }
       ConnectEvent.Set();
     }
@@ -78,19 +78,19 @@ namespace Nuxleus.Messaging {
 	Received(e.Connection, m);
       }
       ReceivedEvent.Set();
-      connection.BeginReceive();
+      e.Connection.BeginReceive();
     }
 
     public override void OnDisconnected(ConnectionEventArgs e) {
       if(Disconnected != null) {
-	Disconnected(this.Connection);
+	Disconnected(e.Connection);
       }
       DisconnectEvent.Set();
     }
 
     public override void OnException(ExceptionEventArgs e) {
       if(Failure != null) {
-	Failure(this.Connection, e.Exception);
+	Failure(e.Connection, e.Exception);
       }
       ExceptionEvent.Set();
     }

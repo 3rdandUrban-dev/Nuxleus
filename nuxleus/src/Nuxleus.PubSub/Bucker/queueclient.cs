@@ -199,7 +199,8 @@ namespace Nuxleus.Bucker
       if(me.Client == null) {
 	throw new InvalidOperationException("The 'Client' property must be set");
       }
-      byte[] data = System.Text.Encoding.UTF8.GetBytes(me.Message.ToString());
+      string message = String.Format("{0}\r\n\r\n", me.Message.ToString());
+      byte[] data = System.Text.Encoding.UTF8.GetBytes(message);
       me.Client.Socket.BeginSend(data, 0, data.Length, 0,
 				 new AsyncCallback(SendCallback), me);
     }

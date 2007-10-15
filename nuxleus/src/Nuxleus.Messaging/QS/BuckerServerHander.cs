@@ -42,6 +42,7 @@ namespace  Nuxleus.Messaging.QS {
       pool.Initialize();
 
       mc = new MemcachedClient();
+      mc.PoolName = "bucker-queue-server";
       mc.EnableCompression = false;
 
       mc.Add(rootQueueId, String.Empty);
@@ -123,7 +124,6 @@ namespace  Nuxleus.Messaging.QS {
 	return err;
 
       string queues = (string)mc.Get(rootQueueId);
-      
       if((queues == null) || (queues == String.Empty) || !queues.Contains(queueId)){
 	Nuxleus.Bucker.Message m = new Nuxleus.Bucker.Message();
 	m.Type = "error";
@@ -242,14 +242,15 @@ namespace  Nuxleus.Messaging.QS {
       if(err != null)
 	return err;
 
-      Nuxleus.Bucker.Message lm = new Nuxleus.Bucker.Message();
-      lm.Type = "response";
-      lm.QueueId = m.QueueId;
-      lm.Op.Type = OperationType.ListMessages;
+      string qid = m.QueueId;
+
+      m.Type = "response";
+      m.QueueId = m.QueueId;
+      m.Op.Type = OperationType.ListMessages;
       
       string keys = (string)mc.Get(String.Format("{0}.new", m.QueueId));
       if((keys == null) || (keys == String.Empty)){
-	lm.Messages = new string[0];
+	m.Messages = new string[0];
       } else {
 	string[] unread = keys.Split(',');
 	int count = 10;
@@ -257,9 +258,9 @@ namespace  Nuxleus.Messaging.QS {
 	  count = unread.Length;
 	}
 	int index = 0;
-	lm.Messages = new string[count];
+	m.Messages = new string[count];
 	foreach(string mid in unread) {
-	  lm.Messages[index]  = mid;
+	  m.Messages[index]  = mid;
 	  index++;
 	  if(index == 10) {
 	    break;
@@ -267,7 +268,7 @@ namespace  Nuxleus.Messaging.QS {
 	}
       }
        
-      return lm;
+      return m;
     }
 
     private double UnixTimestampNow {
@@ -417,8 +418,6 @@ namespace  Nuxleus.Messaging.QS {
       Nuxleus.Bucker.Message m = Nuxleus.Bucker.Message.Parse(message.InnerMessage);
       Nuxleus.Bucker.Message responseToSend = null;
 
-      Console.WriteLine(m.ToString());
-
       switch(m.Op.Type) {
       case OperationType.GetMessage:
 	responseToSend = HandleGetMessageRequest(m);
@@ -427,6 +426,7 @@ namespace  Nuxleus.Messaging.QS {
 	responseToSend = HandleListMessagesRequest(m);
 	break;
       case OperationType.PushMessage:
+	Console.WriteLine(m.ToString());
 	responseToSend = HandlePushMessageRequest(m);
 	break;
       case OperationType.DeleteMessage:
@@ -453,6 +453,7 @@ namespace  Nuxleus.Messaging.QS {
 
       if(responseToSend != null) {
 	sender.BeginSend(Nuxleus.Bucker.Message.Serialize(responseToSend));
+	responseToSend = null;
       }
     }
   }
