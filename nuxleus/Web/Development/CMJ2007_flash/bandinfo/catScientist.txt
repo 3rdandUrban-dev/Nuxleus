@@ -1,0 +1,6 @@
+info=<p class='band'>Cat Scientist</p>"Brian Cincinatti"
+<a href="http://www.myspace.com/catscientist" target="_blank">myspace.com/catscientist</a>
+<a href="http://catscientist.com/">Official Cat Scientist website</a>
+
+Courtesy of <a href="http://www.australiancattlegod.com/" target="_blank">Australian Cattle God Records</a>
+Photo by <a href="http://www.maxspitz.com" target="blank">Max Spitzenberger</a>
