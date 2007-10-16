@@ -447,7 +447,8 @@ font-size:.9em;
   margin:0;
   border-top:1px solid #000;
   border-bottom:1px solid #000;
-  background: #FFF url(http://farm1.static.flickr.com/94/238781740_d1f6659be3_o.jpg) 50% 55% no-repeat;
+  /*http://farm1.static.flickr.com/94/238781740_d1f6659be3_o.jpg*/
+  background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat;
   position:relative;
 }
 #info > ul {

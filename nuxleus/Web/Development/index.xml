@@ -49,6 +49,7 @@
         <advice:location.label>world</advice:location.label>
         <advice:domain.label>amp.fm</advice:domain.label>
         <advice:root>fm</advice:root>
+        <advice:base.theme>993300-999999</advice:base.theme>
         <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
         <advice:service-gateway>@@base-uri@@/service</advice:service-gateway>
         <advice:openid-gateway>/gatekeeper/login?</advice:openid-gateway>
@@ -131,6 +132,7 @@
         <head:include fileType="css" href="@@static@@/css/base.css" />
         <head:include fileType="css" href="@@static@@/css/transparency.css" />
         <head:include fileType="css" href="@@static-css-browser@@.css" />
+        <head:include fileType="css" href="@@static@@/css/base_@@base.theme@@.css" />
       </page:head>
       <page:body>
         <!-- <body:onload action="document.getElementById('@@bungee.app@@').src='@@bungee.grid@@/v507.24/runtime?cmd=run&amp;deployId=26662C8D-61CD-4DEB-A1E9-1C18BD08BFB3&amp;w=800&amp;h=400&amp;z=fc0e61d2-0dea-4e3e-bc5f-4a9a29d70d74'"/> -->
@@ -224,20 +226,6 @@
                     </li>
                   </ul>
                 </li>
-  
-                
-<!--                 <li id="acgr-info-box">
-                          <img src="/images/CMJ_Comp07_cover-small.jpg" width="256" height="256"/>
-                    </li>
-                    <li id="amp-fm-info-box">
-                      <img src="/images/ruatcmj.png" width="256" height="256"/>
-                    </li>
-                    <li id="grooveautomata-info-box">
-                        <img src="/images/GrooveAutomata.jpg" width="256" height="256"/>
-                    </li> 
-                    <li id="amp-fm-info-box">
-                      <img src="/images/3rdWorld-icon.png" width="256" height="256"/>
-                    </li>  -->
                 <li id="image-nav">
                   <ul class="TtoB">
 
@@ -247,12 +235,12 @@
                         <!-- <li id="local-art" class="transparency-90">
                           <a href="http://grooveautomata.com/">GrooveAutomata</a>, <a href="http://amp.fm/">Amp.fm</a>, &amp; <a href="/acgr">ACGR</a> @ <a href="http://cmj.amp.fm/2007">CMJ</a> by <a href="/jake">Jacob Joaquin</a> | Original Artwork Credit: <a href="http://www.flickr.com/photos/flattop341/233457860/">Graffiti Artists Dream</a> by <a href="http://www.flickr.com/photos/flattop341/">flattop341</a>
                         </li> -->
-                        <!-- <li id="local-art" class="transparency-90">
-                          <a href="http://farm1.static.flickr.com/94/238781740_d1f6659be3_o.jpg">Rain</a> by <a href="/jake">Jacob Joaquin</a>
-                        </li> -->
                         <li id="local-art" class="transparency-90">
-                          <a href="/images/bottoms_up.jpg">Bottums Up</a> by <a href="/sylvain">Sylvain Hellegouarch</a>
+                          <a href="http://farm1.static.flickr.com/94/238781740_d1f6659be3_o.jpg">Rain</a> by <a href="/jake">Jacob Joaquin</a>
                         </li>
+                        <!-- <li id="local-art" class="transparency-90">
+                          <a href="/images/bottoms_up.jpg">Bottums Up</a> by <a href="/sylvain">Sylvain Hellegouarch</a>
+                        </li> -->
                       </ul>
                     </li>
                     <li id="view-categories">
