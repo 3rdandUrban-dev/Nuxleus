@@ -1,0 +1,194 @@
+body {
+  color:#333;
+  background: #FFF /*url(/images/GrooveAutomata-ACGR-Amp.fm-.jpg) 50% 15%*/;
+}
+h2 {
+ color:#993300;
+}
+h1 {
+	color:#000;
+  border-bottom:1px solid #333;	
+}
+a {
+  color:#993300;
+}
+a:hover {
+  color:#996600;
+}
+#top-nav {
+  border-top:2px #333 solid;
+  background-color: #993300;
+  border-bottom: 1px solid #333;
+}
+#top-nav-menu li.selected a{
+  color:#660000;
+  background-color: #FFF;
+  border-color:#333;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+#view {
+  border:1px solid #660000;
+  border-top:0;
+}
+#view > ul > li > a:hover {
+  color:#FFF;
+  background-color:#333;
+}
+#view > ul > li > a {
+  color:#E64C00;
+}
+#footer {
+  border-bottom:2px solid #333;
+}
+#openid-text {
+ border-color:#000;
+ color:#000;
+ background-color:#FFF;
+}
+#openid-submit {
+ border-color:#333; 
+ background-color:#FFF;
+ color:#000;
+}
+.Button {
+ border: 1px solid #333;
+ background: #FFF url(/images/button_bkd.gif) 0 120% repeat-x;
+}
+.ButtonLabel {
+  color: #000;
+  cursor:pointer;
+}
+#control-center {
+  background-color:#FFF;
+  border-top:2px solid #333;
+}  
+
+#control-center > ul > li {
+  color:#993300;
+}
+#control-center > ul > li.selected > a {
+  color:#000;
+}
+#control-center > ul > li.selected > a:hover {
+  color:#FFF;
+  background-color:#333;
+}
+#control-center > ul > li > a:hover {
+  color:#FFF;
+  background-color:#333;
+}
+#control-center > ul > li > a {
+  color:#000;
+  background-color:inherit;
+}
+#sub-nav > ul {
+	background-color:#FFF;
+  border-bottom: 2px solid #333;
+  border-top:0;
+}
+#sub-nav > ul {
+	background-color:#FFF;
+}
+#sub-nav-menu > ul {
+	background-color:#FFF;
+}
+#sub-nav-menu > ul > li {
+  color:#993300;
+  background-color:inherit;
+}
+#sub-nav-menu > ul > li.selected > a {
+  color:#000;
+  background-color:Transparent;
+}
+#sub-nav-menu > ul > li.selected > a:hover {
+  color:#FFF;
+  background-color:#333;
+}
+#sub-nav-menu > ul > li > a:hover {
+  color:#FFF;
+  background-color:#333;
+}
+#sub-nav-menu > ul > li > a {
+  color:#000;
+  background-color:inherit;
+}
+#info {
+  background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat;
+  border-bottom: 1px solid #CCC;
+  margin-bottom:-2px;
+}
+#search-categories {
+
+}
+#search-categories > ul {
+  margin-top:0;
+}
+#search-categories > ul {
+  border-top:1px solid #333;
+}
+#search-categories > ul > li.selected {
+  border-left:1px solid #333;
+  border-right:1px solid #333;
+  border-bottom:1px solid #333;
+  background-color:#333;
+}
+#search-categories > ul > li.selected > a {
+  color:#FFF;
+}
+#search-categories > ul > li > a {
+ color:#E64C00; 
+}
+
+#instance > ul {
+	background-color:#FFF;
+}
+
+#view-categories > ul {
+  border-top:1px solid #333;
+  border-bottom:1px solid #333;
+  background-color:#FFF;
+}
+
+#view-categories > ul > li.selected {
+  border-left:1px solid #333;
+  border-right:1px solid #333;
+  border-bottom:1px solid #333;
+  background-color:#CCC;
+}
+#view-categories > ul > li.selected > a {
+  color:#000;
+}
+#view-categories > ul > li > a {
+  color:#333;
+}
+#local-art {
+  background-color:#F6F6F6;
+  color:#000;
+  border-bottom:1px dotted #999;
+  border-top:1px dotted #999;
+}
+#local-art > a {
+ color:#990000;
+}
+#content h2 {
+  color:#000;
+  border-bottom:1px solid #000;
+}
+#h4 {
+ margin-left:0;
+ padding-left:0; 
+}
+#content h4 > a {
+ color: #E64C00; 
+  margin-left:0;
+  padding-left:0; 
+}
+#center {
+  border-right:1px dotted #669900;
+  border-left:1px dotted #669900;
+}
+#image-nav {
+  border-right:1px solid #333;
+  border-left:1px solid #333;
+}
