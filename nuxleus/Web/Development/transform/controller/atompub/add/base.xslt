@@ -9,6 +9,7 @@
   xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web"
   xmlns:aspnet-request="clitype:System.Web.HttpRequest?partialname=System.Web"
   xmlns:guid="clitype:Xameleon.Function.Utils?partialname=Xameleon"
+  xmlns:sguid="clitype:System.Guid?partialname=mscorlib"
   xmlns:file-stream="clitype:Xameleon.Function.HttpFileStream?partialname=Xameleon"
   xmlns:atompub="http://xameleon.org/service/atompub" xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:html="http://www.w3.org/1999/xhtml"
@@ -41,8 +42,8 @@
     <xsl:variable name="image" select="func:resolve-variable(@image)"/>
     <xsl:variable name="base_uri" select="func:resolve-variable(@uri)"/>
     <xsl:variable name="base_path" select="func:resolve-variable(@path)"/>
-    <xsl:variable name="filename" select="guid:GetGuid()"></xsl:variable>
-    <xsl:message select="$filename"></xsl:message>
+    <xsl:variable name="filename" select="string(sguid:NewGuid())"/>
+    <xsl:message select="$filename"/>
     <xsl:variable name="entry_path" select="concat($base_path, 'comment/', $filename)"/>
     <xsl:variable name="uri" select="concat($base_uri, $entry_path)"/>
     <xsl:variable name="imageInfo" as="xs:string"><xsl:sequence select="file-stream:SaveUploadedImage($request, 'ev_comment_pix', concat('/Users/sylvain/dev/nuxleus/Web/Development/images/', $filename))"/></xsl:variable>

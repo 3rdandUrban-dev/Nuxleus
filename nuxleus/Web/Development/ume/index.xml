@@ -42,13 +42,13 @@
         <advice:space>&#160;</advice:space>
         <advice:dot>.</advice:dot>
         <advice:colon>:</advice:colon>
-        <advice:port>9999</advice:port>
-        <advice:domain-name>localhost</advice:domain-name>
+        <!-- <advice:port>9999</advice:port> -->
+        <advice:domain-name>dev.amp</advice:domain-name>
         <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
         <!-- |$$test:@@sub-domain@@IfTrue:@@sub-domain@@@@dot@@IfFalse:@@empty@@$$| -->
         <advice:location.label>world</advice:location.label>
         <advice:domain.label>amp.fm</advice:domain.label>
-        <!-- <advice:root></advice:root> -->
+        <advice:root>fm</advice:root>
         <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
         <advice:service-gateway>@@base-uri@@/service</advice:service-gateway>
         <advice:openid-gateway>/gatekeeper/login?</advice:openid-gateway>
@@ -64,7 +64,7 @@
         <advice:lat>resource:ip-location/lat</advice:lat>
         <advice:long>resource:ip-location/long</advice:long>
         <advice:max-depth>8</advice:max-depth>
-        <advice:google-maps.key>ABQIAAAAEPQGOws5xNa--1d-oQQDjhTGATBBJj1ek54YiRFsu72FXrsCiBTXTbpwI990CeZRoqCkI4KdcuGiLQ</advice:google-maps.key>
+        <advice:google.maps.key>ABQIAAAAEPQGOws5xNa--1d-oQQDjhRHSicoY3GAlvo4eSdsuBa2WYh10BSGVLC1Mkob0B3PDvZkvOdLw87vjw</advice:google.maps.key>
         <advice:search.box.label>Search @@domain.label@@</advice:search.box.label>
         <advice:openid.label>Authenticate w/ OpenID</advice:openid.label>
         <advice:browser compare="xsl:vendor" compare-with="Microsoft">ie</advice:browser>
@@ -132,8 +132,8 @@
         <head:include fileType="css" href="@@static@@/css/transparency.css" />
         <head:include fileType="css" href="@@static@@/css/map.css" />
         <head:include fileType="css" href="@@static-css-browser@@.css" />
-        <head:include fileType="javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAHJGcSVDQRQ3suKJmVt9Q5BTwM0brOpm-All5BF6PoaKBxRWWERR7tHWQw8TALw7VlFkTahW8xNyMUg" />
-        <head:include fileType="javascript" src="http://www.google.com/uds/api?file=uds.js&amp;v=1.0&amp;key=ABQIAAAAHJGcSVDQRQ3suKJmVt9Q5BTwM0brOpm-All5BF6PoaKBxRWWERR7tHWQw8TALw7VlFkTahW8xNyMUg" />
+        <head:include fileType="javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=@@google.maps.key@@" />
+        <head:include fileType="javascript" src="http://www.google.com/uds/api?file=uds.js&amp;v=1.0&amp;key=@@google.maps.key@@" />
         <head:include fileType="javascript" src="@@static@@/js/jquery.js" />
         <head:include fileType="javascript" src="@@static@@/js/jmaps.js" />
         <head:include fileType="javascript" src="@@static@@/js/geo.js" />
