@@ -154,6 +154,7 @@ a.no-border {
 #top-nav {
   border-top:3px #333 solid;
   background-color: #669900;
+  padding:0;
 }
 #top-nav > ul {
 
@@ -171,8 +172,8 @@ a.no-border {
   border-color:#333;
 }
 #top-nav-menu li.selected a {
-  padding-top:.25em;
-  padding-bottom:.25em;
+  padding-top:4px;
+  padding-bottom:4px;
   border-color:#333;
   color:#000;
   background-color: #FFF;
@@ -194,9 +195,9 @@ a.no-border {
 #view {
   position:fixed;
   top:0;
-  right:.5em;
+  right:.4em;
   z-index:5;
-  border:1px solid #333300;
+  border:1px solid #000;
   border-top:0;
   background-color: #FFF;
   padding:.02em .25em;
@@ -205,7 +206,7 @@ a.no-border {
   margin:.15em 0;
 }
 #view > ul {
-  padding:.1em .25em .25em;
+  padding:.05em .25em .2em;
   margin:0;
 }
 #view > ul > li {
@@ -233,9 +234,9 @@ a.no-border {
 #view > ul > li > a {
   color:#990000;
   background-color:inherit;
-  padding:.1em .35em;
+  padding:.05em .35em;
   border:0;
-  margin:.15em .15em .15em 0;
+  margin:.05em .15em .05em 0;
 }
 #instance {
   text-align:left;
@@ -390,14 +391,15 @@ cursor:pointer;
   margin:0;
 }
 #sub-nav {
-	padding:0;
-	margin:0 auto;
+	padding:1px 0;
+	margin:5px auto;
 }
 #sub-nav > ul {
 	padding:0;
 	margin:0 auto;
 	background-color:#CCFF00;
 }
+
 #sub-nav-menu {
   padding:0;
 	margin:0 auto;

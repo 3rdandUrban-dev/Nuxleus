@@ -1,5 +1,16 @@
 #sub-nav {
- 
+ margin-top:0em;
+ margin-bottom: 0em; 
+}
+#sub-nav > ul {
+  padding:.2em 0;
+}
+#sub-nav-menu a {
+  padding:.35em .5em .13em;
+  font-weight:600;
+}
+#sub-nav-menu a:hover {
+padding:.35em .5em .15em;
 }
 #view {
   padding:.03em .25em;

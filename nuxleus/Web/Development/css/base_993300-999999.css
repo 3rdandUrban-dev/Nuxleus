@@ -17,18 +17,20 @@ a:hover {
 }
 #top-nav {
   border-top:2px #333 solid;
-  background-color: #993300;
-  border-bottom: 1px solid #333;
+  background-color: #CCC;
+  border-bottom: 2px solid #333;
+  z-index:100;
 }
-#top-nav-menu li.selected a{
+#top-nav-menu li.selected a {
   color:#660000;
   background-color: #FFF;
   border-color:#333;
-  border-left: 1px solid #333;
-  border-right: 1px solid #333;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
 }
 #view {
-  border:1px solid #660000;
+  border:1px solid #000;
   border-top:0;
 }
 #view > ul > li > a:hover {
