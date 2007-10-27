@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.20706</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}</ProjectGuid>
+    <ProjectGuid>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuxleus.Authentication</RootNamespace>
-    <AssemblyName>Nuxleus.Authentication</AssemblyName>
+    <RootNamespace>Nuxleus.Extension.AWS</RootNamespace>
+    <AssemblyName>Nuxleus.Extension.AWS</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
@@ -23,7 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\docs\Nuxleus.Service.XML</DocumentationFile>
+    <DocumentationFile>..\docs\Nuxleus.Extension.Aws.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,24 +35,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
-    <Compile Include="AmazonWebServices\AWSAuthConnection.cs" />
-    <Compile Include="Facebook\Facebook.cs" />
-    <Compile Include="OpenID\OpenID.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.Utility\Nuxleus.Utility.csproj">
-      <Project>{3D54F988-AF1D-4B5C-A013-C85525926692}</Project>
-      <Name>Nuxleus.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />

@@ -7,8 +7,6 @@
 // this software code. (c) 2006 Amazon Digital Services, Inc. or its             
 // affiliates.          
 
-
-
 using System;
 using System.Collections;
 using System.Text;

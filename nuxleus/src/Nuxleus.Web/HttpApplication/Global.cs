@@ -17,6 +17,7 @@ using System.Xml;
 using System.Net;
 using System.Text;
 using Nuxleus.Bucker;
+using System.Web.Hosting;
 
 namespace Nuxleus.Web.HttpApplication
 {
@@ -45,6 +46,7 @@ namespace Nuxleus.Web.HttpApplication
 
         protected void Application_Start(object sender, EventArgs e)
         {
+
             if (_xameleonConfiguration.DebugMode == "yes") _DEBUG = true;
 
             if (_xameleonConfiguration.UseMemcached == "yes")

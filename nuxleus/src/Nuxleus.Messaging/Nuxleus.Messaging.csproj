@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Memcached.ClientLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -52,6 +56,10 @@
     <ProjectReference Include="..\Dependencies\ALAZ\Source\ALAZ.SystemEx\ALAZ.SystemEx.csproj">
       <Project>{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2}</Project>
       <Name>ALAZ.SystemEx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Entity\Nuxleus.Entity.csproj">
+      <Project>{511566A4-21DC-45E3-A3F8-84763000C72E}</Project>
+      <Name>Nuxleus.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
       <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>

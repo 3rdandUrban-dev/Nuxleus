@@ -10,7 +10,7 @@
   <target name="init">
     <mkdir dir="${build.dir}" failonerror="false"/>
   </target>
-  <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility">
+  <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility">
     <csc target="library" output="${build.dir}/Xameleon.dll" unsafe="True">
       <sources>
         <include name="${source.dir}/Xameleon/Function/*.cs"/>
@@ -29,7 +29,7 @@
         <include name="${build.dir}/Nuxleus.Authentication.dll"/>
         <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
         <include name="${build.dir}/Nuxleus.Configuration.dll"/>
-        <include name="${build.dir}/Nuxleus.Extension.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.Facebook.dll"/>
         <include name="${build.dir}/Nuxleus.PubSub.dll"/>
         <include name="${build.dir}/Nuxleus.Process.dll"/>
         <include name="${build.dir}/Nuxleus.Utility.dll"/>
@@ -205,6 +205,41 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.Extension.Facebook" depends="init Nuxleus.Cryptography">
+    <csc target="library" output="${build.dir}/Nuxleus.Extension.Facebook.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Extension.Facebook/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
+        <include name="System.dll"/>
+        <include name="System.Collections.dll"/>
+        <include name="System.Collections.Generic.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+        <include name="System.EnterpriseServices.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="Nuxleus.Extension.Aws" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Extension.Aws/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Collections.dll"/>
+        <include name="System.Collections.Generic.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+        <include name="System.EnterpriseServices.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Extension.Silverlight" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Silverlight.dll">
       <sources>
@@ -265,7 +300,7 @@
         <include name="System.Xml.dll"/>
       </references>
     </csc>
-  </target>  
+  </target>
   <target name="Nuxleus.Logging" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Logging.dll">
       <sources>
@@ -580,8 +615,10 @@
     <call target="Nuxleus.Cryptography"/>
     <call target="Nuxleus.Command"/>
     <call target="Nuxleus.Extension"/>
-    <call target="Nuxleus.Extension.Community"/>
     <call target="Nuxleus.Extension.Amp.Fm"/>
+    <call target="Nuxleus.Extension.Aws"/>
+    <call target="Nuxleus.Extension.Community"/>
+    <call target="Nuxleus.Extension.Facebook"/>
     <call target="Nuxleus.Extension.Silverlight"/>
     <call target="Nuxleus.IO"/>
     <call target="Nuxleus.Language"/>

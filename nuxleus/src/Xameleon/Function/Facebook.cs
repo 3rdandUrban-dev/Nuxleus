@@ -5,9 +5,10 @@ using System.Web;
 using System.Text;
 using Nuxleus.Bucker;
 using Nuxleus.Authentication;
-using Nuxleus.Extension;
+using Nuxleus.Extension.Facebook;
 
 namespace Xameleon.Function {
+
   public static class Facebook {
 
     /// <summary>
@@ -27,7 +28,7 @@ namespace Xameleon.Function {
       parameters.Add("v", "1.0");
 
       // This performs the actual all to the service
-      return Nuxleus.Extension.Facebook.Call(secret, parameters);
+      return Nuxleus.Extension.Facebook.Facebook.Call(secret, parameters);
     }
 
     /// <summary>
@@ -57,7 +58,7 @@ namespace Xameleon.Function {
       parameters.Add("method", "auth.getSession");
       parameters.Add("v", "1.0");
 
-      return Nuxleus.Extension.Facebook.Call(secret, parameters);
+      return Nuxleus.Extension.Facebook.Facebook.Call(secret, parameters);
     }
 
     public static string GetFriends(HttpContext context) {
@@ -74,7 +75,7 @@ namespace Xameleon.Function {
       parameters.Add("session_key", sessionKey);
       parameters.Add("v", "1.0");
 
-      return Nuxleus.Extension.Facebook.Call(secret, parameters);
+      return Nuxleus.Extension.Facebook.Facebook.Call(secret, parameters);
     }
 
     public static string Notify(HttpContext context) {
@@ -95,7 +96,7 @@ namespace Xameleon.Function {
       parameters.Add("to_ids", uids);
       parameters.Add("v", "1.0");
 
-      return Nuxleus.Extension.Facebook.Call(secret, parameters);
+      return Nuxleus.Extension.Facebook.Facebook.Call(secret, parameters);
     }
   }
 }
