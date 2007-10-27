@@ -29,14 +29,17 @@
     xmlns:msxsl="urn:schemas-microsoft-com:xslt"
     exclude-result-prefixes="html exsl my app advice atom head page service resource output form body view menu model msxsl doc atompub">
 
+  <xsl:include href="/transform/client-side/atom.xsl"/>
+    
   <xsl:variable name="vendor" select="system-property('xsl:vendor')" />
   <xsl:variable name="vendor-uri" select="system-property('xsl:vendor-uri')" />
   <xsl:variable name="page" select="/my:session/my:page" />
-  <xsl:variable name="browser" select="$page/page:config/page:browser[@vendor = $vendor]/@replace" />
-  <xsl:variable name="advice" select="$page/page:config/page:advice" />
-  <xsl:variable name="resource" select="$page/page:resource" />
-  <xsl:variable name="service" select="$page/page:service" />
-  <xsl:variable name="view" select="$page/page:view" />
+  <xsl:variable name="config" select="document($page/page:config/@src)/page:config|$page/page:config" />
+  <xsl:variable name="browser" select="$config/page:browser[@vendor = $vendor]/@replace" />
+  <xsl:variable name="advice" select="$config/page:advice" />
+  <xsl:variable name="resource" select="document($page/page:resource/@src)/page:config|$page/page:resource" />
+  <xsl:variable name="service" select="document($page/page:service/@src)/page:config|$page/page:service" />
+  <xsl:variable name="view" select="document($page/page:view/@src)/page:config|$page/page:view" />
   <xsl:param name="closure-token-pre-delimiter" select="'|@@'" />
   <xsl:param name="closure-token-post-delimiter" select="'@@|'" />
   <xsl:param name="replace-token-pre-delimiter" select="'@@'" />
@@ -59,7 +62,8 @@
   <xsl:param name="parameter-list-delimeter" select="','"/>
   <xsl:param name="parameter-value-assigment-token" select="'='"/>
   <xsl:variable name="lb">
-    <xsl:text></xsl:text>
+    <xsl:text>
+</xsl:text>
   </xsl:variable>
   <xsl:variable name="quote">"</xsl:variable>
   <xsl:variable name="squote">'</xsl:variable>
@@ -340,39 +344,6 @@
         <xsl:value-of select="$evaluated-value" />
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:template>
-
-  <xsl:template match="atom:feed">
-    <xsl:apply-templates select="atom:entry"/>
-  </xsl:template>
-
-  <xsl:template match="atom:entry">
-    <xsl:param name="cCount"/>
-    <xsl:apply-templates select="atom:*">
-      <xsl:with-param name="cCount" select="$cCount"/>
-    </xsl:apply-templates>
-  </xsl:template>
-
-  <xsl:template match="atom:title">
-    <h4>
-      <a href="{../atom:link[@rel = 'self']/@href}">
-        <xsl:value-of select="."/>
-      </a>
-    </h4>
-  </xsl:template>
-  <xsl:template match="atom:summary"/>
-  <xsl:template match="atom:published"/>
-  <xsl:template match="atom:updated"/>
-  <xsl:template match="atom:generator"/>
-  <xsl:template match="atom:id"/>
-  <xsl:template match="atom:category"/>
-  <xsl:template match="atom:source"/>
-  <xsl:template match="atom:author"/>
-  <xsl:template match="atom:content">
-    <xsl:param name="cCount"/>
-    <p style="font-size:small">
-      <xsl:copy-of select="substring(., 1, $cCount)"/> ... [<a href="{../atom:link[@rel = 'self']/@href}">more</a>]
-    </p>
   </xsl:template>
 
 </xsl:stylesheet>
