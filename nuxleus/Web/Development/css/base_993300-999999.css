@@ -22,12 +22,17 @@ a:hover {
   z-index:100;
 }
 #top-nav-menu li.selected a {
-  color:#660000;
-  background-color: #FFF;
   border-color:#333;
+  color:#CC6600;
+  background-color: #FFF;
+  font-size:large;
   border-left: 1px solid #000;
   border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
+}
+#top-nav-menu li.selected a:hover {
+  color:#993300;
+  background-color: #FFF;
+  border-color:#333;
 }
 #view {
   border:1px solid #000;
@@ -182,7 +187,7 @@ a:hover {
  padding-left:0; 
 }
 #content h4 > a {
- color: #E64C00; 
+ color: #CC6600; 
   margin-left:0;
   padding-left:0; 
 }

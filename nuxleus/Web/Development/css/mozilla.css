@@ -6,14 +6,14 @@
  margin-bottom: 0em; 
 }
 #sub-nav > ul {
-  padding:.2em 0;
+  padding:.05em 0 .1em;
 }
 #sub-nav-menu a {
-  padding:.35em .5em .13em;
+  padding:.1em .5em;
   font-weight:600;
 }
 #sub-nav-menu a:hover {
-padding:.35em .5em .15em;
+padding:.15em .5em .05em;
 }
 .menu a {
   padding:.15em .5em;
