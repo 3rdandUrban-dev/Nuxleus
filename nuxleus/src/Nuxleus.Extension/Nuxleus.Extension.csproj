@@ -12,6 +12,8 @@
     <AssemblyName>Nuxleus.Extension</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
+      <Project>{76489AFC-B3D6-40E4-AA45-840D069E4F43}</Project>
+      <Name>Nuxleus.Cryptography</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
