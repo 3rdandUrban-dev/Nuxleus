@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/transform/base.xslt"?>
-<service:operation xmlns:operation="http://xameleon.org/service/operation" xmlns:atompub="http://xameleon.org/service/atompub" xmlns:add="http://xameleon.org/service/atompub/add" xmlns:service="http://xameleon.org/service" xmlns:param="http://xameleon.org/service/session/param">
+<service:operation xmlns:operation="http://xameleon.org/service/operation" 
+                   xmlns:atompub="http://xameleon.org/service/atompub" 
+                   xmlns:add="http://xameleon.org/service/atompub/add" 
+                   xmlns:service="http://xameleon.org/service" 
+                   xmlns:param="http://xameleon.org/service/session/param">
   <param:content-type>{header:ContentType}</param:content-type>
   <param:slug>{header:Slug}</param:slug>
   <param:request-body>{request:input-stream}</param:request-body>
