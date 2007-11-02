@@ -25,7 +25,7 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns:app="http://purl.org/atom/app#"
     xmlns:atom="http://www.w3.org/2005/Atom">
-    <page:config src="page/config/config.xml">
+    <page:config src="/page/config/config.xml">
       <page:advice>
         <advice:page-title>@@domain.label@@::@@date@@</advice:page-title>
         <advice:location.label>world</advice:location.label>
@@ -49,10 +49,10 @@
           <ul>
             <li id="view">
               <ul class="list RtoL menu">
-                <li>Now Playing:</li>
+                <!-- <li>Now Playing:</li>
                 <li>
                   <a href="@@base-uri@@/tag/">FooBar Fighters > "Foo Bar Baz Boom"</a>
-                </li>
+                </li> -->
                 <li>Account:</li>
                 <li>
                   <a href="@@base-uri@@/login/">Login</a>
@@ -68,8 +68,11 @@
                   <ul class="list LtoR width">
                     <li>
                       <ul id="top-nav-menu" class="list menu">
-                        <li class="top-level domain selected">
+                        <li class="top-level domain">
                           <a href="@@base-uri@@">@@location.label@@<span>@</span>@@domain.label@@</a>
+                        </li>
+                        <li class="top-level domain selected">
+                          <a href="@@current-location@@">Regions</a>
                         </li>
                       </ul>
                     </li>
@@ -140,7 +143,7 @@
                 </li>
                 <li id="image-nav">
                   <ul class="TtoB">
-                    <li id="view-days">
+                    <!-- <li id="view-days">
                       <ul class="list LtoR">
                         <li style="margin-left:1em; margin-right:1em; color:#CC6600">October, 2007</li>
                         <li>
@@ -237,7 +240,7 @@
                           <a href="#foo">31</a>
                         </li>
                       </ul>
-                    </li>
+                    </li> -->
                     <li class="base transparency-90" id="info">
                       <ul class="list LtoR">
                         <!-- <li id="local-art" class="transparency-90">

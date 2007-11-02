@@ -26,7 +26,7 @@
   </page:session>
   <page:advice>
     <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
-    <advice:date>October 12th, 2007</advice:date>
+    <advice:date>November 1st, 2007</advice:date>
     <advice:protocol>http://</advice:protocol>
     <advice:space>&#160;</advice:space>
     <advice:dot>.</advice:dot>

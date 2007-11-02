@@ -29,7 +29,7 @@
     xmlns:msxsl="urn:schemas-microsoft-com:xslt"
     exclude-result-prefixes="html exsl my app advice atom head page service resource output form body view menu model msxsl doc atompub">
 
-  <xsl:include href="/transform/client-side/atom.xsl"/>
+  <xsl:include href="/page/controller/atom/base.xsl"/>
     
   <xsl:variable name="vendor" select="system-property('xsl:vendor')" />
   <xsl:variable name="vendor-uri" select="system-property('xsl:vendor-uri')" />

@@ -67,7 +67,7 @@ a:hover {
   cursor:pointer;
 }
 #control-center {
-  background-color:#FFF;
+  background-color:#D1DFDF;
   border-top:1px solid #959F9F;
 }  
 
@@ -161,7 +161,7 @@ a:hover {
   border-left:1px solid #373F3F;
   border-right:1px solid #373F3F;
   border-bottom:1px solid #373F3F;
-  background-color:#D1DFDF;
+  background-color:#FFF;
 }
 #view-categories > ul > li.selected > a {
   color:#000;

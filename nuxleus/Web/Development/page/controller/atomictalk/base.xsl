@@ -13,9 +13,9 @@
     xmlns:doc="http://atomictalk.org/feed/doc"
     xmlns:service="http://atomictalk.org/page/service"
     xmlns:output="http://atomictalk.org/page/output"
-    xmlns:head="http://atomictalk.org/page/head"
-    xmlns:body="http://atomictalk.org/page/body"
-    xmlns:advice="http://aspectxml.org/advice"
+    xmlns:head="http://atomictalk.org/page/output/head"
+    xmlns:body="http://atomictalk.org/page/output/body"
+    xmlns:advice="http://atomictalk.org/page/advice"
     xmlns:view="http://atomictalk.org/page/view"
     xmlns:form="http://atomictalk.org/page/view/form"
     xmlns:menu="http://atomictalk.org/page/view/menu"
@@ -29,7 +29,7 @@
     xmlns:msxsl="urn:schemas-microsoft-com:xslt"
     exclude-result-prefixes="html exsl my app advice atom head page service resource output form body view menu model msxsl doc atompub">
 
-  <xsl:include href="/transform/client-side/atom.xsl"/>
+  <xsl:include href="/page/controller/atom/base.xsl"/>
     
   <xsl:variable name="vendor" select="system-property('xsl:vendor')" />
   <xsl:variable name="vendor-uri" select="system-property('xsl:vendor-uri')" />
