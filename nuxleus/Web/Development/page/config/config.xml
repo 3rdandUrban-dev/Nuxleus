@@ -8,9 +8,9 @@
              xmlns:page="http://atomictalk.org/page" 
              xmlns:service="http://atomictalk.org/page/service" 
              xmlns:output="http://atomictalk.org/page/output" 
-             xmlns:head="http://atomictalk.org/page/head" 
-             xmlns:body="http://atomictalk.org/page/body" 
-             xmlns:advice="http://aspectxml.org/advice" 
+             xmlns:head="http://atomictalk.org/page/output/head" 
+             xmlns:body="http://atomictalk.org/page/output/body" 
+             xmlns:advice="http://atomictalk.org/page/advice" 
              xmlns:view="http://atomictalk.org/page/view" 
              xmlns:form="http://atomictalk.org/page/view/form" 
              xmlns:menu="http://atomictalk.org/page/view/menu" 
@@ -18,9 +18,7 @@
              xmlns:property="http://atomictalk.org/page/property" 
              xmlns:variable="http://atomictalk.org/page/variable" 
              xmlns:model="http://atomictalk.org/page/model" 
-             xmlns:html="http://www.w3.org/1999/xhtml" 
-             xmlns:app="http://purl.org/atom/app#" 
-             xmlns:atom="http://www.w3.org/2005/Atom">
+             xmlns:html="http://www.w3.org/1999/xhtml">
   <page:session xmlns:session="http://xameleon.org/session">
     <session:openid-auth href="/service/authenticate/session"/>
   </page:session>
