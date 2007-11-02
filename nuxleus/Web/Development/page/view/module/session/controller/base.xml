@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<view:module class="base" id="header" xmlns:view="http://atomictalk.org/page/view">
+  <view:container style="list RtoL menu" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+    <li>Now Playing:</li>
+    <li>
+      <a href="@@base-uri@@/tag/">FooBar Fighters > "Foo Bar Baz Boom"</a>
+    </li>
+    <li>Account:</li>
+    <li>
+      <a href="@@base-uri@@/login/">Login</a>
+    </li>
+    <li>
+      <a href="http://openid.name/">Create New</a>
+    </li>
+  </view:container>
+</view:module>

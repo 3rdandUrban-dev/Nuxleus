@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<view:container type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <li id="view-categories">
+    <ul class="list LtoR">
+      <li style="color:#CC6600;">
+        <span>@</span> @@location@@ > </li>
+      <li class="selected">
+        <a href="#foo">Art &amp; Imagery</a>
+      </li>
+      <li>
+        <a href="#foo">Music News</a>
+      </li>
+      <li>
+        <a href="#foo">Events Map</a>
+      </li>
+      <li>
+        <a href="#foo">Charts Map</a>
+      </li>
+      <li>
+        <a href="#foo">Playlists Map</a>
+      </li>
+      <li>
+        <a href="#foo">"Off-the-Record" Quotes Map</a>
+      </li>
+    </ul>
+  </li>
+</view:container>

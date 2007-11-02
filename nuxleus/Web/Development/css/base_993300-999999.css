@@ -34,15 +34,15 @@ a:hover {
   background-color: #FFF;
   border-color:#333;
 }
-#view {
+#session {
   border:1px solid #000;
   border-top:0;
 }
-#view > ul > li > a:hover {
+#session > ul > li > a:hover {
   color:#FFF;
   background-color:#333;
 }
-#view > ul > li > a {
+#session > ul > li > a {
   color:#E64C00;
 }
 #footer {
@@ -196,6 +196,9 @@ a:hover {
   border-left:1px dotted #373F3F;
 }
 #image-nav {
-  b/* order-right:1px solid #333;
+  /* border-right:1px solid #333;
   border-left:1px solid #333; */
+}
+#header > ul {
+ background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat; 
 }

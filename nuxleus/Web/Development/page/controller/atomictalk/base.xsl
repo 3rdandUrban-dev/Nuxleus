@@ -6,41 +6,10 @@
   Contributors to this code base include, 
     Russ Miles (mailto:aohacker@gmail.com; http://www.russmiles.com/)
 -->
-<xsl:stylesheet version="1.0"
-    xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:my="http://xameleon.org/my"
-    xmlns:page="http://atomictalk.org/page"
-    xmlns:doc="http://atomictalk.org/feed/doc"
-    xmlns:service="http://atomictalk.org/page/service"
-    xmlns:output="http://atomictalk.org/page/output"
-    xmlns:head="http://atomictalk.org/page/output/head"
-    xmlns:body="http://atomictalk.org/page/output/body"
-    xmlns:advice="http://atomictalk.org/page/advice"
-    xmlns:view="http://atomictalk.org/page/view"
-    xmlns:form="http://atomictalk.org/page/view/form"
-    xmlns:menu="http://atomictalk.org/page/view/menu"
-    xmlns:exsl="http://exslt.org/common"
-    xmlns:resource="http://atomictalk.org/page/resource"
-    xmlns:model="http://atomictalk.org/page/model"
-    xmlns:app="http://purl.org/atom/app#"
-    xmlns:atompub="http://www.w3.org/2007/app"
-    xmlns:atom="http://www.w3.org/2005/Atom"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:msxsl="urn:schemas-microsoft-com:xslt"
-    exclude-result-prefixes="html exsl my app advice atom head page service resource output form body view menu model msxsl doc atompub">
+<xsl:stylesheet version="1.0" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common" xmlns:resource="http://atomictalk.org/page/resource" xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#" xmlns:atompub="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="html exsl my app advice atom head page service resource output form body view menu model msxsl doc atompub">
 
-  <xsl:include href="/page/controller/atom/base.xsl"/>
-    
-  <xsl:variable name="vendor" select="system-property('xsl:vendor')" />
-  <xsl:variable name="vendor-uri" select="system-property('xsl:vendor-uri')" />
-  <xsl:variable name="page" select="/my:session/my:page" />
-  <xsl:variable name="config" select="document($page/page:config/@src)/page:config|$page/page:config" />
-  <xsl:variable name="browser" select="$config/page:browser[@vendor = $vendor]/@replace" />
-  <xsl:variable name="advice" select="$config/page:advice" />
-  <xsl:variable name="resource" select="document($page/page:resource/@src)/page:config|$page/page:resource" />
-  <xsl:variable name="service" select="document($page/page:service/@src)/page:config|$page/page:service" />
-  <xsl:variable name="view" select="document($page/page:view/@src)/page:config|$page/page:view" />
-  
+  <xsl:include href="../atom/base.xsl"/>
+
   <xsl:param name="closure-token-pre-delimiter" select="'|@@'" />
   <xsl:param name="closure-token-post-delimiter" select="'@@|'" />
   <xsl:param name="replace-token-pre-delimiter" select="'@@'" />
@@ -62,7 +31,17 @@
   <xsl:param name="replace-parameter-post-delimiter" select="':'" />
   <xsl:param name="parameter-list-delimeter" select="','"/>
   <xsl:param name="parameter-value-assigment-token" select="'='"/>
-  
+
+  <xsl:variable name="vendor" select="system-property('xsl:vendor')" />
+  <xsl:variable name="vendor-uri" select="system-property('xsl:vendor-uri')" />
+  <xsl:variable name="page" select="/my:session/my:page" />
+  <xsl:variable name="config" select="document($page/page:config/@src)/page:config|$page/page:config" />
+  <xsl:variable name="browser" select="$config/page:browser[@vendor = $vendor]/@replace" />
+  <xsl:variable name="advice" select="$config/page:advice" />
+  <xsl:variable name="resource" select="document($page/page:resource/@src)/page:config|$page/page:resource" />
+  <xsl:variable name="service" select="document($page/page:service/@src)/page:config|$page/page:service" />
+  <xsl:variable name="view" select="document($page/page:view/@src)/page:config|$page/page:view" />
+
   <xsl:variable name="lb">
     <xsl:text>
 </xsl:text>
@@ -77,14 +56,12 @@
       </xsl:when>
       <xsl:otherwise>
         <xsl:call-template name="replace">
-          <xsl:with-param name="string"
-              select="$advice/advice:*[local-name() = 'base-uri']/*" />
+          <xsl:with-param name="string" select="$advice/advice:*[local-name() = 'base-uri']/*" />
         </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  
-  
+
   <xsl:variable name="page.output.head" select="document($page/page:output/page:head/@src)/page:head|$page/page:output/page:head" />
   <xsl:variable name="page.output.body">
     <xsl:choose>
@@ -97,12 +74,9 @@
     </xsl:choose>
   </xsl:variable>
 
-  <xsl:output
-      cdata-section-elements="script"
-      doctype-system="-//W3C//DTD HTML 4.01//EN"
-      doctype-public="http://www.w3.org/TR/html4/strict.dtd"
-      method="html"
-      indent="no" />
+  <xsl:strip-space elements="html:*"/>
+
+  <xsl:output cdata-section-elements="script" doctype-system="-//W3C//DTD HTML 4.01//EN" doctype-public="http://www.w3.org/TR/html4/strict.dtd" method="html" indent="yes" />
 
   <xsl:template match="my:session">
     <xsl:apply-templates />
@@ -122,10 +96,7 @@
   <xsl:template match="page:head">
     <head>
       <xsl:apply-templates select="head:title" />
-      <link rel="alternate" type="application/atom+xml" title="Amp.fm ON THE AIR"
-          href="http://dev.amp.fm/ontheair.atom" />
-      <link rel="alternate" type="application/xml" title="Amp.fm ON THE AIR"
-          href="http://dev.amp.fm/ontheair.atom" />
+      <xsl:apply-templates select="head:link"/>
       <style type="text/css">
         <xsl:apply-templates select="head:include[@fileType = 'css']" />
       </style>
@@ -135,8 +106,7 @@
 
   <xsl:template match="page:body">
     <body>
-      <xsl:apply-templates select="body:onload|body:onresize" />
-      <xsl:apply-templates select="body:html" />
+      <xsl:apply-templates />
     </body>
   </xsl:template>
 
@@ -199,7 +169,13 @@
     </title>
   </xsl:template>
 
-  <xsl:template match="body:html">
+  <xsl:template match="head:title">
+    <link>
+      <xsl:copy-of select="@*"/>
+    </link>
+  </xsl:template>
+
+  <xsl:template match="body:layout">
     <xsl:apply-templates />
   </xsl:template>
 
@@ -216,7 +192,7 @@
   <xsl:template match="doc:html[@type = 'myspace-events']">
     <xsl:apply-templates select="document(@href)//html:div[@id = current()/@id]"/>
   </xsl:template>
-  
+
   <xsl:template match="doc:html[@type = 'external-html']">
     <xsl:apply-templates select="document(@href)//body:html"/>
   </xsl:template>
@@ -227,6 +203,52 @@
 
   <xsl:template match="page:content">
     <xsl:copy-of select="*" />
+  </xsl:template>
+
+  <xsl:template match="page:view">
+    <ul>
+      <xsl:apply-templates />
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="view:container">
+    <ul class="list {@style}" id="{@id}">
+      <xsl:apply-templates />
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="view:item">
+    <li class="list {@style}" id="{@id}">
+      <xsl:apply-templates select="document(@src)/view:*"/>
+    </li>
+  </xsl:template>
+
+  <xsl:template match="view:menu[@src]">
+    <ul class="list menu {@style}" id="{@id}">
+      <xsl:apply-templates select="document(@src)/view:menu"/>
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="view:menu[not(@src)]">
+    <ul class="list menu {@style}" id="{@id}">
+      <xsl:apply-templates />
+    </ul>
+  </xsl:template>
+
+  <xsl:template match="view:module[@src]">
+    <li class="list {@style}" id="{@id}">
+      <xsl:apply-templates select="document(@src)/view:module/*"/>
+    </li>
+  </xsl:template>
+
+  <xsl:template match="view:module[not(@src)]">
+    <li class="list {@style}" id="{@id}">
+      <xsl:apply-templates />
+    </li>
+  </xsl:template>
+
+  <xsl:template match="view:menu">
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template match="page:heading">
@@ -265,22 +287,19 @@
     </xsl:variable>
     <xsl:choose>
       <xsl:when test="contains($nString, $closure-token-pre-delimiter)">
-        <xsl:variable name="name"
-            select="substring-before(substring-before(substring-after($nString, $closure-token-pre-delimiter), $closure-token-post-delimiter), $parameter-list-pre-delimiter)" />
+        <xsl:variable name="name" select="substring-before(substring-before(substring-after($nString, $closure-token-pre-delimiter), $closure-token-post-delimiter), $parameter-list-pre-delimiter)" />
         <xsl:call-template name="replace-vars">
           <xsl:with-param name="value-string" select="substring-before(substring-after($nString, $parameter-list-pre-delimiter), $parameter-list-post-delimiter)" />
           <xsl:with-param name="replace-var-string" select="substring-before(substring-after($advice/advice:*[local-name() = $name]/text(), $replace-parameter-list-pre-delimiter), $replace-parameter-list-post-delimiter)"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="contains($nString, $replace-token-pre-delimiter)">
-        <xsl:variable name="name"
-            select="substring-before(substring-after($nString, $replace-token-pre-delimiter), $replace-token-pre-delimiter)" />
+        <xsl:variable name="name" select="substring-before(substring-after($nString, $replace-token-pre-delimiter), $replace-token-pre-delimiter)" />
         <xsl:variable name="replace-with">
           <xsl:apply-templates select="$advice/advice:*[local-name() = $name]" />
         </xsl:variable>
         <xsl:call-template name="replace">
-          <xsl:with-param name="string"
-              select="concat(substring-before($nString, concat($replace-token-pre-delimiter, $name)), $replace-with, substring-after($nString, concat($name, $replace-token-pre-delimiter)))" />
+          <xsl:with-param name="string" select="concat(substring-before($nString, concat($replace-token-pre-delimiter, $name)), $replace-with, substring-after($nString, concat($name, $replace-token-pre-delimiter)))" />
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
@@ -294,15 +313,11 @@
     <xsl:choose>
       <xsl:when test="contains($string, $cond-token-pre-delimiter)">
         <xsl:variable name="sString" select="translate($string, ' ', '')" />
-        <xsl:variable name="conditional"
-            select="substring-before(substring-after($sString, $cond-token-pre-delimiter), $cond-token-post-delimiter)" />
+        <xsl:variable name="conditional" select="substring-before(substring-after($sString, $cond-token-pre-delimiter), $cond-token-post-delimiter)" />
         <xsl:variable name="pre-cond" select="substring-before($sString, $cond-token-pre-delimiter)" />
-        <xsl:variable name="post-cond"
-            select="substring-after($sString, $cond-token-post-delimiter)" />
-        <xsl:variable name="if"
-            select="substring-before(substring-after($conditional, $cond-if-token), $cond-then-token)" />
-        <xsl:variable name="then"
-            select="substring-before(substring-after($conditional, $cond-then-token), $cond-else-token)" />
+        <xsl:variable name="post-cond" select="substring-after($sString, $cond-token-post-delimiter)" />
+        <xsl:variable name="if" select="substring-before(substring-after($conditional, $cond-if-token), $cond-then-token)" />
+        <xsl:variable name="then" select="substring-before(substring-after($conditional, $cond-then-token), $cond-else-token)" />
         <xsl:variable name="else" select="substring-after($conditional, $cond-else-token)" />
         <xsl:variable name="nString">
           <xsl:choose>
@@ -347,8 +362,7 @@
         <xsl:with-param name="string" select="$replace-var-string" />
       </xsl:call-template>
     </xsl:variable>
-    <xsl:variable name="name"
-        select="substring-before(substring-after($nValue-string, $parameter-pre-delimiter), $parameter-post-delimiter)" />
+    <xsl:variable name="name" select="substring-before(substring-after($nValue-string, $parameter-pre-delimiter), $parameter-post-delimiter)" />
     <xsl:variable name="value" select="substring-before(substring-after($nValue-string, concat($parameter-value-assigment-token, $squote)), $squote)"/>
     <xsl:variable name="evaluated-value" select="concat(substring-before($nReplace-var-string, concat($replace-parameter-pre-delimiter, $name)), $value, substring-after($nReplace-var-string, concat($name, $replace-parameter-post-delimiter)))"/>
     <xsl:variable name="next" select="substring-after($nValue-string, $parameter-list-delimeter)"/>

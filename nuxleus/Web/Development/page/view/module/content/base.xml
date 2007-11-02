@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<view:module class="base" id="header" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <li class="base" id="instance">
+    <ul id="content" class="base transparency-90 list LtoR">
+      <li id="left">
+        <doc:feed href="/feed/feed.xml" characterCount="400"/>
+      </li>
+      <li id="center">
+        <h2>Hello, World!</h2>
+        <doc:feed href="/feed/feed.xml" characterCount="400"/>
+      </li>
+      <li id="right">
+        <doc:feed href="/feed/feed.xml" characterCount="400"/>
+      </li>
+    </ul>
+  </li>
+</view:module>

@@ -191,7 +191,7 @@ a.no-border {
   border-color:#999;
 }
 
-#view {
+#session {
   position:fixed;
   top:0;
   right:.4em;
@@ -201,20 +201,20 @@ a.no-border {
   background-color: #FFF;
   padding:.02em .25em;
 }
-#view li {
+#session li {
   margin:.15em 0;
 }
-#view > ul {
+#session > ul {
   padding:.05em .25em .2em;
   margin:0;
 }
-#view > ul > li {
+#session > ul > li {
   color:#333;
   background-color:inherit;
   padding:0;
   font-size: small;
 }
-#view > ul > li.selected > a {
+#session > ul > li.selected > a {
   border-right:1px solid #333300;
   border-left:1px solid #333300;
   padding:0 .5em;
@@ -222,15 +222,15 @@ a.no-border {
   background-color:#FFF;
   margin-right:.5em
 }
-#view > ul > li.selected > a:hover {
+#session > ul > li.selected > a:hover {
   color:#CC6600;
   background-color:inherit;
 }
-#view > ul > li > a:hover {
+#session > ul > li > a:hover {
   color:#FFF;
   background-color:#333;
 }
-#view > ul > li > a {
+#session > ul > li > a {
   color:#990000;
   background-color:inherit;
   padding:.05em .35em;
@@ -533,11 +533,11 @@ text-align:left;
 
 }
 
-#view-categories {
+#session-categories {
  text-align:left; 
  padding:0;
 }
-#view-categories > ul {
+#session-categories > ul {
   margin:2px 0;
 
   border-top:1px solid #333;
@@ -546,12 +546,12 @@ text-align:left;
   padding:2px 0;
 }
 
-#view-categories > ul > li {
+#session-categories > ul > li {
   padding-bottom:3px;
   margin-left:5px;
 }
 
-#view-categories > ul > li.selected {
+#session-categories > ul > li.selected {
   border-left:1px solid #333;
   border-right:1px solid #333;
   border-bottom:1px solid #333;
@@ -561,21 +561,21 @@ text-align:left;
   padding-bottom:4px;
 
 }
-#view-categories > ul > li.selected > a {
+#session-categories > ul > li.selected > a {
   color:#000;
 
 }
-#view-categories > ul > li > a {
+#session-categories > ul > li > a {
   padding-bottom:3px;
 font-size:1em;
 color:#333;
 }
 
-#view-days {
+#session-days {
  text-align:left; 
  padding:0;
 }
-#view-days > ul {
+#session-days > ul {
   margin:2px 0;
 
   border-top:1px solid #333;
@@ -584,14 +584,14 @@ color:#333;
   padding:2px 0;
 }
 
-#view-days > ul > li {
+#session-days > ul > li {
   padding:0;
   width:1em;
   height:1em;
   text-align:center;
 }
 
-#view-days > ul > li.selected {
+#session-days > ul > li.selected {
   
   border-bottom:0;
   border-top:0;
@@ -603,7 +603,7 @@ color:#333;
   
 
 }
-#view-days > ul > li.selected > a {
+#session-days > ul > li.selected > a {
   color:#000;
   padding:0;
   margin:0;
@@ -611,7 +611,7 @@ color:#333;
   width:1em;
   height:1em;
 }
-#view-days > ul > li > a {
+#session-days > ul > li > a {
   margin:0;
   padding:0;
   font-size:1em;
