@@ -4,35 +4,32 @@
   LICENSE: The code contained in this file is licensed under The MIT License. Please see
   http://www.opensource.org/licenses/mit-license.php for specific detail.
 -->
-<page:config xmlns="http://www.w3.org/1999/xhtml" 
-             xmlns:page="http://atomictalk.org/page" 
-             xmlns:service="http://atomictalk.org/page/service" 
-             xmlns:output="http://atomictalk.org/page/output" 
-             xmlns:head="http://atomictalk.org/page/output/head" 
-             xmlns:body="http://atomictalk.org/page/output/body" 
-             xmlns:advice="http://atomictalk.org/page/advice" 
-             xmlns:view="http://atomictalk.org/page/view" 
-             xmlns:form="http://atomictalk.org/page/view/form" 
-             xmlns:menu="http://atomictalk.org/page/view/menu" 
-             xmlns:resource="http://atomictalk.org/page/resource" 
-             xmlns:property="http://atomictalk.org/page/property" 
-             xmlns:variable="http://atomictalk.org/page/variable" 
-             xmlns:model="http://atomictalk.org/page/model" 
-             xmlns:html="http://www.w3.org/1999/xhtml">
-  <page:session xmlns:session="http://xameleon.org/session">
-    <session:openid-auth href="/service/authenticate/session"/>
-  </page:session>
+<page:config 
+  xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:page="http://atomictalk.org/page" 
+  xmlns:service="http://atomictalk.org/page/service" 
+  xmlns:output="http://atomictalk.org/page/output" 
+  xmlns:head="http://atomictalk.org/page/output/head" 
+  xmlns:body="http://atomictalk.org/page/output/body" 
+  xmlns:advice="http://atomictalk.org/page/advice" 
+  xmlns:view="http://atomictalk.org/page/view" 
+  xmlns:form="http://atomictalk.org/page/view/form" 
+  xmlns:menu="http://atomictalk.org/page/view/menu" 
+  xmlns:resource="http://atomictalk.org/page/resource" 
+  xmlns:property="http://atomictalk.org/page/property" 
+  xmlns:variable="http://atomictalk.org/page/variable" 
+  xmlns:model="http://atomictalk.org/page/model" 
+  xmlns:html="http://www.w3.org/1999/xhtml">
   <page:advice>
     <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
-    <advice:date>November 1st, 2007</advice:date>
+    <advice:date>November 2nd, 2007</advice:date>
     <advice:protocol>http://</advice:protocol>
     <advice:space>&#160;</advice:space>
     <advice:dot>.</advice:dot>
     <advice:colon>:</advice:colon>
-    <advice:port>8080</advice:port>
-    <advice:domain-name>localhost</advice:domain-name>
+    <advice:domain-name>dev.amp</advice:domain-name>
+    <advice:root>fm</advice:root>
     <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
-    <!-- |$$test:@@sub-domain@@IfTrue:@@sub-domain@@@@dot@@IfFalse:@@empty@@$$| -->
     <advice:domain.label>amp.fm</advice:domain.label>
     <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
     <advice:service-gateway>@@base-uri@@/service</advice:service-gateway>
