@@ -1,38 +1,38 @@
 <?xml version="1.0"?>
-<view:menu type="xhtml" style="RtoL" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-  <li class="selected">
+<view:menu type="xhtml" style="nav-menu RtoL" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <li>
     <a href="@@base-uri@@/support/">
-                      Help/Support
-                      </a>
+      Help/Support
+    </a>
   </li>
-  <li class="selected">
+  <li>
     <a href="@@base-uri@@/home/playlists/">
-                      My Playlists
-                      </a>
+      My Playlists
+    </a>
   </li>
-  <li class="selected">
+  <li>
     <a href="@@base-uri@@/home/events/">
-                      My Events
-                      </a>
+      My Events
+    </a>
   </li>
-  <li class="selected">
+  <li>
     <a href="@@base-uri@@/home/clipboard/">
-                      My Clipboard
-                      </a>
+      My Clipboard
+    </a>
   </li>
-  <li class="selected">
+  <li>
     <a href="@@base-uri@@/home/friends/">
-                      My Friends
-                      </a>
+      My Friends
+    </a>
   </li>
-  <li class="selected">
+  <li>
     <a href="@@base-uri@@/home/friends/">
-                      My Feed Subscriptions
-                      </a>
+      My Feed Subscriptions
+    </a>
   </li>
-  <li class="selected">
+  <li>
     <a href="@@base-uri@@/home/toolbox/">
-                      My Toolbox
-                      </a>
+      My Toolbox
+    </a>
   </li>
 </view:menu>

@@ -1,9 +1,114 @@
 <?xml version="1.0"?>
-<view:container type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+<view:menu id="image-nav" style="TtoB" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <li id="calendar-nav">
+    <ul class="list RtoL nav-menu quick-view-menu transparency-90">
+      <table>
+        <tr>
+          <td>
+            <a href="#foo">1</a>
+          </td>
+          <td>
+            <a href="#foo">2</a>
+          </td>
+          <td>
+            <a href="#foo">3</a>
+          </td>
+          <td>
+            <a href="#foo">4</a>
+          </td>
+          <td>
+            <a href="#foo">5</a>
+          </td>
+          <td>
+            <a href="#foo">6</a>
+          </td>
+          <td>
+            <a href="#foo">7</a>
+          </td>
+          <td>
+            <a href="#foo">8</a>
+          </td>
+          <td>
+            <a href="#foo">9</a>
+          </td>
+          <td>
+            <a href="#foo">10</a>
+          </td>
+          <td>
+            <a href="#foo">11</a>
+          </td>
+          <td>
+            <a href="#foo">12</a>
+          </td>
+          <td>
+            <a href="#foo">13</a>
+          </td>
+          <td>
+            <a href="#foo">14</a>
+          </td>
+          <td>
+            <a href="#foo">15</a>
+          </td>
+          <td>
+            <a href="#foo">16</a>
+          </td>
+          <td>
+            <a href="#foo">17</a>
+          </td>
+          <td>
+            <a href="#foo">18</a>
+          </td>
+          <td>
+            <a href="#foo">19</a>
+          </td>
+          <td>
+            <a href="#foo">20</a>
+          </td>
+          <td>
+            <a href="#foo">21</a>
+          </td>
+          <td>
+            <a href="#foo">22</a>
+          </td>
+          <td>
+            <a href="#foo">23</a>
+          </td>
+          <td>
+            <a href="#foo">24</a>
+          </td>
+          <td>
+            <a href="#foo">25</a>
+          </td>
+          <td>
+            <a href="#foo">26</a>
+          </td>
+          <td class="selected">
+            <a href="#foo">27</a>
+          </td>
+          <td>
+            <a href="#foo">28</a>
+          </td>
+          <td>
+            <a href="#foo">29</a>
+          </td>
+          <td>
+            <a href="#foo">30</a>
+          </td>
+          <td style="border:0;color:#CC6600;">
+            <a href="#foo">&lt;</a>
+          </td>
+          <td style="border:0;color:#CC6600;">
+            <a href="#foo">></a>
+          </td>
+        </tr>
+      </table>
+    </ul>
+  </li>
+  <li id="info" class="base transparency-90">
+    <ul class="list LtoR"></ul>
+  </li>
   <li id="view-categories">
-    <ul class="list LtoR">
-      <li style="color:#CC6600;">
-        <span>@</span> @@location@@ > </li>
+    <ul class="list LtoR nav-menu quick-view-menu transparency-90">
       <li class="selected">
         <a href="#foo">Art &amp; Imagery</a>
       </li>
@@ -24,4 +129,4 @@
       </li>
     </ul>
   </li>
-</view:container>
+</view:menu>
