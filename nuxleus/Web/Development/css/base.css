@@ -1,7 +1,7 @@
 body {
   margin:0px;
   padding:0px;
-  font-family: 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
+  font-family: Helvetica, 'Trebuchet MS', Verdana, Arial, sans-serif;
   font-size:100%;
   text-align: left;
   color:#333;
@@ -18,7 +18,7 @@ h1 {
 	color:000;
 margin-left:.25em;
 margin-right:.25em;
-border-bottom:1px solid #333;	
+margin-bottom:.1em;
 }
 a {
   margin:0px .25em;
@@ -91,20 +91,19 @@ ul.RtoL li {
 }
 .menu a:hover {
   color:#FFF;
-  background-color: #CC6600;
+  background-color: #FF6600;
 }
 .nav-menu
 {
-  padding:.15em 0 .2em;
+  padding:.25em 0;
 }
 .nav-menu a {
-  font-weight:600;
-  padding:.15em .3em .2em;
+  padding:.35em .25em;
   color:#000;
   background-color:Transparent;
-  margin-left:.5em;
-  margin-right:.5em;
-  font-weight:600;
+  margin-left:.15em;
+  margin-right:.15em;
+  font-weight:400;
   font-size:.9em;
 }
 .nav-menu li {
@@ -115,11 +114,7 @@ ul.RtoL li {
 }
 .nav-menu a:hover {
   color:#FFF;
-  background-color:#333;
-}
-.nav-menu a:hover {
-  color:#FFF;
-  background-color:#333;
+  background-color:#FF6600;
 }
 #top-nav-menu a {
  margin-left:.35em;
@@ -158,7 +153,7 @@ ul.RtoL li {
  font-size:medium; 
  border: 1px solid #333;
  background: #FFF url(/images/button_bkd.gif) 0 120% repeat-x;
- padding:2px 5px;
+ padding:1px 5px;
 }
 .ButtonLabel {
 color: #000;
@@ -214,9 +209,10 @@ cursor:pointer;
  font-size: medium;
  color:#000;
  background-color:#FFF;
- padding:3px;
+ padding:2px 5px;
  background-position: 2px 50%;
  width:445px;
+ margin-right:.25em;
 }
 
 #control-center {
@@ -235,7 +231,7 @@ cursor:pointer;
 }  
 
 #info {
-  height:300px;
+  height:275px;
   background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat;
   position:relative;
   padding:0 auto;
@@ -244,15 +240,12 @@ cursor:pointer;
   border:0;
 }
 
-#search-categories {
- text-align:center; 
- margin-top:2px;
-}
 #search-categories > ul {
   width:500px;
   margin:5px auto;
   padding-top:3px;
   border-top:1px solid #333;
+  text-align:center;
 }
 
 #search-categories > ul > li {
@@ -260,11 +253,7 @@ cursor:pointer;
 }
 
 #search-categories > ul > li.selected {
-  border-left:1px solid #333;
-  border-right:1px solid #333;
-  border-bottom:1px solid #333;
-  border-top:0;
-  background-color:#333;
+  background-color:#CC3300;
   padding-top:3px;
 
 }
@@ -326,8 +315,8 @@ text-align:left;
 	border-left:1px dotted #669900;
 }
 #logo {
- width:400px;
-margin:0 auto .5em; 
+ width:450px;
+margin:2em auto .5em; 
 text-align:center;
 }
 #image-nav {
@@ -335,8 +324,8 @@ text-align:center;
 }
 
 #search {
- margin-top:3.5em;
- margin-bottom:5em;
+ margin-top:3em;
+ margin-bottom:2.5em;
 }
 
 #session {
@@ -353,6 +342,13 @@ text-align:center;
 {
   border-top:1px solid #333;
   border-bottom:1px solid #333;
+  background-color: #EEE;
+}
+
+.quick-view-menu li.selected a
+{
+  color:#000;
+  background-color: #FFF;
 }
 #calendar-nav {
    padding:0;
@@ -387,6 +383,7 @@ text-align:center;
   width:1em;
   height:1em;
   border:1px solid #333;
+  background-color: #FFF;
 }
 
 #calendar-nav .quick-view-menu td:hover
@@ -405,4 +402,15 @@ text-align:center;
   padding:0;
   color:#333;
 }
-
+#local-links 
+{
+ text-align:right;
+ position:absolute;
+ right:0;
+ bottom:0;
+ 
+}
+#local-links a {
+ font-size:small;
+ padding:0 .25em; 
+}

@@ -1,7 +1,44 @@
 <?xml version="1.0"?>
 <view:menu id="image-nav" style="TtoB" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <li id="title" style="position:relative">
+    <ul class="list LtoR">
+      <li style="font-size:2.5em; color:#000">@New York City</li>
+      <li>
+        <ul class="list RtoL" id="local-links">
+          <li><a href="#">Local Weather</a></li>
+          <li><a href="#">Local Weather</a></li>
+          <li><a href="#">Local Weather</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li id="view-categories">
+    <ul class="list LtoR nav-menu quick-view-menu">
+      <li class="selected">
+        <a href="#foo">Art &amp; Imagery</a>
+      </li>
+      <li>
+        <a href="#foo">Music News</a>
+      </li>
+      <li>
+        <a href="#foo">Events Map</a>
+      </li>
+      <li>
+        <a href="#foo">Charts Map</a>
+      </li>
+      <li>
+        <a href="#foo">Playlists Map</a>
+      </li>
+      <li>
+        <a href="#foo">"Off-the-Record" Quotes Map</a>
+      </li>
+    </ul>
+  </li>
+  <li id="info" class="base transparency-90">
+    <ul class="list LtoR"></ul>
+  </li>
   <li id="calendar-nav">
-    <ul class="list RtoL nav-menu quick-view-menu transparency-90">
+    <ul class="list RtoL nav-menu quick-view-menu">
       <table>
         <tr>
           <td>
@@ -102,31 +139,6 @@
           </td>
         </tr>
       </table>
-    </ul>
-  </li>
-  <li id="info" class="base transparency-90">
-    <ul class="list LtoR"></ul>
-  </li>
-  <li id="view-categories">
-    <ul class="list LtoR nav-menu quick-view-menu transparency-90">
-      <li class="selected">
-        <a href="#foo">Art &amp; Imagery</a>
-      </li>
-      <li>
-        <a href="#foo">Music News</a>
-      </li>
-      <li>
-        <a href="#foo">Events Map</a>
-      </li>
-      <li>
-        <a href="#foo">Charts Map</a>
-      </li>
-      <li>
-        <a href="#foo">Playlists Map</a>
-      </li>
-      <li>
-        <a href="#foo">"Off-the-Record" Quotes Map</a>
-      </li>
     </ul>
   </li>
 </view:menu>

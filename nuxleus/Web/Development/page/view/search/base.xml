@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <view:container id="search-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
   <li id="logo">
-    <img src="/images/Amp.FM.png" width="300" height="72"/>
+    <img src="/images/Amp.FM.png" width="350" height="83"/>
   </li>
   <li id="search-box" class="transparency-90">
     <form id="search-form" method="get" action="@@search-summary@@" target="_top">
