@@ -2,7 +2,7 @@
 <view:menu id="image-nav" style="TtoB" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
   <li id="title" style="position:relative">
     <ul class="list LtoR">
-      <li style="font-size:2.5em; color:#000">@New York City</li>
+      <li style="font-size:2.5em; color:#FF0000;">@New York City</li>
       <li>
         <ul class="list RtoL" id="local-links">
           <li><a href="#">Local Weather</a></li>

@@ -86,23 +86,23 @@ ul.RtoL li {
   color:#333;
   text-decoration:none;
   background-color:#FFF;
-  padding:.15em .25em;
+  padding:.25em .25em;
   margin:0 .25em;
 }
 .menu a:hover {
-  color:#FFF;
-  background-color: #FF6600;
+  color:#FF0000;
+  background-color: #FFF;
 }
 .nav-menu
 {
   padding:.25em 0;
 }
 .nav-menu a {
-  padding:.35em .25em;
+  padding:.35em .25em .35em;
   color:#000;
   background-color:Transparent;
-  margin-left:.15em;
-  margin-right:.15em;
+  margin-left:.25em;
+  margin-right:.25em;
   font-weight:400;
   font-size:.9em;
 }
@@ -113,8 +113,14 @@ ul.RtoL li {
   
 }
 .nav-menu a:hover {
-  color:#FFF;
-  background-color:#FF6600;
+  color:#000;
+  border-top:3px solid #FF0000;
+  padding-top:5px;
+}
+#sub-nav a:hover
+{
+  border-bottom:3px solid #FF0000;
+  border-top:0;
 }
 #top-nav-menu a {
  margin-left:.35em;
@@ -243,7 +249,7 @@ cursor:pointer;
 #search-categories > ul {
   width:500px;
   margin:5px auto;
-  padding-top:3px;
+  padding-top:5px;
   border-top:1px solid #333;
   text-align:center;
 }
@@ -253,8 +259,8 @@ cursor:pointer;
 }
 
 #search-categories > ul > li.selected {
-  background-color:#CC3300;
-  padding-top:3px;
+  border-top:3px solid #FF0000;
+  padding-top:5px;
 
 }
 #search-categories > ul > li.selected > a {
@@ -413,4 +419,12 @@ text-align:center;
 #local-links a {
  font-size:small;
  padding:0 .25em; 
+}
+#title
+{
+ margin-bottom:.25em; 
+}
+#sub-nav-menu
+{
+ background-color: #EEE; 
 }
