@@ -16,7 +16,7 @@ a:hover {
 }
 #top-nav {
   border-top:3px #000 solid;
-  background-color: #999;
+  background-color: #C9C3A2;
   border-bottom: 1px solid #333;
 }
 #top-nav-menu li.selected a {
@@ -43,7 +43,7 @@ a:hover {
   
   border-color:#333;
   color:#000;
-  border-bottom:3px solid #FF0000;
+  border-top:3px solid #333;
 }
 #view-categories li a {
   padding:5px .5em 5px;
@@ -66,13 +66,18 @@ a:hover {
   cursor:pointer;
 }
 #control-center {
-  background-color:#CCC;
+  background-color:#EFEFE0;
   border-top:1px solid #333;
 }  
 
 #sub-nav {
-	background-color:#EEE;
+	background-color:#EFEFE0;
   border-bottom: 1px solid #999;
+}
+
+
+#sub-nav-menu {
+	background-color:#EFEFE0;
 }
 
 #info {

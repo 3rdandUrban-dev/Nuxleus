@@ -222,18 +222,18 @@ cursor:pointer;
 }
 
 #control-center {
-  background-color:#CCFF00;
+  background-color:#E7E7CA;
   width:99%;
   margin:0 auto;
 }  
 
 #sub-nav {
-
+background-color:#E7E7CA;
 }
 
 #sub-nav-menu {
   text-align:left;
-	background-color:#FFF;
+	background-color:#E7E7CA;
 }  
 
 #info {
@@ -348,7 +348,7 @@ text-align:center;
 {
   border-top:1px solid #333;
   border-bottom:1px solid #333;
-  background-color: #EEE;
+  background-color: #EFEFE0;
 }
 
 .quick-view-menu li.selected a
@@ -422,15 +422,12 @@ text-align:center;
 }
 #title
 {
-background-color: #CCFF00;
+/* background-color: #CCFF00;
 background-color: #FF9900;
 background-color: #FFCC00;
 background-color: #99CC33;
 border-top:2px solid #333;
-border-bottom:1px solid #333;
+border-bottom:1px solid #333; */
 padding:.25em .25em;
 }
-#sub-nav-menu
-{
- background-color: #EEE; 
-}
+
