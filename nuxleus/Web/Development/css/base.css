@@ -340,7 +340,7 @@ text-align:center;
 }
 
 #session {
-  position:fixed;
+  position:absolute;
   top:.25em;
   right:.4em;
   z-index:5;
