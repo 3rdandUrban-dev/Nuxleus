@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <view:menu id="session-nav-menu" style="list menu nav-menu RtoL" type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-  <li>
+  <li><img src="/images/3rdWorld-icon.png" width="48" height="48"/></li>
+  <li><img src="/images/black_world.png" width="48" height="48"/></li>
+  <li><img src="/images/rouages2.png" width="48" height="48"/></li>
+  <li><img src="/images/black_firefox.png" width="48" height="48"/></li>
+  <!-- <li>
     <a href="@@base-uri@@/support/">
       Help/Support
     </a>
@@ -11,5 +15,5 @@
   </li>
   <li>
     <a href="http://openid.amp.fm/sign-up">Create New</a>
-  </li>
+  </li> -->
 </view:menu>

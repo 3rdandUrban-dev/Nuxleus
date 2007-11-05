@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <view:menu id="top-nav-menu" style="LtoR nav-menu" type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-  <li class="top-level selected transparency-90">
-  <img style="margin-top:2px" src="/images/Amp.FM-no-tagline.png" height="40" width="150"/>
-  <!-- <a href="@@base-uri@@"><span>@</span>@@location.label@@</a> -->
+  <li class="top-level selected">
+    <img style="margin-top:1px" src="/images/Amp.FM.png" height="50" width="210"/>
   </li>
+<!--   <li class="top-level selected transparency-90">
+    <a href="@@base-uri@@">@@location.label@@</a>
+  </li> -->
 </view:menu>
