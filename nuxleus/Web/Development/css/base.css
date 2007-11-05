@@ -130,7 +130,7 @@ ul.RtoL li {
   background-color: #FFF;
 }
 #top-nav-menu li.selected a {
-  padding:2px .5em 3px;
+  padding:3px .5em 3px;
   color:#000;
   background-color: #FFF;
   font-size:large;
@@ -329,7 +329,7 @@ text-align:center;
 
 }
 
-#search {
+#search-container {
  margin-top:3em;
  margin-bottom:2.5em;
 }
@@ -348,7 +348,7 @@ text-align:center;
 {
   border-top:1px solid #333;
   border-bottom:1px solid #333;
-  background-color: #EFEFE0;
+  background-color: #FFF;
 }
 
 .quick-view-menu li.selected a

@@ -3,13 +3,13 @@
   <li id="title" style="position:relative">
     <ul class="list LtoR">
       <li style="font-size:24pt; color:#000;">@New York City</li>
-      <!-- <li>
+      <li>
         <ul class="list RtoL" id="local-links">
           <li><a href="#">Local Weather</a></li>
           <li><a href="#">Local Weather</a></li>
           <li><a href="#">Local Weather</a></li>
         </ul>
-      </li> -->
+      </li>
     </ul>
   </li>
   <li id="view-categories">

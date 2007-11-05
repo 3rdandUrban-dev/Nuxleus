@@ -6,7 +6,7 @@
       <view:module>
         <view:container>
           <view:module id="header" src="/page/view/module/header/base.xml"/>
-          <!-- <view:module id="body" src="/page/view/module/content/base.xml"/> -->
+          <view:module id="body" src="/page/view/module/content/base.xml"/>
           <view:module id="footer" src="/page/view/module/footer/base.xml"/>
         </view:container>
       </view:module>

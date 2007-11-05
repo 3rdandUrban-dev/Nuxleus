@@ -15,18 +15,16 @@ a:hover {
   color:#996600;
 }
 #top-nav {
-  border-top:3px #000 solid;
-  background-color: #C9C3A2;
-  border-bottom: 1px solid #333;
+  border-top:3px #333 solid;
+  background-color: #FFF;
+  border-bottom:0;
 }
 #top-nav-menu li.selected a {
   border-color:#FFF;
   color:#000;
-  border-left:1px solid #000;
-  border-right:1px solid #000;
+  border-left:1px solid #333;
+  border-right:1px solid #333;
   background-color: #FFF;
-  padding-top:8px;
-  padding-bottom:4px;
 }
 #top-nav-menu li.selected a:hover {
   color:#333;
@@ -55,7 +53,7 @@ a:hover {
   border-top:3px solid #333;
 }
 #footer {
-  border-bottom:2px solid #000;
+  border-bottom:3px solid #333;
 }
 .Button {
  border: 1px solid #333;
@@ -66,18 +64,18 @@ a:hover {
   cursor:pointer;
 }
 #control-center {
-  background-color:#EFEFE0;
+  background-color:#FFF;
   border-top:1px solid #333;
 }  
 
 #sub-nav {
-	background-color:#EFEFE0;
-  border-bottom: 1px solid #999;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
 }
 
 
 #sub-nav-menu {
-	background-color:#EFEFE0;
+	background-color:#FFF;
 }
 
 #info {

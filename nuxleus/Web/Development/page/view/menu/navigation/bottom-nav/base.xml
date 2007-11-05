@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <view:menu type="xhtml" style="nav-menu RtoL" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
   <li>
-    <a href="@@base-uri@@/support/">
-      Help/Support
-    </a>
+    <object type="application/x-shockwave-flash" width="400" height="15" data="/xspf/xspf_player_slim.swf?playlist_url=/playlist.xml">
+      <param name="movie" value="/xspf/xspf_player_slim.swf?playlist_url=/playlist.xml" />
+    </object>
   </li>
-  <li>
+<!--   <li>
     <a href="@@base-uri@@/home/playlists/">
       My Playlists
     </a>
@@ -34,5 +34,5 @@
     <a href="@@base-uri@@/home/toolbox/">
       My Toolbox
     </a>
-  </li>
+  </li> -->
 </view:menu>
