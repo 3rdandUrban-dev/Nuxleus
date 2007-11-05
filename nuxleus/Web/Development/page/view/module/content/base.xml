@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
-<view:module class="base" id="header" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
-  <li class="base" id="instance">
-    <ul id="content" class="base transparency-90 list LtoR">
-      <li id="left">
-        <doc:feed href="/feed/feed.xml" characterCount="400"/>
-      </li>
-      <li id="center">
+<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="content" style="base list LtoR width">
+    <view:item id="left">
+      <doc:feed href="/feed/feed.xml" characterCount="400"/>
+    </view:item>
+    <view:item id="center">
+      <view:container id="search-container">
         <view:item id="search-box-item" src="/page/view/search/base.xml" />
-        <doc:feed href="/feed/feed.xml" characterCount="400"/>
-      </li>
-      <li id="right">
-        <doc:feed href="/feed/feed.xml" characterCount="400"/>
-      </li>
-    </ul>
-  </li>
+      </view:container>
+      <doc:feed href="/feed/feed.xml" characterCount="400"/>
+    </view:item>
+    <view:item id="right">
+      <doc:feed href="/feed/feed.xml" characterCount="400"/>
+    </view:item>
+  </view:container>
 </view:module>

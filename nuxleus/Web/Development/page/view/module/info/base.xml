@@ -1,34 +1,33 @@
 <?xml version="1.0"?>
 <view:module class="base" id="info" xmlns:view="http://atomictalk.org/page/view">
   <view:container id="info-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-    
     <view:item id="sub-nav" style="width" src="/page/view/menu/navigation/sub-nav/base.xml" />
-    <li id="title" style="position:absolute;bottom:0;left:0;right:0;">
-      <ul class="list LtoR">
-        <li style="font-size:24pt; color:#FFF;">@New York City</li>
-        <li>
-          <ul class="list RtoL transparency-90" id="local-links">
-            <li class="selected">
+    <view:item id="title">
+      <view:container style="list LtoR">
+        <view:item id="current-region">@New York City</view:item>
+        <view:item>
+          <view:container style="list RtoL transparency-90" id="local-links">
+            <view:item style="selected">
               <a href="#foo">Art &amp; Imagery</a>
-            </li>
-            <li>
+            </view:item>
+            <view:item>
               <a href="#foo">Music News</a>
-            </li>
-            <li>
+            </view:item>
+            <view:item>
               <a href="#foo">Events Map</a>
-            </li>
-            <li>
+            </view:item>
+            <view:item>
               <a href="#foo">Charts Map</a>
-            </li>
-            <li>
+            </view:item>
+            <view:item>
               <a href="#foo">Playlists Map</a>
-            </li>
-            <li>
+            </view:item>
+            <view:item>
               <a href="#foo">"Off-the-Record" Quotes Map</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </li>
+            </view:item>
+          </view:container>
+        </view:item>
+      </view:container>
+    </view:item>
   </view:container>
 </view:module>

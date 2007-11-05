@@ -1,40 +1,40 @@
 <?xml version="1.0"?>
 <view:menu type="xhtml" style="nav-menu RtoL" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-  <li>
-    <object type="application/x-shockwave-flash" width="400" height="15" data="/xspf/xspf_player_slim.swf?playlist_url=/playlist.xml">
-      <param name="movie" value="/xspf/xspf_player_slim.swf?playlist_url=/playlist.xml" />
-    </object>
-  </li>
-  <!--   
-  <li>
-    <a href="@@base-uri@@/home/playlists/">
+  <view:container>
+    <!-- <view:item>
+      <object type="application/x-shockwave-flash" width="400" height="15" data="/xspf/xspf_player_slim.swf?playlist_url=/playlist.xml">
+        <param name="movie" value="/xspf/xspf_player_slim.swf?playlist_url=/playlist.xml" />
+      </object>
+    </view:item> -->
+    <view:item>
+      <a href="@@base-uri@@/home/playlists/">
       My Playlists
     </a>
-  </li>
-  <li>
-    <a href="@@base-uri@@/home/events/">
+    </view:item>
+    <view:item>
+      <a href="@@base-uri@@/home/events/">
       My Events
     </a>
-  </li>
-  <li>
-    <a href="@@base-uri@@/home/clipboard/">
+    </view:item>
+    <view:item>
+      <a href="@@base-uri@@/home/clipboard/">
       My Clipboard
     </a>
-  </li>
-  <li>
-    <a href="@@base-uri@@/home/friends/">
+    </view:item>
+    <view:item>
+      <a href="@@base-uri@@/home/friends/">
       My Friends
     </a>
-  </li>
-  <li>
-    <a href="@@base-uri@@/home/friends/">
+    </view:item>
+    <view:item>
+      <a href="@@base-uri@@/home/friends/">
       My Feed Subscriptions
     </a>
-  </li>
-  <li>
-    <a href="@@base-uri@@/home/toolbox/">
+    </view:item>
+    <view:item>
+      <a href="@@base-uri@@/home/toolbox/">
       My Toolbox
     </a>
-  </li> 
-  -->
+    </view:item>
+  </view:container>
 </view:menu>

@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <view:menu id="sub-nav-menu" style="LtoR menu nav-menu" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-  <li>
+  <view:item>
     <a href="@@base-uri@@/region/">Regions</a>
-  </li>
-  <li>
+  </view:item>
+  <view:item>
     <a href="@@base-uri@@/events/">Events</a>
-  </li>
-  <li>
+  </view:item>
+  <view:item>
     <a href="@@base-uri@@/events/">Charts</a>
-  </li>
-  <li>
+  </view:item>
+  <view:item>
     <a href="@@base-uri@@/genres/">Genres</a>
-  </li>
-  <li>
+  </view:item>
+  <view:item>
     <a href="@@base-uri@@/playlists/">Playlists</a>
-  </li>
-  <li>
+  </view:item>
+  <view:item>
     <a href="@@base-uri@@/off-the-record/">"Off-the-Record" Music Lounge</a>
-  </li>
+  </view:item>
 </view:menu>
