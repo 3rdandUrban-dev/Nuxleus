@@ -217,9 +217,15 @@
     </ul>
   </xsl:template>
 
-  <xsl:template match="view:item">
+  <xsl:template match="view:item[@src]">
     <li class="list {@style}" id="{@id}">
       <xsl:apply-templates select="document(@src)/view:*"/>
+    </li>
+  </xsl:template>
+
+  <xsl:template match="view:item[not(@src)]">
+    <li class="list menu {@style}" id="{@id}">
+      <xsl:apply-templates />
     </li>
   </xsl:template>
 

@@ -5,7 +5,8 @@
       <param name="movie" value="/xspf/xspf_player_slim.swf?playlist_url=/playlist.xml" />
     </object>
   </li>
-<!--   <li>
+  <!--   
+  <li>
     <a href="@@base-uri@@/home/playlists/">
       My Playlists
     </a>
@@ -34,5 +35,6 @@
     <a href="@@base-uri@@/home/toolbox/">
       My Toolbox
     </a>
-  </li> -->
+  </li> 
+  -->
 </view:menu>

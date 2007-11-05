@@ -15,16 +15,23 @@ a:hover {
   color:#996600;
 }
 #top-nav {
-  border-top:3px #333 solid;
+  border-top:3px #000 solid;
+  border-bottom: 1px solid #000;
   background-color: #FFF;
-  border-bottom:0;
+  margin-top:0;
+  margin-bottom:0;
+  padding-top:0;
+  padding-bottom:0;
+  height:25px;
 }
 #top-nav-menu li.selected a {
   border-color:#FFF;
-  color:#000;
-  border-left:1px solid #333;
-  border-right:1px solid #333;
+  color:#FF3300;
+  border-left:1px solid #FFF;
+  border-right:1px solid #FFF;
   background-color: #FFF;
+  padding-top:7px;
+  padding-bottom:4px;
 }
 #top-nav-menu li.selected a:hover {
   color:#333;
@@ -69,23 +76,22 @@ a:hover {
 }  
 
 #sub-nav {
-  border-top: 1px solid #333;
   border-bottom: 1px solid #333;
+  margin-bottom:2px;
 }
 
 
 #sub-nav-menu {
-	background-color:#FFF;
+	background-color: #FFF;
 }
 
 #info {
   background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat;
+  border-top:1px solid #FFF;
+  border-bottom:1px solid #FFF;
 }
 
 #search-categories > ul > li.selected {
-/*   border-left:1px solid #333;
-  border-right:1px solid #333;
-  border-bottom:1px solid #333; */
   background-color:#FFF;
 }
 #search-categories > ul > li.selected > a {
@@ -112,6 +118,7 @@ a:hover {
 #content h2 {
   color:#000;
   border-bottom:1px solid #000;
+  margin-top:0;
 }
 #h4 {
  margin-left:0;
@@ -123,7 +130,14 @@ a:hover {
   padding-left:0; 
 }
 #center {
-  border-right:1px dotted #373F3F;
-  border-left:1px dotted #373F3F;
+  border-right:1px dotted #333;
+  border-left:1px dotted #333;
 }
-
+#title 
+{
+ 
+}
+#info-container
+{
+  border-top:1px solid #333;
+}

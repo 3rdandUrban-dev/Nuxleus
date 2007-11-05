@@ -237,7 +237,7 @@ background-color:#E7E7CA;
 }  
 
 #info {
-  height:275px;
+  height:300px;
   background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat;
   position:relative;
   padding:0 auto;
@@ -287,7 +287,6 @@ margin:0 auto;
 #content h2 {
   font-size: 4em;
   color:#990000;
-  margin-top:-.45em;
  margin-bottom:1em;
  border-bottom:1px solid #000;
 text-align:left;
@@ -330,8 +329,8 @@ text-align:center;
 }
 
 #search-container {
- margin-top:3em;
- margin-bottom:2.5em;
+ padding-top:3em;
+ background-color:#FFF;
 }
 
 #session {
@@ -410,24 +409,51 @@ text-align:center;
 }
 #local-links 
 {
- text-align:right;
- position:absolute;
- right:0;
- bottom:0;
+ text-align:left;
+ background-color: #FFCC33;
+ padding-top:.35em;
+ padding-bottom:.25em;
+ border-top:1px solid #FFF;
  
 }
 #local-links a {
- font-size:small;
- padding:0 .25em; 
+ padding:5px 1em 3px; 
+ background-color:Transparent;
+ color:#FFF;
+}
+#local-links li:hover {
+ background-color:#FF8800;
+ color:#FFF;
+}
+#local-links li.selected {
+  background-color:#FF6600;
+  color:#FFF;
+}
+#local-links li {
+  border-right:1px solid #FFF;
+
+  background-color:#FF9900;
+  color:#FFF;
+  padding:.35em .25em .25em;
+}
+#local-links li.selected a {
+  color:#FFF;
 }
 #title
 {
-/* background-color: #CCFF00;
-background-color: #FF9900;
-background-color: #FFCC00;
-background-color: #99CC33;
-border-top:2px solid #333;
-border-bottom:1px solid #333; */
-padding:.25em .25em;
+  margin:0;
 }
-
+#search-box-container {
+ margin-top:3em; 
+ 
+ margin-bottom:1em;
+ background-color:Transparent;
+}
+#search-box {
+ background-color:Transparent;
+}
+#instance
+{
+  width:98%;
+  margin:2em auto;
+}

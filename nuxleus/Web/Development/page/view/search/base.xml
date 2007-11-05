@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<view:container id="search-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-  <li id="logo">
-    <img src="/images/Amp.FM.png" width="350" height="83"/>
-  </li>
+<view:container id="search-box-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <!-- <li id="logo">
+    <img src="/images/Amp.FM.png" height="83" width="350"/>
+  </li> -->
   <li id="search-box" class="transparency-90">
     <form id="search-form" method="get" action="@@search-summary@@" target="_top">
       <input id="search-text" class="single-input" type="text" name="search" maxlength="255" />
