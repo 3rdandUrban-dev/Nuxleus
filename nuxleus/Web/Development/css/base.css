@@ -320,12 +320,13 @@ text-align:left;
  left:225px;
  top:0;
  margin:0;
- padding:1em;
+ padding:0 1em;
+ width:auto;
  	border-right:1px dotted #669900;
 	border-left:1px dotted #669900;
 }
 #logo {
- width:450px;
+ width:98%;
 margin:2em auto .5em; 
 text-align:center;
 }
@@ -448,10 +449,10 @@ text-align:center;
   margin:0;
 }
 #search-box-container {
- margin-top:3em; 
- 
- margin-bottom:3em;
+ margin-top:0; 
+ margin-bottom:2em;
  background-color:Transparent;
+ width:100%;
 }
 #search-box {
  background-color:Transparent;
@@ -459,5 +460,5 @@ text-align:center;
 #instance
 {
   width:98%;
-  margin:2em auto;
+  margin:1em auto;
 }
