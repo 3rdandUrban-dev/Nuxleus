@@ -421,9 +421,10 @@ text-align:center;
  
 }
 #local-links a {
- padding:5px 1em 3px; 
+ padding:5px .5em 3px; 
  background-color:Transparent;
  color:#FFF;
+ font-size:1em;
 }
 #local-links li:hover {
  background-color:#FF8800;
