@@ -22,7 +22,7 @@ a:hover {
   margin-bottom:0;
   padding-top:0;
   padding-bottom:0;
-  height:38px;
+  height:48px;
 }
 #top-nav-menu li.selected a {
   border-color:#FFF;
@@ -83,7 +83,10 @@ a:hover {
 
 }
 
-
+#sub-nav-menu
+{
+  
+}
 #sub-nav-menu a {
   color: #333;
   padding:5px .25em 3px;
