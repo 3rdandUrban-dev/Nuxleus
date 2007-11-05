@@ -15,8 +15,8 @@ a:hover {
   color:#996600;
 }
 #top-nav {
-  border-top:3px #000 solid;
-  border-bottom: 1px solid #000;
+  border-top:3px #FF6600 solid;
+ border-bottom:1px #333 solid;
   background-color: #FFF;
   margin-top:0;
   margin-bottom:0;
@@ -27,8 +27,8 @@ a:hover {
 #top-nav-menu li.selected a {
   border-color:#FFF;
   color:#FF3300;
-  border-left:1px solid #FFF;
-  border-right:1px solid #FFF;
+  border-left:1px solid #FF6600;
+  border-right:1px solid #FF6600;
   background-color: #FFF;
   padding-top:7px;
   padding-bottom:4px;
@@ -140,4 +140,8 @@ a:hover {
 #info-container
 {
   border-top:1px solid #333;
+}
+#sub-nav
+{
+ border-bottom:1px solid #333; 
 }
