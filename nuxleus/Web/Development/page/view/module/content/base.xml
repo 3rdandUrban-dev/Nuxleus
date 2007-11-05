@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <view:module class="base" id="header" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:item id="search-box-item" src="/page/view/search/base.xml" />
   <li class="base" id="instance">
     <ul id="content" class="base transparency-90 list LtoR">
       <li id="left">
