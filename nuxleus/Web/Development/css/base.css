@@ -228,12 +228,16 @@ cursor:pointer;
 }  
 
 #sub-nav {
-background-color:#E7E7CA;
+
 }
 
 #sub-nav-menu {
   text-align:left;
-	background-color:#E7E7CA;
+   background-color: #FFF;
+   border-top:1px solid #333;
+   border-bottom:1px solid #333;
+   padding-top:.35em;
+   padding-bottom:.35em;
 }  
 
 #info {
@@ -446,7 +450,7 @@ text-align:center;
 #search-box-container {
  margin-top:3em; 
  
- margin-bottom:1em;
+ margin-bottom:3em;
  background-color:Transparent;
 }
 #search-box {

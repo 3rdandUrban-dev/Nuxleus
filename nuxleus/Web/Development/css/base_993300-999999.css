@@ -16,13 +16,13 @@ a:hover {
 }
 #top-nav {
   border-top:3px #FF6600 solid;
- border-bottom:1px #333 solid;
+  border-bottom:0;
   background-color: #FFF;
   margin-top:0;
   margin-bottom:0;
   padding-top:0;
   padding-bottom:0;
-  height:25px;
+  height:38px;
 }
 #top-nav-menu li.selected a {
   border-color:#FFF;
@@ -32,6 +32,10 @@ a:hover {
   background-color: #FFF;
   padding-top:7px;
   padding-bottom:4px;
+  padding-left:1em;
+}
+#top-nav-menu li.selected {
+  margin-left:.5em;
 }
 #top-nav-menu li.selected a:hover {
   color:#333;
@@ -76,13 +80,12 @@ a:hover {
 }  
 
 #sub-nav {
-  border-bottom: 1px solid #333;
-  margin-bottom:2px;
+
 }
 
 
 #sub-nav-menu {
-	background-color: #FFF;
+
 }
 
 #info {
@@ -137,11 +140,11 @@ a:hover {
 {
  
 }
-#info-container
+#info
 {
-  border-top:1px solid #333;
+  margin-bottom:1px;
 }
 #sub-nav
 {
- border-bottom:1px solid #333; 
+
 }
