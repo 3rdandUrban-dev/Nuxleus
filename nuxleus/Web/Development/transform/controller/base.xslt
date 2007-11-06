@@ -36,7 +36,7 @@
   <xsl:import href="./aws/s3/base.xslt" />
   <xsl:import href="./proxy/base.xslt" />
   <xsl:import href="./atom/base.xslt" />
-
+  <xsl:import href="./session/validate-request/base.xslt" />
   <xsl:import href="./message-queue/base.xslt" />
   <xsl:import href="../model/json-to-xml.xslt"/>
   <xsl:import href="./test/base.xslt"/>
