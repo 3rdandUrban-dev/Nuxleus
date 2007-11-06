@@ -14,9 +14,9 @@ xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web"
 xmlns:proxy="http://xameleon.org/service/proxy" 
 xmlns:html="http://www.w3.org/1999/xhtml" 
 xmlns:operation="http://xameleon.org/service/operation" 
-exclude-result-prefixes="xs xsl xsi fn clitype at func http-sgml-to-xml aspnet-context proxy saxon html">
+exclude-result-prefixes="#all">
 
-  <xsl:import href="../../../../functions/funcset-Util.xslt" />
+  <xsl:import href="../../../functions/funcset-Util.xslt" />
   <xsl:param name="current-context" />
 
   <xsl:template match="session:validate-request">

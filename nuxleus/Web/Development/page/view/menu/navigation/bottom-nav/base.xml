@@ -7,32 +7,32 @@
       </object>
     </view:item> -->
     <view:item>
-      <a href="@@base-uri@@/home/playlists/">
+      <a href="/home/playlists/">
       My Playlists
     </a>
     </view:item>
     <view:item>
-      <a href="@@base-uri@@/home/events/">
+      <a href="/home/events/">
       My Events
     </a>
     </view:item>
     <view:item>
-      <a href="@@base-uri@@/home/clipboard/">
+      <a href="/home/clipboard/">
       My Clipboard
     </a>
     </view:item>
     <view:item>
-      <a href="@@base-uri@@/home/friends/">
+      <a href="/home/friends/">
       My Friends
     </a>
     </view:item>
     <view:item>
-      <a href="@@base-uri@@/home/friends/">
+      <a href="/home/friends/">
       My Feed Subscriptions
     </a>
     </view:item>
     <view:item>
-      <a href="@@base-uri@@/home/toolbox/">
+      <a href="/home/toolbox/">
       My Toolbox
     </a>
     </view:item>
