@@ -38,7 +38,7 @@
     <view:item id="nav">
       <view:container style="LtoR" type="xhtml">
         <view:item>
-          <img src="/images/Amp.FM.png" height="100" width="480"/>
+          <img src="/images/Amp.FM.png" height="90" width="432"/>
         </view:item>
       </view:container>
     </view:item>
