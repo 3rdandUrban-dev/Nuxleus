@@ -5,9 +5,6 @@
       <doc:feed href="/feed/feed.xml" characterCount="400"/>
     </view:item>
     <view:item id="center">
-      <view:container id="search-container">
-        <view:item id="search-box-item" src="/page/view/search/base.xml" />
-      </view:container>
       <doc:feed href="/feed/feed.xml" characterCount="400"/>
     </view:item>
     <view:item id="right">

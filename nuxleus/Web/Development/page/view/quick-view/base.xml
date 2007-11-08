@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <view:menu id="image-nav" style="TtoB" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
   <view:item id="info-module" style="width" src="/page/view/module/info/base.xml" />
-  <view:item id="calendar-menu" style="transparency-90" src="/page/view/menu/calendar/base.xml" />
+  <!--<view:item id="calendar-menu" style="transparency-90" src="/page/view/menu/calendar/base.xml" />-->
 </view:menu>

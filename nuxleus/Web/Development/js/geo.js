@@ -38,6 +38,38 @@ var geo = {
      var gmap = $("#gmap").myMap();
      var geoxml = new GGeoXml(feeduri);
      gmap.addOverlay(geoxml);
+     showEntries(geoxml);
+   }
+
+   showEntries: function(geoxml) {
+    //var p;
+	
+    //	if (typeof this.entries != 'object')
+    //		return;
+
+    //	tl = this.entries.length;
+    //	if (tl==0) { tl = 'no' }
+    //	tleft = tl + ' new Entry' + (tl==1 ? '' : 's');
+    //	$('entryCount').update(tleft);
+
+    //	if (this.entries.length == 0) {
+    //		this.loadEntries(0);
+    //		return;
+    //	}
+
+	//	if ( p = this.entries.pop() ) {
+	  //var marker = new GMarker(new GLatLng(p[0],p[1]), { icon : this.map_icon });
+		// show photo
+	  //	this.map.addOverlay(marker); 
+	  //marker.openInfoWindowHtml(p[2]);
+		
+		// hide photo
+		setTimeout( function () {
+		    //tnu.sb.map.closeInfoWindow(); 
+		    //tnu.sb.map.removeOverlay(marker);
+			tnu.sb.showEntries(geoxml);
+		}, 7000);
+		//	}
    }
 };
 /*

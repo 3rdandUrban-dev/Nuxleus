@@ -6,6 +6,7 @@
                    xmlns:service="http://xameleon.org/service" 
                    xmlns:operation="http://xameleon.org/service/operation" 
                    xmlns:param="http://xameleon.org/service/session/param"
+                   xmlns:profile="http://xameleon.org/service/profile/"
                    use-clientside-xslt="/page/controller/atomictalk/base.xsl"
                    exclude-message-envelope="true">
 

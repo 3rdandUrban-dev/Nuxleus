@@ -32,7 +32,7 @@
   xmlns:llup="http://www.x2x2x.org/2005/LLUP" 
   xmlns:my="http://xameleon.org/my"
   xmlns:operation="http://xameleon.org/service/operation" 
-  exclude-element-prefixes="xs xsl xsi clitype delete at func http-atompub-utils aspnt-context aspnet-request simple atom html request response doc page service output head body advice view form menu resource property variable model llup my">
+  exclude-result-prefixes="#all">
 
   <xsl:output indent="yes" />
 
