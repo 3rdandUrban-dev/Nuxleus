@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/transform/base.xslt"?>
+<service:operation xmlns:at="http://atomictalk.org" 
+                   xmlns:metadata="http://xameleon.org/service/metadata" 
+                   xmlns:header="http://xameleon.org/service/http/header" 
+                   xmlns:service="http://xameleon.org/service" 
+                   xmlns:operation="http://xameleon.org/service/operation" 
+                   xmlns:param="http://xameleon.org/service/session/param"
+                   use-clientside-xslt="/page/controller/atomictalk/base.xsl"
+                   exclude-message-envelope="true">
+
+  <param:username>{form:username}</param:username>
+  <param:openid>{form:openid}</param:openid>
+
+  <operation:profile-add>
+    <my:session xmlns:my="http://xameleon.org/my">
+      <my:page
+          xmlns:page="http://atomictalk.org/page"
+          xmlns:output="http://atomictalk.org/page/output"
+          xmlns:head="http://atomictalk.org/page/output/head"
+          xmlns:body="http://atomictalk.org/page/output/body"
+          xmlns:advice="http://atomictalk.org/page/advice">
+        <page:config src="page/config/config.xml">
+          <page:advice>
+            <advice:page-title>@@domain.label@@::@@date@@</advice:page-title>
+            <advice:location.label>Profile</advice:location.label>
+            <advice:base.theme>993300-999999</advice:base.theme>
+            
+            <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
+            <advice:location>profile</advice:location>
+            <advice:current-location.label>Profile</advice:current-location.label>
+          </page:advice>
+        </page:config>
+        <page:output>
+          <page:head src="/profile/page/head-base.xml" />
+          <page:body xmlns:page="http://atomictalk.org/page" 
+                     xmlns:body="http://atomictalk.org/page/output/body">
+            <body:layout xmlns:view="http://atomictalk.org/page/view">
+              <view:container id="layout">
+                <view:module id="session" src="/page/view/module/session/controller/base.xml"/>
+                <view:module>
+                  <view:container>
+                    <view:module id="header" src="/profile/page/view/header/base.xml"/>
+                    <view:module class="base" id="instance" 
+                                 xmlns:doc="http://atomictalk.org/feed/doc" 
+                                 xmlns:view="http://atomictalk.org/page/view">
+                      <view:container id="content" style="base list LtoR width">
+                        <view:item id="center">
+                          <view:container id="search-container">
+                            <view:create-account-form xmlns:form="http://atomictalk/page/view/form">
+                              <form:create-account-form type="html"
+                                                        method="post"
+                                                        action="@@current-location@@/add"
+                                                        target=""
+                                                        class="">
+                                <label for="username">Choose a username</label>
+                                <input type="text" name="username" value="" />
+                                <label for="openid">OpenID</label>
+                                <input type="text" name="openid" value="" />
+                                <input type="submit" value="submit" name="submit" />
+                              </form:create-account-form>
+                            </view:create-account-form>
+                          </view:container>
+                        </view:item>
+                      </view:container>
+                    </view:module>
+                    
+                    <view:module id="footer" src="/profile/page/view/footer/base.xml"/>
+                  </view:container>
+                </view:module>
+              </view:container>
+            </body:layout>
+          </page:body>
+
+        </page:output>
+      </my:page>
+    </my:session>
+  </operation:profile-add>
+
+</service:operation>
