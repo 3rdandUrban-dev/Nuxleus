@@ -22,46 +22,9 @@ a:hover {
     margin-bottom:0;
     padding-top:0;
     padding-bottom:0;
-    height:115px;
+
 }
-#top-nav-menu li.selected a {
-    border-color:#FFF;
-    color:#FF3300;
-    border-left:1px solid #FF6600;
-    border-right:1px solid #FF6600;
-    background-color: #FFF;
-    padding-top:7px;
-    padding-bottom:4px;
-    padding-left:1em;
-}
-#top-nav-menu li.selected {
-    margin-left:.5em;
-}
-#top-nav-menu li.selected a:hover {
-    color:#333;
-    background-color: #FFF;
-}
-#view-categories {
-    border-top: 0px;
-}
-#view-categories li.selected a:hover {
-    color:#FF0000;
-    background-color: #FFF;
-}
-#view-categories li.selected a {
-    border-color:#333;
-    color:#000;
-    border-top:3px solid #333;
-}
-#view-categories li a {
-    padding:5px .5em 5px;
-    color:#000;
-}
-#view-categories li a:hover {
-    color:#FF0000;
-    background-color: #FFF;
-    border-top:3px solid #333;
-}
+
 #footer {
     border-bottom:3px solid #333;
 }
@@ -77,38 +40,13 @@ a:hover {
     background-color:#FFF;
     border-top:1px solid #333;
 }
-#sub-nav {
-}
-#sub-nav-menu {
-}
-#sub-nav-menu a {
-    color: #333;
-    padding:5px .25em 3px;
-}
+
 #info {
     background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat;
     border-top:1px solid #FFF;
     border-bottom:1px solid #FFF;
 }
-#search-categories > ul > li.selected {
-    background-color:#FFF;
-}
-#search-categories > ul > li.selected > a {
-    color:#000;
-}
-#search-categories > ul > li > a {
-    color:#000;
-}
-#search-categories > ul > li > a:hover {
-    color:#000;
-}
-#search-categories > ul > li {
-    margin:0 .15em;
-}
-#search-categories > ul > li:hover {
-    border-top:3px solid #FF0000;
-    padding-top:5px;
-}
+
 #instance > ul {
     background-color:#FFF;
 }
@@ -135,27 +73,7 @@ a:hover {
 #info {
     margin-bottom:1px;
 }
-#sub-nav {
-}
-#sub-nav-menu a {
-    color:#FFF;
-    padding:.35em .5em;
-    font-weight:400;
-}
-#sub-nav-menu li {
-    border-right:1px solid #FFF;
-    padding:.35em .5em;
-    margin-left:0;
-    margin-right:0;
-    background-color:#FF9900;
-}
-#sub-nav-menu a:hover {
-    background-color:#FF6600;
-    border-bottom:0;
-}
-#sub-nav-menu li:hover {
-    background-color:#FF6600;
-}
+
 #top-login
 {
     background-color:#EEE;

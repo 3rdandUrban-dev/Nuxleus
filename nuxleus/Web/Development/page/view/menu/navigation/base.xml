@@ -36,11 +36,13 @@
       </view:container>
     </view:item>
     <view:item id="nav">
-      <view:container id="top-sub-nav" style="LtoR" type="xhtml">
+      <view:container style="LtoR" type="xhtml">
         <view:item>
-          <img src="/images/Amp.FM.png" height="60" width="288"/>
+          <img src="/images/Amp.FM.png" height="100" width="480"/>
         </view:item>
       </view:container>
     </view:item>
+    <view:item id="current-region">@New York City</view:item>
+    <view:item id="search-module" style="width" src="/page/view/search/base.xml"/>
   </view:container>
 </view:menu>

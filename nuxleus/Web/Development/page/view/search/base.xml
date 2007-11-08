@@ -1,19 +1,16 @@
 <?xml version="1.0"?>
 <view:container id="search-box-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-  <!-- <view:item id="logo">
-    <img src="/images/Amp.FM.png" height="83" width="350"/>
-  </view:item> -->
   <view:item id="search-box" style="transparency-90">
     <form id="search-form" method="get" action="@@search-summary@@" target="_top">
-      <input id="search-text" class="single-input" type="text" name="search" maxlength="255" />
+      <input id="search-text" class="single-input" type="text" name="search" maxlength="255"/>
       <button class="Button submit">
         <span class="ButtonLabel">Search</span>
       </button>
     </form>
   </view:item>
   <view:item id="search-categories">
-    <view:container class="list LtoR">
-      <view:item class="selected">
+    <view:container id="search-categories-container" style="list LtoR">
+      <view:item style="selected">
         <a href="#foo">Everything</a>
       </view:item>
       <view:item>

@@ -119,19 +119,7 @@ ul.RtoL li {
     border-bottom:3px solid #FF0000;
     border-top:0;
 }
-#top-nav-menu a {
-    margin-left:.35em;
-}
-#top-nav-menu li.selected a:hover {
-    color:#333;
-    background-color: #FFF;
-}
-#top-nav-menu li.selected a {
-    padding:3px .5em 3px;
-    color:#000;
-    background-color: #FFF;
-    font-size:large;
-}
+
 #session-nav-menu li {
     margin:0;
     margin-left:.5em;
@@ -194,9 +182,6 @@ ul.RtoL li {
     padding-top:.1em;
     padding-bottom:.1em;
 }
-#search-box {
-    text-align:center;
-}
 #search-text {
     border-color:#000;
     font-size: medium;
@@ -204,7 +189,7 @@ ul.RtoL li {
     background-color:#FFF;
     padding:1px;
     background-position: 2px 50%;
-    width:350px;
+    width:400px;
     margin-right:.25em;
 }
 #search-button {
@@ -226,36 +211,46 @@ ul.RtoL li {
     padding-bottom:.35em;
 }
 #info {
-    height:300px;
+    height:275px;
     background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat;
     position:relative;
     padding:0;
     text-align:center;
     margin:0 auto;
     border:0;
-    border-top:1px solid #333;
-    border-bottom:1px solid #333;
 }
-#search-categories > ul {
-    width:500px;
-    margin:5px auto;
+#search-module {
+    width:450px;
+    margin:0 auto 1em;
     padding-top:5px;
-    border-top:1px solid #333;
     text-align:center;
 }
-#search-categories > ul > li {
-    padding-bottom:3px;
+#search-categories {
+    margin-top:2px;
+    border-top:1px solid #333;
 }
-#search-categories > ul > li.selected {
-    border-top:3px solid #FF0000;
-    padding-top:5px;
+#search-categories-container {
+    padding-top:3px;
+    text-align:center;
 }
-#search-categories > ul > li.selected > a {
-    color:#FFF;
+#search-categories-container li {
+    padding-top:2px;
 }
-#search-categories > ul > li > a {
-    padding-bottom:3px;
-    font-size:1em;
+#search-categories-container li.selected {
+    padding-top:2px;
+    border-top:2px solid #FF3300;
+    color:#FF0000;
+}
+#search-categories-container li.selected a {
+    color:#FF0000;
+}
+#search-categories-container a {
+    padding-top:2px;
+    color:#000;
+}
+#search-categories-container a:hover {
+    padding-top:2px;
+    color:#FF3300;
 }
 #left {
     width:200px;
@@ -291,6 +286,9 @@ ul.RtoL li {
     text-align:center;
 }
 #image-nav {
+    margin-top:5px;
+    border-top:1px solid #666;
+    border-bottom:1px solid #666;
 }
 #search-container {
     padding-top:3em;
@@ -378,52 +376,37 @@ ul.RtoL li {
 #site-search li.selected a {
     color:#FFF;
 }
-#local-links {
+.local-links {
     text-align:left;
-    background-color: #FFCC33;
+    background-color: #CCC;
     padding-top:3px;
     padding-bottom:3px;
     border-top:1px solid #FFF;
+    border-bottom:1px solid #FFF;
 }
-#local-links a {
-    padding:3px .5em 3px;
+.local-links a {
+    padding:3px 5px;
     background-color:Transparent;
     color:#FFF;
     font-size:small;
 }
-#local-links li:hover {
-    background-color:#FF8800;
-    color:#FFF;
-}
-#local-links li.selected {
+.local-links li:hover, .local-links a:hover{
     background-color:#FF6600;
     color:#FFF;
 }
-#local-links li {
+.local-links li.selected, .local-links li.selected a {
+    background-color:#333;
+    color:#FFF;
+}
+.local-links li {
     border-right:1px solid #FFF;
-    background-color:#FF9900;
+    background-color:#666;
     color:#FFF;
-    padding-top:3px;
-    padding-bottom:3px;
+    padding:3px 0;
 }
-#local-links li.selected a {
-    color:#FFF;
-}
+
 #title {
     margin:0;
-}
-#search-box-container {
-    margin-top:0;
-    margin-bottom:1em;
-    background-color:Transparent;
-    width:500px;
-}
-#search-categories {
-    width:auto;
-}
-#search-box {
-    background-color:Transparent;
-    width:auto;
 }
 #instance {
     width:auto;
@@ -433,26 +416,26 @@ ul.RtoL li {
     border-top:1px dotted #333;
 }
 #search-box-container {
-    width:auto;
-    margin-bottom:1em;
+    background-color:Transparent;
+    width:500px;
+    margin:0 auto;
 }
 #search-box-item {
-    width:500px;
 }
 #content {
     position: relative;
     width:99%;
     margin:0 auto;
 }
+#region-search {
+
+}
 #current-region {
     font-size:24pt;
-    color:#FFF;
-}
-#title {
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
+    color:#FF3300;
+    width:99%;
+    margin:0 auto;
+    position:relative;
 }
 #sub-nav > ul {
 }
@@ -461,6 +444,7 @@ ul.RtoL li {
     padding-left:.25em;
     padding-top:0;
 }
-#info-container {
-    border-top:2px solid #FF0000;
+#search-box {
+    text-align:center;
+    background-color:Transparent;
 }
