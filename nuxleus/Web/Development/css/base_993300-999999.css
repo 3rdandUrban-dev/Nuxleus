@@ -22,7 +22,7 @@ a:hover {
   margin-bottom:0;
   padding-top:0;
   padding-bottom:0;
-  height:60px;
+  height:75px;
 }
 #top-nav-menu li.selected a {
   border-color:#FFF;
@@ -151,4 +151,20 @@ a:hover {
 #sub-nav
 {
 
+}
+#sub-nav-menu a
+
+{
+ color:#FFF;
+ padding:.35em .5em;
+ font-weight:600;
+}
+#sub-nav-menu li
+
+{
+ border-right:1px solid #FFF;
+ padding:.35em .5em;
+ margin-left:0;
+ margin-right:0;
+ background-color:#FF6600;
 }

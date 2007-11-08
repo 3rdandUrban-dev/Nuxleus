@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:transform version="2.0" 
-xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xmlns:fn="http://www.w3.org/2005/xpath-functions" 
-xmlns:saxon="http://saxon.sf.net/" 
-xmlns:clitype="http://saxon.sf.net/clitype" 
-xmlns:at="http://atomictalk.org" 
-xmlns:func="http://atomictalk.org/function" 
-xmlns:session="http://xameleon.org/service/session" 
-xmlns:sguid="clitype:System.Guid?partialname=mscorlib" 
-xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web" 
-xmlns:proxy="http://xameleon.org/service/proxy" 
-xmlns:html="http://www.w3.org/1999/xhtml" 
-xmlns:operation="http://xameleon.org/service/operation" 
-exclude-result-prefixes="#all">
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:fn="http://www.w3.org/2005/xpath-functions" 
+  xmlns:saxon="http://saxon.sf.net/" 
+  xmlns:clitype="http://saxon.sf.net/clitype" 
+  xmlns:at="http://atomictalk.org" 
+  xmlns:func="http://atomictalk.org/function" 
+  xmlns:session="http://xameleon.org/service/session" 
+  xmlns:guid="clitype:System.Guid?partialname=mscorlib" 
+  xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web" 
+  xmlns:proxy="http://xameleon.org/service/proxy" 
+  xmlns:html="http://www.w3.org/1999/xhtml" 
+  xmlns:operation="http://xameleon.org/service/operation" 
+  exclude-result-prefixes="#all">
 
   <xsl:import href="../../../functions/funcset-Util.xslt" />
   <xsl:param name="current-context" />
@@ -34,7 +34,7 @@ exclude-result-prefixes="#all">
 
   <xsl:template match="session:generate-guid">
     <quid>
-      <xsl:value-of select="string(sguid:NewGuid())"/>
+      <xsl:value-of select="string(guid:NewGuid())"/>
     </quid>
   </xsl:template>
 

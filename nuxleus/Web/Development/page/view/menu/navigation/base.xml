@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
-<view:menu id="top-nav-menu" style="LtoR nav-menu" type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-  <view:item style="top-level selected">
-    <img style="margin-top:1px" src="/images/Amp.FM.png" height="50" width="210"/>
-  </view:item>
-<!--   <li class="top-level selected transparency-90">
-    <a href="@@base-uri@@">@@location.label@@</a>
-  </li> -->
+<view:menu id="top-nav-menu" type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <view:container style="TtoB">
+    <view:item id="nav" class="top-level selected transparency-90">
+      <img src="/images/Amp.FM-no-tagline.png" height="60" width="244"/>
+    </view:item>
+    <!-- <view:item id="sub-nav" style="width" src="/page/view/menu/navigation/sub-nav/base.xml" /> -->
+<!--     <view:item style="top-level selected">
+      <img style="margin-top:10px" src="/images/Amp.FM.png" height="63" width="253"/>
+    </view:item> -->
+  </view:container>
 </view:menu>

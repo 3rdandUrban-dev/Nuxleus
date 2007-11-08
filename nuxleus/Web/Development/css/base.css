@@ -234,21 +234,23 @@ cursor:pointer;
 
 #sub-nav-menu {
   text-align:left;
-   background-color: #FFF;
-   border-top:1px solid #333;
-   border-bottom:1px solid #333;
+   background-color: #FFCC00;
+   border-top:1px solid #FFF;
+   border-bottom:1px solid #FFF;
    padding-top:.35em;
    padding-bottom:.35em;
 }  
 
 #info {
-  height:300px;
+  height:350px;
   background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat;
   position:relative;
   padding:0 auto;
   text-align:center;
   margin:0 auto;
   border:0;
+  border-top:1px solid #333;
+   border-bottom:1px solid #333;
 }
 
 #search-categories > ul {
@@ -474,3 +476,19 @@ margin:0 auto;
   left:0;
   right:0;
 }
+#sub-nav > ul
+{
+
+}
+#nav
+{
+
+ margin-top:8px;
+ padding-left:.25em;
+ padding-top:0;
+}
+#info-container
+{
+   border-top:1px solid #FF6600;
+}
+
