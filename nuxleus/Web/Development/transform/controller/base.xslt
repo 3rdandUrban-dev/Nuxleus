@@ -40,6 +40,7 @@
   <xsl:import href="./message-queue/base.xslt" />
   <xsl:import href="../model/json-to-xml.xslt"/>
   <xsl:import href="./test/base.xslt"/>
+  <xsl:import href="./profile/base.xslt" />
 
   <xsl:param name="current-context" />
   <xsl:param name="response" />
@@ -77,10 +78,22 @@
         <xsl:value-of select="concat('type=', $q, 'text/xsl', $q, ' ', 'href=', $q, @use-clientside-xslt, $q)"/>
       </xsl:processing-instruction>
     </xsl:if>
-    <message type="service:result"
-        content-type="{if (empty($content-type)) then response:get-content-type($response) else 'not-set'}">
-      <xsl:apply-templates/>
-    </message>
-  </xsl:template>
+    <xsl:choose>
+      <xsl:when test="./@exclude-message-envelope">
+        <!-- We need to make sure that the content type is really set
+             later since the content-type variable above it never used -->
+        <xsl:apply-templates>
+          <xsl:with-param name="content-type" select="'text/xml'" />
+        </xsl:apply-templates>
+      </xsl:when>
+      <xsl:otherwise>
+        <message type="service:result" content-type="{if (empty($content-type)) 
+                                                     then response:get-content-type($response) 
+                                                     else 'not-set'}">
+          <xsl:apply-templates />
+        </message>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template> 
 
 </xsl:transform>
