@@ -142,11 +142,14 @@ ul.RtoL li {
     font-size:medium;
     border: 1px solid #333;
     background: #FFF url(/images/button_bkd.gif) 0 120% repeat-x;
-    padding:0px 5px;
+    padding:1px 2px;
+    color:#FFF;
+    background-color:#FF3300;
 }
 .ButtonLabel {
-    color: #000;
-    cursor:pointer;
+    color:#FFF;
+    background-color:#FF3300;
+    cursor: pointer;
 }
 #header {
     z-index:1;
@@ -187,13 +190,13 @@ ul.RtoL li {
     font-size: medium;
     color:#000;
     background-color:#FFF;
-    padding:1px;
+    padding:2px;
     background-position: 2px 50%;
-    width:400px;
+    width:350px;
     margin-right:.25em;
 }
 #search-button {
-    padding:0px .25em;
+    padding:0px .15em;
 }
 #control-center {
     background-color:#E7E7CA;
@@ -221,12 +224,12 @@ ul.RtoL li {
 }
 #search-module {
     width:450px;
-    margin:0 auto 1em;
+    margin:.25em auto 2em;
     padding-top:5px;
     text-align:center;
 }
 #search-categories {
-    margin-top:2px;
+    margin-top:3px;
     border-top:1px solid #333;
 }
 #search-categories-container {
@@ -237,12 +240,12 @@ ul.RtoL li {
     padding-top:2px;
 }
 #search-categories-container li.selected {
-    padding-top:2px;
+    padding-top:3px;
     border-top:2px solid #FF3300;
-    color:#FF0000;
+    color:#FF3300;
 }
 #search-categories-container li.selected a {
-    color:#FF0000;
+    color:#FF3300;
 }
 #search-categories-container a {
     padding-top:2px;
@@ -250,7 +253,7 @@ ul.RtoL li {
 }
 #search-categories-container a:hover {
     padding-top:2px;
-    color:#FF3300;
+    color:#FF6600;
 }
 #left {
     width:200px;
@@ -282,13 +285,13 @@ ul.RtoL li {
     width:auto;
 }
 #logo {
-    margin:2em auto .5em;
+    margin:1em auto .5em;
     text-align:center;
 }
 #image-nav {
-    margin-top:5px;
-    border-top:1px solid #666;
-    border-bottom:1px solid #666;
+    margin-top:0;
+    border-top:2px solid #666;
+    border-bottom:2px solid #666;
 }
 #search-container {
     padding-top:3em;
@@ -303,57 +306,60 @@ ul.RtoL li {
     background-color: #FFF;
 }
 .quick-view-menu {
-    border-top:1px solid #333;
-    border-bottom:1px solid #333;
     background-color: #FFF;
 }
 .quick-view-menu li.selected a {
     color:#000;
     background-color: #FFF;
 }
-#calendar-nav {
+#calendar-menu {
+    background-color: #CCC;
     padding:0;
-    margin:0;
-    background-color: #FFF;
+}
+#calendar-nav {
+    background-color: #CCC;
+    padding:0;
 }
 #calendar-nav .quick-view-menu {
     text-align: right;
-    width:100%;
-    padding:0;
-    margin:0;
+    background-color: #CCC;
 }
-#calendar-nav .quick-view-menu table {
-    text-align: right;
-    padding:0;
+
+#calendar-nav .quick-view-menu li {
     margin:0;
+    padding:3px 1px 3px 5px;
+    border-left:1px solid #FFF;
+    background-color: #666;
 }
-#calendar-nav .quick-view-menu tr {
-    text-align: right;
-    padding:0;
-    margin:0;
+#calendar-nav .quick-view-menu li.single {
+    padding:3px 4px 3px 9px;
 }
-#calendar-nav .quick-view-menu td {
-    margin:0;
-    padding:.05em .2em;
-    text-align:center;
-    vertical-align: middle;
-    width:1em;
-    height:1em;
-    border:1px solid #333;
-    background-color: #FFF;
-}
-#calendar-nav .quick-view-menu td:hover {
-    background-color:#333;
+#calendar-nav .quick-view-menu li a {
     color:#FFF;
 }
-#calendar-nav .quick-view-menu td:hover > a {
+#calendar-nav .quick-view-menu li.selected {
+    background-color: #FF6600;
     color:#FFF;
-    background-color:#333;
+}
+#calendar-nav .quick-view-menu li.selected a {
+    color:#FFF;
+    background-color: #FF6600;
+}
+#calendar-nav .quick-view-menu li:hover {
+    background-color:#FF6600;
+    color:#FFF;
+}
+#calendar-nav .quick-view-menu li:hover > a {
+    color:#FFF;
+    background-color:#FF6600;
 }
 #calendar-nav .quick-view-menu a {
     margin:0;
     padding:0;
     color:#333;
+}
+#calendar-nav .quick-view-menu a:hover {
+    border-top:0;
 }
 #site-search {
     text-align:left;
@@ -433,18 +439,39 @@ ul.RtoL li {
 #current-region {
     font-size:24pt;
     color:#FF3300;
-    width:99%;
-    margin:0 auto;
-    position:relative;
+    margin-left:.15em;
+}
+#icon img
+{
+    margin-bottom:-8px;
 }
 #sub-nav > ul {
 }
 #nav {
-    margin-top:10px;
+    margin-top:15px;
     padding-left:.25em;
     padding-top:0;
+    margin-bottom:0;
 }
 #search-box {
     text-align:center;
     background-color:Transparent;
+}
+#local-nav {
+    padding:1px 0;
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+#local-nav li, #local-nav a {
+    color:#FFF;
+    background-color:Transparent;
+    padding:1px 0;
+    font-size:large;
+}
+#location-module
+{
+    margin-left:.25em;
+    margin-bottom:0;
+    margin-top:1.25em;
 }

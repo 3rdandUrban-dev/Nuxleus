@@ -35,14 +35,24 @@
         </view:item>
       </view:container>
     </view:item>
-    <view:item id="nav">
-      <view:container style="LtoR" type="xhtml">
-        <view:item>
+    
+    <view:item id="location-module" >
+      <view:container id="top-sub-nav" style="LtoR">
+        <view:item id="icon">
           <img src="/images/Amp.FM.png" height="80" width="384"/>
         </view:item>
+        <view:item id="current-region">New York City</view:item>
       </view:container>
     </view:item>
-    <view:item id="current-region">@New York City</view:item>
     <view:item id="search-module" style="width" src="/page/view/search/base.xml"/>
+
+    <!--<view:item id="nav">
+      <view:container style="LtoR" type="xhtml">
+        <view:item>
+          <img src="/images/Amp.FM.png" height="70" width="336"/>
+        </view:item>
+      </view:container>
+    </view:item>-->
+    <!---->
   </view:container>
 </view:menu>

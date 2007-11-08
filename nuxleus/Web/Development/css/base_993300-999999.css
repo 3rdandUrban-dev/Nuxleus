@@ -28,14 +28,7 @@ a:hover {
 #footer {
     border-bottom:3px solid #333;
 }
-.Button {
-    border: 1px solid #333;
-    background: #FFF url(/images/button_bkd.gif) 0 120% repeat-x;
-}
-.ButtonLabel {
-    color: #000;
-    cursor:pointer;
-}
+
 #control-center {
     background-color:#FFF;
     border-top:1px solid #333;
