@@ -5,10 +5,15 @@
     <view:item>
       <view:container id="top-login" style="RtoL">
         <view:item>
-          <a href="#">Login</a>
+          <a href="@@base-uri@@/support/">
+            Help/Support
+          </a>
         </view:item>
         <view:item>
-          <a href="#">Create Account</a>
+          <a href="@@base-uri@@/login/">Login</a>
+        </view:item>
+        <view:item>
+          <a href="http://openid.amp.fm/sign-up">Create New Account</a>
         </view:item>
       </view:container>
     </view:item>
@@ -39,7 +44,7 @@
     <view:item id="location-module" >
       <view:container id="top-sub-nav" style="LtoR">
         <view:item id="icon">
-          <img src="/images/Amp.FM.png" height="80" width="384"/>to
+          <img src="/images/Amp.FM.png" height="80" width="371"/>to
         </view:item>
         <view:item id="current-region">New York City</view:item>
       </view:container>

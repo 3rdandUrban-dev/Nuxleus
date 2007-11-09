@@ -2,7 +2,6 @@
 <view:menu id="calendar-nav" type="xhtml" style="nav-menu RtoL" xmlns="http://www.w3.org/1999/xhtml"
   xmlns:view="http://atomictalk.org/page/view">
   <view:container id="calendar" style="list RtoL nav-menu quick-view-menu">
-
     <view:item style="single">
       <a href="#foo">1</a>
     </view:item>

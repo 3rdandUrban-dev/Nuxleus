@@ -12,16 +12,4 @@
   <view:item>
     <img src="/images/black_firefox.png" width="64" height="64"/>
   </view:item>
-  <!-- <view:item>
-    <a href="@@base-uri@@/support/">
-      Help/Support
-    </a>
-  </view:item>
-  <view:item>Account:</view:item>
-  <view:item>
-    <a href="@@base-uri@@/login/">Login</a>
-  </view:item>
-  <view:item>
-    <a href="http://openid.amp.fm/sign-up">Create New</a>
-  </view:item> -->
 </view:menu>
