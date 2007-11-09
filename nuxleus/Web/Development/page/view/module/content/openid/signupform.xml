@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="content" style="base list LtoR width">
+    <view:item id="left">
+      <doc:feed href="/feed/feed.xml" characterCount="400"/>
+    </view:item>
+    <view:item id="center">
+    @@openid.error.message@@
+      <form action="/signup" method="post">
+        <span>Login:<input type="text" value="" name="login" />
+
+        </span>
+        <br />
+        <span>Password:<input type="password" value="" name="password" />
+        </span>
+        <br />
+        <span>Confirm password:<input type="password" value="" name="confirm_password" />
+        </span>
+        <br />
+
+        <span>
+          <input type="submit" />
+        </span>
+      </form>
+    </view:item>
+    <view:item id="right">
+      <doc:feed href="/feed/feed.xml" characterCount="400"/>
+    </view:item>
+  </view:container>
+
+</view:module>
+
