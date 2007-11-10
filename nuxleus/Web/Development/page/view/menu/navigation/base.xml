@@ -44,13 +44,19 @@
     <view:item id="location-module" >
       <view:container id="top-sub-nav" style="LtoR">
         <view:item id="icon">
-          <img src="/images/Amp.FM.png" height="80" width="371"/>to
+          <img src="/images/Amp.FM.png" height="80" width="378"/>
+        </view:item>
+        <view:item>
+          to
         </view:item>
         <view:item id="current-region">New York City</view:item>
       </view:container>
     </view:item>
     <view:item id="search-module" style="width" src="/page/view/search/base.xml"/>
-
+<!--    <view:item>
+      <a href="@@base-uri@@/off-the-record/">Friday, November 9th, 2007</a>
+    </view:item>
+-->
     <!--<view:item id="nav">
       <view:container style="LtoR" type="xhtml">
         <view:item>

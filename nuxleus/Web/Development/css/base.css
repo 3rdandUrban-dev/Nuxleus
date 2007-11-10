@@ -119,7 +119,6 @@ ul.RtoL li {
     border-bottom:3px solid #FF0000;
     border-top:0;
 }
-
 #session-nav-menu li {
     margin:0;
     margin-left:.5em;
@@ -203,8 +202,6 @@ ul.RtoL li {
     width:99%;
     margin:0 auto;
 }
-#sub-nav {
-}
 #sub-nav-menu {
     text-align:left;
     background-color: #FFCC00;
@@ -224,7 +221,7 @@ ul.RtoL li {
 }
 #search-module {
     width:450px;
-    margin:.25em auto 2em;
+    margin:2em auto;
     padding-top:5px;
     text-align:center;
 }
@@ -324,7 +321,6 @@ ul.RtoL li {
     text-align: right;
     background-color: #CCC;
 }
-
 #calendar-nav .quick-view-menu li {
     margin:0;
     padding:3px 1px 3px 5px;
@@ -396,7 +392,7 @@ ul.RtoL li {
     color:#FFF;
     font-size:small;
 }
-.local-links li:hover, .local-links a:hover{
+.local-links li:hover, .local-links a:hover {
     background-color:#FF6600;
     color:#FFF;
 }
@@ -410,7 +406,6 @@ ul.RtoL li {
     color:#FFF;
     padding:3px 0;
 }
-
 #title {
     margin:0;
 }
@@ -434,15 +429,13 @@ ul.RtoL li {
     margin:0 auto;
 }
 #region-search {
-
 }
 #current-region {
     font-size:24pt;
     color:#FF3300;
     margin-left:.15em;
 }
-#icon img
-{
+#icon img {
     margin-bottom:-7px;
 }
 #sub-nav > ul {
@@ -469,9 +462,8 @@ ul.RtoL li {
     padding:1px 0;
     font-size:large;
 }
-#location-module
-{
+#location-module {
     margin-left:.25em;
     margin-bottom:0;
-    margin-top:1.25em;
+    margin-top:2em;
 }

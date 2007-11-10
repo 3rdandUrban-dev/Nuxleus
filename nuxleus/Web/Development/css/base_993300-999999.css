@@ -78,18 +78,29 @@ a:hover {
     background-color:inherit;
     font-size:small;
 }
+
 #top-login li {
-    padding:1px 0;
+    padding:1px 0 1px .25em;
     background-color:inherit;
     background-color:#FFF;
     border-left:1px solid #999;
+    margin:0;
+}
+#top-login li:hover {
+    background-color:#FF9900;
+    color:#FFF;
+}
+#top-login li:hover a {
+    background-color:#FF9900;
+    color:#FFF;
 }
 #top-sub-nav
 {
     padding:2px 0;
 }
 #top-sub-nav a {
-    padding:1px .1em;
+    
+    margin:0;
     background-color:inherit;
     font-size:small;
 }

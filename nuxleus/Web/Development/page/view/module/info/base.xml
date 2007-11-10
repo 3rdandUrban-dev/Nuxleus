@@ -4,9 +4,7 @@
     xmlns:view="http://atomictalk.org/page/view">
     <view:item id="local-nav">
       <view:container style="RtoL" type="xhtml">
-        <view:item>
-          <a href="@@base-uri@@/off-the-record/">Thursday, November 8th, 2007</a>
-        </view:item>
+        
       </view:container>
     </view:item>
   </view:container>

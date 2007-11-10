@@ -1,8 +1,27 @@
 <?xml version="1.0"?>
-<view:menu id="calendar-nav" type="xhtml" style="nav-menu RtoL" xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:view="http://atomictalk.org/page/view">
-  <view:container id="calendar" style="list RtoL nav-menu quick-view-menu">
-    <view:item style="single">
+<view:container style="list LtoR local-links" xmlns:view="http://atomictalk.org/page/view">
+  <view:item>
+    <a href="#foo">Thursday</a>
+  </view:item>
+  <view:item style="selected">
+    <a href="#foo">Friday November 9th, 2007</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Saturday</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Sunday</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Monday</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Tuesday</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Wednesday</a>
+  </view:item>
+  <!--<view:item style="single">
       <a href="#foo">1</a>
     </view:item>
     <view:item style="single">
@@ -91,12 +110,11 @@
     </view:item>
     <view:item>
       <a href="#foo">30</a>
-    </view:item>
-    <view:item style="single">
-      <a href="#foo">&lt;</a>
-    </view:item>
-    <view:item style="single">
-      <a href="#foo">></a>
-    </view:item>
-  </view:container>
-</view:menu>
+    </view:item>-->
+  <view:item style="single">
+    <a href="#foo">&lt;</a>
+  </view:item>
+  <view:item style="single">
+    <a href="#foo">></a>
+  </view:item>
+</view:container>

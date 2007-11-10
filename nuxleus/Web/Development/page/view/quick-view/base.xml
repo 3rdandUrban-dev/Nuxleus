@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <view:menu id="image-nav" style="TtoB" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
   xmlns:view="http://atomictalk.org/page/view">
+  <view:item id="calendar-menu" style="LtoR" src="/page/view/menu/calendar/base.xml"
+  />
+  <view:item id="info-module" style="width" src="/page/view/module/info/base.xml"/>
   <view:item>
-    <view:container style="list LtoR local-links" id="local-links">
+    <view:container style="list RtoL local-links" id="local-links">
       <view:item style="selected">
         <a href="#foo">Art &amp; Imagery</a>
       </view:item>
@@ -23,7 +26,4 @@
       </view:item>
     </view:container>
   </view:item>
-  <view:item id="info-module" style="width" src="/page/view/module/info/base.xml"/>
-  <view:item id="calendar-menu" style="transparency-90" src="/page/view/menu/calendar/base.xml"
-  />
 </view:menu>
