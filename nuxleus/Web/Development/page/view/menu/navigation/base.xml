@@ -4,11 +4,18 @@
   <view:container style="TtoB">
     <view:item>
       <view:container id="top-login" style="RtoL">
-        <view:item>
-          <a href="@@base-uri@@/support/">
-            Help/Support
-          </a>
+        <!--<view:item>
+          <a href="/manage">Manage</a>
         </view:item>
+        <view:item>
+          <a href="/collaborate">Collaborate</a>
+        </view:item>
+        <view:item style="selected">
+          <a href="/promote">Promote</a>
+        </view:item>
+        <view:item>
+          <a href="/sell">Sell</a>
+        </view:item>-->
         <view:item>
           <a href="@@base-uri@@/login/">Login</a>
         </view:item>
@@ -40,20 +47,17 @@
         </view:item>
       </view:container>
     </view:item>
-    
-    <view:item id="location-module" >
+    <view:item id="location-module">
       <view:container id="top-sub-nav" style="LtoR">
         <view:item id="icon">
-          <img src="/images/Amp.FM.png" height="80" width="378"/>
+          <img src="/images/Amp.FM.png" height="80" width="400"/>
         </view:item>
-        <view:item>
-          to
-        </view:item>
+        <view:item> to </view:item>
         <view:item id="current-region">New York City</view:item>
       </view:container>
     </view:item>
     <view:item id="search-module" style="width" src="/page/view/search/base.xml"/>
-<!--    <view:item>
+    <!--    <view:item>
       <a href="@@base-uri@@/off-the-record/">Friday, November 9th, 2007</a>
     </view:item>
 -->
@@ -64,6 +68,5 @@
         </view:item>
       </view:container>
     </view:item>-->
-    <!---->
   </view:container>
 </view:menu>

@@ -22,7 +22,6 @@
             <advice:page-title>@@domain.label@@::@@date@@</advice:page-title>
             <advice:location.label>Profile</advice:location.label>
             <advice:base.theme>993300-999999</advice:base.theme>
-
             <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
             <advice:location>profile</advice:location>
             <advice:current-location.label>Profile</advice:current-location.label>
@@ -55,14 +54,12 @@
                         </view:item>
                       </view:container>
                     </view:module>
-
                     <view:module id="footer" src="/profile/page/view/footer/base.xml"/>
                   </view:container>
                 </view:module>
               </view:container>
             </body:layout>
           </page:body>
-
         </page:output>
       </my:page>
     </my:session>

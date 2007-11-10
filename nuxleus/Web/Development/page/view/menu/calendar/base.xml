@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <view:container style="list LtoR local-links" xmlns:view="http://atomictalk.org/page/view">
   <view:item>
+    <a href="#foo">Wednesday</a>
+  </view:item>
+  <view:item>
     <a href="#foo">Thursday</a>
   </view:item>
   <view:item style="selected">
@@ -17,9 +20,6 @@
   </view:item>
   <view:item>
     <a href="#foo">Tuesday</a>
-  </view:item>
-  <view:item>
-    <a href="#foo">Wednesday</a>
   </view:item>
   <!--<view:item style="single">
       <a href="#foo">1</a>
