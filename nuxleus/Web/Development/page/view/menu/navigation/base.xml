@@ -51,7 +51,7 @@
       </view:container>
     </view:item>
     <view:item id="location-module">
-      <view:container id="top-sub-nav" style="LtoR">
+      <view:container style="LtoR">
         <view:item id="icon">
           <img src="/images/Amp.FM.png" height="80" width="400"/>
         </view:item>

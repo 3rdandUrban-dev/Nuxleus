@@ -26,6 +26,7 @@ a {
     color:#990000;
     background-color:inherit;
     text-decoration:none;
+    font-weight:400;
 }
 a:hover {
     color:#990000;
@@ -221,7 +222,7 @@ ul.RtoL li {
     padding-bottom:.35em;
 }
 #info {
-    height:275px;
+    height:250px;
     background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat;
     position:relative;
     padding:0;
@@ -306,7 +307,7 @@ ul.RtoL li {
 }
 #session {
     position:absolute;
-    top:1.5em;
+    top:1.7em;
     right:.4em;
     z-index:5;
     border-top:0;
@@ -354,13 +355,14 @@ ul.RtoL li {
     color:#FFF;
 }
 .local-links li.selected, .local-links li.selected a {
-    background-color:#000;
+    background-color:#333;
     color:#FFF;
     font-weight:400;
 }
 .local-links li.selected:hover, .local-links li.selected:hover a {
     background-color:#333;
     color:#FF9900;
+    font-weight:400;
 }
 .local-links li {
     border-right:1px solid #FFF;
@@ -373,10 +375,7 @@ ul.RtoL li {
 }
 #instance {
     width:auto;
-    margin:1em auto;
     padding:0;
-    padding-top:.25em;
-    border-top:1px dotted #333;
 }
 #search-box-container {
     background-color:Transparent;
@@ -388,7 +387,9 @@ ul.RtoL li {
 #content {
     position: relative;
     width:99%;
-    margin:0 auto;
+    margin:.25em auto;
+    padding:0;
+    padding-top:.25em;
 }
 #region-search {
 }
@@ -425,7 +426,7 @@ ul.RtoL li {
     font-size:large;
 }
 #location-module {
-    margin-left:.25em;
+    margin-left:.5em;
     margin-bottom:0;
     margin-top:2em;
 }
