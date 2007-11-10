@@ -69,34 +69,35 @@ a:hover {
 
 #top-login
 {
-    background-color:#FFF;
-    border-bottom:1px solid #999;
-    padding:1px 0;
+    background-color:#CCC;
+    border-top:1px solid #FFF;
+    border-bottom:1px solid #FFF;
+    padding:2px 0;
 }
 #top-login a {
-    padding:1px .1em;
+    padding:2px .1em;
     background-color:inherit;
     font-size:small;
+    color:#FFF;
 }
 
 #top-login li {
-    padding:1px 0 1px .25em;
-    background-color:inherit;
-    background-color:#FFF;
-    border-left:1px solid #999;
+    padding:2px 0 2px .25em;
+    background-color:#999;
+    border-left:1px solid #FFF;
     margin:0;
 }
 #top-login li.selected, #top-login li.selected a, #top-login li.selected:hover, #top-login li.selected:hover a  {
-    background-color:#000;
+    background-color:#333;
     color:#FFF;
 }
 #top-login li:hover {
-    background-color:#FFF;
+    background-color:#FF9900;
     color:#FF9900;
 }
 #top-login li:hover a {
-    background-color:#FFF;
-    color:#FF9900;
+    background-color:#FF9900;
+    color:#FFF;
 }
 #top-sub-nav
 {
