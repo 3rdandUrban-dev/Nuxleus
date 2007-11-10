@@ -287,8 +287,8 @@ ul.RtoL li {
 }
 #image-nav {
     margin-top:0;
-    border-top:2px solid #333;
-    border-bottom:2px solid #333;
+    border-top:2px solid #000;
+    border-bottom:2px solid #000;
 }
 #search-container {
     padding-top:3em;
@@ -302,61 +302,7 @@ ul.RtoL li {
     border-top:0;
     background-color: #FFF;
 }
-.quick-view-menu {
-    background-color: #FFF;
-}
-.quick-view-menu li.selected a {
-    color:#000;
-    background-color: #FFF;
-}
-#calendar-menu {
-    background-color: #CCC;
-    padding:0;
-}
-#calendar-nav {
-    background-color: #CCC;
-    padding:0;
-}
-#calendar-nav .quick-view-menu {
-    text-align: right;
-    background-color: #CCC;
-}
-#calendar-nav .quick-view-menu li {
-    margin:0;
-    padding:3px 1px 3px 5px;
-    border-left:1px solid #FFF;
-    background-color: #666;
-}
-#calendar-nav .quick-view-menu li.single {
-    padding:3px 4px 3px 9px;
-}
-#calendar-nav .quick-view-menu li a {
-    color:#FFF;
-}
-#calendar-nav .quick-view-menu li.selected {
-    background-color: #FF6600;
-    color:#FFF;
-}
-#calendar-nav .quick-view-menu li.selected a {
-    color:#FFF;
-    background-color: #FF6600;
-}
-#calendar-nav .quick-view-menu li:hover {
-    background-color:#FF6600;
-    color:#FFF;
-}
-#calendar-nav .quick-view-menu li:hover > a {
-    color:#FFF;
-    background-color:#FF6600;
-}
-#calendar-nav .quick-view-menu a {
-    margin:0;
-    padding:0;
-    color:#333;
-}
-#calendar-nav .quick-view-menu a:hover {
-    border-top:0;
-}
+
 #site-search {
     text-align:left;
     background-color: #FFF;
@@ -391,14 +337,20 @@ ul.RtoL li {
     background-color:Transparent;
     color:#FFF;
     font-size:small;
+    font-weight:400;
 }
 .local-links li:hover, .local-links a:hover {
-    background-color:#FF6600;
+    background-color:#FF9900;
     color:#FFF;
 }
 .local-links li.selected, .local-links li.selected a {
-    background-color:#333;
+    background-color:#000;
     color:#FFF;
+    font-weight:400;
+}
+.local-links li.selected:hover, .local-links li.selected:hover a {
+    background-color:#000;
+    color:#FF9900;
 }
 .local-links li {
     border-right:1px solid #FFF;

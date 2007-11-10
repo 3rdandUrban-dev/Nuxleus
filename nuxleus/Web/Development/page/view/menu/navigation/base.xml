@@ -4,13 +4,16 @@
   <view:container style="TtoB">
     <view:item>
       <view:container id="top-login" style="RtoL">
+        <view:item style="selected">
+          <a href="@@base-uri@@/login/">What's New</a>
+        </view:item>
         <!--<view:item>
           <a href="/manage">Manage</a>
         </view:item>
         <view:item>
           <a href="/collaborate">Collaborate</a>
         </view:item>
-        <view:item style="selected">
+        <view:item>
           <a href="/promote">Promote</a>
         </view:item>
         <view:item>
@@ -20,7 +23,7 @@
           <a href="@@base-uri@@/login/">Login</a>
         </view:item>
         <view:item>
-          <a href="http://openid.amp.fm/sign-up">Create New Account</a>
+          <a href="http://openid.amp.fm/sign-up">Create Account</a>
         </view:item>
       </view:container>
     </view:item>
