@@ -315,7 +315,6 @@ span.ButtonLabel:hover {
     border-top:0;
     background-color: #FFF;
 }
-
 #site-search {
     text-align:left;
     background-color: #FFF;
@@ -371,6 +370,22 @@ span.ButtonLabel:hover {
     background-color:#666;
     color:#FFF;
     padding:2px 0;
+}
+.center {
+    margin-right:auto;
+    margin-left:auto;
+    text-align:center;
+}
+.input-label-left {
+    margin-right:.25em;
+}
+.openid-input {
+     border: 1px solid #333;
+     font-size: 1em;
+     color:#333;
+     padding:1px 3px 1px 19px;
+     background: #FFF url(/images/login-bg.gif) 2px 50% no-repeat;
+     width:300px;
 }
 #title {
     margin:0;
