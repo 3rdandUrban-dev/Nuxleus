@@ -478,7 +478,7 @@ if __name__ == "__main__":
                             'server.socket_queue_size': 25,
                             #'server.ssl_certificate': './amp.fm.crt', 
                             #'server.ssl_private_key': './amp.fm.key',
-                            'log.screen': True,
+                            'log.screen': False,
                             'log.access_file': './access.log',
                             'log.error_file': './error.log',
                             'checker.on': False,
