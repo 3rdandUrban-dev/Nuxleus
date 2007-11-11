@@ -143,13 +143,15 @@ ul.RtoL li {
     border: 1px solid #333;
     background: #FFF url(/images/button_bkd.gif) 0 120% repeat-x;
     padding:1px 2px;
-    color:#FFF;
-    background-color:#FF3300;
-}
-.ButtonLabel {
-    color:#FFF;
-    background-color:#FF3300;
+    color:#FF6600;
     cursor: pointer;
+}
+button:hover {
+    color:#FF3300;
+    cursor: pointer;
+}
+span.ButtonLabel:hover {
+    color:#FF3300;
 }
 #header {
     z-index:1;
