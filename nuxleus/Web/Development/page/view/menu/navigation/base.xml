@@ -1,33 +1,14 @@
 <?xml version="1.0"?>
-<view:menu id="top-nav-menu" type="application/atomictalk+xhtml"
+<view:module id="top-nav-menu" type="application/atomictalk+xhtml"
   xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
   <view:container style="TtoB">
     <view:item>
       <view:container id="top-login" style="RtoL">
-        <view:item style="selected">
-          <a href="@@base-uri@@/login/">What's New</a>
-        </view:item>
-        <view:item>
-          <a href="@@base-uri@@/login/">amp.fm Blog</a>
-        </view:item>
-        <!--<view:item>
-          <a href="/manage">Manage</a>
-        </view:item>
-        <view:item>
-          <a href="/collaborate">Collaborate</a>
-        </view:item>
-        <view:item>
-          <a href="/promote">Promote</a>
-        </view:item>
-        <view:item>
-          <a href="/sell">Sell</a>
-        </view:item>-->
-        <view:item>
-          <a href="@@base-uri@@/login/">Login</a>
-        </view:item>
-        <view:item>
-          <a href="http://openid.amp.fm/sign-up">Create Account</a>
-        </view:item>
+        <view:item base="@@current:whatsnew@@" style="selected" use-template="view:link"/>
+        <view:item base="@@host:blog@@" use-template="view:link"/>
+        <view:item base="@@host:login@@" use-template="view:link"/>
+        <view:item base="@@openid:signup@@" use-template="view:link"/>
+        <view:item base="@@host:help@@" use-template="view:link"/>
       </view:container>
     </view:item>
     <view:item>
@@ -63,16 +44,5 @@
       </view:container>
     </view:item>
     <view:item id="search-module" style="width" src="/page/view/search/base.xml"/>
-    <!--    <view:item>
-      <a href="@@base-uri@@/off-the-record/">Friday, November 9th, 2007</a>
-    </view:item>
--->
-    <!--<view:item id="nav">
-      <view:container style="LtoR" type="xhtml">
-        <view:item>
-          <img src="/images/Amp.FM.png" height="70" width="336"/>
-        </view:item>
-      </view:container>
-    </view:item>-->
   </view:container>
-</view:menu>
+</view:module>
