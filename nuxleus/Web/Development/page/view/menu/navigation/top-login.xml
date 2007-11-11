@@ -1,0 +1,26 @@
+<view:module type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:view="http://atomictalk.org/page/view">
+    <view:container id="top-login" style="RtoL" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:view="http://atomictalk.org/page/view">
+        <!--<view:item base="@@current:whatsnew@@" style="selected" use-template="view:link"/>
+            <view:item base="@@host:blog@@" use-template="view:link"/>
+            <view:item base="@@host:login@@" use-template="view:link"/>
+            <view:item base="@@openid:signup@@" use-template="view:link"/>
+            <view:item base="@@host:help@@" use-template="view:link"/>-->
+        <view:item style="selected">
+            <a href="@@base-uri@@/">What's New</a>
+        </view:item>
+        <view:item>
+            <a href="@@base-uri@@/blog/">amp.fm Blog</a>
+        </view:item>
+        <view:item>
+            <a href="@@base-uri@@/login/">Login</a>
+        </view:item>
+        <view:item>
+            <a href="http://openid.amp.fm/signup">Create Account</a>
+        </view:item>
+        <view:item>
+            <a href="/help">Help</a>
+        </view:item>
+    </view:container>
+</view:module>

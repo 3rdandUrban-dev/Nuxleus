@@ -1,20 +1,16 @@
 <?xml version="1.0"?>
-<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
-  <view:container id="content" style="base list LtoR width">
-    <view:item id="left">
-      <doc:feed href="/feed/feed.xml" characterCount="400"/>
-    </view:item>
-    <view:item id="center">
-    @@openid.error.message@@
-      <form action="/login" method="post">
-<input type="hidden" value="@@openid.redirect_to@@" name="redirect_to" />
-<span>Login:<input type="text" value="" name="login" /></span><br />
-<span>Password:<input type="password" value="" name="password" /></span><br />
-<span><input type="submit" /></span>
-</form>
-    </view:item>
-    <view:item id="right">
-      <doc:feed href="/feed/feed.xml" characterCount="400"/>
+<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc"
+  xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="login-container" style="base list TtoB">
+    <view:item id="login" style="center">
+      <h2>@@openid.error.message@@</h2>
+      <form action="http://dev.amp.fm/gatekeeper/login" method="get" target="_top" maxlength="255">
+        <input type="hidden" name="return_location" value="http://dev.amp.fm/?" />
+        <label for="login" class="input-label-left">OpenID</label><input type="text" value="" class="openid-input" id="login" name="uname"/>
+        <button class="Button submit">
+          <span class="ButtonLabel">plug me in!</span>
+        </button>
+      </form>
     </view:item>
   </view:container>
 </view:module>

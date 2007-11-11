@@ -5,7 +5,7 @@
       <view:module id="session" src="/page/view/module/session/controller/base.xml"/>
       <view:module>
         <view:container>
-          <view:module id="header" src="/page/view/module/header/base.xml"/>
+          <view:module id="header" src="/page/view/module/header/secondary/base.xml"/>
           <view:module id="body" src="/page/view/module/content/openid/loginform.xml"/>
           <view:module id="footer" src="/page/view/module/footer/base.xml"/>
         </view:container>

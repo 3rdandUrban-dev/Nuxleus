@@ -22,13 +22,13 @@
   xmlns:html="http://www.w3.org/1999/xhtml">
   <page:advice>
     <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
-    <advice:date>November 6th, 2007</advice:date>
+    <advice:date>November 11th, 2007</advice:date>
     <advice:protocol>http://</advice:protocol>
     <advice:space>&#160;</advice:space>
     <advice:dot>.</advice:dot>
     <advice:colon>:</advice:colon>
-    <advice:domain-name>dev.amp</advice:domain-name>
-    <advice:root>fm</advice:root>
+    <advice:domain-name>localhost</advice:domain-name>
+    <advice:port>8080</advice:port>
     <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
     <advice:domain.label>amp.fm</advice:domain.label>
     <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>

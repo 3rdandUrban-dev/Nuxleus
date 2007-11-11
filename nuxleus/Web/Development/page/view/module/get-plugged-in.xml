@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<view:module class="base" id="get-plugged-in" xmlns:view="http://atomictalk.org/page/view">
+    <view:container type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:view="http://atomictalk.org/page/view">
+        <view:item id="location-module">
+            <view:container style="LtoR">
+                <view:item id="icon">
+                    <img src="/images/Amp.FM.png" height="80" width="400"/>
+                </view:item>
+                <view:item>
+                    <span style="font-size:14pt; color:#999;">to</span>
+                </view:item>
+                <view:item id="current-region">@@current-location.label@@</view:item>
+            </view:container>
+        </view:item>
+    </view:container>
+</view:module>
