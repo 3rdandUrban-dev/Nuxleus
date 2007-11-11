@@ -10,14 +10,16 @@ if __name__ == '__main__':
                    'log.screen': False,
                    'log.access_file': './access.log',
                    'log.error_file': './error.log',
-                   'checker.on': False,}
+                   'checker.on': False,
+                   'tools.proxy.on': True,
+                   'tools.proxy.base': 'http://dev.amp.fm'}
 
     cherrypy.config.update(global_conf)
     cherrypy.checker.on = False
 
     app_conf = {
         'debug': True,
-        'base_url': 'http://gateway.openid.amp.fm/',
+        'base_url': 'http://dev.amp.fm/gatekeeper',
         'xsltemplate_namespace': 'http://amp.fm/python/xsltemplates/',
     }
     

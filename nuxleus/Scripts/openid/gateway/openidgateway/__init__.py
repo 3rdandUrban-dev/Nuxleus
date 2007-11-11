@@ -158,7 +158,7 @@ class OpenIdGateway(object):
 
     def forms(self, environ, start_response):
         form = '''<form id="openid-login" method="get" 
-        action="http://gateway.openid.amp.fm/login" target="_top">
+        action="http://dev.amp.fm/gatekeeper/login" target="_top">
         <input id="openid-text" type="text"
                name="uname" class="single-input"
                maxlength="255"
