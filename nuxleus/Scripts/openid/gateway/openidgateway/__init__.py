@@ -48,7 +48,7 @@ class OpenIdGateway(object):
         return consumer.Consumer(sess, self.store)
 
     def index(self, environ, start_response):
-        url = ''.join([self.base_url, 'login'])
+        url = ''.join([self.base_url, 'gatekeeper', 'login'])
         raise HTTPSeeOther(location=url)
 
     def login(self, environ, start_response):
