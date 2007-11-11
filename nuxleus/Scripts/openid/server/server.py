@@ -28,7 +28,7 @@ current_dir = os.getcwd()
 
 OID_COOKIE_SECRET_KEY = hmac.new(file('./cookie.key').readline().strip()).hexdigest()
 
-HOSTNAME = "amp.fm"
+HOST = "amp.fm"
 
 BASE_URL =  "http://openid.%s" % HOST
 BASE_SECURE_URL = "https://openid.%s" % HOST
