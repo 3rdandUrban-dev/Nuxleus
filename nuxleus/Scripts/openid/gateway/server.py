@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     app_conf = {
         'debug': True,
-        'base_url': 'http://dev.amp.fm/gatekeeper',
+        'base_url': 'http://dev.amp.fm/gatekeeper/',
         'xsltemplate_namespace': 'http://amp.fm/python/xsltemplates/',
     }
     
