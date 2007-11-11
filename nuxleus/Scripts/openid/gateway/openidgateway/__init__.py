@@ -48,7 +48,7 @@ class OpenIdGateway(object):
         return consumer.Consumer(sess, self.store)
 
     def index(self, environ, start_response):
-        url = ''.join([self.base_url, 'gatekeeper', 'login'])
+        url = ''.join([self.base_url, 'login'])
         raise HTTPSeeOther(location=url)
 
     def login(self, environ, start_response):
@@ -120,7 +120,7 @@ class OpenIdGateway(object):
         req = Request(environ)
         sess = environ['beaker.session']
         set_template(environ, 'login.xslt')
-        params = {'base_uri': self.base_url}
+        params = {'base_uri': "http://dev.amp.fm/"}
 
         headers = [('Content-Type', 'application/xml')]
 
