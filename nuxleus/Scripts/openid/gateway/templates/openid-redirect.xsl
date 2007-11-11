@@ -9,7 +9,7 @@
   <xsl:variable name="openid-message" select="/auth/message" />
   <xsl:variable name="openid" select="substring-after($openid-message, 'Logged in as ')"/>
   <xsl:variable name="base-uri" select="/auth/@xml:base"/>
-  <xsl:variable name="session-uri" select="concat($base-uri, 'service/session?return_uri=', /auth/return-location, $openid)"/>
+  <xsl:variable name="session-uri" select="concat($base-uri, 'service/session?return_uri=', /auth/return-location, '?', $openid)"/>
 
   <xsl:output doctype-system="-//W3C//DTD HTML 4.01//EN"
       doctype-public="http://www.w3.org/TR/html4/strict.dtd" 
