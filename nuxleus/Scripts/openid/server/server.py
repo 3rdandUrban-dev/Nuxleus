@@ -503,7 +503,7 @@ if __name__ == "__main__":
     s3conn = boto.connect_s3(file('./s3pub.key').readline().strip(),
                              file('./s3priv.key').readline().strip())
 
-    store = FileOpenIDStore('/tmp/oid')
+    store = FileOpenIDStore('./cache')
     oidserver = server.Server(store, OID_SERVICE_URL)
     oidapp = OpenIDRoot(oidserver, s3conn, mc)
 
