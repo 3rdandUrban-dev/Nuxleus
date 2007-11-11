@@ -73,6 +73,8 @@ a:hover {
     border-top:1px solid #FFF;
     border-bottom:1px solid #FFF;
     padding:2px 0;
+    width:99%;
+    margin:0 auto;
 }
 #top-login a {
     padding:2px .1em;
