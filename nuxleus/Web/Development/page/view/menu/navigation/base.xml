@@ -7,6 +7,9 @@
         <view:item style="selected">
           <a href="@@base-uri@@/login/">What's New</a>
         </view:item>
+        <view:item>
+          <a href="@@base-uri@@/login/">amp.fm Blog</a>
+        </view:item>
         <!--<view:item>
           <a href="/manage">Manage</a>
         </view:item>

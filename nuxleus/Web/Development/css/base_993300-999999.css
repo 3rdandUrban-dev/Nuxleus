@@ -15,31 +15,24 @@ a:hover {
     color:#996600;
 }
 #top-nav {
-    border-top:2px #000 solid;
+    border-top:3px #000 solid;
     border-bottom:0;
     background-color: #FFF;
     margin-top:0;
     margin-bottom:0;
     padding-top:0;
     padding-bottom:0;
-
 }
-
 #footer {
     border-bottom:3px solid #333;
 }
-
 #control-center {
     background-color:#FFF;
     border-top:1px solid #333;
 }
-
 #info {
     background: #FFF url(/images/NYC-Subway-1-BW_JakeJ.jpg) 50% 50% no-repeat;
-/*    border-top:1px solid #FFF;
-    border-bottom:1px solid #FFF;*/
 }
-
 #instance > ul {
     background-color:#FFF;
 }
@@ -61,14 +54,10 @@ a:hover {
     border-right:1px dotted #333;
     border-left:1px dotted #333;
 }
-#title {
-}
 #info {
     margin-bottom:1px;
 }
-
-#top-login
-{
+#top-login {
     background-color:#CCC;
     border-top:1px solid #FFF;
     border-bottom:1px solid #FFF;
@@ -82,14 +71,16 @@ a:hover {
     font-size:small;
     color:#FFF;
 }
-
 #top-login li {
     padding:2px 0 2px .25em;
     background-color:#999;
     border-left:1px solid #FFF;
     margin:0;
 }
-#top-login li.selected, #top-login li.selected a, #top-login li.selected:hover, #top-login li.selected:hover a  {
+#top-login li:last-child {
+    padding-right:.25em;
+}
+#top-login li.selected, #top-login li.selected a, #top-login li.selected:hover, #top-login li.selected:hover a {
     background-color:#333;
     color:#FFF;
 }
@@ -101,13 +92,13 @@ a:hover {
     background-color:#FF9900;
     color:#FFF;
 }
-#top-sub-nav
-{
+#top-sub-nav {
     padding:2px 0;
     border-top:1px dotted #333;
+    width:99%;
+    margin:0 auto;
 }
 #top-sub-nav a {
-    
     margin:0;
     background-color:inherit;
     font-size:small;
@@ -117,7 +108,6 @@ a:hover {
     background-color:inherit;
     background-color:#FFF;
 }
-#search-form
-{
+#search-form {
     display:inline;
 }
