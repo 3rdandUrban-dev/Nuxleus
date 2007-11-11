@@ -4,7 +4,7 @@ from openidgateway import make_openidgateway
 
 if __name__ == '__main__':
     global_conf = {'engine.autoreload_on' : False,
-                   'server.socket_port' : 7600, 
+                   'server.socket_port' : 4000, 
                    'server.socket_host': '127.0.0.1',
                    'server.socket_queue_size': 25,
                    'log.screen': False,
