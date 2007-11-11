@@ -26,12 +26,14 @@ from Crypto.Cipher import AES
 
 current_dir = os.getcwd()
 
-OID_COOKIE_SECRET_KEY = hmac.new(file('./cookie.key').read().strip()).hexdigest()
+OID_COOKIE_SECRET_KEY = hmac.new(file('./cookie.key').readline().strip()).hexdigest()
 
-BASE_URL =  "http://openid.amp.fm"
-BASE_SECURE_URL = "https://openid.amp.fm"
-TRUST_URL =  "http://openid.amp.fm/trust"
-OID_SERVICE_URL = "http://openid.amp.fm0/service"
+HOSTNAME = "amp.fm"
+
+BASE_URL =  "http://openid.%s" % HOST
+BASE_SECURE_URL = "https://openid.%s" % HOST
+TRUST_URL =  "http://openid.%s/trust" % HOST
+OID_SERVICE_URL = "http://openid.%s/service" % HOST
 
 # From CherryPy
 try:
@@ -476,18 +478,20 @@ if __name__ == "__main__":
                             'server.socket_port' : 8090, 
                             'server.socket_host': '127.0.0.1',
                             'server.socket_queue_size': 25,
-                            #'server.ssl_certificate': './amp.fm.crt', 
-                            #'server.ssl_private_key': './amp.fm.key',
+                            #'server.ssl_certificate': './server.crt', 
+                            #'server.ssl_private_key': './server.key',
                             'log.screen': False,
                             'log.access_file': './access.log',
                             'log.error_file': './error.log',
                             'checker.on': False,
                             'tools.proxy.on': True,
-                            'tools.proxy.base': 'http://openid.amp.fm'})
+                            'tools.proxy.base': 'http://openid.%s' % HOST})
 
     from cherrypy import dispatch
     method_disp = dispatch.MethodDispatcher()
-    conf = {'/': { 'tools.gzip.on': True },
+    conf = {'/': { 'tools.gzip.on': True ,
+                   'tools.etags.on': True,
+                   'tools.etags.autotags': True },
             '/login': { 'request.dispatch': method_disp },
             '/logout': { 'request.dispatch': method_disp },
             '/signup': { 'request.dispatch': method_disp },
@@ -496,8 +500,8 @@ if __name__ == "__main__":
 
     mc = Client(['127.0.0.1:11211'])
 
-    s3conn = boto.connect_s3(file('./s3pub.key').read().strip(),
-                             file('./s3priv.key').read().strip())
+    s3conn = boto.connect_s3(file('./s3pub.key').readline().strip(),
+                             file('./s3priv.key').readline().strip())
 
     store = FileOpenIDStore('/tmp/oid')
     oidserver = server.Server(store, OID_SERVICE_URL)
