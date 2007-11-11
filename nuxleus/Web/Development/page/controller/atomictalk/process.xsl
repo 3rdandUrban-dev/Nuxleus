@@ -39,7 +39,7 @@
 
     <xsl:variable name="lb">
         <xsl:text>
-        </xsl:text>
+</xsl:text>
     </xsl:variable>
     <xsl:variable name="quote">"</xsl:variable>
     <xsl:variable name="squote">'</xsl:variable>

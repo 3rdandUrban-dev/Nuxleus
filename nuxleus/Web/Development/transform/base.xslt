@@ -15,12 +15,17 @@
   xmlns:timestamp="clitype:System.DateTime" 
   xmlns:uri="clitype:System.Uri?partialname=System" 
   xmlns:func="http://atomictalk.org/function" 
-  xmlns:exsl="http://exslt.org/common" 
-  xmlns:ppl="http://personplacething.info/people" 
+  xmlns:exsl="http://exslt.org/common"
+  xmlns:aws="http://xameleon.org/function/aws"
+  xmlns:sdb="http://xameleon.org/function/aws/sdb" 
+  xmlns:service="http://xameleon.org/service"
+  xmlns:operation="http://xameleon.org/service/operation"
+  xmlns:param="http://xameleon.org/service/session/param"
   exclude-result-prefixes="#all">
 
   <xsl:import href="./controller/base.xslt" />
   <xsl:import href="./functions/base.xslt" />
+  <xsl:import href="./private/function/base.xslt" />
 
   <xsl:param name="current-context" />
   <xsl:param name="response" select="aspnet-context:Response($current-context)" />
@@ -36,6 +41,7 @@
   <xsl:variable name="debug" select="if (request-collection:GetValue($request, 'query-string', 'debug') = 'true') then true() else false()" as="xs:boolean" />
   <xsl:variable name="request-uri" select="aspnet-request:Url($request)" />
   <xsl:variable name="browser" select="aspnet-request:Browser($request)" />
+  <xsl:variable name="session-params" select="func:eval-params(/service:operation/param:*)"/>
 
   <xsl:strip-space elements="*" />
 
