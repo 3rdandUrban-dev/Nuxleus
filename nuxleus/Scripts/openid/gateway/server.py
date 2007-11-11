@@ -24,12 +24,12 @@ if __name__ == '__main__':
     }
     
     app = make_openidgateway(app_conf)
-    cherrypy.tree.graft(app, script_name='/')
+    cherrypy.tree.graft(app, script_name='/gatekeeper')
 
     class Dummy(object):
         pass
 
-    cherrypy.quickstart(Dummy(), '/dummy')
+    cherrypy.quickstart(Dummy(), '/')
     #cherrypy.server.quickstart()
     #try:
     #    cherrypy.engine.start()
