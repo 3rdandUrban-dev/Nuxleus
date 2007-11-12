@@ -94,11 +94,12 @@ class OpenIdGateway(object):
             start_response('200 OK', headers)
             return []
 
-        print "ready to consume"
         consumer = self.get_consumer(sess[self.ekey])
+        print "ready to consume"
         try:
             request = consumer.begin(openid_url)
         except Exception, exc:
+            print exc
             params['message'] = 'Error in discovery: %s' % (cgi.escape(str(exc[0])))
             params['status'] = 'failure'
             set_params(environ, params)
