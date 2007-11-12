@@ -181,6 +181,7 @@ class OpenIDLogoutHandler(object):
         cherrypy.response.cookie['openid.name']['path'] = '/'
         cherrypy.response.cookie['openid.name']['version'] = 1
         cherrypy.response.cookie['openid.name']['expires'] = 0
+        cherrypy.response.cookie['openid.name']['domain'] = 'openid.amp.fm'
 
         raise cherrypy.HTTPRedirect('http://dev.amp.fm/')
 
@@ -221,6 +222,7 @@ class OpenIDLoginHandler(object):
         cherrypy.response.cookie['openid.name']['max-age'] = 31536000 # 1 year
         #cherrypy.response.cookie['openid.name']['secure'] = 1
         cherrypy.response.cookie['openid.name']['version'] = 1
+        cherrypy.response.cookie['openid.name']['domain'] = 'openid.amp.fm'
 
         self.mc.set('%s.openid.name.cookie' % login, session_id)
         k = Key(b)
