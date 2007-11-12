@@ -62,8 +62,6 @@ a:hover {
     border-top:1px solid #FFF;
     border-bottom:1px solid #FFF;
     padding:2px 0;
-    width:99%;
-    margin:0 auto;
 }
 #top-login a {
     padding:2px .1em;
@@ -95,8 +93,6 @@ a:hover {
 #top-sub-nav {
     padding:2px 0;
     border-top:1px dotted #333;
-    width:99%;
-    margin:0 auto;
 }
 #top-sub-nav a {
     margin:0;
