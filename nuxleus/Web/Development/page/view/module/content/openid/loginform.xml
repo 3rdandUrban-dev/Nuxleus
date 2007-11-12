@@ -12,5 +12,19 @@
         </button>
       </form>
     </view:item>
+    <view:item id="center">
+    @@openid.error.message@@
+      <form action="/login" method="post">
+<input type="hidden" value="@@openid.redirect_to@@" name="redirect_to" />
+<label class="openid-form-label">Login:</label><input type="text" value="" name="login" />
+<br />
+
+<label class="openid-form-label">Password:</label>
+<input type="password" value="" name="password" />
+<br />
+
+<input type="submit" class="Button submit"/>
+</form>
+    </view:item>
   </view:container>
 </view:module>
