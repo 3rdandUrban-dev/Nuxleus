@@ -4,6 +4,7 @@
   xmlns:saxon="http://saxon.sf.net/" xmlns:string="clitype:System.IO.MemoryStream"
   xmlns:request-collection="clitype:Xameleon.Function.HttpRequestCollection?partialname=Xameleon"
   xmlns:aspnet-request="clitype:System.Web.HttpRequest?partialname=System.Web"
+  xmlns:http-utility="clitype:System.Web.HttpUtility?partialname=System.Web"
   xmlns:clitype="http://saxon.sf.net/clitype"
   exclude-result-prefixes="xs func clitype saxon request-collection">
 
@@ -26,7 +27,6 @@
                           else request-collection:GetValue($request, substring-before($operator, ':'), substring-after($operator, ':'))"/>
 
   </xsl:function>
-
 
   <xsl:function name="func:evaluate-request">
     <xsl:param name="request"/>
@@ -53,6 +53,11 @@
     </xsl:choose>
   </xsl:function>
 
+  <xsl:function name="func:uri-decode" as="xs:string">
+    <xsl:param name="uri"/>
+    <xsl:value-of select="http-utility:UrlDecode($uri)"/>
+  </xsl:function>
+  
   <xsl:function name="func:true" as="element()">
     <true/>
   </xsl:function>
