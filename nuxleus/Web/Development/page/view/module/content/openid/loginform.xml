@@ -18,11 +18,12 @@
     @@openid.error.message@@
       <form action="/login" method="post">
 <input type="hidden" value="@@openid.redirect_to@@" name="redirect_to" />
-<label class="openid-form-label">Login:</label><input type="text" value="" name="login" />
+<label class="openid-form-label">Login:</label>
+<input type="text" value="" name="login" class="openid-single-input" />
 <br />
 
 <label class="openid-form-label">Password:</label>
-<input type="password" value="" name="password" />
+<input type="password" value="" name="password"  class="openid-single-input"/>
 <br />
 
 <input type="submit" class="Button submit"/>
