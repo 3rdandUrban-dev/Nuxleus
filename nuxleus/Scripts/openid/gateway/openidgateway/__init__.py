@@ -76,6 +76,7 @@ class OpenIdGateway(object):
             sess.save()
 
         headers = [('Content-Type', 'application/xml')]
+        print req.params
         if not (req.params.get('uname') or req.params.get('return_location')):
             message ='There must be a uname and return_location in the query string'
             raise HTTPBadRequest(detail=message)
