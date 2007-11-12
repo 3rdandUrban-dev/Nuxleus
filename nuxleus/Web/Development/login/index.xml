@@ -17,7 +17,7 @@
     </page:config>
     <page:output>
       <page:head src="/page/output/head/base.xml"/>
-      <page:body src="/page/output/body/openid/loginform.xml"/>
+      <page:body src="/page/output/body/login.xml"/>
     </page:output>
   </my:page>
 </my:session>
