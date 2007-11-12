@@ -82,6 +82,7 @@ class OpenIdGateway(object):
             raise HTTPBadRequest(detail=message)
         
         openid_url = req.params['uname']
+        print openid_url
         sess[self.ekey]['return_location'] = req.params['return_location']
 
         if not openid_url:
@@ -93,6 +94,7 @@ class OpenIdGateway(object):
             start_response('200 OK', headers)
             return []
 
+        print "ready to consume"
         consumer = self.get_consumer(sess[self.ekey])
         try:
             request = consumer.begin(openid_url)
@@ -102,7 +104,7 @@ class OpenIdGateway(object):
             set_params(environ, params)
             start_response('200 OK', headers)
             return []
-        
+        print "consuming"
         if request is None:
             errcode = cgi.escape(post['openid_url'])
             params['message'] = 'No OpenID services found for <code>%s</code>' % (errcode)
@@ -110,7 +112,7 @@ class OpenIdGateway(object):
             set_params(environ, params)            
             start_response('200 OK', headers)
             return []
-
+        print "consumed"
         #sreg_request = sreg.SRegRequest(required=['nickname'])
         #request.addExtension(sreg_request)
         return_to = '%scomplete'% self.base_url
@@ -128,6 +130,7 @@ class OpenIdGateway(object):
 
         sess.save()
         set_params(environ, params)
+        print headers
         start_response('200 OK', headers)
         return []
 
