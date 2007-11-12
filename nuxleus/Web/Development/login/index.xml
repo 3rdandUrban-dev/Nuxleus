@@ -16,7 +16,7 @@
       </page:advice>
     </page:config>
     <page:output>
-      <page:head src="/page/view/module/header/base.xml"/>
+      <page:head src="/page/output/head/base.xml"/>
       <page:body src="/page/output/body/login.xml"/>
     </page:output>
   </my:page>
