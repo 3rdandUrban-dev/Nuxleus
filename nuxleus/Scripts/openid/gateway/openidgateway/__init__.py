@@ -121,6 +121,7 @@ class OpenIdGateway(object):
 
         redirect_url = request.redirectURL(trusted_root, return_to)
 
+        print redirect_url
         set_params(environ, {'redirect_url': redirect_url})
         params['status'] = 'redirect'
         params['message'] = 'OpendID Login Redirection'
