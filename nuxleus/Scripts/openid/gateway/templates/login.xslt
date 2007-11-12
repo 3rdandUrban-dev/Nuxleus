@@ -10,7 +10,6 @@
   <xsl:param name="p:return_location" />
   <xsl:param name="p:message" />
 
-
   <xsl:template match="/">
     <xsl:processing-instruction name="xml-stylesheet">
       type="text/xsl" href="/transform/openid-redirect.xsl"

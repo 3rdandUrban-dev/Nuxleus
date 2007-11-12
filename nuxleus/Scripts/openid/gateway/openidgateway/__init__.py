@@ -62,7 +62,8 @@ class OpenIdGateway(object):
 
         headers = [('Content-Type', 'application/xml')]
         if not (req.params.get('uname') or req.params.get('return_location')):
-            raise HTTPBadRequest()
+            message ='There must be a uname and return_location in the query string'
+            raise HTTPBadRequest(detail=message)
         
         openid_url = req.params['uname']
         sess[self.ekey]['return_location'] = req.params['return_location']
@@ -94,8 +95,6 @@ class OpenIdGateway(object):
             start_response('200 OK', headers)
             return []
 
-        # sess[self.ekey]['potential_user_id'] = req.params['openid_url']
-
         sreg_request = sreg.SRegRequest(required=['nickname'])
         request.addExtension(sreg_request)
         return_to = '%scomplete'% self.base_url
@@ -104,12 +103,11 @@ class OpenIdGateway(object):
         
         sess[self.ekey]['trusted_root'] = trusted_root
 
-        redirect_url = request.redirectURL(trusted_root, return_to, immediate=True)
-        print redirect_url
+        redirect_url = request.redirectURL(trusted_root, return_to)
+
         set_params(environ, {'redirect_url': redirect_url})
         params['status'] = 'redirect'
         params['message'] = 'OpendID Login Redirection'
-        # sess[self.ekey]['token'] = request.token
 
         sess.save()
         set_params(environ, params)
@@ -120,7 +118,7 @@ class OpenIdGateway(object):
         req = Request(environ)
         sess = environ['beaker.session']
         set_template(environ, 'login.xslt')
-        params = {'base_uri': "http://dev.amp.fm/"}
+        params = {'base_uri': self.base_url}
 
         headers = [('Content-Type', 'application/xml')]
 
@@ -158,16 +156,16 @@ class OpenIdGateway(object):
 
     def forms(self, environ, start_response):
         form = '''<form id="openid-login" method="get" 
-        action="http://dev.amp.fm/gatekeeper/login" target="_top">
+        action="%slogin" target="_top">
         <input id="openid-text" type="text"
                name="uname" class="single-input"
                maxlength="255"
                value="Authenticate w/ OpenID"
                onclick="if (this.value == 'Authenticate w/ OpenID') this.value = ''; return true;"
                onblur="if (this.value == '') this.value = 'Authenticate w/ OpenID'; return true;" />
-        <input type="hidden" name="return_location" value="http://dev.amp.fm/" />
+        <input type="hidden" name="return_location" value="http://ionrock.org" />
         <input id="openid-submit" class="single-input-submit" type="submit" value="Login" />
-        </form>'''
+        </form>''' % self.base_url
         start_response('200 OK', [('Content-Type', 'text/html')])
         return ['<html><head><title>test forms</title></head>',
                 '<body>', form, '</body></html>']
