@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc"
   xmlns:view="http://atomictalk.org/page/view">
-  <view:container id="login-container" style="base list TtoB">
+  <view:container id="openid-container" style="base list TtoB">
+<!--
     <view:item id="login" style="center">
       <h2>@@openid.error.message@@</h2>
       <form action="http://dev.amp.fm/gatekeeper/login" method="get" target="_top" maxlength="255">
@@ -12,6 +13,7 @@
         </button>
       </form>
     </view:item>
+-->
     <view:item id="center">
     @@openid.error.message@@
       <form action="/login" method="post">
