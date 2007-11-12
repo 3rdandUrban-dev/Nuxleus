@@ -35,6 +35,7 @@ def make_cookie_header(key, value='', expires=-1):
     if expires != -1:
         cookies[key]['expires'] = expires
     header_value = cookies[key].output(header='').lstrip()
+    print header_value
     return ('Set-Cookie', header_value)
         
 class OpenIdGateway(object):
