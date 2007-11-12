@@ -447,3 +447,6 @@ span.ButtonLabel:hover {
     margin-bottom:0;
     margin-top:2em;
 }
+#openid-container {
+    background-color:Transparent;
+}
