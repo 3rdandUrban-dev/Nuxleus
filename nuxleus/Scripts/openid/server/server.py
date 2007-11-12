@@ -182,7 +182,7 @@ class OpenIDLogoutHandler(object):
         cherrypy.response.cookie['openid.name']['version'] = 1
         cherrypy.response.cookie['openid.name']['expires'] = 0
 
-        raise cherrypy.HTTPRedirect('/')
+        raise cherrypy.HTTPRedirect('http://dev.amp.fm/')
 
 class OpenIDLoginHandler(object):
     exposed = True
