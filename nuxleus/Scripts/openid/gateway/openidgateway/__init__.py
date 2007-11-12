@@ -111,8 +111,8 @@ class OpenIdGateway(object):
             start_response('200 OK', headers)
             return []
 
-        sreg_request = sreg.SRegRequest(required=['nickname'])
-        request.addExtension(sreg_request)
+        #sreg_request = sreg.SRegRequest(required=['nickname'])
+        #request.addExtension(sreg_request)
         return_to = '%scomplete'% self.base_url
         return_to = '%s?identity=%s' % (return_to, openid_url)
         trusted_root = self.base_url
