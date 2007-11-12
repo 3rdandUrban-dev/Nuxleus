@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
-  <view:container id="content" style="base list LtoR width" class="openid-container">
+  <view:container style="base list LtoR width" id="openid-container">
     <view:item id="left">
       <doc:feed href="/feed/feed.xml" characterCount="400"/>
     </view:item>
