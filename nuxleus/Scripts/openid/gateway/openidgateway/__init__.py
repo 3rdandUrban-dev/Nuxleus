@@ -29,10 +29,8 @@ from Cookie import SimpleCookie
 def make_cookie_header(key, value='', expires=-1):
     cookies = SimpleCookie()
     cookies[key] = value
-    for var_name, var_value in [('max-age', max_age), ('path', path),
-                                ('domain', domain), ('version', 1),
-                                ('domain', 'http://dev.amp.fm'),
-                                (path, '/'), ('max-age', 1296000)]: # two weeks
+    for var_name, var_value in [('max-age', 1296000), ('path', '/'), ('version', 1),
+                                ('domain', 'http://dev.amp.fm'),]: # two weeks
         cookies[key][var_name] = str(var_value)
     if expires != -1:
         cookies[key]['expires'] = expires
