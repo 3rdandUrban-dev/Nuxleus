@@ -7,20 +7,19 @@
     <view:item id="center" style="transparency-90">
     @@openid.error.message@@
       <form action="/signup" method="post">
-        <span>Login:<input type="text" value="" name="login" class="single-input" />
-
-        </span>
-        <br />
-        <span>Password:<input type="password" value="" name="password" class="single-input" />
-        </span>
-        <br />
-        <span>Confirm password:<input type="password" value="" name="confirm_password" class="single-input" />
-        </span>
+        <label class="openid-form-label">Login:</label>
+	<input type="text" value="" name="login" class="single-input" />
         <br />
 
-        <span>
-          <input type="submit" class="Button submit"/>
-        </span>
+        <label class="openid-form-label">Password:</label>
+	<input type="password" value="" name="password" class="single-input" />
+        <br />
+
+        <label class="openid-form-label">Confirm password:</label>
+	<input type="password" value="" name="confirm_password" class="single-input" />
+        <br />
+
+	<input type="submit" class="Button submit"/>
       </form>
     </view:item>
     <view:item id="right">

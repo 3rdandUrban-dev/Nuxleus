@@ -455,3 +455,8 @@ span.ButtonLabel:hover {
     padding:0;
     padding-top:.25em;
 }
+
+.openid-form-label {
+    display: inline; 
+    width: 100px;  
+}
