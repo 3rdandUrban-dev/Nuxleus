@@ -2,9 +2,6 @@
 <view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc"
   xmlns:view="http://atomictalk.org/page/view">
   <view:container id="login-container" style="base list LtoR width">
-    <view:item id="left">
-      <doc:feed href="/feed/feed.xml" characterCount="400"/>
-    </view:item>
     <view:item id="login" style="center">
       <h2>@@openid.error.message@@</h2>
       <form action="http://dev.amp.fm/gatekeeper/login" method="get" target="_top" maxlength="255">
@@ -14,9 +11,6 @@
           <span class="ButtonLabel">plug me in!</span>
         </button>
       </form>
-    </view:item>
-    <view:item id="right">
-      <doc:feed href="/feed/feed.xml" characterCount="400"/>
     </view:item>
   </view:container>
 </view:module>
