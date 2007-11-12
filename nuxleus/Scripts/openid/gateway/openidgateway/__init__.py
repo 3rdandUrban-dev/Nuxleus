@@ -119,7 +119,7 @@ class OpenIdGateway(object):
         sess = environ['beaker.session']
         set_template(environ, 'login.xslt')
         # params = {'base_uri': self.base_url}
-        params = {'base_uri': 'http://dev.amp.fm'}
+        params = {'base_uri': 'http://dev.amp.fm/'}
 
         headers = [('Content-Type', 'application/xml')]
 
@@ -164,7 +164,7 @@ class OpenIdGateway(object):
                value="Authenticate w/ OpenID"
                onclick="if (this.value == 'Authenticate w/ OpenID') this.value = ''; return true;"
                onblur="if (this.value == '') this.value = 'Authenticate w/ OpenID'; return true;" />
-        <input type="hidden" name="return_location" value="http://dev.amp.fm" />
+        <input type="hidden" name="return_location" value="http://dev.amp.fm/" />
         <input id="openid-submit" class="single-input-submit" type="submit" value="Login" />
         </form>''' % self.base_url
         start_response('200 OK', [('Content-Type', 'text/html')])
