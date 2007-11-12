@@ -63,11 +63,7 @@ class OpenIdGateway(object):
         headers = [('Content-Type', 'application/xml')]
         if not (req.params.get('uname') or req.params.get('return_location')):
             message ='There must be a uname and return_location in the query string'
-            params['message'] = message
-            params['status'] = 'failure'
-            set_params(environ, params)
-            start_response('200 OK', headers)
-            return []
+            raise HTTPBadRequest(detail=message)
         
         openid_url = req.params['uname']
         sess[self.ekey]['return_location'] = req.params['return_location']
