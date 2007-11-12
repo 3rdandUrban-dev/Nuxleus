@@ -76,13 +76,11 @@ class OpenIdGateway(object):
             sess.save()
 
         headers = [('Content-Type', 'application/xml')]
-        print req.url, req.params
         if not (req.params.get('uname') or req.params.get('return_location')):
             message ='There must be a uname and return_location in the query string'
             raise HTTPBadRequest(detail=message)
         
         openid_url = req.params['uname']
-        print openid_url
         sess[self.ekey]['return_location'] = req.params['return_location']
 
         if not openid_url:
@@ -95,17 +93,14 @@ class OpenIdGateway(object):
             return []
 
         consumer = self.get_consumer(sess[self.ekey])
-        print "ready to consume"
         try:
             request = consumer.begin(openid_url)
         except Exception, exc:
-            print exc
             params['message'] = 'Error in discovery: %s' % (cgi.escape(str(exc[0])))
             params['status'] = 'failure'
             set_params(environ, params)
             start_response('200 OK', headers)
             return []
-        print "consuming"
         if request is None:
             errcode = cgi.escape(post['openid_url'])
             params['message'] = 'No OpenID services found for <code>%s</code>' % (errcode)
@@ -113,7 +108,6 @@ class OpenIdGateway(object):
             set_params(environ, params)            
             start_response('200 OK', headers)
             return []
-        print "consumed"
         #sreg_request = sreg.SRegRequest(required=['nickname'])
         #request.addExtension(sreg_request)
         return_to = '%scomplete'% self.base_url
@@ -124,14 +118,12 @@ class OpenIdGateway(object):
 
         redirect_url = request.redirectURL(trusted_root, return_to)
 
-        print redirect_url
         set_params(environ, {'redirect_url': redirect_url})
         params['status'] = 'redirect'
         params['message'] = 'OpendID Login Redirection'
 
         sess.save()
         set_params(environ, params)
-        print headers
         start_response('200 OK', headers)
         return []
 
