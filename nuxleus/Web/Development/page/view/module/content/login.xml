@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 <view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc"
   xmlns:view="http://atomictalk.org/page/view">
-  <view:container id="openid-container" style="base list TtoB">
-<!--
+  <view:container id="login-container" style="base list LtoR width">
+    <view:item id="left">
+      <doc:feed href="/feed/feed.xml" characterCount="400"/>
+    </view:item>
     <view:item id="login" style="center">
       <h2>@@openid.error.message@@</h2>
       <form action="http://dev.amp.fm/gatekeeper/login" method="get" target="_top" maxlength="255">
@@ -13,23 +15,8 @@
         </button>
       </form>
     </view:item>
--->
-    <view:item id="center">
-    <span>@@openid.error.message@@</span>
-
-    <span>You must authenticate with the OpenID server before continuing.</span>
-      <form action="/login" method="post">
-<input type="hidden" value="@@openid.redirect_to@@" name="redirect_to" />
-<label class="openid-form-label">Login:</label>
-<input type="text" value="" name="login" class="openid-single-input" />
-<br />
-
-<label class="openid-form-label">Password:</label>
-<input type="password" value="" name="password"  class="openid-single-input"/>
-<br />
-
-<input type="submit" class="Button submit"/>
-</form>
+    <view:item id="right">
+      <doc:feed href="/feed/feed.xml" characterCount="400"/>
     </view:item>
   </view:container>
 </view:module>
