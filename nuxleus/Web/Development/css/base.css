@@ -459,5 +459,14 @@ span.ButtonLabel:hover {
 .openid-form-label {
     display: inline;
     float: left; 
-    width: 100px;  
+    width: 140px;  
+}
+.openid-single-input {
+    width:24em;
+    font-size:small;
+    border:1px solid #000;
+    background-color:#FFF;
+    color:#FFF;
+    padding:.2em .3em;
+    font-weight:600;
 }
