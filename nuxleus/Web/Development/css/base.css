@@ -457,6 +457,7 @@ span.ButtonLabel:hover {
 }
 
 .openid-form-label {
-    display: inline; 
+    display: inline;
+    float: left; 
     width: 100px;  
 }
