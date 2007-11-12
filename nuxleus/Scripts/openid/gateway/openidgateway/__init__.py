@@ -23,6 +23,22 @@ from openid import sreg
 
 import pkg_resources
 
+from Cookie import SimpleCookie
+
+# Thanks to WebOb source code :p
+def make_cookie_header(key, value='', expires=-1):
+    cookies = SimpleCookie()
+    cookies[key] = value
+    for var_name, var_value in [('max-age', max_age), ('path', path),
+                                ('domain', domain), ('version', 1),
+                                ('domain', 'http://dev.amp.fm'),
+                                (path, '/'), ('max-age', 1296000)]: # two weeks
+        cookies[key][var_name] = str(var_value)
+    if expires != -1:
+        cookies[key]['expires'] = expires
+    header_value = cookies[key].output(header='').lstrip()
+    return ('Set-Cookie', header_value))
+        
 class OpenIdGateway(object):
 
     def __init__(self, app_conf):
@@ -126,13 +142,19 @@ class OpenIdGateway(object):
         consumer = self.get_consumer(sess[self.ekey])
         info = consumer.complete(req.GET)
 
+        cookies = []
         if info.status == 'success':
             req.cookies['openid'] = req.params['identity']
             guid = req.cookies.get('guid', str(uuid.uuid1()))
+            headers.append(make_cookie_header('openid.session', guid, expires=0))
+            headers.append(make_cookie_header('openid', req.params['identity']))
             params['status'] = 'complete'
             params['return_location'] = sess[self.ekey]['return_location']
             params['message'] = 'Logged in as %s' % req.params['identity']
         elif info.status == 'failure':
+            # Sylvain: I explicitely remove any existing cookie in case of a failure
+            headers.append(make_cookie_header('openid.session', expires=0))
+            headers.append(make_cookie_header('openid', expires=0))
             params['status']= 'failure'
             if info.identity_url:
                 fmt = "Verification of %s failed: %s"                
