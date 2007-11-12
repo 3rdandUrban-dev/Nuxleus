@@ -1,6 +1,6 @@
-<view:module type="application/atomictalk+xhtml"
+<view:module id="top-sub-nav" type="application/atomictalk+xhtml"
     xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-    <view:container id="top-sub-nav" style="LtoR" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    <view:container style="LtoR" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
         xmlns:view="http://atomictalk.org/page/view">
         <view:item>
             <a href="@@base-uri@@/region/">Regions</a>
