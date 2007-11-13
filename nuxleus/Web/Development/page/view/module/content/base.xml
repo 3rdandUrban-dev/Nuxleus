@@ -6,6 +6,7 @@
       <doc:feed href="/feed/feed.xml" characterCount="400"/>
     </view:item>
     <view:item id="center">
+      <h2><doc:session.openid href="/service/session/generate-request-guid" /></h2>
       <doc:feed href="/feed/feed.xml" characterCount="400"/>
     </view:item>
     <view:item id="right">
