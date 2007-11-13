@@ -158,10 +158,10 @@
   <xsl:template match="doc:session.openid">
     <xsl:choose>
       <xsl:when test="document(@href)/message/session/@openid = 'not-set'">
-	<a href="@base-uri/login/">Login</a>
+	<a href="{@base-uri}/login/">Login</a>
       </xsl:when>
       <xsl:otherwise>
-	<a href="@base-uri/login/">Logout</a>
+	<a href="{@base-uri}/login/">Logout</a>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
