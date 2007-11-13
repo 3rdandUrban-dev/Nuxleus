@@ -162,7 +162,7 @@
 	<a href="/login/" title="Log to your amp.fm profile">Login</a>
       </xsl:when>
       <xsl:otherwise>
-	<a href="/logout/" title="Connected as {$openid.url}">Logout</a>
+	<a href="/service/redirect/?redirect=/gatekeeper/logout?uname={$openid.url}" title="Connected as {$openid.url}">Logout</a>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
