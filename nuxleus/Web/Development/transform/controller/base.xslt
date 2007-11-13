@@ -41,6 +41,7 @@
   <xsl:import href="../model/json-to-xml.xslt"/>
   <xsl:import href="./test/base.xslt"/>
   <xsl:import href="./profile/base.xslt" />
+  <xsl:import href="./redirect/base.xslt" />
 
   <xsl:param name="current-context" />
   <xsl:param name="response" />
