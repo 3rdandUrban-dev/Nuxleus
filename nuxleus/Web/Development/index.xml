@@ -13,9 +13,8 @@
         <advice:location.label>amp.fm</advice:location.label>
         <advice:base.theme>993300-999999</advice:base.theme>
         <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
-        <advice:location>/</advice:location>
+        <advice:location>resource:openid/message/session/@openid</advice:location>
         <advice:current-location.label>your local scene</advice:current-location.label>
-	<advice:openid.url><doc:session.openid href="/service/session/generate-request-guid" /></advice:openid.url>
       </page:advice>
     </page:config>
     <page:output>

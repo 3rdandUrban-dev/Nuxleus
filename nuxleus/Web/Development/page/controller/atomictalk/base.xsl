@@ -156,7 +156,7 @@
   </xsl:template>
   
   <xsl:template match="doc:session.openid">
-    <xsl:text>Hi, my name is </xsl:text><xsl:value-of select="document(@href)/message/session/@openid"/><xsl:text>.</xsl:text>
+    <xsl:value-of select="document(@href)/message/session/@openid"/>
   </xsl:template>
   
   
