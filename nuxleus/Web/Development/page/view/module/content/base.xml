@@ -6,7 +6,7 @@
       <doc:feed href="/feed/feed.xml" characterCount="400"/>
     </view:item>
     <view:item id="center">
-      <h2>@@openid.url@@</h2><!--<doc:session.openid href="/service/session/generate-request-guid" /></h2>-->
+      <h2>$$test:<doc:session.openid href="/service/session/generate-request-guid" />IfTrue:Hi thereIfFalse:not loggedin</h2>
       <doc:feed href="/feed/feed.xml" characterCount="400"/>
     </view:item>
     <view:item id="right">

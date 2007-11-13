@@ -10,6 +10,5 @@
   <resource:create-new-account type="page" href="@@base-uri@@/create-new-account/" label="Create New" />
   <resource:login type="page" href="@@base-uri@@/login/" label="Login" />
   <resource:lang type="string" src="@src@" label="model:lang/$@@language@@/@label" />
-  <resource:openid type="string" src="/service/session/generate-request-guid" label="OpenID" />
 </page:resource>
 
