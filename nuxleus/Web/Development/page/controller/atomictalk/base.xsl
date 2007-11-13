@@ -156,7 +156,7 @@
   </xsl:template>
   
   <xsl:template match="doc:session.openid">
-    <xsl:variable select="document(@href)/message/session/@openid" name="openid.url"/>
+    <xsl:variable select="unescape(document(@href)/message/session/@openid)" name="openid.url"/>
     <xsl:choose>
       <xsl:when test="$openid.url = 'not-set'">
 	<a href="/login/" title="Log to your amp.fm profile">Login</a>
