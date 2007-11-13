@@ -24,7 +24,7 @@ a:hover {
     padding-bottom:0;
 }
 #footer {
-    border-bottom:3px solid #333;
+    border-bottom:3px solid #000;
 }
 #control-center {
     background-color:#FFF;
@@ -58,6 +58,7 @@ a:hover {
     margin-bottom:1px;
 }
 #top-login {
+    background-color:#6699CC;
     background-color:#CCC;
     border-top:1px solid #FFF;
     border-bottom:1px solid #FFF;

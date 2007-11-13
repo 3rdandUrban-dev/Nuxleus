@@ -1,13 +1,7 @@
 <?xml version="1.0"?>
 <view:container style="list RtoL local-links" xmlns:view="http://atomictalk.org/page/view">
   <view:item>
-    <a href="#foo">Wednesday</a>
-  </view:item>
-  <view:item>
-    <a href="#foo">Thursday</a>
-  </view:item>
-  <view:item style="selected">
-    <a href="#foo">Friday November 9th, 2007</a>
+    <a href="#foo">Friday</a>
   </view:item>
   <view:item>
     <a href="#foo">Saturday</a>
@@ -15,12 +9,27 @@
   <view:item>
     <a href="#foo">Sunday</a>
   </view:item>
-  <view:item>
-    <a href="#foo">Monday</a>
+  <view:item style="selected">
+    <a href="#foo">Monday November 12th, 2007</a>
   </view:item>
   <view:item>
     <a href="#foo">Tuesday</a>
   </view:item>
+  <view:item>
+    <a href="#foo">Wednesday</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Thursday</a>
+  </view:item>
+<!--  <view:item>
+    <a href="#foo">Day</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Week</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Month</a>
+  </view:item>-->
   <!--<view:item style="single">
       <a href="#foo">1</a>
     </view:item>

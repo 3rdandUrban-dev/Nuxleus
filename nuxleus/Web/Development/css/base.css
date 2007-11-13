@@ -300,8 +300,8 @@ span.ButtonLabel:hover {
 }
 #image-nav {
     margin-top:0;
-    border-top:2px solid #000;
-    border-bottom:2px solid #000;
+    border-top:3px solid #000;
+    border-bottom:3px solid #000;
 }
 #search-container {
     padding-top:3em;
@@ -356,18 +356,18 @@ span.ButtonLabel:hover {
     color:#FFF;
 }
 .local-links li.selected, .local-links li.selected a {
-    background-color:#333;
+    background-color:#000;
     color:#FFF;
     font-weight:400;
 }
 .local-links li.selected:hover, .local-links li.selected:hover a {
-    background-color:#333;
+    background-color:#000;
     color:#FF9900;
     font-weight:400;
 }
 .local-links li {
     border-right:1px solid #FFF;
-    background-color:#666;
+    background-color:#333;
     color:#FFF;
     padding:2px 0;
 }

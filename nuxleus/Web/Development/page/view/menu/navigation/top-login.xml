@@ -20,6 +20,9 @@
             <a href="http://openid.amp.fm/signup">Create Account</a>
         </view:item>
         <view:item>
+            <a href="/about">About</a>
+        </view:item>
+        <view:item>
             <a href="/help">Help</a>
         </view:item>
     </view:container>
