@@ -6,8 +6,7 @@
     xmlns:output="http://atomictalk.org/page/output"
     xmlns:head="http://atomictalk.org/page/output/head"
     xmlns:body="http://atomictalk.org/page/output/body"
-    xmlns:advice="http://atomictalk.org/page/advice"
-    xmlns:resource="http://atomictalk.org/page/resource">
+    xmlns:advice="http://atomictalk.org/page/advice">
     <page:config src="page/config/config.xml">
       <page:advice>
         <advice:page-title>@@domain.label@@ :: @@date@@</advice:page-title>
@@ -15,7 +14,7 @@
         <advice:base.theme>993300-999999</advice:base.theme>
         <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
         <advice:current-location.label>your local scene</advice:current-location.label>
-	<advice:openid>$$test:<doc:session.openid href="/service/session/generate-request-guid" />IfTrue:Hi thereIfFalse:not loggedin</advice:openid>
+	<advice:openid>|$$test:<doc:session.openid href="/service/session/generate-request-guid" />IfTrue:Hi thereIfFalse:not loggedin$$|</advice:openid>
       </page:advice>
     </page:config>
     <page:output>
