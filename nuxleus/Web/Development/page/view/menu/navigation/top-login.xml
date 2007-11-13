@@ -1,5 +1,5 @@
 <view:module type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:view="http://atomictalk.org/page/view">
+    xmlns:view="http://atomictalk.org/page/view" xmlns:doc="http://atomictalk.org/feed/doc">
     <view:container id="top-login" style="RtoL" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
         xmlns:view="http://atomictalk.org/page/view">
         <!--<view:item base="@@current:whatsnew@@" style="selected" use-template="view:link"/>
@@ -14,7 +14,7 @@
             <a href="@@base-uri@@/blog/">amp.fm Blog</a>
         </view:item>
         <view:item>
-            <a href="@@base-uri@@/login/">Login</a>
+            <doc:session.openid href="/service/session/generate-request-guid" />
         </view:item>
         <view:item>
             <a href="http://openid.amp.fm/signup">Create Account</a>
