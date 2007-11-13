@@ -6,18 +6,20 @@
     xmlns:output="http://atomictalk.org/page/output"
     xmlns:head="http://atomictalk.org/page/output/head"
     xmlns:body="http://atomictalk.org/page/output/body"
-    xmlns:advice="http://atomictalk.org/page/advice">
+    xmlns:advice="http://atomictalk.org/page/advice"
+    xmlns:resource="http://atomictalk.org/page/resource">
     <page:config src="page/config/config.xml">
       <page:advice>
         <advice:page-title>@@domain.label@@ :: @@date@@</advice:page-title>
         <advice:location.label>amp.fm</advice:location.label>
         <advice:base.theme>993300-999999</advice:base.theme>
         <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
-        <advice:location>resource:openid/message/session/@openid</advice:location>
+        <advice:openid>resource:openid/message/session/@openid</advice:openid>
         <advice:current-location.label>your local scene</advice:current-location.label>
       </page:advice>
     </page:config>
     <page:output>
+      @@lat@@
       <page:head src="/page/output/head/base.xml"/>
       <page:body src="/page/output/body/base.xml" />
     </page:output>
