@@ -15,6 +15,7 @@
         <advice:base.theme>993300-999999</advice:base.theme>
         <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
         <advice:current-location.label>your local scene</advice:current-location.label>
+	<advice:openid>$$test:<doc:session.openid href="/service/session/generate-request-guid" />IfTrue:Hi thereIfFalse:not loggedin</advice:openid>
       </page:advice>
     </page:config>
     <page:output>
