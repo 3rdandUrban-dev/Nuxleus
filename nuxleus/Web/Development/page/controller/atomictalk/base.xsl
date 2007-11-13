@@ -156,12 +156,13 @@
   </xsl:template>
   
   <xsl:template match="doc:session.openid">
+    <xsl:variable select="document(@href)/message/session/@openid" name="openid.url"/>
     <xsl:choose>
-      <xsl:when test="document(@href)/message/session/@openid = 'not-set'">
-	<a href="{@base-uri}/login/">Login</a>
+      <xsl:when test="$openid.url = 'not-set'">
+	<a href="/login/" title="Log to your amp.fm profile">Login</a>
       </xsl:when>
       <xsl:otherwise>
-	<a href="{@base-uri}/login/">Logout</a>
+	<a href="/logout/" title="Connected as {$openid.url}">Logout</a>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
