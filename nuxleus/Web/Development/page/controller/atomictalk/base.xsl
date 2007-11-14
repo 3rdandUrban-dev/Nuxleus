@@ -173,7 +173,6 @@
 	</li>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:text> </xsl:text>
   </xsl:template>
   
   
