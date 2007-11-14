@@ -20,22 +20,26 @@
   <xsl:param name="current-context" />
 
   <xsl:template match="session:validate-request">
-    <xsl:variable name="openid-session-id" select="func:resolve-variable(@key)" />
+    <xsl:variable name="session-id" select="func:resolve-variable(@key)" />
+    <xsl:variable name="openid" select="func:resolve-variable(@openid)" />
     <xsl:apply-templates>
-      <xsl:with-param name="openid-session-id" select="$openid-session-id"/>
+      <xsl:with-param name="session-id" select="$session-id"/>
+      <xsl:with-param name="openid" select="$openid"/>
     </xsl:apply-templates>
   </xsl:template>
 
   <xsl:template match="operation:return-xml">
-    <session>
+  <xsl:param name="session-id"/>
+  <xsl:param name="openid"/>
+    <session session-id="{$session-id}" openid="{replace($openid, '%2F', '/')}">
       <xsl:apply-templates />
     </session>
   </xsl:template>
 
   <xsl:template match="session:generate-guid">
-    <quid>
+    <request-guid>
       <xsl:value-of select="string(guid:NewGuid())"/>
-    </quid>
+    </request-guid>
   </xsl:template>
 
 </xsl:transform>

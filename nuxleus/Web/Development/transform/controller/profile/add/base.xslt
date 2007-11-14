@@ -42,6 +42,10 @@
   <xsl:param name="request"/>
   <xsl:param name="response"/>
 
+  <xsl:template match="operation:profile">
+  	<xsl:apply-templates />
+  </xsl:template>
+  
   <xsl:template match="operation:profile-add">
     <xsl:apply-templates />
     <xsl:sequence select="concat(response:set-status-code($response, 302),
@@ -94,5 +98,6 @@
       <!-- we write the profile here -->
     </xsl:if>
   </xsl:template>
+
 
 </xsl:transform>

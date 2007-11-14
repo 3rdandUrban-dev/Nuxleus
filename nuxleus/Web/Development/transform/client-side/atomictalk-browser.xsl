@@ -203,6 +203,10 @@
     <xsl:apply-templates />
   </xsl:template>
 
+  <xsl:template match="doc:session.openid">
+    <xsl:text>Hi, my name is </xsl:text><xsl:value-of select="document(@href)/message/session/@openid"/><xsl:text>.</xsl:text>
+  </xsl:template>
+  
   <xsl:template match="doc:feed">
     <xsl:apply-templates select="document(@href)/atom:feed/atom:entry">
       <xsl:with-param name="cCount" select="@characterCount"/>

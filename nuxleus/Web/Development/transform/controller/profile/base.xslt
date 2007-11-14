@@ -51,6 +51,22 @@
   <xsl:template match="operation:profile-add">
     <xsl:apply-templates mode="profile-copy" />
   </xsl:template>
+  
+    
+    <xsl:template match="profile:create-new">
+    <xsl:variable name="username" select="func:resolve-variable(@username)" />
+    <xsl:variable name="openid" select="func:resolve-variable(@openid)" />
+    <xsl:variable name="file" select="resolve-uri(concat('file:///nuxleus/Web/Development/userprofile/', $username, '/', 'profile.xml'))"/>
+    <file>
+    	<xsl:sequence select="$file"/>
+    </file>
+    <xsl:result-document method="xml " href="{$file}">
+    	<profile>
+		<username><xsl:value-of select="$username"/></username>
+		<openid><xsl:value-of select="$openid"/></openid>
+	</profile>
+    </xsl:result-document> 
+  </xsl:template>
 
   <xsl:template match="my:session" mode="profile-copy">
     <xsl:variable name="content-type" select="response:set-content-type($response, 'text/xml')" />

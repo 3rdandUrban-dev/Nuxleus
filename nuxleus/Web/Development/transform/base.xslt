@@ -19,6 +19,7 @@
   xmlns:aws="http://xameleon.org/function/aws"
   xmlns:sdb="http://xameleon.org/function/aws/sdb" 
   xmlns:service="http://xameleon.org/service"
+  xmlns:profile="http://xameleon.org/service/profile"
   xmlns:operation="http://xameleon.org/service/operation"
   xmlns:param="http://xameleon.org/service/session/param"
   exclude-result-prefixes="#all">
@@ -49,6 +50,7 @@
     <xsl:output-character character="&lt;" string="&lt;" />
     <xsl:output-character character="&gt;" string="&gt;" />
     <xsl:output-character character="&#xD;" string="&#xD;" />
+    <xsl:output-character character="&#47;" string="&#47;" />
   </xsl:character-map>
 
   <xsl:output name="xhtml" doctype-public="-//W3C//DTD XHTML 1.1//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1.1.dtd" include-content-type="yes" indent="no" media-type="text/html" method="xhtml" />
@@ -59,6 +61,25 @@
 
   <xsl:template match="/">
     <xsl:apply-templates />
+  </xsl:template>
+  
+  <xsl:template match="operation:profile">
+  	<xsl:apply-templates />
+  </xsl:template>
+    
+  <xsl:template match="profile:create-new">
+    <xsl:variable name="username" select="func:resolve-variable(@username)" />
+    <xsl:variable name="openid" select="func:resolve-variable(@openid)" />
+    <xsl:variable name="file" select="resolve-uri(concat('file:///nuxleus/Web/Development/userprofile/', $username, '/', 'profile.xml'))"/>
+    <file>
+    	<xsl:sequence select="$file"/>
+    </file>
+    <xsl:result-document method="xml " href="{$file}">
+    	<profile>
+		<username><xsl:value-of select="$username"/></username>
+		<openid><xsl:value-of select="$openid"/></openid>
+	</profile>
+    </xsl:result-document> 
   </xsl:template>
 
 </xsl:transform>

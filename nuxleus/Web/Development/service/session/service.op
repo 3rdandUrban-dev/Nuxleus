@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/transform/base.xslt"?>
 <service:operation use-clientside-xslt="/transform/openid-redirect.xsl"
-  xmlns:at="http://atomictalk.org" xmlns:metadata="http://xameleon.org/service/metadata"
-  xmlns:header="http://xameleon.org/service/http/header" xmlns:service="http://xameleon.org/service"
+  xmlns:at="http://atomictalk.org" 
+  xmlns:metadata="http://xameleon.org/service/metadata"
+  xmlns:header="http://xameleon.org/service/http/header" 
+  xmlns:service="http://xameleon.org/service"
   xmlns:operation="http://xameleon.org/service/operation"
-  xmlns:aws="http://xameleon.org/function/aws" xmlns:s3="http://xameleon.org/function/aws/s3"
+  xmlns:aws="http://xameleon.org/function/aws" 
+  xmlns:s3="http://xameleon.org/function/aws/s3"
   xmlns:param="http://xameleon.org/service/session/param">
   <param:s3-bucket-name>session.amp.fm</param:s3-bucket-name>
   <param:s3-folder-name>{cookie:openid}</param:s3-folder-name>
