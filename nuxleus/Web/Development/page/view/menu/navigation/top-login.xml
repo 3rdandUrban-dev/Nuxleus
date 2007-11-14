@@ -17,9 +17,6 @@
             <doc:session.openid href="/service/session/generate-request-guid" base-uri="@@base-uri@@"/>
         </view:item>
         <view:item>
-            <a href="http://openid.amp.fm/signup">Create Account</a>
-        </view:item>
-        <view:item>
             <a href="/about">About</a>
         </view:item>
         <view:item>
