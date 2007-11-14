@@ -192,12 +192,12 @@ class OpenIDLoginHandler(object):
         self.s3conn = s3conn
         self.mc = mc
 
-    def GET(self, redirect_to=None, openid=None):
+    def GET(self, redirect_to=None, uname=None):
         cherrypy.response.headers['content-type'] = 'application/xml'
         login_form = file(os.path.join(current_dir, 'loginGET.xml')).read()
         login = ''
-        if openid:
-            login = extract_login(openid)
+        if uname:
+            login = extract_login(unquote(uname))
         return login_form % (quote(redirect_to or ''), quote(login))
 
     def POST(self, login, password, redirect_to=None):
