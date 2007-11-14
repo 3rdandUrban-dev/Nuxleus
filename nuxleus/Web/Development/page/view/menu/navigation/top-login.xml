@@ -13,9 +13,7 @@
         <view:item>
             <a href="@@base-uri@@/blog/">amp.fm Blog</a>
         </view:item>
-        <view:item>
-            <doc:session.openid href="/service/session/generate-request-guid" base-uri="@@base-uri@@"/>
-        </view:item>
+	<doc:session.openid href="/service/session/generate-request-guid" base-uri="@@base-uri@@"/>
         <view:item>
             <a href="/about">About</a>
         </view:item>
