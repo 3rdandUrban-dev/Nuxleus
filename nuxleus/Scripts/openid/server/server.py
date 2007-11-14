@@ -14,6 +14,7 @@ from datetime import datetime, timedelta
 
 import cherrypy
 from cherrypy.lib.static import serve_file
+from cherrypy.lib.http import parse_query_string
 import boto
 from boto.s3.key import Key
 from memcache import Client
@@ -192,12 +193,15 @@ class OpenIDLoginHandler(object):
         self.s3conn = s3conn
         self.mc = mc
 
-    def GET(self, redirect_to=None, uname=None):
+    def GET(self, redirect_to=None):
         cherrypy.response.headers['content-type'] = 'application/xml'
         login_form = file(os.path.join(current_dir, 'loginGET.xml')).read()
         login = ''
-        if uname:
-            login = extract_login(unquote(uname))
+        if redirect_to:
+            urlqs = parse_query_string(unquote(redirect_to))
+            uname = urlqs.get('uname', None)
+            if uname:
+                login = extract_login(uname)
         return login_form % (quote(redirect_to or ''), quote(login))
 
     def POST(self, login, password, redirect_to=None):
