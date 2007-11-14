@@ -201,7 +201,7 @@ class OpenIDLoginHandler(object):
             urlqs = parse_query_string(unquote(redirect_to))
             uname = urlqs.get('uname', None)
             if uname:
-                login = uname[uname.find('openid.name.fm/'):]
+                login = uname.split('openid.name.fm/')[-1]
         return login_form % (quote(redirect_to or ''), quote(login))
 
     def POST(self, login, password, redirect_to=None):
