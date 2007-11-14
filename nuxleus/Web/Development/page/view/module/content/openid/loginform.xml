@@ -9,7 +9,7 @@
       <form action="/login" method="post">
 <input type="hidden" value="@@openid.redirect_to@@" name="redirect_to" />
 <label class="openid-form-label">Login:</label>
-<input type="text" value="" name="login" class="openid-single-input" />
+<input type="text" value="@@openid.username@@" name="login" class="openid-single-input" />
 <br />
 
 <label class="openid-form-label">Password:</label>
