@@ -2,6 +2,7 @@
 <view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
   <view:container id="content" style="base list LtoR width">
     <view:item id="center">
+<br />
     <table>
               <tr><td>Your identity:</td><td>@@openid.url@@</td></tr>
               <tr><td>Authorization request for:</td><td>@@openid.trust@@</td></tr>
