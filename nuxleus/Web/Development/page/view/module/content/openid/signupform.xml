@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
   <view:container style="base list LtoR width" id="openid-container">
-    <view:item id="left">
-      <doc:feed href="/feed/feed.xml" characterCount="400"/>
-    </view:item>
     <view:item id="center" style="transparency-90">
     @@openid.error.message@@
       <form action="/signup" method="post">
@@ -21,9 +18,6 @@
 
 	<input type="submit" class="Button submit"/>
       </form>
-    </view:item>
-    <view:item id="right">
-      <doc:feed href="/feed/feed.xml" characterCount="400"/>
     </view:item>
   </view:container>
 

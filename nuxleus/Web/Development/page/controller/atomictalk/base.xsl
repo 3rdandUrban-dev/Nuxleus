@@ -160,6 +160,7 @@
     <xsl:choose>
       <xsl:when test="$openid.url = 'not-set'">
 	<a href="/login/" title="Log to your amp.fm profile">Login</a>
+	<a href="http://openid.amp.fm/signup">Create Account</a>
       </xsl:when>
       <xsl:otherwise>
 	<a href="/service/redirect/?uri=/gatekeeper/logout?uname={$openid.url}&amp;status-code=303" 
