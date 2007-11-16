@@ -1,5 +1,5 @@
 //
-// ISubscriber.cs : Base interface to be implemented by LLUp subscriber
+// ISubscriber.cs : Base interface to be implemented by LLUP subscriber
 //
 // Author:
 //   Sylvain Hellegouarch (sh@3rdandurban.com)
@@ -9,12 +9,13 @@
 
 using System;
 using System.Threading;
-using Nuxleus.Llup;
 
-namespace  Nuxleus.Messaging.LLUP {
-  public interface ISubscriber {
-    SubscriberHandler Handler { get; set; }
-    void Start();
-    void Stop();
-  }
+namespace  Nuxleus.Messaging.LLUP 
+{
+    public interface ISubscriber 
+    {
+	SubscriberHandler Handler { get; set; }
+	void Start();
+	void Stop();
+    }
 }

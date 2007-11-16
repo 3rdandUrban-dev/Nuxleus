@@ -10,8 +10,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-using Nuxleus.Llup;
-
 using ALAZ.SystemEx.NetEx.SocketsEx;
 using ALAZ.SystemEx.ThreadingEx;
 
@@ -142,7 +140,7 @@ namespace  Nuxleus.Messaging.LLUP {
 
     private void FailureRaised(ISocketConnection sender, Exception ex) {
       // here we should log the exception
-
+      Console.Write(ex.ToString());
       // we disconnect the faulty client
       sender.BeginDisconnect();
     }

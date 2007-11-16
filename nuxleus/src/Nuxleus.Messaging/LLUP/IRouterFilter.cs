@@ -7,7 +7,6 @@
 // Copyright (C) 2007, Sylvain Hellegouarch
 // 
 using System;
-using Nuxleus.Llup;
 
 namespace  Nuxleus.Messaging.LLUP {
   public interface IRouterFilter {

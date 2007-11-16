@@ -7,9 +7,7 @@
 // Copyright (C) 2007, Sylvain Hellegouarch
 // 
 using System;
-using Nuxleus.Llup;
 using Nuxleus.Messaging;
-using Nuxleus.Messaging.LLUP;
 
 namespace  Nuxleus.Messaging.LLUP {
   /// </summary>

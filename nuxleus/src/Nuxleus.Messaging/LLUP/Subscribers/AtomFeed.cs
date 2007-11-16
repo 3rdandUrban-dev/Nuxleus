@@ -8,7 +8,6 @@
 // 
 using System;
 using System.Threading;
-using Nuxleus.Llup;
 
 namespace  Nuxleus.Messaging.LLUP {
   public class AtomFeedSubscriber : ISubscriber {
