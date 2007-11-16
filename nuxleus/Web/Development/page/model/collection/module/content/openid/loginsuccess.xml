@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="content" style="base list LtoR width">
+    <view:item id="center">
+      Welcome @@openid.username@@.
+    </view:item>
+  </view:container>
+</view:module>

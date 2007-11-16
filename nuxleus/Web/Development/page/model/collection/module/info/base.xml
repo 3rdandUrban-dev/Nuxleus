@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<view:module class="base" id="info" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="info-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:view="http://atomictalk.org/page/view">
+    <view:item id="local-nav">
+      <view:container style="RtoL" type="xhtml">
+        
+      </view:container>
+    </view:item>
+  </view:container>
+</view:module>
