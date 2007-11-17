@@ -5,9 +5,9 @@
       <view:module id="session" src="/page/view/module/session/controller/base.xml"/>
       <view:module>
         <view:container>
-          <view:module id="header" src="/page/view/module/header/primary/base.xml"/>
-          <view:module id="body" src="/page/view/module/content/base.xml"/>
-          <view:module id="footer" src="/page/view/module/footer/base.xml"/>
+          <view:module id="header" src="/page/model/collection/module/header/primary/base.xml"/>
+          <view:module id="body" src="/page/model/collection/module/content/base.xml"/>
+          <view:module id="footer" src="/page/model/collection/module/footer/base.xml"/>
         </view:container>
       </view:module>
     </view:container>

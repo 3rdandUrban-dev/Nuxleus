@@ -1,24 +1,22 @@
-<view:module id="top-sub-nav" type="application/atomictalk+xhtml"
-    xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-    <view:container style="LtoR" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:view="http://atomictalk.org/page/view">
-        <view:item>
-            <a href="@@base-uri@@/region/">Regions</a>
-        </view:item>
-        <view:item>
-            <a href="@@base-uri@@/events/">Events</a>
-        </view:item>
-        <view:item>
-            <a href="@@base-uri@@/events/">Charts</a>
-        </view:item>
-        <view:item>
-            <a href="@@base-uri@@/genres/">Genres</a>
-        </view:item>
-        <view:item>
-            <a href="@@base-uri@@/playlists/">Playlists</a>
-        </view:item>
-        <view:item>
-            <a href="@@base-uri@@/off-the-record/">"Off-the-Record" Music Lounge</a>
-        </view:item>
-    </view:container>
-</view:module>
+<model:collection id="top-sub-nav" type="application/atomictalk+xhtml"
+    xmlns="http://www.w3.org/1999/xhtml" xmlns:model="http://atomictalk.org/page/model"
+    xmlns:collection="http://atomictalk.org/page/model/collection">
+    <collection:item>
+        <a href="@@base-uri@@/region/">Regions</a>
+    </collection:item>
+    <collection:item>
+        <a href="@@base-uri@@/events/">Events</a>
+    </collection:item>
+    <collection:item>
+        <a href="@@base-uri@@/events/">Charts</a>
+    </collection:item>
+    <collection:item>
+        <a href="@@base-uri@@/genres/">Genres</a>
+    </collection:item>
+    <collection:item>
+        <a href="@@base-uri@@/playlists/">Playlists</a>
+    </collection:item>
+    <collection:item>
+        <a href="@@base-uri@@/off-the-record/">"Off-the-Record" Music Lounge</a>
+    </collection:item>
+</model:collection>
