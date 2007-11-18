@@ -6,7 +6,7 @@
 
 class Mono(CPackageRecipe):
     name = 'mono'
-    version = '1.2.5'
+    version = '1.2.5.2'
     buildRequires = [ 
             'zlib:devel', 
             'glib:devel', 
@@ -16,7 +16,7 @@ class Mono(CPackageRecipe):
 
     def setup(r):
         #r.addArchive('http://mono.ximian.com/monobuild/preview/sources/mono/%(name)s-%(version)s.tar.bz2')
-	r.addArchive('http://go-mono.com/sources-stable/%(name)s-%(version)s.tar.bz2')
+	r.addArchive('http://go-mono.com/sources/%(name)s/%(name)s-%(version)s.tar.bz2')
 	
 	conf = '--with-preview=yes'
 
@@ -25,7 +25,7 @@ class Mono(CPackageRecipe):
         if Use.xen:
 		conf += ' --with-xen_opt=yes'
 	if Use.moonlight:
-		conf += ' --with-preview=yes'
+		conf += ' --with-moonlight=yes'
 
 	r.Configure(conf)
 

@@ -1,9 +1,9 @@
 stateversion 2
 name mono:source
-version /nuxleus.rpath.org@rpl:devel//nux:devel/1188461616.162:1.2.5-0.4
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1190632519.344:1.2.5.1-0.2
 branch /nuxleus.rpath.org@rpl:devel//nux:devel
 4
-062463924adc9bcaba0abbc5cccf0e05 cli-gac-handler 7f488c1082d776c0c4ab7b62c699b07c0a1e6dcd config /nuxleus.rpath.org@rpl:devel/1.2.1-2
-564e590e0632b2019e864df079303d0d cli-gac 7251612b8928140c44f5f62de543612a7361bee6 config /nuxleus.rpath.org@rpl:devel/1.2.1-4
-141b248631720284d6ea9fc8d3d32a29 mono.recipe 0ebd0b82c4c52c852cb6fc4ea2437c9f1c114bee config /nuxleus.rpath.org@rpl:devel//nux:devel/1.2.5-0.4
-bee16debf0c427120dd42384939e6af2 mono-1.2.5.tar.bz2 60a0e6ed311fde403d2779978fdfa14f6747eabd autosource /nuxleus.rpath.org@rpl:devel//nux:devel/1.2.5-0.1
+062463924adc9bcaba0abbc5cccf0e05 cli-gac-handler 16b384f77e1abadb5a982a669171d82c757bfa8a config /nuxleus.rpath.org@rpl:devel//nux:devel/1.2.5.1-0.1
+564e590e0632b2019e864df079303d0d cli-gac d64a4fa912bc364685ff850d4b894b57ce4304d9 config /nuxleus.rpath.org@rpl:devel//nux:devel/1.2.5.1-0.1
+922204626251241bf65c41c709b2da97 mono-1.2.5.1.tar.bz2 ead785a73cf4935edf2edafdeae67a5fa88c9e15 autosource /nuxleus.rpath.org@rpl:devel//nux:devel/1.2.5.1-0.1
+141b248631720284d6ea9fc8d3d32a29 mono.recipe dfa85c384c023b0667599d2d30fef573a066eac2 config /nuxleus.rpath.org@rpl:devel//nux:devel/1.2.5.1-0.2
