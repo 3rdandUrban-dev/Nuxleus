@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <page:body xmlns:page="http://atomictalk.org/page" xmlns:body="http://atomictalk.org/page/output/body">
-  <body:layout xmlns:view="http://atomictalk.org/page/view">
-    <view:container id="layout">
-      <view:module id="session" src="/page/view/module/session/controller/base.xml"/>
-      <view:module>
-        <view:container>
-          <view:module id="header" src="/page/model/collection/module/header/primary/base.xml"/>
-          <view:module id="body" src="/page/model/collection/module/content/base.xml"/>
-          <view:module id="footer" src="/page/model/collection/module/footer/base.xml"/>
+    <body:layout xmlns:view="http://atomictalk.org/page/view">
+        <view:container id="layout">
+            <view:module id="session" src="/page/view/module/session/controller/base.xml" />
+            <view:module>
+                <view:container>
+                    <view:module id="header" src="/page/model/collection/module/header/primary/base.xml" />
+                    <view:module id="body" src="/page/model/collection/module/content/base.xml" />
+                    <view:module id="footer" src="/page/model/collection/module/footer/base.xml" />
+                </view:container>
+            </view:module>
         </view:container>
-      </view:module>
-    </view:container>
-  </body:layout>
+    </body:layout>
 </page:body>
