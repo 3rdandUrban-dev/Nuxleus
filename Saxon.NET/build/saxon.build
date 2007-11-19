@@ -2,7 +2,7 @@
 <project name="saxon8" default="all">
 	<property name="pathsep" value=":" />
 	<property overwrite="false" name="signoption" value="-keyfile:Extf.Net.snk" />
-
+	<property name="saxon9.dir" value="${nant.project.basedir}/Saxon" />
 	<if test="${platform::is-win32()}">
 		<property name="pathsep" value=";" />
 	</if>
@@ -27,12 +27,16 @@
                         <exec program="sh" commandline="./prep.sh"/>
                 </if>
 	</target>
+	<target name="patch">
+		 <if test="${platform::is-unix()}">
+                        <exec program="sh" commandline="./patch.sh"/>
+                </if>
+	</target>
 	<target name="cp.depends" depends="allsources">
 		<property name="classpathstub.dir" value="/usr/lib/ikvm" />
 		<property name="saxon8.dir" value="${nant.project.basedir}/Saxon" />
 		<property name="allsources" value="allsources.lst" />
 	</target>
-	
 	<target name="classes" depends="cp.depends" description="Saxon8 Java Classes">
 		<delete>
 			<fileset basedir="${saxon8.dir}">
@@ -49,12 +53,12 @@
 	
 	<target name="saxon8" depends="classes">
 		<exec program="ikvmc" useruntimeengine="false">
-			<arg value="-version:8.9.0.4" />
+			<arg value="-version:9.0.0.1" />
 			<arg value="${signoption}" />
 			<arg value="-compressresources" />
 			<arg value="-opt:fields" />
 			<arg value="-strictfinalfieldsemantics" />
-			<arg value="-out:saxon8.dll" />
+			<arg value="-out:saxon9.dll" />
 			<arg value="-exclude:exclude.lst" />
 			<arg value="-target:library" />
 			<arg value="-recurse:./jars/*.jar" />
@@ -63,16 +67,17 @@
 			<arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.Xml.dll" />
 			<arg value="-resource:META-INF/MANIFEST.MF=META-INF/MANIFEST.MF" />
 		</exec>
-		<copy file="saxon8.dll" tofile="../bin/saxon8.dll.new" />
+		<copy file="saxon9.dll" tofile="../bin/saxon9.dll.new" />
 		<if test="${nant.platform.win32}">
 			<call target="peverify-classpath"/>
 		</if>
-		<copy file="saxon8.dll" todir="../" />
+		<copy file="saxon9.dll" todir="../" />
 		<delete file="saxon8.dll.new" />
 	</target>
 	
 	<target name="all">
 		<call target="checkout" />
+		<call target="patch" />
 		<call target="classes" />
 		<call target="saxon8" />
 	</target>
