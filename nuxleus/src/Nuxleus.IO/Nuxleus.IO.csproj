@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.20706</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{76B51906-3D94-412F-B943-84CD2A41AE11}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -94,10 +94,6 @@
       <Project>{350B7FF7-7D9E-486C-986C-1772E9672A88}</Project>
       <Name>Nuxleus.Vendor</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Socket\" />
-    <Folder Include="Thread\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

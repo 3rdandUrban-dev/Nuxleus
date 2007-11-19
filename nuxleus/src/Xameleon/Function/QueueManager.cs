@@ -4,6 +4,7 @@ using System.Text;
 using Nuxleus.Atom;
 using Nuxleus.Bucker;
 using Nuxleus.Messaging.LLUP;
+using Nuxleus.PubSub;
 
 namespace Xameleon.Function
 {

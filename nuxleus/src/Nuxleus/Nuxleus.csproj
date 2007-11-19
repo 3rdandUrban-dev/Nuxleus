@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.20706</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B0D68D3E-8ACE-4F33-9E85-F32CED622614}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -58,15 +58,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Extf.Net.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Authentication\Nuxleus.Authentication.csproj">
@@ -131,7 +127,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Xameleon\Xameleon.csproj">
       <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
-      <Name>Xameleon %28Xameleon\Xameleon%29</Name>
+      <Name>Xameleon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

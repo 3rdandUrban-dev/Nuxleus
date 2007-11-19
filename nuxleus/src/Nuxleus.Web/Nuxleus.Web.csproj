@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.20706</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -123,7 +123,6 @@
     <Compile Include="HttpApplication\*.cs" />
     <Compile Include="HttpHandler\*.cs" />
     <Compile Include="HttpModule\*.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">
@@ -156,15 +155,14 @@
     </ProjectReference>
     <ProjectReference Include="..\Xameleon\Xameleon.csproj">
       <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
-      <Name>Xameleon %28Xameleon\Xameleon%29</Name>
+      <Name>Xameleon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="VirtualDirectory\" />
-    <Folder Include="VirtualPathProvider\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

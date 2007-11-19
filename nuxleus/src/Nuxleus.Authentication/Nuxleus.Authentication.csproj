@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.20706</ProductVersion>
+    <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -45,7 +45,6 @@
     <Compile Include="Agent.cs" />
     <Compile Include="AmazonWebServices\AWSAuthConnection.cs" />
     <Compile Include="Facebook\Facebook.cs" />
-    <Compile Include="OpenID\OpenID.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
