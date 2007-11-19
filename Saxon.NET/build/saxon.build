@@ -8,7 +8,7 @@
 	</if>
 
 	<target name="checkout">
-		<exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/latest8.9/bj Saxon" />
+		<exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/latest9.0/bj Saxon" />
 	</target>
 	<target name="allsources">
 		<if test="${platform::is-win32()}">
@@ -23,9 +23,9 @@
 				<arg value="> allsources.lst"/>
 			</exec>
                 </if>-->
-		<!--<if test="${platform::is-unix()}">
+		<if test="${platform::is-unix()}">
                         <exec program="sh" commandline="./prep.sh"/>
-                </if>-->
+                </if>
 	</target>
 	<target name="cp.depends" depends="allsources">
 		<property name="classpathstub.dir" value="/usr/lib/ikvm" />
