@@ -1,677 +1,696 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project name="Xameleon" default="all">
-  <property name="project.version" value="0.2.3.4"/>
-  <property name="source.dir" value="."/>
-  <property name="dependencies.dir" value="./Dependencies"/>
-  <property name="build.dir" value="./build/bin"/>
-  <property name="prod.web.install.dir" value="../Web/Production"/>
-  <property name="dev.web.install.dir" value="../Web/Development"/>
-  <property name="test.web.install.dir" value="../Web/Test"/>
-  <target name="init">
-    <mkdir dir="${build.dir}" failonerror="false"/>
-  </target>
-  <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility">
-    <csc target="library" output="${build.dir}/Xameleon.dll" unsafe="True">
-      <sources>
-        <include name="${source.dir}/Xameleon/Function/*.cs"/>
-        <include name="${source.dir}/Xameleon/Document/*.cs"/>
-        <include name="${source.dir}/Xameleon/ResultDocumentHandler/*.cs"/>
-        <include name="${source.dir}/Xameleon/SemWeb/*.cs"/>
-        <include name="${source.dir}/Xameleon/Service/*.cs"/>
-        <include name="${source.dir}/Xameleon/Transform/*.cs"/>
-        <include name="${source.dir}/Xameleon/UrlResolver/*.cs"/>
-      </sources>
-      <resources dynamicprefix="true">
-        <include name="${source.dir}/Xameleon/Properties/**/*.resx"/>
-      </resources>
-      <references>
-        <include name="${build.dir}/Nuxleus.IO.dll"/>
-        <include name="${build.dir}/Nuxleus.Authentication.dll"/>
-        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-        <include name="${build.dir}/Nuxleus.Configuration.dll"/>
-        <include name="${build.dir}/Nuxleus.Extension.Facebook.dll"/>
-        <include name="${build.dir}/Nuxleus.PubSub.dll"/>
-        <include name="${build.dir}/Nuxleus.Process.dll"/>
-        <include name="${build.dir}/Nuxleus.Utility.dll"/>
-        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-        <include name="System.Drawing.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Configuration.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="${dependencies.dir}/IKVM.OpenJDK.ClassLibrary.dll"/>
-        <include name="${dependencies.dir}/IKVM.Runtime.dll"/>
-        <include name="${dependencies.dir}/Lucene.Net.dll"/>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-        <include name="${dependencies.dir}/Mono.Posix.dll"/>
-        <include name="${dependencies.dir}/Mono.Security.dll"/>
-        <include name="${dependencies.dir}/Mvp.Xml.dll"/>
-        <include name="${dependencies.dir}/Saxon.Api.dll"/>
-        <include name="${dependencies.dir}/saxon8.dll"/>
-        <include name="${dependencies.dir}/SgmlReaderDll.dll"/>
-        <include name="${dependencies.dir}/agsXMPP.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="XSP" depends="init Nuxleus.Web">
-    <csc target="exe" output="${build.dir}/xsp2.exe">
-      <sources>
-        <include name="${source.dir}/XSP/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Web.dll"/>
-        <include name="${dependencies.dir}/Mono.Posix.dll"/>
-        <include name="${dependencies.dir}/Mono.Security.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus" depends="init Xameleon Nuxleus.Entity">
-    <csc target="library" output="${build.dir}/Nuxleus.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Xameleon.dll"/>
-        <include name="${build.dir}/Nuxleus.Entity.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Authentication" depends="init Nuxleus.Utility">
-    <csc target="library" output="${build.dir}/Nuxleus.Authentication.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Authentication/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Utility.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Build" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Build.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Build/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Configuration.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Configuration" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Configuration.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Configuration/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Configuration.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Command" depends="init">
-    <csc target="exe" output="${build.dir}/nux.exe">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Command/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Cryptography" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Cryptography.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Cryptography/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Entity" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Entity.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Entity/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Extension" depends="init Nuxleus.Cryptography">
-    <csc target="library" output="${build.dir}/Nuxleus.Extension.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Extension/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Collections.dll"/>
-        <include name="System.Collections.Generic.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Extension.Community" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Extension.Community.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Community/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Extension.Facebook" depends="init Nuxleus.Cryptography">
-    <csc target="library" output="${build.dir}/Nuxleus.Extension.Facebook.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Facebook/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Collections.dll"/>
-        <include name="System.Collections.Generic.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Extension.Aws" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Aws/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Collections.dll"/>
-        <include name="System.Collections.Generic.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Extension.Silverlight" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Extension.Silverlight.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Silverlight/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Extension.Amp.Fm" depends="init Nuxleus.Entity">
-    <csc target="library" output="${build.dir}/Nuxleus.Extension.Amp.Fm.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Amp.Fm/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Entity.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.IO" depends="init Nuxleus.Configuration Nuxleus.Process Nuxleus.Utility Nuxleus.Vendor">
-    <csc target="library" output="${build.dir}/Nuxleus.IO.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.IO/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-        <include name="${dependencies.dir}/Saxon.Api.dll"/>
-        <include name="${build.dir}/Nuxleus.Utility.dll"/>
-        <include name="${build.dir}/Nuxleus.Configuration.dll"/>
-        <include name="${build.dir}/Nuxleus.Process.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Configuration.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Language" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Language.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Language/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Xml.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Logging" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Logging.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Logging/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Xml.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Messaging" depends="init Nuxleus.Entity Nuxleus.PubSub Nuxleus.Vendor">
-    <csc target="library" output="${build.dir}/Nuxleus.Messaging.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Messaging/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="${build.dir}/Nuxleus.Entity.dll"/>
-        <include name="${build.dir}/Nuxleus.PubSub.dll"/>
-        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Process" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Process.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Process/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.PubSub" depends="init Nuxleus.Cryptography Nuxleus.IO">
-    <csc target="library" output="${build.dir}/Nuxleus.PubSub.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.PubSub/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${dependencies.dir}/agsXMPP.dll"/>
-        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-        <include name="${build.dir}/Nuxleus.IO.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Configuration.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Semantics" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Semantics.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Semantics/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Xml.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Service" depends="init Nuxleus.Utility Nuxleus.Configuration Nuxleus.Messaging">
-    <csc target="library" output="${build.dir}/Nuxleus.Service.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Service/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${dependencies.dir}/Saxon.Api.dll"/>
-        <include name="${build.dir}/Nuxleus.Utility.dll"/>
-        <include name="${build.dir}/Nuxleus.Process.dll"/>
-        <include name="${build.dir}/Nuxleus.Configuration.dll"/>
-        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Configuration.dll"/>
-        <include name="System.Configuration.Install.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.ServiceProcess.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Utility" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Utility.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Utility/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Vendor" depends="init">
-    <csc target="library" output="${build.dir}/Nuxleus.Vendor.dll">
-      <sources>
-        <exclude name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx/Properties/AssemblyInfo.cs"/>
-        <include name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx/**/*.cs"/>
-        <include name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx.NetEx/SocketsEx/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Windows.Forms.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Web" depends="init Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
-    <csc target="library" unsafe="True" output="${build.dir}/Nuxleus.Web.dll">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Web/**/*.cs"/>
-        <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/Mono.WebServer/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="${build.dir}/Nuxleus.Configuration.dll"/>
-        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-        <include name="${build.dir}/Nuxleus.IO.dll"/>
-        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-        <include name="${build.dir}/Nuxleus.Process.dll"/>
-        <include name="${build.dir}/Nuxleus.PubSub.dll"/>
-        <include name="${build.dir}/Nuxleus.Utility.dll"/>
-        <include name="${build.dir}/Xameleon.dll"/>
-        <include name="${dependencies.dir}/IKVM.OpenJDK.ClassLibrary.dll"/>
-        <include name="${dependencies.dir}/IKVM.Runtime.dll"/>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-        <include name="${dependencies.dir}/Mono.Posix.dll"/>
-        <include name="${dependencies.dir}/Mono.Security.dll"/>
-        <include name="${dependencies.dir}/Mvp.Xml.dll"/>
-        <include name="${dependencies.dir}/Saxon.Api.dll"/>
-        <include name="${dependencies.dir}/saxon8.dll"/>
-        <include name="${dependencies.dir}/agsXMPP.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Web.Services" depends="init Xameleon">
-    <csc target="library" output="${build.dir}/Nuxleus.Web.Services.dll">
-      <sources>
-        <include name="Nuxleus.Web.Services/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="FileSystemWatcher" depends="init Nuxleus Nuxleus.Service">
-    <csc target="exe" output="${build.dir}/Watcher.exe">
-      <sources>
-        <include name="${source.dir}/ConsoleApps/FileSystemWatcher/Watcher.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Service.dll"/>
-        <include name="System.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="LLUPRouterService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
-    <csc target="exe" output="${build.dir}/LLUPRouterService.exe">
-      <sources>
-        <include name="${source.dir}/ServiceApps/LLUP/Router.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Service.dll"/>
-        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
-        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-        <include name="System.dll"/>
-        <include name="System.ServiceProcess.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="LLUPPublisherService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
-    <csc target="exe" output="${build.dir}/LLUPPublisherService.exe">
-      <sources>
-        <include name="${source.dir}/ServiceApps/LLUP/Publisher.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Service.dll"/>
-        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
-        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-        <include name="System.dll"/>
-        <include name="System.ServiceProcess.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="LLUPSubscriberService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
-    <csc target="exe" output="${build.dir}/LLUPSubscriberService.exe">
-      <sources>
-        <include name="${source.dir}/ServiceApps/LLUP/Subscriber.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Service.dll"/>
-        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
-        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-        <include name="System.dll"/>
-        <include name="System.ServiceProcess.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="ReplicationService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
-    <csc target="exe" output="${build.dir}/ReplicationService.exe">
-      <sources>
-        <include name="${source.dir}/ServiceApps/ReplicationService/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Service.dll"/>
-        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
-        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-        <include name="System.dll"/>
-        <include name="System.ServiceProcess.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="QSToLLUPService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
-    <csc target="exe" output="${build.dir}/QueueServerService.exe">
-      <sources>
-        <include name="${source.dir}/ServiceApps/QueueServerService/QsToLLUPBridge.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Service.dll"/>
-        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
-        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-        <include name="System.dll"/>
-        <include name="System.ServiceProcess.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="QueueServerService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
-    <csc target="exe" output="${build.dir}/QueueServerService.exe">
-      <sources>
-        <include name="${source.dir}/ServiceApps/QueueServerService/Program.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Service.dll"/>
-        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
-        <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-        <include name="System.dll"/>
-        <include name="System.ServiceProcess.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="System.Messaging" depends="init">
-    <csc target="library" output="${build.dir}/System.Messaging.dll">
-      <sources>
-        <include name="${dependencies.dir}/Vendor/Mono/mcs/build/common/Locale.cs"/>
-        <include name="${dependencies.dir}/Vendor/Mono/mcs/build/common/MonoTODOAttribute.cs"/>
-        <include name="${dependencies.dir}/ModifiedFiles/Consts.cs"/>
-        <include name="${dependencies.dir}/Vendor/Mono/mcs/class/System.Messaging/System.Messaging/**/*.cs"/>
-        <include name="${dependencies.dir}/Vendor/Mono/mcs/class/System.Messaging/System.Messaging.Design/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.ServiceProcess.dll"/>
-        <include name="System.Configuration.dll"/>
-        <include name="System.Configuration.Install.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Drawing.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.Windows.Forms.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="all">
-    <call target="init"/>
-    <call target="Xameleon"/>
-    <call target="XSP"/>
-    <call target="Nuxleus"/>
-    <call target="Nuxleus.Authentication"/>
-    <call target="Nuxleus.Build"/>
-    <call target="Nuxleus.Configuration"/>
-    <call target="Nuxleus.Extension"/>
-    <call target="Nuxleus.Entity"/>
-    <call target="Nuxleus.Cryptography"/>
-    <call target="Nuxleus.Command"/>
-    <call target="Nuxleus.Extension"/>
-    <call target="Nuxleus.Extension.Amp.Fm"/>
-    <call target="Nuxleus.Extension.Aws"/>
-    <call target="Nuxleus.Extension.Community"/>
-    <call target="Nuxleus.Extension.Facebook"/>
-    <call target="Nuxleus.Extension.Silverlight"/>
-    <call target="Nuxleus.IO"/>
-    <call target="Nuxleus.Language"/>
-    <call target="Nuxleus.Logging"/>
-    <call target="Nuxleus.Messaging"/>
-    <call target="Nuxleus.Process"/>
-    <call target="Nuxleus.PubSub"/>
-    <call target="Nuxleus.Semantics"/>
-    <call target="Nuxleus.Service"/>
-    <call target="Nuxleus.Utility"/>
-    <call target="Nuxleus.Vendor"/>
-    <call target="Nuxleus.Web"/>
-    <call target="Nuxleus.Web.Services"/>
-    <call target="FileSystemWatcher"/>
-    <call target="ReplicationService"/>
-    <call target="QueueServerService"/>
-    <call target="QSToLLUPService"/>
-    <call target="LLUPPublisherService"/>
-    <call target="LLUPRouterService"/>
-    <call target="LLUPSubscriberService"/>
-    <call target="System.Messaging"/>
-  </target>
-  <target name="production" depends="all">
-    <copy todir="${prod.web.install.dir}" overwrite="true">
-      <fileset basedir="${build.dir}">
-        <include name="**"/>
-        <exclude name="*.mdb"/>
-        <exclude name="*.pdb"/>
-      </fileset>
-    </copy>
-  </target>
-  <target name="development" depends="all">
-    <copy todir="${dev.web.install.dir}" overwrite="true">
-      <fileset basedir="${build.dir}">
-        <include name="**"/>
-        <exclude name="*.mdb"/>
-        <exclude name="*.pdb"/>
-      </fileset>
-    </copy>
-  </target>
-  <target name="test" depends="all">
-    <copy todir="${test.web.install.dir}" overwrite="true">
-      <fileset basedir="${build.dir}">
-        <include name="**"/>
-        <exclude name="*.mdb"/>
-        <exclude name="*.pdb"/>
-      </fileset>
-    </copy>
-  </target>
-  <target name="clean">
-    <delete dir="${build.dir}" failonerror="false"/>
-  </target> 
-<!-- This does not work yet quite well unfortunately
+    <property name="project.version" value="0.2.3.4" />
+    <property name="source.dir" value="." />
+    <property name="dependencies.dir" value="./Dependencies" />
+    <property name="build.dir" value="./build/bin" />
+    <property name="prod.web.install.dir" value="../Web/Production" />
+    <property name="dev.web.install.dir" value="../Web/Development" />
+    <property name="test.web.install.dir" value="../Web/Test" />
+    <target name="init">
+        <mkdir dir="${build.dir}" failonerror="false" />
+    </target>
+    <target name="Xameleon"
+        depends="init Nuxleus.Authentication Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility">
+        <csc target="library" output="${build.dir}/Xameleon.dll" unsafe="True">
+            <sources>
+                <include name="${source.dir}/Xameleon/Function/*.cs" />
+                <include name="${source.dir}/Xameleon/Document/*.cs" />
+                <include name="${source.dir}/Xameleon/ResultDocumentHandler/*.cs" />
+                <include name="${source.dir}/Xameleon/SemWeb/*.cs" />
+                <include name="${source.dir}/Xameleon/Service/*.cs" />
+                <include name="${source.dir}/Xameleon/Transform/*.cs" />
+                <include name="${source.dir}/Xameleon/UrlResolver/*.cs" />
+            </sources>
+            <resources dynamicprefix="true">
+                <include name="${source.dir}/Xameleon/Properties/**/*.resx" />
+            </resources>
+            <references>
+                <include name="${build.dir}/Nuxleus.IO.dll" />
+                <include name="${build.dir}/Nuxleus.Authentication.dll" />
+                <include name="${build.dir}/Nuxleus.Cryptography.dll" />
+                <include name="${build.dir}/Nuxleus.Configuration.dll" />
+                <include name="${build.dir}/Nuxleus.Extension.Facebook.dll" />
+                <include name="${build.dir}/Nuxleus.PubSub.dll" />
+                <include name="${build.dir}/Nuxleus.Process.dll" />
+                <include name="${build.dir}/Nuxleus.Utility.dll" />
+                <include name="${build.dir}/Nuxleus.Messaging.dll" />
+                <include name="System.Drawing.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Configuration.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="${dependencies.dir}/IKVM.OpenJDK.ClassLibrary.dll" />
+                <include name="${dependencies.dir}/IKVM.Runtime.dll" />
+                <include name="${dependencies.dir}/Lucene.Net.dll" />
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll" />
+                <include name="${dependencies.dir}/Mono.Posix.dll" />
+                <include name="${dependencies.dir}/Mono.Security.dll" />
+                <include name="${dependencies.dir}/Mvp.Xml.dll" />
+                <include name="${dependencies.dir}/Saxon.Api.dll" />
+                <include name="${dependencies.dir}/saxon9.dll" />
+                <include name="${dependencies.dir}/SgmlReaderDll.dll" />
+                <include name="${dependencies.dir}/agsXMPP.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="XSP" depends="init Nuxleus.Web">
+        <csc target="exe" output="${build.dir}/xsp2.exe">
+            <sources>
+                <include name="${source.dir}/XSP/**/*.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Web.dll" />
+                <include name="${dependencies.dir}/Mono.Posix.dll" />
+                <include name="${dependencies.dir}/Mono.Security.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus" depends="init Xameleon Nuxleus.Entity">
+        <csc target="library" output="${build.dir}/Nuxleus.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus/**/*.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Xameleon.dll" />
+                <include name="${build.dir}/Nuxleus.Entity.dll" />
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Authentication" depends="init Nuxleus.Utility">
+        <csc target="library" output="${build.dir}/Nuxleus.Authentication.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Authentication/**/*.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Utility.dll" />
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Build" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Build.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Build/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Configuration.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Configuration" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Configuration.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Configuration/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Configuration.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Command" depends="init">
+        <csc target="exe" output="${build.dir}/nux.exe">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Command/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Cryptography" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Cryptography.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Cryptography/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Entity" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Entity.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Entity/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Extension" depends="init Nuxleus.Cryptography">
+        <csc target="library" output="${build.dir}/Nuxleus.Extension.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Extension/**/*.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Cryptography.dll" />
+                <include name="System.dll" />
+                <include name="System.Collections.dll" />
+                <include name="System.Collections.Generic.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Extension.Community" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Extension.Community.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Extension.Community/Agent.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Extension.Facebook" depends="init Nuxleus.Cryptography">
+        <csc target="library" output="${build.dir}/Nuxleus.Extension.Facebook.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Extension.Facebook/**/*.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Cryptography.dll" />
+                <include name="System.dll" />
+                <include name="System.Collections.dll" />
+                <include name="System.Collections.Generic.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Extension.Aws" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Extension.Aws/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Collections.dll" />
+                <include name="System.Collections.Generic.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Extension.Silverlight" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Extension.Silverlight.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Extension.Silverlight/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Extension.Amp.Fm" depends="init Nuxleus.Entity">
+        <csc target="library" output="${build.dir}/Nuxleus.Extension.Amp.Fm.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Extension.Amp.Fm/**/*.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Entity.dll" />
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.IO" depends="init Nuxleus.Configuration Nuxleus.Process Nuxleus.Utility Nuxleus.Vendor">
+        <csc target="library" output="${build.dir}/Nuxleus.IO.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.IO/**/*.cs" />
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll" />
+                <include name="${dependencies.dir}/Saxon.Api.dll" />
+                <include name="${build.dir}/Nuxleus.Utility.dll" />
+                <include name="${build.dir}/Nuxleus.Configuration.dll" />
+                <include name="${build.dir}/Nuxleus.Process.dll" />
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Configuration.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Language" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Language.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Language/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Xml.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Logging" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Logging.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Logging/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Xml.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Messaging" depends="init Nuxleus.Entity Nuxleus.PubSub Nuxleus.Vendor">
+        <csc target="library" output="${build.dir}/Nuxleus.Messaging.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Messaging/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Xml.dll" />
+                <include name="${build.dir}/Nuxleus.Entity.dll" />
+                <include name="${build.dir}/Nuxleus.PubSub.dll" />
+                <include name="${build.dir}/Nuxleus.Vendor.dll" />
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Process" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Process.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Process/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.PubSub" depends="init Nuxleus.Cryptography Nuxleus.IO">
+        <csc target="library" output="${build.dir}/Nuxleus.PubSub.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.PubSub/**/*.cs" />
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/agsXMPP.dll" />
+                <include name="${build.dir}/Nuxleus.Cryptography.dll" />
+                <include name="${build.dir}/Nuxleus.IO.dll" />
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Configuration.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Semantics" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Semantics.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Semantics/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Xml.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Service" depends="init Nuxleus.Utility Nuxleus.Configuration Nuxleus.Messaging">
+        <csc target="library" output="${build.dir}/Nuxleus.Service.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Service/**/*.cs" />
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/Saxon.Api.dll" />
+                <include name="${build.dir}/Nuxleus.Utility.dll" />
+                <include name="${build.dir}/Nuxleus.Process.dll" />
+                <include name="${build.dir}/Nuxleus.Configuration.dll" />
+                <include name="${build.dir}/Nuxleus.Messaging.dll" />
+                <include name="System.dll" />
+                <include name="System.Configuration.dll" />
+                <include name="System.Configuration.Install.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.ServiceProcess.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Utility" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Utility.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Utility/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Vendor" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Vendor.dll">
+            <sources>
+                <exclude name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx/Properties/AssemblyInfo.cs" />
+                <include name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx/**/*.cs" />
+                <include name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx.NetEx/SocketsEx/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Windows.Forms.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Web"
+        depends="init Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
+        <csc target="library" unsafe="True" output="${build.dir}/Nuxleus.Web.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Web/**/*.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/ApplicationServer.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/BaseApplicationHost.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/BaseRequestBroker.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/IApplicationHost.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/InitialWorkerRequest.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/IWebSource.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/LingeringNetworkStream.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/MonoWorkerRequest.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/XSPApplicationHost.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/XSPWorkerRequest.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/XSPRequestBroker.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/XSPWebSource.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/XSPWorker.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/HttpErrors.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/Paths.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/VPathToHost.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/Tracing.cs" />
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/AssemblyInfo2.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="${build.dir}/Nuxleus.Configuration.dll" />
+                <include name="${build.dir}/Nuxleus.Cryptography.dll" />
+                <include name="${build.dir}/Nuxleus.IO.dll" />
+                <include name="${build.dir}/Nuxleus.Messaging.dll" />
+                <include name="${build.dir}/Nuxleus.Process.dll" />
+                <include name="${build.dir}/Nuxleus.PubSub.dll" />
+                <include name="${build.dir}/Nuxleus.Utility.dll" />
+                <include name="${build.dir}/Xameleon.dll" />
+                <include name="${dependencies.dir}/IKVM.OpenJDK.ClassLibrary.dll" />
+                <include name="${dependencies.dir}/IKVM.Runtime.dll" />
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll" />
+                <include name="${dependencies.dir}/Mono.Posix.dll" />
+                <include name="${dependencies.dir}/Mono.Security.dll" />
+                <include name="${dependencies.dir}/Mvp.Xml.dll" />
+                <include name="${dependencies.dir}/Saxon.Api.dll" />
+                <include name="${dependencies.dir}/saxon9.dll" />
+                <include name="${dependencies.dir}/agsXMPP.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Web.Services" depends="init Xameleon">
+        <csc target="library" output="${build.dir}/Nuxleus.Web.Services.dll">
+            <sources>
+                <include name="Nuxleus.Web.Services/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.Data.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="FileSystemWatcher" depends="init Nuxleus Nuxleus.Service">
+        <csc target="exe" output="${build.dir}/Watcher.exe">
+            <sources>
+                <include name="${source.dir}/ConsoleApps/FileSystemWatcher/Watcher.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Service.dll" />
+                <include name="System.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="LLUPRouterService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/LLUPRouterService.exe">
+            <sources>
+                <include name="${source.dir}/ServiceApps/LLUP/Router.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Service.dll" />
+                <include name="${build.dir}/Nuxleus.Vendor.dll" />
+                <include name="${build.dir}/Nuxleus.Messaging.dll" />
+                <include name="System.dll" />
+                <include name="System.ServiceProcess.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="LLUPPublisherService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/LLUPPublisherService.exe">
+            <sources>
+                <include name="${source.dir}/ServiceApps/LLUP/Publisher.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Service.dll" />
+                <include name="${build.dir}/Nuxleus.Vendor.dll" />
+                <include name="${build.dir}/Nuxleus.Messaging.dll" />
+                <include name="System.dll" />
+                <include name="System.ServiceProcess.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="LLUPSubscriberService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/LLUPSubscriberService.exe">
+            <sources>
+                <include name="${source.dir}/ServiceApps/LLUP/Subscriber.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Service.dll" />
+                <include name="${build.dir}/Nuxleus.Vendor.dll" />
+                <include name="${build.dir}/Nuxleus.Messaging.dll" />
+                <include name="System.dll" />
+                <include name="System.ServiceProcess.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="ReplicationService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/ReplicationService.exe">
+            <sources>
+                <include name="${source.dir}/ServiceApps/ReplicationService/**/*.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Service.dll" />
+                <include name="${build.dir}/Nuxleus.Vendor.dll" />
+                <include name="${build.dir}/Nuxleus.Messaging.dll" />
+                <include name="System.dll" />
+                <include name="System.ServiceProcess.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="QSToLLUPService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/QueueServerService.exe">
+            <sources>
+                <include name="${source.dir}/ServiceApps/QueueServerService/QsToLLUPBridge.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Service.dll" />
+                <include name="${build.dir}/Nuxleus.Vendor.dll" />
+                <include name="${build.dir}/Nuxleus.Messaging.dll" />
+                <include name="System.dll" />
+                <include name="System.ServiceProcess.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="QueueServerService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/QueueServerService.exe">
+            <sources>
+                <include name="${source.dir}/ServiceApps/QueueServerService/Program.cs" />
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Service.dll" />
+                <include name="${build.dir}/Nuxleus.Vendor.dll" />
+                <include name="${build.dir}/Nuxleus.Messaging.dll" />
+                <include name="System.dll" />
+                <include name="System.ServiceProcess.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll" />
+            </references>
+        </csc>
+    </target>
+<!--    <target name="System.Messaging" depends="init">
+        <csc target="library" output="${build.dir}/System.Messaging.dll">
+            <sources>
+                <include name="${dependencies.dir}/Vendor/Mono/mcs/build/common/Locale.cs" />
+                <include name="${dependencies.dir}/Vendor/Mono/mcs/build/common/MonoTODOAttribute.cs" />
+                <include name="${dependencies.dir}/ModifiedFiles/Consts.cs" />
+                <include name="${dependencies.dir}/Vendor/Mono/mcs/class/System.Messaging/System.Messaging/**/*.cs" />
+                <include name="${dependencies.dir}/Vendor/Mono/mcs/class/System.Messaging/System.Messaging.Design/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
+                <include name="System.ServiceProcess.dll" />
+                <include name="System.Configuration.dll" />
+                <include name="System.Configuration.Install.dll" />
+                <include name="System.Xml.dll" />
+                <include name="System.Drawing.dll" />
+                <include name="System.Web.dll" />
+                <include name="System.Web.Services.dll" />
+                <include name="System.Windows.Forms.dll" />
+            </references>
+        </csc>
+    </target>-->
+    <target name="all">
+        <call target="init" />
+        <call target="Xameleon" />
+        <call target="XSP" />
+        <call target="Nuxleus" />
+        <call target="Nuxleus.Authentication" />
+        <call target="Nuxleus.Build" />
+        <call target="Nuxleus.Configuration" />
+        <call target="Nuxleus.Extension" />
+        <call target="Nuxleus.Entity" />
+        <call target="Nuxleus.Cryptography" />
+        <call target="Nuxleus.Command" />
+        <call target="Nuxleus.Extension" />
+        <call target="Nuxleus.Extension.Amp.Fm" />
+        <call target="Nuxleus.Extension.Aws" />
+        <call target="Nuxleus.Extension.Community" />
+        <call target="Nuxleus.Extension.Facebook" />
+        <call target="Nuxleus.Extension.Silverlight" />
+        <call target="Nuxleus.IO" />
+        <call target="Nuxleus.Language" />
+        <call target="Nuxleus.Logging" />
+        <call target="Nuxleus.Messaging" />
+        <call target="Nuxleus.Process" />
+        <call target="Nuxleus.PubSub" />
+        <call target="Nuxleus.Semantics" />
+        <call target="Nuxleus.Service" />
+        <call target="Nuxleus.Utility" />
+        <call target="Nuxleus.Vendor" />
+        <call target="Nuxleus.Web" />
+        <call target="Nuxleus.Web.Services" />
+        <call target="FileSystemWatcher" />
+        <call target="ReplicationService" />
+        <call target="QueueServerService" />
+        <call target="QSToLLUPService" />
+        <call target="LLUPPublisherService" />
+        <call target="LLUPRouterService" />
+        <call target="LLUPSubscriberService" />
+        <!--<call target="System.Messaging" />-->
+    </target>
+    <target name="production" depends="all">
+        <copy todir="${prod.web.install.dir}" overwrite="true">
+            <fileset basedir="${build.dir}">
+                <include name="**" />
+                <exclude name="*.mdb" />
+                <exclude name="*.pdb" />
+            </fileset>
+        </copy>
+    </target>
+    <target name="development" depends="all">
+        <copy todir="${dev.web.install.dir}" overwrite="true">
+            <fileset basedir="${build.dir}">
+                <include name="**" />
+                <exclude name="*.mdb" />
+                <exclude name="*.pdb" />
+            </fileset>
+        </copy>
+    </target>
+    <target name="test" depends="all">
+        <copy todir="${test.web.install.dir}" overwrite="true">
+            <fileset basedir="${build.dir}">
+                <include name="**" />
+                <exclude name="*.mdb" />
+                <exclude name="*.pdb" />
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="${build.dir}" failonerror="false" />
+    </target>
+    <!-- This does not work yet quite well unfortunately
   <target name="nuxdoc" description="Build Nuxleus SDK documentation">
         <echo message="Building Nuxleus SDK documentation" />
   	<ndoc>      
