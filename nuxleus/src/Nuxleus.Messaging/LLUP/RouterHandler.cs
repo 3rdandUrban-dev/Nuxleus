@@ -61,6 +61,16 @@ namespace  Nuxleus.Messaging.LLUP {
       }
     }
 
+      /// <summary>
+      /// Sets the index instance that will index any incoming
+      /// notifications and de-index expired or discarded ones.
+      /// </summary>
+      public INotificationIndex Index {
+	  set {
+	      filter.Index = value;
+	  }
+      }
+
     /// <summary>
     /// PostOffice to synchronise receiver and dispatcher.
     /// It is set internally but you may change it to a different
@@ -79,6 +89,7 @@ namespace  Nuxleus.Messaging.LLUP {
     private BlipPostOffice postOffice = null;
     private IList<ISocketConnection> clients = new List<ISocketConnection>();
     private IRouterFilter filter = null;
+      private INotificationIndex index = null;
 
     /// <summary>
     /// The FilterHandler is in charge of deciding whether or not an 
@@ -98,6 +109,17 @@ namespace  Nuxleus.Messaging.LLUP {
     public IRouterFilter Filter {
       set { filter = value; }
     }
+      
+      /// <summary>
+      /// Sets the index instance that will index any incoming
+      /// notifications and de-index expired or discarded ones.
+      /// </summary>
+      public INotificationIndex Index {
+	  set {
+	      index = value;
+	  }
+      }
+
 
     /// <summary>
     /// Sets the service instance used by the server to notify
@@ -161,9 +183,12 @@ namespace  Nuxleus.Messaging.LLUP {
     }
 
     private void BlipReceived(Notification n) {
+	if(index != null) {
+	    index.Index(n);
+	}
       // If the Notification is valid then we 
       // we send it to the connected routers.
-      n = filter.ProcessNotification(n);
+	n = filter.ProcessNotification(n, index);
       if(n != null) {
 	SendToAll(n);
       }
@@ -177,7 +202,7 @@ namespace  Nuxleus.Messaging.LLUP {
     /// <return>
     /// Returns the notification as-is.
     /// </return>
-    public Notification ProcessNotification(Notification n) {
+      public Notification ProcessNotification(Notification n, INotificationIndex index) {
       return n;
     }
   }

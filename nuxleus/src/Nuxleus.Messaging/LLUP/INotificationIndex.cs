@@ -15,6 +15,7 @@ namespace  Nuxleus.Messaging.LLUP
     public interface INotificationIndex
     {
 	void Index(Notification notification);
+	void Deindex(Notification notification);
 	IList<Notification> Query(string query);
     }
 }
