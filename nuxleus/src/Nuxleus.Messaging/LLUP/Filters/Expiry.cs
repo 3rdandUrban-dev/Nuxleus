@@ -18,7 +18,7 @@ namespace  Nuxleus.Messaging.LLUP {
     private double hoursToAdd = 0;
     private DateTime limitDate = DateTime.MinValue;
 
-    public Notification ProcessNotification(Notification n) {
+    public Notification ProcessNotification(Notification n, INotificationIndex index) {
       DateTime ExpiryLimit = limitDate;
     
       if(hoursToAdd > 0.0) {
