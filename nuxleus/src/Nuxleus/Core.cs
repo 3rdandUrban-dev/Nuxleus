@@ -1,11 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Threading;
+using System.Reflection;
+using System.ServiceProcess;
+using System.Runtime.Remoting;
+using Nuxleus.Service;
+using Nuxleus.Agent;
 
-namespace Nuxleus
+namespace Nuxleus.Core
 {
-    public class Core
+    public class Program
     {
-        public Core() { }
+
+        //// The main entry point for the process
+        //static void Main(string[] args)
+        //{
+        //    ServiceBase[] ServicesToRun;
+        //    ServicesToRun = new ServiceBase[] { new NuxleusCoreService(3369) };
+        //    ServiceBase.Run(ServicesToRun);
+        //}
+        static void Main()
+        {
+            LoadBalancer loadBalancer = LoadBalancer.GetLoadBalancer();
+
+            int processors = Environment.ProcessorCount;
+
+            for (int i = 0; i < processors; i++)
+            {
+                Console.WriteLine(processors);
+                Console.WriteLine(loadBalancer.GetQueueCount);
+            }
+        }
     }
 }

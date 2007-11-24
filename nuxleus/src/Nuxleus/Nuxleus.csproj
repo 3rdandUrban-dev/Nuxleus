@@ -6,7 +6,7 @@
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B0D68D3E-8ACE-4F33-9E85-F32CED622614}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Nuxleus</RootNamespace>
     <AssemblyName>Nuxleus</AssemblyName>
@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="Upnp, Version=0.5.0.0, Culture=neutral, PublicKeyToken=667b6f9c0b93f26b, processorArchitecture=MSIL">
@@ -48,8 +49,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agent\Core.cs" />
+    <Compile Include="Agent.cs" />
     <Compile Include="Core.cs" />
+    <Compile Include="InvokeRequest.cs" />
+    <Compile Include="LoadBalancer\LoadBalancer.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -65,9 +68,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Agent\Nuxleus.Agent.csproj">
+      <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>
+      <Name>Nuxleus.Agent</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Authentication\Nuxleus.Authentication.csproj">
       <Project>{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}</Project>
       <Name>Nuxleus.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Command\Nuxleus.Command.csproj">
+      <Project>{091EC796-27A0-4EDF-9286-B7ABF7981769}</Project>
+      <Name>Nuxleus.Command</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">
       <Project>{0FFD8B77-2852-4CB0-9B85-29424C40FC44}</Project>
