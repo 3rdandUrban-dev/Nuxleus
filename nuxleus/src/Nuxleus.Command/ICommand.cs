@@ -1,6 +1,6 @@
 using System;
 
-namespace Nuxleus
+namespace Nuxleus.Command
 {
     public interface ICommand
     {

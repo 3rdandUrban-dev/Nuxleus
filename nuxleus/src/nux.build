@@ -70,20 +70,34 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus" depends="init Xameleon Nuxleus.Entity">
-        <csc target="library" output="${build.dir}/Nuxleus.dll">
+    <target name="Nuxleus" depends="init Xameleon Nuxleus.Agent Nuxleus.Command Nuxleus.Entity Nuxleus.Service">
+        <csc target="exe" output="${build.dir}/Nuxleus.exe">
             <sources>
                 <include name="${source.dir}/Nuxleus/**/*.cs" />
             </sources>
             <references>
                 <include name="${build.dir}/Xameleon.dll" />
+		<include name="${build.dir}/Nuxleus.Agent.dll" />
+		<include name="${build.dir}/Nuxleus.Command.dll" />
                 <include name="${build.dir}/Nuxleus.Entity.dll" />
+		<include name="${build.dir}/Nuxleus.Service.dll" />
                 <include name="System.dll" />
                 <include name="System.Data.dll" />
                 <include name="System.Xml.dll" />
                 <include name="System.Web.dll" />
+		<include name="System.ServiceProcess.dll" />
                 <include name="System.Web.Services.dll" />
                 <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Agent" depends="init">
+        <csc target="library" output="${build.dir}/Nuxleus.Agent.dll">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Agent/**/*.cs" />
+            </sources>
+            <references>
+                <include name="System.dll" />
             </references>
         </csc>
     </target>
@@ -132,7 +146,7 @@
         </csc>
     </target>
     <target name="Nuxleus.Command" depends="init">
-        <csc target="exe" output="${build.dir}/nux.exe">
+        <csc target="library" output="${build.dir}/Nuxleus.Command.dll">
             <sources>
                 <include name="${source.dir}/Nuxleus.Command/**/*.cs" />
             </sources>
@@ -626,6 +640,7 @@
         <call target="Xameleon" />
         <call target="XSP" />
         <call target="Nuxleus" />
+	<call target="Nuxleus.Agent" />
         <call target="Nuxleus.Authentication" />
         <call target="Nuxleus.Build" />
         <call target="Nuxleus.Configuration" />
