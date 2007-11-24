@@ -43,11 +43,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="IKVM.OpenJDK.ClassLibrary, Version=0.36.0.2, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+    <Reference Include="IKVM.OpenJDK.ClassLibrary, Version=0.36.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\IKVM.OpenJDK.ClassLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="IKVM.Runtime, Version=0.36.0.2, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+    <Reference Include="IKVM.Runtime, Version=0.36.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\IKVM.Runtime.dll</HintPath>
     </Reference>
@@ -59,13 +59,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Mvp.Xml.dll</HintPath>
     </Reference>
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Saxon.Api.dll</HintPath>
     </Reference>
-    <Reference Include="saxon8, Version=8.9.0.3, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
+    <Reference Include="saxon9, Version=9.0.0.1, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\saxon8.dll</HintPath>
+      <HintPath>..\Dependencies\saxon9.dll</HintPath>
     </Reference>
     <Reference Include="SgmlReaderDll, Version=1.7.2818.38825, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -100,7 +100,7 @@
     </Compile>
     <Compile Include="ResultDocumentHandler\*.cs" />
     <Compile Include="SemWeb\*.cs" />
-    <Compile Include="UrlResolver\*.cs" />
+    <Compile Include="UrlResolver\NuxleusXmlUrlResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -70,52 +70,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\ApplicationServer.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\ApplicationServer.cs">
       <Link>WebServer\Mono.WebServer\ApplicationServer.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\BaseApplicationHost.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\BaseApplicationHost.cs">
       <Link>WebServer\Mono.WebServer\BaseApplicationHost.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\BaseRequestBroker.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\BaseRequestBroker.cs">
       <Link>WebServer\Mono.WebServer\BaseRequestBroker.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\HttpErrors.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\HttpErrors.cs">
       <Link>WebServer\Mono.WebServer\HttpErrors.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\IApplicationHost.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\IApplicationHost.cs">
       <Link>WebServer\Mono.WebServer\IApplicationHost.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\InitialWorkerRequest.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\InitialWorkerRequest.cs">
       <Link>WebServer\Mono.WebServer\InitialWorkerRequest.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\IWebSource.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\IWebSource.cs">
       <Link>WebServer\Mono.WebServer\IWebSource.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\LingeringNetworkStream.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\LingeringNetworkStream.cs">
       <Link>WebServer\Mono.WebServer\LingeringNetworkStream.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\MonoWorkerRequest.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\MonoWorkerRequest.cs">
       <Link>WebServer\Mono.WebServer\MonoWorkerRequest.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\Paths.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\Paths.cs">
       <Link>WebServer\Mono.WebServer\Paths.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\VPathToHost.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\VPathToHost.cs">
       <Link>WebServer\Mono.WebServer\VPathToHost.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPApplicationHost.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\XSPApplicationHost.cs">
       <Link>WebServer\Mono.WebServer\XSPApplicationHost.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPRequestBroker.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\XSPRequestBroker.cs">
       <Link>WebServer\Mono.WebServer\XSPRequestBroker.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPWebSource.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\XSPWebSource.cs">
       <Link>WebServer\Mono.WebServer\XSPWebSource.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPWorker.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\XSPWorker.cs">
       <Link>WebServer\Mono.WebServer\XSPWorker.cs</Link>
     </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\mono.webserver\XSPWorkerRequest.cs">
+    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\XSPWorkerRequest.cs">
       <Link>WebServer\Mono.WebServer\XSPWorkerRequest.cs</Link>
     </Compile>
     <Compile Include="Agent.cs" />
