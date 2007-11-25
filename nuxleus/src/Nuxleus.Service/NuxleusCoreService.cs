@@ -20,7 +20,7 @@ namespace Nuxleus.Service
         Container components = null;
         MessageServer _nuxleusCoreServer = null;
         PublisherHandler pub = null;
-
+        static string _serviceName = _serviceName;
 
         public NuxleusCoreService(int port)
         {
@@ -31,6 +31,13 @@ namespace Nuxleus.Service
 
             pub = new PublisherHandler();
             pub.ReceiverService = _nuxleusCoreServer.Service;
+
+            ///TODO: This needs to be integrating into the core messaging server
+            ///and used to dispatch requests based on the number of processors
+            ///on the system.  See LoadBalancer folder for more detail.
+
+            //LoadBalancer loadBalancer = LoadBalancer.GetLoadBalancer();
+
         }
 
         // The main entry point for the process
@@ -49,7 +56,7 @@ namespace Nuxleus.Service
         private void InitializeComponent()
         {
             components = new Container();
-            this.ServiceName = "nuXleus llup publisher servers";
+            this.ServiceName = _serviceName;
         }
 
         /// <summary>
@@ -74,7 +81,7 @@ namespace Nuxleus.Service
         {
             try
             {
-                Log.Write("Starting nuXleus Core Service...");
+                Log.Write("Starting " + _serviceName);
                 _nuxleusCoreServer.Start();
             }
             catch (Exception ex)
@@ -90,7 +97,7 @@ namespace Nuxleus.Service
         {
             try
             {
-                Log.Write("Stopping nuXleus Core Server...");
+                Log.Write("Stopping " + _serviceName);
                 _nuxleusCoreServer.Stop();
                 this.Dispose();
             }

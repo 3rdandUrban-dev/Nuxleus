@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-namespace Nuxleus.Core
+namespace Nuxleus.Service
 {
 
     sealed class LoadBalancer
