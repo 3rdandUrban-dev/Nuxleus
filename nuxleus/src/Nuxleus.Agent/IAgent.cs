@@ -1,12 +1,12 @@
 using System;
 using System.Collections;
+using Nuxleus.Messaging;
 
 namespace Nuxleus.Agent
 {
     public interface IAgent
     {
-        Queue Inbox { get; set; }
-        Queue Outbox { get; set; }
+        PostOffice PostOffice { get; set; }
         Hashtable Result { get; set; }
 
         void AuthenticateRequest();

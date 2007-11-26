@@ -52,7 +52,6 @@
     <Compile Include="Agent.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="InvokeRequest.cs" />
-    <Compile Include="LoadBalancer\LoadBalancer.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

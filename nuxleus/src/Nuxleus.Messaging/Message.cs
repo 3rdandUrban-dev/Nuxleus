@@ -9,16 +9,19 @@
 
 using System;
 
-namespace Nuxleus.Messaging {
-  public class Message : IMessage {
-    private string id = null;
-    private byte[] data = null;
-    
-    public string Id { get { return id; } set{ id = value; } }
+namespace Nuxleus.Messaging
+{
+    public class Message : IMessage
+    {
+        private string id = null;
+        private byte[] data = null;
 
-    public byte[] InnerMessage { 
-      get { return data; } 
-      set { data = value; } 
+        public string Id { get { return id; } set { id = value; } }
+
+        public byte[] InnerMessage
+        {
+            get { return data; }
+            set { data = value; }
+        }
     }
-  }
 }

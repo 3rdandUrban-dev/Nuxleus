@@ -1,11 +1,3 @@
-//
-// PublisherHandler.cs: LLUP publication handler implementation
-//
-// Author:
-//   Sylvain Hellegouarch (sh@3rdandurban.com)
-//
-// Copyright (C) 2007, Sylvain Hellegouarch
-// 
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,75 +5,15 @@ using System.Collections.Generic;
 using ALAZ.SystemEx.NetEx.SocketsEx;
 using ALAZ.SystemEx.ThreadingEx;
 
-namespace Nuxleus.Messaging.LLUP
+namespace Nuxleus.Messaging.Core
 {
-    public class PublisherHandler
-    {
-        private ReceiverHandler receiver = null;
-        private DispatchHandler dispatcher = null;
-
-        public PublisherHandler ()
-        {
-            receiver = new ReceiverHandler();
-            dispatcher = new DispatchHandler();
-            BlipPostOffice po = new BlipPostOffice();
-            receiver.PostOffice = po;
-            dispatcher.PostOffice = po;
-        }
-
-        /// <summary>
-        /// Gets or sets the service handling events on the connections
-        /// between clients to the publisher and the publisher handler.
-        /// </summary>
-        public MessageService ReceiverService
-        {
-            get
-            {
-                return receiver.Service;
-            }
-            set
-            {
-                receiver.Service = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the service handling events on the connections
-        /// between the publisher and routers connected to it.
-        /// </summary>
-        public MessageService DispatcherService
-        {
-            get
-            {
-                return dispatcher.Service;
-            }
-            set
-            {
-                dispatcher.Service = value;
-            }
-        }
-
-        /// <summary>
-        /// PostOffice to synchronise receiver and dispatcher.
-        /// Set internally by the constructor but can be changed to 
-        /// different instance.
-        /// </summary>
-        public BlipPostOffice PostOffice
-        {
-            set
-            {
-                receiver.PostOffice = value;
-                dispatcher.PostOffice = value;
-            }
-        }
-    }
 
     // Straight dispatcher of notifications to connected clients
     // This does not do any kind of processing on the notification itself
     internal class DispatchHandler
     {
         private MessageService service = null;
-        private BlipPostOffice postOffice = null;
+        private PostOffice postOffice = null;
         // Router connections
         private IList<ISocketConnection> clients = new List<ISocketConnection>();
 
@@ -102,9 +34,9 @@ namespace Nuxleus.Messaging.LLUP
             set
             {
                 service = value;
-                service.Connected += new QueueEventHandler(this.ClientConnected);
-                service.Disconnected += new QueueEventHandler(this.ClientDisconnected);
-                service.Failure += new QueueFailureEventHandler(this.FailureRaised);
+                service.Connected += new QueueEventHandler(ClientConnected);
+                service.Disconnected += new QueueEventHandler(ClientDisconnected);
+                service.Failure += new QueueFailureEventHandler(FailureRaised);
             }
         }
 
@@ -112,12 +44,12 @@ namespace Nuxleus.Messaging.LLUP
         /// Sets the PostOffice instance used for being notified of 
         /// new notification to process.
         /// </summary>
-        public BlipPostOffice PostOffice
+        public PostOffice PostOffice
         {
             set
             {
                 postOffice = value;
-                postOffice.Mailbox += new BlipPostedHandler(this.BlipToDispatch);
+                postOffice.Mailbox += new PostedHandler(RequestToDispatch);
             }
         }
 
@@ -154,7 +86,7 @@ namespace Nuxleus.Messaging.LLUP
             }
         }
 
-        private void BlipToDispatch (Notification n)
+        private void RequestToDispatch (Notification n)
         {
             // The publisher always ensure that each notification has its llup:id 
             // element set so that consumers can decide whether or not

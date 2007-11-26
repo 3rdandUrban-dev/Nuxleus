@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 
-namespace Nuxleus.Agent
+namespace Nuxleus.Messaging
 {
     public delegate void AsyncRequestCallback(Response response);
 

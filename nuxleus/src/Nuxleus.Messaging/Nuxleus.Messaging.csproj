@@ -43,7 +43,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs" />
+    <Compile Include="Agent.cs" />
+    <Compile Include="Core\DispatchHandler.cs" />
+    <Compile Include="Core\ReceiverHandler.cs" />
+    <Compile Include="Core\NuxleusCoreHandler.cs" />
+    <Compile Include="IMessage.cs" />
+    <Compile Include="LLUP\BlipPostOffice.cs" />
+    <Compile Include="LLUP\Filters\Expiry.cs" />
+    <Compile Include="LLUP\INotificationIndex.cs" />
+    <Compile Include="LLUP\InternalReceiverHandler.cs" />
+    <Compile Include="LLUP\IRouterFilter.cs" />
+    <Compile Include="LLUP\ISubscriber.cs" />
+    <Compile Include="LLUP\Notification.cs" />
+    <Compile Include="LLUP\PublisherHandler.cs" />
+    <Compile Include="LLUP\RouterHandler.cs" />
+    <Compile Include="LLUP\SubscriberHandler.cs" />
+    <Compile Include="LLUP\Subscribers\AtomFeed.cs" />
+    <Compile Include="LoadBalancer\LoadBalancer.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="MessageClient.cs" />
+    <Compile Include="MessageServer.cs" />
+    <Compile Include="MessageService.cs" />
+    <Compile Include="Notification\Notification.cs" />
+    <Compile Include="PostOffice\IPostOffice.cs" />
+    <Compile Include="PostOffice\PostOffice.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QS\BuckerServerHander.cs" />
+    <Compile Include="QS\BuckerToLLUPHandler.cs" />
+    <Compile Include="Request\Request.cs" />
+    <Compile Include="Response\Response.cs" />
+    <Compile Include="Server\ReplicationHandler.cs" />
+    <Compile Include="Server\ReplicationMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />

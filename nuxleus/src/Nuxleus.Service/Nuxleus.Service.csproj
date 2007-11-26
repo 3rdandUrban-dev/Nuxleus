@@ -74,21 +74,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublisherService.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Qs.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="QSToLLUP.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="RouterService.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="SubscriberService.cs">
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
-using Nuxleus.Agent;
+using Nuxleus.Messaging;
+using Nuxleus.Command;
 
 namespace Nuxleus.Core
 {
