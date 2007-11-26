@@ -4,16 +4,18 @@ using System.Collections;
 namespace Nuxleus.Messaging
 {
 
-    sealed class LoadBalancer
+    public struct LoadBalancer
     {
 
         static readonly LoadBalancer instance = new LoadBalancer(Environment.ProcessorCount);
 
-        ArrayList _postOfficeArrayList = new ArrayList();
-        int _loadBalancePostOfficeIndex = 0;
+        ArrayList _postOfficeArrayList;
+        int _loadBalancePostOfficeIndex;
 
         LoadBalancer (int processors)
         {
+            _postOfficeArrayList = new ArrayList();
+            _loadBalancePostOfficeIndex = 0;
             for (int p = 0; p < processors; p++)
             {
                 PostOffice m_postOffice = new PostOffice();
