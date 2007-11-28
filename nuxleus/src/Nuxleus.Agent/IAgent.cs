@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
-using Nuxleus.Messaging;
 
 namespace Nuxleus.Agent
 {
     public interface IAgent
     {
-        PostOffice PostOffice { get; set; }
         Hashtable Result { get; set; }
 
         void AuthenticateRequest();

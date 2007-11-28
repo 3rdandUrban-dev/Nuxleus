@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
+using Nuxleus.Agent;
 
 namespace Nuxleus.Messaging
 {

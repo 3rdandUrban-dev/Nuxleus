@@ -70,8 +70,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QS\BuckerServerHander.cs" />
     <Compile Include="QS\BuckerToLLUPHandler.cs" />
-    <Compile Include="Request\Request.cs" />
-    <Compile Include="Response\Response.cs" />
     <Compile Include="Server\ReplicationHandler.cs" />
     <Compile Include="Server\ReplicationMessage.cs" />
   </ItemGroup>
@@ -86,6 +84,10 @@
     <ProjectReference Include="..\Dependencies\ALAZ\Source\ALAZ.SystemEx\ALAZ.SystemEx.csproj">
       <Project>{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2}</Project>
       <Name>ALAZ.SystemEx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Agent\Nuxleus.Agent.csproj">
+      <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>
+      <Name>Nuxleus.Agent</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Entity\Nuxleus.Entity.csproj">
       <Project>{511566A4-21DC-45E3-A3F8-84763000C72E}</Project>

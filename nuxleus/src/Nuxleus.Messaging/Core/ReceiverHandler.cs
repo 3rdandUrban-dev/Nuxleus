@@ -1,16 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 using ALAZ.SystemEx.NetEx.SocketsEx;
 using ALAZ.SystemEx.ThreadingEx;
+using Nuxleus.Agent;
 
 namespace Nuxleus.Messaging.Core
 {
     internal class ReceiverHandler
     {
-        private MessageService _service = null;
-        private PostOffice _postOffice = null;
+        MessageService _service = null;
+        PostOffice _postOffice = null;
+        Request m_request;
+        AsyncRequest m_invokeRequest;
+
+        delegate Response AsyncRequest (Request request);
 
         /// <summary>
         /// An instance of this class is in charge of recieving 
@@ -58,5 +62,20 @@ namespace Nuxleus.Messaging.Core
             Notification n = Notification.Parse(message.InnerMessage);
             _postOffice.Post(n);
         }
+
+
+        public void Execute ()
+        {
+            m_invokeRequest.BeginInvoke(m_request, this.CallBack, null);
+        }
+
+        private void CallBack (IAsyncResult ar)
+        {
+            Response response = m_invokeRequest.EndInvoke(ar);
+
+            ///TODO: Process and serialize result.
+            ///TODO: Add result to Result Hashtable
+        }
+
     }
 }

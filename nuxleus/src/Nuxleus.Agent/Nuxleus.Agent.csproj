@@ -38,15 +38,11 @@
   <ItemGroup>
     <Compile Include="IAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="Response.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
-      <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
-      <Name>Nuxleus.Messaging</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
