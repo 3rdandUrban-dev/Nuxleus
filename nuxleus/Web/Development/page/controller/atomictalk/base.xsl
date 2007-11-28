@@ -160,7 +160,7 @@
     <xsl:template name="output-aspects">
         <xsl:param name="aspects"/>
         <xsl:if test="contains($aspects, '\r\n')">
-            <h4><xsl:value-of select="concat(translate(substring-before($aspects, ':'), '/', '.'), ' = ', substring-before(substring-after($aspects, ':'), '\r\n'))"/></h4>
+            <h4><xsl:value-of select="concat(substring-before($aspects, ':'), ' = ', substring-before(substring-after($aspects, ':'), '\r\n'))"/></h4>
             <xsl:call-template name="output-aspects">
                 <xsl:with-param name="aspects" select="substring-after($aspects, '\r\n')"/>
             </xsl:call-template>

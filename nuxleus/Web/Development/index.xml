@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/page/controller/atomictalk/base.xsl"?>
 <entity:page
-    xmlns:session="http://xameleon.org/session"
-    xmlns:openid="http://openid.name/"
     xmlns:entity="http://atomictalk.org/entity"
     xmlns:page="http://atomictalk.org/page"
     xmlns:config="http://atomictalk.org/page/config" 
     xmlns:advice="http://atomictalk.org/page/config/advice"
-    xmlns:resource="http://atomictalk.org/page/resource"
-    xmlns:model="http://atomictalk.org/page/model"
-    xmlns:view="http://atomictalk.org/page/view"
-    xmlns:controller="http://atomictalk.org/page/controller"
-    xmlns:output="http://atomictalk.org/page/output" 
-    xmlns:head="http://atomictalk.org/page/output/head"
-    xmlns:body="http://atomictalk.org/page/output/body" 
-    xmlns:structure="http://atomictalk.org/page/output/body/structure"
-    xmlns:doc="http://atomictalk.org/feed/doc" 
-    xmlns="http://www.w3.org/1999/xhtml">
+    xmlns:output="http://atomictalk.org/page/output">
     <page:config src="/page/config/config.xml">
         <page:advice>
             <advice:page-title>@@domain.label@@ :: @@date@@</advice:page-title>
