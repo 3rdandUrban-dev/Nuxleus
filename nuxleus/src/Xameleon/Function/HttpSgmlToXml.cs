@@ -8,38 +8,45 @@ using Nuxleus.Memcached;
 using Nuxleus.Transform;
 using System.IO;
 using System.Text;
+using System.Collections;
 
 namespace Xameleon.Function
 {
 
     public class HttpSgmlToXml
     {
+        static Hashtable _cacheHashtable = new Hashtable();
 
-        public HttpSgmlToXml() { }
+        public HttpSgmlToXml () { }
 
-        public static Value GetDocXml(String uri, HttpContext context)
+        public static Value GetDocXml (String uri, HttpContext context)
         {
             return getDocXml(uri, "/html", context);
         }
 
-        public static Value GetDocXml(String uri, String path, HttpContext context)
+        public static Value GetDocXml (String uri, String path, HttpContext context)
         {
             return getDocXml(uri, path, context);
         }
 
-        public static String GetDocXml(String uri, String path, bool stripNS, HttpContext context)
+        public static String GetDocXml (String uri, String path, bool stripNS, HttpContext context)
         {
             try
             {
+                //Console.WriteLine("Uri: " + uri);
+                //Console.WriteLine("Path: " + path);
+                //string returnXML = getXdmNode(uri, path, context).OuterXml;
+                //Console.WriteLine(returnXML);
                 return getXdmNode(uri, path, context).OuterXml;
             }
             catch (Exception e)
             {
-                return e.Message;
+                Console.WriteLine(e.Message);
+                return "<stacktrace>" + e.StackTrace + "</stacktrace>";
             }
         }
 
-        private static Value getDocXml(String uri, String path, HttpContext context)
+        private static Value getDocXml (String uri, String path, HttpContext context)
         {
             try
             {
@@ -51,31 +58,34 @@ namespace Xameleon.Function
             }
         }
 
-        private static XdmNode getXdmNode(String uri, String path, HttpContext context)
+        private static XdmNode getXdmNode (String uri, String path, HttpContext context)
         {
-            Client memcachedClient = (Client)context.Application["memcached"];
+            //Client memcachedClient = (Client)context.Application["memcached"];
             string decodedUri = HttpUtility.UrlDecode(uri);
             string eTag = Context.GenerateETag(decodedUri, Nuxleus.Cryptography.HashAlgorithm.SHA1);
-            string xhtmlDocString = (string)memcachedClient.Get(eTag);
+            XmlNode xhtmlNode = (XmlNode)_cacheHashtable[eTag];
             SgmlReader sr = new SgmlReader();
-            XmlDocument xDoc = new XmlDocument();
-
-            if (xhtmlDocString != null)
-            {
-                TextReader stringReader = new StringReader(xhtmlDocString);
-                sr.InputStream = stringReader;
-                xDoc.Load(sr);
-            }
-            else
-            {
-                sr.Href = decodedUri;
-                xDoc.Load(sr);
-                memcachedClient.Set(eTag, xDoc.OuterXml);
-            }
-
-            XmlNode xhtml = xDoc.SelectSingleNode(HttpUtility.UrlDecode(path));
             Processor processor = new Processor();
-            return processor.NewDocumentBuilder().Build(xhtml);
+
+            if (xhtmlNode == null)
+            {
+                try
+                {
+                    sr.Href = decodedUri;
+                    XmlDocument xDoc = new XmlDocument();
+                    xDoc.Load(sr);
+                    xhtmlNode = xDoc.FirstChild;
+                    _cacheHashtable.Add(eTag, xhtmlNode);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    //Console.WriteLine("Outer XML" + sr.ReadOuterXml());
+                    //Console.WriteLine("Outer XML (XmlNode)" + xhtmlNode.OuterXml);
+                }
+            }
+
+            return processor.NewDocumentBuilder().Build(xhtmlNode.SelectSingleNode(HttpUtility.UrlDecode(path)));
 
         }
     }
