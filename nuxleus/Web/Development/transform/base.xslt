@@ -26,7 +26,6 @@
 
   <xsl:import href="./controller/base.xslt" />
   <xsl:import href="./functions/base.xslt" />
-  <xsl:import href="./private/function/base.xslt" />
 
   <xsl:param name="current-context" />
   <xsl:param name="response" select="aspnet-context:Response($current-context)" />
