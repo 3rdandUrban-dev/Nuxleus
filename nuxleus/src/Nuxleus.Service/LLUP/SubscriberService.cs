@@ -12,6 +12,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Configuration.Install;
 using Nuxleus.Messaging;
 using Nuxleus.Messaging.LLUP;
+using Nuxleus.Logging;
 
 namespace Nuxleus.Service
 {

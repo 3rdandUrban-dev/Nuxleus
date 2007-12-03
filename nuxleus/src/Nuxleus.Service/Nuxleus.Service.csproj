@@ -56,24 +56,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agent.cs" />
     <Compile Include="Authentication\*.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FileSystem\Replication\Replication.cs">
+    <Compile Include="Clipboard\*.cs" />
+    <Compile Include="Filesystem\*.cs" />
+    <Compile Include="Filesystem\Replication\*.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FileSystem\RevisionControl\RevisionControlManager.cs" />
-    <Compile Include="FileSystem\Watcher\FileSystemWatcherService.cs">
+    <Compile Include="Filesystem\RevisionControl\*.cs" />
+    <Compile Include="Filesystem\Watcher\FileSystemWatcherService.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FileSystem\Watcher\Watcher.cs">
+    <Compile Include="Filesystem\Watcher\Watcher.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LLUP\PublisherService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LLUP\RouterService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LLUP\SubscriberService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LoadBalancer\*.cs" />
     <Compile Include="NuxleusCoreService.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Agent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queue\Qs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Queue\QSToLLUP.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">
@@ -83,6 +101,10 @@
     <ProjectReference Include="..\Nuxleus.IO\Nuxleus.IO.csproj">
       <Project>{76B51906-3D94-412F-B943-84CD2A41AE11}</Project>
       <Name>Nuxleus.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Logging\Nuxleus.Logging.csproj">
+      <Project>{54C0DC78-3BF7-4DCF-BEA0-25E757B8BDC1}</Project>
+      <Name>Nuxleus.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
       <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>

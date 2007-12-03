@@ -127,6 +127,7 @@ namespace Nuxleus.Web.HttpHandler
                 switch (_httpMethod)
                 {
                     case "GET":
+                    case "HEAD":
                         {
                             if (_CONTENT_IS_MEMCACHED)
                             {
@@ -137,7 +138,17 @@ namespace Nuxleus.Web.HttpHandler
                             {
                                 try
                                 {
-                                    _transform.BeginProcess(_transformContext, context, _xslTransformationManager, _writer, _transformAsyncResult);
+                                    string file = _context.Request.FilePath;
+                                    string baseXslt;
+
+                                    if (file.EndsWith("at.page"))
+                                        baseXslt = "base-atomictalk";
+                                    else if (file.EndsWith("service.op"))
+                                        baseXslt = "base";
+                                    else
+                                        baseXslt = _xslTransformationManager.BaseXsltName;
+
+                                    _transform.BeginProcess(_transformContext, context, _xslTransformationManager, _writer, baseXslt, _transformAsyncResult);
                                     return _transformAsyncResult;
                                 }
                                 catch (Exception e)
@@ -192,7 +203,7 @@ namespace Nuxleus.Web.HttpHandler
                 }
                 _transformContext.Clear();
                 if (!_CONTENT_IS_MEMCACHED && _USE_MEMCACHED)
-                    _memcachedClient.Set(_transformContext.GetRequestHashcode(true), output);
+                    _memcachedClient.Set(_transformContext.GetRequestHashcode(true), output, DateTime.Now.AddHours(1));
                 if ((bool)_context.Application["debug"])
                     _context.Response.Write((string)_context.Application["debugOutput"]);
             }
