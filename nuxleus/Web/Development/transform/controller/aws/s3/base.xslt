@@ -46,6 +46,7 @@
     xmlns:queue="http://xameleon.org/service/queue" 
     xmlns:amazonaws="http://s3.amazonaws.com/doc/2006-03-01/"
     xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:profile="http://nuxleus.com/profile" 
     exclude-result-prefixes="#all">
 
   <xsl:import href="../../../model/json-to-xml.xslt"/>
@@ -71,7 +72,8 @@
   <xsl:variable name="browser" select="aspnet-request:Browser($request)"/>
   <xsl:variable name="q">"</xsl:variable>
 
-<!--   <xsl:template match="header:*">
+  <!--   
+  <xsl:template match="header:*">
     <xsl:param name="sorted-list" as="clitype:System.Collections.SortedList"/>
     <xsl:variable name="key" select="local-name() cast as xs:untypedAtomic"/>
     <xsl:variable name="value" select=". cast as xs:untypedAtomic"/>
@@ -88,21 +90,11 @@
       <xsl:value-of select="func:resolve-variable(.)"/>
     </xsl:element>
   </xsl:template>
-
-  <xsl:template match="service:operation">
-    <xsl:param name="key-name"/>
-    <xsl:variable name="issecure" select="false()" as="xs:boolean"/>
-    <xsl:variable name="content-type" select="if ($debug) then response:set-content-type($response, 'text/plain') else response:set-content-type($response, 'text/xml')"/>
-    <xsl:if test="@use-clientside-xslt">
-      <xsl:processing-instruction name="xml-stylesheet">
-        <xsl:value-of select="concat('type=', $q, 'text/xsl', $q, ' ', 'href=', $q, @use-clientside-xslt, $q)"/>
-      </xsl:processing-instruction>
-    </xsl:if>
-    <message type="service:result"
-        content-type="{if (empty($content-type)) then response:get-content-type($response) else 'not-set'}">
-      <xsl:apply-templates/>
-    </message>
-  </xsl:template> -->
+  -->
+  
+  <xsl:template match="at:test">
+    <xsl:apply-templates />
+  </xsl:template>
 
   <xsl:template match="operation:test">
     <xsl:apply-templates />
@@ -160,31 +152,16 @@
   </xsl:template>
 
   <xsl:template match="s3:check-for-existing-key">
-    <xsl:variable name="folder-name" select="func:resolve-variable(@folder)"/>
+    <xsl:variable name="folder-name" select="replace(func:resolve-variable(@folder), '%2F', '/')"/>
     <xsl:variable name="file-name" select="func:resolve-variable(@file)"/>
     <xsl:variable name="key-name" select="aws:s3-normalize-key($folder-name, $file-name)"/>
-    <xsl:variable name="key-uri" select="aws:s3-get-signature($s3-bucket-name, $key-name, false())"/>
-    <xsl:variable name="compare" select="s3-object-compare:Compare($aws-conn, $s3-bucket-name, $key-name, $guid)"/>
-    <!-- <xsl:variable name="html-to-xml" select="http-sgml-to-xml:GetDocXml('http://beta.lessig.org/blog/archives/000384.shtml', '/html/head/title', false())"/>
-    <xsl:variable name="web-request" select="web-request:GetResponse('http://www.law.stanford.edu/assets/ajax/search_publications.php', 'year_start=&amp;year_end=&amp;s=Lawrence%20Lessig&amp;format=')"/>
-    <uri>
-      <xsl:value-of select="$web-request"/>
-      </uri>
-    <external-html>
-      <xsl:sequence select="saxon:parse($html-to-xml)/title/text()"/>
-    </external-html>
-    -->
-
-    <compare>
-      <xsl:sequence
-          select="aws:s3-put-object($s3-bucket-name, $key-name, $guid, $aws-public-key, $aws-private-key, $issecure)"/>
-      <xsl:value-of select="if ($compare) then 'True!' else 'False!'"/>
-    </compare>
-    <!-- <xsl:variable name="web-request-response" select="web-response:GetResponseStream(web-request:GetResponse($web-request))"/>
-    <xsl:variable name="web-response" select="http-response-stream:GetResponseString($web-request-response)"/>
-    <xsl:apply-templates select="if ($web-response = $guid) then at:IfTrue else at:IfFalse">
-      <xsl:with-param name="key-name" select="$key-name"/>
-      <xsl:with-param name="key-uri" select="$key-uri"/>
+    <xsl:variable name="key-uri" select="aws:s3-get-signature($folder-name, $file-name, false())"/>
+    <xsl:sequence
+        select="aws:s3-put-object($s3-bucket-name, $key-name, $guid, $aws-public-key, $aws-private-key, false())"/>
+    <!-- <xsl:variable name="compare" select="s3-object-compare:Compare($aws-conn, $s3-bucket-name, $key-name, $guid)"/>
+    <xsl:variable name="compare-result" select="if($compare) then at:IfTrue else at:IfFalse"/>
+    <xsl:apply-templates select="$compare-result">
+      <xsl:with-param name="key-name" select="if($compare) then $folder-name else $key-name"/>
     </xsl:apply-templates> -->
   </xsl:template>
 
@@ -214,16 +191,17 @@
   </xsl:template>
 
   <xsl:template match="at:IfTrue">
-    <xsl:param name="key-uri"/>
-    <xsl:variable name="params">
+    <xsl:param name="key-name"/>
+    <!-- <xsl:variable name="params">
       <xsl:apply-templates select="param:*" mode="eval">
-        <xsl:with-param name="key-uri" select="$key-uri"/>
+        <xsl:with-param name="key-uri" select="$key-name"/>
       </xsl:apply-templates>
-    </xsl:variable>
+    </xsl:variable> 
     <xsl:apply-templates>
-      <xsl:with-param name="key-uri" select="$key-uri"/>
+      <xsl:with-param name="key-uri" select="$key-name"/>
       <xsl:with-param name="params" select="$params"/>
-    </xsl:apply-templates>
+    </xsl:apply-templates>-->
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template match="param:*" mode="eval">
@@ -246,6 +224,11 @@
   <xsl:template match="s3:return-file-content">
     <xsl:param name="key-uri"/>
     <xsl:sequence select="unparsed-text($key-uri)"/>
+  </xsl:template>
+  
+  <xsl:template match="profile:return-profile">
+    <xsl:variable name="name" select="func:resolve-variable(@name)"/>
+    <profile>If I were a profile, I would be <xsl:value-of select="replace($name, '%2F', '/')"/>'s profile.</profile>
   </xsl:template>
 
   <xsl:template match="s3:write-file">

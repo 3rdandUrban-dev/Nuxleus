@@ -34,7 +34,7 @@
   <xsl:function name="response:set-status-code">
     <xsl:param name="response"/>
     <xsl:param name="code" as="xs:integer"/>
-    <xsl:sequence select="response-stream:set_StatusCode($response, 302)"/>
+    <xsl:sequence select="response-stream:set_StatusCode($response, $code)"/>
   </xsl:function>
     
   <xsl:function name="response:set-location">
