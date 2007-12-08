@@ -61,7 +61,7 @@
   <xsl:param name="aws-public-key" />
   <xsl:param name="aws-private-key" />
   <xsl:variable name="not-set" select="'not-set'" as="xs:string"/>
-  <xsl:variable name="guid" select="request-collection:GetValue($request, 'cookie', 'openid.session')" as="xs:string" />
+  <xsl:variable name="guid" select="request-collection:GetValue($request, 'cookie', 'guid')" as="xs:string" />
   <xsl:variable name="session-params" select="func:eval-params(/service:operation/param:*)"/>
   <xsl:variable name="s3-bucket-name" select="$session-params[local-name() = 's3-bucket-name']" />
   <xsl:variable name="issecure" select="false()" as="xs:boolean"/>
@@ -246,7 +246,7 @@
   <xsl:function name="aws:s3-normalize-key">
     <xsl:param name="folder"/>
     <xsl:param name="key"/>
-    <xsl:sequence select="replace(concat(if (not(ends-with($folder, '/'))) then concat($folder, '/') else $folder, $key), ' ', '')"/>
+    <xsl:sequence select="concat(if (not(ends-with($folder, '/'))) then concat($folder, '/') else $folder, $key)"/>
   </xsl:function>
 
   <xsl:function name="aws:s3-list-bucket">
