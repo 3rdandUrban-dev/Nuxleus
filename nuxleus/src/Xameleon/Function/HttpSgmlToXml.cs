@@ -18,7 +18,22 @@ namespace Xameleon.Function
         static Hashtable _cacheHashtable = new Hashtable();
 
         public HttpSgmlToXml () { }
+        
+        public static String GetXmlFromHtmlString(String html)
+        {
+          using(SgmlReader sr = new SgmlReader())
+          {
+            sr.InputStream = new StringReader(html);
+            return sr.ReadOuterXml();
+          }
 
+        }
+        
+        public static String DecodeHtmlString (String html)
+        {
+            return HttpUtility.HtmlDecode(html);
+        }
+        
         public static Value GetDocXml (String uri, HttpContext context)
         {
             return getDocXml(uri, "/html", context);
@@ -60,33 +75,31 @@ namespace Xameleon.Function
 
         private static XdmNode getXdmNode (String uri, String path, HttpContext context)
         {
-            //Client memcachedClient = (Client)context.Application["memcached"];
             string decodedUri = HttpUtility.UrlDecode(uri);
             string eTag = Context.GenerateETag(decodedUri, Nuxleus.Cryptography.HashAlgorithm.SHA1);
             XmlNode xhtmlNode = (XmlNode)_cacheHashtable[eTag];
-            SgmlReader sr = new SgmlReader();
-            Processor processor = new Processor();
-
-            if (xhtmlNode == null)
+            
+            using(SgmlReader sr = new SgmlReader())
             {
-                try
-                {
-                    sr.Href = decodedUri;
-                    XmlDocument xDoc = new XmlDocument();
-                    xDoc.Load(sr);
-                    xhtmlNode = xDoc.FirstChild;
-                    _cacheHashtable.Add(eTag, xhtmlNode);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    //Console.WriteLine("Outer XML" + sr.ReadOuterXml());
-                    //Console.WriteLine("Outer XML (XmlNode)" + xhtmlNode.OuterXml);
-                }
+              if (xhtmlNode == null)
+              {
+                  try
+                  {
+                      sr.Href = decodedUri;
+                      XmlDocument xDoc = new XmlDocument();
+                      xDoc.Load(sr);
+                      xhtmlNode = xDoc.FirstChild;
+                      _cacheHashtable.Add(eTag, xhtmlNode);
+                  }
+                  catch (Exception e)
+                  {
+                      Console.WriteLine(e.Message);
+                  }
+              }
+              
+              return new Processor().NewDocumentBuilder().Build(xhtmlNode.SelectSingleNode(HttpUtility.UrlDecode(path)));
+              
             }
-
-            return processor.NewDocumentBuilder().Build(xhtmlNode.SelectSingleNode(HttpUtility.UrlDecode(path)));
-
         }
     }
 }

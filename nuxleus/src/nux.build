@@ -385,14 +385,15 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Service" depends="init Nuxleus.Utility Nuxleus.Configuration Nuxleus.Messaging">
+    <target name="Nuxleus.Service" depends="init Nuxleus.Utility Nuxleus.Logging Nuxleus.Configuration Nuxleus.Messaging">
         <csc target="library" output="${build.dir}/Nuxleus.Service.dll">
             <sources>
                 <include name="${source.dir}/Nuxleus.Service/**/*.cs" />
             </sources>
             <references>
                 <include name="${dependencies.dir}/Saxon.Api.dll" />
-                <include name="${build.dir}/Nuxleus.Utility.dll" />
+                <include name="${build.dir}/Nuxleus.Logging.dll" />
+		<include name="${build.dir}/Nuxleus.Utility.dll" />
                 <include name="${build.dir}/Nuxleus.Process.dll" />
                 <include name="${build.dir}/Nuxleus.Configuration.dll" />
                 <include name="${build.dir}/Nuxleus.Messaging.dll" />
