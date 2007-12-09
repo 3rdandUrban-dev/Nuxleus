@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/page/controller/atomictalk/base.xsl"?>
 <my:session xmlns:my="http://xameleon.org/my">
-  <my:page xmlns:page="http://atomictalk.org/page" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice">
+  <my:page xmlns:page="http://atomictalk.org/page" xmlns:advice="http://atomictalk.org/page/advice">
     <page:config src="/page/config/config.xml">
       <page:advice>
         <advice:page-title>@@domain.label@@ :: @@date@@</advice:page-title>
@@ -21,8 +21,7 @@
         <head:include fileType="javascript" src="http://dev.amp.fm/js/jmaps.js" />
         <head:include fileType="javascript" src="http://dev.amp.fm/js/geo.js" />
       </page:head>
-      <page:body src="/page/output/body/base.xml" />
+      <page:body src="/page/output/body/m/base.xml" />
     </page:output>
   </my:page>
 </my:session>
-

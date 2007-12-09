@@ -5,7 +5,7 @@
     xmlns:head="http://atomictalk.org/page/output/head"
     xmlns:body="http://atomictalk.org/page/output/body"
     xmlns:advice="http://atomictalk.org/page/advice">
-    <page:config src="page/config/config.xml">
+    <page:config src="/page/config/config.xml">
       <page:advice>
         <advice:page-title>@@domain.label@@::@@date@@</advice:page-title>
         <advice:location.label>login</advice:location.label>

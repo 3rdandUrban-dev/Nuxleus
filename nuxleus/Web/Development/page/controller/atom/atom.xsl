@@ -40,10 +40,11 @@
   <xsl:template match="atom:source"/>
   <xsl:template match="atom:author"/>
   <xsl:template match="atom:content">
-    <xsl:param name="cCount"/>
-    <p style="font-size:small">
-      <xsl:copy-of select="substring(., 1, $cCount)"/> ... [<a href="{../atom:link[@rel = 'self']/@href}">more</a>]
-    </p>
+    <xsl:param name="cCount" select="'40'"/>
+    <p><xsl:copy-of select="*"/></p>
+    <!-- <p style="font-size:small">
+      <xsl:value-of select="substring(., 1, $cCount)"/> ... [<a href="{../atom:link[@rel = 'self']/@href}">more</a>]
+    </p> -->
   </xsl:template>
 
 </xsl:stylesheet>

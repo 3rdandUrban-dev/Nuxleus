@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/page/controller/atomictalk/base.xsl"?>
-<my:session xmlns:my="http://xameleon.org/my">
+<my:session xmlns:my="http://xameleon.org/my" xmlns:doc="http://atomictalk.org/feed/doc">
   <my:page xmlns:page="http://atomictalk.org/page" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice">
     <page:config src="/page/config/config.xml">
       <page:advice>
@@ -14,15 +14,9 @@
     </page:config>
     <page:output>
       <page:head src="/page/output/head/base.xml">
-        <head:include fileType="css" href="/css/map.css" />
         <head:include fileType="javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=@@google.maps.key@@" />
-        <head:include fileType="javascript" src="http://www.google.com/uds/api?file=uds.js&amp;v=1.0&amp;key=@@google.maps.key@@" />
-        <head:include fileType="javascript" src="http://dev.amp.fm/js/jquery.js" />
-        <head:include fileType="javascript" src="http://dev.amp.fm/js/jmaps.js" />
-        <head:include fileType="javascript" src="http://dev.amp.fm/js/geo.js" />
       </page:head>
-      <page:body src="/page/output/body/base.xml" />
+      <page:body src="/page/output/body/m/base.xml" />
     </page:output>
   </my:page>
 </my:session>
-
