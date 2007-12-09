@@ -14,5 +14,11 @@
         <xsl:param name="request" />
         <xsl:value-of select="request-stream:UserAgent($request)" />
     </xsl:function>
+    
+    <xsl:function name="request:get-user-ip">
+        <xsl:param name="request" />
+        <xsl:value-of select="request-stream:UserHostAddress($request)" />
+    </xsl:function>
+
 
 </xsl:transform>

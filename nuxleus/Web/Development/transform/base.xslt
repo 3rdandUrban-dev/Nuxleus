@@ -5,7 +5,6 @@
   <xsl:import href="./controller/atomictalk/base.xslt" />
   <xsl:import href="./functions/base.xslt" />
 
-  <<<<<<< .mine
   <xsl:param name="current-context" />
   <xsl:param name="response" select="aspnet-context:Response($current-context)" />
   <xsl:param name="request" select="aspnet-context:Request($current-context)" />
@@ -82,4 +81,4 @@
     </xsl:result-document>
   </xsl:template>
 
-
+</xsl:transform>
