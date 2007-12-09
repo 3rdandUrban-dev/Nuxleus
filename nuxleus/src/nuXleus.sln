@@ -326,6 +326,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLUPRouter", "ServiceApps\L
 		Release.AspNetCompiler.Debug = "False"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Synchronization", "Nuxleus.Synchronization\Nuxleus.Synchronization.csproj", "{D8A43A2C-20D4-4017-80B8-2BBE122D9717}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Geo", "Nuxleus.Geo\Nuxleus.Geo.csproj", "{9054928F-69AF-4448-BEC0-591BC9393AE8}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -706,6 +718,26 @@ Global
 		{43FCD075-8EA9-4C11-8EAF-A43A2F652CAD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{43FCD075-8EA9-4C11-8EAF-A43A2F652CAD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{43FCD075-8EA9-4C11-8EAF-A43A2F652CAD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717}.Release|.NET.ActiveCfg = Release|Any CPU
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Release|.NET.ActiveCfg = Release|Any CPU
+		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -741,6 +773,8 @@ Global
 		{ACE1943D-302E-4D83-8E54-4A9ABBF20D97} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{B0D68D3E-8ACE-4F33-9E85-F32CED622614} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
+		{D8A43A2C-20D4-4017-80B8-2BBE122D9717} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
+		{9054928F-69AF-4448-BEC0-591BC9393AE8} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{A800D9F1-D877-4076-99BA-CBD73BCFB203} = {138403FE-C587-460E-A3C8-77B713E904C9}
 		{54CDA684-6431-45D5-9BF4-61C2D97FEC9C} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
 		{CF2BE8C5-4DCE-4D5C-9A06-787487549BC0} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
