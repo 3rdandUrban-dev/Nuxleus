@@ -1,8 +1,8 @@
 <view:module id="top-sub-nav" type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
   <view:container style="LtoR" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-    <view:item>
+    <!-- <view:item>
       <a href="@@base-uri@@/region/">Profile</a>
-    </view:item>
+    </view:item> -->
 <!--     <view:item>
       <a href="@@base-uri@@/events/">Events</a>
     </view:item>

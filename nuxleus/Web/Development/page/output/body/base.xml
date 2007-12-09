@@ -3,7 +3,6 @@
   xmlns:body="http://atomictalk.org/page/output/body">
   <body:layout xmlns:view="http://atomictalk.org/page/view">
     <layout:view xmlns:layout="http://atomictalk.org/page/view/layout">
-      <view:module id="session" src="/page/view/module/session/controller/base.xml"/>
       <view:module>
         <view:container>
           <view:module id="header" src="/page/view/module/header/primary/base.xml"/>

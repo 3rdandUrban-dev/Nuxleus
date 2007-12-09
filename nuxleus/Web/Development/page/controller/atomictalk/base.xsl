@@ -8,7 +8,7 @@
 -->
 <xsl:stylesheet version="1.0" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:layout="http://atomictalk.org/page/view/layout" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common" xmlns:resource="http://atomictalk.org/page/resource" xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#" xmlns:atompub="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="html exsl my app advice atom head page service resource output form body view menu model msxsl doc atompub">
 
-  <xsl:include href="../atom/base.xsl"/>
+  <!-- <xsl:include href="../atom/base.xsl"/> -->
   <xsl:include href="./process.xsl"/>
 
   <xsl:variable name="session-info" select="document('/service/session/validate-request/')/message"/>
@@ -60,11 +60,12 @@
 
   <xsl:template match="page:body">
     <body>
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="body:onload|body:onresize|body:onunload"/>
+      <xsl:apply-templates select="body:layout"/>
     </body>
   </xsl:template>
 
-  <xsl:template match="body:onload|body:onresize">
+  <xsl:template match="body:onload|body:onresize|body:onunload">
     <xsl:attribute name="{local-name()}">
       <xsl:call-template name="replace">
         <xsl:with-param name="string" select="@action"/>
@@ -173,10 +174,19 @@
   </xsl:template>
 
   <xsl:template match="geo:map">
-    <h2>
-      <xsl:value-of select="$location"/>
-    </h2>
     <div id="map" style="width:{@width}; height:{@height};margin:0;padding:0;" />
+  </xsl:template>
+  
+  <xsl:template match="geo:location">
+    <xsl:value-of select="$location"/>
+  </xsl:template>
+  
+  <xsl:template match="doc:local-news">
+    <xsl:apply-templates select="document(concat('/service/proxy/return-news-by-location/?location=', translate($location, ' ,', '+'), '&amp;topic=', translate(@topic, ' ', '+')))" mode="message"/>
+  </xsl:template>
+  
+  <xsl:template match="*" mode="message">
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template match="doc:feed">
@@ -222,7 +232,6 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-
 
   <xsl:template match="doc:html[@type = 'myspace-events']">
     <xsl:apply-templates select="document(@href)//html:div[@id = current()/@id]"/>
@@ -317,6 +326,39 @@
     <xsl:call-template name="replace">
       <xsl:with-param name="string" select="."/>
     </xsl:call-template>
+  </xsl:template>
+  
+  
+  <xsl:template match="atom:feed">
+    <xsl:apply-templates select="atom:entry"/>
+  </xsl:template>
+
+  <xsl:template match="atom:entry">
+    <xsl:param name="cCount"/>
+    <xsl:apply-templates select="atom:*">
+      <xsl:with-param name="cCount" select="$cCount"/>
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="atom:title">
+    <h4>
+      <a href="{../atom:link[@rel = 'self']/@href}">
+        <xsl:value-of select="."/>
+      </a>
+    </h4>
+  </xsl:template>
+  <xsl:template match="atom:summary"/>
+  <xsl:template match="atom:published"/>
+  <xsl:template match="atom:updated"/>
+  <xsl:template match="atom:generator"/>
+  <xsl:template match="atom:id"/>
+  <xsl:template match="atom:category"/>
+  <xsl:template match="atom:source"/>
+  <xsl:template match="atom:author"/>
+  <xsl:template match="atom:content">
+    <p style="font-size:small">
+      <xsl:copy-of select="."/> ... [<a href="{../atom:link[@rel = 'self']/@href}">more</a>]
+    </p>
   </xsl:template>
 
 </xsl:stylesheet>
