@@ -4,24 +4,47 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Web;
+using Nuxleus.Cryptography;
+using System.Collections;
+using System.Text;
 
 namespace Xameleon.Function
 {
-
     public class HttpFileStream
     {
 
-      public static string SaveUploadedImage(HttpRequest request, string fieldName, string fileName) 
-      {
-         
-        string filePath = String.Format("{0}{1}", fileName, Path.GetExtension(request.Files[fieldName].FileName));
-        request.Files[fieldName].SaveAs(filePath);
-        return String.Format("{0}:{1}", Path.GetFileName(filePath), request.Files[fieldName].ContentType);
+        public static string SaveUploadedFileCollection (HttpRequest request, string fieldName, string fileName)
+        {
+            
+            IEnumerator enumerator = request.Files.GetEnumerator();
+            StringBuilder filePathStringBuilder = new StringBuilder();
+            string path = request.MapPath(fileName);
 
-         //return "Content Length: " + request.Files[fieldName].ContentLength.ToString();
-      }
+            try
+            {
+                if (!Directory.Exists(path))
+                {
+                    DirectoryInfo directory = Directory.CreateDirectory(path);
+                }
 
-        public static void SaveExternalImageFile(string externalFile, string fileName)
+                for (int i = 0; enumerator.MoveNext(); i++)
+                {
+                    string hash = new HashcodeGenerator(request.Files[i].InputStream).GetHashCode().ToString();
+                    string filePath = String.Format("{0}/{1}{2}", path, hash, Path.GetExtension(request.Files[i].FileName));
+                    request.Files[i].SaveAs(filePath);
+                    filePathStringBuilder.Append(String.Format("{0}:{1},", Path.GetFileName(filePath), request.Files[fieldName].ContentType));
+                }
+
+                return filePathStringBuilder.ToString();
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+        }
+
+        public static void SaveExternalImageFile (string externalFile, string fileName)
         {
             try
             {
@@ -40,7 +63,7 @@ namespace Xameleon.Function
             }
         }
 
-        private static Stream GetFileStream(string fileURL)
+        private static Stream GetFileStream (string fileURL)
         {
 
             try

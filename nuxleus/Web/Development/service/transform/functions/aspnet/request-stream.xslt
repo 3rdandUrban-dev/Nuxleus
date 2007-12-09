@@ -158,4 +158,9 @@
     <xsl:sequence select="request-stream:ServerVariables($request)" />
   </xsl:function>
 
+  <xsl:function name="request:get-map-path">
+    <xsl:param name="virtual-path"/>
+    <xsl:sequence select="request-stream:MapPath($request, $virtual-path)" />
+  </xsl:function>
+
 </xsl:transform>

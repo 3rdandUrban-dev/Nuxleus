@@ -27,15 +27,14 @@
     <xsl:variable name="base_uri" select="func:resolve-variable(@uri)"/>
     <xsl:variable name="base_path" select="func:resolve-variable(@path)"/>
     <xsl:variable name="filename" select="string(sguid:NewGuid())"/>
-
-    <xsl:variable name="member_path" select="concat('member/', $base_path)"/>
+    <xsl:variable name="application-path" select="request:get-physical-application-path()"/>
+    <xsl:variable name="member_path" select="concat('/member/', $base_path)"/>
     <xsl:variable name="entry_path" select="concat($member_path, 'comment/', $filename)"/>
-    <xsl:variable name="file" select="resolve-uri(concat(request:get-physical-application-path(), $entry_path, '.atom'))"/>
+    <xsl:variable name="file" select="resolve-uri(concat($application-path, $entry_path, '.atom'))"/>
     <xsl:variable name="uri" select="concat($base_uri, $entry_path)"/>
-    <xsl:variable name="image_path" select="resolve-uri(concat(request:get-physical-application-path(), $member_path, 'images/', $filename))"/>
-    <xsl:variable name="imageInfo" as="xs:string">
-      <xsl:sequence select="file-stream:SaveUploadedImage($request, 'ev_comment_pix', $image_path)"/>
-    </xsl:variable>
+    <xsl:variable name="image_path" select="concat($member_path, 'images/')"/>
+    <xsl:variable name="image_file_path" select="concat($image_path, $filename)"/>
+    <xsl:variable name="imageInfo" select="file-stream:SaveUploadedFileCollection($request, 'ev_comment_pix', $image_file_path)" />
     <xsl:variable name="comment-atom-entry">
       <atom:entry>
         <atom:id>
@@ -53,7 +52,11 @@
         <atom:link rel="self" href="{concat($uri, '.atom')}" type="application/atom+xml;type=entry"/>
         <atom:link rel="alternate" href="{concat($base_uri, $base_path)}" type="text/html"/>
         <xsl:if test="not(empty($imageInfo))">
-          <atom:link rel="related" href="{concat($base_uri, 'images/', substring-before($imageInfo, ':'))}" type="{substring-after($imageInfo, ':')}"/>
+          <xsl:for-each select="tokenize($imageInfo, ',')">
+            <xsl:if test=".">
+              <atom:link rel="related" href="{concat(resolve-uri($image_file_path, $base_uri), '/', substring-before(., ':'))}" type="{substring-after(., ':')}"/>
+            </xsl:if>
+          </xsl:for-each>
         </xsl:if>
         <atom:author>
           <atom:name>
@@ -76,7 +79,7 @@
       <xsl:value-of select="concat('image path: ', $image_path)"/>
       <xsl:value-of select="concat('image info: ', $imageInfo)"/>
     </xsl:message>
-    
+
     <xsl:result-document href="{$file}" format="xml">
       <xsl:copy-of select="$comment-atom-entry"/>
     </xsl:result-document>
