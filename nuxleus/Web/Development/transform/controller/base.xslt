@@ -43,6 +43,7 @@
   <xsl:import href="./profile/base.xslt" />
   <xsl:import href="./redirect/base.xslt" />
   <xsl:import href="./echo/base.xslt" />
+  <xsl:import href="./search/base.xslt" />
 
   <xsl:param name="current-context" />
   <xsl:param name="response" />
