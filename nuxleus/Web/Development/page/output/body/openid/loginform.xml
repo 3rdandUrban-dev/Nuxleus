@@ -6,7 +6,7 @@
       <view:module>
         <view:container>
           <view:module id="header" src="/page/view/module/header/secondary/base.xml"/>
-          <view:module id="body" src="/page/view/module/content/bungee/base.xml"/>
+          <view:module id="body" src="/page/view/module/content/openid/loginform.xml"/>
           <view:module id="footer" src="/page/view/module/footer/base.xml"/>
         </view:container>
       </view:module>

@@ -10,7 +10,8 @@
   xmlns:app="http://purl.org/atom/app#" 
   xmlns:atompub="http://www.w3.org/2007/app" 
   xmlns:atom="http://www.w3.org/2005/Atom" 
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+  exclude-result-prefixes="html app atom doc atompub">
 
   <xsl:template match="atom:feed">
     <xsl:apply-templates select="atom:entry"/>
