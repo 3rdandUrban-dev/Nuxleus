@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:advice="http://atomictalk.org/page/advice" exclude-result-prefixes="my page advice">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0" xmlns:my="http://xameleon.org/my" xmlns:head="http://atomictalk.org/page/output/head"  xmlns:page="http://atomictalk.org/page" xmlns:advice="http://atomictalk.org/page/advice">
 
   <xsl:template match="my:session">
     <xsl:param name="member-directory"/>
@@ -24,9 +24,9 @@
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="page:config|page:output|page:head|page:body">
+  <xsl:template match="page:config|page:output|page:head|page:body|head:include">
     <xsl:param name="member-directory"/>
-    <xsl:element name="{concat('page:', local-name())}">
+    <xsl:element name="{concat('page:', local-name())}" namespace="{namespace-uri(.)}">
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates>
         <xsl:with-param name="member-directory" select="$member-directory"/>

@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:transform version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:saxon="http://saxon.sf.net/"
-  xmlns:clitype="http://saxon.sf.net/clitype" xmlns:add="http://xameleon.org/service/atompub/add"
-  xmlns:at="http://atomictalk.org" xmlns:func="http://atomictalk.org/function"
-  xmlns:http-atompub-utils="clitype:Xameleon.Function.HttpAtompubUtils?partialname=Xameleon"
-  xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web"
-  xmlns:aspnet-request="clitype:System.Web.HttpRequest?partialname=System.Web"
-  xmlns:guid="clitype:Xameleon.Function.Utils?partialname=Xameleon"
-  xmlns:sguid="clitype:System.Guid?partialname=mscorlib"
-  xmlns:file-stream="clitype:Xameleon.Function.HttpFileStream?partialname=Xameleon"
-  xmlns:atompub="http://xameleon.org/service/atompub" xmlns:atom="http://www.w3.org/2005/Atom"
-  xmlns:html="http://www.w3.org/1999/xhtml"
-  xmlns:request="http://atomictalk.org/function/aspnet/request"
-  xmlns:response="http://atomictalk.org/function/aspnet/response"
-  exclude-result-prefixes="xs xsl xsi fn clitype at func http-atompub-utils aspnet-context aspnet-request add atompub saxon html response">
+<xsl:transform version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:saxon="http://saxon.sf.net/" xmlns:clitype="http://saxon.sf.net/clitype" xmlns:add="http://xameleon.org/service/atompub/add" xmlns:at="http://atomictalk.org" xmlns:func="http://atomictalk.org/function" xmlns:http-atompub-utils="clitype:Xameleon.Function.HttpAtompubUtils?partialname=Xameleon" xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web" xmlns:aspnet-request="clitype:System.Web.HttpRequest?partialname=System.Web" xmlns:guid="clitype:Xameleon.Function.Utils?partialname=Xameleon" xmlns:sguid="clitype:System.Guid?partialname=mscorlib" xmlns:file-stream="clitype:Xameleon.Function.HttpFileStream?partialname=Xameleon" xmlns:atompub="http://xameleon.org/service/atompub" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:request="http://atomictalk.org/function/aspnet/request" xmlns:response="http://atomictalk.org/function/aspnet/response" exclude-result-prefixes="xs xsl xsi fn clitype at func http-atompub-utils aspnet-context aspnet-request add atompub saxon html response">
 
   <xsl:param name="current-context"/>
   <xsl:param name="request"/>
@@ -43,10 +27,15 @@
     <xsl:variable name="base_uri" select="func:resolve-variable(@uri)"/>
     <xsl:variable name="base_path" select="func:resolve-variable(@path)"/>
     <xsl:variable name="filename" select="string(sguid:NewGuid())"/>
-    <xsl:message select="$filename"/>
-    <xsl:variable name="entry_path" select="concat($base_path, 'comment/', $filename)"/>
+
+    <xsl:variable name="member_path" select="concat('member/', $base_path)"/>
+    <xsl:variable name="entry_path" select="concat($member_path, 'comment/', $filename)"/>
+    <xsl:variable name="file" select="resolve-uri(concat(request:get-physical-application-path(), $entry_path, '.atom'))"/>
     <xsl:variable name="uri" select="concat($base_uri, $entry_path)"/>
-    <xsl:variable name="imageInfo" as="xs:string"><xsl:sequence select="file-stream:SaveUploadedImage($request, 'ev_comment_pix', concat('/Users/sylvain/dev/nuxleus/Web/Development/images/', $filename))"/></xsl:variable>
+    <xsl:variable name="image_path" select="resolve-uri(concat(request:get-physical-application-path(), $member_path, 'images/', $filename))"/>
+    <xsl:variable name="imageInfo" as="xs:string">
+      <xsl:sequence select="file-stream:SaveUploadedImage($request, 'ev_comment_pix', $image_path)"/>
+    </xsl:variable>
     <xsl:variable name="comment-atom-entry">
       <atom:entry>
         <atom:id>
@@ -61,10 +50,9 @@
         <atom:updated>
           <xsl:value-of select="fn:current-dateTime()"/>
         </atom:updated>
-        <atom:link rel="self" href="{concat($uri, '.atom')}"
-          type="application/atom+xml;type=entry"/>
+        <atom:link rel="self" href="{concat($uri, '.atom')}" type="application/atom+xml;type=entry"/>
         <atom:link rel="alternate" href="{concat($base_uri, $base_path)}" type="text/html"/>
-        <xsl:if test="$imageInfo != ''">
+        <xsl:if test="not(empty($imageInfo))">
           <atom:link rel="related" href="{concat($base_uri, 'images/', substring-before($imageInfo, ':'))}" type="{substring-after($imageInfo, ':')}"/>
         </xsl:if>
         <atom:author>
@@ -77,11 +65,23 @@
         </atom:content>
       </atom:entry>
     </xsl:variable>
-    <xsl:result-document
-      href="{resolve-uri(concat('file:///Users/sylvain/dev/nuxleus/Web/Development/', $entry_path, '.atom'))}"
-      format="xml">
+
+    <xsl:message>
+      <xsl:value-of select="concat('filename: ', $filename)"/>
+      <xsl:value-of select="concat('base uri: ', $base_uri)"/>
+      <xsl:value-of select="concat('base path: ', $base_uri)"/>
+      <xsl:value-of select="concat('entry path: ', $entry_path)"/>
+      <xsl:value-of select="concat('physical application path: ', request:get-physical-application-path())"/>
+      <xsl:value-of select="concat('file: ', $file)"/>
+      <xsl:value-of select="concat('image path: ', $image_path)"/>
+      <xsl:value-of select="concat('image info: ', $imageInfo)"/>
+    </xsl:message>
+    
+    <xsl:result-document href="{$file}" format="xml">
       <xsl:copy-of select="$comment-atom-entry"/>
     </xsl:result-document>
+
+
     
     <!--<xsl:result-document href="{resolve-uri('file:///Users/sylvain/dev/nuxleus/Web/Development/ume/comments.atom')}" format="xml">
       <atom:feed>
@@ -120,7 +120,7 @@
     <bar>foo</bar>
     <xsl:copy-of select="."/>
   </xsl:template>-->
-  
+
   <xsl:template match="add:request-body">
     <xsl:variable name="content" select="func:resolve-variable(.)"/>
     <xsl:copy-of select="$content"/>
