@@ -1,9 +1,9 @@
 stateversion 2
 name ecj:source
-version /nuxleus.rpath.org@rpl:devel//nux:devel/1190797741.032:3.4M2-0.2
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1195440694.417:3.4M3-0.1
 branch /nuxleus.rpath.org@rpl:devel//nux:devel
 4
-07b346f890be1b029774ea1ae0def7c5 makefile ae1e614a408b685e25e4abe0c7366d99c39eb60d config /nuxleus.rpath.org@rpl:devel//nux:devel/3.4M2-0.2
-2631294309796ba2abcc3c611215b82d ecj.recipe 5ed3d4b27729069718c4c18d4c7e7e7aff34f338 config /nuxleus.rpath.org@rpl:devel//nux:devel/3.4M2-0.2
-79ea0ed61479aa9623580acf3c92f881 ecj-3.4M2.jar d4e850f35d2991875ac0e9fa4f33fb770d3962c7 autosource /nuxleus.rpath.org@rpl:devel//nux:devel/3.4M2-0.1
+07b346f890be1b029774ea1ae0def7c5 makefile 5993d65ffe2c9b5b13dcd1617a1aa324bd1a5bbb config /nuxleus.rpath.org@rpl:devel//nux:devel/3.4M3-0.1
+2631294309796ba2abcc3c611215b82d ecj.recipe fe068423027304d59719ab29f20ac16ea99b78e1 config /nuxleus.rpath.org@rpl:devel//nux:devel/3.4M3-0.1
+f7269958e22152a3836f65bfb103bf7e ecj-3.4M3.jar 1a745561014748a736f20499e5348bb915e905d9 autosource /nuxleus.rpath.org@rpl:devel//nux:devel/3.4M3-0.1
 f85c79d9449cfdad8e7721c8be532ea6 ecj 638647b402acf1ccfd4054d3055758727528f2a2 config /nuxleus.rpath.org@rpl:devel//nux:devel/3.4M2-0.1

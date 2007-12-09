@@ -1,25 +1,26 @@
 stateversion 2
 name Saxon.NET:source
-version /nuxleus.rpath.org@rpl:devel//nux:devel/1190798926.117:8.9.0.4-0.8
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1195469873.244:9.0.0.1-0.3
 branch /nuxleus.rpath.org@rpl:devel//nux:devel
-20
+21
 10e4c823eb2fec36cea4bd103a188e34 cli-gac 97fd052a75fc1c0903e8dbe84de97861fd9c04ee config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
-169809c75525a08c435a709663f80238 saxon.pc 4e96b86763eed038e0e78be71aefba4a3a5e498a config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
-188caea6e5359e24c0b90d86b6a1b3e5 gac-install-list 060265296e6e1ece8ab3d90a34347435337248c1 config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
+169809c75525a08c435a709663f80238 saxon.pc 3c0a2541edbf1e1558db86b62b0f5de09fa56216 config /nuxleus.rpath.org@rpl:devel//nux:devel/9.0.0.1-0.1
+188caea6e5359e24c0b90d86b6a1b3e5 gac-install-list aaad3e73dd8e0fe77297b7ef08d44cb49f103cfd config /nuxleus.rpath.org@rpl:devel//nux:devel/9.0.0.1-0.3
 28a99a5ed7e816242c8e71feaa76e8fc build/META-INF 978966c7bbe90a9e03a7fd0f5b6dbaa734509255 _ /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
-308c0029fb95f1812130ea5b31ad96f1 gacinstalllist 060265296e6e1ece8ab3d90a34347435337248c1 config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
+308c0029fb95f1812130ea5b31ad96f1 gacinstalllist aaad3e73dd8e0fe77297b7ef08d44cb49f103cfd config /nuxleus.rpath.org@rpl:devel//nux:devel/9.0.0.1-0.3
 3618622dce4ac2468805d86408cbe27d Model.cs.patch f867ffccb437b35e4c88aa77f180108e9758b1ef config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
-4669ddf469473c5fecda64dab3588192 build/prep.sh ae1d1a8bae592ed92c63b46bf87d4156d3f6a802 config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
-4899863c956dd3c0090c467aa3927308 Saxon.NET.recipe da40dff3f6dd8910638e76bc07b377a598ddbbe1 config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.8
+4669ddf469473c5fecda64dab3588192 build/prep.sh 26b0b887c45d231194c29ef4dc87e376338eaf9c config /nuxleus.rpath.org@rpl:devel//nux:devel/9.0.0.1-0.2
+4899863c956dd3c0090c467aa3927308 Saxon.NET.recipe 9e6877b05b00f5210727a0458e746df30a714042 config /nuxleus.rpath.org@rpl:devel//nux:devel/9.0.0.1-0.1
 4af0a4735ef4ad17f26d489a0410625d cli-gac-handler 962a945506f782832994c690a498b2522c9cba3a config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
 54d55f0ec4070f9c4df80d8052c599ab query 8ab2094d2ab6c53874dc663743f010c0f45b225f config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
 71781977a35fc37e14fb5b1f4ed6bb4c build/META-INF/MANIFEST.MF 5172d4a0b34a5f5df33666e7699f36511a780c7f config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
 71ec635adee526b6c3f584c41846e3ff build/META-INF/services 978966c7bbe90a9e03a7fd0f5b6dbaa734509255 _ /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
-801d8270c8b31d2f015e6a106234ea5d makefile 03a493112650c88f78f9fb6a62b58851a5649573 config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
+801d8270c8b31d2f015e6a106234ea5d makefile 0a1f5abc7ed0b26e0abad15fff9c099c0db2d41d config /nuxleus.rpath.org@rpl:devel//nux:devel/9.0.0.1-0.1
+a8bab2951d49f39e062ee189f2ae0d48 saxon9.dll adb96112fd7631e0ee4fd40d1af12e1f21d5184b _ /nuxleus.rpath.org@rpl:devel//nux:devel/9.0.0.1-0.2
 be2e8b5d047e82605fd9b3ff1dec4d60 saxongac 1fc3e1c51a4ea767909b8f144e8596655503c693 config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
 e02a519f0bd99086439dbd67257c6483 build 978966c7bbe90a9e03a7fd0f5b6dbaa734509255 _ /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
-e0b600ff341bd624601a0698c3d1a30a build/saxon.build f712f924af20af8cbef0b3ee7104d8eeceb0d59f config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
+e0b600ff341bd624601a0698c3d1a30a build/saxon.build 274bc2993472efd6547297c89eb989f933bfa890 config /nuxleus.rpath.org@rpl:devel//nux:devel/9.0.0.1-0.2
 e3bab2420bf5b28639f446357d08a9e8 saxon8.dll 139a5febc99b0f6ab4625a2b43c76fd9e482dadc _ /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
-f6aedda0bbf8bd1e4e1ec985819b9c4f build.sh 470f4718cbff7371580a7690dc832874f6c2967e config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
+f6aedda0bbf8bd1e4e1ec985819b9c4f build.sh 663417036b27cebaa11585209958b0eb7464cbe2 config /nuxleus.rpath.org@rpl:devel//nux:devel/9.0.0.1-0.2
 fccee2ba4524e86435aa74c381ac1c25 transform c2833adaca689fadc39370d0588e69b8cd9869a5 config /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
 fdbc2cb405804189116281e655d39edb Extf.Net.snk 5ed2a5e428614afc59c672abf03d1dadac083384 _ /nuxleus.rpath.org@rpl:devel//nux:devel/8.9.0.4-0.7
