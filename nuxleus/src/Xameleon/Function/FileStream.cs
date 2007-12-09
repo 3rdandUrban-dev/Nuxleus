@@ -13,22 +13,12 @@ namespace Xameleon.Function
 
       public static string SaveUploadedImage(HttpRequest request, string fieldName, string fileName) 
       {
-	 try
-            {
-	      if ((request.Files[fieldName].InputStream != null) && (request.Files[fieldName].ContentLength > 0))
-		{
-		  string filePath = String.Format("{0}{1}", fileName, 
-						  Path.GetExtension(request.Files[fieldName].FileName));
-		  request.Files[fieldName].SaveAs(filePath);
-		  return String.Format("{0}:{1}", Path.GetFileName(filePath), 
-				       request.Files[fieldName].ContentType);
-		}
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("Error: " + e.Message);
-            }
-	 return string.Empty;
+         
+        string filePath = String.Format("{0}{1}", fileName, Path.GetExtension(request.Files[fieldName].FileName));
+        request.Files[fieldName].SaveAs(filePath);
+        return String.Format("{0}:{1}", Path.GetFileName(filePath), request.Files[fieldName].ContentType);
+
+         //return "Content Length: " + request.Files[fieldName].ContentLength.ToString();
       }
 
         public static void SaveExternalImageFile(string externalFile, string fileName)
