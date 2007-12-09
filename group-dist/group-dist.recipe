@@ -34,7 +34,7 @@ class Dist(GroupRecipe):
 
        	groupLabel='nuxleus.rpath.org@nux:devel'
         compatLabel='nuxleus.rpath.org@nux:devel-compat'
-        xenLabel='nuxleus.rpath.org@nux:devel-xen'
+        xenLabel='conary.rpath.com@rpl:1-xen'
 
         # Set up special flavors required in one place to ease maintenance
         if Arch.x86:
@@ -54,7 +54,7 @@ class Dist(GroupRecipe):
                     kernelFlavorPAE = 'xen,dom0,kernel.smp,kernel.pae is: x86(i486,i586,i686)'
                 if Use.domU:
                     releaseFlavor = 'xen,domU'
-                    kernelFlavor = 'xen,domU,kernel.smp,!kernel.pae is: x86(i486,i586,i686)'
+                    kernelFlavor = 'xen,domU,kernel.smp,!kernel.pae is: x86(cmov,i486,i586,i686)'
                     kernelFlavorPAE = 'xen,domU,kernel.smp,kernel.pae is: x86(i486,i586,i686)'
             else:
                 kernelLabel = groupLabel
@@ -66,24 +66,28 @@ class Dist(GroupRecipe):
             gccFlavor = 'is: x86 x86_64'
             grubFlavor = 'grub.static is: x86'
             if Use.xen:
-                glibcFlavor = 'xen'
+                glibcFlavor = '!xen'
                 glibcFlavor32 = 'xen is: x86(i486,i586,i686)'
                 kernelLabel = xenLabel
                 if Use.dom0:
                     if Use.domU:
                         print "This recipe may be built with dom0 or domU, but cannot use both.\n"
                         sys.exit(1)
+                    groupCoreFlavor = 'xen,dom0,!domU,!vmware,!dietlibc is: x86(i486,i586,i686,~!sse2) x86_64'
+                    kernelFlavor = 'xen,dom0,!domU,!kernel.pae,kernel.smp'
                     releaseFlavor = 'xen,dom0'
-                    kernelFlavor = 'xen,dom0,!kernel.pae,kernel.smp'
-                if Use.domU:
-                    releaseFlavor = 'xen,domU'
-                    kernelFlavor = 'xen,domU,!kernel.pae,kernel.smp'
-            else:
+		
+		if Use.domU:
+            		mkinitrdFlavor = 'xen,domU'
+                	groupCoreFlavor = 'xen,!dom0,domU,!vmware,!dietlibc is: x86(i486,i586,i686,~!sse2) x86_64'
+                	kernelFlavor = 'xen,!dom0,domU,!kernel.pae,kernel.smp'
+                	releaseFlavor = 'xen,domU'
+	    else:
                 kernelLabel = groupLabel
                 glibcFlavor = None
-                glibcFlavor32 = 'is: x86(i486,i586,i686)'
+                glibcFlavor32 = 'is: x86_64(i486,i586,i686)'
                 releaseFlavor = None
-                kernelFlavor = 'kernel.smp'
+                kernelFlavor = 'kernel.smp is: x86_64(i486,i586,i686)'
 
 
         r.createGroup('group-os', checkPathConflicts=False)
@@ -92,7 +96,10 @@ class Dist(GroupRecipe):
 
         r.addNewGroup('group-dist', groupName='group-os')
 	r.startGroup('group-core', parentGroup='group-dist', depCheck=False)
-        r.add('openssh-client:runtime')
+        if Use.xen:
+		if Use.domU:
+			r.add('amiconfig')
+	r.add('openssh-client:runtime')
         r.add('openssh:runtime')
         r.add('busybox:runtime')
         r.add('ruby')
@@ -161,10 +168,10 @@ class Dist(GroupRecipe):
         r.add('gdbm:lib')
         r.add('glib:lib')
         r.add('glib:data')
-        r.add('glibc:lib', flavor=glibcFlavor)
-        r.add('glibc:runtime', flavor=glibcFlavor)
-        r.add('glibc:locale', flavor=glibcFlavor)
-        r.add('glibc:lib', flavor=glibcFlavor32, use=Arch.x86_64)
+        r.add('glibc:lib', 'conary.rpath.com@rpl:1', flavor=glibcFlavor)
+        r.add('glibc:runtime', 'conary.rpath.com@rpl:1', flavor=glibcFlavor)
+        r.add('glibc:locale', 'conary.rpath.com@rpl:1', flavor=glibcFlavor)
+        r.add('glibc:lib', 'conary.rpath.com@rpl:1', flavor=glibcFlavor32, use=Arch.x86_64)
         r.add('gmp:lib')
         r.add('gpm:lib')
         r.add('gpm:runtime')
@@ -198,7 +205,7 @@ class Dist(GroupRecipe):
         r.add('kbd:runtime')
         r.add('kernel:runtime', kernelLabel, flavor=kernelFlavor, byDefault=False)
         if not Use.dom0 and not Use.domU:
-            r.add('kernel:runtime', kernelLabel, flavor=kernelFlavorUP, byDefault=False)
+            r.add('kernel:runtime', kernelLabel, flavor=kernelFlavor, byDefault=False)
         r.add('krb5:lib')
         r.add('krb5:data')
         r.add('kudzu:python', 'conary.rpath.com@rpl:1')
@@ -388,10 +395,10 @@ class Dist(GroupRecipe):
 	r.add('libgcc', flavor=gccFlavor, source='gcc')
 	r.add('libstdc++', flavor=gccFlavor, source='gcc')
 	r.add('gettext')
-	r.add('glibc:runtime', flavor=glibcFlavor)
-	r.add('glibc:lib', flavor=glibcFlavor)
-	r.add('glibc:devel', flavor=glibcFlavor)
-	r.add('glibc:devellib', flavor=glibcFlavor)
+	r.add('glibc:runtime', 'conary.rpath.com@rpl:1', flavor=glibcFlavor)
+	r.add('glibc:lib', 'conary.rpath.com@rpl:1', flavor=glibcFlavor)
+	r.add('glibc:devel', 'conary.rpath.com@rpl:1', flavor=glibcFlavor)
+	r.add('glibc:devellib', 'conary.rpath.com@rpl:1', flavor=glibcFlavor)
 	r.add('gmp:lib')
 	r.add('grep')
 	r.add('gzip')

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="saxon8" default="all">
+<project name="saxon9" default="all">
 	<property name="pathsep" value=":" />
 	<property overwrite="false" name="signoption" value="-keyfile:Extf.Net.snk" />
 	<property name="saxon9.dir" value="${nant.project.basedir}/Saxon" />
@@ -34,12 +34,12 @@
 	</target>
 	<target name="cp.depends" depends="allsources">
 		<property name="classpathstub.dir" value="/usr/lib/ikvm" />
-		<property name="saxon8.dir" value="${nant.project.basedir}/Saxon" />
+		<property name="saxon9.dir" value="${nant.project.basedir}/Saxon" />
 		<property name="allsources" value="allsources.lst" />
 	</target>
 	<target name="classes" depends="cp.depends" description="Saxon8 Java Classes">
 		<delete>
-			<fileset basedir="${saxon8.dir}">
+			<fileset basedir="${saxon9.dir}">
 				<include name="**.class"/>
 			</fileset>
 		</delete>
@@ -51,7 +51,7 @@
 		<exec program="ecj" commandline="-g -1.5 -nowarn -cp ${classpathstub.dir}/IKVM.OpenJDK.ClassLibrary.jar${pathsep}${classpathstub.dir}/IKVM.Runtime.jar${pathsep}./jars/stax-api-1.0.1.jar${pathsep}./jars/dom4j-1.6.1.jar${pathsep}./jars/xom-1.1.jar${pathsep}./jars/servlet.jar${pathsep}./jars/jdom-1.0.jar${pathsep}${classpathstub.dir}/mscorlib.jar${pathsep}/${classpathstub.dir}/System.jar${pathsep}${classpathstub.dir}/System.Xml.jar @${allsources}" useruntimeengine="false" />
 	</target>
 	
-	<target name="saxon8" depends="classes">
+	<target name="saxon9" depends="classes">
 		<exec program="ikvmc" useruntimeengine="false">
 			<arg value="-version:9.0.0.1" />
 			<arg value="${signoption}" />
@@ -62,29 +62,31 @@
 			<arg value="-exclude:exclude.lst" />
 			<arg value="-target:library" />
 			<arg value="-recurse:./jars/*.jar" />
-			<arg value="-recurse:${saxon8.dir}/*.class" />
+			<arg value="-recurse:${saxon9.dir}/*.class" />
 			<arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.dll" />
 			<arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.Xml.dll" />
 			<arg value="-resource:META-INF/MANIFEST.MF=META-INF/MANIFEST.MF" />
+			<arg value="-resource:META-INF/services/javax.xml.transform.TransformerFactory=META-INF/services/javax.xml.transform.TransformerFactory" />
+			<arg value="-resource:META-INF/services/javax.xml.xpath.XPathFactory=META-INF/services/javax.xml.xpath.XPathFactory" />
 		</exec>
 		<copy file="saxon9.dll" tofile="../bin/saxon9.dll.new" />
 		<if test="${nant.platform.win32}">
 			<call target="peverify-classpath"/>
 		</if>
 		<copy file="saxon9.dll" todir="../" />
-		<delete file="saxon8.dll.new" />
+		<delete file="saxon9.dll.new" />
 	</target>
 	
 	<target name="all">
 		<call target="checkout" />
 		<call target="patch" />
 		<call target="classes" />
-		<call target="saxon8" />
+		<call target="saxon9" />
 	</target>
 	
 	<target name="clean">
 		<delete failonerror="false" file="allsources.lst" />
-		<delete failonerror="false" file="saxon8.dll" />
+		<delete failonerror="false" file="saxon9.dll" />
 		<delete failonerror="false" dir="Saxon" />
 	</target>
 </project>

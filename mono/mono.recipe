@@ -6,7 +6,7 @@
 
 class Mono(CPackageRecipe):
     name = 'mono'
-    version = '1.2.5.2'
+    version = '1.2.6'
     buildRequires = [ 
             'zlib:devel', 
             'glib:devel', 
@@ -15,8 +15,8 @@ class Mono(CPackageRecipe):
     ]
 
     def setup(r):
-        #r.addArchive('http://mono.ximian.com/monobuild/preview/sources/mono/%(name)s-%(version)s.tar.bz2')
-	r.addArchive('http://go-mono.com/sources/%(name)s/%(name)s-%(version)s.tar.bz2')
+        r.addArchive('http://mono.ximian.com/monobuild/preview/sources/mono/%(name)s-%(version)s.tar.bz2')
+	#r.addArchive('http://go-mono.com/sources/%(name)s/%(name)s-%(version)s.tar.bz2')
 	
 	conf = '--with-preview=yes'
 

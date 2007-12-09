@@ -1,19 +1,19 @@
-CSC=mcs
+CSC=gmcs
 
 all:Saxon.Api.dll Transform.exe Query.exe
 
 Saxon.Api.dll: getsvn
-	$(CSC) -t:library -keyfile:Extf.Net.snk -out:Saxon.Api.dll -pkg:ikvm -r:saxon8.dll -out:Saxon.Api.dll -recurse:api/*.cs
+	$(CSC) -t:library -keyfile:Extf.Net.snk -out:Saxon.Api.dll -pkg:ikvm -r:saxon9.dll -out:Saxon.Api.dll -recurse:api/*.cs
 
 Transform.exe: Saxon.Api.dll
-	$(CSC) -t:exe -r:saxon8.dll -pkg:ikvm -out:Transform.exe cmd/Transform.cs
+	$(CSC) -t:exe -r:saxon9.dll -pkg:ikvm -out:Transform.exe cmd/Transform.cs
 
 Query.exe: Saxon.Api.dll
-	$(CSC) -t:exe -r:saxon8.dll -pkg:ikvm -out:Query.exe cmd/Query.cs
+	$(CSC) -t:exe -r:saxon9.dll -pkg:ikvm -out:Query.exe cmd/Query.cs
         
 getsvn:
 	sh ./build.sh
-	patch api/Saxon.Api/Model.cs < Model.cs.patch        
+#	patch api/Saxon.Api/Model.cs < Model.cs.patch        
 install: 
 	mkdir -p ${DESTDIR}/usr/bin
 	mkdir -p ${DESTDIR}/usr/lib/saxon
