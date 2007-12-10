@@ -43,7 +43,7 @@
         <include name="System.Web.Services.dll" />
         <include name="${dependencies.dir}/IKVM.OpenJDK.ClassLibrary.dll" />
         <include name="${dependencies.dir}/IKVM.Runtime.dll" />
-        <include name="${dependencies.dir}/Lucene.Net.dll" />
+        <!--<include name="${dependencies.dir}/Lucene.Net.dll" />-->
         <include name="${dependencies.dir}/Memcached.ClientLibrary.dll" />
         <include name="${dependencies.dir}/Mono.Posix.dll" />
         <include name="${dependencies.dir}/Mono.Security.dll" />
