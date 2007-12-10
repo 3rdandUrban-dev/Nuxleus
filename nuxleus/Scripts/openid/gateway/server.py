@@ -7,7 +7,7 @@ if __name__ == '__main__':
                    'server.socket_port' : 4000, 
                    'server.socket_host': '127.0.0.1',
                    'server.socket_queue_size': 25,
-                   'log.screen': False,
+                   'log.screen': True,
                    'log.access_file': './access.log',
                    'log.error_file': './error.log',
                    'checker.on': False,

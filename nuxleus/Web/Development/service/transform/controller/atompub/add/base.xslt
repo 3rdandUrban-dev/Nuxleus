@@ -35,6 +35,7 @@
     <xsl:variable name="image_path" select="concat($member_path, 'images/')"/>
     <xsl:variable name="image_file_path" select="concat($image_path, $filename)"/>
     <xsl:variable name="imageInfo" select="file-stream:SaveUploadedFileCollection($request, 'ev_comment_pix', $image_file_path)" />
+    <xsl:variable name="entry-uri" select="concat($uri, '.atom')"/>
     <xsl:variable name="comment-atom-entry">
       <atom:entry>
         <atom:id>
@@ -49,7 +50,7 @@
         <atom:updated>
           <xsl:value-of select="fn:current-dateTime()"/>
         </atom:updated>
-        <atom:link rel="self" href="{concat($uri, '.atom')}" type="application/atom+xml;type=entry"/>
+        <atom:link rel="self" href="{$entry-uri}" type="application/atom+xml;type=entry"/>
         <atom:link rel="alternate" href="{concat($base_uri, $base_path)}" type="text/html"/>
         <xsl:if test="not(empty($imageInfo))">
           <xsl:for-each select="tokenize($imageInfo, ',')">
@@ -83,7 +84,17 @@
     <xsl:result-document href="{$file}" format="xml">
       <xsl:copy-of select="$comment-atom-entry"/>
     </xsl:result-document>
-
+    
+    <xsl:variable name="set-status-code" select="response:set-status-code($response, 303)"/>
+    <xsl:variable name="set-location" select="response:set-location($response, $member_path)"/>
+    <redirect>
+      <status-code>
+        <xsl:sequence select="$set-status-code" />
+      </status-code>
+      <location>
+        <xsl:sequence select="$set-location"/>
+      </location>
+    </redirect>
 
     
     <!--<xsl:result-document href="{resolve-uri('file:///Users/sylvain/dev/nuxleus/Web/Development/ume/comments.atom')}" format="xml">

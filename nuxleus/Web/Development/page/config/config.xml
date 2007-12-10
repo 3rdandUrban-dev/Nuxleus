@@ -27,8 +27,8 @@
     <advice:space>&#160;</advice:space>
     <advice:dot>.</advice:dot>
     <advice:colon>:</advice:colon>
-    <advice:domain-name>localhost</advice:domain-name>
-    <advice:port>8080</advice:port>
+    <advice:domain-name>dev.amp</advice:domain-name>
+    <advice:root>fm</advice:root>
     <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
     <advice:domain.label>amp.fm</advice:domain.label>
     <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
