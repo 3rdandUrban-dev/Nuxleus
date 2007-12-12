@@ -42,6 +42,10 @@
     <xsl:apply-templates />
   </xsl:template>
 
+  <xsl:template match="*" mode="precompile-atomitalk">
+    <hello>atomictalk!</hello>
+  </xsl:template>
+
   <xsl:template match="operation:profile">
     <xsl:apply-templates />
   </xsl:template>

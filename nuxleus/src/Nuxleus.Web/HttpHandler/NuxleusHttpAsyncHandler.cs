@@ -141,8 +141,10 @@ namespace Nuxleus.Web.HttpHandler
                                     string file = _context.Request.FilePath;
                                     string baseXslt;
 
-                                    if (file.EndsWith("at.page"))
-                                        baseXslt = "base-atomictalk";
+                                    if (file.EndsWith("index.page"))
+                                    {
+                                        baseXslt = "precompile-atomictalk";
+                                    }
                                     else if (file.EndsWith("service.op"))
                                         baseXslt = "base";
                                     else

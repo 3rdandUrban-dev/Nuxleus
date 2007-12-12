@@ -338,6 +338,37 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Geo", "Nuxleus.Geo\
 		Release.AspNetCompiler.Debug = "False"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "X:\...\Development\", "..\Web\Development\", "{A0A3C1E6-D540-422D-89E2-48399990465A}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/Development(1)"
+		Debug.AspNetCompiler.PhysicalPath = "..\Web\Development\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Development(1)\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/Development(1)"
+		Release.AspNetCompiler.PhysicalPath = "..\Web\Development\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Development(1)\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "2305"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{88EBFF5A-FEA8-49BC-A541-215C4935C1B4}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Geo.Test", "CodeSamples\Nuxleus.Geo.Test\Nuxleus.Geo.Test.csproj", "{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -738,6 +769,26 @@ Global
 		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9054928F-69AF-4448-BEC0-591BC9393AE8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A0A3C1E6-D540-422D-89E2-48399990465A}.Debug|.NET.ActiveCfg = Debug|.NET
+		{A0A3C1E6-D540-422D-89E2-48399990465A}.Debug|.NET.Build.0 = Debug|.NET
+		{A0A3C1E6-D540-422D-89E2-48399990465A}.Debug|Any CPU.ActiveCfg = Debug|.NET
+		{A0A3C1E6-D540-422D-89E2-48399990465A}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
+		{A0A3C1E6-D540-422D-89E2-48399990465A}.Debug|Mixed Platforms.Build.0 = Debug|.NET
+		{A0A3C1E6-D540-422D-89E2-48399990465A}.Release|.NET.ActiveCfg = Debug|.NET
+		{A0A3C1E6-D540-422D-89E2-48399990465A}.Release|.NET.Build.0 = Debug|.NET
+		{A0A3C1E6-D540-422D-89E2-48399990465A}.Release|Any CPU.ActiveCfg = Debug|.NET
+		{A0A3C1E6-D540-422D-89E2-48399990465A}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
+		{A0A3C1E6-D540-422D-89E2-48399990465A}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|.NET.ActiveCfg = Release|Any CPU
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -747,6 +798,7 @@ Global
 		{138403FE-C587-460E-A3C8-77B713E904C9} = {8C91D63B-9064-41B8-AF8B-B2691EE62A12}
 		{582EFFC3-C504-457E-9112-1C1FCE5D2A69} = {8C91D63B-9064-41B8-AF8B-B2691EE62A12}
 		{216314AA-0FA4-4DD9-8BD9-77D5D8869820} = {8C91D63B-9064-41B8-AF8B-B2691EE62A12}
+		{88EBFF5A-FEA8-49BC-A541-215C4935C1B4} = {8C91D63B-9064-41B8-AF8B-B2691EE62A12}
 		{A605AE3C-C79F-43F4-8979-2624544DFC84} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{091EC796-27A0-4EDF-9286-B7ABF7981769} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{0FFD8B77-2852-4CB0-9B85-29424C40FC44} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
@@ -788,5 +840,7 @@ Global
 		{25162422-3B32-4FB3-8A99-6BCFBE30D9AE} = {CF2BE8C5-4DCE-4D5C-9A06-787487549BC0}
 		{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2} = {CF2BE8C5-4DCE-4D5C-9A06-787487549BC0}
 		{206017F7-D34B-4662-B015-2620778CE537} = {F0A70542-6B74-44BF-8981-3EB62B4E050E}
+		{A0A3C1E6-D540-422D-89E2-48399990465A} = {F0A70542-6B74-44BF-8981-3EB62B4E050E}
+		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 	EndGlobalSection
 EndGlobal

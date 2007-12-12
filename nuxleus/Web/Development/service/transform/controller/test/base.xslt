@@ -16,6 +16,8 @@
 
   <xsl:import href="./movable-type-conversion.xsl"/>
   
+  <xsl:param name="current-context" />
+  
   <xsl:template match="test:compare-title">
     <xsl:param name="old" select="func:resolve-variable(@old-mt-archive)" />
     <xsl:param name="new" select="func:resolve-variable(@new-mt-archive)" />
@@ -29,7 +31,7 @@
   </xsl:template>
 
   <xsl:template match="test:entry">
-    <xsl:variable name="title" select="substring-before(saxon:parse(http-sgml-to-xml:GetDocXml(@uri, '/html/head/title', false()))/title/text(), ' (Lessig Blog)')"/>
+    <xsl:variable name="title" select="substring-before(saxon:parse(http-sgml-to-xml:GetDocXml(@uri, '/html/head/title', false(), $current-context))/title/text(), ' (Lessig Blog)')"/>
     <entry href="{@uri}">
       <expected-title>
         <xsl:value-of select="."/>

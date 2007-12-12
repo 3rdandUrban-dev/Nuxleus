@@ -67,7 +67,7 @@ namespace Nuxleus.Geo
                             }
                         case "countryAbbrev":
                             {
-                                geoInfoArray[1] = xGeoIPReader.ReadString();
+                                geoInfoArray[2] = xGeoIPReader.ReadString();
                                 break;
                             }
                         case "gml:coordinates":
