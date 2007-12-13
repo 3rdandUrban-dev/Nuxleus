@@ -18,9 +18,9 @@
   <xsl:variable name="long" select="substring-after($geo-ip/point, ' ')"/>
   <xsl:variable name="location" select="$geo-ip/city"/>
 
-  <xsl:strip-space elements="html:*"/>
+  <xsl:strip-space elements="*"/>
 
-  <xsl:output cdata-section-elements="script" doctype-system="-//W3C//DTD HTML 4.01//EN" doctype-public="http://www.w3.org/TR/html4/strict.dtd" method="html" indent="yes"/>
+  <xsl:output cdata-section-elements="script" doctype-system="-//W3C//DTD HTML 4.01//EN" doctype-public="http://www.w3.org/TR/html4/strict.dtd" method="html" indent="no"/>
 
   <xsl:template match="my:session">
     <xsl:apply-templates/>
