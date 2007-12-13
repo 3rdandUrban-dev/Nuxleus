@@ -93,8 +93,8 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
-	<xsl:strip-space elements="html:*"/>
-	<xsl:output cdata-section-elements="script" method="xml" indent="yes"/>
+	<xsl:strip-space elements="*"/>
+	<xsl:output cdata-section-elements="script" method="xml" indent="no"/>
 	<xsl:template match="my:session">
 		<xsl:processing-instruction name="xml-stylesheet">
 			<xsl:value-of select="concat('type=', $q, 'text/xsl', $q, ' ', 'href=', $q, '/page/controller/atomictalk/base.xsl', $q)"/>
