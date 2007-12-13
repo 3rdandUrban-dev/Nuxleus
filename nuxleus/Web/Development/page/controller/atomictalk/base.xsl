@@ -215,9 +215,8 @@
   </xsl:template>
 
   <xsl:template match="doc:session.openid">
-    <xsl:variable select="document(@href)/message/session/@openid" name="openid.url"/>
     <xsl:choose>
-      <xsl:when test="$openid.url = 'not-set'">
+      <xsl:when test="$session-name = 'not-set'">
         <li class="list menu {@style}" id="{@id}">
           <a href="/login/" title="Log to your amp.fm profile">Login</a>
         </li>
