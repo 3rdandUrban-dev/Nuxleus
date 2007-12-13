@@ -42,10 +42,6 @@
     <xsl:apply-templates />
   </xsl:template>
 
-  <xsl:template match="*" mode="precompile-atomitalk">
-    <hello>atomictalk!</hello>
-  </xsl:template>
-
   <xsl:template match="operation:profile">
     <xsl:apply-templates />
   </xsl:template>
@@ -57,8 +53,8 @@
     <xsl:variable name="member-dir-root" select="'/member/'"/>
     <xsl:variable name="member-directory" select="concat($member-dir-root, $username, '/')"/>
     <xsl:variable name="profile" select="resolve-uri(concat($application-root, $member-directory, 'profile.xml'), $application-root)" />
-    <xsl:variable name="index" select="resolve-uri(concat($application-root, $member-directory, 'index.xml'))" />
-    <xsl:variable name="images" select="resolve-uri(concat($application-root, $member-directory, 'images/index.xml'))" />
+    <xsl:variable name="index" select="resolve-uri(concat($application-root, $member-directory, 'index.page'))" />
+    <xsl:variable name="images" select="resolve-uri(concat($application-root, $member-directory, 'images/index.page'))" />
     <xsl:variable name="set-status-code" select="response:set-status-code($response, 303)"/>
     <xsl:variable name="set-location" select="response:set-location($response, $member-directory)"/>
     <redirect>

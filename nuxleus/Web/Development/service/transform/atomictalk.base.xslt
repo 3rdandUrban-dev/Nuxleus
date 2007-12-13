@@ -7,9 +7,16 @@
   Russ Miles (mailto:aohacker@gmail.com; http://www.russmiles.com/)
 -->
 <xsl:stylesheet xmlns:html="http://www.w3.org/1999/xhtml" xmlns:request="http://atomictalk.org/function/aspnet/request" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:layout="http://atomictalk.org/page/view/layout" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common" xmlns:resource="http://atomictalk.org/page/resource" xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#" xmlns:atompub="http://www.w3.org/2007/app" xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web" xmlns:response="http://atomictalk.org/function/aspnet/response" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:func="http://atomictalk.org/function" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" version="2.0">
-
-		<xsl:import href="../atomictalk.base.xslt" />
-
+	<xsl:import href="./functions/funcset-Util.xslt"/>
+	<xsl:import href="./functions/aspnet/request-stream.xslt"/>
+	<xsl:import href="./functions/aspnet/response-stream.xslt"/>
+	<xsl:param name="current-context"/>
+	<xsl:param name="response" select="aspnet-context:Response($current-context)"/>
+	<xsl:param name="request" select="aspnet-context:Request($current-context)"/>
+	<xsl:param name="server" select="aspnet-context:Server($current-context)"/>
+	<xsl:param name="session" select="aspnet-context:Session($current-context)"/>
+	<xsl:param name="timestamp" select="aspnet-context:Timestamp($current-context)"/>
+	<xsl:param name="session-params"/>
 	<xsl:variable name="application-root" select="request:get-physical-application-path()"/>
 	<xsl:variable name="session-info" select="document('/service/session/validate-request/')/message"/>
 	<xsl:variable name="session-name" select="$session-info/session/@openid"/>
@@ -92,7 +99,7 @@
 		<xsl:processing-instruction name="xml-stylesheet">
 			<xsl:value-of select="concat('type=', $q, 'text/xsl', $q, ' ', 'href=', $q, '/page/controller/atomictalk/base.xsl', $q)"/>
 		</xsl:processing-instruction>
-		<xsl:variable name="content-type" select="response:set-content-type('text/xml')"/>
+		<xsl:variable name="content-type" select="response:set-content-type($response, 'text/xml')"/>
 		<my:session content-type="{if(not(empty($content-type))) then 'text/xml' else 'not-set'}">
 			<xsl:copy-of select="@*"/>
 			<xsl:apply-templates/>
