@@ -225,6 +225,12 @@
         </li>
       </xsl:when>
       <xsl:otherwise>
+				<li class="list menu {@style}">
+          <a href="./inbox" title="Inbox">Inbox</a>
+        </li>
+				<li class="list menu {@style}">
+          <a href="./blog" title="Blog">Blog</a>
+        </li>
         <li class="list menu {@style}" id="{@id}">
           <a href="/gatekeeper/logout?uname={$session-name}&amp;status-code=303" title="Connected as {$session-name}">Logout</a>
         </li>
