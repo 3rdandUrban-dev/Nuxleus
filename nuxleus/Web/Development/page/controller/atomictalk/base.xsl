@@ -226,7 +226,7 @@
       </xsl:when>
       <xsl:otherwise>
         <li class="list menu {@style}" id="{@id}">
-          <a href="/gatekeeper/logout?uname={$openid.url}&amp;status-code=303" title="Connected as {$openid.url}">Logout</a>
+          <a href="/gatekeeper/logout?uname={$session-name}&amp;status-code=303" title="Connected as {$session-name}">Logout</a>
         </li>
       </xsl:otherwise>
     </xsl:choose>
