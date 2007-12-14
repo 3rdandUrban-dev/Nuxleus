@@ -6,17 +6,19 @@
   Contributors to this code base include, 
   Russ Miles (mailto:aohacker@gmail.com; http://www.russmiles.com/)
 -->
-<xsl:stylesheet version="1.0" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:layout="http://atomictalk.org/page/view/layout" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common" xmlns:resource="http://atomictalk.org/page/resource" xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#" xmlns:atompub="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="html exsl my app advice atom head page service resource output form body view menu model msxsl doc atompub">
+<xsl:stylesheet version="1.0" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:response="http://nuxleus.com/message/response" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:layout="http://atomictalk.org/page/view/layout" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common" xmlns:resource="http://atomictalk.org/page/resource" xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#" xmlns:atompub="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="html exsl my app response advice atom head page service resource output form body view menu model msxsl doc atompub">
 
-  <!-- <xsl:include href="../atom/base.xsl"/> -->
   <xsl:include href="./process.xsl"/>
 
-  <xsl:variable name="session-info" select="document('/service/session/validate-request/')/message"/>
-  <xsl:variable name="session-name" select="$session-info/session/@openid"/>
-  <xsl:variable name="geo-ip" select="document('/service/geo/get-geo-info-by-ip')/message"/>
-  <xsl:variable name="lat" select="$geo-ip/lat"/>
-  <xsl:variable name="long" select="$geo-ip/long"/>
-  <xsl:variable name="location" select="$geo-ip/city"/>
+  <xsl:variable name="session-info" select="document('/service/session/get-session-request-info/')/response:message"/>
+  <xsl:variable name="session-name" select="$session-info/response:session/@openid"/>
+  <xsl:variable name="session-id" select="$session-info/response:session/@session-id"/>
+  <xsl:variable name="request-id" select="$session-info/response:session/response:request-guid"/>
+  <xsl:variable name="request-date" select="$session-info/response:session/response:request-date"/>
+  <xsl:variable name="geo-ip" select="$session-info/response:geo"/>
+  <xsl:variable name="lat" select="$geo-ip/response:lat"/>
+  <xsl:variable name="long" select="$geo-ip/response:long"/>
+  <xsl:variable name="location" select="$geo-ip/response:city"/>
 
   <xsl:strip-space elements="*"/>
 

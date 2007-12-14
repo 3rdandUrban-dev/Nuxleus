@@ -34,7 +34,7 @@ namespace Nuxleus.Web.HttpHandler
             using(XmlWriter writer = XmlWriter.Create(context.Response.Output))
             {
                 writer.WriteStartDocument();
-                writer.WriteStartElement("message");
+                writer.WriteStartElement("message", "http://nuxleus.com/message/response");
                 writer.WriteStartElement("city");
                 writer.WriteString(location.City);
                 writer.WriteEndElement();
@@ -48,6 +48,7 @@ namespace Nuxleus.Web.HttpHandler
                 writer.WriteString(location.Long);
                 writer.WriteEndElement();
                 writer.WriteEndElement();
+                writer.WriteEndDocument();
             }
 
 
