@@ -255,6 +255,30 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.Extension.Aws.Sdb" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/Attribute.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/Domain.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/HttpQueryConnection.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/IAwsConnection.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/Item.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/GetAttributesResponse.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/ListDomainsResponse.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/ListResponse.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/QueryResponse.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/Response.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/SdbConnection.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/SdbException.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/Sdb.cs" />
+        <include name="${source.dir}/Xameleon/Function/AWSSimpleDBFunctions.cs" />
+      </sources>
+      <references>
+        <include name="System.Web.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Extension.Silverlight" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Silverlight.dll" keyfile="./Dependencies/Extf.Net.snk">
       <sources>
@@ -494,7 +518,7 @@
         <include name="${build.dir}/Nuxleus.Configuration.dll" />
         <include name="${build.dir}/Nuxleus.Cryptography.dll" />
         <include name="${build.dir}/Nuxleus.Geo.dll" />
-	<include name="${build.dir}/Nuxleus.IO.dll" />
+        <include name="${build.dir}/Nuxleus.IO.dll" />
         <include name="${build.dir}/Nuxleus.Messaging.dll" />
         <include name="${build.dir}/Nuxleus.Process.dll" />
         <include name="${build.dir}/Nuxleus.PubSub.dll" />
@@ -524,6 +548,18 @@
         <include name="System.Web.dll" />
         <include name="System.Web.Services.dll" />
         <include name="System.EnterpriseServices.dll" />
+      </references>
+    </csc>
+  </target>
+  <target name="sdb-test" depends="init Nuxleus.Extension.Aws.Sdb">
+    <csc target="exe" output="${build.dir}/sdb-test.exe">
+      <sources>
+        <include name="${source.dir}//Nuxleus.Extension.Aws.Sdb/src/BasicSample.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.dll"/>
       </references>
     </csc>
   </target>
@@ -679,6 +715,7 @@
     <call target="Nuxleus.Extension" />
     <call target="Nuxleus.Extension.Amp.Fm" />
     <call target="Nuxleus.Extension.Aws" />
+    <call target="Nuxleus.Extension.Aws.Sdb" />
     <call target="Nuxleus.Extension.Community" />
     <call target="Nuxleus.Extension.Facebook" />
     <call target="Nuxleus.Extension.Silverlight" />
@@ -696,6 +733,7 @@
     <call target="Nuxleus.Vendor" />
     <call target="Nuxleus.Web" />
     <call target="Nuxleus.Web.Services" />
+    <call target="sdb-test" />
     <call target="FileSystemWatcher" />
     <call target="ReplicationService" />
     <call target="QueueServerService" />
