@@ -21,13 +21,18 @@ namespace Nuxleus.Web.HttpHandler
                 string guid = "not-set";
                 string openid = "not-set";
 
-                /* if (collection.Count > 0)
+                if (collection.Count > 0)
                 {
-                    if (collection.Get("guid").Value != null)
+                  try
+                  {
                         guid = collection.Get("guid").Value;
-                    if (collection.Get("openid").Value != null)
                         openid = collection.Get("openid").Value;
-                } */
+                  }
+                  catch(Exception e)
+                  {
+                    Console.WriteLine(e.Message); 
+                  }
+                }
 
                 writer.WriteStartDocument();
                     writer.WriteStartElement("message", "http://nuxleus.com/message/response");
