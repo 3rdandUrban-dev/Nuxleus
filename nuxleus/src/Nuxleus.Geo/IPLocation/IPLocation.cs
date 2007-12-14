@@ -74,8 +74,8 @@ namespace Nuxleus.Geo
                             {
                                 string[] latlon = xGeoIPReader.ReadString().Split(new char[] { ',' });
 
-                                geoInfoArray[3] = latlon[0];
-                                geoInfoArray[4] = latlon[1];
+                                geoInfoArray[3] = latlon[1];
+                                geoInfoArray[4] = latlon[0];
                                 break;
                             }
                         default:
