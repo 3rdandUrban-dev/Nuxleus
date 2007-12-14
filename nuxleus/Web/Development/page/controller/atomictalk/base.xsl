@@ -13,9 +13,9 @@
 
   <xsl:variable name="session-info" select="document('/service/session/validate-request/')/message"/>
   <xsl:variable name="session-name" select="$session-info/session/@openid"/>
-  <xsl:variable name="geo-ip" select="document('/ipgeolocator/geocode')/location"/>
-  <xsl:variable name="lat" select="substring-before($geo-ip/point, ' ')"/>
-  <xsl:variable name="long" select="substring-after($geo-ip/point, ' ')"/>
+  <xsl:variable name="geo-ip" select="document('/service/geo/get-geo-info-by-ip')/message"/>
+  <xsl:variable name="lat" select="$geo-ip/lat"/>
+  <xsl:variable name="long" select="$geo-ip/long"/>
   <xsl:variable name="location" select="$geo-ip/city"/>
 
   <xsl:strip-space elements="*"/>

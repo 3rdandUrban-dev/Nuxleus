@@ -55,6 +55,13 @@
     <xsl:variable name="profile" select="resolve-uri(concat($application-root, $member-directory, 'profile.xml'), $application-root)" />
     <xsl:variable name="index" select="resolve-uri(concat($application-root, $member-directory, 'index.page'))" />
     <xsl:variable name="images" select="resolve-uri(concat($application-root, $member-directory, 'images/index.page'))" />
+    <xsl:variable name="blog" select="resolve-uri(concat($application-root, $member-directory, 'blog/index.page'))" />
+    <xsl:variable name="inbox" select="resolve-uri(concat($application-root, $member-directory, 'inbox/index.page'))" />
+    <xsl:variable name="template">
+      <xsl:apply-templates select="document(resolve-uri(concat($application-root, $member-dir-root, 'index.template')))/my:session">
+        <xsl:with-param name="member-directory" select="$member-directory"/>
+      </xsl:apply-templates>
+    </xsl:variable>
     <xsl:variable name="set-status-code" select="response:set-status-code($response, 303)"/>
     <xsl:variable name="set-location" select="response:set-location($response, $member-directory)"/>
     <redirect>
@@ -76,14 +83,16 @@
       </profile>
     </xsl:result-document>
     <xsl:result-document method="xml " href="{$index}">
-      <xsl:apply-templates select="document(resolve-uri(concat($application-root, $member-dir-root, 'index.template')))/my:session">
-        <xsl:with-param name="member-directory" select="$member-directory"/>
-      </xsl:apply-templates>
+      <xsl:copy-of select="$template"/>
     </xsl:result-document>
     <xsl:result-document method="xml " href="{$images}">
-      <xsl:apply-templates select="document(resolve-uri(concat($application-root, $member-dir-root, 'index.template')))/my:session">
-        <xsl:with-param name="member-directory" select="$member-directory"/>
-      </xsl:apply-templates>
+      <xsl:copy-of select="$template"/>
+    </xsl:result-document>
+    <xsl:result-document method="xml " href="{$blog}">
+      <xsl:copy-of select="$template"/>
+    </xsl:result-document>
+    <xsl:result-document method="xml " href="{$inbox}">
+      <xsl:copy-of select="$template"/>
     </xsl:result-document>
   </xsl:template>
 

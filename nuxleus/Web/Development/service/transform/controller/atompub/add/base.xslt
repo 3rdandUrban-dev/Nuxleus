@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:transform version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:saxon="http://saxon.sf.net/" xmlns:clitype="http://saxon.sf.net/clitype" xmlns:add="http://xameleon.org/service/atompub/add" xmlns:at="http://atomictalk.org" xmlns:func="http://atomictalk.org/function" xmlns:http-atompub-utils="clitype:Xameleon.Function.HttpAtompubUtils?partialname=Xameleon" xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web" xmlns:aspnet-request="clitype:System.Web.HttpRequest?partialname=System.Web" xmlns:guid="clitype:Xameleon.Function.Utils?partialname=Xameleon" xmlns:sguid="clitype:System.Guid?partialname=mscorlib" xmlns:file-stream="clitype:Xameleon.Function.HttpFileStream?partialname=Xameleon" xmlns:atompub="http://xameleon.org/service/atompub" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:request="http://atomictalk.org/function/aspnet/request" xmlns:response="http://atomictalk.org/function/aspnet/response" exclude-result-prefixes="xs xsl xsi fn clitype at func http-atompub-utils aspnet-context aspnet-request add atompub saxon html response">
+<xsl:transform version="2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"  xmlns:my="http://xameleon.org/my" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:saxon="http://saxon.sf.net/" xmlns:clitype="http://saxon.sf.net/clitype" xmlns:add="http://xameleon.org/service/atompub/add" xmlns:at="http://atomictalk.org" xmlns:func="http://atomictalk.org/function" xmlns:http-atompub-utils="clitype:Xameleon.Function.HttpAtompubUtils?partialname=Xameleon" xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web" xmlns:aspnet-request="clitype:System.Web.HttpRequest?partialname=System.Web" xmlns:guid="clitype:Xameleon.Function.Utils?partialname=Xameleon" xmlns:sguid="clitype:System.Guid?partialname=mscorlib" xmlns:file-stream="clitype:Xameleon.Function.HttpFileStream?partialname=Xameleon" xmlns:atompub="http://xameleon.org/service/atompub" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:request="http://atomictalk.org/function/aspnet/request" xmlns:response="http://atomictalk.org/function/aspnet/response" exclude-result-prefixes="xs xsl xsi fn clitype at func http-atompub-utils aspnet-context aspnet-request add atompub saxon html response">
 
   <xsl:param name="current-context"/>
   <xsl:param name="request"/>
@@ -20,6 +20,7 @@
   <xsl:template match="add:entry">
     <xsl:param name="content-type"/>
     <xsl:param name="content-length"/>
+
     <xsl:variable name="title" select="func:resolve-variable(@title)"/>
     <xsl:variable name="slug" select="func:resolve-variable(@slug)"/>
     <xsl:variable name="author" select="func:resolve-variable(@author)"/>
@@ -30,12 +31,16 @@
     <xsl:variable name="application-path" select="request:get-physical-application-path()"/>
     <xsl:variable name="member_path" select="concat('/member/', $base_path)"/>
     <xsl:variable name="entry_path" select="concat($member_path, 'comment/', $filename)"/>
-    <xsl:variable name="file" select="resolve-uri(concat($application-path, $entry_path, '.atom'))"/>
+    <xsl:variable name="file" select="resolve-uri(concat($application-path, $entry_path, '/entry.atom'))"/>
     <xsl:variable name="uri" select="concat($base_uri, $entry_path)"/>
     <xsl:variable name="image_path" select="concat($member_path, 'images/')"/>
     <xsl:variable name="image_file_path" select="concat($image_path, $filename)"/>
     <xsl:variable name="imageInfo" select="file-stream:SaveUploadedFileCollection($request, 'ev_comment_pix', $image_file_path)" />
     <xsl:variable name="entry-uri" select="concat($uri, '.atom')"/>
+    <xsl:variable name="application-root" select="request:get-physical-application-path()"/>
+    <xsl:variable name="member-dir-root" select="'/member/'"/>
+    <xsl:variable name="member-directory" select="concat($member-dir-root, $base_path, '/')"/>
+    <xsl:variable name="index" select="resolve-uri(concat($application-path, $entry_path, '/index.page'))" />
     <xsl:variable name="comment-atom-entry">
       <atom:entry>
         <atom:id>
@@ -79,14 +84,25 @@
       <xsl:value-of select="concat('file: ', $file)"/>
       <xsl:value-of select="concat('image path: ', $image_path)"/>
       <xsl:value-of select="concat('image info: ', $imageInfo)"/>
+      <xsl:value-of select="concat('index: ', $index)"/>
     </xsl:message>
+
+    <xsl:variable name="template">
+      <xsl:apply-templates select="document(resolve-uri(concat($application-root, $member-dir-root, 'index.template')))/my:session">
+        <xsl:with-param name="member-directory" select="$member-directory"/>
+      </xsl:apply-templates>
+    </xsl:variable>
+    
+    <xsl:result-document method="xml " href="{$index}">
+      <xsl:copy-of select="$template"/>
+    </xsl:result-document>
 
     <xsl:result-document href="{$file}" format="xml">
       <xsl:copy-of select="$comment-atom-entry"/>
     </xsl:result-document>
-    
+
     <xsl:variable name="set-status-code" select="response:set-status-code($response, 303)"/>
-    <xsl:variable name="set-location" select="response:set-location($response, $member_path)"/>
+    <xsl:variable name="set-location" select="response:set-location($response, $entry_path)"/>
     <redirect>
       <status-code>
         <xsl:sequence select="$set-status-code" />
