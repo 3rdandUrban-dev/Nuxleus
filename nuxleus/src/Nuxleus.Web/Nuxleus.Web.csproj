@@ -35,14 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IKVM.OpenJDK.ClassLibrary, Version=0.36.0.2, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\IKVM.OpenJDK.ClassLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.Runtime, Version=0.36.0.2, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\IKVM.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Memcached.ClientLibrary.dll</HintPath>
@@ -55,13 +47,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Mono.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
+    <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Mvp.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Saxon.Api.dll</HintPath>
-    </Reference>
-    <Reference Include="saxon8, Version=8.9.0.4, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\saxon8.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -119,9 +111,14 @@
       <Link>WebServer\Mono.WebServer\XSPWorkerRequest.cs</Link>
     </Compile>
     <Compile Include="Agent.cs" />
+    <Compile Include="HttpHandler\NuxleusEventHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpNotFoundHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncFileNotFoundHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpValidateRequestHandler.cs" />
     <Compile Include="WebServer\WebServer.cs" />
     <Compile Include="HttpApplication\*.cs" />
-    <Compile Include="HttpHandler\*.cs" />
     <Compile Include="HttpModule\*.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +129,10 @@
     <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
       <Project>{76489AFC-B3D6-40E4-AA45-840D069E4F43}</Project>
       <Name>Nuxleus.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Geo\Nuxleus.Geo.csproj">
+      <Project>{9054928F-69AF-4448-BEC0-591BC9393AE8}</Project>
+      <Name>Nuxleus.Geo</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.IO\Nuxleus.IO.csproj">
       <Project>{76B51906-3D94-412F-B943-84CD2A41AE11}</Project>

@@ -20,15 +20,37 @@ using Nuxleus.Memcached;
 using Nuxleus.Cryptography;
 using Nuxleus.Atom;
 using Nuxleus.Storage;
+using Nuxleus.Geo;
 
 namespace Nuxleus.Web.HttpHandler
 {
     public class NuxleusHttpHandler : IHttpHandler
     {
+        
         public void ProcessRequest(HttpContext context)
         {
-            HttpRequest req = context.Request;
-            HttpResponse resp = context.Response;
+            IPLocation location = new IPLocation(context.Request.UserHostAddress);
+
+            using(XmlWriter writer = XmlWriter.Create(context.Response.Output))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("message");
+                writer.WriteStartElement("city");
+                writer.WriteString(location.City);
+                writer.WriteEndElement();
+                writer.WriteStartElement("country");
+                writer.WriteString(location.Country);
+                writer.WriteEndElement();
+                writer.WriteStartElement("lat");
+                writer.WriteString(location.Lat);
+                writer.WriteEndElement();
+                writer.WriteStartElement("long");
+                writer.WriteString(location.Long);
+                writer.WriteEndElement();
+                writer.WriteEndElement();
+            }
+
+
 	    /*
             string title = req.Form["title"];
             string location = req.Form["location"];
