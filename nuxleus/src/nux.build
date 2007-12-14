@@ -463,7 +463,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Web" depends="init Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
+  <target name="Nuxleus.Web" depends="init Nuxleus.Geo Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
     <csc target="library" unsafe="True" output="${build.dir}/Nuxleus.Web.dll" keyfile="./Dependencies/Extf.Net.snk">
       <sources>
         <include name="${source.dir}/Nuxleus.Web/**/*.cs" />
@@ -493,7 +493,8 @@
         <include name="System.Web.dll" />
         <include name="${build.dir}/Nuxleus.Configuration.dll" />
         <include name="${build.dir}/Nuxleus.Cryptography.dll" />
-        <include name="${build.dir}/Nuxleus.IO.dll" />
+        <include name="${build.dir}/Nuxleus.Geo.dll" />
+	<include name="${build.dir}/Nuxleus.IO.dll" />
         <include name="${build.dir}/Nuxleus.Messaging.dll" />
         <include name="${build.dir}/Nuxleus.Process.dll" />
         <include name="${build.dir}/Nuxleus.PubSub.dll" />

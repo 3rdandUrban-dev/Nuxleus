@@ -15,17 +15,19 @@ namespace Nuxleus.Web.HttpHandler
             {
                 IPLocation location = new IPLocation(context.Request.UserHostAddress);
                 HttpCookieCollection collection = context.Request.Cookies;
+                
+                Console.WriteLine(collection.Count);
 
                 string guid = "not-set";
                 string openid = "not-set";
 
-                if (collection.Count > 0)
+                /* if (collection.Count > 0)
                 {
                     if (collection.Get("guid").Value != null)
-                        guid = collection.Get("openid").Value;
+                        guid = collection.Get("guid").Value;
                     if (collection.Get("openid").Value != null)
                         openid = collection.Get("openid").Value;
-                }
+                } */
 
                 writer.WriteStartDocument();
                     writer.WriteStartElement("message", "http://nuxleus.com/message/response");

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project name="Xameleon" default="all">
+  <property name="project.version" value="0.0.0.1"/>
+  <property name="source.dir" value="./src"/>
+  <property name="dependencies.dir" value="../Dependencies"/>
+  <property name="build.dir" value="../build/bin"/>
+  <property name="prod.web.install.dir" value="../../Web/Production"/>
+  <property name="dev.web.install.dir" value="../../Web/Development"/>
+  <property name="test.web.install.dir" value="../../Web/Test"/>
+  <target name="init">
+    <mkdir dir="${build.dir}" failonerror="false"/>
+  </target>
+  <target name="Nuxleus.Extension.Aws.Sdb" depends="init">
+    <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll">
+      <sources>
+        <include name="${source.dir}/Attribute.cs" />
+        <include name="${source.dir}/Domain.cs" />
+        <include name="${source.dir}/HttpQueryConnection.cs" />
+        <include name="${source.dir}/IAwsConnection.cs" />
+        <include name="${source.dir}/Item.cs" />
+        <include name="${source.dir}/GetAttributesResponse.cs" />
+        <include name="${source.dir}/ListDomainsResponse.cs" />
+        <include name="${source.dir}/ListResponse.cs" />
+        <include name="${source.dir}/QueryResponse.cs" />
+        <include name="${source.dir}/Response.cs" />
+        <include name="${source.dir}/SdbConnection.cs" />
+        <include name="${source.dir}/SdbException.cs" />
+        <include name="${source.dir}/Sdb.cs" />
+        <include name="${source.dir}/Xameleon/Function/AWSSimpleDBFunctions.cs" />
+      </sources>
+      <references>
+        <include name="System.Web.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="sdb-test" depends="init Nuxleus.Extension.Aws.Sdb">
+    <csc target="exe" output="${build.dir}/sdb-test.exe">
+      <sources>
+        <include name="${source.dir}/BasicSample.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="clean">
+    <delete file="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll" failonerror="false"/>
+    <delete file="${build.dir}/sdb-test.exe" failonerror="false"/>
+  </target>
+  <target name="all">
+    <call target="init" />
+    <call target="Nuxleus.Extension.Aws.Sdb" />
+    <call target="sdb-test" />
+  </target>
+</project>
