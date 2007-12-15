@@ -18,6 +18,8 @@ using System.Net;
 using System.Text;
 using Nuxleus.Bucker;
 using System.Web.Hosting;
+using Nuxleus.Geo;
+using Nuxleus.Geo.MaxMind;
 
 namespace Nuxleus.Web.HttpApplication
 {
@@ -39,6 +41,7 @@ namespace Nuxleus.Web.HttpApplication
         Hashtable _namedXsltHashtable = new Hashtable();
         Hashtable _globalXsltParams = new Hashtable();
         Hashtable _transformContextHashtable = new Hashtable();
+        Dictionary<String, IPLocation> _geoIPLookup = new Dictionary<String, IPLocation>();
         Hashtable _requestXsltParams = null;
         BaseXsltContext _baseXsltContext;
         String _baseUri;
@@ -102,6 +105,7 @@ namespace Nuxleus.Web.HttpApplication
             Application["as_xslTransformationManager"] = _xsltTransformationManager;
             Application["as_namedXsltHashtable"] = _namedXsltHashtable;
             Application["as_globalXsltParams"] = _globalXsltParams;
+            Application["as_geoIPLookup"] = _geoIPLookup;
             Application["as_debug"] = _DEBUG;
             //Application["as_queueclient"] = _queueClient;
 
@@ -115,6 +119,7 @@ namespace Nuxleus.Web.HttpApplication
             Application["xslTransformationManager"] = Application["as_xslTransformationManager"];
             Application["namedXsltHashtable"] = Application["as_namedXsltHashtable"];
             Application["globalXsltParams"] = Application["as_globalXsltParams"];
+            Application["geoIPLookup"] = Application["as_geoIPLookup"];
             Application["debug"] = Application["as_debug"];
             //Application["queueclient"] = Application["as_queueclient"];
         }

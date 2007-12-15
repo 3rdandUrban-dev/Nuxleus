@@ -2,24 +2,57 @@ using System;
 using System.Web;
 using System.Xml;
 using Nuxleus.Geo;
+using System.Collections.Generic;
+using Memcached.ClientLibrary;
+using System.IO;
+using Nuxleus.Geo.MaxMind;
 
 
 namespace Nuxleus.Web.HttpHandler
 {
     public class NuxleusHttpSessionRequestHandler : IHttpHandler
     {
+
+        LookupService m_lookupService = new LookupService("/Users/mdavid/Projects/Nuxleus/Public/Data/GeoLiteCity.dat", LookupService.GEOIP_MEMORY_CACHE);
         
         public void ProcessRequest(HttpContext context)
         {
             using(XmlWriter writer = XmlWriter.Create(context.Response.Output))
             {
-                IPLocation location = new IPLocation(context.Request.UserHostAddress);
+                MemcachedClient client = (MemcachedClient)context.Application["memcached"];
                 HttpCookieCollection collection = context.Request.Cookies;
-                
-                Console.WriteLine(collection.Count);
-
                 string guid = "not-set";
                 string openid = "not-set";
+                bool useMemcached = (bool)context.Application["usememcached"];
+                string hostAddress = context.Request.UserHostAddress;
+                IPLocation location;
+                Dictionary<String, IPLocation> geoIP = (Dictionary<String, IPLocation>)context.Application["geoIPLookup"];
+                
+                if(!geoIP.ContainsKey(hostAddress))
+                {
+                    Location maxMindLocation = m_lookupService.getLocation(hostAddress);
+
+                    if (maxMindLocation != null && !(maxMindLocation.city.Contains("(Unknown City?)")))
+                    {
+                        location.City = maxMindLocation.city;
+                        location.Country = maxMindLocation.countryName;
+                        location.CountryCode = maxMindLocation.countryCode;
+                        location.Lat = maxMindLocation.latitude.ToString();
+                        location.Long = maxMindLocation.longitude.ToString();
+                    }
+                    else if (useMemcached && client.KeyExists(hostAddress)) //TODO: This is an null value exception just waiting to happen.  Fix this!
+                    {
+                        location = new IPLocation(((String)client.Get(hostAddress)).Split(new char[] { ',' }));
+                    }
+                    else
+                    {
+                        location = new IPLocation(context.Request.UserHostAddress);
+                        if (useMemcached)
+                        {
+                            client.Add(hostAddress, IPLocation.ToDelimitedString(",", location));
+                        }
+                    }
+                }
 
                 if (collection.Count > 0)
                 {

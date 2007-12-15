@@ -1,4 +1,6 @@
 using System.Xml;
+using System.Text;
+using System;
 
 namespace Nuxleus.Geo
 {
@@ -9,6 +11,7 @@ namespace Nuxleus.Geo
         string m_countryCode;
         string m_lat;
         string m_long;
+        string[] m_locationArray;
 
         public string City
         {
@@ -35,15 +38,35 @@ namespace Nuxleus.Geo
             get { return m_long; }
             set { m_long = value; }
         }
+        public string[] LocationArray
+        {
+            get { return m_locationArray; }
+            set { m_locationArray = value; }
+        }
         public IPLocation (string ip)
         {
-            string[] geoInfo = Parse(ip);
+            m_locationArray = Parse(ip);
+            m_city = m_locationArray[0];
+            m_country = m_locationArray[1];
+            m_countryCode = m_locationArray[2];
+            m_lat = m_locationArray[3];
+            m_long = m_locationArray[4];
+        }
+        public IPLocation (string[] geoInfo)
+        {
             m_city = geoInfo[0];
             m_country = geoInfo[1];
             m_countryCode = geoInfo[2];
             m_lat = geoInfo[3];
             m_long = geoInfo[4];
+            m_locationArray = geoInfo;
         }
+
+        public static string ToDelimitedString (string delimiter, IPLocation location)
+        {
+            return String.Join(delimiter, location.LocationArray);
+        }
+
         public static string[] Parse (string ip)
         {
             string[] geoInfoArray = new string[5];
