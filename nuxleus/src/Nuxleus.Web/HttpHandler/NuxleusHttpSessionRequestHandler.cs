@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Web;
 using System.Xml;
 using Nuxleus.Geo;
@@ -13,20 +14,38 @@ namespace Nuxleus.Web.HttpHandler
     public class NuxleusHttpSessionRequestHandler : IHttpHandler
     {
 
-        LookupService m_lookupService;
+        static LookupService m_lookupService = new LookupService(HttpContext.Current.Request.MapPath("/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_MEMORY_CACHE);
+        static String guid = "not-set";
+        static String openid = "not-set";
 
         public void ProcessRequest (HttpContext context)
         {
             using (XmlWriter writer = XmlWriter.Create(context.Response.Output))
             {
-                MemcachedClient client = (MemcachedClient)context.Application["memcached"];
-                HttpCookieCollection collection = context.Request.Cookies;
-                string guid = "not-set";
-                string openid = "not-set";
                 bool useMemcached = (bool)context.Application["usememcached"];
-                string hostAddress = context.Request.UserHostAddress;
+                MemcachedClient client = (MemcachedClient)context.Application["memcached"];
+                HttpCookieCollection cookieCollection = context.Request.Cookies;
+                String hostAddress = context.Request.UserHostAddress;
                 IPLocation location = new IPLocation();
                 Dictionary<String, IPLocation> geoIP = (Dictionary<String, IPLocation>)context.Application["geoIPLookup"];
+
+                if(hostAddress == "127.0.0.1")
+                {
+                    hostAddress = Dns.GetHostAddresses(Dns.GetHostName()).GetValue(0).ToString();
+                }
+
+                if (context.Request.QueryString.Count > 0)
+                {
+                    if (context.Request.QueryString.Get("ip") != null)
+                    {
+                        hostAddress = context.Request.QueryString.Get("ip");
+                    }
+                }
+
+                //Console.WriteLine(hostAddress);
+                //Console.WriteLine(context.Request.QueryString.Get("ip"));
+
+                //hostAddress = "71.199.4.128";
 
                 if (!geoIP.ContainsKey(hostAddress))
                 {
@@ -38,13 +57,13 @@ namespace Nuxleus.Web.HttpHandler
                         }
                         else
                         {
-                            location = GetIPLocation(context.Request, hostAddress);
+                            location = GetIPLocation(hostAddress);
                             client.Add(hostAddress, IPLocation.ToDelimitedString(",", location));
                         }
                     }
                     else
                     {
-                        location = GetIPLocation(context.Request, hostAddress);
+                        location = GetIPLocation(hostAddress);
                     }
 
                     geoIP.Add(hostAddress, location);
@@ -55,12 +74,12 @@ namespace Nuxleus.Web.HttpHandler
                     location = geoIP[hostAddress];
                 }
 
-                if (collection.Count > 0)
+                if (cookieCollection.Count > 0)
                 {
                     try
                     {
-                        guid = collection.Get("guid").Value;
-                        openid = collection.Get("openid").Value;
+                        guid = cookieCollection.Get("guid").Value;
+                        openid = cookieCollection.Get("openid").Value;
                     }
                     catch (Exception e)
                     {
@@ -108,23 +127,14 @@ namespace Nuxleus.Web.HttpHandler
             get { return false; }
         }
 
-        private IPLocation GetIPLocation (HttpRequest request, String hostAddress)
+        private IPLocation GetIPLocation (String hostAddress)
         {
             IPLocation location = new IPLocation(hostAddress);
 
-            if (location.City.Contains("Unknown City?"))
+            if (location.City.Contains("Unknown City?") || location.City.Contains("Private Address"))
             {
-                Location maxMindLocation;
+                Location maxMindLocation = m_lookupService.getLocation(hostAddress);
 
-                if (m_lookupService != null)
-                {
-                    maxMindLocation = m_lookupService.getLocation(hostAddress);
-                }
-                else
-                {
-                    m_lookupService = new LookupService(request.MapPath("/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_MEMORY_CACHE);
-                    maxMindLocation = m_lookupService.getLocation(hostAddress);
-                }
                 try
                 {
                     location.City = maxMindLocation.city;
