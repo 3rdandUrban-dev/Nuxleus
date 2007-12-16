@@ -117,6 +117,7 @@
     <Compile Include="HttpHandler\NuxleusHttpNotFoundHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncFileNotFoundHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpSessionRequestHandler.cs" />
+    <Compile Include="NuxleusHttpGeoLocationHandler.cs" />
     <Compile Include="WebServer\WebServer.cs" />
     <Compile Include="HttpApplication\*.cs" />
     <Compile Include="HttpModule\*.cs" />
