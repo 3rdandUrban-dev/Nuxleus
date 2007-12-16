@@ -94,6 +94,7 @@
   <xsl:template match="page:head">
     <head>
       <xsl:apply-templates select="head:title"/>
+      <xsl:apply-templates select="head:meta"/>
       <xsl:apply-templates select="head:link"/>
       <style type="text/css">
         <xsl:apply-templates select="head:include[@fileType = 'css']"/>
@@ -122,7 +123,13 @@
       </xsl:call-template>
     </xsl:attribute>
   </xsl:template>
-
+  
+  <xsl:template match="head:meta">
+    <meta>
+      <xsl:copy-of select="@*"/>
+    </meta>
+  </xsl:template>
+  
   <xsl:template match="head:include[@fileType = 'css']">
     <xsl:variable name="uri">
       <xsl:call-template name="resolve-uri">
@@ -132,7 +139,7 @@
     <xsl:value-of select="concat('@import ', $quote, $uri, $quote, ';')"/>
   </xsl:template>
 
-  <xsl:template match="head:include[@fileType = 'javascript' and not(@src)]">
+  <xsl:template match="head:include[@fileType = 'javascript' and not(@src)]|view:script[@type = 'javascript' and not(@src)]">
     <script type="text/javascript">
       <xsl:text>//&lt;![CDATA[</xsl:text>
       <xsl:call-template name="replace">
@@ -142,7 +149,7 @@
     </script>
   </xsl:template>
 
-  <xsl:template match="head:include[@fileType = 'javascript' and @src]">
+  <xsl:template match="head:include[@fileType = 'javascript' and @src]|view:script[@type = 'javascript' and @src]">
     <xsl:variable name="uri">
       <xsl:call-template name="resolve-uri">
         <xsl:with-param name="href" select="@src"/>

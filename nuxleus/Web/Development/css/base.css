@@ -15,10 +15,11 @@ h2 {
     margin-bottom:0;
 }
 h1 {
-    color:#000;
-    margin-left:.25em;
-    margin-right:.25em;
-    margin-bottom:.1em;
+    color:#993300;
+    margin-left:.1em;
+    margin-right:.1em;
+    margin-bottom:.5em;
+    border-bottom: 1px solid #333;
 }
 a {
     margin:0px .25em;
@@ -266,7 +267,7 @@ span.ButtonLabel:hover {
     color:#FF6600;
 }
 #left {
-    width:200px;
+    width:160px;
     text-align:left;
     position:absolute;
     left:0;
@@ -275,7 +276,7 @@ span.ButtonLabel:hover {
     padding:0;
 }
 #right {
-    width:200px;
+    width:160px;
     text-align:right;
     position:absolute;
     right:0;
@@ -285,8 +286,8 @@ span.ButtonLabel:hover {
 }
 #center {
     position:absolute;
-    right:225px;
-    left:225px;
+    right:180px;
+    left:180px;
     top:0;
     margin:0;
     padding:0 1em;
@@ -302,6 +303,8 @@ span.ButtonLabel:hover {
     margin-top:0;
     border-top:3px solid #000;
     border-bottom:3px solid #000;
+    width:99%;
+    margin:0 auto;
 }
 #search-container {
     padding-top:3em;
@@ -391,8 +394,9 @@ span.ButtonLabel:hover {
     margin:0;
 }
 #instance {
-    width:auto;
+    width:99%;
     padding:0;
+    margin:1em auto;
 }
 #search-box-container {
     background-color:Transparent;
@@ -481,4 +485,23 @@ span.ButtonLabel:hover {
     padding:.2em .3em;
     margin-bottom: 5px;
     font-weight:600;
+}
+#unboxed
+{
+ position:relative;
+ display:block;
+ height:450px;
+ width:100%;
+}
+#quick-view-module
+{
+  width:99%;
+    padding:0;
+    margin:0 auto;
+}
+#top-keyword
+{
+ border-top:1px solid #333;
+border-bottom: 1px solid #333;
+margin: .25em 0;
 }

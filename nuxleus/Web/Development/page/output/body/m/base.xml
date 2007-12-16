@@ -9,7 +9,6 @@
         <view:container>
           <view:module id="header" src="/page/view/module/header/m/base.xml"/>
           <view:module id="body" src="/page/view/module/m/content/base.xml"/>
-          <view:module id="footer" src="/page/view/module/m/footer/base.xml"/>
         </view:container>
       </view:module>
     </layout:view>
