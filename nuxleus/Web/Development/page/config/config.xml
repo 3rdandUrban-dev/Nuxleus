@@ -55,7 +55,7 @@
     <advice:search-form.maxlength>@@maxlength@@|default:'255'|</advice:search-form.maxlength>
     <advice:search-form.method>@method@|default:@@generate@@|</advice:search-form.method>
     <advice:search-form.action>@action@|default:@@generate@@|</advice:search-form.action>
-    <advice:search-summary>summary/default.omx?</advice:search-summary>
+    <advice:search-summary>/summary/</advice:search-summary>
     <advice:target.default>@target@|default:@@generate@@|</advice:target.default>
     <advice:name.default>@id@|default:@@generate@@|</advice:name.default>
     <advice:class.default>@class@|default:@@empty@@|</advice:class.default>

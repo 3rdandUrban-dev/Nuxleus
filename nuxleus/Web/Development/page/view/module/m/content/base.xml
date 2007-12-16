@@ -10,7 +10,7 @@
         <doc:profile src="@@current.location@@profile.xml" />
       </div>
       <div>
-        <h3>Talk about M.David</h3>
+        <h3>Talk about @@current.location@@</h3>
         <form method="post" action="/service/atompub/event/comment/add/" name="ev_comment_form" enctype="multipart/form-data">
           <input type="hidden" id="ev_base_uri" name="ev_base_uri" value="http://dev.amp.fm/" />
           <input type="hidden" id="ev_base_path" name="ev_base_path" value="m.david/" />

@@ -10,7 +10,7 @@
           <span style="font-size:18pt; color:#999;">to</span>
         </view:item>
         <view:item id="current-region">
-          <geo:location />
+          <geo:location value="|$$test:@@search.location@@IfTrue:@@search.location@@IfFalse:@@current-location.label@@$$|"/>
         </view:item>
       </view:container>
     </view:item>

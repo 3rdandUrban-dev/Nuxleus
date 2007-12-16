@@ -14,9 +14,25 @@
   <xsl:variable name="request-id" select="$session-info/response:session/response:request-guid"/>
   <xsl:variable name="request-date" select="$session-info/response:session/response:request-date"/>
   <xsl:variable name="geo-ip" select="$session-info/response:geo"/>
+  <xsl:variable name="location" select="$geo-ip//response:city"/>
   <xsl:variable name="lat" select="$geo-ip/response:lat"/>
   <xsl:variable name="long" select="$geo-ip/response:long"/>
-  <xsl:variable name="location" select="$geo-ip/response:city"/>
+  <xsl:variable name="search.location">
+    <xsl:call-template name="replace">
+      <xsl:with-param name="string" select="'@@search.location@@'"/>
+    </xsl:call-template>
+  </xsl:variable>
+  <xsl:variable name="city.location">
+    <xsl:choose>
+      <xsl:when test="$search.location != 'local'">
+        <xsl:value-of select="$search.location"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$location"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="geo.location" select="document(concat('/service/geo/get-geo-info-by-city-name/?name=', translate($city.location, ' ', '+')))/response:message/response:geo"/>
 
   <xsl:param name="closure-token-pre-delimiter" select="'|@@'"/>
   <xsl:param name="closure-token-post-delimiter" select="'@@|'"/>
@@ -83,18 +99,14 @@
         <xsl:apply-templates select="head:include[@fileType = 'css']"/>
       </style>
       <xsl:apply-templates select="head:include[@fileType = 'javascript']"/>
-      <script type="text/javascript">
-        <xsl:text>//&lt;![CDATA[</xsl:text>
-            function load() {
-              if (GBrowserIsCompatible()) {
-                var map = new GMap2(document.getElementById("map"));
-                map.setCenter(new GLatLng(<xsl:value-of select="$lat"/>, <xsl:value-of select="$long"/>), 9);
-              }
-            }
-        <xsl:text>//]]&gt;</xsl:text>
-      </script>
     </head>
   </xsl:template>
+
+<!--   <xsl:template name="geo-ip-map-script">
+    <xsl:param name="lat"/>
+    <xsl:param name="long"/>
+
+  </xsl:template> -->
 
   <xsl:template match="page:body">
     <body>
@@ -212,15 +224,47 @@
   </xsl:template>
 
   <xsl:template match="geo:map">
+    <script type="text/javascript">
+      <xsl:text>//&lt;![CDATA[</xsl:text>
+          function load() {
+            if (GBrowserIsCompatible()) {
+              var map = new GMap2(document.getElementById("map"));
+              map.setCenter(new GLatLng(<xsl:value-of select="$geo.location//response:lat"/>, <xsl:value-of select="$geo.location//response:long"/>), 9);
+            }
+          }
+        <xsl:text>//]]&gt;</xsl:text>
+    </script>
     <div id="map" style="width:{@width}; height:{@height};margin:0;padding:0;" />
   </xsl:template>
 
   <xsl:template match="geo:location">
-    <xsl:value-of select="$location"/>
+    <xsl:value-of select="$geo.location//response:city"/>
   </xsl:template>
 
   <xsl:template match="doc:local-news">
-    <xsl:apply-templates select="document(concat('/service/proxy/return-news-by-location/?location=', translate($location, ' ,', '+'), '&amp;topic=', translate(@topic, ' ', '+')))" mode="message"/>
+    <xsl:variable name="location-search">
+      <xsl:choose>
+        <xsl:when test="@location">
+          <xsl:call-template name="replace">
+            <xsl:with-param name="string" select="translate(@location, ' ', '')"/>
+          </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$location"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="local-news">
+      <xsl:choose>
+        <xsl:when test="$location-search = 'local'">
+          <xsl:value-of select="$location"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="$location-search"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:apply-templates select="document(concat('/service/proxy/return-news-by-location/?location=', translate($local-news, ' ,', '+'), '&amp;topic=', translate(@topic, ' ', '+')))" mode="message"/>
   </xsl:template>
 
   <xsl:template match="*" mode="message">
@@ -246,6 +290,12 @@
     <h2>
       <xsl:value-of select="."/>
     </h2>
+  </xsl:template>
+
+  <xsl:template match="doc:location">
+    <xsl:call-template name="replace">
+      <xsl:with-param name="string" select="@value"/>
+    </xsl:call-template>
   </xsl:template>
 
   <xsl:template match="doc:date">
@@ -353,9 +403,6 @@
   <xsl:template match="*">
     <xsl:element name="{local-name()}">
       <xsl:apply-templates select="@*"/>
-      <xsl:call-template name="replace">
-        <xsl:with-param name="string" select="."/>
-      </xsl:call-template>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -373,7 +420,7 @@
       <xsl:with-param name="string" select="."/>
     </xsl:call-template>
   </xsl:template>
-  
+
 
   <xsl:template match="atom:feed">
     <xsl:apply-templates select="atom:entry"/>
@@ -418,7 +465,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-    
+
 
   <xsl:template name="replace">
     <xsl:param name="string"/>

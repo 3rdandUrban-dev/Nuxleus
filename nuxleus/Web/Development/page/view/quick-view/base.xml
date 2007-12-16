@@ -9,5 +9,5 @@
     }); 
     ]]>
   </script> -->
-  <geo:map width="100%" height="300px"/>
+  <geo:map width="100%" height="300px" location="@@search.location@@"/>
 </view:menu>
