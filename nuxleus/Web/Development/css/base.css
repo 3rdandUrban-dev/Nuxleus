@@ -397,7 +397,8 @@ span.ButtonLabel:hover {
 #search-box-container {
     background-color:Transparent;
     width:500px;
-    margin:0 auto;
+    margin:-1.25em auto 2em;
+    text-align:center;
 }
 #search-box-item {
 }
@@ -416,7 +417,8 @@ span.ButtonLabel:hover {
     margin-left:.15em;
 }
 #icon img {
-    margin-bottom:-7px;
+    margin:0 auto;
+    text-align:center;
 }
 #sub-nav > ul {
 }
@@ -429,6 +431,8 @@ span.ButtonLabel:hover {
 #search-box {
     text-align:center;
     background-color:Transparent;
+    width:500px;
+    margin:0 auto;
 }
 #local-nav {
     padding:1px 0;
@@ -443,9 +447,14 @@ span.ButtonLabel:hover {
     font-size:large;
 }
 #location-module {
-    margin-left:.5em;
-    margin-bottom:0;
-    margin-top:2em;
+    margin:0 auto;
+    text-align:center;
+    width:99%;
+}
+#location-container {
+    margin:0 auto .5em;
+    text-align:center;
+    width:99%;
 }
 #openid-container {
     background-color:Transparent;
@@ -455,7 +464,10 @@ span.ButtonLabel:hover {
     padding:0;
     padding-top:.25em;
 }
-
+#get-plugged-in {
+    margin:3em auto;
+    text-align:center;
+}
 .openid-form-label {
     display: inline;
     float: left; 
