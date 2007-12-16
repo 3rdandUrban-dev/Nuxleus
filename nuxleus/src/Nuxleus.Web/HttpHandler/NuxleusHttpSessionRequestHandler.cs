@@ -27,7 +27,7 @@ namespace Nuxleus.Web.HttpHandler
                 HttpCookieCollection cookieCollection = context.Request.Cookies;
                 String hostAddress = context.Request.UserHostAddress;
                 IPLocation location = new IPLocation();
-                Dictionary<String, IPLocation> geoIP = (Dictionary<String, IPLocation>)context.Application["geoIPLookup"];
+                //Dictionary<String, IPLocation> geoIP = (Dictionary<String, IPLocation>)context.Application["geoIPLookup"];
 
                 if(hostAddress == "127.0.0.1")
                 {
@@ -47,18 +47,16 @@ namespace Nuxleus.Web.HttpHandler
 
                 //hostAddress = "71.199.4.128";
 
-                if (!geoIP.ContainsKey(hostAddress))
-                {
                     if (useMemcached && client != null)
                     {
                         if (client.KeyExists(hostAddress))
                         {
-                            location = new IPLocation(((String)client.Get(hostAddress)).Split(new char[] { ',' }));
+                            location = new IPLocation(((String)client.Get(hostAddress)).Split(new char[] { '|' }));
                         }
                         else
                         {
                             location = GetIPLocation(hostAddress);
-                            client.Add(hostAddress, IPLocation.ToDelimitedString(",", location));
+                            client.Add(hostAddress, IPLocation.ToDelimitedString("|", location));
                         }
                     }
                     else
@@ -66,13 +64,6 @@ namespace Nuxleus.Web.HttpHandler
                         location = GetIPLocation(hostAddress);
                     }
 
-                    geoIP.Add(hostAddress, location);
-
-                }
-                else
-                {
-                    location = geoIP[hostAddress];
-                }
 
                 if (cookieCollection.Count > 0)
                 {
@@ -131,7 +122,7 @@ namespace Nuxleus.Web.HttpHandler
         {
             IPLocation location = new IPLocation(hostAddress);
 
-            if (location.City.Contains("Unknown City?") || location.City.Contains("Private Address"))
+            if (location.City.Contains("Unknown"))
             {
                 Location maxMindLocation = m_lookupService.getLocation(hostAddress);
 
