@@ -440,13 +440,14 @@
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template match="atom:title">
+  <!-- <xsl:template match="atom:title">
     <h4>
       <a href="{../atom:link[@rel = 'self']/@href}">
         <xsl:value-of select="."/>
       </a>
     </h4>
-  </xsl:template>
+  </xsl:template> -->
+  <xsl:template match="atom:title"/>
   <xsl:template match="atom:summary"/>
   <xsl:template match="atom:published"/>
   <xsl:template match="atom:updated"/>
@@ -457,7 +458,7 @@
   <xsl:template match="atom:author"/>
   <xsl:template match="atom:content">
     <p style="font-size:small">
-      <xsl:copy-of select="."/> ... [<a href="{../atom:link[@rel = 'self']/@href}">more</a>]
+      <xsl:copy-of select="."/>
     </p>
   </xsl:template>
 

@@ -10,6 +10,7 @@ body {
 img {
     border:0;
 }
+
 h2 {
     color:#993300;
     margin-bottom:0;
@@ -143,12 +144,12 @@ ul.RtoL li {
     font-size:medium;
     border: 1px solid #333;
     background: #FFF url(/images/button_bkd.gif) 0 120% repeat-x;
-    padding:1px 2px;
+    padding:2px 5px;
     color:#FF6600;
     cursor: pointer;
 }
 button:hover {
-    color:#FF3300;
+    color:#FF0000;
     cursor: pointer;
 }
 span.ButtonLabel:hover {
@@ -205,7 +206,7 @@ span.ButtonLabel:hover {
     background-color:#FFF;
     padding:2px;
     background-position: 2px 50%;
-    width:350px;
+    width:450px;
     margin-right:.25em;
 }
 #search-button {
@@ -244,14 +245,16 @@ span.ButtonLabel:hover {
     border-top:1px solid #333;
 }
 #search-categories-container {
-    padding-top:3px;
+    padding-top:5px;
     text-align:center;
 }
 #search-categories-container li {
     padding-top:2px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 #search-categories-container li.selected {
-    padding-top:3px;
+    padding-top:5px;
     border-top:2px solid #FF3300;
     color:#FF3300;
 }
@@ -259,11 +262,10 @@ span.ButtonLabel:hover {
     color:#FF3300;
 }
 #search-categories-container a {
-    padding-top:2px;
+    padding:3px 5px;
     color:#000;
 }
 #search-categories-container a:hover {
-    padding-top:2px;
     color:#FF6600;
 }
 #left {
@@ -301,8 +303,8 @@ span.ButtonLabel:hover {
 }
 #image-nav {
     margin-top:0;
-    border-top:3px solid #000;
-    border-bottom:3px solid #000;
+    border-top:2px solid #000;
+    border-bottom:2px solid #000;
     width:99%;
     margin:0 auto;
 }
@@ -400,8 +402,8 @@ span.ButtonLabel:hover {
 }
 #search-box-container {
     background-color:Transparent;
-    width:500px;
-    margin:-1.25em auto 2em;
+    width:768px;
+    margin:-2.5em auto .3em;
     text-align:center;
 }
 #search-box-item {
@@ -504,4 +506,25 @@ span.ButtonLabel:hover {
  border-top:1px solid #333;
 border-bottom: 1px solid #333;
 margin: .25em 0;
+}
+#instance a {
+    color:#CC6600;
+    margin-bottom:0;
+    font-size: 11pt;
+    margin:0;
+    padding:2pt 0;
+    line-height: 130%;
+}
+#instance a:hover {
+    color:#FFF;
+    background-color:#CC6600;    
+}
+#left a {
+    text-align:left;
+}
+#right a {
+    text-align:left;
+}
+#instance h2 {
+ margin-bottom:.5em; 
 }

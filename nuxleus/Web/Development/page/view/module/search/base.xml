@@ -2,10 +2,10 @@
 <view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
   <view:container id="content" style="base list LtoR width">
     <view:item id="left">
+      <h2>Music</h2>
       <view:container>
         <view:item src="/page/view/module/adsense/160x600.xml"/>
         <view:item>
-          <h2>Music</h2>
           <doc:local-news topic="music" location="@@search.location@@"/>
         </view:item>
       </view:container>
@@ -54,24 +54,24 @@
       </view:container>
     </view:item>
     <view:item id="right">
+      <h2>Film</h2>
       <view:container>
-        <view:item>
-          <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab" id="Player_62087de2-b8a2-47dc-b105-0a70448e5cfe" WIDTH="160px" HEIGHT="200px">
-            <PARAM NAME="movie" VALUE="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxsltblogcom-20%2F8009%2F62087de2-b8a2-47dc-b105-0a70448e5cfe&amp;Operation=GetDisplayTemplate"/>
-            <PARAM NAME="quality" VALUE="high"/>
-            <PARAM NAME="bgcolor" VALUE="#FFFFFF"/>
-            <PARAM NAME="allowscriptaccess" VALUE="always"/>
-            <embed src="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxsltblogcom-20%2F8009%2F62087de2-b8a2-47dc-b105-0a70448e5cfe&amp;Operation=GetDisplayTemplate" id="Player_62087de2-b8a2-47dc-b105-0a70448e5cfe" quality="high" bgcolor="#ffffff" name="Player_62087de2-b8a2-47dc-b105-0a70448e5cfe" allowscriptaccess="always" type="application/x-shockwave-flash" align="middle" height="400px" width="160px"/>
-          </OBJECT>
-          <NOSCRIPT>
-            <A HREF="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxsltblogcom-20%2F8009%2F62087de2-b8a2-47dc-b105-0a70448e5cfe&amp;Operation=NoScript">Amazon.com Widgets</A>
-          </NOSCRIPT>
-        </view:item>
-        <view:item>
-          <h2>Film</h2>
+      <view:item>
+        <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab" id="Player_62087de2-b8a2-47dc-b105-0a70448e5cfe" WIDTH="160px" HEIGHT="200px">
+          <PARAM NAME="movie" VALUE="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxsltblogcom-20%2F8009%2F62087de2-b8a2-47dc-b105-0a70448e5cfe&amp;Operation=GetDisplayTemplate"/>
+          <PARAM NAME="quality" VALUE="high"/>
+          <PARAM NAME="bgcolor" VALUE="#FFFFFF"/>
+          <PARAM NAME="allowscriptaccess" VALUE="always"/>
+          <embed src="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxsltblogcom-20%2F8009%2F62087de2-b8a2-47dc-b105-0a70448e5cfe&amp;Operation=GetDisplayTemplate" id="Player_62087de2-b8a2-47dc-b105-0a70448e5cfe" quality="high" bgcolor="#ffffff" name="Player_62087de2-b8a2-47dc-b105-0a70448e5cfe" allowscriptaccess="always" type="application/x-shockwave-flash" align="middle" height="400px" width="160px"/>
+        </OBJECT>
+        <NOSCRIPT>
+          <A HREF="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxsltblogcom-20%2F8009%2F62087de2-b8a2-47dc-b105-0a70448e5cfe&amp;Operation=NoScript">Amazon.com Widgets</A>
+        </NOSCRIPT>
+      </view:item>
+      <view:item>
           <doc:local-news topic="film" location="@@search.location@@"/>
-        </view:item>
-      </view:container>
-    </view:item>
-  </view:container>
+      </view:item>
+    </view:container>
+  </view:item>
+</view:container>
 </view:module>

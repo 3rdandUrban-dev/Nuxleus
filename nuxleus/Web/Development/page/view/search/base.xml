@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<view:container id="search-box-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:view="http://atomictalk.org/page/view">
+<view:container id="search-box-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
   <view:item id="search-box" style="transparency-90">
     <form id="search-form" method="get" action="/summary" target="_top">
       <input id="search-text" class="single-input" type="text" name="search" maxlength="255"/>
@@ -12,7 +11,10 @@
   <view:item id="search-categories">
     <view:container id="search-categories-container" style="list LtoR">
       <view:item style="selected">
-        <a href="#foo">Everything</a>
+        <a href="#foo">Regions</a>
+      </view:item>
+      <view:item>
+        <a href="#foo">Artists</a>
       </view:item>
       <view:item>
         <a href="#foo">Events</a>
@@ -25,6 +27,9 @@
       </view:item>
       <view:item>
         <a href="#foo">On This Page</a>
+      </view:item>
+      <view:item>
+        <a href="#foo">Everything</a>
       </view:item>
     </view:container>
   </view:item>
