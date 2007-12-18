@@ -111,13 +111,16 @@
       <Link>WebServer\Mono.WebServer\XSPWorkerRequest.cs</Link>
     </Compile>
     <Compile Include="Agent.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncFileNotFoundHandler.cs" />
     <Compile Include="HttpHandler\NuxleusEventHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpValidateRequestHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpNotFoundHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncFileNotFoundHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpSessionRequestHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpGeoLocationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpSessionLogoutHandler.cs" />
     <Compile Include="WebServer\WebServer.cs" />
     <Compile Include="HttpApplication\*.cs" />
     <Compile Include="HttpModule\*.cs" />

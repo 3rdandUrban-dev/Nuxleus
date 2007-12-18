@@ -27,7 +27,6 @@ namespace Nuxleus.Web.HttpHandler
                 HttpCookieCollection cookieCollection = context.Request.Cookies;
                 String hostAddress = context.Request.UserHostAddress;
                 IPLocation location = new IPLocation();
-                //Dictionary<String, IPLocation> geoIP = (Dictionary<String, IPLocation>)context.Application["geoIPLookup"];
 
                 if(hostAddress == "127.0.0.1")
                 {
@@ -89,7 +88,7 @@ namespace Nuxleus.Web.HttpHandler
                 writer.WriteEndAttribute();
                 writer.WriteEndElement();
                 writer.WriteStartElement("request-date");
-                writer.WriteString(DateTime.Now.ToShortDateString());
+                writer.WriteString(DateTime.Now.ToLongDateString());
                 writer.WriteEndElement();
                 writer.WriteStartElement("request-guid");
                 writer.WriteString(Guid.NewGuid().ToString());
