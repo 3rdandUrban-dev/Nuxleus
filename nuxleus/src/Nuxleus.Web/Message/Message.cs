@@ -32,16 +32,15 @@ namespace Nuxleus.Web
                 writer.WriteStartDocument();
                 writer.WriteProcessingInstruction("xml-stylesheet", "type='text/xsl' href='/service/transform/openid-redirect.xsl'");
                 writer.WriteStartElement("auth");
-                writer.WriteStartAttribute("xml:base");
-                writer.WriteString("http://dev.amp.fm/");
-                writer.WriteEndAttribute();
-                writer.WriteStartAttribute("status");
-                writer.WriteString(m_status);
-                writer.WriteEndAttribute();
-                writer.WriteEndElement();
-                writer.WriteStartElement("return-location");
-                writer.WriteString("http://dev.amp.fm/");
-                writer.WriteEndElement();
+                    writer.WriteStartAttribute("xml:base");
+                        writer.WriteString("http://dev.amp.fm/");
+                    writer.WriteEndAttribute();
+                    writer.WriteStartAttribute("status");
+                        writer.WriteString(m_status);
+                    writer.WriteEndAttribute();
+                    writer.WriteStartElement("url");
+                        writer.WriteString("http://dev.amp.fm/");
+                    writer.WriteEndElement();
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }

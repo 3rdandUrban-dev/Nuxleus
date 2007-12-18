@@ -12,7 +12,7 @@ using Nuxleus.Geo.MaxMind;
 
 namespace Nuxleus.Web.HttpHandler
 {
-    public class NuxleusHttpSessionLogoutHandler : IHttpHandler
+    public class NuxleusHttpSessionLogoutHandler : IHttpAsyncHandler
     {
 
         HttpRequest m_request;
@@ -61,7 +61,7 @@ namespace Nuxleus.Web.HttpHandler
 
         public void EndProcessRequest (IAsyncResult result)
         {
-            
+            m_response.ContentType = "text/xml";
         }
     }
 }
