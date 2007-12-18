@@ -7,17 +7,32 @@ using System.Collections.Generic;
 using Memcached.ClientLibrary;
 using System.IO;
 using Nuxleus.Geo.MaxMind;
+using Nuxleus.Async;
+using System.Collections;
 
 
 namespace Nuxleus.Web.HttpHandler
 {
-    public class NuxleusHttpSessionRequestHandler : IHttpHandler
+    public class NuxleusHttpSessionRequestHandler : IHttpAsyncHandler
     {
 
-        static LookupService m_lookupService = new LookupService(HttpContext.Current.Request.MapPath("/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_MEMORY_CACHE);
+        LookupService m_lookupService = new LookupService(HttpContext.Current.Request.MapPath("~/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_MEMORY_CACHE);
+        NuxleusAsyncResult m_asyncResult;
 
         public void ProcessRequest (HttpContext context)
         {
+            //NOT USED WITH IHttpAsyncHandler
+        }
+
+        public bool IsReusable
+        {
+            get { return false; }
+        }
+
+        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData)
+        {
+            m_asyncResult = new NuxleusAsyncResult(cb, extraData);
+
             using (XmlWriter writer = XmlWriter.Create(context.Response.Output))
             {
                 bool useMemcached = (bool)context.Application["usememcached"];
@@ -28,7 +43,7 @@ namespace Nuxleus.Web.HttpHandler
                 String guid = "not-set";
                 String openid = "not-set";
 
-                if(hostAddress == "127.0.0.1")
+                if (hostAddress == "127.0.0.1")
                 {
                     hostAddress = Dns.GetHostAddresses(Dns.GetHostName()).GetValue(0).ToString();
                 }
@@ -46,22 +61,22 @@ namespace Nuxleus.Web.HttpHandler
 
                 //hostAddress = "71.199.4.128";
 
-                    if (useMemcached && client != null)
+                if (useMemcached && client != null)
+                {
+                    if (client.KeyExists(hostAddress))
                     {
-                        if (client.KeyExists(hostAddress))
-                        {
-                            location = new IPLocation(((String)client.Get(hostAddress)).Split(new char[] { '|' }));
-                        }
-                        else
-                        {
-                            location = GetIPLocation(hostAddress);
-                            client.Add(hostAddress, IPLocation.ToDelimitedString("|", location));
-                        }
+                        location = new IPLocation(((String)client.Get(hostAddress)).Split(new char[] { '|' }));
                     }
                     else
                     {
                         location = GetIPLocation(hostAddress);
+                        client.Add(hostAddress, IPLocation.ToDelimitedString("|", location));
                     }
+                }
+                else
+                {
+                    location = GetIPLocation(hostAddress);
+                }
 
 
                 if (cookieCollection.Count > 0)
@@ -107,14 +122,38 @@ namespace Nuxleus.Web.HttpHandler
                 writer.WriteString(location.Long);
                 writer.WriteEndElement();
                 writer.WriteEndElement();
+
+                // Begin navigation section
+                
+                //IEnumerator pathEnumerator = context.Request.FilePath.Split(new char[] { '/' }).GetEnumerator();
+
+                writer.WriteStartElement("navigation");
+                writer.WriteStartElement("path");
+                writer.WriteElementString("manage", "/manage");
+                writer.WriteElementString("collaborate", "/collaborate");
+                writer.WriteElementString("promote", "/promote");
+                writer.WriteElementString("sell", "/sell");
+                //for (int i = 0; pathEnumerator.MoveNext(); i++)
+                //{
+                //    writer.WriteElementString("path", ((string)pathEnumerator.Current));
+                //}
+                writer.WriteEndElement();
+                writer.WriteStartElement("member");
+                writer.WriteElementString("blog", "./blog");
+                writer.WriteElementString("event", "./event");
+                writer.WriteEndElement();
+                writer.WriteEndElement();
+
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }
+            m_asyncResult.CompleteCall();
+            return m_asyncResult;
         }
 
-        public bool IsReusable
+        public void EndProcessRequest (IAsyncResult result)
         {
-            get { return false; }
+            
         }
 
         private IPLocation GetIPLocation (String hostAddress)

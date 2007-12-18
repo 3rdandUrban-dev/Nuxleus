@@ -33,6 +33,7 @@
     </xsl:choose>
   </xsl:variable>
   <xsl:variable name="geo.location" select="document(concat('/service/geo/get-geo-info-by-city-name/?name=', translate($city.location, ' ', '+')))/response:message/response:geo"/>
+  <xsl:variable name="navigation" select="$session-info/response:navigation"/>
 
   <xsl:param name="closure-token-pre-delimiter" select="'|@@'"/>
   <xsl:param name="closure-token-post-delimiter" select="'@@|'"/>
@@ -115,6 +116,18 @@
       <xsl:apply-templates select="body:layout"/>
     </body>
   </xsl:template>
+  
+  <xsl:template match="doc:nav">
+    <xsl:apply-templates select="$navigation//response:path/*" mode="navigation"/>
+  </xsl:template>
+
+  <xsl:template match="response:*" mode="navigation">
+    <li>
+      <a href="{.}">
+        <xsl:value-of select="local-name()"/>
+      </a>
+    </li>
+  </xsl:template>
 
   <xsl:template match="body:onload|body:onresize|body:onunload">
     <xsl:attribute name="{local-name()}">
@@ -123,13 +136,13 @@
       </xsl:call-template>
     </xsl:attribute>
   </xsl:template>
-  
+
   <xsl:template match="head:meta">
     <meta>
       <xsl:copy-of select="@*"/>
     </meta>
   </xsl:template>
-  
+
   <xsl:template match="head:include[@fileType = 'css']">
     <xsl:variable name="uri">
       <xsl:call-template name="resolve-uri">

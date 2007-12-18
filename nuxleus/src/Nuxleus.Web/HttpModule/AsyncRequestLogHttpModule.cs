@@ -14,7 +14,7 @@ namespace Nuxleus.Web.HttpModule
         private static long _position = 0;
         private static object _lock = new object();
 
-        public void Init(System.Web.HttpApplication application)
+        public void Init (System.Web.HttpApplication application)
         {
             application.AddOnPreRequestHandlerExecuteAsync(
                 new BeginEventHandler(BeginPreRequestHandlerExecute),
@@ -22,7 +22,7 @@ namespace Nuxleus.Web.HttpModule
             );
         }
 
-        IAsyncResult BeginPreRequestHandlerExecute(Object source, EventArgs e, AsyncCallback cb, Object state)
+        IAsyncResult BeginPreRequestHandlerExecute (Object source, EventArgs e, AsyncCallback cb, Object state)
         {
             System.Web.HttpApplication app = (System.Web.HttpApplication)source;
             DateTime time = DateTime.Now;
@@ -40,8 +40,7 @@ namespace Nuxleus.Web.HttpModule
             lock (_lock)
             {
                 _file = new FileStream(
-                    HttpContext.Current.Server.MapPath(
-                        "~/App_Data/RequestLog.txt"),
+                    HttpContext.Current.Server.MapPath("~/App_Data/RequestLog.txt"),
                     FileMode.OpenOrCreate, FileAccess.Write,
                     FileShare.Write, 1024, true);
 
@@ -51,12 +50,12 @@ namespace Nuxleus.Web.HttpModule
             }
         }
 
-        void EndPreRequestHandlerExecute(IAsyncResult ar)
+        void EndPreRequestHandlerExecute (IAsyncResult ar)
         {
             _file.EndWrite(ar);
             _file.Close();
         }
 
-        public void Dispose() { }
+        public void Dispose () { }
     }
 }
