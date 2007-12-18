@@ -15,8 +15,6 @@ namespace Nuxleus.Web.HttpHandler
     {
 
         static LookupService m_lookupService = new LookupService(HttpContext.Current.Request.MapPath("/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_MEMORY_CACHE);
-        String guid = "not-set";
-        String openid = "not-set";
 
         public void ProcessRequest (HttpContext context)
         {
@@ -27,6 +25,8 @@ namespace Nuxleus.Web.HttpHandler
                 HttpCookieCollection cookieCollection = context.Request.Cookies;
                 String hostAddress = context.Request.UserHostAddress;
                 IPLocation location = new IPLocation();
+                String guid = "not-set";
+                String openid = "not-set";
 
                 if(hostAddress == "127.0.0.1")
                 {
