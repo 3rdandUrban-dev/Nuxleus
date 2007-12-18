@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="/transform/client-side/atomictalk-browser.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/page/controller/atomictalk/base.xsl"?>
 <!--
   COPYRIGHT: (c) 2006, M. David Peterson (mailto:m.david@xmlhacker.com; http://mdavid.name/)
   LICENSE: The code contained in this file is licensed under The MIT License. Please see

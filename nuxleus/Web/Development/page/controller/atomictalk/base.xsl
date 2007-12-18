@@ -316,7 +316,7 @@
           <a href="/login/" title="Log to your amp.fm profile">Login</a>
         </li>
         <li class="list menu {@style}" id="{@id}">
-          <a href="http://openid.amp.fm/signup">Create Account</a>
+          <a href="/signup/">Create Account</a>
         </li>
       </xsl:when>
       <xsl:otherwise>

@@ -57,8 +57,14 @@
     <xsl:variable name="images" select="resolve-uri(concat($application-root, $member-directory, 'images/index.page'))" />
     <xsl:variable name="blog" select="resolve-uri(concat($application-root, $member-directory, 'blog/index.page'))" />
     <xsl:variable name="inbox" select="resolve-uri(concat($application-root, $member-directory, 'inbox/index.page'))" />
+    <xsl:variable name="event" select="resolve-uri(concat($application-root, $member-directory, 'event/index.page'))" />
     <xsl:variable name="template">
       <xsl:apply-templates select="document(resolve-uri(concat($application-root, $member-dir-root, 'index.template')))/my:session">
+        <xsl:with-param name="member-directory" select="$member-directory"/>
+      </xsl:apply-templates>
+    </xsl:variable>
+    <xsl:variable name="event-template">
+      <xsl:apply-templates select="document(resolve-uri(concat($application-root, $member-dir-root, 'event.template')))/my:session">
         <xsl:with-param name="member-directory" select="$member-directory"/>
       </xsl:apply-templates>
     </xsl:variable>
@@ -93,6 +99,9 @@
     </xsl:result-document>
     <xsl:result-document method="xml " href="{$inbox}">
       <xsl:copy-of select="$template"/>
+    </xsl:result-document>
+    <xsl:result-document method="xml " href="{$event}">
+      <xsl:copy-of select="$event-template"/>
     </xsl:result-document>
   </xsl:template>
 
