@@ -15,8 +15,8 @@ namespace Nuxleus.Web.HttpHandler
     {
 
         static LookupService m_lookupService = new LookupService(HttpContext.Current.Request.MapPath("/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_MEMORY_CACHE);
-        static String guid = "not-set";
-        static String openid = "not-set";
+        String guid = "not-set";
+        String openid = "not-set";
 
         public void ProcessRequest (HttpContext context)
         {
