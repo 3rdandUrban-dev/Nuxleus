@@ -36,9 +36,8 @@ namespace Nuxleus.Web.HttpHandler
         {
             m_request = context.Request;
             m_response = context.Response;
-            m_cookieCollection = context.Request.Cookies;
+            m_cookieCollection = context.Response.Cookies;
             m_asyncResult = new NuxleusAsyncResult(cb, extraData);
-
 
             if (m_cookieCollection.Count > 0)
             {
@@ -47,6 +46,7 @@ namespace Nuxleus.Web.HttpHandler
                     m_cookieCollection.Remove("guid");
                     m_cookieCollection.Remove("openid");
                     m_logoutSuccessful = true;
+                    Console.WriteLine("success!");
                 }
                 catch (Exception e)
                 {
