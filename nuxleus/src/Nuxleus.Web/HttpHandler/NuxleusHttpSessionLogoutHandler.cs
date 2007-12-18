@@ -39,20 +39,25 @@ namespace Nuxleus.Web.HttpHandler
             m_cookieCollection = context.Response.Cookies;
             m_asyncResult = new NuxleusAsyncResult(cb, extraData);
 
-            if (m_cookieCollection.Count > 0)
+            try
             {
-                try
-                {
-                    m_cookieCollection.Remove("guid");
-                    m_cookieCollection.Remove("openid");
-                    m_logoutSuccessful = true;
-                    Console.WriteLine("success!");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
+                HttpCookie guid = m_cookieCollection["guid"];
+                HttpCookie openid = m_cookieCollection["openid"];
+                DateTime expires = DateTime.Now.AddDays(-1);
+
+                guid.Expires = expires;
+                openid.Expires = expires;
+
+                m_response.Cookies.Add(guid);
+                m_response.Cookies.Add(openid);
+
+                m_logoutSuccessful = true;
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
 
             Message responseMessage = new Message("redirect", ResponseType.RETURN_LOCATION);
             responseMessage.WriteResponseMessage(XmlWriter.Create(m_response.Output), m_asyncResult);
