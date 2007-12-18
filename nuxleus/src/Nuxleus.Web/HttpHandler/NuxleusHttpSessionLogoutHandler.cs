@@ -54,7 +54,9 @@ namespace Nuxleus.Web.HttpHandler
                 }
             }
 
-            return new Message("redirect", ResponseType.RETURN_LOCATION).WriteResponseMessage(XmlWriter.Create(m_response.Output), m_asyncResult);
+            Message responseMessage = new Message("redirect", ResponseType.RETURN_LOCATION);
+            responseMessage.WriteResponseMessage(XmlWriter.Create(m_response.Output), m_asyncResult);
+            return m_asyncResult;
         }
 
         public void EndProcessRequest (IAsyncResult result)

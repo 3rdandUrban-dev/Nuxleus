@@ -25,7 +25,7 @@ namespace Nuxleus.Web
             m_responseType = responseType;
         }
 
-        public NuxleusAsyncResult WriteResponseMessage (XmlWriter writer, NuxleusAsyncResult asyncResult)
+        public void WriteResponseMessage (XmlWriter writer, NuxleusAsyncResult asyncResult)
         {
             using (writer)
             {
@@ -46,7 +46,7 @@ namespace Nuxleus.Web
                 writer.WriteEndDocument();
             }
 
-            return asyncResult;
+            asyncResult.CompleteCall();
             
         }
     }

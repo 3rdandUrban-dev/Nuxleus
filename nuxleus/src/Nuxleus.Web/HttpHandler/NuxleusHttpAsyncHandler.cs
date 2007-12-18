@@ -88,7 +88,7 @@ namespace Nuxleus.Web.HttpHandler
 
                 string obj = (string)_memcachedClient.Get(_transformContext.GetRequestHashcode(true));
 
-                if (obj != null && !(hasXmlSourceChanged || hasBaseXsltSourceChanged) && !(_context.Request.CurrentExecutionFilePath.StartsWith("/service/session")))
+                if (obj != null && !(hasXmlSourceChanged || hasBaseXsltSourceChanged) && !(_context.Request.CurrentExecutionFilePath.StartsWith("/service/session")  && !(_context.Request.CurrentExecutionFilePath.StartsWith("/service/geo"))))
                 {
                     _builder.Append(obj);
                     _CONTENT_IS_MEMCACHED = true;
