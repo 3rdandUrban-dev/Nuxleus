@@ -3,6 +3,7 @@ using System.Net;
 using System.Web;
 using System.Xml;
 using Nuxleus.Geo;
+using Nuxleus.Async;
 using System.Collections.Generic;
 using Memcached.ClientLibrary;
 using System.IO;
@@ -14,49 +15,51 @@ namespace Nuxleus.Web.HttpHandler
     public class NuxleusHttpSessionLogoutHandler : IHttpHandler
     {
 
-        static String guid = "not-set";
-        static String openid = "not-set";
+        HttpRequest m_request;
+        HttpResponse m_response;
+        HttpCookieCollection m_cookieCollection;
+        bool m_logoutSuccessful = false;
+        string m_returnLocation = "http://dev.amp.fm/";
+        NuxleusAsyncResult m_asyncResult;
 
         public void ProcessRequest (HttpContext context)
         {
-            using (XmlWriter writer = XmlWriter.Create(context.Response.Output))
-            {
 
-                HttpCookieCollection cookieCollection = context.Request.Cookies;
-
-                if (cookieCollection.Count > 0)
-                {
-                    try
-                    {
-                        cookieCollection.Remove("guid");
-                        cookieCollection.Remove("openid");
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-                }
-
-                writer.WriteStartDocument();
-                writer.WriteProcessingInstruction("xml-stylesheet", "type='text/xsl' href='/service/transform/openid-redirect.xsl'");
-                writer.WriteStartElement("message", "http://nuxleus.com/message/response");
-                writer.WriteStartElement("session");
-                writer.WriteStartAttribute("session-id");
-                writer.WriteString(guid);
-                writer.WriteEndAttribute();
-                writer.WriteStartAttribute("openid");
-                writer.WriteString(openid);
-                writer.WriteEndAttribute();
-                writer.WriteEndElement();
-                writer.WriteEndElement();
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-            }
         }
 
         public bool IsReusable
         {
             get { return false; }
+        }
+
+        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData)
+        {
+            m_request = context.Request;
+            m_response = context.Response;
+            m_cookieCollection = context.Request.Cookies;
+            m_asyncResult = new NuxleusAsyncResult(cb, extraData);
+
+
+            if (m_cookieCollection.Count > 0)
+            {
+                try
+                {
+                    m_cookieCollection.Remove("guid");
+                    m_cookieCollection.Remove("openid");
+                    m_logoutSuccessful = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+
+            return new Message("redirect", ResponseType.RETURN_LOCATION).WriteResponseMessage(XmlWriter.Create(m_response.Output), m_asyncResult);
+        }
+
+        public void EndProcessRequest (IAsyncResult result)
+        {
+            
         }
     }
 }
