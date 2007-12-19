@@ -70,7 +70,7 @@ namespace Nuxleus.Web.HttpHandler
                     else
                     {
                         location = GetIPLocation(hostAddress);
-                        client.Add(hostAddress, IPLocation.ToDelimitedString("|", location));
+                        //client.Add(hostAddress, IPLocation.ToDelimitedString("|", location));
                     }
                 }
                 else
@@ -160,8 +160,8 @@ namespace Nuxleus.Web.HttpHandler
         {
             IPLocation location = new IPLocation(hostAddress);
 
-            if (location.City.Contains("Unknown"))
-            {
+            //if (location.City.Contains("Unknown"))
+            //{
                 Location maxMindLocation = m_lookupService.getLocation(hostAddress);
 
                 try
@@ -177,11 +177,11 @@ namespace Nuxleus.Web.HttpHandler
                     Console.WriteLine(e.Message);
                 }
                 return location;
-            }
-            else
-            {
-                return location;
-            }
+            //}
+            //else
+            //{
+            //    return location;
+            //}
         }
     }
 }
