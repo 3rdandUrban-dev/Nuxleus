@@ -118,6 +118,7 @@
   </xsl:template>
   
   <xsl:template match="doc:nav">
+  <li><a href="/">Home</a></li>
     <xsl:apply-templates select="$navigation//response:path/*" mode="navigation"/>
   </xsl:template>
 
@@ -329,18 +330,24 @@
           <a href="/login/" title="Log to your amp.fm profile">Login</a>
         </li>
         <li class="list menu {@style}" id="{@id}">
-          <a href="/signup/">Create Account</a>
+          <a href="http://openid.amp.fm/signup/">Create Account</a>
         </li>
       </xsl:when>
       <xsl:otherwise>
+        <!-- <li class="list menu {@style}">
+          <a href="./home" title="Inbox">Home</a>
+        </li>
         <li class="list menu {@style}">
           <a href="./inbox" title="Inbox">Inbox</a>
         </li>
         <li class="list menu {@style}">
           <a href="./blog" title="Blog">Blog</a>
         </li>
+        <li class="list menu {@style}">
+          <a href="./profile" title="Profile">Profile</a>
+        </li> -->
         <li class="list menu {@style}" id="{@id}">
-          <a href="/gatekeeper/logout?uname={$session-name}&amp;status-code=303" title="Connected as {$session-name}">Logout</a>
+          <a href="/service/session/logout" title="Connected as {$session-name}">Logout</a>
         </li>
       </xsl:otherwise>
     </xsl:choose>

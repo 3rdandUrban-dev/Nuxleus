@@ -88,7 +88,7 @@
     </xsl:message>
 
     <xsl:variable name="template">
-      <xsl:apply-templates select="document(resolve-uri(concat($application-root, $member-dir-root, 'index.template')))/my:session">
+      <xsl:apply-templates select="document(resolve-uri(concat($application-root, $member-dir-root, 'comment.template')))/my:session">
         <xsl:with-param name="member-directory" select="$member-directory"/>
       </xsl:apply-templates>
     </xsl:variable>

@@ -33,7 +33,7 @@ HOST = "amp.fm"
 OID_HOST = "openid.amp.fm"
 
 BASE_URL =  "http://openid.%s" % HOST
-BASE_SECURE_URL = "https://openid.%s" % HOST
+BASE_SECURE_URL = "http://openid.%s" % HOST
 TRUST_URL =  "http://openid.%s/trust" % HOST
 OID_SERVICE_URL = "http://openid.%s/service" % HOST
 
@@ -79,7 +79,7 @@ def check_login(s3conn, mc, from_url):
         if stored_session_id != session_id:
             raise redirect_to_login_page(from_url)
     else:
-        b = s3conn.create_bucket('openid.name')
+        b = s3conn.create_bucket('openid.amp.fm')
         k = Key(b)
         k.key = '%s/cookie' % login
         if k.exists():
@@ -145,7 +145,7 @@ class OpenIDAccountSignUpHandler(object):
         login =  quote(login.decode(charset).encode('utf-8'))
 
         oid = login
-        b = self.s3conn.create_bucket('openid.name')
+        b = self.s3conn.create_bucket('openid.amp.fm')
         k = Key(b)
         k.key = oid
 
@@ -176,7 +176,7 @@ class OpenIDLogoutHandler(object):
             login, session_id = read_values_from_cookie(cookie)
             if login != None and session_id != None:
                 self.mc.delete('%s.openid.name.cookie' % login)
-                b = self.s3conn.create_bucket('openid.name')
+                b = self.s3conn.create_bucket('openid.amp.fm')
                 b.delete_key('%s/cookie' % login)
 
         cherrypy.response.cookie['openid.name'] = ''
@@ -209,7 +209,7 @@ class OpenIDLoginHandler(object):
         cherrypy.response.headers['content-type'] = 'application/xml'
         redirect_to = redirect_to or ''
         oid = login
-        b = self.s3conn.create_bucket('openid.name')
+        b = self.s3conn.create_bucket('openid.amp.fm')
         k = Key(b)
         k.key = oid
 
@@ -252,7 +252,7 @@ class OpenIDRevokeHandler(object):
 
     def GET(self):
         login = check_login(self.s3conn, self.mc, cherrypy.url())
-        b = self.s3conn.create_bucket('openid.name')
+        b = self.s3conn.create_bucket('openid.amp.fm')
         k = Key(b)
         k.key = '%s/trusted' % login
         trusted = None
@@ -279,7 +279,7 @@ class OpenIDRevokeHandler(object):
 
     def POST(self, *args, **kwargs):
         login = check_login(self.s3conn, self.mc, cherrypy.url())
-        b = self.s3conn.create_bucket('openid.name')
+        b = self.s3conn.create_bucket('openid.amp.fm')
         k = Key(b)
         k.key = '%s/trusted' % login
         trusted = None
@@ -319,7 +319,7 @@ class OpenIDEndPointHandler(object):
                     # trusted root URL so that the user won't have to manually 
                     # allow it in the future
                     if 'allow_forever' in kwargs:
-                        b = self.s3conn.create_bucket('openid.name')
+                        b = self.s3conn.create_bucket('openid.amp.fm')
                         k = Key(b)
                         k.key = '%s/trusted' % login
                         trusted = [request.trust_root]
@@ -412,7 +412,7 @@ Hi %s
         if request.mode in ["checkid_authentication"]:
             login = extract_login(request.identity)
 
-            b = self.s3conn.create_bucket('openid.name')
+            b = self.s3conn.create_bucket('openid.amp.fm')
             k = Key(b)
             k.key = login
 
@@ -451,7 +451,7 @@ Hi %s
             
             # We check to see if the trust root has already been
             # allowed by the user. If yes, we immediatly return the valid response
-            b = self.s3conn.create_bucket('openid.name')
+            b = self.s3conn.create_bucket('openid.amp.fm')
             k = Key(b)
             k.key = '%s/trusted' % login
             if k.exists():

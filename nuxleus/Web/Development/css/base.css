@@ -164,6 +164,7 @@ span.ButtonLabel:hover {
 }
 #top-sub-nav {
     margin-left:.25em;
+    text-align:right;
 }
 #top-sub-nav li, #top-sub-nav a {
     padding:1px 3px 1px 8px;

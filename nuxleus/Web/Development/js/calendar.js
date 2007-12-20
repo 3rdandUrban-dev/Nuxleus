@@ -84,7 +84,7 @@ var popUpCal = {
 		html += '</table>';
         
         // add calendar to element to calendar Div
-        var calendarDiv = document.getElementById(popUpCal.calendarId);
+        var x = document.getElementById(popUpCal.calendarId);
         calendarDiv.innerHTML = html;
         
         // close button link
@@ -203,19 +203,19 @@ function getElementsByClass(searchClass,node,tag) {
 function setPos(targetObj,moveObj) {
     var coors = findPos(targetObj);
     moveObj.style.position = 'absolute';
-    moveObj.style.top = coors[1]+20 + 'px';
-    moveObj.style.left = coors[0] + 'px';
+    moveObj.style.top = coors[1]+345 + 'px';
+    moveObj.style.left = coors[0]+105 + 'px';
 }
 
 function findPos(obj) {
     var curleft = curtop = 0;
-    if (obj.offsetParent) {
+    /* if (obj.offsetParent) { */
         curleft = obj.offsetLeft
         curtop = obj.offsetTop
-        while (obj = obj.offsetParent) {
+        /* while (obj = obj.offsetParent) {
             curleft += obj.offsetLeft
             curtop += obj.offsetTop
-        }
-    }
+        } */
+    /* } */
     return [curleft,curtop];
 }
