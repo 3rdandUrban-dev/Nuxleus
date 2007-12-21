@@ -20,9 +20,19 @@ using Nuxleus.Extension.Aws.Sdb;
 
 class BasicSample
 {
-
+    
     public static void Main (string[] args)
     {
+        bool m_dryRun = false;
+
+        if(args.Length > 0)
+        {
+            if (args[0] == "dryrun")
+            {
+                m_dryRun = true;
+            }
+        }
+
         string awsAccessKey =
           System.Environment.GetEnvironmentVariable("SDB_ACCESS_KEY");
         string awsSecretKey =
@@ -33,20 +43,25 @@ class BasicSample
         // Create a new instance of the SDB class
         HttpQueryConnection connection = new HttpQueryConnection(awsAccessKey, awsSecretKey, "http://sdb.amazonaws.com/");
         Sdb sdb = new Sdb(connection);
+        Domain domain;
 
         System.Console.WriteLine();
         System.Console.WriteLine("Step 1: Creating the domain.");
 
-        try
+        if (!m_dryRun)
         {
-            sdb.CreateDomain(domainName);
+            try
+            {
+                sdb.CreateDomain(domainName);
+                domain = sdb.GetDomain(domainName);
+            }
+            catch (SdbException ex)
+            {
+                handleException(ex);
+            }
         }
-        catch (SdbException ex)
-        {
-            handleException(ex);
-        }
-
-        Domain domain = sdb.GetDomain(domainName);
+    
+        
 
         System.Console.WriteLine();
         System.Console.WriteLine("Step 2: Loading the GeoNames Data File.");
@@ -92,7 +107,14 @@ class BasicSample
 
                 try
                 {
-                    item.PutAttributes(attributes);
+                    if (!m_dryRun)
+                    {
+                        item.PutAttributes(attributes);
+                    }
+                    else
+                    {
+                        printAttributes(item);
+                    }
                 }
                 catch (SdbException ex)
                 {
@@ -105,5 +127,25 @@ class BasicSample
     static void handleException (SdbException ex)
     {
         System.Console.WriteLine("Failure: {0}: {1} ({2})", ex.ErrorCode, ex.Message, ex.RequestId);
+    }
+
+    static void printAttributes (Item item)
+    {
+        System.Console.WriteLine();
+        System.Console.WriteLine("Attributes for '{0}':", item.Name);
+        try
+        {
+            GetAttributesResponse getAttributesResponse = item.GetAttributes();
+
+            foreach (Nuxleus.Extension.Aws.Sdb.Attribute attribute in getAttributesResponse.Attributes())
+            {
+                System.Console.WriteLine("{0} => {1}.", attribute.Name,
+                             attribute.Value);
+            }
+        }
+        catch (SdbException ex)
+        {
+            handleException(ex);
+        }
     }
 }
