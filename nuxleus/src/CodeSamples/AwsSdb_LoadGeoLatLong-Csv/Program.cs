@@ -13,7 +13,7 @@
  * @copyright 2007 Amazon Web Services LLC or its affiliates.
  *            All rights reserved.
  * *************************************************************************
- * Extensions to this code base are Copyright (c) 2006 by M. David Peterson
+ * Extensions to this code base are Copyright (c) 2007 by M. David Peterson
  * The code contained in this file is licensed under a Creative Commons (Attribution 3.0) license
  * Please see http://creativecommons.org/licenses/by/3.0/us/ for specific detail.
  */
