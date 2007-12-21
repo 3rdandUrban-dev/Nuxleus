@@ -77,6 +77,7 @@ class BasicSample
                 Item item = domain.GetItem((string)inputArray.GetValue(0));
 
                 string[] geoNamesTitle = new string[] { 
+                    "geonamesid",
                     "names", 
                     "asciiname", 
                     "alternatenames", 
@@ -117,6 +118,7 @@ class BasicSample
                 geoNames[15] = (string)inputArray.GetValue(15);
                 geoNames[16] = (string)inputArray.GetValue(16);
                 geoNames[17] = (string)inputArray.GetValue(17);
+                geoNames[18] = (string)inputArray.GetValue(18);
 
                 IEnumerator attributeArray = geoNames.GetEnumerator();
 
