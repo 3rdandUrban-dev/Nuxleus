@@ -369,6 +369,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Geo.Test", "CodeSam
 		Release.AspNetCompiler.Debug = "False"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Aws.Sdb", "Nuxleus.Extension.Aws.Sdb\Nuxleus.Extension.Aws.Sdb.csproj", "{1B652675-CFC9-43C5-9C72-938B42EB317F}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsSdb_Test", "CodeSamples\AwsSdb_Test\AwsSdb_Test.csproj", "{5118D25C-E367-43E1-9F27-F17CBE059D64}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -789,6 +801,26 @@ Global
 		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Release|.NET.ActiveCfg = Release|Any CPU
+		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Release|.NET.ActiveCfg = Release|Any CPU
+		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -827,6 +859,7 @@ Global
 		{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{D8A43A2C-20D4-4017-80B8-2BBE122D9717} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{9054928F-69AF-4448-BEC0-591BC9393AE8} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
+		{1B652675-CFC9-43C5-9C72-938B42EB317F} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{A800D9F1-D877-4076-99BA-CBD73BCFB203} = {138403FE-C587-460E-A3C8-77B713E904C9}
 		{54CDA684-6431-45D5-9BF4-61C2D97FEC9C} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
 		{CF2BE8C5-4DCE-4D5C-9A06-787487549BC0} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
@@ -842,5 +875,6 @@ Global
 		{206017F7-D34B-4662-B015-2620778CE537} = {F0A70542-6B74-44BF-8981-3EB62B4E050E}
 		{A0A3C1E6-D540-422D-89E2-48399990465A} = {F0A70542-6B74-44BF-8981-3EB62B4E050E}
 		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
+		{5118D25C-E367-43E1-9F27-F17CBE059D64} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 	EndGlobalSection
 EndGlobal

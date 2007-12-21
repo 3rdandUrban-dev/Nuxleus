@@ -4,7 +4,7 @@ using System;
 
 namespace Nuxleus.Geo
 {
-    public struct LatLongByCityName
+    public struct LatLongByCityName : ILatLongLocation
     {
         string m_city;
         string m_country;

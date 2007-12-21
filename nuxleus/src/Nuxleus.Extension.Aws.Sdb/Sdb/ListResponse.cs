@@ -11,7 +11,7 @@
  * @copyright 2007 Amazon Web Services LLC or its affiliates.
  *            All rights reserved.
  */
-namespace com.amazon.sdb
+namespace Nuxleus.Extension.Aws.Sdb
 {
   public class ListResponse : Response
   {

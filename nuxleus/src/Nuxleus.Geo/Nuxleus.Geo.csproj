@@ -38,6 +38,8 @@
     <Compile Include="Agent.cs" />
     <Compile Include="IPLocation\IPLocation.cs" />
     <Compile Include="LatLongByName\City.cs" />
+    <Compile Include="LatLongLocation\ILatLongLocation.cs" />
+    <Compile Include="LatLongLocation\LatLongLocation.cs" />
     <Compile Include="MaxMind\Country.cs" />
     <Compile Include="MaxMind\DatabaseInfo.cs" />
     <Compile Include="MaxMind\Location.cs" />

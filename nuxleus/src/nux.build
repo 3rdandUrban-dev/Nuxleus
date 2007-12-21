@@ -10,7 +10,7 @@
   <target name="init">
     <mkdir dir="${build.dir}" failonerror="false" />
   </target>
-  <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility">
+  <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.Extension.Aws.Sdb Nuxleus.Extension.Aws Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility">
     <csc target="library" output="${build.dir}/Xameleon.dll" unsafe="True" keyfile="./Dependencies/Extf.Net.snk">
       <sources>
         <include name="${source.dir}/Xameleon/Function/*.cs" />
@@ -30,6 +30,8 @@
         <include name="${build.dir}/Nuxleus.Cryptography.dll" />
         <include name="${build.dir}/Nuxleus.Configuration.dll" />
         <include name="${build.dir}/Nuxleus.Extension.Facebook.dll" />
+        <include name="${build.dir}/Nuxleus.Extension.Aws.dll" />
+        <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll" />
         <include name="${build.dir}/Nuxleus.PubSub.dll" />
         <include name="${build.dir}/Nuxleus.Process.dll" />
         <include name="${build.dir}/Nuxleus.Utility.dll" />
@@ -255,25 +257,13 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Extension.Aws.Sdb" depends="init">
+  <target name="Nuxleus.Extension.Aws.Sdb" depends="init Nuxleus.Extension.Aws">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll">
       <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/Attribute.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/Domain.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/HttpQueryConnection.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/IAwsConnection.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/Item.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/GetAttributesResponse.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/ListDomainsResponse.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/ListResponse.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/QueryResponse.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/Response.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/SdbConnection.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/SdbException.cs" />
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/src/Sdb.cs" />
-        <include name="${source.dir}/Xameleon/Function/AWSSimpleDBFunctions.cs" />
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/Sdb/*.cs" />
       </sources>
       <references>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.dll" />
         <include name="System.Web.dll"/>
         <include name="System.dll"/>
       </references>
@@ -554,9 +544,10 @@
   <target name="sdb-test" depends="init Nuxleus.Extension.Aws.Sdb">
     <csc target="exe" output="${build.dir}/sdb-test.exe">
       <sources>
-        <include name="${source.dir}//Nuxleus.Extension.Aws.Sdb/src/BasicSample.cs"/>
+        <include name="${source.dir}/CodeSamples/AwsSdb_Test/Program.cs"/>
       </sources>
       <references>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
         <include name="System.Web.dll"/>
         <include name="System.dll"/>

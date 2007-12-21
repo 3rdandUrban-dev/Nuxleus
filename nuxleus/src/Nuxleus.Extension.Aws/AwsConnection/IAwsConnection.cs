@@ -11,23 +11,12 @@
  * @copyright 2007 Amazon Web Services LLC or its affiliates.
  *            All rights reserved.
  */
-namespace com.amazon.sdb
+using System.Collections;
+
+namespace Nuxleus.Extension.Aws 
 {
-  public class Attribute 
-  {
-    public string Name;
-    public string Value;
-
-    public Attribute(string Name, string Value)
-    {
-      this.Name = Name;
-      this.Value = Value;
-    }
-
-    public Attribute(string Name)
-    {
-      this.Name = Name;
-      this.Value = null;
-    }
+  public interface IAwsConnection {
+    string MakeRequest(string uri,string action,IDictionary parameters);
+    string MakeRequest(string uri,string action);
   }
 }
