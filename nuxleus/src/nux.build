@@ -567,6 +567,19 @@
       </references>
     </csc>
   </target>
+  <target name="sdb-load-geonames" depends="init Nuxleus.Extension.Aws.Sdb">
+    <csc target="exe" output="${build.dir}/sdb-load-geonames.exe">
+      <sources>
+        <include name="${source.dir}/CodeSamples/AwsSdb_LoadGeonamesDataFile/Program.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="FileSystemWatcher" depends="init Nuxleus Nuxleus.Service">
     <csc target="exe" output="${build.dir}/Watcher.exe" keyfile="./Dependencies/Extf.Net.snk">
       <sources>
@@ -738,6 +751,8 @@
     <call target="Nuxleus.Web" />
     <call target="Nuxleus.Web.Services" />
     <call target="sdb-test" />
+    <call target="sdb-load-csv" />
+    <call target="sdb-load-geonames" />
     <call target="FileSystemWatcher" />
     <call target="ReplicationService" />
     <call target="QueueServerService" />
