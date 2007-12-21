@@ -381,6 +381,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsSdb_Test", "CodeSamples\
 		Release.AspNetCompiler.Debug = "False"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsSdb_LoadGeoLatLong-Csv", "CodeSamples\AwsSdb_LoadGeoLatLong-Csv\AwsSdb_LoadGeoLatLong-Csv.csproj", "{CD97849B-E50C-46B1-8A29-74E1933F85EE}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -821,6 +827,16 @@ Global
 		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5118D25C-E367-43E1-9F27-F17CBE059D64}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE}.Release|.NET.ActiveCfg = Release|Any CPU
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -876,5 +892,6 @@ Global
 		{A0A3C1E6-D540-422D-89E2-48399990465A} = {F0A70542-6B74-44BF-8981-3EB62B4E050E}
 		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 		{5118D25C-E367-43E1-9F27-F17CBE059D64} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
+		{CD97849B-E50C-46B1-8A29-74E1933F85EE} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 	EndGlobalSection
 EndGlobal

@@ -554,6 +554,19 @@
       </references>
     </csc>
   </target>
+  <target name="sdb-load-csv" depends="init Nuxleus.Extension.Aws.Sdb">
+    <csc target="exe" output="${build.dir}/sdb-load-csv.exe">
+      <sources>
+        <include name="${source.dir}/CodeSamples/AwsSdb_LoadGeoLatLong-Csv/Program.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="FileSystemWatcher" depends="init Nuxleus Nuxleus.Service">
     <csc target="exe" output="${build.dir}/Watcher.exe" keyfile="./Dependencies/Extf.Net.snk">
       <sources>
