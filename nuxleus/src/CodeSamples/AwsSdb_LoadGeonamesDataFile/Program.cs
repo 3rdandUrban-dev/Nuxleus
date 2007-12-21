@@ -20,12 +20,12 @@ using Nuxleus.Extension.Aws.Sdb;
 
 class BasicSample
 {
-    
+
     public static void Main (string[] args)
     {
         bool m_dryRun = false;
 
-        if(args.Length > 0)
+        if (args.Length > 0)
         {
             if (args[0] == "dryrun")
             {
@@ -43,25 +43,21 @@ class BasicSample
         // Create a new instance of the SDB class
         HttpQueryConnection connection = new HttpQueryConnection(awsAccessKey, awsSecretKey, "http://sdb.amazonaws.com/");
         Sdb sdb = new Sdb(connection);
-        Domain domain;
 
         System.Console.WriteLine();
         System.Console.WriteLine("Step 1: Creating the domain.");
 
-        if (!m_dryRun)
+        try
         {
-            try
-            {
-                sdb.CreateDomain(domainName);
-                domain = sdb.GetDomain(domainName);
-            }
-            catch (SdbException ex)
-            {
-                handleException(ex);
-            }
+            sdb.CreateDomain(domainName);
+
         }
-    
-        
+        catch (SdbException ex)
+        {
+            handleException(ex);
+        }
+
+        Domain domain = sdb.GetDomain(domainName);
 
         System.Console.WriteLine();
         System.Console.WriteLine("Step 2: Loading the GeoNames Data File.");
@@ -74,36 +70,82 @@ class BasicSample
             {
 
                 string[] inputArray = inputLine.Split(new char[] { '\u0009' });
-                IEnumerator alternateNames = ((string)inputArray.GetValue(3)).Split(new char[] { ',' }).GetEnumerator();
+
 
                 System.Console.WriteLine(String.Format("Loading Item: {0}, with Place Name: {1}", (string)inputArray.GetValue(0), (string)inputArray.GetValue(1)));
 
                 Item item = domain.GetItem((string)inputArray.GetValue(0));
 
-                ArrayList attributes = new ArrayList();
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("name", (string)inputArray.GetValue(1)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("asciiname", (string)inputArray.GetValue(2)));
+                string[] geoNamesTitle = new string[] { 
+                    "names", 
+                    "asciiname", 
+                    "alternatenames", 
+                    "latitude", 
+                    "longitude", 
+                    "feature_class", 
+                    "feature_code",
+                    "country_code",
+                    "cc2",
+                    "admin1_code",
+                    "admin2_code",
+                    "admin3_code",
+                    "admin4_code",
+                    "population",
+                    "elevation",
+                    "gtopo30",
+                    "timezone",
+                    "modification_date"
+                    };
 
-                while (alternateNames.MoveNext())
+                string[] geoNames = new string[] { };
+
+                geoNames[0] = (string)inputArray.GetValue(0);
+                geoNames[1] = (string)inputArray.GetValue(1);
+                geoNames[2] = (string)inputArray.GetValue(2);
+                geoNames[3] = (string)inputArray.GetValue(3);
+                geoNames[4] = (string)inputArray.GetValue(4);
+                geoNames[4] = (string)inputArray.GetValue(5);
+                geoNames[6] = (string)inputArray.GetValue(6);
+                geoNames[7] = (string)inputArray.GetValue(7);
+                geoNames[8] = (string)inputArray.GetValue(8);
+                geoNames[9] = (string)inputArray.GetValue(9);
+                geoNames[10] = (string)inputArray.GetValue(10);
+                geoNames[11] = (string)inputArray.GetValue(11);
+                geoNames[12] = (string)inputArray.GetValue(12);
+                geoNames[13] = (string)inputArray.GetValue(13);
+                geoNames[14] = (string)inputArray.GetValue(14);
+                geoNames[15] = (string)inputArray.GetValue(15);
+                geoNames[16] = (string)inputArray.GetValue(16);
+
+                IEnumerator attributeArray = geoNames.GetEnumerator();
+
+                ArrayList attributes = new ArrayList();
+
+                int count = 0;
+
+                while (attributeArray.MoveNext())
                 {
-                    attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("alternatenames", (string)alternateNames.Current));
+                    string current = (string)attributeArray.Current;
+                    string title = (string)geoNamesTitle.GetValue(count);
+
+                    if (current.Length > 0)
+                    {
+                        if (current.Contains(","))
+                        {
+                            IEnumerator csvEnumerator = current.Split(new char[] { ',' }).GetEnumerator();
+                            while (csvEnumerator.MoveNext())
+                            {
+                                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, (string)csvEnumerator.Current));
+                            }
+                        }
+                        else
+                        {
+                            attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, current));
+                        }
+                    }
+                    count++;
                 }
 
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("latitude", (string)inputArray.GetValue(4)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("longitude", (string)inputArray.GetValue(5)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("feature_class", (string)inputArray.GetValue(6)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("feature_code", (string)inputArray.GetValue(7)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("country_code", (string)inputArray.GetValue(8)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("cc2", (string)inputArray.GetValue(9)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("admin1_code", (string)inputArray.GetValue(10)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("admin2_code", (string)inputArray.GetValue(11)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("admin3_code", (string)inputArray.GetValue(12)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("admin4_code", (string)inputArray.GetValue(13)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("population", (string)inputArray.GetValue(14)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("elevation", (string)inputArray.GetValue(15)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("gtopo30", (string)inputArray.GetValue(16)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("timezone", (string)inputArray.GetValue(17)));
-                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute("modification_date", (string)inputArray.GetValue(1)));
 
                 try
                 {
