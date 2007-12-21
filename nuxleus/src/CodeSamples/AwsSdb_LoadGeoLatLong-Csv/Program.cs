@@ -59,7 +59,7 @@ class BasicSample
             while ((inputLine = csvReader.ReadLine()) != null)
             {
                 string[] inputArray = inputLine.Split(new char[] { ',' });
-                countries.Add((int)inputArray.GetValue(0), (string)inputArray.GetValue(1));
+                countries.Add(int.Parse((string)inputArray.GetValue(0)), (string)inputArray.GetValue(1));
             }
         }
 
@@ -72,7 +72,7 @@ class BasicSample
             while ((inputLine = csvReader.ReadLine()) != null)
             {
                 string[] inputArray = inputLine.Split(new char[] { ',' });
-                ipv4_country.Add((int)inputArray.GetValue(0), (int)inputArray.GetValue(1));
+                ipv4_country.Add(int.Parse((string)inputArray.GetValue(0)), int.Parse((string)inputArray.GetValue(1)));
             }
         }
 
@@ -92,7 +92,7 @@ class BasicSample
                 string countryCode = "";
                 int m_country;
                 string m_countryCode;
-                if (ipv4_country.TryGetValue((int)inputArray.GetValue(0), out m_country))
+                if (ipv4_country.TryGetValue(int.Parse((string)inputArray.GetValue(0)), out m_country))
                 {
                     country = m_country.ToString();
 
@@ -132,12 +132,6 @@ class BasicSample
                 }
             }
         }
-
-
-        System.Console.WriteLine();
-        System.Console.WriteLine("Step 2: Creating initial attributes.");
-
-
     }
 
     static void handleException (SdbException ex)
