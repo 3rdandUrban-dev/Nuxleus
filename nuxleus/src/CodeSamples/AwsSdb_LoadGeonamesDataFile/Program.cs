@@ -64,9 +64,10 @@ class BasicSample
         System.Console.WriteLine();
         System.Console.WriteLine("Step 2: Loading the GeoNames Data File.");
 
-        using (StreamReader csvReader = new StreamReader("./allCountries.txt", Encoding.UTF8))
+        using (StreamReader csvReader = new StreamReader("./allCountries.txt", Encoding.UTF8, true))
         {
             string inputLine = "";
+            Console.WriteLine(String.Format("Current Encoding: {0}", csvReader.CurrentEncoding.EncodingName));
 
             while ((inputLine = csvReader.ReadLine()) != null)
             {
