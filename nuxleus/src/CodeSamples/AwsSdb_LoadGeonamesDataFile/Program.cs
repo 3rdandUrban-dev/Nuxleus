@@ -78,8 +78,7 @@ class BasicSample
 
                 string[] geoNamesTitle = new string[] { 
                     "geonamesid",
-                    "names", 
-                    "asciiname", 
+                    "names",
                     "alternatenames", 
                     "latitude", 
                     "longitude", 
@@ -101,7 +100,6 @@ class BasicSample
                 string[] geoNames = new string[] {
                     (string)inputArray.GetValue(0),
                     (string)inputArray.GetValue(1),
-                    (string)inputArray.GetValue(2),
                     (string)inputArray.GetValue(3),
                     (string)inputArray.GetValue(4),
                     (string)inputArray.GetValue(5),
@@ -133,18 +131,18 @@ class BasicSample
 
                     if (current.Length > 0)
                     {
-                        //if (current.Contains(","))
-                        //{
-                        //    IEnumerator csvEnumerator = current.Split(new char[] { ',' }).GetEnumerator();
-                        //    while (csvEnumerator.MoveNext())
-                        //    {
-                        //        attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, (string)csvEnumerator.Current));
-                        //    }
-                        //}
-                        //else
-                        //{
+                        if (current.Contains(","))
+                        {
+                            IEnumerator csvEnumerator = current.Split(new char[] { ',' }).GetEnumerator();
+                            while (csvEnumerator.MoveNext())
+                            {
+                                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, (string)csvEnumerator.Current));
+                            }
+                        }
+                        else
+                        {
                             attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, current));
-                        //}
+                        }
                     }
                     count++;
                 }
