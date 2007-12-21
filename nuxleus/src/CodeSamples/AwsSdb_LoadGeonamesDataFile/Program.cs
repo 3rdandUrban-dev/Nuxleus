@@ -24,15 +24,12 @@ class BasicSample
 
     public static void Main (string[] args)
     {
-        bool m_dryRun = false;
+        string fileName = "./allCountries.txt";
         Queue<Item> exceptionQueue = new Queue<Item>();
 
         if (args.Length > 0)
         {
-            if (args[0] == "dryrun")
-            {
-                m_dryRun = true;
-            }
+            fileName = String.Format("./{0}.txt", args[0].ToUpper());
         }
 
         string awsAccessKey =
@@ -64,7 +61,7 @@ class BasicSample
         System.Console.WriteLine();
         System.Console.WriteLine("Step 2: Loading the GeoNames Data File.");
 
-        using (StreamReader csvReader = new StreamReader("./allCountries.txt", Encoding.UTF8, true))
+        using (StreamReader csvReader = new StreamReader(fileName, Encoding.UTF8, true))
         {
             string inputLine = "";
             Console.WriteLine(String.Format("Current Encoding: {0}", csvReader.CurrentEncoding.EncodingName));
@@ -153,14 +150,9 @@ class BasicSample
 
                 try
                 {
-                    if (!m_dryRun)
-                    {
-                        item.PutAttributes(attributes);
-                    }
-                    else
-                    {
-                        printAttributes(item);
-                    }
+
+                    item.PutAttributes(attributes);
+
                 }
                 catch (SdbException ex)
                 {
@@ -169,11 +161,11 @@ class BasicSample
                 }
             }
         }
-        IEnumerator queueEnumerator = exceptionQueue.GetEnumerator();
-        while(queueEnumerator.MoveNext())
-        {
+        //IEnumerator queueEnumerator = exceptionQueue.GetEnumerator();
+        //while (queueEnumerator.MoveNext())
+        //{
 
-        }
+        //}
 
     }
 
