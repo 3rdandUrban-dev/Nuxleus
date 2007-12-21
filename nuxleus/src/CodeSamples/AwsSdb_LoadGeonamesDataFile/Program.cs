@@ -64,15 +64,14 @@ class BasicSample
         System.Console.WriteLine();
         System.Console.WriteLine("Step 2: Loading the GeoNames Data File.");
 
-        using (StreamReader csvReader = new StreamReader("./allCountries.txt"))
+        using (StreamReader csvReader = new StreamReader("./allCountries.txt", Encoding.UTF8))
         {
             string inputLine = "";
 
             while ((inputLine = csvReader.ReadLine()) != null)
             {
-                string encodedString = new UTF8Encoding().GetString(new UTF8Encoding().GetBytes(inputLine));
 
-                string[] inputArray = encodedString.Split(new char[] { '\u0009' });
+                string[] inputArray = inputLine.Split(new char[] { '\u0009' });
 
                 System.Console.WriteLine(String.Format("Loading Item: {0}, with Place Name: {1}", (string)inputArray.GetValue(0), (string)inputArray.GetValue(1)));
                 System.Console.WriteLine(String.Format("Array Length: {0}", inputArray.Length));
@@ -169,6 +168,12 @@ class BasicSample
                 }
             }
         }
+        IEnumerator queueEnumerator = exceptionQueue.GetEnumerator();
+        while(queueEnumerator.MoveNext())
+        {
+
+        }
+
     }
 
     static void handleException (SdbException ex)
