@@ -126,7 +126,7 @@ class BasicSample
 
                 while (attributeArray.MoveNext())
                 {
-                    string current = (string)attributeArray.Current;
+                    string current = ((string)attributeArray.Current).Normalize();
                     string title = (string)geoNamesTitle.GetValue(count);
 
                     if (current.Length > 0)
@@ -136,7 +136,7 @@ class BasicSample
                             IEnumerator csvEnumerator = current.Split(new char[] { ',' }).GetEnumerator();
                             while (csvEnumerator.MoveNext())
                             {
-                                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, (string)csvEnumerator.Current));
+                                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, ((string)csvEnumerator.Current).Normalize()));
                             }
                         }
                         else
@@ -162,6 +162,7 @@ class BasicSample
                 catch (SdbException ex)
                 {
                     handleException(ex);
+                    printAttributes(item);
                 }
             }
         }
