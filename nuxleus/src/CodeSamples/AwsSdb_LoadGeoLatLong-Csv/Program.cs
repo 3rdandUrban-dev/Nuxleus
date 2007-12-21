@@ -50,7 +50,7 @@ class BasicSample
 
         Domain domain = sdb.GetDomain(domainName);
 
-        Dictionary<int, string> countries = new Dictionary<int, string>();
+        Dictionary<long, string> countries = new Dictionary<long, string>();
 
         using (StreamReader csvReader = new StreamReader("./hip_countries.csv"))
         {
@@ -59,7 +59,7 @@ class BasicSample
             while ((inputLine = csvReader.ReadLine()) != null)
             {
                 string[] inputArray = inputLine.Split(new char[] { ',' });
-                int key = int.Parse((string)inputArray.GetValue(0));
+                long key = long.Parse((string)inputArray.GetValue(0));
                 string value = (string)inputArray.GetValue(1);
                 if (!countries.ContainsKey(key))
                 {
@@ -68,7 +68,7 @@ class BasicSample
             }
         }
 
-        Dictionary<int, int> ipv4_country = new Dictionary<int, int>();
+        Dictionary<long, long> ipv4_country = new Dictionary<long, long>();
 
         using (StreamReader csvReader = new StreamReader("./hip_ip4_country.csv"))
         {
@@ -77,8 +77,8 @@ class BasicSample
             while ((inputLine = csvReader.ReadLine()) != null)
             {
                 string[] inputArray = inputLine.Split(new char[] { ',' });
-                int key = int.Parse((string)inputArray.GetValue(0));
-                int value = int.Parse((string)inputArray.GetValue(1));
+                long key = long.Parse((string)inputArray.GetValue(0));
+                long value = long.Parse((string)inputArray.GetValue(1));
                 if(!ipv4_country.ContainsKey(key))
                 {
                     ipv4_country.Add(key, value);
@@ -100,9 +100,9 @@ class BasicSample
                 string city = (string)inputArray.GetValue(1);
                 string country = "";
                 string countryCode = "";
-                int m_country;
+                long m_country;
                 string m_countryCode;
-                if (ipv4_country.TryGetValue(int.Parse((string)inputArray.GetValue(0)), out m_country))
+                if (ipv4_country.TryGetValue(long.Parse((string)inputArray.GetValue(0)), out m_country))
                 {
                     country = m_country.ToString();
 
