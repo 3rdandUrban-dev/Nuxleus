@@ -59,7 +59,12 @@ class BasicSample
             while ((inputLine = csvReader.ReadLine()) != null)
             {
                 string[] inputArray = inputLine.Split(new char[] { ',' });
-                countries.Add(int.Parse((string)inputArray.GetValue(0)), (string)inputArray.GetValue(1));
+                int key = int.Parse((string)inputArray.GetValue(0));
+                string value = (string)inputArray.GetValue(1);
+                if (!countries.ContainsKey(key))
+                {
+                    countries.Add(key, value);
+                }
             }
         }
 
@@ -72,7 +77,12 @@ class BasicSample
             while ((inputLine = csvReader.ReadLine()) != null)
             {
                 string[] inputArray = inputLine.Split(new char[] { ',' });
-                ipv4_country.Add(int.Parse((string)inputArray.GetValue(0)), int.Parse((string)inputArray.GetValue(1)));
+                int key = int.Parse((string)inputArray.GetValue(0));
+                int value = int.Parse((string)inputArray.GetValue(1));
+                if(!ipv4_country.ContainsKey(key))
+                {
+                    ipv4_country.Add(key, value);
+                }
             }
         }
 
