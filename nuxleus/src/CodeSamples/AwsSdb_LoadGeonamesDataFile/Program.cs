@@ -71,8 +71,8 @@ class BasicSample
 
                 string[] inputArray = inputLine.Split(new char[] { '\u0009' });
 
-
                 System.Console.WriteLine(String.Format("Loading Item: {0}, with Place Name: {1}", (string)inputArray.GetValue(0), (string)inputArray.GetValue(1)));
+                System.Console.WriteLine(String.Format("Array Length: {0}", inputArray.Length));
 
                 Item item = domain.GetItem((string)inputArray.GetValue(0));
 
@@ -116,6 +116,7 @@ class BasicSample
                 geoNames[14] = (string)inputArray.GetValue(14);
                 geoNames[15] = (string)inputArray.GetValue(15);
                 geoNames[16] = (string)inputArray.GetValue(16);
+                geoNames[17] = (string)inputArray.GetValue(17);
 
                 IEnumerator attributeArray = geoNames.GetEnumerator();
 
