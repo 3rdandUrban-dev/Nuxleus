@@ -98,27 +98,27 @@ class BasicSample
                     "modification_date"
                     };
 
-                string[] geoNames = new string[] { };
-
-                geoNames[0] = (string)inputArray.GetValue(0);
-                geoNames[1] = (string)inputArray.GetValue(1);
-                geoNames[2] = (string)inputArray.GetValue(2);
-                geoNames[3] = (string)inputArray.GetValue(3);
-                geoNames[4] = (string)inputArray.GetValue(4);
-                geoNames[4] = (string)inputArray.GetValue(5);
-                geoNames[6] = (string)inputArray.GetValue(6);
-                geoNames[7] = (string)inputArray.GetValue(7);
-                geoNames[8] = (string)inputArray.GetValue(8);
-                geoNames[9] = (string)inputArray.GetValue(9);
-                geoNames[10] = (string)inputArray.GetValue(10);
-                geoNames[11] = (string)inputArray.GetValue(11);
-                geoNames[12] = (string)inputArray.GetValue(12);
-                geoNames[13] = (string)inputArray.GetValue(13);
-                geoNames[14] = (string)inputArray.GetValue(14);
-                geoNames[15] = (string)inputArray.GetValue(15);
-                geoNames[16] = (string)inputArray.GetValue(16);
-                geoNames[17] = (string)inputArray.GetValue(17);
-                geoNames[18] = (string)inputArray.GetValue(18);
+                string[] geoNames = new string[] {
+                    (string)inputArray.GetValue(0),
+                    (string)inputArray.GetValue(1),
+                    (string)inputArray.GetValue(2),
+                    (string)inputArray.GetValue(3),
+                    (string)inputArray.GetValue(4),
+                    (string)inputArray.GetValue(5),
+                    (string)inputArray.GetValue(6),
+                    (string)inputArray.GetValue(7),
+                    (string)inputArray.GetValue(8),
+                    (string)inputArray.GetValue(9),
+                    (string)inputArray.GetValue(10),
+                    (string)inputArray.GetValue(11),
+                    (string)inputArray.GetValue(12),
+                    (string)inputArray.GetValue(13),
+                    (string)inputArray.GetValue(14),
+                    (string)inputArray.GetValue(15),
+                    (string)inputArray.GetValue(16),
+                    (string)inputArray.GetValue(17),
+                    (string)inputArray.GetValue(18)
+                };
 
                 IEnumerator attributeArray = geoNames.GetEnumerator();
 
