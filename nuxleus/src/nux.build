@@ -258,7 +258,7 @@
     </csc>
   </target>
   <target name="Nuxleus.Extension.Aws.Sdb" depends="init Nuxleus.Extension.Aws">
-    <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll">
+    <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll" keyfile="./Dependencies/Extf.Net.snk">
       <sources>
         <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/Sdb/*.cs" />
       </sources>

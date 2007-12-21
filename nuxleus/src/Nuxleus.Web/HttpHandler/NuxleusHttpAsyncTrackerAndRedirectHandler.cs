@@ -18,7 +18,7 @@ namespace Nuxleus.Web.HttpHandler
         FileStream m_file;
         static long m_position = 0;
         static object m_lock = new object();
-        static string m_fileRedirect = "http://thefutureofideas.s3.amazonaws.com/[TODO:InsertFileName]";
+        static string m_fileRedirect = "http://thefutureofideas.s3.amazonaws.com/lessig_FOI.pdf";
         static int m_statusCode = 303;
 
         public void ProcessRequest (HttpContext context)
