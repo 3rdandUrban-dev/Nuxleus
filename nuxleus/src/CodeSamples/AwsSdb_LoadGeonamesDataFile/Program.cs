@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Nuxleus.Extension.Aws;
 using Nuxleus.Extension.Aws.Sdb;
+using System.Text;
 
 class BasicSample
 {
@@ -24,6 +25,7 @@ class BasicSample
     public static void Main (string[] args)
     {
         bool m_dryRun = false;
+        Queue<Item> exceptionQueue = new Queue<Item>();
 
         if (args.Length > 0)
         {
@@ -68,8 +70,9 @@ class BasicSample
 
             while ((inputLine = csvReader.ReadLine()) != null)
             {
+                string encodedString = new UTF8Encoding().GetString(new UTF8Encoding().GetBytes(inputLine));
 
-                string[] inputArray = inputLine.Split(new char[] { '\u0009' });
+                string[] inputArray = encodedString.Split(new char[] { '\u0009' });
 
                 System.Console.WriteLine(String.Format("Loading Item: {0}, with Place Name: {1}", (string)inputArray.GetValue(0), (string)inputArray.GetValue(1)));
                 System.Console.WriteLine(String.Format("Array Length: {0}", inputArray.Length));
@@ -161,8 +164,8 @@ class BasicSample
                 }
                 catch (SdbException ex)
                 {
+                    exceptionQueue.Enqueue(item);
                     handleException(ex);
-                    printAttributes(item);
                 }
             }
         }
