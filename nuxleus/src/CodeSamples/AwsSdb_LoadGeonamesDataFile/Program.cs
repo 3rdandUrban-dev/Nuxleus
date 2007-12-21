@@ -133,18 +133,18 @@ class BasicSample
 
                     if (current.Length > 0)
                     {
-                        if (current.Contains(","))
-                        {
-                            IEnumerator csvEnumerator = current.Split(new char[] { ',' }).GetEnumerator();
-                            while (csvEnumerator.MoveNext())
-                            {
-                                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, (string)csvEnumerator.Current));
-                            }
-                        }
-                        else
-                        {
+                        //if (current.Contains(","))
+                        //{
+                        //    IEnumerator csvEnumerator = current.Split(new char[] { ',' }).GetEnumerator();
+                        //    while (csvEnumerator.MoveNext())
+                        //    {
+                        //        attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, (string)csvEnumerator.Current));
+                        //    }
+                        //}
+                        //else
+                        //{
                             attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, current));
-                        }
+                        //}
                     }
                     count++;
                 }
