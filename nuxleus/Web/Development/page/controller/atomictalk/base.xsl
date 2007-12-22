@@ -8,33 +8,6 @@
 -->
 <xsl:stylesheet version="1.0" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:response="http://nuxleus.com/message/response" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:layout="http://atomictalk.org/page/view/layout" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common" xmlns:resource="http://atomictalk.org/page/resource" xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#" xmlns:atompub="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="html exsl my app response advice atom head page service resource output form body view menu model msxsl doc atompub">
 
-  <xsl:variable name="session-info" select="document('/service/session/get-session-request-info/')/response:message"/>
-  <xsl:variable name="session-name" select="$session-info/response:session/@openid"/>
-  <xsl:variable name="session-id" select="$session-info/response:session/@session-id"/>
-  <xsl:variable name="request-id" select="$session-info/response:session/response:request-guid"/>
-  <xsl:variable name="request-date" select="$session-info/response:session/response:request-date"/>
-  <xsl:variable name="geo-ip" select="$session-info/response:geo"/>
-  <xsl:variable name="location" select="$geo-ip//response:city"/>
-  <xsl:variable name="lat" select="$geo-ip/response:lat"/>
-  <xsl:variable name="long" select="$geo-ip/response:long"/>
-  <xsl:variable name="search.location">
-    <xsl:call-template name="replace">
-      <xsl:with-param name="string" select="'@@search.location@@'"/>
-    </xsl:call-template>
-  </xsl:variable>
-  <xsl:variable name="city.location">
-    <xsl:choose>
-      <xsl:when test="$search.location != 'local'">
-        <xsl:value-of select="$search.location"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="$location"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:variable name="geo.location" select="document(concat('/service/geo/get-geo-info-by-city-name/?name=', translate($city.location, ' ', '+')))/response:message/response:geo"/>
-  <xsl:variable name="navigation" select="$session-info/response:navigation"/>
-
   <xsl:param name="closure-token-pre-delimiter" select="'|@@'"/>
   <xsl:param name="closure-token-post-delimiter" select="'@@|'"/>
   <xsl:param name="replace-token-pre-delimiter" select="'@@'"/>
@@ -56,16 +29,44 @@
   <xsl:param name="replace-parameter-post-delimiter" select="':'"/>
   <xsl:param name="parameter-list-delimeter" select="','"/>
   <xsl:param name="parameter-value-assigment-token" select="'='"/>
+  
+  <xsl:variable name="session-info" select="document('/service/session/get-session-request-info/')/response:message"/>
+  <xsl:variable name="session-name" select="$session-info/response:session/@openid"/>
+  <xsl:variable name="session-id" select="$session-info/response:session/@session-id"/>
+  <xsl:variable name="request-id" select="$session-info/response:session/response:request-guid"/>
+  <xsl:variable name="request-date" select="$session-info/response:session/response:request-date"/>
+  <xsl:variable name="geo-ip" select="$session-info/response:geo"/>
+  <xsl:variable name="location" select="$geo-ip//response:city"/>
+  <xsl:variable name="lat" select="$geo-ip/response:lat"/>
+  <xsl:variable name="long" select="$geo-ip/response:long"/>
 
   <xsl:variable name="vendor" select="system-property('xsl:vendor')"/>
   <xsl:variable name="vendor-uri" select="system-property('xsl:vendor-uri')"/>
   <xsl:variable name="page" select="/my:session/my:page"/>
-  <xsl:variable name="config" select="document($page/page:config/@src)/page:config|$page/page:config"/>
+  <xsl:variable name="config" select="$page/page:config"/>
   <xsl:variable name="browser" select="$config/page:browser[@vendor = $vendor]/@replace"/>
   <xsl:variable name="advice" select="$config/page:advice"/>
   <xsl:variable name="resource" select="document($page/page:resource/@src)/page:config|$page/page:resource"/>
   <xsl:variable name="service" select="document($page/page:service/@src)/page:config|$page/page:service"/>
   <xsl:variable name="view" select="document($page/page:view/@src)/page:config|$page/page:view"/>
+
+  <xsl:variable name="search.location">
+    <xsl:call-template name="replace">
+      <xsl:with-param name="string" select="'@@search.location@@'"/>
+    </xsl:call-template>
+  </xsl:variable>
+  <xsl:variable name="city.location">
+    <xsl:choose>
+      <xsl:when test="$search.location != 'local'">
+        <xsl:value-of select="$search.location"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$location"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="geo.location" select="document(concat('/service/geo/get-geo-info-by-city-name/?name=', translate($city.location, ' ', '+')))/response:message/response:geo"/>
+  <xsl:variable name="navigation" select="$session-info/response:navigation"/>
 
   <xsl:variable name="lb">
     <xsl:text></xsl:text>
@@ -116,9 +117,8 @@
       <xsl:apply-templates select="body:layout"/>
     </body>
   </xsl:template>
-  
+
   <xsl:template match="doc:nav">
-  <li><a href="/">Home</a></li>
     <xsl:apply-templates select="$navigation//response:path/*" mode="navigation"/>
   </xsl:template>
 
@@ -260,6 +260,7 @@
 
   <xsl:template match="geo:location">
     <xsl:value-of select="$geo.location//response:city"/>
+    <!-- <xsl:value-of select="$location"/> -->
   </xsl:template>
 
   <xsl:template match="doc:local-news">
@@ -334,18 +335,6 @@
         </li>
       </xsl:when>
       <xsl:otherwise>
-        <!-- <li class="list menu {@style}">
-          <a href="./home" title="Inbox">Home</a>
-        </li>
-        <li class="list menu {@style}">
-          <a href="./inbox" title="Inbox">Inbox</a>
-        </li>
-        <li class="list menu {@style}">
-          <a href="./blog" title="Blog">Blog</a>
-        </li>
-        <li class="list menu {@style}">
-          <a href="./profile" title="Profile">Profile</a>
-        </li> -->
         <li class="list menu {@style}" id="{@id}">
           <a href="/service/session/logout" title="Connected as {$session-name}">Logout</a>
         </li>
@@ -494,7 +483,6 @@
     </xsl:choose>
   </xsl:variable>
 
-
   <xsl:template name="replace">
     <xsl:param name="string"/>
     <xsl:variable name="nString">
@@ -507,13 +495,13 @@
         <xsl:variable name="name" select="substring-before(substring-before(substring-after($nString, $closure-token-pre-delimiter), $closure-token-post-delimiter), $parameter-list-pre-delimiter)"/>
         <xsl:call-template name="replace-vars">
           <xsl:with-param name="value-string" select="substring-before(substring-after($nString, $parameter-list-pre-delimiter), $parameter-list-post-delimiter)"/>
-          <xsl:with-param name="replace-var-string" select="substring-before(substring-after($advice/advice:*[local-name() = $name]/text(), $replace-parameter-list-pre-delimiter), $replace-parameter-list-post-delimiter)" />
+          <xsl:with-param name="replace-var-string" select="substring-before(substring-after($advice//advice:*[local-name() = $name]/text(), $replace-parameter-list-pre-delimiter), $replace-parameter-list-post-delimiter)" />
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="contains($nString, $replace-token-pre-delimiter)">
         <xsl:variable name="name" select="substring-before(substring-after($nString, $replace-token-pre-delimiter), $replace-token-pre-delimiter)"/>
         <xsl:variable name="replace-with">
-          <xsl:apply-templates select="$advice/advice:*[local-name() = $name]"/>
+          <xsl:apply-templates select="$advice//advice:*[local-name() = $name]"/>
         </xsl:variable>
         <xsl:call-template name="replace">
           <xsl:with-param name="string" select="concat(substring-before($nString, concat($replace-token-pre-delimiter, $name)), $replace-with, substring-after($nString, concat($name, $replace-token-pre-delimiter)))" />
@@ -538,7 +526,7 @@
         <xsl:variable name="else" select="substring-after($conditional, $cond-else-token)"/>
         <xsl:variable name="nString">
           <xsl:choose>
-            <xsl:when test="$advice/advice:*[local-name() = substring-before(substring-after($if, '@@'), '@@')]">
+            <xsl:when test="$advice//advice:*[local-name() = substring-before(substring-after($if, '@@'), '@@')]">
               <xsl:variable name="replace-string">
                 <xsl:call-template name="replace">
                   <xsl:with-param name="string" select="$then"/>
