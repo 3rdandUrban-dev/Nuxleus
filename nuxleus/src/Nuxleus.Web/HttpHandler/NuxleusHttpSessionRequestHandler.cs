@@ -129,10 +129,8 @@ namespace Nuxleus.Web.HttpHandler
 
                 writer.WriteStartElement("navigation");
                 writer.WriteStartElement("path");
-                writer.WriteElementString("manage", "/manage");
-                writer.WriteElementString("collaborate", "/collaborate");
-                writer.WriteElementString("promote", "/promote");
-                writer.WriteElementString("sell", "/sell");
+                writer.WriteElementString("Home", "/");
+                writer.WriteElementString("Profile", "./profile");
                 //for (int i = 0; pathEnumerator.MoveNext(); i++)
                 //{
                 //    writer.WriteElementString("path", ((string)pathEnumerator.Current));

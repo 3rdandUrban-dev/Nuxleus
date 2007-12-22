@@ -191,6 +191,22 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.Entity.Profile" depends="init Nuxleus.Agent Nuxleus.Entity">
+    <csc target="library" output="${build.dir}/Nuxleus.Entity.Profile.dll" keyfile="./Dependencies/Extf.Net.snk">
+      <sources>
+        <include name="${source.dir}/Nuxleus.Entity.Profile/**/*.cs" />
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Agent.dll" />
+        <include name="${build.dir}/Nuxleus.Entity.dll" />
+        <include name="System.dll" />
+        <include name="System.Data.dll" />
+        <include name="System.Xml.dll" />
+        <include name="System.Web.dll" />
+        <include name="System.Web.Services.dll" />
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Extension" depends="init Nuxleus.Cryptography">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.dll" keyfile="./Dependencies/Extf.Net.snk">
       <sources>
@@ -727,6 +743,7 @@
     <call target="Nuxleus.Configuration" />
     <call target="Nuxleus.Extension" />
     <call target="Nuxleus.Entity" />
+    <call target="Nuxleus.Entity.Profile" />
     <call target="Nuxleus.Cryptography" />
     <call target="Nuxleus.Command" />
     <call target="Nuxleus.Extension" />
