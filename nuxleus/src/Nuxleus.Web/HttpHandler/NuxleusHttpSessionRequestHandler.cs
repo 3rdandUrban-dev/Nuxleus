@@ -13,10 +13,10 @@ using System.Collections;
 
 namespace Nuxleus.Web.HttpHandler
 {
-    public class NuxleusHttpSessionRequestHandler : IHttpAsyncHandler
+    public struct NuxleusHttpSessionRequestHandler : IHttpAsyncHandler
     {
 
-        LookupService m_lookupService = new LookupService(HttpContext.Current.Request.MapPath("~/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_MEMORY_CACHE);
+        static LookupService m_lookupService = new LookupService(HttpContext.Current.Request.MapPath("~/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_MEMORY_CACHE);
         NuxleusAsyncResult m_asyncResult;
 
         public void ProcessRequest (HttpContext context)

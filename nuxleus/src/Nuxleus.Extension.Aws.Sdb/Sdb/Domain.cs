@@ -34,6 +34,8 @@ namespace Nuxleus.Extension.Aws.Sdb
             SortedList parameters = new SortedList();
 
             parameters.Add("DomainName", m_name);
+            //parameters.Add("MaxNumberOfItems", "10");
+
 
             if (queryExpression != null)
             {

@@ -37,7 +37,7 @@ class BasicSample
         string domainName = "place";
 
         // Create a new instance of the SDB class
-        HttpQueryConnection connection = new HttpQueryConnection(awsAccessKey, awsSecretKey, "http://sdb.amazonaws.com/");
+        HttpQueryConnection connection = new HttpQueryConnection(awsAccessKey, awsSecretKey, "http://sdb.amazonaws.com");
         Sdb sdb = new Sdb(connection);
 
         // Step 1:

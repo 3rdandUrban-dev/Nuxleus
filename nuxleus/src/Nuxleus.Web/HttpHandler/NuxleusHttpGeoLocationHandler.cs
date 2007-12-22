@@ -7,15 +7,31 @@ using System.Collections.Generic;
 using Memcached.ClientLibrary;
 using System.IO;
 using System.Collections.Specialized;
+using Nuxleus.Async;
 
 
 namespace Nuxleus.Web.HttpHandler
 {
-    public class NuxleusHttpGeoLocationHandler : IHttpHandler
+    public struct NuxleusHttpGeoLocationHandler : IHttpAsyncHandler
     {
+        NuxleusAsyncResult m_asyncResult;
 
         public void ProcessRequest (HttpContext context)
         {
+            
+        }
+
+        public bool IsReusable
+        {
+            get { return false; }
+        }
+
+        #region IHttpAsyncHandler Members
+
+        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData)
+        {
+            m_asyncResult = new NuxleusAsyncResult(cb, extraData);
+
             using (XmlWriter writer = XmlWriter.Create(context.Response.Output))
             {
                 bool useMemcached = (bool)context.Application["usememcached"];
@@ -61,11 +77,15 @@ namespace Nuxleus.Web.HttpHandler
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }
+
+            return m_asyncResult;
         }
 
-        public bool IsReusable
+        public void EndProcessRequest (IAsyncResult result)
         {
-            get { return false; }
+            
         }
+
+        #endregion
     }
 }

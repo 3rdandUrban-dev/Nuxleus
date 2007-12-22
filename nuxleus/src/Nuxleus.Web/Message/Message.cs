@@ -6,41 +6,59 @@ using Nuxleus.Async;
 
 namespace Nuxleus.Web
 {
-    public enum ResponseType { REDIRECT, RETURN_LOCATION }
+    public enum ResponseType { REDIRECT, RETURN_LOCATION, QUERY_RESPONSE, ERROR }
+    public enum ErrorType { NO_ERROR, INVALID_REQUEST, NO_PERMISSIONS }
 
     public struct Message
     {
         string m_status;
         ResponseType m_responseType;
+        ErrorType m_errorType;
 
         public Message(string status)
         {
             m_status = status;
             m_responseType = ResponseType.REDIRECT;
+            m_errorType = ErrorType.NO_ERROR;
         }
 
         public Message(string status, ResponseType responseType)
         {
             m_status = status;
             m_responseType = responseType;
+            m_errorType = ErrorType.NO_ERROR;
         }
 
-        public void WriteResponseMessage (XmlWriter writer, NuxleusAsyncResult asyncResult)
+        public Message(string status, ErrorType errorType, ResponseType responseType)
+        {
+            m_status = status;
+            m_errorType = errorType;
+            m_responseType = responseType;
+        }
+
+
+        public void WriteResponseMessage (XmlWriter writer, string innerXml, NuxleusAsyncResult asyncResult)
         {
             using (writer)
             {
                 writer.WriteStartDocument();
-                writer.WriteProcessingInstruction("xml-stylesheet", "type='text/xsl' href='/service/transform/openid-redirect.xsl'");
+                if (m_responseType == ResponseType.REDIRECT)
+                {
+                    writer.WriteProcessingInstruction("xml-stylesheet", "type='text/xsl' href='/service/transform/openid-redirect.xsl'");
+                }
                 writer.WriteStartElement("auth");
-                    writer.WriteStartAttribute("xml:base");
-                        writer.WriteString("http://dev.amp.fm/");
-                    writer.WriteEndAttribute();
-                    writer.WriteStartAttribute("status");
-                        writer.WriteString(m_status);
-                    writer.WriteEndAttribute();
-                    writer.WriteStartElement("url");
-                        writer.WriteString("http://dev.amp.fm/");
-                    writer.WriteEndElement();
+                    writer.WriteAttributeString("xml:base", "http://dev.amp.fm/");
+                    writer.WriteAttributeString("status", m_status);
+                    if (m_responseType == ResponseType.REDIRECT)
+                    {
+                        writer.WriteElementString("url", "http://dev.amp.fm/");
+                    }
+                    if (m_responseType == ResponseType.QUERY_RESPONSE && innerXml != null)
+                    {
+                        writer.WriteStartElement("response");
+                            writer.WriteRaw(innerXml);
+                        writer.WriteEndElement();
+                    }
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }

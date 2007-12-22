@@ -46,7 +46,7 @@ class BasicSample
         string domainName = "geonames";
 
         // Create a new instance of the SDB class
-        HttpQueryConnection connection = new HttpQueryConnection(awsAccessKey, awsSecretKey, "http://sdb.amazonaws.com/");
+        HttpQueryConnection connection = new HttpQueryConnection(awsAccessKey, awsSecretKey, "http://sdb.amazonaws.com");
         Sdb sdb = new Sdb(connection);
 
         System.Console.WriteLine();
@@ -132,7 +132,7 @@ class BasicSample
 
                 while (attributeArray.MoveNext())
                 {
-                    string current = ((string)attributeArray.Current).Normalize();
+                    string current = ((string)attributeArray.Current).Normalize().ToLower();
                     string title = (string)geoNamesTitle.GetValue(count);
 
                     if (current.Length > 0)
@@ -142,7 +142,7 @@ class BasicSample
                             IEnumerator csvEnumerator = current.Split(new char[] { ',' }).GetEnumerator();
                             while (csvEnumerator.MoveNext())
                             {
-                                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, ((string)csvEnumerator.Current).Normalize()));
+                                attributes.Add(new Nuxleus.Extension.Aws.Sdb.Attribute(title, (string)csvEnumerator.Current));
                             }
                         }
                         else

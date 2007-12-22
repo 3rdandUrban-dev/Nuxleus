@@ -13,7 +13,7 @@ using System.Collections;
 namespace Nuxleus.Web.HttpHandler
 {
 
-    public class NuxleusHttpAsyncTrackerAndRedirectHandler : IHttpAsyncHandler
+    public struct NuxleusHttpAsyncTrackerAndRedirectHandler : IHttpAsyncHandler
     {
         FileStream m_file;
         static long m_position = 0;

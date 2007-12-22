@@ -17,7 +17,7 @@ using Nuxleus.Cryptography;
 
 namespace Nuxleus.Web.HttpHandler
 {
-    public class NuxleusEventHandler : IHttpHandler
+    public class NuxleusEventHandler : IHttpAsyncHandler
     {
         public void ProcessRequest(HttpContext context)
         {
@@ -29,5 +29,19 @@ namespace Nuxleus.Web.HttpHandler
             get { return false; }
         }
 
+
+        #region IHttpAsyncHandler Members
+
+        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public void EndProcessRequest (IAsyncResult result)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        #endregion
     }
 }

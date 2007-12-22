@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="Agent.cs" />
     <Compile Include="AsyncResult\NuxleusAsyncResult.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncFileNotFoundHandler.cs" />
     <Compile Include="HttpHandler\NuxleusEventHandler.cs" />
@@ -135,6 +136,14 @@
     <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
       <Project>{76489AFC-B3D6-40E4-AA45-840D069E4F43}</Project>
       <Name>Nuxleus.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Extension.Aws.Sdb\Nuxleus.Extension.Aws.Sdb.csproj">
+      <Project>{1B652675-CFC9-43C5-9C72-938B42EB317F}</Project>
+      <Name>Nuxleus.Extension.Aws.Sdb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
+      <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
+      <Name>Nuxleus.Extension.Aws</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Geo\Nuxleus.Geo.csproj">
       <Project>{9054928F-69AF-4448-BEC0-591BC9393AE8}</Project>

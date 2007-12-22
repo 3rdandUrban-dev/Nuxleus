@@ -12,14 +12,14 @@ using Nuxleus.Geo.MaxMind;
 
 namespace Nuxleus.Web.HttpHandler
 {
-    public class NuxleusHttpSessionLogoutHandler : IHttpAsyncHandler
+    public struct NuxleusHttpSessionLogoutHandler : IHttpAsyncHandler
     {
 
         HttpRequest m_request;
         HttpResponse m_response;
         HttpCookieCollection m_cookieCollection;
-        bool m_logoutSuccessful = false;
-        string m_returnLocation = "http://dev.amp.fm/";
+        bool m_logoutSuccessful;
+        string m_returnLocation;
         NuxleusAsyncResult m_asyncResult;
 
         public void ProcessRequest (HttpContext context)
@@ -34,6 +34,8 @@ namespace Nuxleus.Web.HttpHandler
 
         public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData)
         {
+            m_logoutSuccessful = false;
+            m_returnLocation = "http://dev.amp.fm/";
             m_request = context.Request;
             m_response = context.Response;
             m_cookieCollection = context.Response.Cookies;
@@ -60,7 +62,7 @@ namespace Nuxleus.Web.HttpHandler
 
 
             Message responseMessage = new Message("redirect", ResponseType.RETURN_LOCATION);
-            responseMessage.WriteResponseMessage(XmlWriter.Create(m_response.Output), m_asyncResult);
+            responseMessage.WriteResponseMessage(XmlWriter.Create(m_response.Output), null, m_asyncResult);
             return m_asyncResult;
         }
 

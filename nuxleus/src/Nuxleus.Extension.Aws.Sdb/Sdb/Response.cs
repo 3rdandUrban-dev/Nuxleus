@@ -36,6 +36,13 @@ namespace Nuxleus.Extension.Aws.Sdb
             }
         }
 
+        string m_rawXml;
+
+        public string RawXml
+        {
+            get { return m_rawXml; }
+        }
+
         static protected void CheckErrorResponse (XmlDocument response)
         {
             bool isError = false;
@@ -87,6 +94,8 @@ namespace Nuxleus.Extension.Aws.Sdb
         protected void processResponse (string responseName, XmlDocument response)
         {
             bool success = false;
+
+            m_rawXml = response.OuterXml;
 
             foreach (XmlNode node in response.ChildNodes)
             {
