@@ -4,10 +4,16 @@
   <xsl:import href="../../../functions/funcset-Util.xslt" />
   <xsl:param name="current-context" />
 
-  <xsl:template match="proxy:return-news-by-location">
+  <xsl:template match="proxy:return-images-by-tag-name">
     <xsl:variable name="location" select="func:resolve-variable(@location)" />
-    <xsl:variable name="topic" select="func:resolve-variable(@topic)" />
-    <xsl:sequence name="feed" select="document(concat(@uri, $location, ',', $topic))"/>
+    <xsl:variable name="topic" select="tokenize(func:resolve-variable(@topic), '\|')" />
+    <xsl:variable name="uri" select="@uri"/>
+    <xsl:variable name="result">
+      <xsl:for-each select="$topic">
+        <xsl:sequence select="document(concat($uri, $location, ',', .))"/>
+      </xsl:for-each>
+    </xsl:variable>
+    <xsl:sequence select="$result"/>
   </xsl:template>
 
 </xsl:transform>
