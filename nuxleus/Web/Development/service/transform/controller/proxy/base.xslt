@@ -12,6 +12,7 @@
 
     <xsl:import href="../../functions/funcset-Util.xslt" />
     <xsl:import href="./return-news-by-location/base.xslt"/>
+    <xsl:import href="./return-images-by-tag-name/base.xslt"/>
     <xsl:import href="./get-geo-info-by-ip/base.xslt"/>
     <xsl:param name="current-context" />
 
