@@ -6,12 +6,18 @@
 
   <xsl:template match="proxy:return-news-by-location">
     <xsl:variable name="location" select="func:resolve-variable(@location)" />
-    <xsl:variable name="topic" select="func:resolve-variable(@topic)" />
-    <xsl:variable name="feed" select="document(concat('http://news.google.com/news?hl=en&amp;q=', $location, '+', $topic, '&amp;ie=UTF-8&amp;output=atom'))"/>
-    <xsl:variable name="entries">
-      <xsl:apply-templates select="$feed//atomv03:entry"/>
+    <xsl:variable name="topic" select="tokenize(func:resolve-variable(@topic), '\|')" />
+    <xsl:variable name="uri" select="@uri"/>
+    <xsl:variable name="result">
+      <xsl:element name="result" namespace="http://nuxleus.com/message/result">
+        <xsl:for-each select="$topic">
+          <xsl:element name="{.}" namespace="http://nuxleus.com/message/result">
+            <xsl:apply-templates select="document(concat('http://news.google.com/news?hl=en&amp;q=', $location, '+', ., '&amp;ie=UTF-8&amp;output=atom'))//atomv03:entry"/>
+          </xsl:element>
+        </xsl:for-each>
+      </xsl:element>
     </xsl:variable>
-    <xsl:copy-of select="$entries" />
+    <xsl:sequence select="$result"/>
   </xsl:template>
 
   <xsl:template match="atomv03:entry">
