@@ -29,7 +29,7 @@
   <xsl:param name="replace-parameter-post-delimiter" select="':'"/>
   <xsl:param name="parameter-list-delimeter" select="','"/>
   <xsl:param name="parameter-value-assigment-token" select="'='"/>
-  
+
   <xsl:variable name="session-info" select="document('/service/session/get-session-request-info/')/response:message"/>
   <xsl:variable name="session-name" select="$session-info/response:session/@openid"/>
   <xsl:variable name="session-id" select="$session-info/response:session/@session-id"/>
@@ -65,7 +65,10 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <xsl:variable name="geo.location" select="document(concat('/service/geo/get-geo-info-by-city-name/?name=', translate($city.location, ' ', '+')))/response:message/response:geo"/>
+  <xsl:variable name="local-news-doc" select="document(concat('/service/proxy/return-news-by-location/?topic=music%7Cfilm%7Cmovie&amp;location=', translate($city.location, ' ', '+')))//response:result"/>
+  <xsl:variable name="local-flickr-images" select="document(concat('/service/flickr/return-images-by-tag-name/?topic=music%7Cfilm%7Cmovie&amp;location=', translate($city.location, ' ', '+')))//response:result"/>
+  <xsl:variable name="local-blog-entries" select="document(concat('/service/google/return-blog-entries-by-location/?topic=music%7Cfilm%7Cmovie&amp;location=', translate($city.location, ' ', '+')))//response:result"/>
+  <!-- <xsl:variable name="geo.location" select="document(concat('/service/geo/get-geo-info-by-city-name/?name=', translate($city.location, ' ', '+')))/response:message/response:geo"/>-->
   <xsl:variable name="navigation" select="$session-info/response:navigation"/>
 
   <xsl:variable name="lb">
@@ -245,7 +248,7 @@
   </xsl:template>
 
   <xsl:template match="geo:map">
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       <xsl:text>//&lt;![CDATA[</xsl:text>
           function load() {
             if (GBrowserIsCompatible()) {
@@ -254,17 +257,17 @@
             }
           }
         <xsl:text>//]]&gt;</xsl:text>
-    </script>
-    <div id="map" style="width:{@width}; height:{@height};margin:0;padding:0;" />
+    </script> -->
+    <div id="myMap" style="width:{@width}; height:{@height};margin:0;padding:0;" />
   </xsl:template>
 
   <xsl:template match="geo:location">
-    <xsl:value-of select="$geo.location//response:city"/>
-    <!-- <xsl:value-of select="$location"/> -->
+    <!-- <xsl:value-of select="$geo.location//response:city"/> -->
+    <xsl:value-of select="$location"/>
   </xsl:template>
 
   <xsl:template match="doc:local-news">
-    <xsl:variable name="location-search">
+    <!-- <xsl:variable name="location-search">
       <xsl:choose>
         <xsl:when test="@location">
           <xsl:call-template name="replace">
@@ -285,8 +288,40 @@
           <xsl:value-of select="$location-search"/>
         </xsl:otherwise>
       </xsl:choose>
-    </xsl:variable>
-    <xsl:apply-templates select="document(concat('/service/proxy/return-news-by-location/?location=', translate($local-news, ' ,', '+'), '&amp;topic=', translate(@topic, ' ', '+')))" mode="message"/>
+    </xsl:variable> -->
+    <xsl:apply-templates select="$local-news-doc/response:*[local-name() = current()/@topic]" mode="message"/>
+  </xsl:template>
+
+  <xsl:template match="doc:local-flickr-photos">
+    <xsl:apply-templates select="$local-flickr-images/response:*[local-name() = current()/@topic]" mode="flickr"/>
+  </xsl:template>
+
+  <xsl:template match="doc:local-blog-entries">
+    <xsl:apply-templates select="$local-blog-entries/response:*[local-name() = current()/@topic]" mode="blogs"/>
+  </xsl:template>
+
+  <xsl:template match="*" mode="blogs">
+    <xsl:apply-templates mode="blogs" />
+  </xsl:template>
+
+  <xsl:template match="atom:title" mode="blogs">
+    <h2>
+      <a href="{../atom:link[@rel = 'alternate']/@href}">
+        <xsl:value-of select="."/>
+      </a>
+    </h2>
+  </xsl:template>
+
+  <xsl:template match="atom:content" mode="blogs">
+    <p>
+      <xsl:value-of select="."/>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="atom:link|atom:author" mode="blogs"/>
+
+  <xsl:template match="*" mode="flickr">
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template match="*" mode="message">

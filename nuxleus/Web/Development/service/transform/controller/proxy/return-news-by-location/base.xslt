@@ -9,9 +9,9 @@
     <xsl:variable name="topic" select="tokenize(func:resolve-variable(@topic), '\|')" />
     <xsl:variable name="uri" select="@uri"/>
     <xsl:variable name="result">
-      <xsl:element name="result" namespace="http://nuxleus.com/message/result">
+      <xsl:element name="result" namespace="http://nuxleus.com/message/response">
         <xsl:for-each select="$topic">
-          <xsl:element name="{.}" namespace="http://nuxleus.com/message/result">
+          <xsl:element name="{.}" namespace="http://nuxleus.com/message/response">
             <xsl:apply-templates select="document(concat('http://news.google.com/news?hl=en&amp;q=', $location, '+', ., '&amp;ie=UTF-8&amp;output=atom'))//atomv03:entry"/>
           </xsl:element>
         </xsl:for-each>

@@ -8,7 +8,7 @@
       </button>
     </form>
   </view:item>
-  <view:item id="search-categories">
+  <!-- <view:item id="search-categories">
     <view:container id="search-categories-container" style="list LtoR">
       <view:item style="selected">
         <a href="#foo">Regions</a>
@@ -32,5 +32,5 @@
         <a href="#foo">Everything</a>
       </view:item>
     </view:container>
-  </view:item>
+  </view:item> -->
 </view:container>

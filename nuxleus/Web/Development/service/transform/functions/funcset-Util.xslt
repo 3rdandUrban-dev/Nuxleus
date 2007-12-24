@@ -58,6 +58,11 @@
     <xsl:value-of select="http-utility:UrlDecode($uri)"/>
   </xsl:function>
   
+  <xsl:function name="func:html-decode" as="xs:string">
+    <xsl:param name="html"/>
+    <xsl:value-of select="http-utility:HtmlDecode($html)"/>
+  </xsl:function>
+  
   <xsl:function name="func:true" as="element()">
     <true/>
   </xsl:function>
