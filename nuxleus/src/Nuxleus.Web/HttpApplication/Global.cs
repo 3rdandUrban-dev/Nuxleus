@@ -47,8 +47,35 @@ namespace Nuxleus.Web.HttpApplication
         String _baseUri;
         HashAlgorithm _hashAlgorithm = HashAlgorithm.SHA1;
 
+        
+
         protected void Application_Start(object sender, EventArgs e)
         {
+                  
+            using(XmlReader configReader = XmlReader.Create(HttpContext.Current.Server.MapPath("~/App_Data/aws.config")))
+            {
+             while (configReader.Read())
+                {
+                    if (configReader.IsStartElement())
+                    {
+                        switch (configReader.Name)
+                        {
+                            case "sdb-access-key":
+                                {
+                                    Environment.SetEnvironmentVariable("SDB_ACCESS_KEY", configReader.ReadString());
+                                    break;
+                                }
+                            case "sdb-secret-key":
+                                {
+                                    Environment.SetEnvironmentVariable("SDB_SECRET_KEY", configReader.ReadString());
+                                    break;
+                                }
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
 
             if (_xameleonConfiguration.DebugMode == "yes") _DEBUG = true;
 
