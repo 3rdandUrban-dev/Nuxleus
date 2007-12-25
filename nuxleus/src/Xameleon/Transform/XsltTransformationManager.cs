@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Saxon.Api;
 using System.Xml;
 using System.IO;
@@ -16,62 +15,62 @@ namespace Nuxleus.Transform
     public struct XsltTransformationManager
     {
 
-        Hashtable m_xsltHashtable;
-        Hashtable m_sourceHashtable;
-        Dictionary<string, XdmNode> m_xdmNodeHashtable;
-        Dictionary<string, Uri> m_xdmNodeETagIndex;
-        Hashtable m_namedXsltHashtable;
-        Hashtable m_namedXsltETagIndex;
-        Processor m_processor;
-        Serializer m_serializer;
-        DocumentBuilder m_builder;
-        XsltCompiler m_compiler;
-        XmlUrlResolver m_resolver;
-        Transform m_transform;
-        Uri m_baseXsltUri;
-        String m_baseXsltUriHash;
-        String m_baseXsltName;
+        Hashtable _xsltHashtable;
+        Hashtable _sourceHashtable;
+        Hashtable _xdmNodeHashtable;
+        Hashtable _xdmNodeETagIndex;
+        Hashtable _namedXsltHashtable;
+        Hashtable _namedXsltETagIndex;
+        Processor _processor;
+        Serializer _serializer;
+        DocumentBuilder _builder;
+        XsltCompiler _compiler;
+        XmlUrlResolver _resolver;
+        Transform _transform;
+        Uri _baseXsltUri;
+        String _baseXsltUriHash;
+        String _baseXsltName;
         static HashAlgorithm _hashAlgorithm;
         //NOTE: TransformEngine enum PLACEHOLDER FOR FUTURE USE
-        static TransformEngine m_transformEngine;
+        static TransformEngine _transformEngine;
 
         public XsltTransformationManager(Processor processor)
-            : this(processor, new Transform(), new XmlUrlResolver(), new Serializer(), new Hashtable(), new Hashtable(), new Dictionary<string, XdmNode>(), new Hashtable(), new Hashtable(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, new Transform(), new XmlUrlResolver(), new Serializer(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null)
         {
         }
         public XsltTransformationManager(Processor processor, Transform transform)
-            : this(processor, transform, new XmlUrlResolver(), new Serializer(), new Hashtable(), new Hashtable(), new Dictionary<string, XdmNode>(), new Hashtable(), new Hashtable(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, transform, new XmlUrlResolver(), new Serializer(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null)
         {
         }
         public XsltTransformationManager(Processor processor, Transform transform, XmlUrlResolver resolver)
-            : this(processor, transform, resolver, new Serializer(), new Hashtable(), new Hashtable(), new Dictionary<string, XdmNode>(), new Hashtable(), new Hashtable(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, transform, resolver, new Serializer(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null)
         {
         }
         public XsltTransformationManager(Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer)
-            : this(processor, transform, resolver, serializer, new Hashtable(), new Hashtable(), new Dictionary<string, XdmNode>(), new Hashtable(), new Hashtable(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, transform, resolver, serializer, new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null)
         {
         }
         public XsltTransformationManager(Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable)
-            : this(processor, transform, resolver, serializer, xsltHashtable, new Hashtable(), new Dictionary<string, XdmNode>(), new Hashtable(), new Hashtable(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, transform, resolver, serializer, xsltHashtable, new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null)
         {
         }
         public XsltTransformationManager(Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable namedXsltHashtable)
-            : this(processor, transform, resolver, serializer, xsltHashtable, new Hashtable(), new Dictionary<string, XdmNode>(), namedXsltHashtable, new Hashtable(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, transform, resolver, serializer, xsltHashtable, new Hashtable(), new Hashtable(), namedXsltHashtable, new Hashtable(), new Hashtable(), null, null, null)
         {
         }
         public XsltTransformationManager(Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Hashtable namedXsltHashtable)
-            : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, new Dictionary<string, XdmNode>(), namedXsltHashtable, new Hashtable(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, new Hashtable(), namedXsltHashtable, new Hashtable(), new Hashtable(), null, null, null)
         {
         }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Dictionary<string, XdmNode> xdmNodeHashtable, Hashtable namedXsltHashtable)
-            : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, new Hashtable(), new Dictionary<string, Uri>(), null, null, null)
+        public XsltTransformationManager(Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Hashtable xdmNodeHashtable, Hashtable namedXsltHashtable)
+            : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, new Hashtable(), new Hashtable(), null, null, null)
         {
         }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Dictionary<string, XdmNode> xdmNodeHashtable, Hashtable namedXsltHashtable, Hashtable namedXsltETagIndex)
-            : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, namedXsltETagIndex, new Dictionary<string, Uri>(), null, null, null)
+        public XsltTransformationManager(Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Hashtable xdmNodeHashtable, Hashtable namedXsltHashtable, Hashtable namedXsltETagIndex)
+            : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, namedXsltETagIndex, new Hashtable(), null, null, null)
         {
         }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Dictionary<string, XdmNode> xdmNodeHashtable, Hashtable namedXsltHashtable, Hashtable namedXsltETagIndex, Dictionary<string, Uri> xdmNodeETagIndex)
+        public XsltTransformationManager(Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Hashtable xdmNodeHashtable, Hashtable namedXsltHashtable, Hashtable namedXsltETagIndex, Hashtable xdmNodeETagIndex)
             : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, namedXsltETagIndex, xdmNodeETagIndex, null, null, null)
         {
         }
@@ -83,48 +82,48 @@ namespace Nuxleus.Transform
             Serializer serializer,
             Hashtable xsltHashtable,
             Hashtable xmlSourceHashtable,
-            Dictionary<string, XdmNode> xdmNodeHashtable,
+            Hashtable xdmNodeHashtable,
             Hashtable namedXsltHashtable,
             Hashtable namedXsltETagIndex,
-            Dictionary<string, Uri> xdmNodeETagIndex,
+            Hashtable xdmNodeETagIndex,
             Uri baseXsltUri,
             String baseXsltUriHash,
             String baseXsltName
           )
         {
-            m_baseXsltUri = baseXsltUri;
-            m_baseXsltUriHash = baseXsltUriHash;
-            m_baseXsltName = baseXsltName;
-            m_transform = transform;
-            m_xsltHashtable = xsltHashtable;
-            m_processor = processor;
-            m_compiler = m_processor.NewXsltCompiler();
-            m_sourceHashtable = xmlSourceHashtable;
-            m_resolver = resolver;
-            m_compiler.XmlResolver = m_resolver;
-            m_builder = m_processor.NewDocumentBuilder();
-            m_serializer = serializer;
-            m_xdmNodeHashtable = xdmNodeHashtable;
-            m_xdmNodeETagIndex = xdmNodeETagIndex;
-            m_namedXsltHashtable = namedXsltHashtable;
-            m_namedXsltETagIndex = namedXsltETagIndex;
+            _baseXsltUri = baseXsltUri;
+            _baseXsltUriHash = baseXsltUriHash;
+            _baseXsltName = baseXsltName;
+            _transform = transform;
+            _xsltHashtable = xsltHashtable;
+            _processor = processor;
+            _compiler = _processor.NewXsltCompiler();
+            _sourceHashtable = xmlSourceHashtable;
+            _resolver = resolver;
+            _compiler.XmlResolver = _resolver;
+            _builder = _processor.NewDocumentBuilder();
+            _serializer = serializer;
+            _xdmNodeHashtable = xdmNodeHashtable;
+            _xdmNodeETagIndex = xdmNodeETagIndex;
+            _namedXsltHashtable = namedXsltHashtable;
+            _namedXsltETagIndex = namedXsltETagIndex;
             _hashAlgorithm = HashAlgorithm.SHA1;
             //NOTE: TransformEngine enum PLACEHOLDER FOR FUTURE USE
-            m_transformEngine = TransformEngine.SAXON;
+            _transformEngine = TransformEngine.SAXON;
         }
 
         public void SetBaseXsltContext(BaseXsltContext baseXsltContext)
         {
-            m_baseXsltUri = baseXsltContext.BaseXsltUri;
-            m_baseXsltName = baseXsltContext.Name;
-            m_baseXsltUriHash = baseXsltContext.UriHash;
-            m_compiler.BaseUri = m_baseXsltUri;
-            m_builder.BaseUri = m_baseXsltUri;
+            _baseXsltUri = baseXsltContext.BaseXsltUri;
+            _baseXsltName = baseXsltContext.Name;
+            _baseXsltUriHash = baseXsltContext.UriHash;
+            _compiler.BaseUri = _baseXsltUri;
+            _builder.BaseUri = _baseXsltUri;
         }
 
         public bool HasXmlSourceChanged(string eTag)
         {
-            if (m_xdmNodeETagIndex[eTag] != null)
+            if (_xdmNodeETagIndex[eTag] != null)
                 return false;
             else
                 return true;
@@ -132,28 +131,28 @@ namespace Nuxleus.Transform
 
         public string GetXdmNodeHashtableCount()
         {
-            return m_xdmNodeETagIndex.Count.ToString();
+            return _xdmNodeETagIndex.Count.ToString();
         }
 
         public bool HasBaseXsltSourceChanged()
         {
-            string namedETag = (string)m_namedXsltETagIndex[m_baseXsltName];
-            if (namedETag != null && namedETag == GenerateNamedETagKey(m_baseXsltName, m_baseXsltUri))
+            string namedETag = (string)_namedXsltETagIndex[_baseXsltName];
+            if (namedETag != null && namedETag == GenerateNamedETagKey(_baseXsltName, _baseXsltUri))
                 return false;
             else
             {
-                m_namedXsltETagIndex[m_baseXsltName] = (string)m_baseXsltUriHash;
+                _namedXsltETagIndex[_baseXsltName] = (string)_baseXsltUriHash;
                 return true;
             }
         }
 
         public void AddTransformer(Uri uri)
         {
-            addTransformer(GenerateNamedETagKey(uri.LocalPath, uri), uri.LocalPath, uri, m_resolver, null, null, null);
+            addTransformer(GenerateNamedETagKey(uri.LocalPath, uri), uri.LocalPath, uri, _resolver, null, null, null);
         }
         public void AddTransformer(string name, Uri uri)
         {
-            addTransformer(GenerateNamedETagKey(name, uri), name, uri, m_resolver, null, null, null);
+            addTransformer(GenerateNamedETagKey(name, uri), name, uri, _resolver, null, null, null);
         }
         public void AddTransformer(string name, Uri uri, XmlUrlResolver resolver)
         {
@@ -181,14 +180,14 @@ namespace Nuxleus.Transform
                 transformer.InitialMode = new QName("", "", initialMode);
             if (initialTemplate != null && initialTemplate != String.Empty)
                 transformer.InitialTemplate = new QName("xsl", "http://www.w3.org/1999/XSL/Transform", initialTemplate);
-            m_xsltHashtable[key] = (XsltTransformer)transformer;
-            m_namedXsltETagIndex[name] = (string)key;
+            _xsltHashtable[key] = (XsltTransformer)transformer;
+            _namedXsltETagIndex[name] = (string)key;
         }
 
         public void AddXmlSource(string name, Uri uri)
         {
             Stream xmlStream = createNewXmlStream(uri);
-            m_sourceHashtable[name] = (Stream)xmlStream;
+            _sourceHashtable[name] = (Stream)xmlStream;
         }
 
         public XdmNode GetXdmNode(string name, string xmlSource)
@@ -199,21 +198,21 @@ namespace Nuxleus.Transform
         public XdmNode GetXdmNode(string name, Uri xmlSourceUri)
         {
 
-            Uri xdmNodeUri = m_xdmNodeETagIndex[name];
+            Uri xdmNodeUri = (Uri)_xdmNodeETagIndex[name];
             if (xdmNodeUri != null && xdmNodeUri == xmlSourceUri)
             {
                 return getXdmNode(name, xmlSourceUri, false);
             }
             else
             {
-                m_xdmNodeETagIndex[name] = xmlSourceUri;
+                _xdmNodeETagIndex[name] = xmlSourceUri;
                 return getXdmNode(name, xmlSourceUri, true);
             }
         }
         private XdmNode getXdmNode(string key, Uri xmlSourceUri, bool replaceExistingXdmNode)
         {
 
-            XdmNode node = m_xdmNodeHashtable[key];
+            XdmNode node = (XdmNode)_xdmNodeHashtable[key];
 
             if (node != null && !replaceExistingXdmNode)
             {
@@ -226,18 +225,18 @@ namespace Nuxleus.Transform
                     node = createNewXdmNode(stream);
                 }
             }
-            m_xdmNodeHashtable[key] = node;
+            _xdmNodeHashtable[key] = node;
             return node;
         }
 
         private Stream createNewXmlStream(Uri xmlSourceUri)
         {
-            return (Stream)m_resolver.GetEntity(xmlSourceUri, null, typeof(Stream));
+            return (Stream)_resolver.GetEntity(xmlSourceUri, null, typeof(Stream));
         }
 
         private XdmNode createNewXdmNode(Stream xmlSourceStream)
         {
-            return (XdmNode)m_builder.Build(xmlSourceStream);
+            return (XdmNode)_builder.Build(xmlSourceStream);
         }
 
         public XsltTransformer GetTransformer(string eTag, Uri xsltUri)
@@ -251,26 +250,26 @@ namespace Nuxleus.Transform
         }
         public XsltTransformer GetTransformer(string name)
         {
-            Uri xsltUri = (Uri)m_namedXsltHashtable[name];
+            Uri xsltUri = (Uri)_namedXsltHashtable[name];
             return getTransformer(GenerateNamedETagKey(name, xsltUri), name, xsltUri);
         }
         private XsltTransformer getTransformer(string key, string xsltName, Uri xsltUri)
         {
-            string namedETag = (string)m_namedXsltETagIndex[xsltName];
+            string namedETag = (string)_namedXsltETagIndex[xsltName];
             if (namedETag != null && namedETag == key)
             {
                 return getTransformer(namedETag, xsltUri, false);
             }
             else
             {
-                m_namedXsltETagIndex[xsltName] = key;
+                _namedXsltETagIndex[xsltName] = key;
                 return getTransformer(key, xsltUri, true);
             }
         }
         private XsltTransformer getTransformer(string key, Uri xsltUri, bool replaceExistingXsltTransformer)
         {
             XsltTransformer transformer;
-            transformer = (XsltTransformer)m_namedXsltHashtable[key];
+            transformer = (XsltTransformer)_namedXsltHashtable[key];
 
             if (transformer != null && !replaceExistingXsltTransformer)
             {
@@ -279,7 +278,7 @@ namespace Nuxleus.Transform
             else
                 transformer = createNewTransformer(xsltUri);
 
-            m_xsltHashtable[key] = (XsltTransformer)transformer;
+            _xsltHashtable[key] = (XsltTransformer)transformer;
             return transformer;
         }
 
@@ -293,24 +292,24 @@ namespace Nuxleus.Transform
         {
             using (Stream stream = createNewXmlStream(xsltUri))
             {
-                return m_compiler.Compile(stream).Load();
+                return _compiler.Compile(stream).Load();
             }
         }
 
         public Hashtable XsltHashtable
         {
-            get { return m_xsltHashtable; }
-            set { m_xsltHashtable = value; }
+            get { return _xsltHashtable; }
+            set { _xsltHashtable = value; }
         }
         public Hashtable XmlSourceHashtable
         {
-            get { return m_sourceHashtable; }
-            set { m_sourceHashtable = value; }
+            get { return _sourceHashtable; }
+            set { _sourceHashtable = value; }
         }
         public Hashtable NamedXsltHashtable
         {
-            get { return m_namedXsltHashtable; }
-            set { m_namedXsltHashtable = value; }
+            get { return _namedXsltHashtable; }
+            set { _namedXsltHashtable = value; }
         }
         public HashAlgorithm HashAlgorithm
         {
@@ -319,48 +318,48 @@ namespace Nuxleus.Transform
         }
         public Processor Processor
         {
-            get { return m_processor; }
-            set { m_processor = value; }
+            get { return _processor; }
+            set { _processor = value; }
         }
         public DocumentBuilder DocumentBuilder
         {
-            get { return m_builder; }
-            set { m_builder = value; }
+            get { return _builder; }
+            set { _builder = value; }
         }
         public XmlUrlResolver Resolver
         {
-            get { return m_resolver; }
-            set { m_resolver = value; }
+            get { return _resolver; }
+            set { _resolver = value; }
         }
         public XsltCompiler Compiler
         {
-            get { return m_compiler; }
-            set { m_compiler = value; }
+            get { return _compiler; }
+            set { _compiler = value; }
         }
         public Serializer Serializer
         {
-            get { return m_serializer; }
-            set { m_serializer = value; }
+            get { return _serializer; }
+            set { _serializer = value; }
         }
         public Transform Transform
         {
-            get { return m_transform; }
-            set { m_transform = value; }
+            get { return _transform; }
+            set { _transform = value; }
         }
         public Uri BaseXsltUri
         {
-            get { return m_baseXsltUri; }
-            set { m_baseXsltUri = value; }
+            get { return _baseXsltUri; }
+            set { _baseXsltUri = value; }
         }
         public String BaseXsltUriHash
         {
-            get { return m_baseXsltUriHash; }
-            set { m_baseXsltUriHash = value; }
+            get { return _baseXsltUriHash; }
+            set { _baseXsltUriHash = value; }
         }
         public String BaseXsltName
         {
-            get { return m_baseXsltName; }
-            set { m_baseXsltName = value; }
+            get { return _baseXsltName; }
+            set { _baseXsltName = value; }
         }
     }
 }
