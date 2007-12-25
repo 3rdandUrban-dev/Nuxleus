@@ -38,7 +38,7 @@ namespace Nuxleus.Web.HttpApplication
         Processor _processor = new Processor();
         Serializer _serializer = new Serializer();
         XmlUrlResolver _resolver = new XmlUrlResolver();
-        Dictionary<string, Uri> _namedXsltHashtable = new Dictionary<string, Uri>();
+        Dictionary<string, Uri> m_namedXsltHashtable = new Dictionary<string, Uri>();
         Hashtable _globalXsltParams = new Hashtable();
         Hashtable _transformContextHashtable = new Hashtable();
         Dictionary<String, IPLocation> _geoIPLookup = new Dictionary<String, IPLocation>();
@@ -99,7 +99,7 @@ namespace Nuxleus.Web.HttpApplication
             _xsltTransformationManager = new XsltTransformationManager(_processor, _transform, _resolver, _serializer);
             _xsltTransformationManager.HashAlgorithm = _hashAlgorithm;
             _resolver.Credentials = CredentialCache.DefaultCredentials;
-            _namedXsltHashtable = _xsltTransformationManager.NamedXsltHashtable;
+            m_namedXsltHashtable = _xsltTransformationManager.NamedXsltHashtable;
 
             string hashkey = (string)_xameleonConfiguration.BaseSettings.ObjectHashKey;
             Application["hashkey"] = hashkey;
@@ -112,7 +112,7 @@ namespace Nuxleus.Web.HttpApplication
                 Uri xsltUri = new Uri(HttpContext.Current.Server.MapPath(localBaseUri + xslt.Uri));
                 _xsltTransformationManager.Compiler.BaseUri = xsltUri;
                 _xsltTransformationManager.AddTransformer(xslt.Name, xsltUri, _resolver, xslt.InitialMode, xslt.InitialTemplate);
-                _namedXsltHashtable.Add(xslt.Name, xsltUri);
+                m_namedXsltHashtable.Add(xslt.Name, xsltUri);
                 if (xslt.UseAsBaseXslt == "yes")
                 {
                     _baseXsltContext = new BaseXsltContext(xsltUri, XsltTransformationManager.GenerateNamedETagKey(xslt.Name, xsltUri), xslt.Name);
@@ -130,7 +130,7 @@ namespace Nuxleus.Web.HttpApplication
                 Application["as_memcached"] = _memcachedClient;
             Application["as_usememcached"] = _useMemCached;
             Application["as_xslTransformationManager"] = _xsltTransformationManager;
-            Application["as_namedXsltHashtable"] = _namedXsltHashtable;
+            Application["as_namedXsltHashtable"] = m_namedXsltHashtable;
             Application["as_globalXsltParams"] = _globalXsltParams;
             Application["as_geoIPLookup"] = _geoIPLookup;
             Application["as_debug"] = _DEBUG;

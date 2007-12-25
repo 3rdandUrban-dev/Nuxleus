@@ -251,7 +251,7 @@ namespace Nuxleus.Transform
         }
         public XsltTransformer GetTransformer(string name)
         {
-            Uri xsltUri = m_namedXsltHashtable[name];
+            Uri xsltUri = m_xdmNodeETagIndex[name];
             return getTransformer(GenerateNamedETagKey(name, xsltUri), name, xsltUri);
         }
         private XsltTransformer getTransformer(string key, string xsltName, Uri xsltUri)
