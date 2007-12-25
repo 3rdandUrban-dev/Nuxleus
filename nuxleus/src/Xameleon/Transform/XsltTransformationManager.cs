@@ -20,7 +20,7 @@ namespace Nuxleus.Transform
         Dictionary<string, Stream> m_sourceHashtable;
         Dictionary<string, XdmNode> m_xdmNodeHashtable;
         Dictionary<string, Uri> m_xdmNodeETagIndex;
-        Dictionary<string, Uri> m_namedXsltHashtable;
+        Hashtable m_namedXsltHashtable;
         Dictionary<string, string> m_namedXsltETagIndex;
         Processor m_processor;
         Serializer m_serializer;
@@ -36,42 +36,42 @@ namespace Nuxleus.Transform
         static TransformEngine m_transformEngine;
 
         public XsltTransformationManager(Processor processor)
-            : this(processor, new Transform(), new XmlUrlResolver(), new Serializer(), new Dictionary<string, XsltTransformer>(), new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), new Dictionary<string, Uri>(), new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, new Transform(), new XmlUrlResolver(), new Serializer(), new Dictionary<string, XsltTransformer>(), new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), new Hashtable(), new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
         {
         }
         public XsltTransformationManager(Processor processor, Transform transform)
-            : this(processor, transform, new XmlUrlResolver(), new Serializer(), new Dictionary<string, XsltTransformer>(), new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), new Dictionary<string, Uri>(), new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, transform, new XmlUrlResolver(), new Serializer(), new Dictionary<string, XsltTransformer>(), new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), new Hashtable(), new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
         {
         }
         public XsltTransformationManager(Processor processor, Transform transform, XmlUrlResolver resolver)
-            : this(processor, transform, resolver, new Serializer(), new Dictionary<string, XsltTransformer>(), new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), new Dictionary<string, Uri>(), new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, transform, resolver, new Serializer(), new Dictionary<string, XsltTransformer>(), new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), new Hashtable(), new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
         {
         }
         public XsltTransformationManager(Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer)
-            : this(processor, transform, resolver, serializer, new Dictionary<string, XsltTransformer>(), new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), new Dictionary<string, Uri>(), new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, transform, resolver, serializer, new Dictionary<string, XsltTransformer>(), new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), new Hashtable(), new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
         {
         }
         public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable)
-            : this(processor, transform, resolver, serializer, xsltHashtable, new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), new Dictionary<string, Uri>(), new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
+            : this(processor, transform, resolver, serializer, xsltHashtable, new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), new Hashtable(), new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
         {
         }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable, Dictionary<string, Uri> namedXsltHashtable)
+        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable, Hashtable namedXsltHashtable)
             : this(processor, transform, resolver, serializer, xsltHashtable, new Dictionary<string, Stream>(), new Dictionary<string, XdmNode>(), namedXsltHashtable, new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
         {
         }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable, Dictionary<string, Stream> xmlSourceHashtable, Dictionary<string, Uri> namedXsltHashtable)
+        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable, Dictionary<string, Stream> xmlSourceHashtable, Hashtable namedXsltHashtable)
             : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, new Dictionary<string, XdmNode>(), namedXsltHashtable, new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
         {
         }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable, Dictionary<string, Stream> xmlSourceHashtable, Dictionary<string, XdmNode> xdmNodeHashtable, Dictionary<string, Uri> namedXsltHashtable)
+        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable, Dictionary<string, Stream> xmlSourceHashtable, Dictionary<string, XdmNode> xdmNodeHashtable, Hashtable namedXsltHashtable)
             : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, new Dictionary<string, string>(), new Dictionary<string, Uri>(), null, null, null)
         {
         }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable, Dictionary<string, Stream> xmlSourceHashtable, Dictionary<string, XdmNode> xdmNodeHashtable, Dictionary<string, Uri> namedXsltHashtable, Dictionary<string, string> namedXsltETagIndex)
+        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable, Dictionary<string, Stream> xmlSourceHashtable, Dictionary<string, XdmNode> xdmNodeHashtable, Hashtable namedXsltHashtable, Dictionary<string, string> namedXsltETagIndex)
             : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, namedXsltETagIndex, new Dictionary<string, Uri>(), null, null, null)
         {
         }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable, Dictionary<string, Stream> xmlSourceHashtable, Dictionary<string, XdmNode> xdmNodeHashtable, Dictionary<string, Uri> namedXsltHashtable, Dictionary<string, string> namedXsltETagIndex, Dictionary<string, Uri> xdmNodeETagIndex)
+        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Dictionary<string, XsltTransformer> xsltHashtable, Dictionary<string, Stream> xmlSourceHashtable, Dictionary<string, XdmNode> xdmNodeHashtable, Hashtable namedXsltHashtable, Dictionary<string, string> namedXsltETagIndex, Dictionary<string, Uri> xdmNodeETagIndex)
             : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, namedXsltETagIndex, xdmNodeETagIndex, null, null, null)
         {
         }
@@ -84,7 +84,7 @@ namespace Nuxleus.Transform
             Dictionary<string, XsltTransformer> xsltHashtable,
             Dictionary<string, Stream> xmlSourceHashtable,
             Dictionary<string, XdmNode> xdmNodeHashtable,
-            Dictionary<string, Uri> namedXsltHashtable,
+            Hashtable namedXsltHashtable,
             Dictionary<string, string> namedXsltETagIndex,
             Dictionary<string, Uri> xdmNodeETagIndex,
             Uri baseXsltUri,
@@ -251,7 +251,7 @@ namespace Nuxleus.Transform
         }
         public XsltTransformer GetTransformer(string name)
         {
-            Uri xsltUri = m_xdmNodeETagIndex[name];
+            Uri xsltUri = (Uri)m_namedXsltHashtable[name];
             return getTransformer(GenerateNamedETagKey(name, xsltUri), name, xsltUri);
         }
         private XsltTransformer getTransformer(string key, string xsltName, Uri xsltUri)
@@ -307,7 +307,7 @@ namespace Nuxleus.Transform
             get { return m_sourceHashtable; }
             set { m_sourceHashtable = value; }
         }
-        public Dictionary<string, Uri> NamedXsltHashtable
+        public Hashtable NamedXsltHashtable
         {
             get { return m_namedXsltHashtable; }
             set { m_namedXsltHashtable = value; }

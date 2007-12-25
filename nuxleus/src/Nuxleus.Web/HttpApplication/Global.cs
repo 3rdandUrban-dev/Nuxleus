@@ -38,7 +38,7 @@ namespace Nuxleus.Web.HttpApplication
         Processor _processor = new Processor();
         Serializer _serializer = new Serializer();
         XmlUrlResolver _resolver = new XmlUrlResolver();
-        Dictionary<string, Uri> m_namedXsltHashtable = new Dictionary<string, Uri>();
+        Hashtable m_namedXsltHashtable = new Hashtable();
         Hashtable _globalXsltParams = new Hashtable();
         Hashtable _transformContextHashtable = new Hashtable();
         Dictionary<String, IPLocation> _geoIPLookup = new Dictionary<String, IPLocation>();
