@@ -258,7 +258,7 @@
           }
         <xsl:text>//]]&gt;</xsl:text>
     </script> -->
-    <div id="myMap" style="width:{@width}; height:{@height};margin:0;padding:0;" />
+    <div id="map" style="width:{@width}; height:{@height};margin:0;padding:0;" />
   </xsl:template>
 
   <xsl:template match="geo:location">
