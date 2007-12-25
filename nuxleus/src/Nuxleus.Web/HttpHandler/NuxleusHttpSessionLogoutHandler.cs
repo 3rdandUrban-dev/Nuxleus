@@ -61,7 +61,7 @@ namespace Nuxleus.Web.HttpHandler
             }
 
 
-            Message responseMessage = new Message("redirect", ResponseType.RETURN_LOCATION);
+            Message responseMessage = new Message("redirect", ResponseType.REDIRECT);
             responseMessage.WriteResponseMessage(XmlWriter.Create(m_response.Output), null, m_asyncResult);
             return m_asyncResult;
         }
