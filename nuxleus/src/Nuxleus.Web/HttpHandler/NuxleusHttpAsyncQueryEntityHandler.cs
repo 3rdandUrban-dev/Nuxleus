@@ -10,6 +10,7 @@ using Nuxleus.Extension.Aws;
 using Nuxleus.Extension.Aws.Sdb;
 using System.Collections;
 using System.Text;
+using System.Xml.Xsl;
 
 namespace Nuxleus.Web.HttpHandler
 {
