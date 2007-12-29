@@ -15,30 +15,24 @@ using Nuxleus.Configuration;
 using System.Collections.Generic;
 using Nuxleus.Cryptography;
 
-namespace Nuxleus.Web.HttpHandler
-{
-    public class NuxleusEventHandler : IHttpAsyncHandler
-    {
-        public void ProcessRequest(HttpContext context)
-        {
+namespace Nuxleus.Web.HttpHandler {
+    public class NuxleusEventHandler : IHttpAsyncHandler {
+        public void ProcessRequest (HttpContext context) {
         }
 
 
-        public bool IsReusable
-        {
+        public bool IsReusable {
             get { return false; }
         }
 
 
         #region IHttpAsyncHandler Members
 
-        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData)
-        {
+        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData) {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void EndProcessRequest (IAsyncResult result)
-        {
+        public void EndProcessRequest (IAsyncResult result) {
             throw new Exception("The method or operation is not implemented.");
         }
 

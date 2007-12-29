@@ -11,30 +11,25 @@ using Nuxleus.Async;
 using System.Collections;
 
 
-namespace Nuxleus.Web.HttpHandler
-{
-    public struct NuxleusHttpSessionRequestHandler : IHttpAsyncHandler
-    {
+namespace Nuxleus.Web.HttpHandler {
+
+    public struct NuxleusHttpSessionRequestHandler : IHttpAsyncHandler {
 
         static LookupService m_lookupService = new LookupService(HttpContext.Current.Request.MapPath("~/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_MEMORY_CACHE);
         NuxleusAsyncResult m_asyncResult;
 
-        public void ProcessRequest (HttpContext context)
-        {
-            //NOT USED WITH IHttpAsyncHandler
+        public void ProcessRequest (HttpContext context) {
+            //not used with IHttpAsyncHandler
         }
 
-        public bool IsReusable
-        {
+        public bool IsReusable {
             get { return false; }
         }
 
-        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData)
-        {
+        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData) {
             m_asyncResult = new NuxleusAsyncResult(cb, extraData);
 
-            using (XmlWriter writer = XmlWriter.Create(context.Response.Output))
-            {
+            using (XmlWriter writer = XmlWriter.Create(context.Response.Output)) {
                 bool useMemcached = (bool)context.Application["usememcached"];
                 MemcachedClient client = (MemcachedClient)context.Application["memcached"];
                 HttpCookieCollection cookieCollection = context.Request.Cookies;
@@ -43,51 +38,33 @@ namespace Nuxleus.Web.HttpHandler
                 String guid = "not-set";
                 String openid = "not-set";
 
-                if (hostAddress == "127.0.0.1")
-                {
+                if (hostAddress == "127.0.0.1") {
                     hostAddress = Dns.GetHostAddresses(Dns.GetHostName()).GetValue(0).ToString();
                 }
 
-                if (context.Request.QueryString.Count > 0)
-                {
-                    if (context.Request.QueryString.Get("ip") != null)
-                    {
+                if (context.Request.QueryString.Count > 0) {
+                    if (context.Request.QueryString.Get("ip") != null) {
                         hostAddress = context.Request.QueryString.Get("ip");
                     }
                 }
 
-                //Console.WriteLine(hostAddress);
-                //Console.WriteLine(context.Request.QueryString.Get("ip"));
-
-                //hostAddress = "71.199.4.128";
-
-                if (useMemcached && client != null)
-                {
-                    if (client.KeyExists(hostAddress))
-                    {
+                if (useMemcached && client != null) {
+                    if (client.KeyExists(hostAddress)) {
                         location = new LatLongLocation(((String)client.Get(hostAddress)).Split(new char[] { '|' }));
-                    }
-                    else
-                    {
+                    } else {
                         location = GetIPLocation(hostAddress);
-                        //client.Add(hostAddress, LatLongLocation.ToDelimitedString("|", location));
+                        client.Add(hostAddress, LatLongLocation.ToDelimitedString("|", location));
                     }
-                }
-                else
-                {
+                } else {
                     location = GetIPLocation(hostAddress);
                 }
 
 
-                if (cookieCollection.Count > 0)
-                {
-                    try
-                    {
+                if (cookieCollection.Count > 0) {
+                    try {
                         guid = cookieCollection.Get("guid").Value;
                         openid = cookieCollection.Get("openid").Value;
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         Console.WriteLine(e.Message);
                     }
                 }
@@ -124,7 +101,7 @@ namespace Nuxleus.Web.HttpHandler
                 writer.WriteEndElement();
 
                 // Begin navigation section
-                
+
                 //IEnumerator pathEnumerator = context.Request.FilePath.Split(new char[] { '/' }).GetEnumerator();
 
                 writer.WriteStartElement("navigation");
@@ -149,30 +126,25 @@ namespace Nuxleus.Web.HttpHandler
             return m_asyncResult;
         }
 
-        public void EndProcessRequest (IAsyncResult result)
-        {
-            
+        public void EndProcessRequest (IAsyncResult result) {
+
         }
 
-        private LatLongLocation GetIPLocation (String hostAddress)
-        {
+        private LatLongLocation GetIPLocation (String hostAddress) {
             LatLongLocation location = new LatLongLocation();
 
             Location maxMindLocation = m_lookupService.getLocation(hostAddress);
 
-            try
-            {
+            try {
                 location.City = maxMindLocation.city;
                 location.Country = maxMindLocation.countryName;
                 location.CountryCode = maxMindLocation.countryCode;
                 location.Lat = maxMindLocation.latitude.ToString();
                 location.Long = maxMindLocation.longitude.ToString();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Console.WriteLine(e.Message);
             }
-            
+
             return location;
         }
     }

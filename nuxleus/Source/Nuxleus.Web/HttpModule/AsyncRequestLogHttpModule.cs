@@ -5,25 +5,21 @@ using System.IO;
 using System.Threading;
 using System.Text;
 
-namespace Nuxleus.Web.HttpModule
-{
+namespace Nuxleus.Web.HttpModule {
 
-    public class AsyncRequestLogHttpModule : IHttpModule
-    {
+    public class AsyncRequestLogHttpModule : IHttpModule {
         private FileStream _file;
         private static long _position = 0;
         private static object _lock = new object();
 
-        public void Init (System.Web.HttpApplication application)
-        {
+        public void Init (System.Web.HttpApplication application) {
             application.AddOnPreRequestHandlerExecuteAsync(
                 new BeginEventHandler(BeginPreRequestHandlerExecute),
                 new EndEventHandler(EndPreRequestHandlerExecute)
             );
         }
 
-        IAsyncResult BeginPreRequestHandlerExecute (Object source, EventArgs e, AsyncCallback cb, Object state)
-        {
+        IAsyncResult BeginPreRequestHandlerExecute (Object source, EventArgs e, AsyncCallback cb, Object state) {
             System.Web.HttpApplication app = (System.Web.HttpApplication)source;
             DateTime time = DateTime.Now;
 
@@ -37,8 +33,7 @@ namespace Nuxleus.Web.HttpModule
 
             byte[] output = Encoding.ASCII.GetBytes(line);
 
-            lock (_lock)
-            {
+            lock (_lock) {
                 _file = new FileStream(
                     HttpContext.Current.Server.MapPath("~/App_Data/RequestLog.txt"),
                     FileMode.OpenOrCreate, FileAccess.Write,
@@ -50,8 +45,7 @@ namespace Nuxleus.Web.HttpModule
             }
         }
 
-        void EndPreRequestHandlerExecute (IAsyncResult ar)
-        {
+        void EndPreRequestHandlerExecute (IAsyncResult ar) {
             _file.EndWrite(ar);
             _file.Close();
         }

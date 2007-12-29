@@ -10,29 +10,25 @@ using System.Text;
 using System.Collections.Specialized;
 using System.Collections;
 
-namespace Nuxleus.Web.HttpHandler
-{
+namespace Nuxleus.Web.HttpHandler {
 
-    public struct NuxleusHttpAsyncTrackerAndRedirectHandler : IHttpAsyncHandler
-    {
+    public struct NuxleusHttpAsyncTrackerAndRedirectHandler : IHttpAsyncHandler {
         FileStream m_file;
         static long m_position = 0;
         static object m_lock = new object();
         static string m_fileRedirect = "http://thefutureofideas.s3.amazonaws.com/lessig_FOI.pdf";
         static int m_statusCode = 303;
 
-        public void ProcessRequest (HttpContext context)
-        {
+        public void ProcessRequest (HttpContext context) {
             //not called
         }
 
-        public bool IsReusable
-        {
+        public bool IsReusable {
             get { return false; }
         }
 
-        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData)
-        {
+        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData) {
+
             HttpRequest request = context.Request;
             HttpResponse response = context.Response;
             StringBuilder builder = new StringBuilder();
@@ -43,8 +39,7 @@ namespace Nuxleus.Web.HttpHandler
             builder.AppendFormat("<request time='{0}' filePath='{1}'>", DateTime.Now, request.FilePath);
 
             IEnumerator enumerator = request.Headers.GetEnumerator();
-            for (int i = 0; enumerator.MoveNext(); i++)
-            {
+            for (int i = 0; enumerator.MoveNext(); i++) {
                 string name = request.Headers.AllKeys[i].ToString();
                 builder.AppendFormat("<{0}>:{1}</{0}>", name, HttpUtility.HtmlEncode(request.Headers[name]));
             }
@@ -52,8 +47,7 @@ namespace Nuxleus.Web.HttpHandler
             builder.Append("</request>\r\n");
 
             byte[] output = Encoding.ASCII.GetBytes(builder.ToString());
-            lock (m_lock)
-            {
+            lock (m_lock) {
                 m_file = new FileStream(request.MapPath("~/App_Data/TrackerLog.xml"), FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write, 1024, true);
                 m_file.Seek(m_position, SeekOrigin.Begin);
                 m_position += output.Length;
@@ -61,8 +55,7 @@ namespace Nuxleus.Web.HttpHandler
             }
         }
 
-        public void EndProcessRequest (IAsyncResult result)
-        {
+        public void EndProcessRequest (IAsyncResult result) {
             m_file.EndWrite(result);
             m_file.Close();
         }

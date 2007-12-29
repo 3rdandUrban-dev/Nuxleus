@@ -12,10 +12,10 @@ namespace Nuxleus.Service
     {
 
         // The main entry point for the process
-        static void Main(string[] args)
+        static void Main (string[] args)
         {
             ServiceBase[] ServicesToRun;
-	    string[] memcachedServers = {"127.0.0.1:11211"};
+            string[] memcachedServers = { "127.0.0.1:11211" };
             ServicesToRun = new ServiceBase[] { new BuckerQueueServerService(9876, 
 									     memcachedServers, 
 									     "nuXleus-queue") };

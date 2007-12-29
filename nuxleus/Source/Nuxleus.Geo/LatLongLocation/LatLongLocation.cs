@@ -56,7 +56,7 @@ namespace Nuxleus.Geo
             m_locationArray = geoInfo;
         }
 
-        public static string ToDelimitedString (string delimiter, LatLongByCityName location)
+        public static string ToDelimitedString (string delimiter, LatLongLocation location)
         {
             return String.Join(delimiter, location.LocationArray);
         }
