@@ -294,8 +294,8 @@ span.ButtonLabel:hover {
     top:0;
     margin:0;
     padding:0 1em;
-    border-right:1px dotted #669900;
-    border-left:1px dotted #669900;
+    /* border-right:1px dotted #669900;
+    border-left:1px dotted #669900; */
     width:auto;
 }
 #logo {

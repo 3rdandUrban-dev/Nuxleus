@@ -2,7 +2,7 @@
 <view:module class="base" id="get-plugged-in" xmlns:geo="http://nuxleus.com/geo" xmlns:view="http://atomictalk.org/page/view">
   <view:container type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
     <view:item id="icon">
-      <img style="margin-bottom:-7px" src="/images/Amp.FM.png" height="80" width="400"/>
+      <img style="margin-bottom:-7px" src="/images/amplogo5.png" height="110" width="450"/>
       <span style="font-size:14pt; color:#999;margin-left:.2em;">to <span style="font-size:28pt; color:#CC0000;"><geo:location id="current-region" value="|$$test:@@search.location@@IfTrue:@@search.location@@IfFalse:@@current-location.label@@$$|"/>
         </span>
       </span>

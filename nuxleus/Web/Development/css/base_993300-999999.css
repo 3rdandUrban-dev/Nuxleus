@@ -51,8 +51,8 @@ a:hover {
     padding-left:0;
 }
 #center {
-    border-right:1px dotted #333;
-    border-left:1px dotted #333;
+    /* border-right:1px dotted #333;
+    border-left:1px dotted #333; */
 }
 #info {
     margin-bottom:1px;

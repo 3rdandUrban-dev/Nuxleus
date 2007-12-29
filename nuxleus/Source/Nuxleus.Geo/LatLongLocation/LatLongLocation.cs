@@ -46,15 +46,6 @@ namespace Nuxleus.Geo
             get { return m_locationArray; }
             set { m_locationArray = value; }
         }
-        public LatLongLocation (string name)
-        {
-            m_locationArray = Parse(name);
-            m_city = m_locationArray[0];
-            m_country = m_locationArray[1];
-            m_countryCode = m_locationArray[2];
-            m_lat = m_locationArray[3];
-            m_long = m_locationArray[4];
-        }
         public LatLongLocation (string[] geoInfo)
         {
             m_city = geoInfo[0];
@@ -69,51 +60,5 @@ namespace Nuxleus.Geo
         {
             return String.Join(delimiter, location.LocationArray);
         }
-
-        public static string[] Parse (string name)
-        {
-            string[] geoInfoArray = new string[5];
-            int maxRows = 1;
-
-            XmlReader xGeoIPReader = XmlReader.Create(String.Format("http://ws.geonames.org/search?name={0}&maxRows={1}", name, maxRows));
-            while (xGeoIPReader.Read())
-            {
-                if (xGeoIPReader.IsStartElement())
-                {
-                    switch (xGeoIPReader.Name)
-                    {
-                        case "name":
-                            {
-                                geoInfoArray[0] = xGeoIPReader.ReadString();
-                                break;
-                            }
-                        case "countryName":
-                            {
-                                geoInfoArray[1] = xGeoIPReader.ReadString();
-                                break;
-                            }
-                        case "countryCode":
-                            {
-                                geoInfoArray[2] = xGeoIPReader.ReadString();
-                                break;
-                            }
-                        case "lat":
-                            {
-                                geoInfoArray[3] = xGeoIPReader.ReadString();
-                                break;
-                            }
-                        case "lng":
-                            {
-                                geoInfoArray[4] = xGeoIPReader.ReadString();
-                                break;
-                            }
-                        default:
-                            break;
-                    }
-                }
-            }
-            return geoInfoArray;
-        }
     }
 }
-

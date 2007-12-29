@@ -50,7 +50,7 @@
   <xsl:variable name="service" select="document($page/page:service/@src)/page:config|$page/page:service"/>
   <xsl:variable name="view" select="document($page/page:view/@src)/page:config|$page/page:view"/>
 
-  <xsl:variable name="search.location">
+  <!-- <xsl:variable name="search.location">
     <xsl:call-template name="replace">
       <xsl:with-param name="string" select="'@@search.location@@'"/>
     </xsl:call-template>
@@ -68,7 +68,7 @@
   <xsl:variable name="local-news-doc" select="document(concat('/service/proxy/return-news-by-location/?topic=music%7Cfilm%7Cmovie&amp;location=', translate($city.location, ' ', '+')))//response:result"/>
   <xsl:variable name="local-flickr-images" select="document(concat('/service/flickr/return-images-by-tag-name/?topic=music%7Cfilm%7Cmovie&amp;location=', translate($city.location, ' ', '+')))//response:result"/>
   <xsl:variable name="local-blog-entries" select="document(concat('/service/google/return-blog-entries-by-location/?topic=music%7Cfilm%7Cmovie&amp;location=', translate($city.location, ' ', '+')))//response:result"/>
-  <!-- <xsl:variable name="geo.location" select="document(concat('/service/geo/get-geo-info-by-city-name/?name=', translate($city.location, ' ', '+')))/response:message/response:geo"/>-->
+   --><!-- <xsl:variable name="geo.location" select="document(concat('/service/geo/get-geo-info-by-city-name/?name=', translate($city.location, ' ', '+')))/response:message/response:geo"/>-->
   <xsl:variable name="navigation" select="$session-info/response:navigation"/>
 
   <xsl:variable name="lb">
@@ -248,16 +248,16 @@
   </xsl:template>
 
   <xsl:template match="geo:map">
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
       <xsl:text>//&lt;![CDATA[</xsl:text>
           function load() {
             if (GBrowserIsCompatible()) {
               var map = new GMap2(document.getElementById("map"));
-              map.setCenter(new GLatLng(<xsl:value-of select="$geo.location//response:lat"/>, <xsl:value-of select="$geo.location//response:long"/>), 9);
+              map.setCenter(new GLatLng(<xsl:value-of select="$lat"/>, <xsl:value-of select="$long"/>), 9);
             }
           }
         <xsl:text>//]]&gt;</xsl:text>
-    </script> -->
+    </script>
     <div id="map" style="width:{@width}; height:{@height};margin:0;padding:0;" />
   </xsl:template>
 
@@ -289,15 +289,15 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable> -->
-    <xsl:apply-templates select="$local-news-doc/response:*[local-name() = current()/@topic]" mode="message"/>
+    <!-- <xsl:apply-templates select="$local-news-doc/response:*[local-name() = current()/@topic]" mode="message"/> -->
   </xsl:template>
 
   <xsl:template match="doc:local-flickr-photos">
-    <xsl:apply-templates select="$local-flickr-images/response:*[local-name() = current()/@topic]" mode="flickr"/>
+    <!-- <xsl:apply-templates select="$local-flickr-images/response:*[local-name() = current()/@topic]" mode="flickr"/> -->
   </xsl:template>
 
   <xsl:template match="doc:local-blog-entries">
-    <xsl:apply-templates select="$local-blog-entries/response:*[local-name() = current()/@topic]" mode="blogs"/>
+    <!-- <xsl:apply-templates select="$local-blog-entries/response:*[local-name() = current()/@topic]" mode="blogs"/> -->
   </xsl:template>
 
   <xsl:template match="*" mode="blogs">

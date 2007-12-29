@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <page:body xmlns:page="http://atomictalk.org/page" xmlns:body="http://atomictalk.org/page/output/body">
-  <body:onload action="GetMap()"/>
-  <!-- <body:onunload action="GUnload()"/> -->
   <body:layout xmlns:view="http://atomictalk.org/page/view">
     <layout:view xmlns:layout="http://atomictalk.org/page/view/layout">
       <view:module>

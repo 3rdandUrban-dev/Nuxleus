@@ -39,7 +39,7 @@ namespace Nuxleus.Web.HttpHandler
                 MemcachedClient client = (MemcachedClient)context.Application["memcached"];
                 HttpCookieCollection cookieCollection = context.Request.Cookies;
                 String hostAddress = context.Request.UserHostAddress;
-                IPLocation location = new IPLocation();
+                LatLongLocation location = new LatLongLocation();
                 String guid = "not-set";
                 String openid = "not-set";
 
@@ -65,12 +65,12 @@ namespace Nuxleus.Web.HttpHandler
                 {
                     if (client.KeyExists(hostAddress))
                     {
-                        location = new IPLocation(((String)client.Get(hostAddress)).Split(new char[] { '|' }));
+                        location = new LatLongLocation(((String)client.Get(hostAddress)).Split(new char[] { '|' }));
                     }
                     else
                     {
                         location = GetIPLocation(hostAddress);
-                        //client.Add(hostAddress, IPLocation.ToDelimitedString("|", location));
+                        //client.Add(hostAddress, LatLongLocation.ToDelimitedString("|", location));
                     }
                 }
                 else
@@ -154,32 +154,26 @@ namespace Nuxleus.Web.HttpHandler
             
         }
 
-        private IPLocation GetIPLocation (String hostAddress)
+        private LatLongLocation GetIPLocation (String hostAddress)
         {
-            IPLocation location = new IPLocation(hostAddress);
+            LatLongLocation location = new LatLongLocation();
 
-            //if (location.City.Contains("Unknown"))
-            //{
-                Location maxMindLocation = m_lookupService.getLocation(hostAddress);
+            Location maxMindLocation = m_lookupService.getLocation(hostAddress);
 
-                try
-                {
-                    location.City = maxMindLocation.city;
-                    location.Country = maxMindLocation.countryName;
-                    location.CountryCode = maxMindLocation.countryCode;
-                    location.Lat = maxMindLocation.latitude.ToString();
-                    location.Long = maxMindLocation.longitude.ToString();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                return location;
-            //}
-            //else
-            //{
-            //    return location;
-            //}
+            try
+            {
+                location.City = maxMindLocation.city;
+                location.Country = maxMindLocation.countryName;
+                location.CountryCode = maxMindLocation.countryCode;
+                location.Lat = maxMindLocation.latitude.ToString();
+                location.Long = maxMindLocation.longitude.ToString();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
+            return location;
         }
     }
 }
