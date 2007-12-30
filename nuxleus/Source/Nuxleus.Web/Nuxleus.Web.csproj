@@ -112,6 +112,7 @@
     </Compile>
     <Compile Include="Agent.cs" />
     <Compile Include="AsyncResult\NuxleusAsyncResult.cs" />
+    <Compile Include="XmlServiceOperation\Context.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncFileNotFoundHandler.cs" />
@@ -124,9 +125,11 @@
     <Compile Include="HttpHandler\NuxleusHttpGeoLocationHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpSessionLogoutHandler.cs" />
     <Compile Include="Message\Message.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncXmlServiceOperationHandler.cs" />
     <Compile Include="WebServer\WebServer.cs" />
     <Compile Include="HttpApplication\*.cs" />
     <Compile Include="HttpModule\*.cs" />
+    <Compile Include="XmlServiceOperation\XmlServiceOperationManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">

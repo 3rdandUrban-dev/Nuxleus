@@ -41,7 +41,7 @@ namespace Nuxleus.Web.HttpHandler {
         AsyncCallback m_callback;
         String m_httpMethod;
         Exception m_exception;
-        Context m_transformContext;
+        Transform.Context m_transformContext;
         bool m_CONTENT_IS_MEMCACHED;
         bool m_USE_MEMCACHED;
         static HashAlgorithm m_hashAlgorithm = HashAlgorithm.SHA1;
@@ -67,7 +67,7 @@ namespace Nuxleus.Web.HttpHandler {
             m_transform = m_xslTransformationManager.Transform;
             m_xsltParams = (Hashtable)context.Application["globalXsltParams"];
             m_namedXsltHashtable = (Hashtable)context.Application["namedXsltHashtable"];
-            m_transformContext = new Context(context, m_hashAlgorithm, (string)context.Application["hashkey"], fileInfo, (Hashtable)m_xsltParams.Clone(), fileInfo.LastWriteTimeUtc, fileInfo.Length);
+            m_transformContext = new Transform.Context(context, m_hashAlgorithm, (string)context.Application["hashkey"], fileInfo, (Hashtable)m_xsltParams.Clone(), fileInfo.LastWriteTimeUtc, fileInfo.Length);
             m_transformAsyncResult = new TransformServiceAsyncResult(cb, extraData);
             m_callback = cb;
             m_transformAsyncResult._context = context;

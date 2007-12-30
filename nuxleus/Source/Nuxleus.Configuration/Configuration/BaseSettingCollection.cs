@@ -44,14 +44,5 @@ namespace Nuxleus.Configuration
                 return this["baseXsltName"] as string;
             }
         }
-
-        [ConfigurationProperty("objectHashKey", IsRequired = true)]
-        public string ObjectHashKey
-        {
-            get
-            {
-                return this["objectHashKey"] as string;
-            }
-        }
     }
 }

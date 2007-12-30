@@ -31,6 +31,13 @@ namespace Nuxleus.Configuration
             }
         }
 
+        [ConfigurationProperty("objectHashKey", IsRequired = true)]
+        public string ObjectHashKey {
+            get {
+                return this["objectHashKey"] as string;
+            }
+        }
+
         [ConfigurationProperty("defaultEngine", DefaultValue = "Saxon", IsRequired = false)]
         public string DefaultEngine
         {
