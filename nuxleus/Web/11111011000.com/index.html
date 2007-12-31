@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>11111011000</title>
+    <script type="text/javascript">
+    // The following code was derived from, 
+    // ****************************************************
+    // a binary Unix time clock
+    // copyright 2004 Steve Pomeroy steve@staticfree.info
+    // This software released under the GNU GPL
+    // ****************************************************
+    // and modified by M. David Peterson (m.david@xmlhacker.com) to countdown the number of seconds
+    // between when the page first loads and January 1st, 2008 @ 00:00:00 (based on the local time of the requesting browser). 
+
+    // x is the decimal value, pad is the number of digits to pad up to
+    function toBinary(x,pad){
+       var y = "";
+       while(pad){
+         if( x >= 1 ){
+           y = (x % 2) + y;
+           x = x / 2;
+           x = Math.floor(x);
+         }else{
+           y = "0" + y;
+         }
+         pad--;
+       }
+       return y;
+    }
+    // sets the text of the element with the id 'countdowndisp' to 
+    // the clock and endlessly loops
+    function updateTime(){
+      var x = new Date(); 
+      var jan12008000000 = Date.parse('January, 1 2008 00:00:00');
+      var display = toBinary(Math.floor(jan12008000000/1000 - x.valueOf()/1000), 32);
+      document.getElementById('countdowndisp').innerHTML = display;
+      document.title = display.concat(' seconds until 11111011000 and the amp.fm limited public beta');
+      setTimeout( updateTime, 1000 );
+    }
+  </script>
+    <style type="text/css">
+    body{
+      background-color: black;
+    }
+      #countdowndisp {
+                color: #0F0;
+                font-family: monospace;
+                font-size: 3em;
+                text-align: center;
+                margin:30% auto;
+                width:100%;
+                height:100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="countdowndisp">If this is displayed, your browser doesn't support Javascript. Sorry.</h1>
+    <script type="text/javascript">updateTime()</script>
+  </body>
+</html>
