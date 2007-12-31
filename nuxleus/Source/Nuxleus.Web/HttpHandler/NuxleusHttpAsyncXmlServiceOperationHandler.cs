@@ -3,6 +3,7 @@
 // Please see http://www.opensource.org/licenses/mit-license.php for specific detail.
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Data;
 using System.Configuration;
@@ -17,6 +18,7 @@ using Memcached.ClientLibrary;
 using System.Text;
 using Saxon.Api;
 using System.Xml;
+using Mvp.Xml;
 using Nuxleus.Configuration;
 using Nuxleus.Transform;
 using System.Collections.Generic;
@@ -24,12 +26,19 @@ using Nuxleus.Memcached;
 using Nuxleus.Cryptography;
 using Nuxleus.Bucker;
 using Nuxleus.Async;
+using System.Globalization;
 
 namespace Nuxleus.Web.HttpHandler {
 
     public struct NuxleusHttpAsyncXmlServiceOperationHandler : IHttpAsyncHandler {
 
         XmlServiceOperationManager m_xmlServiceOperationManager;
+        XsltTransformationManager m_xslTransformationManager;
+        Transform.Context m_transformContext;
+        Transform.Transform m_transform;
+        Hashtable m_xsltParams;
+        Hashtable m_namedXsltHashtable;
+        TransformServiceAsyncResult m_transformAsyncResult;
         MemcachedClient m_memcachedClient;
         QueueClient m_queueClient;
         TextWriter m_writer;
@@ -51,6 +60,8 @@ namespace Nuxleus.Web.HttpHandler {
         XmlWriter m_debugXmlWriter;
         string m_lastModifiedKey;
         string m_lastModifiedDate;
+        UTF8Encoding m_encoding;
+        Stopwatch m_stopwatch;
 
         public void ProcessRequest (HttpContext context) {
             //not called
@@ -71,9 +82,15 @@ namespace Nuxleus.Web.HttpHandler {
             m_returnOutput = true;
             m_httpMethod = m_httpContext.Request.HttpMethod;
             m_memcachedClient = (Client)context.Application["memcached"];
+            m_encoding = (UTF8Encoding)context.Application["encoding"];
             m_queueClient = (QueueClient)context.Application["queueclient"];
             m_hashkey = (string)context.Application["hashkey"];
             m_xmlServiceOperationManager = (XmlServiceOperationManager)context.Application["xmlServiceOperationManager"];
+            m_xslTransformationManager = (XsltTransformationManager)context.Application["xslTransformationManager"];
+            m_transform = m_xslTransformationManager.Transform;
+            m_xsltParams = (Hashtable)context.Application["globalXsltParams"];
+            m_transformContext = new Transform.Context(context, m_hashAlgorithm, (string)context.Application["hashkey"], fileInfo, (Hashtable)m_xsltParams.Clone(), fileInfo.LastWriteTimeUtc, fileInfo.Length);
+            m_namedXsltHashtable = (Hashtable)context.Application["namedXsltHashtable"];
             m_xmlSourceETagDictionary = m_xmlServiceOperationManager.XmlSourceETagDictionary;
             m_xmlReaderDictionary = m_xmlServiceOperationManager.XmlReaderDictionary;
             m_context = new Context(context, m_hashAlgorithm, m_hashkey, fileInfo, fileInfo.LastWriteTimeUtc, fileInfo.Length);
@@ -88,8 +105,9 @@ namespace Nuxleus.Web.HttpHandler {
             m_requestHashcode = m_context.GetRequestHashcode(true).ToString();
             m_lastModifiedKey = String.Format("LastModified:{0}", m_context.RequestUri);
             m_lastModifiedDate = String.Empty;
+            m_stopwatch = new Stopwatch();
 
-
+            m_stopwatch.Start();
             bool hasXmlSourceChanged = m_xmlServiceOperationManager.HasXmlSourceChanged(m_context.RequestXmlETag, requestUri);
 
             if (m_USE_MEMCACHED) {
@@ -118,7 +136,7 @@ namespace Nuxleus.Web.HttpHandler {
                     case "HEAD": {
                             if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
 
-                                if (m_USE_MEMCACHED && m_memcachedClient.KeyExists(m_lastModifiedKey) && !hasXmlSourceChanged){
+                                if (m_USE_MEMCACHED && m_memcachedClient.KeyExists(m_lastModifiedKey) && !hasXmlSourceChanged) {
                                     m_lastModifiedDate = (string)m_memcachedClient.Get(m_lastModifiedKey);
                                     if (context.Request.Headers["If-Modified-Since"] == m_lastModifiedDate) {
                                         context.Response.StatusCode = 304;
@@ -157,18 +175,78 @@ namespace Nuxleus.Web.HttpHandler {
             }
 Process:
             try {
+                string xmlStylesheetHref = String.Empty;
+                bool processWithEmbeddedPIStylsheet = false;
                 XmlReader reader = m_xmlServiceOperationManager.GetXmlReader(m_context.RequestXmlETag, requestUri);
-                while (reader.Read()) {
-                    if (reader.IsStartElement()) {
-                        switch (reader.Name) {
-                            case "service:operation":
-                                m_writer.WriteLine(reader.ReadOuterXml());
-                                break;
-                            default:
-                                break;
-                        }
+                do {
+                    switch (reader.NodeType) {
+                        case XmlNodeType.ProcessingInstruction:
+                            switch (reader.Name) {
+                                case "xml-stylesheet":
+                                    string piValue = reader.Value;
+                                    if (piValue.Contains("type=\"text/xsl\"") && piValue.Contains("href=")) {
+                                        processWithEmbeddedPIStylsheet = true;
+                                        xmlStylesheetHref = SubstringBefore(SubstringAfter(piValue, "href=\""), "\"");
+                                    }
+                                    //Console.WriteLine("Stylesheet Href = {0}", xmlStylesheetHref);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case XmlNodeType.Element:
+                            if (reader.IsStartElement()) {
+                                switch (reader.Name) {
+                                    case "service:operation":
+                                        Uri baseXsltUri = new Uri(context.Request.MapPath(xmlStylesheetHref));
+                                        string baseXslt = baseXsltUri.GetHashCode().ToString();
+
+                                        if (!m_xslTransformationManager.NamedXsltHashtable.ContainsKey(baseXslt)) {
+                                            m_xslTransformationManager.AddTransformer(baseXslt, baseXsltUri);
+                                            m_xslTransformationManager.NamedXsltHashtable.Add(baseXslt, baseXsltUri);
+                                        }
+                                        if (!m_xslTransformationManager.XmlSourceHashtable.ContainsKey(m_context.RequestXmlETag)) {
+                                            using (MemoryStream stream = new MemoryStream(m_encoding.GetBytes(reader.ReadOuterXml().ToCharArray()))) {
+                                                m_xslTransformationManager.AddXmlSource(m_context.RequestXmlETag.ToString(), (Stream)stream);
+                                            }
+                                        }
+                                        //m_writer.WriteLine(reader.ReadOuterXml());
+                                        m_transform.BeginProcess(m_transformContext, context, m_xslTransformationManager, m_writer, baseXslt, m_nuxleusAsyncResult);
+
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        case XmlNodeType.EndElement:
+
+                            continue;
+                        case XmlNodeType.Text:
+                        case XmlNodeType.SignificantWhitespace:
+                        case XmlNodeType.Whitespace:
+
+                            break;
+                        case XmlNodeType.CDATA:
+
+                            break;
+                        case XmlNodeType.Comment:
+                            break;
+                        case XmlNodeType.DocumentType:
+                            break;
+                        case XmlNodeType.EntityReference:
+                            reader.ResolveEntity();
+                            continue;
+
+                        case XmlNodeType.XmlDeclaration:
+                        case XmlNodeType.EndEntity:
+                            continue;
+                        default:
+                            break;
+                        //throw new InvalidOperationException();
+
                     }
-                }
+                } while (reader.Read());
                 goto CompleteCall;
             } catch (Exception e) {
                 m_exception = e;
@@ -181,7 +259,6 @@ CompleteCall:
             if (m_lastModifiedDate == String.Empty) {
                 m_lastModifiedDate = DateTime.UtcNow.ToString("r");
             }
-            context.Response.Expires = 15;
             context.Response.AppendHeader("Cache-Control", "max-age=3600");
             context.Response.AddHeader("Last-Modified", m_lastModifiedDate);
             context.Response.AddHeader("ETag", m_requestHashcode);
@@ -198,10 +275,12 @@ CompleteCall:
                     }
                 }
                 if (!m_CONTENT_IS_MEMCACHED && m_USE_MEMCACHED) {
-                    m_memcachedClient.Set(m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(1));
+                    m_memcachedClient.Set(m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(4));
                     m_memcachedClient.Set(m_lastModifiedKey, m_lastModifiedDate);
                 }
             }
+            m_stopwatch.Stop();
+            Console.WriteLine("Total processing time:\t\t{0} ms", m_stopwatch.ElapsedMilliseconds);
         }
 
         private void WriteError () {
@@ -218,6 +297,40 @@ CompleteCall:
             m_httpContext.Response.Output.WriteLine("<p>" + m_exception.StackTrace + "</p>");
             m_httpContext.Response.Output.WriteLine("</body>");
             m_httpContext.Response.Output.WriteLine("</html>");
+        }
+
+        /// <summary>
+        /// Modified from Oleg Tkachenko's SubstringBefore and SubstringAfter extension functions
+        /// @ http://www.tkachenko.com/blog/archives/000684.html
+        /// This will be moved into an appropriate class once I have the time.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string SubstringAfter (string source, string value) {
+            if (string.IsNullOrEmpty(value)) {
+                return source;
+            }
+            CompareInfo compareInfo = CultureInfo.InvariantCulture.CompareInfo;
+            int index = compareInfo.IndexOf(source, value, CompareOptions.Ordinal);
+            if (index < 0) {
+                //No such substring
+                return string.Empty;
+            }
+            return source.Substring(index + value.Length);
+        }
+
+        public static string SubstringBefore (string source, string value) {
+            if (string.IsNullOrEmpty(value)) {
+                return value;
+            }
+            CompareInfo compareInfo = CultureInfo.InvariantCulture.CompareInfo;
+            int index = compareInfo.IndexOf(source, value, CompareOptions.Ordinal);
+            if (index < 0) {
+                //No such substring
+                return string.Empty;
+            }
+            return source.Substring(0, index);
         }
         #endregion
     }

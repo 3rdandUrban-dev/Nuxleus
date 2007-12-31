@@ -46,6 +46,7 @@ namespace Nuxleus.Web.HttpApplication
         Hashtable m_requestXsltParams;
         BaseXsltContext m_baseXsltContext;
         String m_baseUri;
+        UTF8Encoding m_encoding;
         static HashAlgorithm m_hashAlgorithm = HashAlgorithm.MD5;
 
         protected void Application_Start(object sender, EventArgs e)
@@ -69,6 +70,7 @@ namespace Nuxleus.Web.HttpApplication
             m_xmlServiceOperationManager = new XmlServiceOperationManager(new Dictionary<int, XmlReader>());
             m_geoIPLookup = new Dictionary<String, IPLocation>();
             m_requestXsltParams = null;
+            m_encoding = new UTF8Encoding();
 
             using(XmlReader configReader = XmlReader.Create(HttpContext.Current.Server.MapPath("~/App_Data/aws.config")))
             {
@@ -154,6 +156,7 @@ namespace Nuxleus.Web.HttpApplication
             Application["as_geoIPLookup"] = m_geoIPLookup;
             Application["as_debug"] = m_DEBUG;
             Application["as_hashkey"] = hashkey;
+            Application["as_encoding"] = m_encoding;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
@@ -168,6 +171,7 @@ namespace Nuxleus.Web.HttpApplication
             Application["geoIPLookup"] = Application["as_geoIPLookup"];
             Application["debug"] = Application["as_debug"];
             Application["hashkey"] = Application["as_hashkey"];
+            Application["encoding"] = Application["as_encoding"];
         }
 
         protected void Application_EndRequest(object sender, EventArgs e)

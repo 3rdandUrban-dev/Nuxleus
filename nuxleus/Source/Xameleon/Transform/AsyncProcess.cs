@@ -7,6 +7,7 @@ using Saxon.Api;
 using Nuxleus.ResultDocumentHandler;
 using System.Text;
 using System.Web.SessionState;
+using Nuxleus.Async;
 
 namespace Nuxleus.Transform
 {
@@ -16,12 +17,12 @@ namespace Nuxleus.Transform
     public partial class Transform
     {
 
-        public void BeginProcess(Context context, HttpContext httpContext, XsltTransformationManager manager, TextWriter writer, TransformServiceAsyncResult result)
+        public void BeginProcess(Context context, HttpContext httpContext, XsltTransformationManager manager, TextWriter writer, NuxleusAsyncResult result)
         {
             BeginProcess(context, httpContext, manager, writer, manager.BaseXsltName, result);
         }
 
-        public void BeginProcess(Context context, HttpContext httpContext, XsltTransformationManager manager, TextWriter writer, String xsltName, TransformServiceAsyncResult result)
+        public void BeginProcess (Context context, HttpContext httpContext, XsltTransformationManager manager, TextWriter writer, String xsltName, NuxleusAsyncResult result)
         {
             XsltTransformer transformer = manager.GetTransformer(xsltName);
 
@@ -49,7 +50,7 @@ namespace Nuxleus.Transform
                 transformer.Run(destination);
             }
 
-            result.CompleteCall();
+            //result.CompleteCall();
         }
     }
 }

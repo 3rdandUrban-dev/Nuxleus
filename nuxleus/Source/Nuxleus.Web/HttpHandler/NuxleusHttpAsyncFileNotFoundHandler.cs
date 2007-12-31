@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using Nuxleus.Memcached;
 using Nuxleus.Cryptography;
 using Nuxleus.Bucker;
+using Nuxleus.Async;
 
 namespace Nuxleus.Web.HttpHandler {
 
@@ -37,7 +38,7 @@ namespace Nuxleus.Web.HttpHandler {
         HttpContext m_context;
         Hashtable m_xsltParams;
         Hashtable m_namedXsltHashtable;
-        TransformServiceAsyncResult m_transformAsyncResult;
+        NuxleusAsyncResult m_transformAsyncResult;
         AsyncCallback m_callback;
         String m_httpMethod;
         Exception m_exception;
@@ -68,9 +69,9 @@ namespace Nuxleus.Web.HttpHandler {
             m_xsltParams = (Hashtable)context.Application["globalXsltParams"];
             m_namedXsltHashtable = (Hashtable)context.Application["namedXsltHashtable"];
             m_transformContext = new Transform.Context(context, m_hashAlgorithm, (string)context.Application["hashkey"], fileInfo, (Hashtable)m_xsltParams.Clone(), fileInfo.LastWriteTimeUtc, fileInfo.Length);
-            m_transformAsyncResult = new TransformServiceAsyncResult(cb, extraData);
+            m_transformAsyncResult = new NuxleusAsyncResult(cb, extraData);
             m_callback = cb;
-            m_transformAsyncResult._context = context;
+            m_transformAsyncResult.m_context = context;
             m_builder = new StringBuilder();
             m_CONTENT_IS_MEMCACHED = false;
             m_USE_MEMCACHED = (bool)context.Application["usememcached"];

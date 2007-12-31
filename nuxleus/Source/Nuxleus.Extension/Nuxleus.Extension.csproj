@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Agent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringUtils\Substring.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">

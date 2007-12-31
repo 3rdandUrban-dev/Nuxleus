@@ -8,34 +8,34 @@ namespace Nuxleus.Core
 
     public struct Agent : IAgent
     {
-        PostOffice _postOffice;
-        Hashtable _resultHashtable;
-        LoadBalancer _loadBalancer;
+        PostOffice m_postOffice;
+        Hashtable m_resultHashtable;
+        LoadBalancer m_loadBalancer;
 
         public Agent (LoadBalancer loadBalancer)
         {
-            _loadBalancer = LoadBalancer.GetLoadBalancer();
-            _postOffice = null;
-            _resultHashtable = new Hashtable();
+            m_loadBalancer = LoadBalancer.GetLoadBalancer();
+            m_postOffice = null;
+            m_resultHashtable = new Hashtable();
         }
 
-        public PostOffice PostOffice { get { return _postOffice; } set { _postOffice = value; } }
-        public Hashtable Result { get { return _resultHashtable; } set { _resultHashtable = value; } }
+        public PostOffice PostOffice { get { return m_postOffice; } set { m_postOffice = value; } }
+        public Hashtable Result { get { return m_resultHashtable; } set { m_resultHashtable = value; } }
 
         public Response MakeRequest (Request request) 
         {
-            if (_postOffice == null)
+            if (m_postOffice == null)
             {
-                _postOffice = _loadBalancer.GetPostOffice;
+                m_postOffice = m_loadBalancer.GetPostOffice;
             }
-            ///TODO: Create the logic for adding a new request to the _postOffice.Inbox.
+            ///TODO: Create the logic for adding a new request to the m_postOffice.Inbox.
             ///For now will just return a new Response() so we can compile;
             return new Response();
         }
 
         public string GetResponse (Guid id)
         {
-            return (string)_resultHashtable[id];
+            return (string)m_resultHashtable[id];
         }
         public void AuthenticateRequest () { }
         public void ValidateRequest () { }

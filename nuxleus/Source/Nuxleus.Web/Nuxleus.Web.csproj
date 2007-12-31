@@ -111,7 +111,7 @@
       <Link>WebServer\Mono.WebServer\XSPWorkerRequest.cs</Link>
     </Compile>
     <Compile Include="Agent.cs" />
-    <Compile Include="AsyncResult\NuxleusAsyncResult.cs" />
+    <Compile Include="HttpHandler\temp.cs" />
     <Compile Include="XmlServiceOperation\Context.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs" />
@@ -130,6 +130,7 @@
     <Compile Include="HttpApplication\*.cs" />
     <Compile Include="HttpModule\*.cs" />
     <Compile Include="XmlServiceOperation\XmlServiceOperationManager.cs" />
+    <Compile Include="XmlServiceOperation\XmlServiceOperationReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">
@@ -181,6 +182,7 @@
     <None Include="Extf.Net.snk" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AsyncResult\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

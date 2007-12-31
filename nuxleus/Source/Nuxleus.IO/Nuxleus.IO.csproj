@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
+    <Compile Include="AsyncResult\NuxleusAsyncResult.cs" />
     <Compile Include="Clipboard\Cache.cs" />
     <Compile Include="Clipboard\Clipboard.cs" />
     <Compile Include="Clipboard\ClipData.cs" />
