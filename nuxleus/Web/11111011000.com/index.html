@@ -1,63 +1,173 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html 
-     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <title>11111011000</title>
-    <script type="text/javascript">
-    // The following code was derived from, 
-    // ****************************************************
-    // a binary Unix time clock
-    // copyright 2004 Steve Pomeroy steve@staticfree.info
-    // This software released under the GNU GPL
-    // ****************************************************
-    // and modified by M. David Peterson (m.david@xmlhacker.com) to countdown the number of seconds
-    // between when the page first loads and January 1st, 2008 @ 00:00:00 (based on the local time of the requesting browser). 
 
-    // x is the decimal value, pad is the number of digits to pad up to
-    function toBinary(x,pad){
-       var y = "";
-       while(pad){
-         if( x >= 1 ){
-           y = (x % 2) + y;
-           x = x / 2;
-           x = Math.floor(x);
-         }else{
-           y = "0" + y;
+<html>
+  <head>
+    <script language="javascript" src="/js/blendtrans.js"></script>
+    <script type="text/javascript">
+      // The following code was derived from, 
+      // ****************************************************
+      // a binary Unix time clock
+      // copyright 2004 Steve Pomeroy steve@staticfree.info
+      // This software released under the GNU GPL
+      // ****************************************************
+      // and modified by M. David Peterson (m.david@xmlhacker.com) to countdown the number of seconds
+      // between when the page first loads and January 1st, 2008 @ 00:00:00 (based on the local time of the requesting browser). 
+  
+      // x is the decimal value, pad is the number of digits to pad up to
+      function toBinary(x,pad){
+         var y = "";
+         while(pad){
+           if( x >= 1 ){
+             y = (x % 2) + y;
+             x = x / 2;
+             x = Math.floor(x);
+           }else{
+             y = "0" + y;
+           }
+           pad--;
          }
-         pad--;
-       }
-       return y;
-    }
-    // sets the text of the element with the id 'countdowndisp' to 
-    // the clock and endlessly loops
-    function updateTime(){
-      var x = new Date(); 
-      var jan12008000000 = Date.parse('January, 1 2008 00:00:00');
-      var display = toBinary(Math.floor(jan12008000000/1000 - x.valueOf()/1000), 32);
-      document.getElementById('countdowndisp').innerHTML = display;
-      document.title = display.concat(' seconds until 11111011000 and the amp.fm limited public beta');
-      setTimeout( updateTime, 1000 );
-    }
-  </script>
+         return y;
+      }
+      // sets the text of the element with the id 'countdowndisp' to 
+      // the clock and endlessly loops
+      function updateTime(){
+        var x = new Date(); 
+        var timeinseconds = x.valueOf()/1000;
+        var jan12008000000 = Date.parse('January, 1 2008 00:00:00')/1000;
+        var timeleftinseconds = Math.floor(jan12008000000 - timeinseconds);
+        var display = toBinary(timeleftinseconds, 32);
+        document.getElementById('countdowndisp').innerHTML = display;
+        document.title = display.concat(' seconds until 11111011000 and the amp.fm limited public beta');
+        if(timeleftinseconds < 45){
+          startTransition();
+        }
+        setTimeout( updateTime, 1000 );
+      }
+      var transitionStarted = false;
+      var redirectCount = 0;
+      function startTransition() {
+        if(redirectCount < 60) {
+          if(redirectCount == 40) {
+           opacity('ampfmlogo', 0, 100, 20000); 
+          }
+          if(redirectCount == 45) {
+           opacity('get-plugged-in', 0, 100, 5000); 
+          }
+          if(redirectCount == 45) {
+           opacity('happy-new-year', 0, 100, 5000); 
+          }
+          if(transitionStarted == false){
+            opacity('countdowndisp', 100, 15, 5000);
+            opacity('content', 100, 0, 30000);
+            opacity('container', 100, 0, 45000);
+            
+            transitionStarted = true;
+          }
+          redirectCount++;
+        }
+        else {
+          window.location.replace('http://blog.amp.fm/');
+        }
+      }
+    </script>
     <style type="text/css">
-    body{
-      background-color: black;
-    }
+      body{
+        margin:0;
+        padding:0;
+      }
+      h1 {
+       font-size:18pt;
+       color:#000;
+       font-family: helvetica;
+      }
+      h2 {
+       font-size:24pt;
+       color:#CC6600;
+       font-family: helvetica;
+      }
+      #container {
+        width:100%;
+        height:100%; 
+        background:#000;
+        opacity:100%;
+        margin:0;
+        padding:0;
+      }
       #countdowndisp {
-                color: #0F0;
-                font-family: monospace;
-                font-size: 3em;
-                text-align: center;
-                margin:30% auto;
-                width:100%;
-                height:100%;
+        color: #0F0;
+        font-family: monospace;
+        font-size: 3em;
+        text-align: center;
+        margin:25% auto;
+        width:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+      }
+      #bodycontent{
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        background:#000;
+      }
+      #ampfmlogo{
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
+        width:450px;
+        text-align:center;
+        opacity: .0;
+        filter: alpha(opacity=0);
+        -moz-opacity: .0;
+      }
+      #ampfmlogo img {
+        position:absolute;
+        top:245px;
+        left:0;
+        right:0;
+        height:110px;
+        width:450px;
+      }
+      #get-plugged-in{
+        position:absolute;
+        top:375px;
+        left:0;
+        right:0;
+        opacity: .0;
+        filter: alpha(opacity=0);
+        -moz-opacity: .0;
+      }
+      #happy-new-year{
+        position:absolute;
+        top:400px;
+        left:0;
+        right:0;
+        opacity: .0;
+        filter: alpha(opacity=0);
+        -moz-opacity: .0;
       }
     </style>
   </head>
   <body>
-    <h1 id="countdowndisp">If this is displayed, your browser doesn't support Javascript. Sorry.</h1>
-    <script type="text/javascript">updateTime()</script>
+    <div id="ampfmlogo">
+      <img src="http://amp.fm/images/amplogo5.png"/> 
+      <div id="get-plugged-in">
+        <h1>Get Plugged Into 11111011000</h1>
+      </div>
+      <div id="happy-new-year">
+        <h2>Happy New Year, Everyone!</h2>
+      </div>
+    </div>
+    <div id="container">
+      <div class="bodycontent">
+        <div id="countdowndisp">11111011000</div>
+        <script language="javascript" type="text/javascript">updateTime()</script>
+      </div>
+      <script language="javascript" src="/js/matrix.js"></script>
+    </div>
   </body>
 </html>
