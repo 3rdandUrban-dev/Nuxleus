@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>FeedSync Samples</title>
+</head>
+<body>
+<h1>FeedSync Notes Sample</h1>
+
+<p>
+Thank you for your interest in FeedSync! This project will serve as 
+a set of sample applications that utilize FeedSync for various scenarios.
+</p>
+
+<p>
+This program is modeled after the Notes Gadget that ships with 
+Windows Vista (tm). The gadget represents a stack of sticky notes and the user 
+can create, edit and delete a set of notes. The sample app demonstrates the 
+same feature set, however the notes themselves are stored in a local file on 
+disk and can be synchronized with a FeedSync enabled RSS or Atom feed.
+</p>
+<h4>
+Note: This project was created using Visual Studio .NET 2005. It has not been tested with other versions.
+</h4>
+<hr />
+
+<h2>Getting started:</h2>
+<ul>
+<li>Copy the project files and source code to your local directory.</li>
+<li>Compile and run the FeedSyncNotesSample application.</li>
+<li>Create some notes by editing the text view, or adding new notes.</li>
+</ul>
+
+<h2>To create a feed that can be used with this project:</h2>
+<ul>
+<li>Login or create an account on <a href="http://feedsync.mslivelabs.com/">http://feedsync.mslivelabs.com/</a></li>
+<li>On the "manage feeds" page there is a link to the feed itself labeled "complete feed".</li>
+<li>Copy the URL for this feed.</li>
+<li>In the sample application select the Options -> Sync menu item and paste 
+   the feed url.</li>
+<li>The notes from the application will now be synchronized with the local data
+   file created by the application.</li>
+</ul>
+
+<hr />
+
+<h2>Known Issues</h2>
+
+<p>
+The web service at feedsync.mslivelabs.com can create public or private feeds. 
+Private feeds require authorization and can be configured to allow read or 
+read/write access. At this time private feeds are not supported by the sample 
+application.
+</p>
+
+<p>
+The sample can support RSS or Atom formats. Currently this is a constant 
+defined in the MainForm.cs class. To change formats you will need to delete 
+the local data file after modifying the code. A future version will offer this
+as an option from within the application.
+</p>
+
+</body>
+</html>

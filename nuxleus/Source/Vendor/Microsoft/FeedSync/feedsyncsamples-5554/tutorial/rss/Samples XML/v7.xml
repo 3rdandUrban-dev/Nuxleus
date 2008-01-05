@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:sx="http://feedsync.org/2007/feedsync">
+	<channel>
+		<title>todolist.xml</title>
+		<description>Sample to do list</description>
+		<link>http://www.example.com/index.html</link>
+		<item>
+			<sx:sync id="101" updates="1" deleted="false" noconflicts="false"><sx:history sequence="1" when="2007-11-29T06:27:11Z" by="fsRSSConvert.js"/></sx:sync><title>Pay Bills</title>
+			<description>Electric, Gas and Water Bills</description>
+		</item>
+		<item><sx:sync id="ep1.100" updates="5" deleted="false" noconflicts="false"><sx:history sequence="5" when="2007-11-29T06:27:16Z" by="EP2"/><sx:history sequence="4" when="2007-11-29T06:27:13Z" by="EP1"/><sx:history sequence="4" when="2007-11-29T06:27:15Z" by="EP2"/><sx:history sequence="3" when="2007-11-29T06:27:13Z" by="EP2"/><sx:history sequence="2" when="2007-11-29T06:27:13Z" by="EP1"/><sx:history sequence="1" when="2007-11-29T06:27:11Z" by="EP1"/></sx:sync><title>Buy Groceries - DONE</title><description>Get milk, eggs, butter and bread</description></item><item><sx:sync id="ep1.101" updates="2" deleted="true" noconflicts="false"><sx:history sequence="2" when="2007-11-29T06:27:16Z" by="EP1"/><sx:history sequence="1" when="2007-11-29T06:27:12Z" by="EP1"/></sx:sync><title>Get car serviced</title><description>Needs oil change</description></item><item><sx:sync id="ep2.100" updates="2" deleted="true" noconflicts="false"><sx:history sequence="2" when="2007-11-29T06:27:18Z" by="EP2"/><sx:history sequence="1" when="2007-11-29T06:27:12Z" by="EP2"/><sx:conflicts><item><sx:sync id="ep2.100" updates="2" deleted="true" noconflicts="false"><sx:history sequence="2" when="2007-11-29T06:27:16Z" by="EP1"/><sx:history sequence="1" when="2007-11-29T06:27:12Z" by="EP2"/></sx:sync><title>Return books to library</title><description>2 books in total</description></item></sx:conflicts></sx:sync><title>Return books to library</title><description>2 books in total</description></item><item><sx:sync id="ep2.101" updates="2" deleted="true" noconflicts="false"><sx:history sequence="2" when="2007-11-29T06:27:16Z" by="EP2"/><sx:history sequence="1" when="2007-11-29T06:27:12Z" by="EP2"/></sx:sync><title>Get birthday gift for mother</title><description>She likes blue flowers</description></item></channel>
+</rss>
