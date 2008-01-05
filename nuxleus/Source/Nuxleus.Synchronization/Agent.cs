@@ -42,5 +42,22 @@ namespace Nuxleus.Synchronization
         }
 
         #endregion
+
+        #region IAgent Members
+
+
+        public IAsyncResult BeginRequest (IRequest request, AsyncCallback callback, NuxleusAsyncResult asyncResult, object extraData) {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public void EndRequest (IAsyncResult result) {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        IResponse IAgent.GetResponse (Guid id) {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        #endregion
     }
 }

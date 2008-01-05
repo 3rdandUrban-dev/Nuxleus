@@ -10,9 +10,10 @@
   <target name="init">
     <mkdir dir="${build.dir}" failonerror="false" />
   </target>
-  <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.Extension.Aws.Sdb Nuxleus.Extension.Aws Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility">
+  <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Agent Nuxleus.Command Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.Extension.Aws.Sdb Nuxleus.Extension.Aws Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility">
     <csc target="library" output="${build.dir}/Xameleon.dll" unsafe="True" keyfile="./Dependencies/Extf.Net.snk">
       <sources>
+        <include name="${source.dir}/Xameleon/*.cs" />
         <include name="${source.dir}/Xameleon/Function/*.cs" />
         <include name="${source.dir}/Xameleon/Document/*.cs" />
         <include name="${source.dir}/Xameleon/ResultDocumentHandler/*.cs" />
@@ -26,8 +27,10 @@
       </resources>
       <references>
         <include name="${build.dir}/Nuxleus.IO.dll" />
-        <include name="${build.dir}/Nuxleus.Authentication.dll" />
+        <include name="${build.dir}/Nuxleus.Agent.dll" />
+	<include name="${build.dir}/Nuxleus.Authentication.dll" />
         <include name="${build.dir}/Nuxleus.Cryptography.dll" />
+        <include name="${build.dir}/Nuxleus.Command.dll" />
         <include name="${build.dir}/Nuxleus.Configuration.dll" />
         <include name="${build.dir}/Nuxleus.Extension.Facebook.dll" />
         <include name="${build.dir}/Nuxleus.Extension.Aws.dll" />
@@ -100,6 +103,7 @@
       </sources>
       <references>
         <include name="System.dll" />
+	<include name="System.Web.dll" />
       </references>
     </csc>
   </target>
@@ -493,7 +497,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Web" depends="init Nuxleus.Geo Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Aws.Sdb Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
+  <target name="Nuxleus.Web" depends="init Nuxleus.Agent Nuxleus.Geo Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Aws.Sdb Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
     <csc target="library" unsafe="True" output="${build.dir}/Nuxleus.Web.dll" keyfile="./Dependencies/Extf.Net.snk">
       <sources>
         <include name="${source.dir}/Nuxleus.Web/**/*.cs" />
@@ -521,6 +525,7 @@
         <include name="System.Data.dll" />
         <include name="System.Xml.dll" />
         <include name="System.Web.dll" />
+        <include name="${build.dir}/Nuxleus.Agent.dll" />
         <include name="${build.dir}/Nuxleus.Extension.Aws.dll" />
         <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll" />
         <include name="${build.dir}/Nuxleus.Configuration.dll" />

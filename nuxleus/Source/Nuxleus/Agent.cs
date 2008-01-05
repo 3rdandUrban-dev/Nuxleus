@@ -28,7 +28,7 @@ namespace Nuxleus.Core {
         }
 
         public IResponse GetResponse (Guid id) {
-            return (string)m_resultHashtable[id];
+            return (IResponse)m_resultHashtable[id];
         }
         public void AuthenticateRequest () { }
         public void ValidateRequest () { }
