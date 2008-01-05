@@ -3,17 +3,15 @@ using System.Collections;
 using Nuxleus.Agent;
 using Nuxleus.Messaging;
 
-namespace Nuxleus.Core
-{
+namespace Nuxleus.Core {
 
-    public struct Agent : IAgent
-    {
+    public struct Agent : IAgent {
+
         PostOffice m_postOffice;
         Hashtable m_resultHashtable;
         LoadBalancer m_loadBalancer;
 
-        public Agent (LoadBalancer loadBalancer)
-        {
+        public Agent (LoadBalancer loadBalancer) {
             m_loadBalancer = LoadBalancer.GetLoadBalancer();
             m_postOffice = null;
             m_resultHashtable = new Hashtable();
@@ -22,22 +20,25 @@ namespace Nuxleus.Core
         public PostOffice PostOffice { get { return m_postOffice; } set { m_postOffice = value; } }
         public Hashtable Result { get { return m_resultHashtable; } set { m_resultHashtable = value; } }
 
-        public Response MakeRequest (Request request) 
-        {
-            if (m_postOffice == null)
-            {
+        public void BeginRequest (IRequest request) {
+            if (m_postOffice == null) {
                 m_postOffice = m_loadBalancer.GetPostOffice;
             }
-            ///TODO: Create the logic for adding a new request to the m_postOffice.Inbox.
-            ///For now will just return a new Response() so we can compile;
-            return new Response();
+            throw new Exception("The method or operation is not implemented.");
         }
 
-        public string GetResponse (Guid id)
-        {
+        public IResponse GetResponse (Guid id) {
             return (string)m_resultHashtable[id];
         }
         public void AuthenticateRequest () { }
         public void ValidateRequest () { }
+
+        public void EndRequest (IAsyncResult result) {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public IAsyncResult BeginRequest (IRequest request, AsyncCallback callback, NuxleusAsyncResult asyncResult, object extraData) {
+            throw new Exception("The method or operation is not implemented.");
+        }
     }
 }

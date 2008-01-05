@@ -6,7 +6,6 @@ namespace Nuxleus.Geo
 {
     public class Agent : IAgent
     {
-        #region IAgent Members
 
         public Hashtable Result
         {
@@ -30,16 +29,21 @@ namespace Nuxleus.Geo
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public Response MakeRequest (Request request)
+
+        public IResponse GetResponse (Guid id)
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public string GetResponse (Guid id)
-        {
+        public void EndRequest (IAsyncResult result) {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        #endregion
+
+
+        public IAsyncResult BeginRequest (IRequest request, AsyncCallback callback, NuxleusAsyncResult asyncResult, object extraData) {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
     }
 }

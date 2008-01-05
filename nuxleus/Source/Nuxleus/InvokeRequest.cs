@@ -4,30 +4,25 @@ using Nuxleus.Messaging;
 using Nuxleus.Command;
 using Nuxleus.Agent;
 
-namespace Nuxleus.Core
-{
+namespace Nuxleus.Core {
 
-    public class InvokeRequest : ICommand
-    {
+    public delegate IResponse AsyncRequest (IRequest request);
+
+    public struct InvokeRequest : ICommand {
         Request m_request;
         AsyncRequest m_invokeRequest;
 
-        delegate Response AsyncRequest (Request request);
-
-        public InvokeRequest (Agent agent, Request request)
-        {
+        public InvokeRequest (Agent agent, Request request) {
             m_request = request;
             m_invokeRequest = new AsyncRequest(agent.MakeRequest);
         }
 
-        public void Execute ()
-        {
-            m_invokeRequest.BeginInvoke(m_request, this.CallBack, null);
+        public void Execute () {
+            m_invokeRequest.BeginInvoke(m_request, this.Callback, null);
         }
 
-        private void CallBack (IAsyncResult ar)
-        {
-            Response response = m_invokeRequest.EndInvoke(ar);
+        private void Callback (IAsyncResult ar) {
+            IResponse response = m_invokeRequest.EndInvoke(ar);
 
             ///TODO: Process and serialize result.
             ///TODO: Add result to Result Hashtable

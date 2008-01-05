@@ -152,7 +152,7 @@ namespace Nuxleus.Web.HttpHandler
                                     else
                                         baseXslt = m_xslTransformationManager.BaseXsltName;
 
-                                    m_transform.BeginProcess(m_transformContext, context, m_xslTransformationManager, m_writer, baseXslt, m_transformAsyncResult);
+                                    //m_transform.BeginTransformProcess(m_transformContext, context, m_xslTransformationManager, m_writer, baseXslt, m_transformAsyncResult);
                                     return m_transformAsyncResult;
                                 }
                                 catch (Exception e)
@@ -166,22 +166,19 @@ namespace Nuxleus.Web.HttpHandler
                         }
                     case "PUT":
                         {
-                            m_transform.BeginProcess(m_transformContext, context, m_xslTransformationManager, m_writer, m_transformAsyncResult);
+                            
                             return m_transformAsyncResult;
                         }
                     case "POST":
                         {
-                            m_transform.BeginProcess(m_transformContext, context, m_xslTransformationManager, m_writer, m_transformAsyncResult);
                             return m_transformAsyncResult;
                         }
                     case "DELETE":
                         {
-                            m_transform.BeginProcess(m_transformContext, context, m_xslTransformationManager, m_writer, m_transformAsyncResult);
                             return m_transformAsyncResult;
                         }
                     default:
                         {
-                            m_transform.BeginProcess(m_transformContext, context, m_xslTransformationManager, m_writer, m_transformAsyncResult);
                             return m_transformAsyncResult;
                         }
                 }

@@ -84,7 +84,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agent.cs" />
+    <Compile Include="AsyncResult\NuxleusTransformAsyncResult.cs" />
+    <Compile Include="InvokeRequest.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="TransformContext.cs" />
     <Compile Include="Document\*.cs" />
+    <Compile Include="TransformResponse.cs" />
     <Compile Include="Transform\*.cs" />
     <Compile Include="Function\*.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,9 +127,17 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Agent\Nuxleus.Agent.csproj">
+      <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>
+      <Name>Nuxleus.Agent</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Authentication\Nuxleus.Authentication.csproj">
       <Project>{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}</Project>
       <Name>Nuxleus.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Command\Nuxleus.Command.csproj">
+      <Project>{091EC796-27A0-4EDF-9286-B7ABF7981769}</Project>
+      <Name>Nuxleus.Command</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Configuration\Nuxleus.Configuration.csproj">
       <Project>{0FFD8B77-2852-4CB0-9B85-29424C40FC44}</Project>

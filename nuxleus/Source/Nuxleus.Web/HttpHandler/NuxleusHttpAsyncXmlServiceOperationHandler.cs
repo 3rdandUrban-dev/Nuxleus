@@ -27,6 +27,7 @@ using Nuxleus.Cryptography;
 using Nuxleus.Bucker;
 using Nuxleus.Async;
 using System.Globalization;
+using Nuxleus.Agent;
 
 namespace Nuxleus.Web.HttpHandler {
 
@@ -48,7 +49,7 @@ namespace Nuxleus.Web.HttpHandler {
         String m_requestHashcode;
         Dictionary<int, int> m_xmlSourceETagDictionary;
         Dictionary<int, XmlReader> m_xmlReaderDictionary;
-        NuxleusAsyncResult m_nuxleusAsyncResult;
+        Nuxleus.Agent.NuxleusAsyncResult m_nuxleusAsyncResult;
         AsyncCallback m_callback;
         String m_httpMethod;
         Exception m_exception;
@@ -62,6 +63,11 @@ namespace Nuxleus.Web.HttpHandler {
         string m_lastModifiedDate;
         UTF8Encoding m_encoding;
         Stopwatch m_stopwatch;
+        TransformRequest m_request;
+        TransformResponse m_response;
+        NuxleusAgentAsyncRequest m_transformRequest;
+        Transform.Agent m_agent;
+        IAsyncResult m_asyncResult;
 
         public void ProcessRequest (HttpContext context) {
             //not called
@@ -95,7 +101,7 @@ namespace Nuxleus.Web.HttpHandler {
             m_xmlReaderDictionary = m_xmlServiceOperationManager.XmlReaderDictionary;
             m_context = new Context(context, m_hashAlgorithm, m_hashkey, fileInfo, fileInfo.LastWriteTimeUtc, fileInfo.Length);
             //Console.WriteLine("File Date: {0}; File Length: {1}", m_context.RequestXmlFileInfo.LastWriteTimeUtc, m_context.RequestXmlFileInfo.Length);
-            m_nuxleusAsyncResult = new NuxleusAsyncResult(cb, extraData);
+            m_nuxleusAsyncResult = new Nuxleus.Agent.NuxleusAsyncResult(cb, extraData);
             m_callback = cb;
             m_nuxleusAsyncResult.m_context = context;
             m_builder = new StringBuilder();
@@ -103,9 +109,13 @@ namespace Nuxleus.Web.HttpHandler {
             m_USE_MEMCACHED = (bool)context.Application["usememcached"];
             Uri requestUri = new Uri(m_context.RequestUri);
             m_requestHashcode = m_context.GetRequestHashcode(true).ToString();
-            m_lastModifiedKey = String.Format("LastModified:{0}", m_context.RequestUri);
+            m_lastModifiedKey = String.Format("LastModified:{0}", m_context.RequestUri.GetHashCode());
             m_lastModifiedDate = String.Empty;
             m_stopwatch = new Stopwatch();
+            m_request = new TransformRequest();
+            m_response = new TransformResponse();
+            Guid requestGuid = Guid.NewGuid();
+            m_request.ID = requestGuid;
 
             m_stopwatch.Start();
             bool hasXmlSourceChanged = m_xmlServiceOperationManager.HasXmlSourceChanged(m_context.RequestXmlETag, requestUri);
@@ -134,10 +144,14 @@ namespace Nuxleus.Web.HttpHandler {
                 switch (m_httpMethod) {
                     case "GET":
                     case "HEAD": {
+                            Console.WriteLine("If-None-Match: {0}, RequestHashCode: {1}", context.Request.Headers["If-None-Match"], m_requestHashcode);
                             if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
-
+                                Console.WriteLine("They matched.");
+                                Console.WriteLine("Use memcached: {0}, KeyExists: {1}, XmlSource Changed: {2}", m_USE_MEMCACHED, m_memcachedClient.KeyExists(m_lastModifiedKey), hasXmlSourceChanged);
+                                Console.WriteLine("Last Modified Key Value: {0}", m_lastModifiedKey);
                                 if (m_USE_MEMCACHED && m_memcachedClient.KeyExists(m_lastModifiedKey) && !hasXmlSourceChanged) {
                                     m_lastModifiedDate = (string)m_memcachedClient.Get(m_lastModifiedKey);
+                                    Console.WriteLine("Last Modified Date: {0}", m_lastModifiedDate);
                                     if (context.Request.Headers["If-Modified-Since"] == m_lastModifiedDate) {
                                         context.Response.StatusCode = 304;
                                         m_returnOutput = false;
@@ -188,7 +202,7 @@ Process:
                                         processWithEmbeddedPIStylsheet = true;
                                         xmlStylesheetHref = SubstringBefore(SubstringAfter(piValue, "href=\""), "\"");
                                     }
-                                    //Console.WriteLine("Stylesheet Href = {0}", xmlStylesheetHref);
+                                    Console.WriteLine("Stylesheet Href = {0}", xmlStylesheetHref);
                                     break;
                                 default:
                                     break;
@@ -198,6 +212,7 @@ Process:
                             if (reader.IsStartElement()) {
                                 switch (reader.Name) {
                                     case "service:operation":
+                                    case "my:page":
                                         Uri baseXsltUri = new Uri(context.Request.MapPath(xmlStylesheetHref));
                                         string baseXslt = baseXsltUri.GetHashCode().ToString();
 
@@ -210,8 +225,23 @@ Process:
                                                 m_xslTransformationManager.AddXmlSource(m_context.RequestXmlETag.ToString(), (Stream)stream);
                                             }
                                         }
+
+                                        m_agent = new Transform.Agent();
+                                        TransformContext transformContext = new TransformContext();
+                                        transformContext.Context = m_transformContext;
+                                        transformContext.HttpContext = context;
+                                        transformContext.XsltTransformationManager = m_xslTransformationManager;
+                                        transformContext.XsltName = baseXslt;
+                                        transformContext.Writer = m_writer;
+                                        transformContext.Response = m_response;
+                                        m_request.TransformContext = transformContext;
+                                        m_transform.BeginTransformProcess(m_request, cb, m_nuxleusAsyncResult);
+                                        //m_transformRequest = m_agent.BeginRequest;
+                                        //AsyncCallback callback = new AsyncCallback(RequestIsComplete);
+                                        //m_asyncResult = m_transformRequest.BeginInvoke(m_request, new AsyncCallback(RequestIsComplete), new Nuxleus.Agent.NuxleusAsyncResult(callback, m_transformRequest), m_transformRequest, RequestIsComplete, m_transformRequest);
+                                        //Console.WriteLine("BeginInvoke called for method: {0}", m_transformRequest.Method.Name);
                                         //m_writer.WriteLine(reader.ReadOuterXml());
-                                        m_transform.BeginProcess(m_transformContext, context, m_xslTransformationManager, m_writer, baseXslt, m_nuxleusAsyncResult);
+
 
                                         break;
                                     default:
@@ -266,6 +296,13 @@ CompleteCall:
             return m_nuxleusAsyncResult;
         }
 
+        private void RequestIsComplete (IAsyncResult result) {
+            NuxleusAgentAsyncRequest response = (NuxleusAgentAsyncRequest)result.AsyncState;
+            response.EndInvoke(result);
+            Console.WriteLine("End of Invoke Reached");
+            Console.WriteLine("result of transform: {0}", ((TransformResponse)m_agent.GetResponse(m_request.ID)).TransformResult);
+        }
+
         public void EndProcessRequest (IAsyncResult result) {
             using (m_writer) {
                 string output = m_builder.ToString();
@@ -275,6 +312,7 @@ CompleteCall:
                     }
                 }
                 if (!m_CONTENT_IS_MEMCACHED && m_USE_MEMCACHED) {
+                    Console.WriteLine("Adding Last Modified Key: {0}", m_lastModifiedKey);
                     m_memcachedClient.Set(m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(4));
                     m_memcachedClient.Set(m_lastModifiedKey, m_lastModifiedDate);
                 }
@@ -332,6 +370,8 @@ CompleteCall:
             }
             return source.Substring(0, index);
         }
+
+
         #endregion
     }
 }

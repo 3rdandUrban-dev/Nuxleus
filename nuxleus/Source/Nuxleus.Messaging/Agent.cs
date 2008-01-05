@@ -6,33 +6,40 @@ namespace Nuxleus.Messaging
 {
     public struct Agent : IAgent
     {
-        Hashtable _resultHashtable;
-        LoadBalancer _loadBalancer;
+        Hashtable m_resultHashtable;
+        LoadBalancer m_loadBalancer;
 
         public Agent (LoadBalancer loadBalancer)
         {
-            _loadBalancer = LoadBalancer.GetLoadBalancer();
-            _resultHashtable = new Hashtable();
+            m_loadBalancer = LoadBalancer.GetLoadBalancer();
+            m_resultHashtable = new Hashtable();
         }
 
-        public Hashtable Result { get { return _resultHashtable; } set { _resultHashtable = value; } }
+        public Hashtable Result { get { return m_resultHashtable; } set { m_resultHashtable = value; } }
 
-        public Response MakeRequest (Request request)
+        public IResponse GetResponse (Guid id)
         {
-            //if (_postOffice == null)
-            //{
-            //    _postOffice = _loadBalancer.GetPostOffice;
-            //}
-            ///TODO: Create the logic for adding a new request to the _postOffice.Inbox.
-            ///For now will just return a new Response() so we can compile;
-            return new Response();
-        }
-
-        public string GetResponse (Guid id)
-        {
-            return (string)_resultHashtable[id];
+            return (IResponse)m_resultHashtable[id];
         }
         public void AuthenticateRequest () { }
         public void ValidateRequest () { }
+
+        #region IAgent Members
+
+
+        public void EndRequest (IAsyncResult result) {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        #endregion
+
+        #region IAgent Members
+
+
+        public IAsyncResult BeginRequest (IRequest request, AsyncCallback callback, NuxleusAsyncResult asyncResult, object extraData) {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        #endregion
     }
 }
