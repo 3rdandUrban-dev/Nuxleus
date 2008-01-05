@@ -1,0 +1,6 @@
+X:\Public\Source\build\bin\Nuxleus.Agent.dll
+X:\Public\Source\build\bin\Nuxleus.Agent.pdb
+X:\Public\Source\build\bin\Nuxleus.Agent.xml
+X:\Public\Source\Nuxleus.Agent\obj\Debug\ResolveAssemblyReference.cache
+X:\Public\Source\Nuxleus.Agent\obj\Debug\Nuxleus.Agent.dll
+X:\Public\Source\Nuxleus.Agent\obj\Debug\Nuxleus.Agent.pdb
