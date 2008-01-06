@@ -31,12 +31,7 @@ namespace Nuxleus.Messaging
             throw new Exception("The method or operation is not implemented.");
         }
 
-        #endregion
-
-        #region IAgent Members
-
-
-        public IAsyncResult BeginRequest (IRequest request, AsyncCallback callback, NuxleusAsyncResult asyncResult, object extraData) {
+        public void BeginRequest (IRequest request, AsyncCallback callback, IResponse response) {
             throw new Exception("The method or operation is not implemented.");
         }
 
