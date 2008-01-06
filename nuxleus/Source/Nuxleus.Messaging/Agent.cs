@@ -6,32 +6,35 @@ namespace Nuxleus.Messaging
 {
     public struct Agent : IAgent
     {
-        Hashtable m_resultHashtable;
-        LoadBalancer m_loadBalancer;
-
-        public Agent (LoadBalancer loadBalancer)
-        {
-            m_loadBalancer = LoadBalancer.GetLoadBalancer();
-            m_resultHashtable = new Hashtable();
-        }
-
-        public Hashtable Result { get { return m_resultHashtable; } set { m_resultHashtable = value; } }
-
-        public IResponse GetResponse (Guid id)
-        {
-            return (IResponse)m_resultHashtable[id];
-        }
-        public void AuthenticateRequest () { }
-        public void ValidateRequest () { }
 
         #region IAgent Members
 
+        public Hashtable Result {
+            get {
+                throw new Exception("The method or operation is not implemented.");
+            }
+            set {
+                throw new Exception("The method or operation is not implemented.");
+            }
+        }
+
+        public void AuthenticateRequest () {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public void ValidateRequest () {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public IAsyncResult BeginRequest (IRequest request, AsyncCallback callback, NuxleusAsyncResult asyncResult, object extraData) {
+            throw new Exception("The method or operation is not implemented.");
+        }
 
         public void EndRequest (IAsyncResult result) {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void BeginRequest (IRequest request, AsyncCallback callback, IResponse response) {
+        public IResponse GetResponse (Guid id) {
             throw new Exception("The method or operation is not implemented.");
         }
 

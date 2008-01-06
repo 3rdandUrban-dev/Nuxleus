@@ -83,13 +83,13 @@ namespace Xameleon.Function
                     case "header":
                         if (request.Headers.Count > 0)
                         {
-                            IEnumerator enumerator = request.ServerVariables.GetEnumerator();
+                            IEnumerator enumerator = request.Headers.GetEnumerator();
                             for (int i = 0; enumerator.MoveNext(); i++)
                             {
-                                string local = request.ServerVariables.AllKeys[i].ToString();
+                                string local = request.Headers.AllKeys[i].ToString();
                                 if (local == key)
                                 {
-                                    return request.ServerVariables[local];
+                                    return request.Headers[local];
                                 }
                             }
                             return notSet;

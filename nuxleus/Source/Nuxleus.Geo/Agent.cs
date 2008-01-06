@@ -4,34 +4,28 @@ using System.Collections;
 
 namespace Nuxleus.Geo
 {
-    public class Agent : IAgent
-    {
+    public class Agent : IAgent {
 
-        public Hashtable Result
-        {
-            get
-            {
+        #region IAgent Members
+
+        public Hashtable Result {
+            get {
                 throw new Exception("The method or operation is not implemented.");
             }
-            set
-            {
+            set {
                 throw new Exception("The method or operation is not implemented.");
             }
         }
 
-        public void AuthenticateRequest ()
-        {
+        public void AuthenticateRequest () {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void ValidateRequest ()
-        {
+        public void ValidateRequest () {
             throw new Exception("The method or operation is not implemented.");
         }
 
-
-        public IResponse GetResponse (Guid id)
-        {
+        public IAsyncResult BeginRequest (IRequest request, AsyncCallback callback, NuxleusAsyncResult asyncResult, object extraData) {
             throw new Exception("The method or operation is not implemented.");
         }
 
@@ -39,11 +33,7 @@ namespace Nuxleus.Geo
             throw new Exception("The method or operation is not implemented.");
         }
 
-
-        #region IAgent Members
-
-
-        public void BeginRequest (IRequest request, AsyncCallback callback, IResponse response) {
+        public IResponse GetResponse (Guid id) {
             throw new Exception("The method or operation is not implemented.");
         }
 

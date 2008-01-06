@@ -118,6 +118,12 @@ namespace Nuxleus.Web.HttpHandler {
             m_request.ID = requestGuid;
 
             m_stopwatch.Start();
+
+            IEnumerator headers = context.Request.Headers.GetEnumerator();
+            for (int i = 0; headers.MoveNext(); i++) {
+                string local = context.Request.Headers.AllKeys[i].ToString();
+                Console.WriteLine("KeyName: {0}, KeyValue: {1}", local, context.Request.Headers[local]);
+            }
             bool hasXmlSourceChanged = m_xmlServiceOperationManager.HasXmlSourceChanged(m_context.RequestXmlETag, requestUri);
 
             if (m_USE_MEMCACHED) {
@@ -226,7 +232,7 @@ Process:
                                             }
                                         }
 
-                                        m_agent = new Transform.Agent();
+                                        //m_agent = new Transform.Agent();
                                         TransformContext transformContext = new TransformContext();
                                         transformContext.Context = m_transformContext;
                                         transformContext.HttpContext = context;
