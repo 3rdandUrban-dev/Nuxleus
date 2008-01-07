@@ -1,5 +1,0 @@
-info=<p class="band">Amp.fm is pleased to bring you Austin, Texas</p>Live Music Capital of the World
-Blurb about what it is exactly that Amp.fm can do for them.
-<a href="http://www.amp.fm/" target="_blank">Link to Amp.fm</a>
-
-Photos of the collapsed Intel Building by <a href="http://www.sandycarson.com/" target="_blank">Sandy Carson</a>

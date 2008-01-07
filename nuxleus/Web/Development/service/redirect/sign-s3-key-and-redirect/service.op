@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="/transform/base.xslt"?>
-<service:operation xmlns:at="http://atomictalk.org" xmlns:metadata="http://xameleon.org/service/metadata" xmlns:header="http://xameleon.org/service/http/header" xmlns:service="http://xameleon.org/service" xmlns:operation="http://xameleon.org/service/operation" xmlns:redirect="http://xameleon.org/service/redirect" xmlns:param="http://xameleon.org/service/session/param">
-  <operation:redirect>
-    <redirect:location uri="{query-string:redirect}" status-code="{query-string:status-code}"/>
-  </operation:redirect>
-</service:operation>

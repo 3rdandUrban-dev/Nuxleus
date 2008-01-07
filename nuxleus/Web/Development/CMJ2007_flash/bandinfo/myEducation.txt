@@ -1,5 +1,0 @@
-info=<p class='band'>My Education</p>"Aria"
-<a href="http://www.myspace.com/myeducation" target="_blank">myspace.com/myeducation</a>
-<a href="http://myeducationmusic.com/">Official My Education website</a>
-
-Courtesy of <a href="http://www.thirtyghostsrecords.com/" target="_blank">Thirty Ghosts Records/a>

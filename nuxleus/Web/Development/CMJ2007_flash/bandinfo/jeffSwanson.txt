@@ -1,4 +1,0 @@
-info=<p class='band'>Jeffrey Swanson</p>Money Bunny Drawing
-<a href="http://www.myspace.com/jeffu" target="_blank">myspace.com/jeffu</a>
-<a href="http://JeffuArt.com/">Official Jeffrey Swanson website</a>
-
