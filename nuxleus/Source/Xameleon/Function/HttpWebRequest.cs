@@ -10,7 +10,7 @@ namespace Xameleon.Function
 
         public HttpWebRequestStream() { }
 
-        //public static string GetResponse(String uri, bool returnUri) {
+        //public static string GetResponse (String uri, bool returnUri) {
         //    WebRequest myHttpWebRequest = WebRequest.Create(uri);
         //    myHttpWebRequest.Method = "GET";
         //    if (!returnUri) {
