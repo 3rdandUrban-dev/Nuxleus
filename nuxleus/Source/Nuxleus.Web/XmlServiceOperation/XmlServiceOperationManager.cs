@@ -1,3 +1,7 @@
+// Copyright (c) 2007 by M. David Peterson
+// The code contained in this file is licensed under The MIT License
+// Please see http://www.opensource.org/licenses/mit-license.php for specific detail.
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +17,7 @@ namespace Nuxleus.Web {
 
         Dictionary<int, XmlReader> m_xmlReaderDictionary;
         Dictionary<int, int> m_xmlSourceETagDictionary;
+        static String m_hashkey = (String)HttpContext.Current.Application["hashkey"];
         static HashAlgorithm m_hashAlgorithm = HashAlgorithm.MD5;
 
         public XmlServiceOperationManager (Dictionary<int, XmlReader> xmlReaderDictionary)
@@ -51,6 +56,10 @@ namespace Nuxleus.Web {
             int uriHashcode = uri.GetHashCode();
             m_xmlReaderDictionary[uriHashcode] = reader;
             m_xmlSourceETagDictionary[uriHashcode] = key;
+        }
+
+        public XmlReader GetXmlReader (Uri uri) {
+            return getXmlReader(GenerateETagKey(uri), uri);
         }
 
         public XmlReader GetXmlReader (int eTagKey, Uri uri) {
@@ -100,7 +109,7 @@ namespace Nuxleus.Web {
 
         public static int GenerateETagKey (Uri sourceUri, params object[] objectParams) {
             FileInfo fileInfo = new FileInfo(sourceUri.LocalPath);
-            return Context.GenerateETag((string)HttpContext.Current.Application["hashkey"], m_hashAlgorithm, fileInfo.LastWriteTimeUtc, fileInfo.Length, sourceUri, objectParams);
+            return Context.GenerateETag(m_hashkey, m_hashAlgorithm, fileInfo.LastWriteTimeUtc, fileInfo.Length, sourceUri, objectParams);
         }
 
         public Dictionary<int, XmlReader> XmlReaderDictionary {
