@@ -74,6 +74,10 @@ namespace Nuxleus.Cryptography {
             return getHMACHashcode(_key, algorithm, _returnBase64, _hashArray, hashArray);
         }
 
+        public static int GetHMACBase64Hashcode(string key, HashAlgorithm algorithm, params object[] hashArray) {
+            return getHMACHashcode(key, algorithm, true, hashArray).GetHashCode();
+        }
+
         public static String GetHMACHashBase64String (string key, HashAlgorithm algorithm, params object[] hashArray) {
             return getHMACHashcode(key, algorithm, true, hashArray);
         }

@@ -38,7 +38,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAgent.cs" />
+    <Compile Include="LoadBalancer\LoadBalancer.cs" />
+    <Compile Include="Notification\Notification.cs" />
     <Compile Include="NuxleusAsyncResult.cs" />
+    <Compile Include="PostOffice\IPostOffice.cs" />
+    <Compile Include="PostOffice\PostOffice.cs" />
     <Compile Include="Request\IRequest.cs" />
     <Compile Include="Response\IResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -109,7 +109,7 @@ namespace Nuxleus.Web {
 
         public static int GenerateETagKey (Uri sourceUri, params object[] objectParams) {
             FileInfo fileInfo = new FileInfo(sourceUri.LocalPath);
-            return Context.GenerateETag(m_hashkey, m_hashAlgorithm, fileInfo.LastWriteTimeUtc, fileInfo.Length, sourceUri, objectParams);
+            return HashcodeGenerator.GetHMACBase64Hashcode(m_hashkey, m_hashAlgorithm, fileInfo.LastWriteTimeUtc, fileInfo.Length, sourceUri, objectParams);
         }
 
         public Dictionary<int, XmlReader> XmlReaderDictionary {

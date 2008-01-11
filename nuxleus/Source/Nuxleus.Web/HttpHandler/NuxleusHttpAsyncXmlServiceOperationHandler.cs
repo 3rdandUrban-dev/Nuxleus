@@ -62,7 +62,7 @@ namespace Nuxleus.Web.HttpHandler {
         string m_lastModifiedKey;
         string m_lastModifiedDate;
         UTF8Encoding m_encoding;
-        Stopwatch m_stopwatch;
+        static Stopwatch m_stopwatch = new Stopwatch();
         TransformRequest m_request;
         TransformResponse m_response;
         NuxleusAgentAsyncRequest m_transformRequest;
@@ -80,6 +80,9 @@ namespace Nuxleus.Web.HttpHandler {
         #region IHttpAsyncHandler Members
 
         public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData) {
+
+            m_stopwatch.Start();
+
             FileInfo fileInfo = new FileInfo(context.Request.MapPath(context.Request.CurrentExecutionFilePath));
             //Console.WriteLine("File Date: {0}; File Length: {1}", fileInfo.LastWriteTimeUtc, fileInfo.Length);
             m_CONTENT_IS_MEMCACHED = false;
@@ -111,13 +114,10 @@ namespace Nuxleus.Web.HttpHandler {
             m_requestHashcode = m_context.GetRequestHashcode(true).ToString();
             m_lastModifiedKey = String.Format("LastModified:{0}", m_context.RequestUri.GetHashCode());
             m_lastModifiedDate = String.Empty;
-            m_stopwatch = new Stopwatch();
             m_request = new TransformRequest();
             m_response = new TransformResponse();
             Guid requestGuid = Guid.NewGuid();
             m_request.ID = requestGuid;
-
-            m_stopwatch.Start();
 
             IEnumerator headers = context.Request.Headers.GetEnumerator();
             for (int i = 0; headers.MoveNext(); i++) {
@@ -131,14 +131,14 @@ namespace Nuxleus.Web.HttpHandler {
                 string obj = (string)m_memcachedClient.Get(m_context.GetRequestHashcode(true).ToString());
 
                 if (obj != null && !hasXmlSourceChanged) {
-                    m_builder.Append(obj);
+                    m_response.TransformResult = (string)obj;
                     m_CONTENT_IS_MEMCACHED = true;
                     if ((bool)context.Application["debug"])
                         context.Response.ContentType = "text";
                     else
                         context.Response.ContentType = "text/xml";
                 } else {
-                    m_writer = new StringWriter(m_builder);
+                    //m_writer = new StringWriter(m_builder);
                     m_CONTENT_IS_MEMCACHED = false;
                 }
             } else {
@@ -195,100 +195,15 @@ namespace Nuxleus.Web.HttpHandler {
             }
 Process:
             try {
-                string xmlStylesheetHref = String.Empty;
-                bool processWithEmbeddedPIStylsheet = false;
                 XmlReader reader = m_xmlServiceOperationManager.GetXmlReader(m_context.RequestXmlETag, requestUri);
-                do {
-                    switch (reader.NodeType) {
-                        case XmlNodeType.ProcessingInstruction:
-                            switch (reader.Name) {
-                                case "xml-stylesheet":
-                                    string piValue = reader.Value;
-                                    if (piValue.Contains("type=\"text/xsl\"") && piValue.Contains("href=")) {
-                                        processWithEmbeddedPIStylsheet = true;
-                                        xmlStylesheetHref = SubstringBefore(SubstringAfter(piValue, "href=\""), "\"");
-                                    }
-                                    Console.WriteLine("Stylesheet Href = {0}", xmlStylesheetHref);
-                                    break;
-                                default:
-                                    break;
-                            }
-                            break;
-                        case XmlNodeType.Element:
-                            if (reader.IsStartElement()) {
-                                switch (reader.Name) {
-                                    case "service:operation":
-                                    case "my:page":
-                                        Uri baseXsltUri = new Uri(context.Request.MapPath(xmlStylesheetHref));
-                                        string baseXslt = baseXsltUri.GetHashCode().ToString();
-
-                                        if (!m_xslTransformationManager.NamedXsltHashtable.ContainsKey(baseXslt)) {
-                                            m_xslTransformationManager.AddTransformer(baseXslt, baseXsltUri);
-                                            m_xslTransformationManager.NamedXsltHashtable.Add(baseXslt, baseXsltUri);
-                                        }
-                                        if (!m_xslTransformationManager.XmlSourceHashtable.ContainsKey(m_context.RequestXmlETag)) {
-                                            using (MemoryStream stream = new MemoryStream(m_encoding.GetBytes(reader.ReadOuterXml().ToCharArray()))) {
-                                                m_xslTransformationManager.AddXmlSource(m_context.RequestXmlETag.ToString(), (Stream)stream);
-                                            }
-                                        }
-
-                                        //m_agent = new Transform.Agent();
-                                        TransformContext transformContext = new TransformContext();
-                                        transformContext.Context = m_transformContext;
-                                        transformContext.HttpContext = context;
-                                        transformContext.XsltTransformationManager = m_xslTransformationManager;
-                                        transformContext.XsltName = baseXslt;
-                                        transformContext.Writer = m_writer;
-                                        transformContext.Response = m_response;
-                                        m_request.TransformContext = transformContext;
-                                        m_transform.BeginTransformProcess(m_request, cb, m_nuxleusAsyncResult);
-                                        //m_transformRequest = m_agent.BeginRequest;
-                                        //AsyncCallback callback = new AsyncCallback(RequestIsComplete);
-                                        //m_asyncResult = m_transformRequest.BeginInvoke(m_request, new AsyncCallback(RequestIsComplete), new Nuxleus.Agent.NuxleusAsyncResult(callback, m_transformRequest), m_transformRequest, RequestIsComplete, m_transformRequest);
-                                        //Console.WriteLine("BeginInvoke called for method: {0}", m_transformRequest.Method.Name);
-                                        //m_writer.WriteLine(reader.ReadOuterXml());
-
-
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            }
-                            break;
-                        case XmlNodeType.EndElement:
-
-                            continue;
-                        case XmlNodeType.Text:
-                        case XmlNodeType.SignificantWhitespace:
-                        case XmlNodeType.Whitespace:
-
-                            break;
-                        case XmlNodeType.CDATA:
-
-                            break;
-                        case XmlNodeType.Comment:
-                            break;
-                        case XmlNodeType.DocumentType:
-                            break;
-                        case XmlNodeType.EntityReference:
-                            reader.ResolveEntity();
-                            continue;
-
-                        case XmlNodeType.XmlDeclaration:
-                        case XmlNodeType.EndEntity:
-                            continue;
-                        default:
-                            break;
-                        //throw new InvalidOperationException();
-
-                    }
-                } while (reader.Read());
-                goto CompleteCall;
+                XmlServiceOperationReader serviceOperationReader = new XmlServiceOperationReader(context, m_context, m_transformContext, reader, m_request, m_response, m_xslTransformationManager);
+                m_response = serviceOperationReader.Process();
             } catch (Exception e) {
                 m_exception = e;
                 WriteError();
-                goto CompleteCall;
             }
+
+            goto CompleteCall;
 
 CompleteCall:
             Console.WriteLine("CompleteCall reached");
@@ -302,29 +217,23 @@ CompleteCall:
             return m_nuxleusAsyncResult;
         }
 
-        private void RequestIsComplete (IAsyncResult result) {
-            NuxleusAgentAsyncRequest response = (NuxleusAgentAsyncRequest)result.AsyncState;
-            response.EndInvoke(result);
-            Console.WriteLine("End of Invoke Reached");
-            Console.WriteLine("result of transform: {0}", ((TransformResponse)m_agent.GetResponse(m_request.ID)).TransformResult);
-        }
-
         public void EndProcessRequest (IAsyncResult result) {
-            using (m_writer) {
-                string output = m_builder.ToString();
-                if (m_returnOutput) {
-                    using (TextWriter writer = m_httpContext.Response.Output) {
-                        writer.Write(output);
-                    }
-                }
-                if (!m_CONTENT_IS_MEMCACHED && m_USE_MEMCACHED) {
-                    Console.WriteLine("Adding Last Modified Key: {0}", m_lastModifiedKey);
-                    m_memcachedClient.Set(m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(4));
-                    m_memcachedClient.Set(m_lastModifiedKey, m_lastModifiedDate);
+            //using (m_writer) {
+            string output = m_response.TransformResult;
+            if (m_returnOutput) {
+                using (TextWriter writer = m_httpContext.Response.Output) {
+                    writer.Write(output);
                 }
             }
+            if (!m_CONTENT_IS_MEMCACHED && m_USE_MEMCACHED) {
+                Console.WriteLine("Adding Last Modified Key: {0}", m_lastModifiedKey);
+                m_memcachedClient.Set(m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(4));
+                m_memcachedClient.Set(m_lastModifiedKey, m_lastModifiedDate);
+            }
+            //}
             m_stopwatch.Stop();
             Console.WriteLine("Total processing time:\t\t{0} ms", m_stopwatch.ElapsedMilliseconds);
+            m_stopwatch.Reset();
         }
 
         private void WriteError () {
@@ -342,42 +251,6 @@ CompleteCall:
             m_httpContext.Response.Output.WriteLine("</body>");
             m_httpContext.Response.Output.WriteLine("</html>");
         }
-
-        /// <summary>
-        /// Modified from Oleg Tkachenko's SubstringBefore and SubstringAfter extension functions
-        /// @ http://www.tkachenko.com/blog/archives/000684.html
-        /// This will be moved into an appropriate class once I have the time.
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static string SubstringAfter (string source, string value) {
-            if (string.IsNullOrEmpty(value)) {
-                return source;
-            }
-            CompareInfo compareInfo = CultureInfo.InvariantCulture.CompareInfo;
-            int index = compareInfo.IndexOf(source, value, CompareOptions.Ordinal);
-            if (index < 0) {
-                //No such substring
-                return string.Empty;
-            }
-            return source.Substring(index + value.Length);
-        }
-
-        public static string SubstringBefore (string source, string value) {
-            if (string.IsNullOrEmpty(value)) {
-                return value;
-            }
-            CompareInfo compareInfo = CultureInfo.InvariantCulture.CompareInfo;
-            int index = compareInfo.IndexOf(source, value, CompareOptions.Ordinal);
-            if (index < 0) {
-                //No such substring
-                return string.Empty;
-            }
-            return source.Substring(0, index);
-        }
-
-
         #endregion
     }
 }

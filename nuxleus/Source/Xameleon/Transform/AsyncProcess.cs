@@ -12,14 +12,15 @@ using Nuxleus.Agent;
 
 namespace Nuxleus.Transform
 {
+    public delegate TransformResponse TransformProcessDelegate(TransformRequest request);
 
     ///<summary>
     ///</summary>
     public partial class Transform
     {
-
-        public void BeginTransformProcess (TransformRequest request, AsyncCallback callback, Nuxleus.Agent.NuxleusAsyncResult asyncResult)
+        public TransformResponse BeginTransformProcess (TransformRequest request)
         {
+            Console.WriteLine("BeginTransformProcess reached");
             TransformContext transformContext = (TransformContext)request.TransformContext;
             XsltTransformationManager transformationManager = transformContext.XsltTransformationManager;
             TransformResponse response = transformContext.Response;
@@ -44,23 +45,18 @@ namespace Nuxleus.Transform
 
             Serializer destination = transformationManager.Serializer;
 
-            destination.SetOutputWriter(transformContext.Writer);
+            StringBuilder builder = new StringBuilder();
+
+            destination.SetOutputWriter(new StringWriter(builder));
 
             lock (transformer)
             {
                 transformer.Run(destination);
             }
-            //Console.WriteLine("Output of transform: {0}", builder.ToString());
-            //response.TransformResult = builder.ToString();
-            //callback.Invoke(asyncResult);
-            //asyncResult.CompleteCall();
-            //return response;
+            response.TransformResult = builder.ToString();
+            //Console.WriteLine("Output of transform: {0}", response.TransformResult);
+            return response;
 
-        }
-
-        public void EndTransformProcess (IAsyncResult ar) {
-            ///TODO: Process and serialize result.
-            ///TODO: Add result to Result Hashtable
         }
     }
 }

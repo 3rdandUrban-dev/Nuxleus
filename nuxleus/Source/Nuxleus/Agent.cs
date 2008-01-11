@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Threading;
 using System.Collections;
 using Nuxleus.Agent;
-using Nuxleus.Messaging;
+using System.Runtime.Remoting.Messaging;
 
 namespace Nuxleus.Core {
+
+    public delegate int AsyncInvoke();
 
     public struct Agent : IAgent {
 
@@ -20,12 +23,7 @@ namespace Nuxleus.Core {
         public PostOffice PostOffice { get { return m_postOffice; } set { m_postOffice = value; } }
         public Hashtable Result { get { return m_resultHashtable; } set { m_resultHashtable = value; } }
 
-        public void BeginRequest (IRequest request) {
-            if (m_postOffice == null) {
-                m_postOffice = m_loadBalancer.GetPostOffice;
-            }
-            throw new Exception("The method or operation is not implemented.");
-        }
+
 
         public IResponse GetResponse (Guid id) {
             return (IResponse)m_resultHashtable[id];
@@ -34,11 +32,44 @@ namespace Nuxleus.Core {
         public void ValidateRequest () { }
 
         public void EndRequest (IAsyncResult result) {
-            throw new Exception("The method or operation is not implemented.");
+           
         }
+
+        public void BeginRequest (IRequest request) {
+            if (m_postOffice == null) {
+                m_postOffice = m_loadBalancer.GetPostOffice;
+            }
+            AsyncCallback callBack = EndThisRequest;
+            AsyncInvoke method1 = TestAsyncInvoke.Method1;
+            Console.WriteLine("Calling BeginInvoke on Thread {0}", Thread.CurrentThread.ManagedThreadId);
+            IAsyncResult asyncResult = method1.BeginInvoke(callBack, method1);
+            //return;
+        }
+
+        public static void EndThisRequest (IAsyncResult result) {
+            Console.WriteLine("Calling EndThisRequest on Thread {0}", Thread.CurrentThread.ManagedThreadId);
+            AsyncResult asyncResult = (AsyncResult)result;
+            AsyncInvoke method1 = (AsyncInvoke)asyncResult.AsyncDelegate;
+
+            int retVal = method1.EndInvoke(asyncResult);
+            Console.WriteLine("retVal (Callback): {0}", retVal);
+        }
+
+        #region IAgent Members
+
 
         public IAsyncResult BeginRequest (IRequest request, AsyncCallback callback, NuxleusAsyncResult asyncResult, object extraData) {
             throw new Exception("The method or operation is not implemented.");
+        }
+
+        #endregion
+
+    }
+
+    public class TestAsyncInvoke {
+        public static int Method1 () {
+            Console.WriteLine("Invoked Method1 on Thread {0}", Thread.CurrentThread.ManagedThreadId);
+            return 1;
         }
     }
 }
