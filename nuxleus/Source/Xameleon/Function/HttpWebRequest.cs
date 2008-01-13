@@ -3,30 +3,16 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace Xameleon.Function
-{
-    class HttpWebRequestStream
-    {
+namespace Xameleon.Function {
+    class HttpWebRequestStream {
 
-        public HttpWebRequestStream() { }
+        public HttpWebRequestStream () { }
 
-        //public static string GetResponse (String uri, bool returnUri) {
-        //    WebRequest myHttpWebRequest = WebRequest.Create(uri);
-        //    myHttpWebRequest.Method = "GET";
-        //    if (!returnUri) {
-        //        return HttpWebResponseStream.GetResponseString(myHttpWebRequest.GetResponse().GetResponseStream());
-        //    } else {
-        //        return myHttpWebRequest.GetResponse().ResponseUri.ToString();
-        //    }
-        //}
-
-        public static string GetResponse(String uri)
-        {
+        public static string GetResponse (String uri) {
             return new WebClient().DownloadString(uri);
         }
 
-        public static string GetResponse(String uri, String formValues)
-        {
+        public static string GetResponse (String uri, String formValues) {
             WebRequest myHttpWebRequest = WebRequest.Create(uri);
 
             myHttpWebRequest.Method = "POST";
@@ -38,10 +24,26 @@ namespace Xameleon.Function
 
             myHttpWebRequest.ContentLength = byte1.Length;
 
-            Stream newStream = myHttpWebRequest.GetRequestStream();
-            newStream.Write(byte1, 0, byte1.Length);
-            newStream.Close();
-            return HttpWebResponseStream.GetResponseString(myHttpWebRequest.GetResponse().GetResponseStream());
+            using (Stream newStream = myHttpWebRequest.GetRequestStream()) {
+                newStream.Write(byte1, 0, byte1.Length);
+            }
+            return GetResponseString(myHttpWebRequest.GetResponse().GetResponseStream());
         }
+
+        public static string GetResponseString (Stream stream) {
+            using (StreamReader reader = new StreamReader(stream)) {
+                return reader.ReadToEnd();
+            }
+        }
+
+        //public static string GetResponse (String uri, bool returnUri) {
+        //    WebRequest myHttpWebRequest = WebRequest.Create(uri);
+        //    myHttpWebRequest.Method = "GET";
+        //    if (!returnUri) {
+        //        return GetResponseString(myHttpWebRequest.GetResponse().GetResponseStream());
+        //    } else {
+        //        return myHttpWebRequest.GetResponse().ResponseUri.ToString();
+        //    }
+        //}
     }
 }

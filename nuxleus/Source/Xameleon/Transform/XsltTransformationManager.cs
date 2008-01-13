@@ -49,24 +49,6 @@ namespace Nuxleus.Transform {
         public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer)
             : this(processor, transform, resolver, serializer, new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null) {
         }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable)
-            : this(processor, transform, resolver, serializer, xsltHashtable, new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null) {
-        }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable namedXsltHashtable)
-            : this(processor, transform, resolver, serializer, xsltHashtable, new Hashtable(), new Hashtable(), namedXsltHashtable, new Hashtable(), new Hashtable(), null, null, null) {
-        }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Hashtable namedXsltHashtable)
-            : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, new Hashtable(), namedXsltHashtable, new Hashtable(), new Hashtable(), null, null, null) {
-        }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Hashtable xdmNodeHashtable, Hashtable namedXsltHashtable)
-            : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, new Hashtable(), new Hashtable(), null, null, null) {
-        }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Hashtable xdmNodeHashtable, Hashtable namedXsltHashtable, Hashtable namedXsltETagIndex)
-            : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, namedXsltETagIndex, new Hashtable(), null, null, null) {
-        }
-        public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer, Hashtable xsltHashtable, Hashtable xmlSourceHashtable, Hashtable xdmNodeHashtable, Hashtable namedXsltHashtable, Hashtable namedXsltETagIndex, Hashtable xdmNodeETagIndex)
-            : this(processor, transform, resolver, serializer, xsltHashtable, xmlSourceHashtable, xdmNodeHashtable, namedXsltHashtable, namedXsltETagIndex, xdmNodeETagIndex, null, null, null) {
-        }
         public XsltTransformationManager
           (
             Processor processor,
@@ -99,7 +81,7 @@ namespace Nuxleus.Transform {
             m_xdmNodeETagIndex = xdmNodeETagIndex;
             m_namedXsltHashtable = namedXsltHashtable;
             m_namedXsltETagIndex = namedXsltETagIndex;
-            _hashAlgorithm = HashAlgorithm.SHA1;
+            _hashAlgorithm = HashAlgorithm.MD5;
             //NOTE: TransformEngine enum PLACEHOLDER FOR FUTURE USE
             m_transformEngine = TransformEngine.SAXON;
         }
@@ -152,6 +134,7 @@ namespace Nuxleus.Transform {
             addTransformer(GenerateNamedETagKey(name, uri), name, uri, resolver, initialMode, initialTemplate, baseOutputUri);
         }
         private void addTransformer (string key, string name, Uri uri, XmlUrlResolver resolver, string initialMode, string initialTemplate, string baseOutputUri) {
+            m_compiler.BaseUri = uri;
             XsltTransformer transformer = createNewTransformer(uri);
             transformer.InputXmlResolver = resolver;
             if (baseOutputUri != null && baseOutputUri != String.Empty)
