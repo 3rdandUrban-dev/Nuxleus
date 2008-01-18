@@ -57,6 +57,8 @@ namespace Nuxleus.Web.HttpApplication
             m_memcachedClient = null;
             m_appSettings = new AppSettings();
             m_xameleonConfiguration = AspNetXameleonConfiguration.GetConfig();
+            string hashkey = (string)m_xameleonConfiguration.ObjectHashKey;
+            Application["hashkey"] = hashkey;
             m_awsConfiguration = AspNetAwsConfiguration.GetConfig();
             m_bungeeAppConfguration = AspNetBungeeAppConfiguration.GetConfig();
             m_queueServerConfiguration = AspNetQueueServerConfiguration.GetConfig();
@@ -120,9 +122,6 @@ namespace Nuxleus.Web.HttpApplication
             m_xsltTransformationManager.HashAlgorithm = m_hashAlgorithm;
             m_resolver.Credentials = CredentialCache.DefaultCredentials;
             m_namedXsltHashtable = m_xsltTransformationManager.NamedXsltHashtable;
-
-            string hashkey = (string)m_xameleonConfiguration.ObjectHashKey;
-            Application["hashkey"] = hashkey;
 
             foreach (PreCompiledXslt xslt in m_xameleonConfiguration.PreCompiledXslt)
             {

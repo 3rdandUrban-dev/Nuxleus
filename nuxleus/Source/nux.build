@@ -12,6 +12,7 @@
   </target>
   <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Agent Nuxleus.Command Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.Extension.Aws.Sdb Nuxleus.Extension.Aws Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility">
     <csc target="library" output="${build.dir}/Xameleon.dll" unsafe="True" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Xameleon/*.cs" />
         <include name="${source.dir}/Xameleon/Function/*.cs" />
@@ -28,7 +29,7 @@
       <references>
         <include name="${build.dir}/Nuxleus.IO.dll" />
         <include name="${build.dir}/Nuxleus.Agent.dll" />
-	<include name="${build.dir}/Nuxleus.Authentication.dll" />
+        <include name="${build.dir}/Nuxleus.Authentication.dll" />
         <include name="${build.dir}/Nuxleus.Cryptography.dll" />
         <include name="${build.dir}/Nuxleus.Command.dll" />
         <include name="${build.dir}/Nuxleus.Configuration.dll" />
@@ -62,6 +63,7 @@
   </target>
   <target name="XSP" depends="init Nuxleus.Web">
     <csc target="exe" output="${build.dir}/xsp2.exe" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/XSP/**/*.cs" />
       </sources>
@@ -76,6 +78,7 @@
   </target>
   <target name="Nuxleus" depends="init Xameleon Nuxleus.Agent Nuxleus.Messaging Nuxleus.Command Nuxleus.Entity Nuxleus.Service">
     <csc target="exe" output="${build.dir}/Nuxleus.exe" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus/**/*.cs" />
       </sources>
@@ -98,6 +101,7 @@
   </target>
   <target name="Nuxleus.Agent" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Agent.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Agent/**/*.cs" />
       </sources>
@@ -109,6 +113,7 @@
   </target>
   <target name="Nuxleus.Authentication" depends="init Nuxleus.Utility">
     <csc target="library" output="${build.dir}/Nuxleus.Authentication.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Authentication/**/*.cs" />
       </sources>
@@ -139,6 +144,7 @@
   </target>
   <target name="Nuxleus.Configuration" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Configuration.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Configuration/**/*.cs" />
       </sources>
@@ -153,6 +159,7 @@
   </target>
   <target name="Nuxleus.Command" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Command.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Command/**/*.cs" />
       </sources>
@@ -168,6 +175,7 @@
   </target>
   <target name="Nuxleus.Cryptography" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Cryptography.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Cryptography/**/*.cs" />
       </sources>
@@ -183,6 +191,7 @@
   </target>
   <target name="Nuxleus.Entity" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Entity.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Entity/**/*.cs" />
       </sources>
@@ -197,6 +206,7 @@
   </target>
   <target name="Nuxleus.Entity.Profile" depends="init Nuxleus.Agent Nuxleus.Entity">
     <csc target="library" output="${build.dir}/Nuxleus.Entity.Profile.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Entity.Profile/**/*.cs" />
       </sources>
@@ -213,12 +223,14 @@
   </target>
   <target name="Nuxleus.Extension" depends="init Nuxleus.Cryptography">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Extension/**/*.cs" />
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Cryptography.dll" />
         <include name="System.dll" />
+        <include name="System.Core.dll" />
         <include name="System.Collections.dll" />
         <include name="System.Collections.Generic.dll" />
         <include name="System.Data.dll" />
@@ -231,6 +243,7 @@
   </target>
   <target name="Nuxleus.Extension.Community" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Community.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Extension.Community/Agent.cs" />
       </sources>
@@ -244,6 +257,7 @@
   </target>
   <target name="Nuxleus.Extension.Facebook" depends="init Nuxleus.Cryptography">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Facebook.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Extension.Facebook/**/*.cs" />
       </sources>
@@ -262,6 +276,7 @@
   </target>
   <target name="Nuxleus.Extension.Aws" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Extension.Aws/**/*.cs" />
       </sources>
@@ -279,6 +294,7 @@
   </target>
   <target name="Nuxleus.Extension.Aws.Sdb" depends="init Nuxleus.Extension.Aws">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/Sdb/*.cs" />
       </sources>
@@ -306,6 +322,7 @@
   </target>
   <target name="Nuxleus.Extension.Amp.Fm" depends="init Nuxleus.Entity">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Amp.Fm.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Extension.Amp.Fm/**/*.cs" />
       </sources>
@@ -322,6 +339,7 @@
   </target>
   <target name="Nuxleus.Geo" depends="init Nuxleus.Agent">
     <csc target="library" output="${build.dir}/Nuxleus.Geo.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Geo/**/*.cs" />
       </sources>
@@ -335,6 +353,7 @@
   </target>
   <target name="Nuxleus.IO" depends="init Nuxleus.Configuration Nuxleus.Process Nuxleus.Utility Nuxleus.Vendor">
     <csc target="library" output="${build.dir}/Nuxleus.IO.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.IO/**/*.cs" />
       </sources>
@@ -354,6 +373,7 @@
   </target>
   <target name="Nuxleus.Language" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Language.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Language/**/*.cs" />
       </sources>
@@ -365,6 +385,7 @@
   </target>
   <target name="Nuxleus.Logging" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Logging.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Logging/**/*.cs" />
       </sources>
@@ -376,6 +397,7 @@
   </target>
   <target name="Nuxleus.Messaging" depends="init Nuxleus.Agent Nuxleus.Entity Nuxleus.PubSub Nuxleus.Vendor">
     <csc target="library" output="${build.dir}/Nuxleus.Messaging.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Messaging/**/*.cs" />
       </sources>
@@ -392,6 +414,7 @@
   </target>
   <target name="Nuxleus.Process" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Process.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Process/**/*.cs" />
       </sources>
@@ -405,6 +428,7 @@
   </target>
   <target name="Nuxleus.PubSub" depends="init Nuxleus.Cryptography Nuxleus.IO">
     <csc target="library" output="${build.dir}/Nuxleus.PubSub.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.PubSub/**/*.cs" />
       </sources>
@@ -422,6 +446,7 @@
   </target>
   <target name="Nuxleus.Semantics" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Semantics.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Semantics/**/*.cs" />
       </sources>
@@ -433,6 +458,7 @@
   </target>
   <target name="Nuxleus.Service" depends="init Nuxleus.Utility Nuxleus.Logging Nuxleus.Configuration Nuxleus.Messaging Nuxleus.Vendor">
     <csc target="library" output="${build.dir}/Nuxleus.Service.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Service/**/*.cs" />
       </sources>
@@ -458,6 +484,7 @@
   </target>
   <target name="Nuxleus.Synchronization" depends="init Nuxleus.Agent">
     <csc target="library" output="${build.dir}/Nuxleus.Synchronization.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Synchronization/**/*.cs" />
       </sources>
@@ -470,6 +497,7 @@
   </target>
   <target name="Nuxleus.Utility" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Utility.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Utility/**/*.cs" />
       </sources>
@@ -483,6 +511,7 @@
   </target>
   <target name="Nuxleus.Vendor" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Vendor.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <exclude name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx/Properties/AssemblyInfo.cs" />
         <include name="${dependencies.dir}/ALAZ/Source/ALAZ.SystemEx/**/*.cs" />
@@ -497,8 +526,9 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Web" depends="init Nuxleus.Agent Nuxleus.Geo Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Aws.Sdb Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
+  <target name="Nuxleus.Web" depends="init Nuxleus.Agent Nuxleus.Geo Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension Nuxleus.Extension.Aws.Sdb Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
     <csc target="library" unsafe="True" output="${build.dir}/Nuxleus.Web.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Web/**/*.cs" />
         <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/ApplicationServer.cs" />
@@ -525,7 +555,9 @@
         <include name="System.Data.dll" />
         <include name="System.Xml.dll" />
         <include name="System.Web.dll" />
+        <include name="System.Core.dll" />
         <include name="${build.dir}/Nuxleus.Agent.dll" />
+        <include name="${build.dir}/Nuxleus.Extension.dll" />
         <include name="${build.dir}/Nuxleus.Extension.Aws.dll" />
         <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll" />
         <include name="${build.dir}/Nuxleus.Configuration.dll" />
@@ -551,6 +583,7 @@
   </target>
   <target name="Nuxleus.Web.Services" depends="init Xameleon">
     <csc target="library" output="${build.dir}/Nuxleus.Web.Services.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="Nuxleus.Web.Services/**/*.cs" />
       </sources>
@@ -566,6 +599,7 @@
   </target>
   <target name="sdb-test" depends="init Nuxleus.Extension.Aws.Sdb">
     <csc target="exe" output="${build.dir}/sdb-test.exe">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/CodeSamples/AwsSdb_Test/Program.cs"/>
       </sources>
@@ -579,6 +613,7 @@
   </target>
   <target name="sdb-load-csv" depends="init Nuxleus.Extension.Aws.Sdb">
     <csc target="exe" output="${build.dir}/sdb-load-csv.exe">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/CodeSamples/AwsSdb_LoadGeoLatLong-Csv/Program.cs"/>
       </sources>
@@ -592,6 +627,7 @@
   </target>
   <target name="sdb-load-geonames" depends="init Nuxleus.Extension.Aws.Sdb">
     <csc target="exe" output="${build.dir}/sdb-load-geonames.exe">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/CodeSamples/AwsSdb_LoadGeonamesDataFile/Program.cs"/>
       </sources>
@@ -605,6 +641,7 @@
   </target>
   <target name="FileSystemWatcher" depends="init Nuxleus Nuxleus.Service">
     <csc target="exe" output="${build.dir}/Watcher.exe" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/ConsoleApps/FileSystemWatcher/Watcher.cs" />
       </sources>
@@ -616,6 +653,7 @@
   </target>
   <target name="LLUPRouterService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/LLUPRouterService.exe" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/ServiceApps/LLUP/Router.cs" />
       </sources>
@@ -633,6 +671,7 @@
   </target>
   <target name="LLUPPublisherService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/LLUPPublisherService.exe" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/ServiceApps/LLUP/Publisher.cs" />
       </sources>
@@ -650,6 +689,7 @@
   </target>
   <target name="LLUPSubscriberService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/LLUPSubscriberService.exe" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/ServiceApps/LLUP/Subscriber.cs" />
       </sources>
@@ -667,6 +707,7 @@
   </target>
   <target name="ReplicationService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/ReplicationService.exe" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/ServiceApps/ReplicationService/**/*.cs" />
       </sources>
@@ -684,6 +725,7 @@
   </target>
   <target name="QSToLLUPService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/QueueServerService.exe" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/ServiceApps/QueueServerService/QsToLLUPBridge.cs" />
       </sources>
@@ -701,6 +743,7 @@
   </target>
   <target name="QueueServerService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/QueueServerService.exe" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/ServiceApps/QueueServerService/Program.cs" />
       </sources>

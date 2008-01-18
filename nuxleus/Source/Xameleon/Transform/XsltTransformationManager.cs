@@ -18,7 +18,7 @@ namespace Nuxleus.Transform {
 
     public struct XsltTransformationManager {
 
-        Hashtable m_xsltHashtable;
+        Dictionary<string, XsltTransformer> m_xsltHashtable;
         Hashtable m_sourceHashtable;
         Hashtable m_xdmNodeHashtable;
         Hashtable m_xdmNodeETagIndex;
@@ -36,18 +36,19 @@ namespace Nuxleus.Transform {
         static HashAlgorithm _hashAlgorithm;
         //NOTE: TransformEngine enum PLACEHOLDER FOR FUTURE USE
         static TransformEngine m_transformEngine;
+        static string m_hashkey = (string)HttpContext.Current.Application["hashkey"];
 
-        public XsltTransformationManager (Processor processor)
-            : this(processor, new Transform(), new XmlUrlResolver(), new Serializer(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null) {
+        public XsltTransformationManager (Transform transform)
+            : this(new Processor(), transform, new XmlUrlResolver(), new Serializer(), new Dictionary<string, XsltTransformer>(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null) {
         }
         public XsltTransformationManager (Processor processor, Transform transform)
-            : this(processor, transform, new XmlUrlResolver(), new Serializer(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null) {
+            : this(processor, transform, new XmlUrlResolver(), new Serializer(), new Dictionary<string, XsltTransformer>(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null) {
         }
         public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver)
-            : this(processor, transform, resolver, new Serializer(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null) {
+            : this(processor, transform, resolver, new Serializer(), new Dictionary<string, XsltTransformer>(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null) {
         }
         public XsltTransformationManager (Processor processor, Transform transform, XmlUrlResolver resolver, Serializer serializer)
-            : this(processor, transform, resolver, serializer, new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null) {
+            : this(processor, transform, resolver, serializer, new Dictionary<string, XsltTransformer>(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), new Hashtable(), null, null, null) {
         }
         public XsltTransformationManager
           (
@@ -55,7 +56,7 @@ namespace Nuxleus.Transform {
             Transform transform,
             XmlUrlResolver resolver,
             Serializer serializer,
-            Hashtable xsltHashtable,
+            Dictionary<string, XsltTransformer> xsltHashtable,
             Hashtable xmlSourceHashtable,
             Hashtable xdmNodeHashtable,
             Hashtable namedXsltHashtable,
@@ -95,10 +96,11 @@ namespace Nuxleus.Transform {
         }
 
         public bool HasXmlSourceChanged (string eTag) {
-            if (m_xdmNodeETagIndex[eTag] != null)
+            if (m_xdmNodeETagIndex[eTag] != null) {
                 return false;
-            else
+            } else {
                 return true;
+            }
         }
 
         public string GetXdmNodeHashtableCount () {
@@ -107,9 +109,9 @@ namespace Nuxleus.Transform {
 
         public bool HasBaseXsltSourceChanged () {
             string namedETag = (string)m_namedXsltETagIndex[m_baseXsltName];
-            if (namedETag != null && namedETag == GenerateNamedETagKey(m_baseXsltName, m_baseXsltUri))
+            if (namedETag != null && namedETag == GenerateNamedETagKey(m_baseXsltName, m_baseXsltUri)) {
                 return false;
-            else {
+            } else {
                 m_namedXsltETagIndex[m_baseXsltName] = (string)m_baseXsltUriHash;
                 return true;
             }
@@ -229,7 +231,7 @@ namespace Nuxleus.Transform {
 
         public static String GenerateNamedETagKey (String name, Uri sourceUri, params object[] objectParams) {
             FileInfo fileInfo = new FileInfo(sourceUri.LocalPath);
-            return name + ":" + Context.GenerateETag((string)HttpContext.Current.Application["hashkey"], _hashAlgorithm, fileInfo.LastWriteTimeUtc, fileInfo.Length, sourceUri, objectParams);
+            return String.Format("{0}:{1}", name, HashcodeGenerator.GetHMACHashBase64String(m_hashkey, _hashAlgorithm, fileInfo.LastWriteTimeUtc, fileInfo.Length, sourceUri, objectParams));
         }
 
         private XsltTransformer createNewTransformer (Uri xsltUri) {
@@ -238,7 +240,7 @@ namespace Nuxleus.Transform {
             }
         }
 
-        public Hashtable XsltHashtable {
+        public Dictionary<string, XsltTransformer> XsltHashtable {
             get { return m_xsltHashtable; }
             set { m_xsltHashtable = value; }
         }

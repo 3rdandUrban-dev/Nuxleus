@@ -4,29 +4,28 @@ using System.Text;
 
 namespace Nuxleus.Transform {
 
-  public class BaseXsltContext {
-    Uri _BaseXsltUri;
-    String _UriHash;
-    String _Name;
+  public struct BaseXsltContext {
+    Uri m_BaseXsltUri;
+    String m_UriHash;
+    String m_name;
 
     public BaseXsltContext(Uri baseXsltUri, String uriHash, String name) {
-      _BaseXsltUri = baseXsltUri;
-      _UriHash = uriHash;
-      _Name = name;
+      m_BaseXsltUri = baseXsltUri;
+      m_UriHash = uriHash;
+      m_name = name;
     }
 
     public Uri BaseXsltUri {
-      get { return _BaseXsltUri; }
-      set { this._BaseXsltUri = value; }
+      get { return m_BaseXsltUri; }
+      set { this.m_BaseXsltUri = value; }
     }
     public String UriHash {
-      get { return _UriHash; }
-      set { this._UriHash = value; }
+      get { return m_UriHash; }
+      set { this.m_UriHash = value; }
     }
     public String Name {
-      get { return _Name; }
-      set { this._Name = value; }
+      get { return m_name; }
+      set { this.m_name = value; }
     }
-
   }
 }

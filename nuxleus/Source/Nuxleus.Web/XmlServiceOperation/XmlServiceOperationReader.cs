@@ -4,6 +4,7 @@ using System.Text;
 using System.Xml;
 using System.Web;
 using Nuxleus.Transform;
+using Nuxleus.Extension;
 using System.IO;
 using System.Globalization;
 
@@ -46,7 +47,7 @@ namespace Nuxleus.Web {
                                 string piValue = reader.Value;
                                 if (piValue.Contains("type=\"text/xsl\"") && piValue.Contains("href=")) {
                                     processWithEmbeddedPIStylsheet = true;
-                                    xmlStylesheetHref = SubstringBefore(SubstringAfter(piValue, "href=\""), "\"");
+                                    xmlStylesheetHref = piValue.SubstringAfter("href=\"").SubstringBefore("\"");
                                 }
                                 Console.WriteLine("Stylesheet Href = {0}", xmlStylesheetHref);
                                 break;
@@ -60,6 +61,7 @@ namespace Nuxleus.Web {
                                 case "service:operation":
                                 case "my:page":
                                     Uri baseXsltUri = new Uri(m_httpContext.Request.MapPath(xmlStylesheetHref));
+                                    m_xslTransformationManager.BaseXsltUri = baseXsltUri;
                                     string baseXslt = baseXsltUri.GetHashCode().ToString();
 
                                     if (!m_xslTransformationManager.NamedXsltHashtable.ContainsKey(baseXslt)) {
@@ -116,41 +118,6 @@ namespace Nuxleus.Web {
             } while (reader.Read());
 
             return m_response;
-        }
-
-
-        /// <summary>
-        /// Modified from Oleg Tkachenko's SubstringBefore and SubstringAfter extension functions
-        /// @ http://www.tkachenko.com/blog/archives/000684.html
-        /// This will be moved into an appropriate class once I have the time.
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static string SubstringAfter (string source, string value) {
-            if (string.IsNullOrEmpty(value)) {
-                return source;
-            }
-            CompareInfo compareInfo = CultureInfo.InvariantCulture.CompareInfo;
-            int index = compareInfo.IndexOf(source, value, CompareOptions.Ordinal);
-            if (index < 0) {
-                //No such substring
-                return string.Empty;
-            }
-            return source.Substring(index + value.Length);
-        }
-
-        public static string SubstringBefore (string source, string value) {
-            if (string.IsNullOrEmpty(value)) {
-                return value;
-            }
-            CompareInfo compareInfo = CultureInfo.InvariantCulture.CompareInfo;
-            int index = compareInfo.IndexOf(source, value, CompareOptions.Ordinal);
-            if (index < 0) {
-                //No such substring
-                return string.Empty;
-            }
-            return source.Substring(0, index);
         }
     }
 }

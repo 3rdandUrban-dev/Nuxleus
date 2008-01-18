@@ -1,236 +1,103 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus", "Nuxleus\Nuxleus.csproj", "{B0D68D3E-8ACE-4F33-9E85-F32CED622614}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Authentication", "Nuxleus.Authentication\Nuxleus.Authentication.csproj", "{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Build", "Nuxleus.Build\Nuxleus.Build.csproj", "{A605AE3C-C79F-43F4-8979-2624544DFC84}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Command", "Nuxleus.Command\Nuxleus.Command.csproj", "{091EC796-27A0-4EDF-9286-B7ABF7981769}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Configuration", "Nuxleus.Configuration\Nuxleus.Configuration.csproj", "{0FFD8B77-2852-4CB0-9B85-29424C40FC44}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Cryptography", "Nuxleus.Cryptography\Nuxleus.Cryptography.csproj", "{76489AFC-B3D6-40E4-AA45-840D069E4F43}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Entity", "Nuxleus.Entity\Nuxleus.Entity.csproj", "{511566A4-21DC-45E3-A3F8-84763000C72E}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension", "Nuxleus.Extension\Nuxleus.Extension.csproj", "{3EC9EEB0-71CA-4F71-BF8E-AAF0365D4234}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Amp.Fm", "Nuxleus.Extension.Amp.Fm\Nuxleus.Extension.Amp.Fm.csproj", "{284A2E2B-6FD6-4650-A001-AC9D64D31EBF}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Aws", "Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj", "{058E925F-6FD0-4FAF-AA97-22D48D62923E}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Community", "Nuxleus.Extension.Community\Nuxleus.Extension.Community.csproj", "{E93FCC90-2594-45FF-9B5F-407ECB3E7939}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Facebook", "Nuxleus.Extension.Facebook\Nuxleus.Extension.Facebook.csproj", "{57859464-D977-4E77-89D9-6296DF953143}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Silverlight", "Nuxleus.Extension.Silverlight\Nuxleus.Extension.Silverlight.csproj", "{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.IO", "Nuxleus.IO\Nuxleus.IO.csproj", "{76B51906-3D94-412F-B943-84CD2A41AE11}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Language", "Nuxleus.Language\Nuxleus.Language.csproj", "{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Logging", "Nuxleus.Logging\Nuxleus.Logging.csproj", "{54C0DC78-3BF7-4DCF-BEA0-25E757B8BDC1}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Messaging", "Nuxleus.Messaging\Nuxleus.Messaging.csproj", "{AED10FB5-FA04-4C28-9BF4-26C2278175E7}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Process", "Nuxleus.Process\Nuxleus.Process.csproj", "{62B71546-D55D-4B35-9D84-CDF8ED555E52}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.PubSub", "Nuxleus.PubSub\Nuxleus.PubSub.csproj", "{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Semantics", "Nuxleus.Semantics\Nuxleus.Semantics.csproj", "{974C6733-57CB-4474-B773-E14E701FE3EA}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Service", "Nuxleus.Service\Nuxleus.Service.csproj", "{2F4C9647-CD65-4DBF-A1D0-4127902E2097}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Utility", "Nuxleus.Utility\Nuxleus.Utility.csproj", "{3D54F988-AF1D-4B5C-A013-C85525926692}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Vendor", "Nuxleus.Vendor\Nuxleus.Vendor.csproj", "{350B7FF7-7D9E-486C-986C-1772E9672A88}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Web", "Nuxleus.Web\Nuxleus.Web.csproj", "{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Web.Services", "Nuxleus.Web.Services\Nuxleus.Web.Services.csproj", "{1CCD9440-9E26-4731-8F89-224690867EB2}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xameleon", "Xameleon\Xameleon.csproj", "{A800D9F1-D877-4076-99BA-CBD73BCFB203}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSP", "XSP\XSP.csproj", "{B5AB69BA-2B93-4850-9DA0-302D257B154B}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemWatcher", "ConsoleApps\FileSystemWatcher\FileSystemWatcher.csproj", "{64C1203C-1912-4FE0-BA73-01BA2B0758E4}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplicationService", "ServiceApps\ReplicationService\ReplicationService.csproj", "{DC9DABBE-3A78-4847-A494-73970802E651}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vendor", "Vendor", "{582EFFC3-C504-457E-9112-1C1FCE5D2A69}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALAZ.SystemEx", "Dependencies\ALAZ\Source\ALAZ.SystemEx\ALAZ.SystemEx.csproj", "{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALAZ.SystemEx.NetEx", "Dependencies\ALAZ\Source\ALAZ.SystemEx.NetEx\ALAZ.SystemEx.NetEx.csproj", "{25162422-3B32-4FB3-8A99-6BCFBE30D9AE}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuxleus.Core", "Nuxleus.Core", "{0A887F73-C7E8-430A-AB73-EA9E5F822CB4}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xameleon.Core", "Xameleon.Core", "{138403FE-C587-460E-A3C8-77B713E904C9}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceApps", "ServiceApps", "{216314AA-0FA4-4DD9-8BD9-77D5D8869820}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mono", "Mono", "{54CDA684-6431-45D5-9BF4-61C2D97FEC9C}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ALAZ", "ALAZ", "{CF2BE8C5-4DCE-4D5C-9A06-787487549BC0}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F0A70542-6B74-44BF-8981-3EB62B4E050E}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "X:\...\Development\", "..\..\Private\Web\Development\", "{206017F7-D34B-4662-B015-2620778CE537}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{5003C67E-977C-43F3-A1A9-27BC064E2BED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{579F092F-9569-44F6-BF19-BD3148965997}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Home", "Home", "{A8E2A79E-05A1-4836-9C06-564FA8208A1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{77ADD1A4-735E-42C1-9EA0-15817D92C597}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{3DC608FC-980F-456B-9878-B868D82CBB9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{E80016D7-1492-464E-99BD-C173A610DA69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Log", "Log", "{C978DAAB-FE27-4D6F-9AE6-E3E99301E662}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{8C91D63B-9064-41B8-AF8B-B2691EE62A12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{88EBFF5A-FEA8-49BC-A541-215C4935C1B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus", "Nuxleus\Nuxleus.csproj", "{B0D68D3E-8ACE-4F33-9E85-F32CED622614}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Authentication", "Nuxleus.Authentication\Nuxleus.Authentication.csproj", "{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Build", "Nuxleus.Build\Nuxleus.Build.csproj", "{A605AE3C-C79F-43F4-8979-2624544DFC84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Command", "Nuxleus.Command\Nuxleus.Command.csproj", "{091EC796-27A0-4EDF-9286-B7ABF7981769}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Configuration", "Nuxleus.Configuration\Nuxleus.Configuration.csproj", "{0FFD8B77-2852-4CB0-9B85-29424C40FC44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Cryptography", "Nuxleus.Cryptography\Nuxleus.Cryptography.csproj", "{76489AFC-B3D6-40E4-AA45-840D069E4F43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Entity", "Nuxleus.Entity\Nuxleus.Entity.csproj", "{511566A4-21DC-45E3-A3F8-84763000C72E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension", "Nuxleus.Extension\Nuxleus.Extension.csproj", "{3EC9EEB0-71CA-4F71-BF8E-AAF0365D4234}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Amp.Fm", "Nuxleus.Extension.Amp.Fm\Nuxleus.Extension.Amp.Fm.csproj", "{284A2E2B-6FD6-4650-A001-AC9D64D31EBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Aws", "Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj", "{058E925F-6FD0-4FAF-AA97-22D48D62923E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Community", "Nuxleus.Extension.Community\Nuxleus.Extension.Community.csproj", "{E93FCC90-2594-45FF-9B5F-407ECB3E7939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Facebook", "Nuxleus.Extension.Facebook\Nuxleus.Extension.Facebook.csproj", "{57859464-D977-4E77-89D9-6296DF953143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Silverlight", "Nuxleus.Extension.Silverlight\Nuxleus.Extension.Silverlight.csproj", "{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.IO", "Nuxleus.IO\Nuxleus.IO.csproj", "{76B51906-3D94-412F-B943-84CD2A41AE11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Language", "Nuxleus.Language\Nuxleus.Language.csproj", "{373A5DB1-4098-4DAB-971D-EAEF59F9B3CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Logging", "Nuxleus.Logging\Nuxleus.Logging.csproj", "{54C0DC78-3BF7-4DCF-BEA0-25E757B8BDC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Messaging", "Nuxleus.Messaging\Nuxleus.Messaging.csproj", "{AED10FB5-FA04-4C28-9BF4-26C2278175E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Process", "Nuxleus.Process\Nuxleus.Process.csproj", "{62B71546-D55D-4B35-9D84-CDF8ED555E52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.PubSub", "Nuxleus.PubSub\Nuxleus.PubSub.csproj", "{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Semantics", "Nuxleus.Semantics\Nuxleus.Semantics.csproj", "{974C6733-57CB-4474-B773-E14E701FE3EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Service", "Nuxleus.Service\Nuxleus.Service.csproj", "{2F4C9647-CD65-4DBF-A1D0-4127902E2097}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Utility", "Nuxleus.Utility\Nuxleus.Utility.csproj", "{3D54F988-AF1D-4B5C-A013-C85525926692}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Vendor", "Nuxleus.Vendor\Nuxleus.Vendor.csproj", "{350B7FF7-7D9E-486C-986C-1772E9672A88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Web", "Nuxleus.Web\Nuxleus.Web.csproj", "{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Web.Services", "Nuxleus.Web.Services\Nuxleus.Web.Services.csproj", "{1CCD9440-9E26-4731-8F89-224690867EB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xameleon", "Xameleon\Xameleon.csproj", "{A800D9F1-D877-4076-99BA-CBD73BCFB203}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSP", "XSP\XSP.csproj", "{B5AB69BA-2B93-4850-9DA0-302D257B154B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemWatcher", "ConsoleApps\FileSystemWatcher\FileSystemWatcher.csproj", "{64C1203C-1912-4FE0-BA73-01BA2B0758E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplicationService", "ServiceApps\ReplicationService\ReplicationService.csproj", "{DC9DABBE-3A78-4847-A494-73970802E651}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALAZ.SystemEx", "Dependencies\ALAZ\Source\ALAZ.SystemEx\ALAZ.SystemEx.csproj", "{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALAZ.SystemEx.NetEx", "Dependencies\ALAZ\Source\ALAZ.SystemEx.NetEx\ALAZ.SystemEx.NetEx.csproj", "{25162422-3B32-4FB3-8A99-6BCFBE30D9AE}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Development", "..\..\Private\Web\Development\", "{206017F7-D34B-4662-B015-2620778CE537}"
 	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "2.0"
 		Debug.AspNetCompiler.VirtualPath = "/Development"
 		Debug.AspNetCompiler.PhysicalPath = "..\..\Private\Web\Development\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Development\"
@@ -248,59 +115,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "X:\...\Development\", "..\.
 		VWDPort = "1585"
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{5003C67E-977C-43F3-A1A9-27BC064E2BED}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{579F092F-9569-44F6-BF19-BD3148965997}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Home", "Home", "{A8E2A79E-05A1-4836-9C06-564FA8208A1C}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{77ADD1A4-735E-42C1-9EA0-15817D92C597}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{3DC608FC-980F-456B-9878-B868D82CBB9D}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{E80016D7-1492-464E-99BD-C173A610DA69}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Log", "Log", "{C978DAAB-FE27-4D6F-9AE6-E3E99301E662}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{8C91D63B-9064-41B8-AF8B-B2691EE62A12}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Agent", "Nuxleus.Agent\Nuxleus.Agent.csproj", "{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueServerService", "ServiceApps\QueueServerService\QueueServerService\QueueServerService.csproj", "{F111D421-9E38-4886-86B3-6B4B451B1DC3}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -309,37 +124,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueServerService", "Servi
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLUPSubscriber", "ServiceApps\LLUP\LLUPService\LLUPSubscriber.csproj", "{553B0CDC-03B1-49BD-91A7-160706A22E38}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLUPPublisher", "ServiceApps\LLUP\LLUPPublisher\LLUPPublisher.csproj", "{52B25872-F838-4B15-B328-9231C7CDD28A}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLUPRouter", "ServiceApps\LLUP\LLUPRouter\LLUPRouter.csproj", "{43FCD075-8EA9-4C11-8EAF-A43A2F652CAD}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Synchronization", "Nuxleus.Synchronization\Nuxleus.Synchronization.csproj", "{D8A43A2C-20D4-4017-80B8-2BBE122D9717}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Geo", "Nuxleus.Geo\Nuxleus.Geo.csproj", "{9054928F-69AF-4448-BEC0-591BC9393AE8}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "X:\...\Development\", "..\Web\Development\", "{A0A3C1E6-D540-422D-89E2-48399990465A}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Development", "..\Web\Development\", "{A0A3C1E6-D540-422D-89E2-48399990465A}"
 	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "2.0"
 		Debug.AspNetCompiler.VirtualPath = "/Development(1)"
 		Debug.AspNetCompiler.PhysicalPath = "..\Web\Development\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Development(1)\"
@@ -357,12 +153,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "X:\...\Development\", "..\W
 		VWDPort = "2305"
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{88EBFF5A-FEA8-49BC-A541-215C4935C1B4}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Geo.Test", "CodeSamples\Nuxleus.Geo.Test\Nuxleus.Geo.Test.csproj", "{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}"
 	ProjectSection(WebsiteProperties) = preProject
 		Debug.AspNetCompiler.Debug = "True"
@@ -370,40 +160,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Geo.Test", "CodeSam
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Aws.Sdb", "Nuxleus.Extension.Aws.Sdb\Nuxleus.Extension.Aws.Sdb.csproj", "{1B652675-CFC9-43C5-9C72-938B42EB317F}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsSdb_Test", "CodeSamples\AwsSdb_Test\AwsSdb_Test.csproj", "{5118D25C-E367-43E1-9F27-F17CBE059D64}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsSdb_LoadGeoLatLong-Csv", "CodeSamples\AwsSdb_LoadGeoLatLong-Csv\AwsSdb_LoadGeoLatLong-Csv.csproj", "{CD97849B-E50C-46B1-8A29-74E1933F85EE}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsSdb_LoadGeonamesDataFile", "CodeSamples\AwsSdb_LoadGeonamesDataFile\AwsSdb_LoadGeonamesDataFile.csproj", "{140BEE82-800C-4D3C-A4C0-1F3CEC9361A6}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Entity.Profile", "Nuxleus.Entity.Profile\Nuxleus.Entity.Profile.csproj", "{25F7447A-1098-4176-AF19-91B8E2D6796B}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgentAsyncRequestResponseTest", "CodeSamples\AgentAsyncRequestResponseTest\AgentAsyncRequestResponseTest.csproj", "{2199838C-001B-4287-A7FA-4E927305CC2A}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.MetaData", "Nuxleus.MetaData\Nuxleus.MetaData.csproj", "{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -885,6 +653,16 @@ Global
 		{2199838C-001B-4287-A7FA-4E927305CC2A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2199838C-001B-4287-A7FA-4E927305CC2A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2199838C-001B-4287-A7FA-4E927305CC2A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}.Release|.NET.ActiveCfg = Release|Any CPU
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -892,9 +670,11 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0A887F73-C7E8-430A-AB73-EA9E5F822CB4} = {8C91D63B-9064-41B8-AF8B-B2691EE62A12}
 		{138403FE-C587-460E-A3C8-77B713E904C9} = {8C91D63B-9064-41B8-AF8B-B2691EE62A12}
-		{582EFFC3-C504-457E-9112-1C1FCE5D2A69} = {8C91D63B-9064-41B8-AF8B-B2691EE62A12}
 		{216314AA-0FA4-4DD9-8BD9-77D5D8869820} = {8C91D63B-9064-41B8-AF8B-B2691EE62A12}
+		{582EFFC3-C504-457E-9112-1C1FCE5D2A69} = {8C91D63B-9064-41B8-AF8B-B2691EE62A12}
 		{88EBFF5A-FEA8-49BC-A541-215C4935C1B4} = {8C91D63B-9064-41B8-AF8B-B2691EE62A12}
+		{B0D68D3E-8ACE-4F33-9E85-F32CED622614} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
+		{ACE1943D-302E-4D83-8E54-4A9ABBF20D97} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{A605AE3C-C79F-43F4-8979-2624544DFC84} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{091EC796-27A0-4EDF-9286-B7ABF7981769} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{0FFD8B77-2852-4CB0-9B85-29424C40FC44} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
@@ -918,27 +698,26 @@ Global
 		{350B7FF7-7D9E-486C-986C-1772E9672A88} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{1CCD9440-9E26-4731-8F89-224690867EB2} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
-		{ACE1943D-302E-4D83-8E54-4A9ABBF20D97} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{D8A43A2C-20D4-4017-80B8-2BBE122D9717} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{9054928F-69AF-4448-BEC0-591BC9393AE8} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{1B652675-CFC9-43C5-9C72-938B42EB317F} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{25F7447A-1098-4176-AF19-91B8E2D6796B} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
+		{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{A800D9F1-D877-4076-99BA-CBD73BCFB203} = {138403FE-C587-460E-A3C8-77B713E904C9}
-		{54CDA684-6431-45D5-9BF4-61C2D97FEC9C} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
-		{CF2BE8C5-4DCE-4D5C-9A06-787487549BC0} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
-		{DC9DABBE-3A78-4847-A494-73970802E651} = {216314AA-0FA4-4DD9-8BD9-77D5D8869820}
 		{64C1203C-1912-4FE0-BA73-01BA2B0758E4} = {216314AA-0FA4-4DD9-8BD9-77D5D8869820}
+		{DC9DABBE-3A78-4847-A494-73970802E651} = {216314AA-0FA4-4DD9-8BD9-77D5D8869820}
 		{F111D421-9E38-4886-86B3-6B4B451B1DC3} = {216314AA-0FA4-4DD9-8BD9-77D5D8869820}
 		{553B0CDC-03B1-49BD-91A7-160706A22E38} = {216314AA-0FA4-4DD9-8BD9-77D5D8869820}
 		{52B25872-F838-4B15-B328-9231C7CDD28A} = {216314AA-0FA4-4DD9-8BD9-77D5D8869820}
 		{43FCD075-8EA9-4C11-8EAF-A43A2F652CAD} = {216314AA-0FA4-4DD9-8BD9-77D5D8869820}
-		{B5AB69BA-2B93-4850-9DA0-302D257B154B} = {54CDA684-6431-45D5-9BF4-61C2D97FEC9C}
-		{25162422-3B32-4FB3-8A99-6BCFBE30D9AE} = {CF2BE8C5-4DCE-4D5C-9A06-787487549BC0}
+		{CF2BE8C5-4DCE-4D5C-9A06-787487549BC0} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
+		{54CDA684-6431-45D5-9BF4-61C2D97FEC9C} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
 		{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2} = {CF2BE8C5-4DCE-4D5C-9A06-787487549BC0}
+		{25162422-3B32-4FB3-8A99-6BCFBE30D9AE} = {CF2BE8C5-4DCE-4D5C-9A06-787487549BC0}
 		{206017F7-D34B-4662-B015-2620778CE537} = {F0A70542-6B74-44BF-8981-3EB62B4E050E}
 		{A0A3C1E6-D540-422D-89E2-48399990465A} = {F0A70542-6B74-44BF-8981-3EB62B4E050E}
+		{B5AB69BA-2B93-4850-9DA0-302D257B154B} = {54CDA684-6431-45D5-9BF4-61C2D97FEC9C}
 		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 		{5118D25C-E367-43E1-9F27-F17CBE059D64} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 		{CD97849B-E50C-46B1-8A29-74E1933F85EE} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
