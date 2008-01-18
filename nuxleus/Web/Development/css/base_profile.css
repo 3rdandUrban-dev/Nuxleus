@@ -1,0 +1,10 @@
+#info {
+  height: 60px;
+  background: #FFF;
+  position:relative;
+  padding:0 auto;
+  text-align:center;
+  margin:0 auto;
+  border:0;
+}
+label, input[type="submit"] { display: block; }
