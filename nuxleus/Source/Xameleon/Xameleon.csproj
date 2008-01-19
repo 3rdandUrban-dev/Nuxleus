@@ -90,7 +90,6 @@
   <ItemGroup>
     <Compile Include="Agent.cs" />
     <Compile Include="AsyncResult\NuxleusTransformAsyncResult.cs" />
-    <Compile Include="InvokeRequest.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="TransformContext.cs" />
     <Compile Include="Document\*.cs" />
