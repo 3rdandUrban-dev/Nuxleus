@@ -117,11 +117,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Development", "..\..\Privat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Agent", "Nuxleus.Agent\Nuxleus.Agent.csproj", "{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueServerService", "ServiceApps\QueueServerService\QueueServerService\QueueServerService.csproj", "{F111D421-9E38-4886-86B3-6B4B451B1DC3}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueServerService", "ServiceApps\QueueServerService\QueueServerService.csproj", "{F111D421-9E38-4886-86B3-6B4B451B1DC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LLUPSubscriber", "ServiceApps\LLUP\LLUPService\LLUPSubscriber.csproj", "{553B0CDC-03B1-49BD-91A7-160706A22E38}"
 EndProject
@@ -151,12 +147,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Development", "..\Web\Devel
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "2305"
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Geo.Test", "CodeSamples\Nuxleus.Geo.Test\Nuxleus.Geo.Test.csproj", "{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Aws.Sdb", "Nuxleus.Extension.Aws.Sdb\Nuxleus.Extension.Aws.Sdb.csproj", "{1B652675-CFC9-43C5-9C72-938B42EB317F}"
@@ -583,16 +573,6 @@ Global
 		{A0A3C1E6-D540-422D-89E2-48399990465A}.Release|Any CPU.ActiveCfg = Debug|.NET
 		{A0A3C1E6-D540-422D-89E2-48399990465A}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
 		{A0A3C1E6-D540-422D-89E2-48399990465A}.Release|Mixed Platforms.Build.0 = Debug|.NET
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|.NET.ActiveCfg = Release|Any CPU
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1B652675-CFC9-43C5-9C72-938B42EB317F}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -718,7 +698,6 @@ Global
 		{206017F7-D34B-4662-B015-2620778CE537} = {F0A70542-6B74-44BF-8981-3EB62B4E050E}
 		{A0A3C1E6-D540-422D-89E2-48399990465A} = {F0A70542-6B74-44BF-8981-3EB62B4E050E}
 		{B5AB69BA-2B93-4850-9DA0-302D257B154B} = {54CDA684-6431-45D5-9BF4-61C2D97FEC9C}
-		{6CD761E3-68B9-47F9-AE1A-8C8AAAAEFC79} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 		{5118D25C-E367-43E1-9F27-F17CBE059D64} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 		{CD97849B-E50C-46B1-8A29-74E1933F85EE} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 		{140BEE82-800C-4D3C-A4C0-1F3CEC9361A6} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}

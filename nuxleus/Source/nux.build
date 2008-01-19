@@ -412,6 +412,19 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.MetaData" depends="init Nuxleus.Agent">
+    <csc target="library" output="${build.dir}/Nuxleus.MetaData.dll" keyfile="./Dependencies/Extf.Net.snk">
+    <arg if="${platform::is-unix()}" value="-langversion:linq"/>
+      <sources>
+        <include name="${source.dir}/Nuxleus.MetaData/**/*.cs" />
+      </sources>
+      <references>
+        <include name="System.dll" />
+        <include name="System.Xml.dll" />
+        <include name="${build.dir}/Nuxleus.Agent.dll" />
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Process" depends="init">
     <csc target="library" output="${build.dir}/Nuxleus.Process.dll" keyfile="./Dependencies/Extf.Net.snk">
     <arg if="${platform::is-unix()}" value="-langversion:linq"/>

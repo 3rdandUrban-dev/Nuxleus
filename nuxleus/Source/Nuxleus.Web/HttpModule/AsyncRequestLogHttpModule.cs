@@ -7,10 +7,10 @@ using System.Text;
 
 namespace Nuxleus.Web.HttpModule {
 
-    public class AsyncRequestLogHttpModule : IHttpModule {
-        private FileStream _file;
-        private static long _position = 0;
-        private static object _lock = new object();
+    public struct AsyncRequestLogHttpModule : IHttpModule {
+        FileStream _file;
+        static long _position = 0;
+        static object _lock = new object();
 
         public void Init (System.Web.HttpApplication application) {
             application.AddOnPreRequestHandlerExecuteAsync(
@@ -50,6 +50,8 @@ namespace Nuxleus.Web.HttpModule {
             _file.Close();
         }
 
-        public void Dispose () { }
+        public void Dispose () {
+            
+        }
     }
 }

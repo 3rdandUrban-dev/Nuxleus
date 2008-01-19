@@ -130,6 +130,8 @@
     </Compile>
     <Compile Include="Agent.cs" />
     <Compile Include="HttpHandler\temp.cs" />
+    <Compile Include="HttpModule\NuxleusAsyncRequestOpenIDAuthenticationHttpModule.cs" />
+    <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs" />
     <Compile Include="XmlServiceOperation\Context.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs" />
@@ -146,7 +148,6 @@
     <Compile Include="HttpHandler\NuxleusHttpAsyncXmlServiceOperationHandler.cs" />
     <Compile Include="WebServer\WebServer.cs" />
     <Compile Include="HttpApplication\*.cs" />
-    <Compile Include="HttpModule\*.cs" />
     <Compile Include="XmlServiceOperation\XmlServiceOperationManager.cs" />
     <Compile Include="XmlServiceOperation\XmlServiceOperationReader.cs" />
   </ItemGroup>
@@ -208,10 +209,6 @@
     <None Include="Extf.Net.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AsyncResult\" />
-    <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
       <Visible>False</Visible>
       <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
@@ -227,6 +224,10 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AsyncResult\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
