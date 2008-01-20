@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Nuxleus.Profile
+namespace Nuxleus.Entity.Profile
 {
     public struct Preferences
     {

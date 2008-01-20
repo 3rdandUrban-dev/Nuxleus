@@ -4,7 +4,7 @@ using System.Text;
 using Nuxleus.Agent;
 using System.Collections;
 
-namespace Nuxleus.Profile
+namespace Nuxleus.Entity.Profile
 {
     public struct Agent : IAgent
     {

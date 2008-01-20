@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Nuxleus.Entity;
 
-namespace Nuxleus.Profile
+namespace Nuxleus.Entity.Profile
 {
     public interface IProfile
     {
