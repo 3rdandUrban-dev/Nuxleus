@@ -38,8 +38,6 @@ namespace Nuxleus.Web.HttpHandler {
                 String guid = "not-set";
                 String openid = "not-set";
 
-
-
                 if (hostAddress == "127.0.0.1") {
                     //hostAddress = Dns.GetHostAddresses(Dns.GetHostName()).GetValue(0).ToString();
                     hostAddress = "66.93.224.237";

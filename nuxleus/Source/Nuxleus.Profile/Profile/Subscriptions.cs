@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Nuxleus.Entity.Profile
+namespace Nuxleus.Profile
 {
     public struct Subscriptions
     {
