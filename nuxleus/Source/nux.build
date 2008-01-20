@@ -208,7 +208,7 @@
         <csc target="library" output="${build.dir}/Nuxleus.Profile.dll" keyfile="./Dependencies/Extf.Net.snk">
             <arg if="${platform::is-unix()}" value="-langversion:linq"/>
             <sources>
-                <include name="${source.dir}/Nuxleus.Entity.Profile/**/*.cs"/>
+                <include name="${source.dir}/Nuxleus.Profile/**/*.cs"/>
             </sources>
             <references>
                 <include name="${build.dir}/Nuxleus.Agent.dll"/>
@@ -823,6 +823,7 @@
         <call target="Nuxleus.Language"/>
         <call target="Nuxleus.Logging"/>
         <call target="Nuxleus.Messaging"/>
+        <call target="Nuxleus.MetaData"/>
         <call target="Nuxleus.Process"/>
         <call target="Nuxleus.PubSub"/>
         <call target="Nuxleus.Semantics"/>
