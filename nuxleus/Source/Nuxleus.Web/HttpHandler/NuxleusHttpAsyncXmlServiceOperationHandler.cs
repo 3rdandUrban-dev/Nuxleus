@@ -212,7 +212,7 @@ CompleteCall:
             }
             context.Response.AppendHeader("Cache-Control", "max-age=3600");
             context.Response.AddHeader("Last-Modified", m_lastModifiedDate);
-            context.Response.AddHeader("ETag", m_requestHashcode);
+            context.Response.AddHeader("ETag", String.Format("\"{0}\"", m_requestHashcode));
             m_nuxleusAsyncResult.CompleteCall();
             return m_nuxleusAsyncResult;
         }

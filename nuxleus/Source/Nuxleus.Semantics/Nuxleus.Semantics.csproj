@@ -50,6 +50,12 @@
     <None Include="Extf.Net.snk" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Agent\Nuxleus.Agent.csproj">
+      <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>
+      <Name>Nuxleus.Agent</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="SemWeb\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

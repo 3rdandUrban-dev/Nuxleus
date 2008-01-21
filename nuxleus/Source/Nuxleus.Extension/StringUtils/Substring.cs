@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace Nuxleus.Extension {
 
-    public static class StringUtils {
+    public static partial class StringUtils {
 
         /// <summary>
         /// Modified from Oleg Tkachenko's SubstringBefore and SubstringAfter extension functions

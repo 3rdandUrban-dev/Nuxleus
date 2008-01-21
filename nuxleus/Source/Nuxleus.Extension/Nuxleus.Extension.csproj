@@ -63,6 +63,7 @@
     <Compile Include="Agent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringUtils\Substring.cs" />
+    <Compile Include="StringUtils\Translate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
