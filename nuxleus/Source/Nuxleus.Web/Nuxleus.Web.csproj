@@ -129,6 +129,7 @@
       <Link>WebServer\Mono.WebServer\XSPWorkerRequest.cs</Link>
     </Compile>
     <Compile Include="Agent.cs" />
+    <Compile Include="HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs" />
     <Compile Include="HttpHandler\temp.cs" />
     <Compile Include="HttpModule\NuxleusAsyncRequestOpenIDAuthenticationHttpModule.cs" />
     <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs" />
