@@ -51,7 +51,6 @@ namespace Nuxleus.Web {
                                 asyncResult.CompleteCall();
                             } else {
                                 logWriter.WriteLine("Continuing process...");
-                                //queryArrayLength++;
                             }
                         });
             }
