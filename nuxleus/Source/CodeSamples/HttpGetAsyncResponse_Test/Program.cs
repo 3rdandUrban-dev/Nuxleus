@@ -23,6 +23,7 @@ namespace HttpGetAsyncResponse_Test
             Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
             HttpGetAsyncResponse response = new HttpGetAsyncResponse(Console.Out, requestArray);
             Dictionary<int, Stream> responseDictionary = response.BeginProcessRequests();
+            Console.WriteLine("The response dictionary contains: {0} entries.", responseDictionary.Count);
             Console.ReadLine();
         }
     }
