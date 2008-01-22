@@ -30,10 +30,6 @@ namespace Nuxleus.Web {
             return nuxleusAsyncResult;
         }
 
-        //public void EndProcessRequests ( IAsyncResult asyncResult ) {
-        //    m_logWriter.WriteLine("Request processing is complete.  There are {0} responses in the response dictionary.", m_responseStreamDictionary.Count);
-        //}
-
         public Dictionary<int, Stream> ResponseStreamDictionary { get { return m_responseStreamDictionary; } set { m_responseStreamDictionary = value; } }
 
         private void ProcessRequests ( NuxleusAsyncResult asyncResult ) {

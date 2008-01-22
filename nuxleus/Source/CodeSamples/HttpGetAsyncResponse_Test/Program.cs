@@ -7,8 +7,8 @@ using System.IO;
 using System.Threading;
 using Nuxleus.Agent;
 
-
 namespace HttpGetAsyncResponse_Test {
+
     class Program {
         static void Main ( string[] args ) {
             string flickrPhotoStreamBase = "2182/2211087507_682a43b09";
