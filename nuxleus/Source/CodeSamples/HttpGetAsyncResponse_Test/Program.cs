@@ -5,26 +5,39 @@ using System.Text;
 using Nuxleus.Web;
 using System.IO;
 using System.Threading;
+using Nuxleus.Agent;
 
 
-namespace HttpGetAsyncResponse_Test
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+namespace HttpGetAsyncResponse_Test {
+    class Program {
+        static void Main ( string[] args ) {
+            string flickrPhotoStreamBase = "2182/2211087507_682a43b09";
+
+            if (args.Length > 0) {
+                flickrPhotoStreamBase = args[0];
+            }
+
             string[] requestArray = new string[] { 
-                "http://farm3.static.flickr.com/2182/2211087507_682a43b09a_o_d.jpg", 
-                "http://farm3.static.flickr.com/2182/2211087507_682a43b09a_d.jpg",
-                "http://farm3.static.flickr.com/2182/2211087507_682a43b09a_m_d.jpg", 
-                "http://farm3.static.flickr.com/2182/2211087507_682a43b09a_t_d.jpg",
-                "http://farm3.static.flickr.com/2182/2211087507_682a43b09a_s_d.jpg"
+                String.Format("http://farm3.static.flickr.com/{0}a_o_d.jpg", flickrPhotoStreamBase), 
+                String.Format("http://farm3.static.flickr.com/{0}a_d.jpg", flickrPhotoStreamBase),
+                String.Format("http://farm3.static.flickr.com/{0}a_m_d.jpg", flickrPhotoStreamBase), 
+                String.Format("http://farm3.static.flickr.com/{0}a_t_d.jpg", flickrPhotoStreamBase),
+                String.Format("http://farm3.static.flickr.com/{0}a_s_d.jpg", flickrPhotoStreamBase)
             };
+
             Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
             HttpGetAsyncResponse response = new HttpGetAsyncResponse(Console.Out, requestArray);
-            Dictionary<int, Stream> responseDictionary = response.BeginProcessRequests();
-            Console.WriteLine("The response dictionary contains: {0} entries.", responseDictionary.Count);
+
+            Console.WriteLine("Invoking Process");
+            response.BeginProcessRequests(new AsyncCallback(EndProcess), response);
+
             Console.ReadLine();
+        }
+
+        public static void EndProcess ( IAsyncResult asyncResult ) {
+            HttpGetAsyncResponse process = (HttpGetAsyncResponse)asyncResult.AsyncState;
+            Dictionary<int, Stream> responseStreamDictionary = process.ResponseStreamDictionary;
+            Console.WriteLine("Request processing is complete.  There are {0} responses in the response dictionary.", responseStreamDictionary.Count);
         }
     }
 }

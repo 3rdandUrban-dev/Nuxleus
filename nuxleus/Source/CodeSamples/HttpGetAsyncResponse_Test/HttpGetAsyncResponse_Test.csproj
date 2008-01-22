@@ -49,6 +49,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Nuxleus.Agent\Nuxleus.Agent.csproj">
+      <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>
+      <Name>Nuxleus.Agent</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Nuxleus.Web\Nuxleus.Web.csproj">
       <Project>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</Project>
       <Name>Nuxleus.Web</Name>
