@@ -44,7 +44,7 @@ namespace Nuxleus.Web {
 
                 new AsyncHttpRequest(request,
                         delegate( Stream stream ) {
-                            Console.WriteLine("Current thread id: {0} for current request: {1}", Thread.CurrentThread.ManagedThreadId, requestString);
+                            logWriter.WriteLine("Current thread id: {0} for current request: {1}", Thread.CurrentThread.ManagedThreadId, requestString);
                             m_responseStreamDictionary.Add(requestString.GetHashCode(), stream);
                             if (m_responseStreamDictionary.Count == queryArrayLength) {
                                 logWriter.WriteLine("Completing call");
@@ -52,7 +52,7 @@ namespace Nuxleus.Web {
                             } else {
                                 logWriter.WriteLine("Continuing process...");
                             }
-                        });
+                        }, logWriter);
             }
         }
     }
@@ -63,18 +63,20 @@ namespace Nuxleus.Web {
 
         HttpWebRequest m_request;
         HttpResponseStream m_responseStream;
+        TextWriter m_logWriter;
 
-        public AsyncHttpRequest ( HttpWebRequest request, HttpResponseStream responseStreamCallback ) {
+        public AsyncHttpRequest ( HttpWebRequest request, HttpResponseStream responseStreamCallback, TextWriter logWriter ) {
             m_request = request;
             m_responseStream = responseStreamCallback;
-            Console.WriteLine("Beginning call to {0}", request.RequestUri);
+            m_logWriter = logWriter;
+            m_logWriter.WriteLine("Beginning call to {0}", request.RequestUri);
             request.BeginGetResponse(RequestIsComplete, request);
         }
 
         private void RequestIsComplete ( IAsyncResult asyncResult ) {
             HttpWebRequest request = (HttpWebRequest)asyncResult.AsyncState;
             HttpWebResponse response = (HttpWebResponse)m_request.EndGetResponse(asyncResult);
-            Console.WriteLine("Ending call to {0}", request.RequestUri);
+            m_logWriter.WriteLine("Ending call to {0}", request.RequestUri);
             m_responseStream(response.GetResponseStream());
             response.Close();
         }
