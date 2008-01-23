@@ -11,6 +11,7 @@ using System.Diagnostics;
 namespace Nuxleus.Web {
 
     public struct HttpGetAsyncResponse {
+
         static Dictionary<int, Stream> m_responseStreamDictionary = new Dictionary<int, Stream>();
         TextWriter m_logWriter;
         string[] m_httpRequestArray;
@@ -65,12 +66,12 @@ namespace Nuxleus.Web {
             bool DEBUG = m_DEBUG;
             List<long> elaspedTimeList = m_elapsedTimeList;
 
-            for (int q = 0; q < m_httpRequestArray.Length; q++) {
+            foreach (string r in m_httpRequestArray) {
                 Stopwatch stopwatch = new Stopwatch();
                 if (DEBUG) {
                     stopwatch.Start();
                 }
-                string requestString = m_httpRequestArray[q];
+                string requestString = r;
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestString);
                 request.Timeout = 10000;
                 request.KeepAlive = m_pipelineRequests;
