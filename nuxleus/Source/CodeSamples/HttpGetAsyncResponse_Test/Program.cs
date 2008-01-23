@@ -27,6 +27,8 @@ namespace HttpGetAsyncResponse_Test {
             };
 
             bool pipelineRequests = bool.Parse(args[0]);
+            bool runSynchronously = bool.Parse(args[1]);
+
             string[] requestList = new string[testPhotoBaseArray.Length * testPhotoItemArray.Length];
 
             int p = 0;
@@ -40,7 +42,7 @@ namespace HttpGetAsyncResponse_Test {
 
 
             Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
-            HttpGetAsyncResponse response = new HttpGetAsyncResponse(Console.Out, true, pipelineRequests, requestList);
+            HttpGetAsyncResponse response = new HttpGetAsyncResponse(Console.Out, true, pipelineRequests, runSynchronously, requestList);
             response.Stopwatch.Start();
 
             Console.WriteLine("Invoking Process");
@@ -56,10 +58,10 @@ namespace HttpGetAsyncResponse_Test {
             Console.WriteLine("Request processing is complete.  There are {0} responses in the response dictionary.", responseStreamDictionary.Count);
             Console.WriteLine("The process completed in: {0}ms.", response.Stopwatch.ElapsedMilliseconds);
             long elapsedTime = 0;
-            foreach (long l in response.ElapsedTimeList) {
-                elapsedTime += l;
-            }
-            Console.WriteLine("Total claimed elapsed time for all requests:\t {0}ms", elapsedTime);
+            //foreach (long l in response.ElapsedTimeList) {
+            //    elapsedTime += l;
+            //}
+            //Console.WriteLine("Total claimed elapsed time for all requests:\t {0}ms", elapsedTime);
         }
     }
 }
