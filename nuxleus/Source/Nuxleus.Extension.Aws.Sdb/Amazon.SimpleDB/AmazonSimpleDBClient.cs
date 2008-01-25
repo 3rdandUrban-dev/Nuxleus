@@ -33,18 +33,16 @@ using Amazon.SimpleDB.Model;
 using Amazon.SimpleDB;
 
 
-namespace Amazon.SimpleDB
-{
+namespace Amazon.SimpleDB {
 
 
-   /**
+    /**
 
-    *
-    * AmazonSimpleDBClient is an implementation of AmazonSimpleDB
-    *
-    */
-    public class AmazonSimpleDBClient : AmazonSimpleDB
-    {
+     *
+     * AmazonSimpleDBClient is an implementation of AmazonSimpleDB
+     *
+     */
+    public class AmazonSimpleDBClient : AmazonSimpleDB {
 
         private String awsAccessKeyId = null;
         private String awsSecretAccessKey = null;
@@ -55,9 +53,8 @@ namespace Amazon.SimpleDB
         /// </summary>
         /// <param name="awsAccessKeyId">AWS Access Key ID</param>
         /// <param name="awsSecretAccessKey">AWS Secret Access Key</param>
-        public AmazonSimpleDBClient(String awsAccessKeyId, String awsSecretAccessKey)
-            : this(awsAccessKeyId, awsSecretAccessKey, new AmazonSimpleDBConfig())
-        {
+        public AmazonSimpleDBClient ( String awsAccessKeyId, String awsSecretAccessKey )
+            : this(awsAccessKeyId, awsSecretAccessKey, new AmazonSimpleDBConfig()) {
         }
 
 
@@ -67,8 +64,7 @@ namespace Amazon.SimpleDB
         /// <param name="awsAccessKeyId">AWS Access Key ID</param>
         /// <param name="awsSecretAccessKey">AWS Secret Access Key</param>
         /// <param name="config">configuration</param>
-        public AmazonSimpleDBClient(String awsAccessKeyId, String awsSecretAccessKey, AmazonSimpleDBConfig config)
-        {
+        public AmazonSimpleDBClient ( String awsAccessKeyId, String awsSecretAccessKey, AmazonSimpleDBConfig config ) {
             this.awsAccessKeyId = awsAccessKeyId;
             this.awsSecretAccessKey = awsSecretAccessKey;
             this.config = config;
@@ -77,7 +73,7 @@ namespace Amazon.SimpleDB
 
         // Public API ------------------------------------------------------------//
 
-        
+
         /// <summary>
         /// Create Domain 
         /// </summary>
@@ -89,12 +85,11 @@ namespace Amazon.SimpleDB
         /// operation may take 10 or more seconds to complete.
         ///   
         /// </remarks>
-        public CreateDomainResponse CreateDomain(CreateDomain action)
-        {
+        public CreateDomainResponse CreateDomain ( CreateDomain action ) {
             return Invoke<CreateDomainResponse>(action.ToMap());
         }
 
-        
+
         /// <summary>
         /// List Domains 
         /// </summary>
@@ -107,12 +102,11 @@ namespace Amazon.SimpleDB
         /// NextToken returns up to MaxNumberOfDomains more domain names each time.
         ///   
         /// </remarks>
-        public ListDomainsResponse ListDomains(ListDomains action)
-        {
+        public ListDomainsResponse ListDomains ( ListDomains action ) {
             return Invoke<ListDomainsResponse>(action.ToMap());
         }
 
-        
+
         /// <summary>
         /// Delete Domain 
         /// </summary>
@@ -123,12 +117,11 @@ namespace Amazon.SimpleDB
         /// are deleted as well. The DeleteDomain operation may take 10 or more seconds to complete.
         ///   
         /// </remarks>
-        public DeleteDomainResponse DeleteDomain(DeleteDomain action)
-        {
+        public DeleteDomainResponse DeleteDomain ( DeleteDomain action ) {
             return Invoke<DeleteDomainResponse>(action.ToMap());
         }
 
-        
+
         /// <summary>
         /// Put Attributes 
         /// </summary>
@@ -152,12 +145,11 @@ namespace Amazon.SimpleDB
         /// with the new value.
         ///   
         /// </remarks>
-        public PutAttributesResponse PutAttributes(PutAttributes action)
-        {
+        public PutAttributesResponse PutAttributes ( PutAttributes action ) {
             return Invoke<PutAttributesResponse>(action.ToMap());
         }
 
-        
+
         /// <summary>
         /// Get Attributes 
         /// </summary>
@@ -171,12 +163,11 @@ namespace Amazon.SimpleDB
         /// replicas.
         ///   
         /// </remarks>
-        public GetAttributesResponse GetAttributes(GetAttributes action)
-        {
+        public GetAttributesResponse GetAttributes ( GetAttributes action ) {
             return Invoke<GetAttributesResponse>(action.ToMap());
         }
 
-        
+
         /// <summary>
         /// Delete Attributes 
         /// </summary>
@@ -187,12 +178,11 @@ namespace Amazon.SimpleDB
         /// deleted.
         ///   
         /// </remarks>
-        public DeleteAttributesResponse DeleteAttributes(DeleteAttributes action)
-        {
+        public DeleteAttributesResponse DeleteAttributes ( DeleteAttributes action ) {
             return Invoke<DeleteAttributesResponse>(action.ToMap());
         }
 
-        
+
         /// <summary>
         /// Query 
         /// </summary>
@@ -204,8 +194,7 @@ namespace Amazon.SimpleDB
         /// A Query with no QueryExpression matches all items in the domain.
         ///   
         /// </remarks>
-        public QueryResponse Query(Query action)
-        {
+        public QueryResponse Query ( Query action ) {
             return Invoke<QueryResponse>(action.ToMap());
         }
 
@@ -215,12 +204,10 @@ namespace Amazon.SimpleDB
          * Configure HttpClient with set of defaults as well as configuration
          * from AmazonSimpleDBConfig instance
          */
-        private HttpWebRequest ConfigureWebRequest(int contentLength)
-        {
+        private HttpWebRequest ConfigureWebRequest ( int contentLength ) {
             HttpWebRequest request = WebRequest.Create(config.ServiceURL) as HttpWebRequest;
 
-            if (config.IsSetProxyHost())
-            {
+            if (config.IsSetProxyHost()) {
                 request.Proxy = new WebProxy(config.ProxyHost, config.ProxyPort);
             }
             request.UserAgent = config.UserAgent;
@@ -235,8 +222,7 @@ namespace Amazon.SimpleDB
         /**
          * Invoke request and return response
          */
-        private T Invoke<T>(IDictionary<String, String> parameters)
-        {
+        private T Invoke<T> ( IDictionary<String, String> parameters ) {
             String actionName = parameters["Action"];
             T response = default(T);
             String responseBody = null;
@@ -250,36 +236,29 @@ namespace Amazon.SimpleDB
             byte[] requestData = new UTF8Encoding().GetBytes(queryString);
             bool shouldRetry = true;
             int retries = 0;
-            do
-            {
+            do {
                 HttpWebRequest request = ConfigureWebRequest(requestData.Length);
                 /* Submit the request and read response body */
-                try
-                {
-                    using (Stream requestStream = request.GetRequestStream())
-                    {
+                try {
+                    using (Stream requestStream = request.GetRequestStream()) {
                         requestStream.Write(requestData, 0, requestData.Length);
                     }
-                    using (HttpWebResponse httpResponse = request.GetResponse() as HttpWebResponse)
-                    {
+                    using (HttpWebResponse httpResponse = request.GetResponse() as HttpWebResponse) {
                         statusCode = httpResponse.StatusCode;
                         StreamReader reader = new StreamReader(httpResponse.GetResponseStream(), Encoding.UTF8);
                         responseBody = reader.ReadToEnd();
                     }
 
                     /* Attempt to deserialize response into <Action> Response type */
-                    XmlSerializer serlizer = new XmlSerializer(typeof(T));
-                    response = (T)serlizer.Deserialize(new StringReader(responseBody));
+                    XmlSerializer serializer = new XmlSerializer(typeof(T));
+                    response = (T)serializer.Deserialize(new StringReader(responseBody));
                     shouldRetry = false;
                 }
-                /* Web exception is thrown on unsucessful responses */
-                catch (WebException we)
-                {
+                    /* Web exception is thrown on unsucessful responses */
+                catch (WebException we) {
                     shouldRetry = false;
-                    using (HttpWebResponse httpErrorResponse = (HttpWebResponse)we.Response as HttpWebResponse)
-                    {
-                        if (httpErrorResponse == null)
-                        {
+                    using (HttpWebResponse httpErrorResponse = (HttpWebResponse)we.Response as HttpWebResponse) {
+                        if (httpErrorResponse == null) {
                             throw new AmazonSimpleDBException(we);
                         }
                         statusCode = httpErrorResponse.StatusCode;
@@ -287,19 +266,15 @@ namespace Amazon.SimpleDB
                         responseBody = reader.ReadToEnd();
                     }
 
-                    if (statusCode == HttpStatusCode.InternalServerError || statusCode == HttpStatusCode.ServiceUnavailable)
-                    {
+                    if (statusCode == HttpStatusCode.InternalServerError || statusCode == HttpStatusCode.ServiceUnavailable) {
                         shouldRetry = true;
                         PauseOnRetry(++retries, statusCode);
-                    }
-                    else
-                    {
+                    } else {
 
                         /* Attempt to deserialize response into ErrorResponse type */
-                        try
-                        {
-                            XmlSerializer serlizer = new XmlSerializer(typeof(ErrorResponse));
-                            ErrorResponse errorResponse = (ErrorResponse)serlizer.Deserialize(new StringReader(responseBody));
+                        try {
+                            XmlSerializer serializer = new XmlSerializer(typeof(ErrorResponse));
+                            ErrorResponse errorResponse = (ErrorResponse)serializer.Deserialize(new StringReader(responseBody));
                             Error error = errorResponse.Error[0];
 
                             /* Throw formatted exception with information available from the error response */
@@ -312,15 +287,11 @@ namespace Amazon.SimpleDB
                                 errorResponse.RequestId,
                                 errorResponse.ToXML());
                         }
-                        /* Rethrow on deserializer error */
-                        catch (Exception e)
-                        {
-                            if (e is AmazonSimpleDBException)
-                            {
+                            /* Rethrow on deserializer error */
+                        catch (Exception e) {
+                            if (e is AmazonSimpleDBException) {
                                 throw e;
-                            }
-                            else
-                            {
+                            } else {
                                 AmazonSimpleDBException se = ReportAnyErrors(responseBody, statusCode, e);
                                 throw se;
                             }
@@ -330,8 +301,7 @@ namespace Amazon.SimpleDB
 
                 /* Catch other exceptions, attempt to convert to formatted exception, 
                  * else rethrow wrapped exception */
-                catch (Exception e)
-                {
+                catch (Exception e) {
                     throw new AmazonSimpleDBException(e);
                 }
             } while (shouldRetry);
@@ -343,13 +313,11 @@ namespace Amazon.SimpleDB
         /**
          * Look for additional error strings in the response and return formatted exception
          */
-        private AmazonSimpleDBException ReportAnyErrors(String responseBody, HttpStatusCode status, Exception e)
-        {
+        private AmazonSimpleDBException ReportAnyErrors ( String responseBody, HttpStatusCode status, Exception e ) {
 
             AmazonSimpleDBException ex = null;
 
-            if (responseBody != null && responseBody.StartsWith("<"))
-            {
+            if (responseBody != null && responseBody.StartsWith("<")) {
                 Match errorMatcherOne = Regex.Match(responseBody, "<RequestId>(.*)</RequestId>.*<Error>" +
                         "<Code>(.*)</Code><Message>(.*)</Message></Error>.*(<Error>)?", RegexOptions.Multiline);
                 Match errorMatcherTwo = Regex.Match(responseBody, "<Error><Code>(.*)</Code><Message>(.*)" +
@@ -357,39 +325,30 @@ namespace Amazon.SimpleDB
                 Match errorMatcherThree = Regex.Match(responseBody, "<Error><Code>(.*)</Code><Message>(.*)" +
                         "</Message><BoxUsage>(.*)</BoxUsage></Error>.*(<Error>)?.*<RequestID>(.*)</RequestID>", RegexOptions.Multiline);
 
-                if (errorMatcherOne.Success)
-                {
+                if (errorMatcherOne.Success) {
                     String requestId = errorMatcherOne.Groups[1].Value;
                     String code = errorMatcherOne.Groups[2].Value;
                     String message = errorMatcherOne.Groups[3].Value;
 
                     ex = new AmazonSimpleDBException(message, status, code, "Unknown", null, requestId, responseBody);
 
-                }
-                else if (errorMatcherTwo.Success)
-                {
+                } else if (errorMatcherTwo.Success) {
                     String code = errorMatcherTwo.Groups[1].Value;
                     String message = errorMatcherTwo.Groups[2].Value;
                     String requestId = errorMatcherTwo.Groups[4].Value;
 
                     ex = new AmazonSimpleDBException(message, status, code, "Unknown", null, requestId, responseBody);
-                }
-                else if (errorMatcherThree.Success)
-                {
+                } else if (errorMatcherThree.Success) {
                     String code = errorMatcherThree.Groups[1].Value;
                     String message = errorMatcherThree.Groups[2].Value;
                     String boxUsage = errorMatcherThree.Groups[3].Value;
                     String requestId = errorMatcherThree.Groups[5].Value;
 
                     ex = new AmazonSimpleDBException(message, status, code, "Unknown", boxUsage, requestId, responseBody);
-                }
-                else
-                {
+                } else {
                     ex = new AmazonSimpleDBException("Internal Error", status);
                 }
-            }
-            else
-            {
+            } else {
                 ex = new AmazonSimpleDBException("Internal Error", status);
             }
             return ex;
@@ -401,15 +360,11 @@ namespace Amazon.SimpleDB
          * @throws AmazonSimpleDBException if maximum number of retries has been reached
          * @throws java.lang.InterruptedException 
          */
-        private void PauseOnRetry(int retries, HttpStatusCode status)
-        {
-            if (retries <= config.MaxErrorRetry)
-            {
+        private void PauseOnRetry ( int retries, HttpStatusCode status ) {
+            if (retries <= config.MaxErrorRetry) {
                 int delay = (int)Math.Pow(4, retries) * 100;
                 System.Threading.Thread.Sleep(delay);
-            }
-            else
-            {
+            } else {
                 throw new AmazonSimpleDBException("Maximum number of retry attempts reached : " + (retries - 1), status);
             }
         }
@@ -417,8 +372,7 @@ namespace Amazon.SimpleDB
         /**
          * Add authentication related and version parameters
          */
-        private void AddRequiredParameters(IDictionary<String, String> parameters)
-        {
+        private void AddRequiredParameters ( IDictionary<String, String> parameters ) {
             parameters.Add("AWSAccessKeyId", this.awsAccessKeyId);
             parameters.Add("Timestamp", GetFormattedTimestamp());
             parameters.Add("Version", config.ServiceVersion);
@@ -429,23 +383,19 @@ namespace Amazon.SimpleDB
         /**
          * Convert Disctionary of paremeters to Url encoded query string
          */
-        private string GetParametersAsString(IDictionary<String, String> parameters)
-        {
+        private string GetParametersAsString ( IDictionary<String, String> parameters ) {
             StringBuilder data = new StringBuilder();
-            foreach (String key in (IEnumerable<String>)parameters.Keys)
-            {
+            foreach (String key in (IEnumerable<String>)parameters.Keys) {
                 String value = parameters[key];
-                if (value != null && value.Length > 0)
-                {
+                if (value != null && value.Length > 0) {
                     data.Append(key);
                     data.Append('=');
-                    data.Append(HttpUtility.UrlEncodeUnicode (value));
+                    data.Append(HttpUtility.UrlEncodeUnicode(value));
                     data.Append('&');
-                }    
+                }
             }
             String stringData = data.ToString();
-            if (stringData.EndsWith("&")) 
-            {
+            if (stringData.EndsWith("&")) {
                 stringData = stringData.Remove(stringData.Length - 1, 1);
             }
             return stringData;
@@ -466,31 +416,23 @@ namespace Amazon.SimpleDB
          * and then its value. It will not URL-encode the parameter values before
          * constructing this string. There are no separators.
          */
-        private String SignParameters(IDictionary<String, String> parameters, String key)
-        {
+        private String SignParameters ( IDictionary<String, String> parameters, String key ) {
             String signatureVersion = parameters["SignatureVersion"];
             StringBuilder data = new StringBuilder();
 
-            if ("0".Equals(signatureVersion))
-            {
+            if ("0".Equals(signatureVersion)) {
                 data.Append(parameters["Action"]).Append(parameters["Timestamp"]);
-            }
-            else if ("1".Equals(signatureVersion))
-            {
+            } else if ("1".Equals(signatureVersion)) {
                 IDictionary<String, String> sorted =
                     new SortedDictionary<String, String>(parameters, StringComparer.InvariantCultureIgnoreCase);
                 parameters.Remove("Signature");
-                foreach (KeyValuePair<String, String> pair in sorted)
-                {
-                    if (pair.Value != null && pair.Value.Length > 0)
-                    {
+                foreach (KeyValuePair<String, String> pair in sorted) {
+                    if (pair.Value != null && pair.Value.Length > 0) {
                         data.Append(pair.Key);
                         data.Append(pair.Value);
                     }
                 }
-            }
-            else
-            {
+            } else {
                 throw new Exception("Invalid Signature Version specified");
             }
             return Sign(data.ToString(), key);
@@ -499,8 +441,7 @@ namespace Amazon.SimpleDB
         /**
          * Computes RFC 2104-compliant HMAC signature.
          */
-        private String Sign(String data, String key)
-        {
+        private String Sign ( String data, String key ) {
             Encoding encoding = new UTF8Encoding();
             HMACSHA1 signature = new HMACSHA1(encoding.GetBytes(key));
             return Convert.ToBase64String(signature.ComputeHash(
@@ -511,8 +452,7 @@ namespace Amazon.SimpleDB
         /**
          * Formats date as ISO 8601 timestamp
          */
-        private String GetFormattedTimestamp()
-        {
+        private String GetFormattedTimestamp () {
             DateTime dateTime = DateTime.Now;
             return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day,
                                  dateTime.Hour, dateTime.Minute, dateTime.Second,

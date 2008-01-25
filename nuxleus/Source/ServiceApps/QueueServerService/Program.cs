@@ -16,7 +16,7 @@ namespace Nuxleus.Service
         {
             ServiceBase[] ServicesToRun;
             string[] memcachedServers = { "127.0.0.1:11211" };
-            ServicesToRun = new ServiceBase[] { new BuckerQueueServerService(9876, 
+            ServicesToRun = new ServiceBase[] { new BlipQueueServerService(9876, 
 									     memcachedServers, 
 									     "nuXleus-queue") };
             ServiceBase.Run(ServicesToRun);

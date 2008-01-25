@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="Agent.cs" />
     <Compile Include="HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncJobStatusRequestHandler.cs" />
     <Compile Include="HttpHandler\temp.cs" />
     <Compile Include="HttpModule\NuxleusAsyncRequestOpenIDAuthenticationHttpModule.cs" />
     <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs" />
@@ -188,6 +189,10 @@
     <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
       <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
       <Name>Nuxleus.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.MetaData\Nuxleus.MetaData.csproj">
+      <Project>{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}</Project>
+      <Name>Nuxleus.MetaData</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Process\Nuxleus.Process.csproj">
       <Project>{62B71546-D55D-4B35-9D84-CDF8ED555E52}</Project>

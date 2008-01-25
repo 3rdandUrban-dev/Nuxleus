@@ -15,25 +15,26 @@ using Nuxleus.Messaging.QS;
 using Nuxleus.Logging;
 
 namespace Nuxleus.Service {
-    public class BuckerQueueServerService : ServiceBase {
+
+    public class BlipQueueServerService : ServiceBase {
         Container components = null;
         MessageServer server;
-        BuckerServerHandler buckerHandler = null;
+        BlipMessageServerHandler blipMessageHandler = null;
 
-        public BuckerQueueServerService (int port, string[] memcachedServers, string topLevelQueueId) {
+        public BlipQueueServerService ( int port, string[] memcachedServers, string topLevelQueueId ) {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
             server = new MessageServer(port, "\r\n\r\n");
-            buckerHandler = new BuckerServerHandler(memcachedServers, topLevelQueueId);
-            buckerHandler.Service = server.Service;
+            blipMessageHandler = new BlipMessageServerHandler(memcachedServers, topLevelQueueId);
+            blipMessageHandler.Service = server.Service;
         }
 
         // The main entry point for the process
-        public static void Main (object[] args) {
+        public static void Main ( object[] args ) {
             ServiceBase[] ServicesToRun;
             string[] memcachedServers = ((string)args[1]).Split(':');
             string topLevelQueueId = (string)args[2];
-            ServicesToRun = new ServiceBase[] { new BuckerQueueServerService((int)args[0], 
+            ServicesToRun = new ServiceBase[] { new BlipQueueServerService((int)args[0], 
 									     memcachedServers, 
 									     topLevelQueueId) };
             ServiceBase.Run(ServicesToRun);
@@ -52,7 +53,7 @@ namespace Nuxleus.Service {
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        protected override void Dispose (bool disposing) {
+        protected override void Dispose ( bool disposing ) {
             if (disposing) {
                 if (components != null) {
                     components.Dispose();
@@ -64,7 +65,7 @@ namespace Nuxleus.Service {
         /// <summary>
         /// Set things in motion so your service can do its work.
         /// </summary>
-        protected override void OnStart (string[] args) {
+        protected override void OnStart ( string[] args ) {
             try {
                 Log.Write("Starting nuXleus queue server...");
                 server.Start();
@@ -79,7 +80,7 @@ namespace Nuxleus.Service {
         protected override void OnStop () {
             try {
                 Log.Write("Stopping nuXleus queue server...");
-                buckerHandler.Close();
+                blipMessageHandler.Close();
                 server.Stop();
                 this.Dispose();
             } catch (Exception ex) {

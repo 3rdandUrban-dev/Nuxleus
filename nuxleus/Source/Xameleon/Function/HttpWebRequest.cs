@@ -4,15 +4,16 @@ using System.Net;
 using System.Text;
 
 namespace Xameleon.Function {
-    class HttpWebRequestStream {
+
+    public class HttpWebRequestStream {
 
         public HttpWebRequestStream () { }
 
-        public static string GetResponse (String uri) {
+        public static string GetResponse ( String uri ) {
             return new WebClient().DownloadString(uri);
         }
 
-        public static string GetResponse (String uri, String formValues) {
+        public static string GetResponse ( String uri, String formValues ) {
             WebRequest myHttpWebRequest = WebRequest.Create(uri);
 
             myHttpWebRequest.Method = "POST";
@@ -30,7 +31,7 @@ namespace Xameleon.Function {
             return GetResponseString(myHttpWebRequest.GetResponse().GetResponseStream());
         }
 
-        public static string GetResponseString (Stream stream) {
+        public static string GetResponseString ( Stream stream ) {
             using (StreamReader reader = new StreamReader(stream)) {
                 return reader.ReadToEnd();
             }
