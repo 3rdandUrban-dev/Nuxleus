@@ -51,7 +51,7 @@ namespace Nuxleus.Web.HttpHandler {
             }
             m_response.Output.WriteLine("</summary>");
 
-            m_response.ContentEncoding = Encoding.UTF8;
+            m_response.ContentEncoding = encoding;
             m_response.ContentType = "text/xml";
         }
     }

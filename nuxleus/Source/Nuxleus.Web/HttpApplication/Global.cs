@@ -66,7 +66,7 @@ namespace Nuxleus.Web.HttpApplication {
             m_namedXsltHashtable = new Hashtable();
             m_globalXsltParams = new Hashtable();
             m_transformContextHashtable = new Hashtable();
-            m_xmlServiceOperationManager = new XmlServiceOperationManager { XmlReaderDictionary = new Dictionary<int, XmlReader>(), XmlSourceETagDictionary = new Dictionary<int, int>() };
+            m_xmlServiceOperationManager = new XmlServiceOperationManager (new Dictionary<int, XmlReader>());
             m_geoIPLookup = new Dictionary<String, IPLocation>();
             m_requestXsltParams = null;
             m_encoding = new UTF8Encoding();
