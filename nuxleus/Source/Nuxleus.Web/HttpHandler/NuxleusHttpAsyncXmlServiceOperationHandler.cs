@@ -69,7 +69,7 @@ namespace Nuxleus.Web.HttpHandler {
         Transform.Agent m_agent;
         IAsyncResult m_asyncResult;
 
-        public void ProcessRequest (HttpContext context) {
+        public void ProcessRequest ( HttpContext context ) {
             //not called
         }
 
@@ -79,7 +79,7 @@ namespace Nuxleus.Web.HttpHandler {
 
         #region IHttpAsyncHandler Members
 
-        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData) {
+        public IAsyncResult BeginProcessRequest ( HttpContext context, AsyncCallback cb, object extraData ) {
 
             m_stopwatch.Start();
 
@@ -193,7 +193,7 @@ namespace Nuxleus.Web.HttpHandler {
                 WriteError();
                 goto CompleteCall;
             }
-Process:
+        Process:
             try {
                 XmlReader reader = m_xmlServiceOperationManager.GetXmlReader(m_context.RequestXmlETag, requestUri);
                 XmlServiceOperationReader serviceOperationReader = new XmlServiceOperationReader(context, m_context, m_transformContext, reader, m_request, m_response, m_xslTransformationManager);
@@ -205,7 +205,7 @@ Process:
 
             goto CompleteCall;
 
-CompleteCall:
+        CompleteCall:
             Console.WriteLine("CompleteCall reached");
             if (m_lastModifiedDate == String.Empty) {
                 m_lastModifiedDate = DateTime.UtcNow.ToString("r");
@@ -217,7 +217,7 @@ CompleteCall:
             return m_nuxleusAsyncResult;
         }
 
-        public void EndProcessRequest (IAsyncResult result) {
+        public void EndProcessRequest ( IAsyncResult result ) {
             //using (m_writer) {
             string output = m_response.TransformResult;
             if (m_returnOutput) {

@@ -21,15 +21,13 @@
 
 using System;
 
-namespace Amazon.SimpleDB
-{
+namespace Amazon.SimpleDB {
 
     /// <summary>
     /// Configuration for accessing Amazon Simple DB  service
     /// </summary>
-    public class AmazonSimpleDBConfig 
-    {
-    
+    public class AmazonSimpleDBConfig {
+
         private String serviceVersion = "2007-11-07";
         private String serviceURL = "http://sdb.amazonaws.com";
         private String userAgent = "Amazon Simple DB CSharp Library";
@@ -42,17 +40,15 @@ namespace Amazon.SimpleDB
         /// <summary>
         /// Gets Service Version
         /// </summary>
-        public String ServiceVersion
-        {
-            get { return this.serviceVersion ; }
+        public String ServiceVersion {
+            get { return this.serviceVersion; }
         }
 
         /// <summary>
         /// Gets and sets of the SignatureVersion property.
         /// </summary>
-        public String SignatureVersion
-        {
-            get { return this.signatureVersion ; }
+        public String SignatureVersion {
+            get { return this.signatureVersion; }
             set { this.signatureVersion = value; }
         }
 
@@ -61,8 +57,7 @@ namespace Amazon.SimpleDB
         /// </summary>
         /// <param name="signatureVersion">SignatureVersion property</param>
         /// <returns>this instance</returns>
-        public AmazonSimpleDBConfig WithSignatureVersion(String signatureVersion)
-        {
+        public AmazonSimpleDBConfig WithSignatureVersion ( String signatureVersion ) {
             this.signatureVersion = signatureVersion;
             return this;
         }
@@ -71,17 +66,15 @@ namespace Amazon.SimpleDB
         /// Checks if SignatureVersion property is set
         /// </summary>
         /// <returns>true if SignatureVersion property is set</returns>
-        public Boolean IsSetSignatureVersion()
-        {
+        public Boolean IsSetSignatureVersion () {
             return this.signatureVersion != null;
         }
-    
+
         /// <summary>
         /// Gets and sets of the UserAgent property.
         /// </summary>
-        public String UserAgent
-        {
-            get { return this.userAgent ; }
+        public String UserAgent {
+            get { return this.userAgent; }
             set { this.userAgent = value; }
         }
 
@@ -90,8 +83,7 @@ namespace Amazon.SimpleDB
         /// </summary>
         /// <param name="userAgent">UserAgent property</param>
         /// <returns>this instance</returns>
-        public AmazonSimpleDBConfig WithUserAgent(String userAgent)
-        {
+        public AmazonSimpleDBConfig WithUserAgent ( String userAgent ) {
             this.userAgent = userAgent;
             return this;
         }
@@ -100,17 +92,15 @@ namespace Amazon.SimpleDB
         /// Checks if UserAgent property is set
         /// </summary>
         /// <returns>true if UserAgent property is set</returns>
-        public Boolean IsSetUserAgent()
-        {
+        public Boolean IsSetUserAgent () {
             return this.userAgent != null;
         }
 
         /// <summary>
         /// Gets and sets of the ServiceURL property.
         /// </summary>
-        public String ServiceURL
-        {
-            get { return this.serviceURL ; }
+        public String ServiceURL {
+            get { return this.serviceURL; }
             set { this.serviceURL = value; }
         }
 
@@ -119,8 +109,7 @@ namespace Amazon.SimpleDB
         /// </summary>
         /// <param name="serviceURL">ServiceURL property</param>
         /// <returns>this instance</returns>
-        public AmazonSimpleDBConfig WithServiceURL(String serviceURL)
-        {
+        public AmazonSimpleDBConfig WithServiceURL ( String serviceURL ) {
             this.serviceURL = serviceURL;
             return this;
         }
@@ -129,16 +118,14 @@ namespace Amazon.SimpleDB
         /// Checks if ServiceURL property is set
         /// </summary>
         /// <returns>true if ServiceURL property is set</returns>
-        public Boolean IsSetServiceURL()
-        {
+        public Boolean IsSetServiceURL () {
             return this.serviceURL != null;
         }
 
         /// <summary>
         /// Gets and sets of the ProxyHost property.
         /// </summary>
-        public String ProxyHost
-        {
+        public String ProxyHost {
             get { return this.proxyHost; }
             set { this.proxyHost = value; }
         }
@@ -148,8 +135,7 @@ namespace Amazon.SimpleDB
         /// </summary>
         /// <param name="proxyHost">ProxyHost property</param>
         /// <returns>this instance</returns>
-        public AmazonSimpleDBConfig WithProxyHost(String proxyHost)
-        {
+        public AmazonSimpleDBConfig WithProxyHost ( String proxyHost ) {
             this.proxyHost = proxyHost;
             return this;
         }
@@ -158,16 +144,14 @@ namespace Amazon.SimpleDB
         /// Checks if ProxyHost property is set
         /// </summary>
         /// <returns>true if ProxyHost property is set</returns>
-        public Boolean IsSetProxyHost()
-        {
+        public Boolean IsSetProxyHost () {
             return this.proxyHost != null;
         }
 
         /// <summary>
         /// Gets and sets of the ProxyPort property.
         /// </summary>
-        public int ProxyPort
-        {
+        public int ProxyPort {
             get { return this.proxyPort; }
             set { this.proxyPort = value; }
         }
@@ -177,8 +161,7 @@ namespace Amazon.SimpleDB
         /// </summary>
         /// <param name="proxyPort">ProxyPort property</param>
         /// <returns>this instance</returns>
-        public AmazonSimpleDBConfig WithProxyPort(int proxyPort)
-        {
+        public AmazonSimpleDBConfig WithProxyPort ( int proxyPort ) {
             this.proxyPort = proxyPort;
             return this;
         }
@@ -187,16 +170,14 @@ namespace Amazon.SimpleDB
         /// Checks if ProxyPort property is set
         /// </summary>
         /// <returns>true if ProxyPort property is set</returns>
-        public Boolean IsSetProxyPort()
-        {
+        public Boolean IsSetProxyPort () {
             return this.proxyPort != -1;
         }
 
         /// <summary>
         /// Gets and sets of the MaxErrorRetry property.
         /// </summary>
-        public int MaxErrorRetry
-        {
+        public int MaxErrorRetry {
             get { return this.maxErrorRetry; }
             set { this.maxErrorRetry = value; }
         }
@@ -206,8 +187,7 @@ namespace Amazon.SimpleDB
         /// </summary>
         /// <param name="maxErrorRetry">MaxErrorRetry property</param>
         /// <returns>this instance</returns>
-        public AmazonSimpleDBConfig WithMaxErrorRetry(int maxErrorRetry)
-        {
+        public AmazonSimpleDBConfig WithMaxErrorRetry ( int maxErrorRetry ) {
             this.maxErrorRetry = maxErrorRetry;
             return this;
         }
@@ -216,8 +196,7 @@ namespace Amazon.SimpleDB
         /// Checks if MaxErrorRetry property is set
         /// </summary>
         /// <returns>true if MaxErrorRetry property is set</returns>
-        public Boolean IsSetMaxErrorRetry()
-        {
+        public Boolean IsSetMaxErrorRetry () {
             return this.maxErrorRetry != -1;
         }
     }

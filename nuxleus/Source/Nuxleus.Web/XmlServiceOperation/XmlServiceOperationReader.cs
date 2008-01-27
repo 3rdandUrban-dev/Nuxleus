@@ -22,7 +22,7 @@ namespace Nuxleus.Web {
         Transform.Transform m_transform;
         UTF8Encoding m_encoding;
 
-        public XmlServiceOperationReader (HttpContext httpContext, Context context, Transform.Context transformContext, XmlReader reader, TransformRequest request, TransformResponse response, XsltTransformationManager transformationManager) {
+        public XmlServiceOperationReader ( HttpContext httpContext, Context context, Transform.Context transformContext, XmlReader reader, TransformRequest request, TransformResponse response, XsltTransformationManager transformationManager ) {
             m_reader = reader;
             m_httpContext = httpContext;
             m_context = context;

@@ -15,7 +15,7 @@ namespace Nuxleus.Extension {
         /// <param name="source"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string SubstringAfter (this string source, string value) {
+        public static string SubstringAfter ( this string source, string value ) {
             if (string.IsNullOrEmpty(value)) {
                 return source;
             }
@@ -28,7 +28,7 @@ namespace Nuxleus.Extension {
             return source.Substring(index + value.Length);
         }
 
-        public static string SubstringBefore (this string source, string value) {
+        public static string SubstringBefore ( this string source, string value ) {
             if (string.IsNullOrEmpty(value)) {
                 return value;
             }

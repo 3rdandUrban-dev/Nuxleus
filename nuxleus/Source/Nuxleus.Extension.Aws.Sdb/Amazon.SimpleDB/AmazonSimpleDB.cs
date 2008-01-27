@@ -24,8 +24,7 @@ using System.Xml.Serialization;
 using System.Collections.Generic;
 using Amazon.SimpleDB.Model;
 
-namespace Amazon.SimpleDB
-{
+namespace Amazon.SimpleDB {
 
 
     /// <summary>
@@ -50,9 +49,9 @@ namespace Amazon.SimpleDB
     /// to scale instantly, and pay only for what they use.
     /// 
     /// </summary>
-    public interface  AmazonSimpleDB {
-    
-                
+    public interface AmazonSimpleDB {
+
+
         /// <summary>
         /// Create Domain 
         /// </summary>
@@ -64,9 +63,9 @@ namespace Amazon.SimpleDB
         /// operation may take 10 or more seconds to complete.
         ///   
         /// </remarks>
-        CreateDomainResponse CreateDomain(CreateDomain action);
+        CreateDomainResponse CreateDomain ( CreateDomain action );
 
-                
+
         /// <summary>
         /// List Domains 
         /// </summary>
@@ -79,9 +78,9 @@ namespace Amazon.SimpleDB
         /// NextToken returns up to MaxNumberOfDomains more domain names each time.
         ///   
         /// </remarks>
-        ListDomainsResponse ListDomains(ListDomains action);
+        ListDomainsResponse ListDomains ( ListDomains action );
 
-                
+
         /// <summary>
         /// Delete Domain 
         /// </summary>
@@ -92,9 +91,9 @@ namespace Amazon.SimpleDB
         /// are deleted as well. The DeleteDomain operation may take 10 or more seconds to complete.
         ///   
         /// </remarks>
-        DeleteDomainResponse DeleteDomain(DeleteDomain action);
+        DeleteDomainResponse DeleteDomain ( DeleteDomain action );
 
-                
+
         /// <summary>
         /// Put Attributes 
         /// </summary>
@@ -118,9 +117,9 @@ namespace Amazon.SimpleDB
         /// with the new value.
         ///   
         /// </remarks>
-        PutAttributesResponse PutAttributes(PutAttributes action);
+        PutAttributesResponse PutAttributes ( PutAttributes action );
 
-                
+
         /// <summary>
         /// Get Attributes 
         /// </summary>
@@ -134,9 +133,9 @@ namespace Amazon.SimpleDB
         /// replicas.
         ///   
         /// </remarks>
-        GetAttributesResponse GetAttributes(GetAttributes action);
+        GetAttributesResponse GetAttributes ( GetAttributes action );
 
-                
+
         /// <summary>
         /// Delete Attributes 
         /// </summary>
@@ -147,9 +146,9 @@ namespace Amazon.SimpleDB
         /// deleted.
         ///   
         /// </remarks>
-        DeleteAttributesResponse DeleteAttributes(DeleteAttributes action);
+        DeleteAttributesResponse DeleteAttributes ( DeleteAttributes action );
 
-                
+
         /// <summary>
         /// Query 
         /// </summary>
@@ -161,7 +160,7 @@ namespace Amazon.SimpleDB
         /// A Query with no QueryExpression matches all items in the domain.
         ///   
         /// </remarks>
-        QueryResponse Query(Query action);
+        QueryResponse Query ( Query action );
 
     }
 }

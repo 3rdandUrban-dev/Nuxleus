@@ -4,7 +4,7 @@
 // Author:
 //   Sylvain Hellegouarch (sh@3rdandurban.com)
 //
-// Copyright (C) 2007, Sylvain Hellegouarch
+// Copyright (C) 2007, 3rd&Urban, LLC
 // 
 using System;
 using System.Collections;
@@ -17,19 +17,15 @@ using Nuxleus.Entity;
 
 using ALAZ.SystemEx.NetEx.SocketsEx;
 
-namespace Nuxleus.Messaging.Replication
-{
-    public class ReplicationHandler
-    {
+namespace Nuxleus.Messaging.Replication {
+    public class ReplicationHandler {
         private MessageService service = null;
 
-        public ReplicationHandler() { }
+        public ReplicationHandler () { }
 
-        public MessageService Service
-        {
+        public MessageService Service {
             get { return service; }
-            set
-            {
+            set {
                 service = value;
                 service.Received += new MessageEventHandler(this.EntityMessageReceived);
                 //service.Sent += new QueueEventHandler(this.MessageSent);
@@ -38,8 +34,7 @@ namespace Nuxleus.Messaging.Replication
             }
         }
 
-        private void FailureRaised(ISocketConnection sender, Exception ex)
-        {
+        private void FailureRaised ( ISocketConnection sender, Exception ex ) {
             // here we should log the exception
 
             // we disconnect the faulty client
@@ -50,24 +45,20 @@ namespace Nuxleus.Messaging.Replication
         /// This takes care of operations where a file has been stored for the first time
         /// or if it has been replaced.
         /// </summary>
-        private void HandleCreateOrReplaceOperation(IEntity entity)
-        {
+        private void HandleCreateOrReplaceOperation ( IEntity entity ) {
 
         }
 
         /// <summary>
         /// This takes care of operations where a file has been deleted.
         /// </summary>
-        private void HandleRemoveOperation(IEntity entity)
-        {
+        private void HandleRemoveOperation ( IEntity entity ) {
         }
 
-        private void EntityMessageReceived(ISocketConnection sender, IMessage message)
-        {
+        private void EntityMessageReceived ( ISocketConnection sender, IMessage message ) {
             ReplicationMessage msg = ReplicationMessage.Deserialize(message.InnerMessage);
 
-            switch (msg.Type)
-            {
+            switch (msg.Type) {
                 case ReplicationOperationType.CreateOrReplace:
                     HandleCreateOrReplaceOperation(msg.Entity);
                     break;

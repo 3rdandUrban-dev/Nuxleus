@@ -28,7 +28,7 @@ namespace Nuxleus.Web {
         HttpCookieCollection m_httpCookies;
         NameValueCollection m_httpParams;
 
-        public Context (HttpContext context, HashAlgorithm algorithm, String key, FileInfo fileInfo, params object[] eTagArray) {
+        public Context ( HttpContext context, HashAlgorithm algorithm, String key, FileInfo fileInfo, params object[] eTagArray ) {
             m_requestUri = fileInfo.FullName;
             m_requestXmlFileInfo = fileInfo;
             m_httpQueryString = context.Request.QueryString;
@@ -73,10 +73,10 @@ namespace Nuxleus.Web {
             get { return m_httpQueryString; }
             set { m_httpQueryString = value; }
         }
-        public static int GenerateETag (string key, HashAlgorithm algorithm, params object[] eTagArray) {
+        public static int GenerateETag ( string key, HashAlgorithm algorithm, params object[] eTagArray ) {
             return HashcodeGenerator.GetHMACHashBase64String(key, algorithm, eTagArray).GetHashCode();
         }
-        public int GetRequestHashcode (bool useQueryString, params object[] objectArray) {
+        public int GetRequestHashcode ( bool useQueryString, params object[] objectArray ) {
             StringBuilder builder = new StringBuilder(m_eTag.ToString());
             if (useQueryString) {
                 builder.Append(m_httpQueryString);

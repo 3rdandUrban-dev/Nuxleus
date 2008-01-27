@@ -10,7 +10,7 @@ using Nuxleus.MetaData;
 
 namespace Nuxleus.Web.HttpHandler {
 
-    public struct  NuxleusHttpAsyncJobStatusRequestHandler : IHttpAsyncHandler {
+    public struct NuxleusHttpAsyncJobStatusRequestHandler : IHttpAsyncHandler {
 
         [Message("Status code and related messages.")]
         public enum StatusCode {
@@ -30,7 +30,7 @@ namespace Nuxleus.Web.HttpHandler {
         String m_id;
         Dictionary<string, string> m_statusQueue;
 
-        public void ProcessRequest (HttpContext context) {
+        public void ProcessRequest ( HttpContext context ) {
             //not called
         }
 
@@ -38,7 +38,7 @@ namespace Nuxleus.Web.HttpHandler {
             get { return false; }
         }
 
-        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData) {
+        public IAsyncResult BeginProcessRequest ( HttpContext context, AsyncCallback cb, object extraData ) {
 
             HttpRequest request = context.Request;
             m_response = context.Response;
@@ -63,7 +63,7 @@ namespace Nuxleus.Web.HttpHandler {
             }
         }
 
-        public void EndProcessRequest (IAsyncResult result) {
+        public void EndProcessRequest ( IAsyncResult result ) {
 
             if (m_reader != null) {
                 lock (m_reader) {

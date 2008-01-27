@@ -4,7 +4,7 @@
 // Author:
 //   Sylvain Hellegouarch (sh@3rdandurban.com)
 //
-// Copyright (C) 2007, Sylvain Hellegouarch
+// Copyright (C) 2007, 3rd&Urban, LLC
 // 
 
 using System;
@@ -16,10 +16,8 @@ using System.Text;
 using ALAZ.SystemEx.NetEx.SocketsEx;
 using ALAZ.SystemEx.ThreadingEx;
 
-namespace Nuxleus.Messaging
-{
-    public class MessageServer
-    {
+namespace Nuxleus.Messaging {
+    public class MessageServer {
         private MessageService service = null;
         private SocketServer server = null;
 
@@ -27,8 +25,7 @@ namespace Nuxleus.Messaging
         /// Use this constructeur to setup a server listening on a given port for
         /// data delimited as specified by the delimiter argument.
         /// </summary>
-        public MessageServer(int port, string delimiter)
-        {
+        public MessageServer ( int port, string delimiter ) {
             service = new MessageService();
             server = new SocketServer(service);
             server.Delimiter = Encoding.ASCII.GetBytes(delimiter);
@@ -51,8 +48,7 @@ namespace Nuxleus.Messaging
         /// Gets the actual server object handling the connections 
         /// and dispatching on socket events.
         /// </summary>
-        public SocketServer Server
-        {
+        public SocketServer Server {
             get { return server; }
         }
 
@@ -65,18 +61,15 @@ namespace Nuxleus.Messaging
         /// <summary>
         /// Starts up the server and listen on the port defined.
         /// </summary>
-        public void Start()
-        {
+        public void Start () {
             server.Start();
         }
 
         /// <summary>
         /// Stops the server and disposes of all its resources.
         /// </summary>
-        public void Stop()
-        {
-            if (server != null)
-            {
+        public void Stop () {
+            if (server != null) {
                 server.Stop();
                 server.Dispose();
                 server = null;

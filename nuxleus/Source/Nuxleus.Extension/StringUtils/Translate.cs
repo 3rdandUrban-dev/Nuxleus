@@ -20,8 +20,8 @@ namespace Nuxleus.Extension {
         /// inside of the source string.
         /// </param>
         /// <returns>The translated string.</returns>
-        public static string Translate (this string source,
-                             string replace, string replaceWith) {
+        public static string Translate ( this string source,
+                             string replace, string replaceWith ) {
             StringBuilder sb
                  = new StringBuilder(source);
 

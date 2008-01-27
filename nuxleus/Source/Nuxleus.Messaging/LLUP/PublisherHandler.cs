@@ -4,7 +4,7 @@
 // Author:
 //   Sylvain Hellegouarch (sh@3rdandurban.com)
 //
-// Copyright (C) 2007, Sylvain Hellegouarch
+// Copyright (C) 2007, 3rd&Urban, LLC
 // 
 using System;
 using System.Collections;
@@ -13,15 +13,12 @@ using System.Collections.Generic;
 using ALAZ.SystemEx.NetEx.SocketsEx;
 using ALAZ.SystemEx.ThreadingEx;
 
-namespace Nuxleus.Messaging.LLUP
-{
-    public class PublisherHandler
-    {
+namespace Nuxleus.Messaging.LLUP {
+    public class PublisherHandler {
         private ReceiverHandler receiver = null;
         private DispatchHandler dispatcher = null;
 
-        public PublisherHandler ()
-        {
+        public PublisherHandler () {
             receiver = new ReceiverHandler();
             dispatcher = new DispatchHandler();
             BlipPostOffice po = new BlipPostOffice();
@@ -33,14 +30,11 @@ namespace Nuxleus.Messaging.LLUP
         /// Gets or sets the service handling events on the connections
         /// between clients to the publisher and the publisher handler.
         /// </summary>
-        public MessageService ReceiverService
-        {
-            get
-            {
+        public MessageService ReceiverService {
+            get {
                 return receiver.Service;
             }
-            set
-            {
+            set {
                 receiver.Service = value;
             }
         }
@@ -49,14 +43,11 @@ namespace Nuxleus.Messaging.LLUP
         /// Gets or sets the service handling events on the connections
         /// between the publisher and routers connected to it.
         /// </summary>
-        public MessageService DispatcherService
-        {
-            get
-            {
+        public MessageService DispatcherService {
+            get {
                 return dispatcher.Service;
             }
-            set
-            {
+            set {
                 dispatcher.Service = value;
             }
         }
@@ -66,10 +57,8 @@ namespace Nuxleus.Messaging.LLUP
         /// Set internally by the constructor but can be changed to 
         /// different instance.
         /// </summary>
-        public BlipPostOffice PostOffice
-        {
-            set
-            {
+        public BlipPostOffice PostOffice {
+            set {
                 receiver.PostOffice = value;
                 dispatcher.PostOffice = value;
             }
@@ -78,8 +67,7 @@ namespace Nuxleus.Messaging.LLUP
 
     // Straight dispatcher of notifications to connected clients
     // This does not do any kind of processing on the notification itself
-    internal class DispatchHandler
-    {
+    internal class DispatchHandler {
         private MessageService service = null;
         private BlipPostOffice postOffice = null;
         // Router connections
@@ -96,11 +84,9 @@ namespace Nuxleus.Messaging.LLUP
         /// MessageService instance used by the server to notify
         /// of new events on the connections.
         /// </summary>
-        public MessageService Service
-        {
+        public MessageService Service {
             get { return service; }
-            set
-            {
+            set {
                 service = value;
                 service.Connected += new QueueEventHandler(this.ClientConnected);
                 service.Disconnected += new QueueEventHandler(this.ClientDisconnected);
@@ -112,50 +98,38 @@ namespace Nuxleus.Messaging.LLUP
         /// Sets the PostOffice instance used for being notified of 
         /// new notification to process.
         /// </summary>
-        public BlipPostOffice PostOffice
-        {
-            set
-            {
+        public BlipPostOffice PostOffice {
+            set {
                 postOffice = value;
                 postOffice.Mailbox += new BlipPostedHandler(this.BlipToDispatch);
             }
         }
 
-        private void ClientConnected (ISocketConnection sender)
-        {
+        private void ClientConnected ( ISocketConnection sender ) {
             clients.Add(sender);
         }
 
-        private void ClientDisconnected (ISocketConnection sender)
-        {
-            if (clients.Contains(sender))
-            {
+        private void ClientDisconnected ( ISocketConnection sender ) {
+            if (clients.Contains(sender)) {
                 clients.Remove(sender);
             }
         }
 
-        private void SendToAll (Notification n)
-        {
-            if (clients.Count > 0)
-            {
+        private void SendToAll ( Notification n ) {
+            if (clients.Count > 0) {
                 byte[] blip = Notification.Serialize(n);
                 int loopSleep = 0;
-                foreach (ISocketConnection client in clients)
-                {
-                    try
-                    {
+                foreach (ISocketConnection client in clients) {
+                    try {
                         client.BeginSend(blip);
-                    }
-                    finally
-                    {
+                    } finally {
                         ThreadEx.LoopSleep(ref loopSleep);
                     }
                 }
             }
         }
 
-        private void BlipToDispatch (Notification n)
-        {
+        private void BlipToDispatch ( Notification n ) {
             // The publisher always ensure that each notification has its llup:id 
             // element set so that consumers can decide whether or not
             // they have already processed a notification
@@ -164,8 +138,7 @@ namespace Nuxleus.Messaging.LLUP
             SendToAll(n);
         }
 
-        private void FailureRaised (ISocketConnection sender, Exception ex)
-        {
+        private void FailureRaised ( ISocketConnection sender, Exception ex ) {
             // here we should log the exception
             Console.Write(ex.ToString());
             // we disconnect the faulty client

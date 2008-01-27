@@ -19,16 +19,16 @@ namespace Nuxleus.Web {
         static String m_hashkey = (String)HttpContext.Current.Application["hashkey"];
         static HashAlgorithm m_hashAlgorithm = HashAlgorithm.MD5;
 
-        public XmlServiceOperationManager (Dictionary<int, XmlReader> xmlReaderDictionary)
+        public XmlServiceOperationManager ( Dictionary<int, XmlReader> xmlReaderDictionary )
             : this(xmlReaderDictionary, new Dictionary<int, int>()) {
         }
 
-        public XmlServiceOperationManager (Dictionary<int, XmlReader> xmlReaderDictionary, Dictionary<int, int> xmlSourceETagDictionary) {
+        public XmlServiceOperationManager ( Dictionary<int, XmlReader> xmlReaderDictionary, Dictionary<int, int> xmlSourceETagDictionary ) {
             m_xmlReaderDictionary = xmlReaderDictionary;
             m_xmlSourceETagDictionary = xmlSourceETagDictionary;
         }
 
-        public bool HasXmlSourceChanged (int eTag, Uri uri) {
+        public bool HasXmlSourceChanged ( int eTag, Uri uri ) {
 
             int uriHashcode = uri.GetHashCode();
 
@@ -46,26 +46,26 @@ namespace Nuxleus.Web {
             }
         }
 
-        public void AddXmlReader (Uri uri) {
+        public void AddXmlReader ( Uri uri ) {
             addXmlReader(GenerateETagKey(uri), uri);
         }
 
-        private void addXmlReader (int key, Uri uri) {
+        private void addXmlReader ( int key, Uri uri ) {
             XmlReader reader = createNewXmlReader(uri.OriginalString);
             int uriHashcode = uri.GetHashCode();
             m_xmlReaderDictionary[uriHashcode] = reader;
             m_xmlSourceETagDictionary[uriHashcode] = key;
         }
 
-        public XmlReader GetXmlReader (Uri uri) {
+        public XmlReader GetXmlReader ( Uri uri ) {
             return getXmlReader(GenerateETagKey(uri), uri);
         }
 
-        public XmlReader GetXmlReader (int eTagKey, Uri uri) {
+        public XmlReader GetXmlReader ( int eTagKey, Uri uri ) {
             return getXmlReader(eTagKey, uri);
         }
 
-        private XmlReader getXmlReader (int key, Uri xmlUri) {
+        private XmlReader getXmlReader ( int key, Uri xmlUri ) {
             int uriHashcode = xmlUri.GetHashCode();
             if (m_xmlSourceETagDictionary.ContainsKey(uriHashcode)) {
                 //Console.WriteLine("Dictionary contains key: {0}", uriHashcode);
@@ -84,7 +84,7 @@ namespace Nuxleus.Web {
             }
         }
 
-        private XmlReader getXmlReader (int key, Uri xmlUri, bool replaceExistingXmlReader) {
+        private XmlReader getXmlReader ( int key, Uri xmlUri, bool replaceExistingXmlReader ) {
 
             if (m_xmlReaderDictionary.ContainsKey(key) && !replaceExistingXmlReader) {
                 //Console.WriteLine("Dictionary contains key: {0} and is not being replaced.", key);
@@ -102,11 +102,11 @@ namespace Nuxleus.Web {
             }
         }
 
-        private static XmlReader createNewXmlReader (string xmlSourceUri) {
+        private static XmlReader createNewXmlReader ( string xmlSourceUri ) {
             return XmlReader.Create(xmlSourceUri);
         }
 
-        public static int GenerateETagKey (Uri sourceUri, params object[] objectParams) {
+        public static int GenerateETagKey ( Uri sourceUri, params object[] objectParams ) {
             FileInfo fileInfo = new FileInfo(sourceUri.LocalPath);
             return HashcodeGenerator.GetHMACBase64Hashcode(m_hashkey, m_hashAlgorithm, fileInfo.LastWriteTimeUtc, fileInfo.Length, sourceUri, objectParams);
         }

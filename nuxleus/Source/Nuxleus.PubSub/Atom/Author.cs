@@ -4,14 +4,12 @@
 // Author:
 //   Sylvain Hellegouarch (sh@defuze.org)
 //
-// Copyright (C) 2007, Sylvain Hellegouarch
+// Copyright (C) 2007, 3rd&Urban, LLC
 // 
 
 using System;
 
-namespace Nuxleus.Atom
-{
-  public class Author : PersonConstruct
-    {
+namespace Nuxleus.Atom {
+    public class Author : PersonConstruct {
     }
 }

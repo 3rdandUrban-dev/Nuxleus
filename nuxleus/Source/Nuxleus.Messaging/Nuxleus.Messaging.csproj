@@ -60,7 +60,8 @@
     <Compile Include="Notification\*.cs" />
     <Compile Include="PostOffice\*.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QS\*.cs" />
+    <Compile Include="QS\BlipMessageServerHander.cs" />
+    <Compile Include="QS\QSToLLUPHandler.cs" />
     <Compile Include="Server\*.cs" />
     <Compile Include="XMPP\*.cs" />
   </ItemGroup>

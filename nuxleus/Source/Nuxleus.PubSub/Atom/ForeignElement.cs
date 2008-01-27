@@ -4,7 +4,7 @@
 // Author:
 //   Sylvain Hellegouarch (sh@defuze.org)
 //
-// Copyright (C) 2007, Sylvain Hellegouarch
+// Copyright (C) 2007, 3rd&Urban, LLC
 // 
 
 using System;
@@ -15,10 +15,10 @@ using System.Xml;
 using System.Text;
 using System.Collections.Specialized;
 
-namespace Nuxleus.Atom
-{
-    public class ForeignElement
-    {
+namespace Nuxleus.Atom {
+
+    public class ForeignElement {
+
         private string name = null;
         private string prefix = null;
         private string ns = null;
@@ -29,44 +29,36 @@ namespace Nuxleus.Atom
 
         private IList<ForeignElement> children = new List<ForeignElement>();
 
-        public ForeignElement(string name)
-        {
+        public ForeignElement ( string name ) {
             this.name = name;
         }
 
-        public ForeignElement(string prefix, string name, string ns)
-        {
+        public ForeignElement ( string prefix, string name, string ns ) {
             this.prefix = prefix;
             this.name = name;
             this.ns = ns;
         }
 
-        public ForeignElement(string name, string ns)
-        {
+        public ForeignElement ( string name, string ns ) {
             this.name = name;
             this.ns = ns;
         }
 
-        public string Content
-        {
+        public string Content {
             get { return this.content; }
             set { this.content = value; }
         }
 
-        public NameValueCollection Attributes
-        {
+        public NameValueCollection Attributes {
             get { return this.attrs; }
         }
 
-        public IList<ForeignElement> Children
-        {
+        public IList<ForeignElement> Children {
             get { return this.children; }
         }
 
-        public XmlDocument Document
-        {
-            get
-            {
+        public XmlDocument Document {
+            get {
                 XmlDocument doc = new XmlDocument();
                 XmlDeclaration decl = doc.CreateXmlDeclaration("1.0", "utf-8", null);
 
@@ -76,20 +68,17 @@ namespace Nuxleus.Atom
                 doc.InsertBefore(decl, doc.DocumentElement);
                 doc.AppendChild(root);
 
-                foreach (string key in this.Attributes)
-                {
+                foreach (string key in this.Attributes) {
                     string value = this.Attributes[key];
                     root.SetAttribute(key, value);
                 }
 
-                if (this.Content != null)
-                {
+                if (this.Content != null) {
                     root.InnerText = this.Content;
                 }
 
                 XmlNode node = null;
-                foreach (ForeignElement child in this.Children)
-                {
+                foreach (ForeignElement child in this.Children) {
                     node = doc.ImportNode(child.Node, true);
                     root.AppendChild(node);
                 }
@@ -98,10 +87,8 @@ namespace Nuxleus.Atom
             }
         }
 
-        public XmlNode Node
-        {
-            get
-            {
+        public XmlNode Node {
+            get {
                 XmlDocument doc = this.Document;
                 return doc.DocumentElement;
             }

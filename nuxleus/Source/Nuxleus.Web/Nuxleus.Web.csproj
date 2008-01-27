@@ -134,6 +134,7 @@
     <Compile Include="HttpHandler\temp.cs" />
     <Compile Include="HttpModule\NuxleusAsyncRequestOpenIDAuthenticationHttpModule.cs" />
     <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerReaderHandler.cs" />
     <Compile Include="XmlServiceOperation\Context.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs" />

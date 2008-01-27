@@ -4,18 +4,16 @@
 // Author:
 //   Sylvain Hellegouarch (sh@3rdandurban.com)
 //
-// Copyright (C) 2007, Sylvain Hellegouarch
+// Copyright (C) 2007, 3rd&Urban, LLC
 // 
 
 using System;
 using System.Collections.Generic;
 
-namespace  Nuxleus.Messaging.LLUP 
-{
-    public interface INotificationIndex
-    {
-	void Index(Notification notification);
-	void Deindex(Notification notification);
-	IList<Notification> Query(string query);
+namespace Nuxleus.Messaging.LLUP {
+    public interface INotificationIndex {
+        void Index ( Notification notification );
+        void Deindex ( Notification notification );
+        IList<Notification> Query ( string query );
     }
 }

@@ -12,7 +12,7 @@ namespace Nuxleus.Async {
         Object m_asyncState;
         public HttpContext m_context = null;
 
-        public NuxleusAsyncResult (AsyncCallback cb, Object extraData) {
+        public NuxleusAsyncResult ( AsyncCallback cb, Object extraData ) {
             this.m_cb = cb;
             m_asyncState = extraData;
             m_isCompleted = false;

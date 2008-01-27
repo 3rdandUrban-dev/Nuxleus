@@ -12,11 +12,9 @@ using System.Collections;
 using System.Text;
 using System.Xml.Xsl;
 
-namespace Nuxleus.Web.HttpHandler
-{
+namespace Nuxleus.Web.HttpHandler {
 
-    public struct NuxleusHttpAsyncQueryEntityHandler : IHttpAsyncHandler
-    {
+    public struct NuxleusHttpAsyncQueryEntityHandler : IHttpAsyncHandler {
 
         HttpRequest m_request;
         HttpResponse m_response;
@@ -24,18 +22,15 @@ namespace Nuxleus.Web.HttpHandler
         NuxleusAsyncResult m_asyncResult;
         Message m_responseMessage;
 
-        public void ProcessRequest (HttpContext context)
-        {
+        public void ProcessRequest ( HttpContext context ) {
 
         }
 
-        public bool IsReusable
-        {
+        public bool IsReusable {
             get { return false; }
         }
 
-        public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData)
-        {
+        public IAsyncResult BeginProcessRequest ( HttpContext context, AsyncCallback cb, object extraData ) {
             m_request = context.Request;
             m_response = context.Response;
             m_cookieCollection = context.Response.Cookies;
@@ -43,8 +38,7 @@ namespace Nuxleus.Web.HttpHandler
 
             int maxResults;
 
-            if(!int.TryParse(m_request.QueryString["maxResults"], out maxResults))
-            {
+            if (!int.TryParse(m_request.QueryString["maxResults"], out maxResults)) {
                 maxResults = 5;
             }
 
@@ -59,21 +53,16 @@ namespace Nuxleus.Web.HttpHandler
 
             StringBuilder builder = new StringBuilder();
             int i = 0;
-            while (items.MoveNext())
-            {
-                if (i < maxResults)
-                {
+            while (items.MoveNext()) {
+                if (i < maxResults) {
                     builder.Append(((GetAttributesResponse)((Item)items.Current).GetAttributes()).RawXml.Substring(21));
                 }
                 i++;
             }
-            
-            try
-            {
+
+            try {
                 m_responseMessage = new Message("query", ResponseType.QUERY_RESPONSE);
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 m_responseMessage = new Message(e.Message, ErrorType.INVALID_REQUEST, ResponseType.ERROR);
             }
 
@@ -82,8 +71,7 @@ namespace Nuxleus.Web.HttpHandler
             return m_asyncResult;
         }
 
-        public void EndProcessRequest (IAsyncResult result)
-        {
+        public void EndProcessRequest ( IAsyncResult result ) {
             m_response.ContentType = "text/xml";
         }
     }

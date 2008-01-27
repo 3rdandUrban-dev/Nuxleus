@@ -67,6 +67,7 @@
     <Compile Include="Utility\S3\S3Object.cs" />
     <Compile Include="Utility\S3\Utils.cs" />
     <Compile Include="Utility\StringMatching.cs" />
+    <Compile Include="Xml\XmlFragmentReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />

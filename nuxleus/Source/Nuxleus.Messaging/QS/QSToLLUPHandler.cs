@@ -5,7 +5,7 @@
 // Author:
 //   Sylvain Hellegouarch (sh@3rdandurban.com)
 //
-// Copyright (C) 2007, Sylvain Hellegouarch
+// Copyright (C) 2007, 3rd&Urban, LLC
 // 
 using System;
 using System.Collections;
@@ -18,18 +18,15 @@ using Nuxleus.Messaging.LLUP;
 using ALAZ.SystemEx.NetEx.SocketsEx;
 using ALAZ.SystemEx.ThreadingEx;
 
-namespace Nuxleus.Messaging.QS
-{
-    public class QSToLLUPHandler
-    {
+namespace Nuxleus.Messaging.QS {
+    public class QSToLLUPHandler {
         private PollHandler poller = null;
         private DispatchHandler dispatcher = null;
         private IList<string> monitoredQueues = new List<string>();
         private Timer pullTimer = null;
         private int freq = 3000;
 
-        public QSToLLUPHandler ()
-        {
+        public QSToLLUPHandler () {
             poller = new PollHandler();
             dispatcher = new DispatchHandler();
             BlipPostOffice po = new BlipPostOffice();
@@ -37,37 +34,30 @@ namespace Nuxleus.Messaging.QS
             dispatcher.PostOffice = po;
         }
 
-        public int Frequency
-        {
+        public int Frequency {
             get { return freq; }
             set { freq = value; }
         }
 
-        public IList<string> MonitoredQueues
-        {
+        public IList<string> MonitoredQueues {
             get { return monitoredQueues; }
         }
 
-        public void StartMonitoring ()
-        {
+        public void StartMonitoring () {
             TimerCallback timerDelegate = new TimerCallback(CheckQueuesForNewMessages);
             pullTimer = new Timer(timerDelegate, null, 1500, freq);
         }
 
-        public void StopMonitoring ()
-        {
+        public void StopMonitoring () {
             pullTimer.Dispose();
             pullTimer = null;
         }
 
-        private void CheckQueuesForNewMessages (object info)
-        {
-            if (poller.Service.Connection != null)
-            {
+        private void CheckQueuesForNewMessages ( object info ) {
+            if (poller.Service.Connection != null) {
                 Nuxleus.Bucker.Message lm = new Nuxleus.Bucker.Message();
                 lm.Op.Type = OperationType.ListMessages;
-                foreach (string queueId in monitoredQueues)
-                {
+                foreach (string queueId in monitoredQueues) {
                     lm.QueueId = queueId;
                     poller.Service.Connection.BeginSend(Nuxleus.Bucker.Message.Serialize(lm));
                 }
@@ -78,14 +68,11 @@ namespace Nuxleus.Messaging.QS
         /// <summary>
         /// Gets or sets the service handling events with the queue server
         /// </summary>
-        public MessageService PollService
-        {
-            get
-            {
+        public MessageService PollService {
+            get {
                 return poller.Service;
             }
-            set
-            {
+            set {
                 poller.Service = value;
                 poller.Service.Connected += new QueueEventHandler(this.ClientConnected);
             }
@@ -95,14 +82,11 @@ namespace Nuxleus.Messaging.QS
         /// Gets or sets the service handling events on the connections
         /// between the publisher and routers connected to it.
         /// </summary>
-        public MessageService DispatcherService
-        {
-            get
-            {
+        public MessageService DispatcherService {
+            get {
                 return dispatcher.Service;
             }
-            set
-            {
+            set {
                 dispatcher.Service = value;
             }
         }
@@ -112,23 +96,19 @@ namespace Nuxleus.Messaging.QS
         /// Set internally by the constructor but can be changed to 
         /// different instance.
         /// </summary>
-        public BlipPostOffice PostOffice
-        {
-            set
-            {
+        public BlipPostOffice PostOffice {
+            set {
                 poller.PostOffice = value;
                 dispatcher.PostOffice = value;
             }
         }
 
-        private void ClientConnected (ISocketConnection sender)
-        {
+        private void ClientConnected ( ISocketConnection sender ) {
             // we are now connected to the queue server
             // let's ensure the queues we monitor are created too
             Nuxleus.Bucker.Message nq = new Nuxleus.Bucker.Message();
             nq.Op.Type = OperationType.NewQueue;
-            foreach (string queueId in monitoredQueues)
-            {
+            foreach (string queueId in monitoredQueues) {
                 nq.QueueId = queueId;
                 sender.BeginSend(Nuxleus.Bucker.Message.Serialize(nq));
             }
@@ -137,8 +117,7 @@ namespace Nuxleus.Messaging.QS
         }
     }
 
-    internal class PollHandler
-    {
+    internal class PollHandler {
         private MessageService service = null;
         private BlipPostOffice postOffice = null;
 
@@ -152,11 +131,9 @@ namespace Nuxleus.Messaging.QS
         /// MessageService instance used by the server to notify
         /// of new events on the connections.
         /// </summary>
-        public MessageService Service
-        {
+        public MessageService Service {
             get { return service; }
-            set
-            {
+            set {
                 service = value;
                 service.Received += new MessageEventHandler(this.QueueMessageReceived);
                 service.Failure += new QueueFailureEventHandler(this.FailureRaised);
@@ -167,13 +144,11 @@ namespace Nuxleus.Messaging.QS
         /// Sets the PostOffice instance used to notify about 
         /// new notifications to be dispatched.
         /// </summary>
-        public BlipPostOffice PostOffice
-        {
+        public BlipPostOffice PostOffice {
             set { postOffice = value; }
         }
 
-        private void FailureRaised (ISocketConnection sender, Exception ex)
-        {
+        private void FailureRaised ( ISocketConnection sender, Exception ex ) {
             // here we should log the exception
             Console.WriteLine(ex.ToString());
 
@@ -181,23 +156,19 @@ namespace Nuxleus.Messaging.QS
             sender.BeginDisconnect();
         }
 
-        private void HandleListOfNewMessages (Nuxleus.Bucker.Message m)
-        {
-            if (m.Messages != null)
-            {
+        private void HandleListOfNewMessages ( Nuxleus.Bucker.Message m ) {
+            if (m.Messages != null) {
                 Nuxleus.Bucker.Message gm = new Nuxleus.Bucker.Message();
                 gm.Op.Type = OperationType.GetMessage;
                 gm.QueueId = m.QueueId;
-                foreach (string mid in m.Messages)
-                {
+                foreach (string mid in m.Messages) {
                     gm.MessageId = mid;
                     Service.Connection.BeginSend(Nuxleus.Bucker.Message.Serialize(gm));
                 }
             }
         }
 
-        private void HandleMessageReceived (Nuxleus.Bucker.Message m)
-        {
+        private void HandleMessageReceived ( Nuxleus.Bucker.Message m ) {
             // When a message is received we delete it from the queue as
             // it has no purpose anymore
             Nuxleus.Bucker.Message dm = new Nuxleus.Bucker.Message();
@@ -210,11 +181,9 @@ namespace Nuxleus.Messaging.QS
             postOffice.Post(n);
         }
 
-        private void QueueMessageReceived (ISocketConnection sender, IMessage message)
-        {
+        private void QueueMessageReceived ( ISocketConnection sender, IMessage message ) {
             Nuxleus.Bucker.Message m = Nuxleus.Bucker.Message.Parse(message.InnerMessage);
-            switch (m.Op.Type)
-            {
+            switch (m.Op.Type) {
                 case OperationType.ListMessages:
                     HandleListOfNewMessages(m);
                     break;
@@ -228,8 +197,7 @@ namespace Nuxleus.Messaging.QS
         }
     }
 
-    internal class DispatchHandler
-    {
+    internal class DispatchHandler {
         private MessageService service = null;
         private BlipPostOffice postOffice = null;
         // Router connections
@@ -246,11 +214,9 @@ namespace Nuxleus.Messaging.QS
         /// MessageService instance used by the server to notify
         /// of new events on the connections.
         /// </summary>
-        public MessageService Service
-        {
+        public MessageService Service {
             get { return service; }
-            set
-            {
+            set {
                 service = value;
                 service.Connected += new QueueEventHandler(this.ClientConnected);
                 service.Disconnected += new QueueEventHandler(this.ClientDisconnected);
@@ -262,50 +228,38 @@ namespace Nuxleus.Messaging.QS
         /// Sets the PostOffice instance used for being notified of 
         /// new notification to process.
         /// </summary>
-        public BlipPostOffice PostOffice
-        {
-            set
-            {
+        public BlipPostOffice PostOffice {
+            set {
                 postOffice = value;
                 postOffice.Mailbox += new BlipPostedHandler(this.BlipToDispatch);
             }
         }
 
-        private void ClientConnected (ISocketConnection sender)
-        {
+        private void ClientConnected ( ISocketConnection sender ) {
             clients.Add(sender);
         }
 
-        private void ClientDisconnected (ISocketConnection sender)
-        {
-            if (clients.Contains(sender))
-            {
+        private void ClientDisconnected ( ISocketConnection sender ) {
+            if (clients.Contains(sender)) {
                 clients.Remove(sender);
             }
         }
 
-        private void SendToAll (LLUP.Notification n)
-        {
-            if (clients.Count > 0)
-            {
+        private void SendToAll ( LLUP.Notification n ) {
+            if (clients.Count > 0) {
                 byte[] blip = LLUP.Notification.Serialize(n);
                 int loopSleep = 0;
-                foreach (ISocketConnection client in clients)
-                {
-                    try
-                    {
+                foreach (ISocketConnection client in clients) {
+                    try {
                         client.BeginSend(blip);
-                    }
-                    finally
-                    {
+                    } finally {
                         ThreadEx.LoopSleep(ref loopSleep);
                     }
                 }
             }
         }
 
-        private void BlipToDispatch (LLUP.Notification n)
-        {
+        private void BlipToDispatch ( LLUP.Notification n ) {
             // The publisher always ensure that each notification has its llup:id 
             // element set so that consumers can decide whether or not
             // they have already processed a notification
@@ -314,8 +268,7 @@ namespace Nuxleus.Messaging.QS
             SendToAll(n);
         }
 
-        private void FailureRaised (ISocketConnection sender, Exception ex)
-        {
+        private void FailureRaised ( ISocketConnection sender, Exception ex ) {
             // here we should log the exception
 
             // we disconnect the faulty client

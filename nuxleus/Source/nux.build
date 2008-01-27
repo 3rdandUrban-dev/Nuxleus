@@ -540,7 +540,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Web" depends="init Nuxleus.Agent Nuxleus.Geo Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension Nuxleus.Extension.Aws Nuxleus.Extension.Aws.Sdb Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
+  <target name="Nuxleus.Web" depends="init Nuxleus.Agent Nuxleus.Geo Nuxleus.Configuration Nuxleus.MetaData Nuxleus.Cryptography Nuxleus.Extension Nuxleus.Extension.Aws Nuxleus.Extension.Aws.Sdb Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
     <csc target="library" unsafe="True" output="${build.dir}/Nuxleus.Web.dll" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
@@ -579,7 +579,8 @@
         <include name="${build.dir}/Nuxleus.Geo.dll"/>
         <include name="${build.dir}/Nuxleus.IO.dll"/>
         <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-        <include name="${build.dir}/Nuxleus.Process.dll"/>
+        <include name="${build.dir}/Nuxleus.MetaData.dll"/>
+	<include name="${build.dir}/Nuxleus.Process.dll"/>
         <include name="${build.dir}/Nuxleus.PubSub.dll"/>
         <include name="${build.dir}/Nuxleus.Utility.dll"/>
         <include name="${build.dir}/Xameleon.dll"/>

@@ -15,25 +15,25 @@ namespace Nuxleus.Web {
         ResponseType m_responseType;
         ErrorType m_errorType;
 
-        public Message (string status) {
+        public Message ( string status ) {
             m_status = status;
             m_responseType = ResponseType.REDIRECT;
             m_errorType = ErrorType.NO_ERROR;
         }
 
-        public Message (string status, ResponseType responseType) {
+        public Message ( string status, ResponseType responseType ) {
             m_status = status;
             m_responseType = responseType;
             m_errorType = ErrorType.NO_ERROR;
         }
 
-        public Message (string status, ErrorType errorType, ResponseType responseType) {
+        public Message ( string status, ErrorType errorType, ResponseType responseType ) {
             m_status = status;
             m_errorType = errorType;
             m_responseType = responseType;
         }
 
-        public void WriteResponseMessage (XmlWriter writer, string innerXml, NuxleusAsyncResult asyncResult) {
+        public void WriteResponseMessage ( XmlWriter writer, string innerXml, NuxleusAsyncResult asyncResult ) {
 
             using (writer) {
                 writer.WriteStartDocument();

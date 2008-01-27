@@ -4,13 +4,12 @@
 // Author:
 //   Sylvain Hellegouarch (sh@3rdandurban.com)
 //
-// Copyright (C) 2007, Sylvain Hellegouarch
+// Copyright (C) 2007, 3rd&Urban, LLC
 // 
 using System;
 
-namespace Nuxleus.Messaging.LLUP
-{
-    public delegate void BlipPostedHandler (Notification n);
+namespace Nuxleus.Messaging.LLUP {
+    public delegate void BlipPostedHandler ( Notification n );
 
     /// <summary>
     /// Each component in the LLUP network acts as a client to another component
@@ -23,8 +22,7 @@ namespace Nuxleus.Messaging.LLUP
     /// new blip, it posts it to the post-office. The server is then
     /// notified of such event and can start processing the notification.
     /// </summary>
-    public class BlipPostOffice
-    {
+    public class BlipPostOffice {
         public BlipPostOffice () { }
 
         /// <summary>
@@ -36,10 +34,8 @@ namespace Nuxleus.Messaging.LLUP
         /// <summary>
         /// Notify that a notification is ready to be processed.
         /// </summary>
-        public void Post (Notification n)
-        {
-            if (Mailbox != null)
-            {
+        public void Post ( Notification n ) {
+            if (Mailbox != null) {
                 Mailbox(n);
             }
         }

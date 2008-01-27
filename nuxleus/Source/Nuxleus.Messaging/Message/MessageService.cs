@@ -5,7 +5,7 @@
 // Author:
 //   Sylvain Hellegouarch (sh@3rdandurban.com)
 //
-// Copyright (C) 2007, Sylvain Hellegouarch
+// Copyright (C) 2007, 3rd&Urban, LLC
 // 
 
 using System;
@@ -16,11 +16,10 @@ using System.Threading;
 using ALAZ.SystemEx.NetEx.SocketsEx;
 using ALAZ.SystemEx.ThreadingEx;
 
-namespace Nuxleus.Messaging
-{
-    public delegate void MessageEventHandler(ISocketConnection sender, IMessage m);
-    public delegate void QueueEventHandler(ISocketConnection sender);
-    public delegate void QueueFailureEventHandler(ISocketConnection sender, Exception ex);
+namespace Nuxleus.Messaging {
+    public delegate void MessageEventHandler ( ISocketConnection sender, IMessage m );
+    public delegate void QueueEventHandler ( ISocketConnection sender );
+    public delegate void QueueFailureEventHandler ( ISocketConnection sender, Exception ex );
 
     /// <summary>
     /// Each server or client instance has an instance of this class.
@@ -28,8 +27,7 @@ namespace Nuxleus.Messaging
     /// declared in this class.
     /// Your application can also wait on the thread events.
     /// </summary>
-    public class MessageService : BaseSocketService
-    {
+    public class MessageService : BaseSocketService {
         private ISocketConnection connection = null;
 
         public AutoResetEvent ReceivedEvent = new AutoResetEvent(false);
@@ -38,7 +36,7 @@ namespace Nuxleus.Messaging
         public AutoResetEvent ConnectEvent = new AutoResetEvent(false);
         public ManualResetEvent DisconnectEvent = new ManualResetEvent(false);
 
-        public MessageService() { }
+        public MessageService () { }
 
         public event MessageEventHandler Received = null;
 
@@ -51,58 +49,47 @@ namespace Nuxleus.Messaging
         /// Gets the connection socket. This is only returns an
         /// actual instance when used in client context.
         /// </summary>
-        public ISocketConnection Connection
-        {
+        public ISocketConnection Connection {
             get { return connection; }
             set { connection = value; }
         }
 
-        public override void OnConnected(ConnectionEventArgs e)
-        {
+        public override void OnConnected ( ConnectionEventArgs e ) {
             connection = e.Connection;
             connection.BeginReceive();
-            if (Connected != null)
-            {
+            if (Connected != null) {
                 Connected(e.Connection);
             }
             ConnectEvent.Set();
         }
 
-        public override void OnSent(MessageEventArgs e)
-        {
-            if (Sent != null)
-            {
+        public override void OnSent ( MessageEventArgs e ) {
+            if (Sent != null) {
                 Sent(e.Connection);
             }
             SentEvent.Set();
         }
 
-        public override void OnReceived(MessageEventArgs e)
-        {
+        public override void OnReceived ( MessageEventArgs e ) {
             IMessage m = new Message();
             m.InnerMessage = new byte[e.Buffer.Length];
             Array.Copy(e.Buffer, m.InnerMessage, e.Buffer.Length);
-            if (Received != null)
-            {
+            if (Received != null) {
                 Received(e.Connection, m);
             }
             ReceivedEvent.Set();
             e.Connection.BeginReceive();
         }
 
-        public override void OnDisconnected(ConnectionEventArgs e)
-        {
-            if (Disconnected != null)
-            {
+        public override void OnDisconnected ( ConnectionEventArgs e ) {
+            if (Disconnected != null) {
                 Disconnected(e.Connection);
             }
             DisconnectEvent.Set();
         }
 
-        public override void OnException(ExceptionEventArgs e)
-        {
-            if (Failure != null)
-            {
+        public override void OnException ( ExceptionEventArgs e ) {
+            if (Failure != null) {
                 Failure(e.Connection, e.Exception);
             }
             ExceptionEvent.Set();

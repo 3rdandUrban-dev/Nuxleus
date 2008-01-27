@@ -21,10 +21,8 @@ using System.Web.Hosting;
 using Nuxleus.Geo;
 using Nuxleus.Geo.MaxMind;
 
-namespace Nuxleus.Web.HttpApplication
-{
-    public class Global : System.Web.HttpApplication
-    {
+namespace Nuxleus.Web.HttpApplication {
+    public class Global : System.Web.HttpApplication {
         bool m_useMemCached;
         bool m_DEBUG;
         Client m_memcachedClient;
@@ -49,8 +47,7 @@ namespace Nuxleus.Web.HttpApplication
         UTF8Encoding m_encoding;
         static HashAlgorithm m_hashAlgorithm = HashAlgorithm.MD5;
 
-        protected void Application_Start(object sender, EventArgs e)
-        {
+        protected void Application_Start ( object sender, EventArgs e ) {
 
             m_useMemCached = false;
             m_DEBUG = false;
@@ -69,26 +66,20 @@ namespace Nuxleus.Web.HttpApplication
             m_namedXsltHashtable = new Hashtable();
             m_globalXsltParams = new Hashtable();
             m_transformContextHashtable = new Hashtable();
-            m_xmlServiceOperationManager = new XmlServiceOperationManager(new Dictionary<int, XmlReader>());
+            m_xmlServiceOperationManager = new XmlServiceOperationManager { XmlReaderDictionary = new Dictionary<int, XmlReader>(), XmlSourceETagDictionary = new Dictionary<int, int>() };
             m_geoIPLookup = new Dictionary<String, IPLocation>();
             m_requestXsltParams = null;
             m_encoding = new UTF8Encoding();
 
-            using(XmlReader configReader = XmlReader.Create(HttpContext.Current.Server.MapPath("~/App_Data/aws.config")))
-            {
-             while (configReader.Read())
-                {
-                    if (configReader.IsStartElement())
-                    {
-                        switch (configReader.Name)
-                        {
-                            case "sdb-access-key":
-                                {
+            using (XmlReader configReader = XmlReader.Create(HttpContext.Current.Server.MapPath("~/App_Data/aws.config"))) {
+                while (configReader.Read()) {
+                    if (configReader.IsStartElement()) {
+                        switch (configReader.Name) {
+                            case "sdb-access-key": {
                                     Environment.SetEnvironmentVariable("SDB_ACCESS_KEY", configReader.ReadString());
                                     break;
                                 }
-                            case "sdb-secret-key":
-                                {
+                            case "sdb-secret-key": {
                                     Environment.SetEnvironmentVariable("SDB_SECRET_KEY", configReader.ReadString());
                                     break;
                                 }
@@ -99,10 +90,10 @@ namespace Nuxleus.Web.HttpApplication
                 }
             }
 
-            if (m_xameleonConfiguration.DebugMode == "yes") m_DEBUG = true;
+            if (m_xameleonConfiguration.DebugMode == "yes")
+                m_DEBUG = true;
 
-            if (m_xameleonConfiguration.UseMemcached == "yes")
-            {
+            if (m_xameleonConfiguration.UseMemcached == "yes") {
                 m_useMemCached = true;
                 m_memcachedClient = new Client(new MemcachedClient(), AspNetMemcachedConfiguration.GetConfig());
             }
@@ -123,8 +114,7 @@ namespace Nuxleus.Web.HttpApplication
             m_resolver.Credentials = CredentialCache.DefaultCredentials;
             m_namedXsltHashtable = m_xsltTransformationManager.NamedXsltHashtable;
 
-            foreach (PreCompiledXslt xslt in m_xameleonConfiguration.PreCompiledXslt)
-            {
+            foreach (PreCompiledXslt xslt in m_xameleonConfiguration.PreCompiledXslt) {
                 string localBaseUri = (string)m_xameleonConfiguration.PreCompiledXslt.BaseUri;
                 if (localBaseUri == String.Empty)
                     localBaseUri = baseUri;
@@ -132,16 +122,14 @@ namespace Nuxleus.Web.HttpApplication
                 m_xsltTransformationManager.Compiler.BaseUri = xsltUri;
                 m_xsltTransformationManager.AddTransformer(xslt.Name, xsltUri, m_resolver, xslt.InitialMode, xslt.InitialTemplate);
                 m_namedXsltHashtable.Add(xslt.Name, xsltUri);
-                if (xslt.UseAsBaseXslt == "yes")
-                {
+                if (xslt.UseAsBaseXslt == "yes") {
                     m_baseXsltContext = new BaseXsltContext(xsltUri, XsltTransformationManager.GenerateNamedETagKey(xslt.Name, xsltUri), xslt.Name);
                 }
             }
 
             m_xsltTransformationManager.SetBaseXsltContext(m_baseXsltContext);
 
-            foreach (XsltParam xsltParam in m_xameleonConfiguration.GlobalXsltParam)
-            {
+            foreach (XsltParam xsltParam in m_xameleonConfiguration.GlobalXsltParam) {
                 m_globalXsltParams[xsltParam.Name] = (string)xsltParam.Select;
             }
 
@@ -158,8 +146,7 @@ namespace Nuxleus.Web.HttpApplication
             Application["as_encoding"] = m_encoding;
         }
 
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
+        protected void Application_BeginRequest ( object sender, EventArgs e ) {
             if (Application["as_memcached"] != null)
                 Application["memcached"] = Application["as_memcached"];
             Application["usememcached"] = Application["as_usememcached"];
@@ -173,25 +160,21 @@ namespace Nuxleus.Web.HttpApplication
             Application["encoding"] = Application["as_encoding"];
         }
 
-        protected void Application_EndRequest(object sender, EventArgs e)
-        {
+        protected void Application_EndRequest ( object sender, EventArgs e ) {
             System.Web.HttpApplication application = (System.Web.HttpApplication)sender;
             if ((bool)Application["debug"])
                 application.Context.Response.Write((string)Application["debugOutput"]);
         }
 
-        protected void Application_AuthenticateRequest(object sender, EventArgs e)
-        {
+        protected void Application_AuthenticateRequest ( object sender, EventArgs e ) {
 
         }
 
-        protected void Application_Error(object sender, EventArgs e)
-        {
+        protected void Application_Error ( object sender, EventArgs e ) {
 
         }
 
-        protected void Application_End(object sender, EventArgs e)
-        {
+        protected void Application_End ( object sender, EventArgs e ) {
             QueueClientPool.Shutdown();
             SockIOPool.GetInstance().Shutdown();
         }

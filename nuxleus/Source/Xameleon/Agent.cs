@@ -7,8 +7,8 @@ using Nuxleus.Async;
 
 namespace Nuxleus.Transform {
 
-    public delegate TransformResponse NuxleusTransformAsyncRequestDelegate (TransformRequest request);
-    public delegate TransformResponse BeginAgentAsyncRequest (TransformRequest request);
+    public delegate TransformResponse NuxleusTransformAsyncRequestDelegate ( TransformRequest request );
+    public delegate TransformResponse BeginAgentAsyncRequest ( TransformRequest request );
 
     public struct Agent : IAgent {
 
@@ -19,7 +19,7 @@ namespace Nuxleus.Transform {
         AsyncCallback m_callback;
         //MemoryStream m_memoryStream;
 
-        public Agent (LoadBalancer loadBalancer) {
+        public Agent ( LoadBalancer loadBalancer ) {
             m_loadBalancer = LoadBalancer.GetLoadBalancer();
             m_postOffice = null;
             m_resultHashtable = new Hashtable();
@@ -46,7 +46,7 @@ namespace Nuxleus.Transform {
 
         //}
 
-        public IAsyncResult BeginRequest (IRequest request, AsyncCallback callback, Nuxleus.Agent.NuxleusAsyncResult asyncResult, object extraData) {
+        public IAsyncResult BeginRequest ( IRequest request, AsyncCallback callback, Nuxleus.Agent.NuxleusAsyncResult asyncResult, object extraData ) {
             //if (m_postOffice == null) {
             //    m_postOffice = m_loadBalancer.GetPostOffice;
             //}
@@ -60,7 +60,7 @@ namespace Nuxleus.Transform {
 
         }
 
-        public IAsyncResult MakeRequest (TransformRequest request, AsyncCallback callback, object extraData) {
+        public IAsyncResult MakeRequest ( TransformRequest request, AsyncCallback callback, object extraData ) {
             //if (m_postOffice == null) {
             //    m_postOffice = m_loadBalancer.GetPostOffice;
             //}
@@ -68,10 +68,10 @@ namespace Nuxleus.Transform {
             Console.WriteLine("Make Transform Request Reached");
             return transformProcessDelegate.BeginInvoke(request, callback, transformProcessDelegate);
             //return m_transform.BeginTransformProcess(request);
-            
+
         }
 
-        public static void EndThisRequest (IAsyncResult ar) {
+        public static void EndThisRequest ( IAsyncResult ar ) {
             TransformProcessDelegate transformProcessDelegate = (TransformProcessDelegate)ar.AsyncState;
             TransformResponse response = transformProcessDelegate.EndInvoke(ar);
             Console.WriteLine("Transform Is Complete Reached");
@@ -79,14 +79,14 @@ namespace Nuxleus.Transform {
         }
 
 
-        public void EndRequest (IAsyncResult ar) {
+        public void EndRequest ( IAsyncResult ar ) {
             TransformProcessDelegate transformProcessDelegate = (TransformProcessDelegate)ar.AsyncState;
             TransformResponse response = transformProcessDelegate.EndInvoke(ar);
             Console.WriteLine("Transform Is Complete Reached");
             Console.WriteLine("Result of transformation: {0}", response.TransformResult);
         }
 
-        public IResponse GetResponse (Guid id) {
+        public IResponse GetResponse ( Guid id ) {
             TransformResponse tr = (TransformResponse)m_resultHashtable[id];
             m_resultHashtable.Remove(id);
             return tr;
