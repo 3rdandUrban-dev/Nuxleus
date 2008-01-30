@@ -5,13 +5,15 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A128AED6-F1C8-4D86-A22B-97EB0D892C70}</ProjectGuid>
+    <ProjectGuid>{C09BBBAE-2874-4168-874C-D3C9E780B6FE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HttpGetAsyncResponse_Test</RootNamespace>
-    <AssemblyName>HttpGetAsyncResponse_Test</AssemblyName>
+    <RootNamespace>HttpGetRequestAsyncWorkflow_Test</RootNamespace>
+    <AssemblyName>HttpGetRequestAsyncWorkflow_Test</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

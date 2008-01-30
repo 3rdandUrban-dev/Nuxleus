@@ -235,9 +235,26 @@
         <include name="System.Collections.Generic.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
+        <include name="System.Xml.Linq.dll"/>
         <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
+      </references>
+    </csc>
+  </target>
+    <target name="Nuxleus.Extension.Linq" depends="init Nuxleus.Cryptography">
+    <csc target="library" output="${build.dir}/Nuxleus.Extension.Linq.dll" keyfile="./Dependencies/Extf.Net.snk">
+      <arg if="${platform::is-unix()}" value="-langversion:linq"/>
+      <sources>
+        <include name="${source.dir}/Nuxleus.Extension.Linq/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Core.dll"/>
+        <include name="System.Collections.dll"/>
+        <include name="System.Collections.Generic.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.Linq.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
       </references>
     </csc>
   </target>
@@ -580,7 +597,7 @@
         <include name="${build.dir}/Nuxleus.IO.dll"/>
         <include name="${build.dir}/Nuxleus.Messaging.dll"/>
         <include name="${build.dir}/Nuxleus.MetaData.dll"/>
-	<include name="${build.dir}/Nuxleus.Process.dll"/>
+        <include name="${build.dir}/Nuxleus.Process.dll"/>
         <include name="${build.dir}/Nuxleus.PubSub.dll"/>
         <include name="${build.dir}/Nuxleus.Utility.dll"/>
         <include name="${build.dir}/Xameleon.dll"/>
@@ -775,13 +792,31 @@
       </references>
     </csc>
   </target>
-  <target name="HttpGetAsyncResponse" depends="init Nuxleus.Web">
+  <target name="HttpGetAsyncResponse" depends="init Nuxleus.Web Nuxleus.Extension.Linq">
     <csc target="exe" output="${build.dir}/HttpGetAsyncResponse_Test.exe" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/CodeSamples/HttpGetAsyncResponse_Test/Program.cs"/>
       </sources>
       <references>
+      <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
+        <include name="${build.dir}/Nuxleus.Web.dll"/>
+        <include name="System.dll"/>
+        <include name="System.ServiceProcess.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+      </references>
+    </csc>
+  </target>
+    <target name="HttpGetRequestAsyncWorkflow_Test" depends="init Nuxleus.Web Nuxleus.Extension.Linq">
+    <csc target="exe" output="${build.dir}/HttpGetRequestAsyncWorkflow_Test.exe" keyfile="./Dependencies/Extf.Net.snk">
+      <arg if="${platform::is-unix()}" value="-langversion:linq"/>
+      <sources>
+        <include name="${source.dir}/CodeSamples/HttpGetRequestAsyncWorkflow_Test/Program.cs"/>
+      </sources>
+      <references>
+      <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
         <include name="${build.dir}/Nuxleus.Web.dll"/>
         <include name="System.dll"/>
         <include name="System.ServiceProcess.dll"/>
@@ -830,6 +865,7 @@
     <call target="Nuxleus.Cryptography"/>
     <call target="Nuxleus.Command"/>
     <call target="Nuxleus.Extension"/>
+    <call target="Nuxleus.Extension.Linq"/>
     <call target="Nuxleus.Extension.Amp.Fm"/>
     <call target="Nuxleus.Extension.Aws"/>
     <call target="Nuxleus.Extension.Aws.Sdb"/>
@@ -862,6 +898,7 @@
     <call target="LLUPRouterService"/>
     <call target="LLUPSubscriberService"/>
     <call target="HttpGetAsyncResponse"/>
+    <call target="HttpGetRequestAsyncWorkflow_Test"/>
 <!--<call target="System.Messaging" />-->
   </target>
   <target name="production" depends="all">

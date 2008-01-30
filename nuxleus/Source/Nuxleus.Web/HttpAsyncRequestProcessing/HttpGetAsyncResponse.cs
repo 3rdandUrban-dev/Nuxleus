@@ -12,7 +12,7 @@ namespace Nuxleus.Web {
 
     public struct HttpGetAsyncResponse {
 
-        static Dictionary<int, Stream> m_responseStreamDictionary = new Dictionary<int, Stream>();
+        static Dictionary<int, MemoryStream> m_responseStreamDictionary = new Dictionary<int, MemoryStream>();
         TextWriter m_logWriter;
         string[] m_httpRequestArray;
         int m_httpRequestArrayLength;
@@ -54,7 +54,7 @@ namespace Nuxleus.Web {
             return nuxleusAsyncResult;
         }
 
-        public Dictionary<int, Stream> ResponseStreamDictionary { get { return m_responseStreamDictionary; } set { m_responseStreamDictionary = value; } }
+        public Dictionary<int, MemoryStream> ResponseStreamDictionary { get { return m_responseStreamDictionary; } set { m_responseStreamDictionary = value; } }
         public bool DEBUG { get { return m_DEBUG; } set { m_DEBUG = value; } }
         public Stopwatch Stopwatch { get { return m_stopwatch; } }
         public List<long> ElapsedTimeList { get { return m_elapsedTimeList; } }
@@ -65,6 +65,8 @@ namespace Nuxleus.Web {
             TextWriter logWriter = m_logWriter;
             bool DEBUG = m_DEBUG;
             List<long> elaspedTimeList = m_elapsedTimeList;
+
+            Encoding encoding = Encoding.UTF8;
 
             foreach (string r in m_httpRequestArray) {
                 Stopwatch stopwatch = new Stopwatch();
@@ -91,7 +93,15 @@ namespace Nuxleus.Web {
                                     logWriter.WriteLine("Pipelined request? {0}", request.Pipelined);
                                 }
 
-                                m_responseStreamDictionary.Add(requestString.GetHashCode(), stream);
+                                try {
+                                    using (stream) {
+                                        StreamReader reader = new StreamReader(stream);
+                                        m_responseStreamDictionary.Add(requestString.GetHashCode(), new MemoryStream(encoding.GetBytes(reader.ReadToEnd())));
+                                    }
+                                } catch (Exception e) {
+                                    Console.WriteLine("Exception: {0}", e.Message);
+                                }
+
                                 if (m_responseStreamDictionary.Count == queryArrayLength) {
                                     if (DEBUG) {
                                         logWriter.WriteLine("Elapsed time of this request:\t {0}ms", elapsedTime);
@@ -107,9 +117,12 @@ namespace Nuxleus.Web {
 
                             });
                 } else {
+
                     using (Stream stream = request.GetResponse().GetResponseStream()) {
-                        m_responseStreamDictionary.Add(requestString.GetHashCode(), stream);
+                        StreamReader reader = new StreamReader(stream);
+                        m_responseStreamDictionary.Add(requestString.GetHashCode(), new MemoryStream(encoding.GetBytes(reader.ReadToEnd())));
                     }
+
                     stopwatch.Stop();
                     long elapsedTime = stopwatch.ElapsedMilliseconds;
                     elaspedTimeList.Add(elapsedTime);
@@ -159,7 +172,7 @@ namespace Nuxleus.Web {
                 m_stopwatch.Start();
             }
             if (DEBUG) {
-                m_logWriter.WriteLine("Beginning call to {0}", request.RequestUri);
+                m_logWriter.WriteLine("Beginning call to {0} on thread: {1}", request.RequestUri, Thread.CurrentThread.ManagedThreadId);
             }
             request.BeginGetResponse(RequestIsComplete, request);
         }
@@ -167,11 +180,10 @@ namespace Nuxleus.Web {
         private void RequestIsComplete ( IAsyncResult asyncResult ) {
             HttpWebRequest request = (HttpWebRequest)asyncResult.AsyncState;
             HttpWebResponse response = (HttpWebResponse)m_request.EndGetResponse(asyncResult);
-            using (Stream stream = response.GetResponseStream()) {
-                m_responseStream(stream, m_stopwatch);
-                if (DEBUG) {
-                    m_logWriter.WriteLine("Ending call to {0}", request.RequestUri);
-                }
+
+            m_responseStream(response.GetResponseStream(), m_stopwatch);
+            if (DEBUG) {
+                m_logWriter.WriteLine("Ending call to {0}", request.RequestUri);
             }
         }
     }

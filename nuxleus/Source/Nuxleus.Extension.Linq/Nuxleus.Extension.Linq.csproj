@@ -5,19 +5,21 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A128AED6-F1C8-4D86-A22B-97EB0D892C70}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{D937BA9E-1E6C-4757-98CC-7D932F4697B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HttpGetAsyncResponse_Test</RootNamespace>
-    <AssemblyName>HttpGetAsyncResponse_Test</AssemblyName>
+    <RootNamespace>Nuxleus.Extension.Linq</RootNamespace>
+    <AssemblyName>Nuxleus.Extension.Linq</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\build\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,22 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Async.cs" />
+    <Compile Include="Functional\Functional.cs" />
+    <Compile Include="Functional\ImmutableList.cs" />
+    <Compile Include="Functional\Lazy.cs" />
+    <Compile Include="Functional\Tuple.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\ExpressionExtensions.cs" />
+    <Compile Include="Query\ExpressionVisitor.cs" />
+    <Compile Include="Query\QueryableExtensions.cs" />
+    <Compile Include="Query\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Nuxleus.Agent\Nuxleus.Agent.csproj">
-      <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>
-      <Name>Nuxleus.Agent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Nuxleus.Extension.Linq\Nuxleus.Extension.Linq.csproj">
-      <Project>{D937BA9E-1E6C-4757-98CC-7D932F4697B0}</Project>
-      <Name>Nuxleus.Extension.Linq</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Nuxleus.Web\Nuxleus.Web.csproj">
-      <Project>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</Project>
-      <Name>Nuxleus.Web</Name>
-    </ProjectReference>
+    <None Include="Extf.Net.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,10 +6,15 @@ using Nuxleus.Web;
 using System.IO;
 using System.Threading;
 using System.Diagnostics;
+using EeekSoft.Asynchronous;
+using System.Collections;
 
 namespace HttpGetAsyncResponse_Test {
 
     class Program {
+
+        static bool m_complete = false;
+
         static void Main ( string[] args ) {
 
             string testURIBase = "http://m.david.s3.amazonaws.com/photos/asynctest/";
@@ -52,16 +57,19 @@ namespace HttpGetAsyncResponse_Test {
         }
 
         public static void EndProcess ( IAsyncResult asyncResult ) {
+
             HttpGetAsyncResponse response = (HttpGetAsyncResponse)asyncResult.AsyncState;
-            Dictionary<int, Stream> responseStreamDictionary = response.ResponseStreamDictionary;
+
+            foreach (KeyValuePair<int, MemoryStream> entry in response.ResponseStreamDictionary) {
+                using (MemoryStream memoryStream = entry.Value) {
+                    Console.WriteLine("Length of Stream: {0}", memoryStream.Length);
+                }
+            }
+
             response.Stopwatch.Stop();
-            Console.WriteLine("Request processing is complete.  There are {0} responses in the response dictionary.", responseStreamDictionary.Count);
+
+            Console.WriteLine("Request processing is complete.  There are {0} responses in the response dictionary.", response.ResponseStreamDictionary.Count);
             Console.WriteLine("The process completed in: {0}ms.", response.Stopwatch.ElapsedMilliseconds);
-            long elapsedTime = 0;
-            //foreach (long l in response.ElapsedTimeList) {
-            //    elapsedTime += l;
-            //}
-            //Console.WriteLine("Total claimed elapsed time for all requests:\t {0}ms", elapsedTime);
         }
     }
 }
