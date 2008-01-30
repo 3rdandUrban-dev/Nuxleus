@@ -27,39 +27,44 @@ namespace HttpGetAsyncResponse_Test {
         }
 
         static IEnumerable<IAsync> AsyncMethod ( string url ) {
+
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Timeout = 10000;
+
+            request.Timeout = 10000 /*TODO: This should be set dynamically*/;
             request.KeepAlive = true;
             request.Pipelined = true;
 
-            Console.WriteLine("[{0}] starting", url);
+            Console.WriteLine("[{0}] starting on thread: {1}", url, Thread.CurrentThread.ManagedThreadId);
 
-            Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
             // asynchronously get the response from http server
             Async<WebResponse> response = request.GetResponseAsync();
             yield return response;
 
-            Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
-            Console.WriteLine("[{0}] got response", url);
+            Console.WriteLine("[{0}] got response on thread: {1}", url, Thread.CurrentThread.ManagedThreadId);
+
             Stream stream = response.Result.GetResponseStream();
 
-            Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
+            // download response stream using the asynchronous extension method
+            // instead of using synchronous StreamReader
             Async<string> responseString = stream.ReadToEndAsync().ExecuteAsync<string>();
             yield return responseString;
 
             Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
 
+            //TODO: Similar to the code HttpGetAsyncResponse code base, add in a dictionary for
+            //storing the response stream (or a variation of that response stream, e.g. a string,
+            //XmlReader, XDocument, XElement, etc.) to then iterate through the entire collection
+            //to process further.  This will blend well with web services such as SimpleDB.
+            //See: http://nuxleus.com/dev/browser/trunk/nuxleus/Source/CodeSamples/HttpGetAsyncResponse_Test/Program.cs#L63
+            //for example.
             //m_responseStreamDictionary.Add(url.GetHashCode(), image);
-
-            // download HTML using the asynchronous extension method
-            // instead of using synchronous StreamReader
-            
-
         }
 
 
         static IEnumerable<IAsync> DownloadAll () {
+
             string testURIBase = "http://m.david.s3.amazonaws.com/photos/asynctest/";
+
             string[] testPhotoBaseArray = new string[]{
                 "2203239268_17915bbbc8",
                 "2205458193_7f8ff3797b",
@@ -95,6 +100,7 @@ namespace HttpGetAsyncResponse_Test {
 
             stopwatch.Stop();
             m_complete = true;
+
             Console.WriteLine("Completed all in:\t {0}ms", stopwatch.ElapsedMilliseconds);
         }
     }
