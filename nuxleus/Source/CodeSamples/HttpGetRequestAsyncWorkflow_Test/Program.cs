@@ -16,14 +16,10 @@ namespace HttpGetAsyncResponse_Test {
     class Program {
 
         static Dictionary<int, Stream> m_responseStreamDictionary = new Dictionary<int, Stream>();
-        static bool m_complete = false;
 
         static void Main ( string[] args ) {
             // Download the URLs and wait until all of them complete
             DownloadAll().ExecuteAndWait();
-            while (!m_complete) {
-                Console.ReadLine();
-            }
         }
 
         static IEnumerable<IAsync> AsyncMethod ( string url ) {
