@@ -67,7 +67,7 @@ namespace HttpGetAsyncResponse_Test {
                 "2206244498_3b645a4929",
             };
             string[] testPhotoItemArray = new string[]{
-                "",
+                String.Empty,
                 "_b",
                 "_m",
                 "_s",
@@ -95,7 +95,6 @@ namespace HttpGetAsyncResponse_Test {
             yield return methods;
 
             stopwatch.Stop();
-            m_complete = true;
 
             Console.WriteLine("Completed all in:\t {0}ms", stopwatch.ElapsedMilliseconds);
         }
