@@ -1,0 +1,1561 @@
+Run One: Serial Requests
+Current thread id: 1
+Invoking Process
+Beginning async HTTP request process...
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 745ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_b.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 564ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_m.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 253ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_s.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 222ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_t.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 296ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 525ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_b.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 766ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_m.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 401ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_s.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 235ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_t.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 234ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 467ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_b.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 599ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_m.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 431ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_s.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 221ms
+Continue process
+Current thread id: 1 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_t.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 243ms
+Completing call.
+Length of Stream: 7394
+Length of Stream: 70826
+Length of Stream: 32588
+Length of Stream: 234429
+Length of Stream: 5254
+Length of Stream: 13106
+Length of Stream: 7088
+Length of Stream: 184005
+Length of Stream: 3987
+Length of Stream: 3830
+Length of Stream: 537035
+Length of Stream: 915210
+Length of Stream: 29065
+Length of Stream: 5945
+Length of Stream: 228391
+Request processing is complete.  There are 15 responses in the response dictionary.
+The process completed in: 6226ms.
+## Run Two: Async Requests: Delegates
+Current thread id: 1
+Invoking Process
+Beginning async HTTP request process...
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_b.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_m.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_s.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_t.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_b.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_m.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_s.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_t.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_b.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_m.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_s.jpg on thread: 1
+Beginning call to http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_t.jpg on thread: 1
+Current thread id: 2 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_b.jpg
+KeepAlive connection? True
+Pipelined request? True
+Current thread id: 3 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 713ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8.jpg
+Elapsed time of this request:	 543ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_b.jpg
+Current thread id: 4 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_m.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 883ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_m.jpg
+Current thread id: 2 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_s.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 1029ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_s.jpg
+Current thread id: 2 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_t.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 1133ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_t.jpg
+Current thread id: 5 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_b.jpg
+KeepAlive connection? True
+Pipelined request? True
+Current thread id: 4 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 1623ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b.jpg
+Elapsed time of this request:	 1559ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_b.jpg
+Current thread id: 2 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_m.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 2160ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_m.jpg
+Current thread id: 3 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_s.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 2303ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_s.jpg
+Current thread id: 6 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_t.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 2462ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_t.jpg
+Current thread id: 4 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 2793ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929.jpg
+Current thread id: 2 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_b.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 3044ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_b.jpg
+Current thread id: 4 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_m.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 3577ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_m.jpg
+Current thread id: 6 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_s.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 3733ms
+Continuing process...
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_s.jpg
+Current thread id: 5 for current request: http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_t.jpg
+KeepAlive connection? True
+Pipelined request? True
+Elapsed time of this request:	 3895ms
+Completing call.
+Length of Stream: 7394
+Length of Stream: 70826
+Length of Stream: 32588
+Length of Stream: 234429
+Length of Stream: 5254
+Length of Stream: 13106
+Length of Stream: 7088
+Length of Stream: 184005
+Length of Stream: 3987
+Length of Stream: 3830
+Length of Stream: 537035
+Length of Stream: 915210
+Length of Stream: 29065
+Length of Stream: 5945
+Length of Stream: 228391
+Request processing is complete.  There are 15 responses in the response dictionary.
+The process completed in: 4081ms.
+Ending call to http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_t.jpg
+## Run Three: Async Requests: TomasP's Async Workflows
+Current thread id:	 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_b.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_m.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_s.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_t.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_b.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_m.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_s.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_t.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_b.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_m.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_s.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_t.jpg] starting on thread: 1
+[http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_b.jpg] got response on thread: 2
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8.jpg] got response on thread: 3
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 273
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 407
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 668
+[url] got data: 0
+Current thread id: 4
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 416
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 851
+[url] got data: 0
+Current thread id: 4
+[http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_s.jpg] got response on thread: 4
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 264
+[url] got data: 0
+Current thread id: 4
+[http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_m.jpg] got response on thread: 5
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 905
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 298
+[url] got data: 0
+Current thread id: 5
+[http://m.david.s3.amazonaws.com/photos/asynctest/2203239268_17915bbbc8_t.jpg] got response on thread: 2
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 179
+[url] got data: 0
+Current thread id: 2
+[http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b.jpg] got response on thread: 3
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 901
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 504
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 220
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 28
+[url] got data: 0
+Current thread id: 3
+[http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_b.jpg] got response on thread: 4
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 901
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 852
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 808
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 264
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 656
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 852
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 416
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 416
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 416
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 112
+[url] got data: 1024
+[url] got data: 376
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 940
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 548
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 416
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 700
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 700
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 264
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 264
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 416
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 852
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 264
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 352
+[url] got data: 0
+Current thread id: 5
+[http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_m.jpg] got response on thread: 4
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 403
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 718
+[url] got data: 0
+Current thread id: 4
+[http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_t.jpg] got response on thread: 3
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 893
+[url] got data: 0
+Current thread id: 5
+[http://m.david.s3.amazonaws.com/photos/asynctest/2205458193_7f8ff3797b_s.jpg] got response on thread: 4
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 917
+[url] got data: 0
+Current thread id: 4
+[http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929.jpg] got response on thread: 5
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 903
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_b.jpg] got response on thread: 4
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 901
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 808
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 416
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 700
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 768
+[url] got data: 0
+Current thread id: 3
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 220
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 416
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 852
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1004
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 416
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 656
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 68
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 416
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 568
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 872
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 132
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 436
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 284
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 705
+[url] got data: 0
+Current thread id: 2
+[http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_s.jpg] got response on thread: 3
+[http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_m.jpg] got response on thread: 4
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 903
+[url] got data: 276
+[url] got data: 0
+Current thread id: 3
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 720
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 805
+[url] got data: 0
+Current thread id: 5
+[http://m.david.s3.amazonaws.com/photos/asynctest/2206244498_3b645a4929_t.jpg] got response on thread: 3
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 1024
+[url] got data: 11
+[url] got data: 0
+Current thread id: 3
+Completed all in:	 3572ms

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using Nuxleus.Agent;
 using System.Collections.Generic;
