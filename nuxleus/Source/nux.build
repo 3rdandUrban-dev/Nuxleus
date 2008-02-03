@@ -204,6 +204,22 @@
       </references>
     </csc>
   </target>
+  <target name="Nuxleus.Drawing" depends="init Nuxleus.Agent">
+    <csc target="library" output="${build.dir}/Nuxleus.Drawing.dll" keyfile="./Dependencies/Extf.Net.snk">
+      <arg if="${platform::is-unix()}" value="-langversion:linq"/>
+      <sources>
+        <include name="${source.dir}/Nuxleus.Drawing/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Agent.dll"/>
+        <include name="System.Web.dll" />
+        <include name="System.ServiceProcess.dll" />
+        <include name="System.Configuration.Install.dll" />
+        <include name="System.dll" />
+        <include name="System.Drawing.dll" />
+      </references>
+    </csc>
+  </target>
   <target name="Nuxleus.Profile" depends="init Nuxleus.Agent Nuxleus.Entity">
     <csc target="library" output="${build.dir}/Nuxleus.Profile.dll" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
@@ -240,7 +256,7 @@
       </references>
     </csc>
   </target>
-    <target name="Nuxleus.Extension.Linq" depends="init Nuxleus.Cryptography">
+  <target name="Nuxleus.Extension.Linq" depends="init Nuxleus.Cryptography">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Linq.dll" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
@@ -487,7 +503,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Service" depends="init Nuxleus.Utility Nuxleus.Logging Nuxleus.Configuration Nuxleus.Messaging Nuxleus.Vendor">
+  <target name="Nuxleus.Service" depends="init Nuxleus.Drawing Nuxleus.Utility Nuxleus.Logging Nuxleus.Configuration Nuxleus.Messaging Nuxleus.Vendor">
     <csc target="library" output="${build.dir}/Nuxleus.Service.dll" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
@@ -496,12 +512,14 @@
       <references>
         <include name="${dependencies.dir}/Saxon.Api.dll"/>
         <include name="${build.dir}/Nuxleus.Logging.dll"/>
+        <include name="${build.dir}/Nuxleus.Drawing.dll"/>
         <include name="${build.dir}/Nuxleus.Utility.dll"/>
         <include name="${build.dir}/Nuxleus.Process.dll"/>
         <include name="${build.dir}/Nuxleus.Configuration.dll"/>
         <include name="${build.dir}/Nuxleus.Messaging.dll"/>
         <include name="${build.dir}/Nuxleus.Vendor.dll"/>
         <include name="System.dll"/>
+        <include name="System.Drawing.dll"/>
         <include name="System.Configuration.dll"/>
         <include name="System.Configuration.Install.dll"/>
         <include name="System.Data.dll"/>
@@ -557,7 +575,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Web" depends="init Nuxleus.Agent Nuxleus.Geo Nuxleus.Configuration Nuxleus.MetaData Nuxleus.Cryptography Nuxleus.Extension Nuxleus.Extension.Aws Nuxleus.Extension.Aws.Sdb Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
+  <target name="Nuxleus.Web" depends="init Nuxleus.Drawing Nuxleus.Service Nuxleus.Agent Nuxleus.Geo Nuxleus.Configuration Nuxleus.MetaData Nuxleus.Cryptography Nuxleus.Extension Nuxleus.Extension.Aws Nuxleus.Extension.Aws.Sdb Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
     <csc target="library" unsafe="True" output="${build.dir}/Nuxleus.Web.dll" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
@@ -587,18 +605,21 @@
         <include name="System.Xml.dll"/>
         <include name="System.Web.dll"/>
         <include name="System.Core.dll"/>
+        <include name="System.ServiceProcess.dll"/>
         <include name="${build.dir}/Nuxleus.Agent.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
         <include name="${build.dir}/Nuxleus.Configuration.dll"/>
         <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
+        <include name="${build.dir}/Nuxleus.Drawing.dll"/>
         <include name="${build.dir}/Nuxleus.Geo.dll"/>
         <include name="${build.dir}/Nuxleus.IO.dll"/>
         <include name="${build.dir}/Nuxleus.Messaging.dll"/>
         <include name="${build.dir}/Nuxleus.MetaData.dll"/>
         <include name="${build.dir}/Nuxleus.Process.dll"/>
         <include name="${build.dir}/Nuxleus.PubSub.dll"/>
+        <include name="${build.dir}/Nuxleus.Service.dll"/>
         <include name="${build.dir}/Nuxleus.Utility.dll"/>
         <include name="${build.dir}/Xameleon.dll"/>
         <include name="${dependencies.dir}/IKVM.OpenJDK.ClassLibrary.dll"/>
@@ -799,7 +820,7 @@
         <include name="${source.dir}/CodeSamples/HttpGetAsyncResponse_Test/Program.cs"/>
       </sources>
       <references>
-      <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
         <include name="${build.dir}/Nuxleus.Web.dll"/>
         <include name="System.dll"/>
         <include name="System.ServiceProcess.dll"/>
@@ -809,14 +830,14 @@
       </references>
     </csc>
   </target>
-    <target name="HttpGetRequestAsyncWorkflow_Test" depends="init Nuxleus.Web Nuxleus.Extension.Linq">
+  <target name="HttpGetRequestAsyncWorkflow_Test" depends="init Nuxleus.Web Nuxleus.Extension.Linq">
     <csc target="exe" output="${build.dir}/HttpGetRequestAsyncWorkflow_Test.exe" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/CodeSamples/HttpGetRequestAsyncWorkflow_Test/Program.cs"/>
       </sources>
       <references>
-      <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
         <include name="${build.dir}/Nuxleus.Web.dll"/>
         <include name="System.dll"/>
         <include name="System.ServiceProcess.dll"/>
@@ -861,6 +882,7 @@
     <call target="Nuxleus.Configuration"/>
     <call target="Nuxleus.Extension"/>
     <call target="Nuxleus.Entity"/>
+    <call target="Nuxleus.Drawing"/>
     <call target="Nuxleus.Profile"/>
     <call target="Nuxleus.Cryptography"/>
     <call target="Nuxleus.Command"/>

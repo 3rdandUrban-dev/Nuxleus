@@ -76,6 +76,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -129,7 +130,10 @@
       <Link>WebServer\Mono.WebServer\XSPWorkerRequest.cs</Link>
     </Compile>
     <Compile Include="Agent.cs" />
+    <Compile Include="HttpApplication\FileMessageQueue_Global.cs" />
     <Compile Include="HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationStatusHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncJobStatusRequestHandler.cs" />
     <Compile Include="HttpHandler\temp.cs" />
     <Compile Include="HttpModule\NuxleusAsyncRequestOpenIDAuthenticationHttpModule.cs" />
@@ -150,7 +154,7 @@
     <Compile Include="Message\Message.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncXmlServiceOperationHandler.cs" />
     <Compile Include="WebServer\WebServer.cs" />
-    <Compile Include="HttpApplication\*.cs" />
+    <Compile Include="HttpApplication\Global.cs" />
     <Compile Include="XmlServiceOperation\XmlServiceOperationManager.cs" />
     <Compile Include="XmlServiceOperation\XmlServiceOperationReader.cs" />
   </ItemGroup>
@@ -166,6 +170,10 @@
     <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
       <Project>{76489AFC-B3D6-40E4-AA45-840D069E4F43}</Project>
       <Name>Nuxleus.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Drawing\Nuxleus.Drawing.csproj">
+      <Project>{13FADE77-14DD-4F14-A52E-63AE71DB1756}</Project>
+      <Name>Nuxleus.Drawing</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Extension.Aws.Sdb\Nuxleus.Extension.Aws.Sdb.csproj">
       <Project>{1B652675-CFC9-43C5-9C72-938B42EB317F}</Project>
@@ -202,6 +210,10 @@
     <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
       <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>
       <Name>Nuxleus.PubSub</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Service\Nuxleus.Service.csproj">
+      <Project>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</Project>
+      <Name>Nuxleus.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Utility\Nuxleus.Utility.csproj">
       <Project>{3D54F988-AF1D-4B5C-A013-C85525926692}</Project>

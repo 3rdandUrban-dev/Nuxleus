@@ -26,7 +26,7 @@ namespace Nuxleus.Service
             return instance;
         }
 
-        public Queue GetQueue
+        public System.Collections.Queue GetQueue
         {
             get
             {
