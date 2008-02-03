@@ -14,7 +14,7 @@ using Nuxleus.Service.Drawing;
 using Nuxleus.Logging;
 using Nuxleus.Service.FileQueue;
 
-namespace IAct.Service {
+namespace Nuxleus.Service {
 
     public class FileQueueWatcherService : ServiceBase {
 
