@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+<title>
+  Calling managed code from Javascript
+</title>
+  <script src="Silverlight.js" type="text/javascript"></script>
+  <script src="CreateSilverlight.js" type="text/javascript"></script>
+</head>
+<body style="background-color: beige">
+<form action="">
+   <div id="agControl1Host" >
+      <script type="text/javascript">
+        var pe = document.getElementById("agControl1Host");
+        createSilverlight();	
+      </script>
+   </div>
+    <h3>Calling managed code from Javascript</h3>
+    <hr />
+  	<div id="basic1">
+      <br />
+	    Enter a name: <input type="text" id="txtName" />
+	    <br />
+	    Enter an age: <input type="text" id="txtAge" />
+	    <br /><br />
+	    <strong>
+        Call scriptable members in a managed class<br />
+      </strong>
+	    <input type="button" id="btnScriptableEcho" onclick="CallScriptable()" value="Display a string returned from class" />
+	    <br />
+      <textarea id="txtArea" cols="30" rows="4"></textarea>
+      <br />
+      <br />
+      <input type="button" id="btnMakeMeYounger" onclick="CallMakeMeYounger()" value="Set the MakeMeYoungerProperty" />
+	  </div>
+  
+	<script type="text/javascript">
+	    
+	    function firedFromScriptableEvent(sender, args)
+	    {
+	      alert("AgeUpdated Event fired in the managed class.");
+	      alert("The name property in the CustomEventArgs for the AgeUpdated event is set to: " + args.Name);
+	       
+	      alert("The age property in the CustomEventArgs for the AgeUpdated event is set to: " + args.Age);
+	      
+      }
+      
+	    function CallScriptable()
+	    {
+		    var input = document.getElementById("txtName");
+		    var inputAge = document.getElementById("txtAge");
+	      var output = document.getElementById("txtArea");
+		    var control = document.getElementById("agControl1");
+
+		    control.Content.basic.AgeUpdatedEvent = firedFromScriptableEvent;
+
+		    output.value = control.Content.basic.ReturnAString(input.value, parseInt(inputAge.value));
+	    } 
+	    
+      function CallMakeMeYounger()
+      {
+      var control = document.getElementById("agControl1");
+      var ageInput = parseInt("40");
+	    control.Content.basic.MakeMeYoungerProperty = ageInput;
+	    var retvalA = "I just set the MakeMeYounger managed code property using JavaScript to: " + ageInput.toString();
+	    alert(retvalA);
+	    var retvalB = "I just updated the MakeMeYounger property value in managed code to: " + control.Content.basic.MakeMeYoungerProperty;
+	    alert(retvalB);
+	    }
+           
+	</script>
+	
+ </form>
+</body>
+</html>
