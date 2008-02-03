@@ -5,8 +5,12 @@ using System.Text;
 using System.Net;
 using System.IO;
 using System.Threading;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace EeekSoft.Asynchronous {
+
+    public enum ReturnType { XmlReader, String, XDocument, XNode, XElement, XStreamingElement };
     /// <summary>
     /// Represents a type with no value - alternative to C# void in 
     /// situations where void can't be used
@@ -75,6 +79,15 @@ namespace EeekSoft.Asynchronous {
         /// </summary>
         /// <returns>Returns string using the 'Result' class.</returns>
         public static IEnumerable<IAsync> ReadToEndAsync ( this Stream stream ) {
+            return stream.ReadToEndAsync(ReturnType.String);
+        }
+
+        /// <summary>
+        /// Reads asynchronously the entire content of the stream and returns it 
+        /// as a string using StreamReader.
+        /// </summary>
+        /// <param name="returnType">Specifies the desired return type.  The default is System.String.</param>
+        public static IEnumerable<IAsync> ReadToEndAsync ( this Stream stream, ReturnType returnType ) {
             MemoryStream ms = new MemoryStream();
             int read = -1;
             while (read != 0) {
@@ -88,9 +101,29 @@ namespace EeekSoft.Asynchronous {
             }
 
             ms.Seek(0, SeekOrigin.Begin);
-            string s = new StreamReader(ms).ReadToEnd();
 
-            yield return new Result<string>(s);
+            switch (returnType) {
+                case ReturnType.XmlReader:
+                    yield return new Result<XmlReader>(XmlReader.Create(ms));
+                    break;
+                case ReturnType.XDocument:
+                    yield return new Result<XDocument>(XDocument.Parse(new StreamReader(ms).ReadToEnd()));
+                    break;
+                case ReturnType.XElement:
+                    yield return new Result<XElement>(XElement.Parse(new StreamReader(ms).ReadToEnd()));
+                    break;
+                case ReturnType.XStreamingElement:
+                    yield return new Result<XStreamingElement>(new XStreamingElement("Result", XElement.Parse(new StreamReader(ms).ReadToEnd())));
+                    break;
+                case ReturnType.XNode:
+                    yield return new Result<XNode>(XNode.ReadFrom(XmlReader.Create(ms)));
+                    break;
+                case ReturnType.String:
+                default:
+                    string s = new StreamReader(ms).ReadToEnd();
+                    yield return new Result<string>(s);
+                    break;
+            }
         }
 
         #endregion

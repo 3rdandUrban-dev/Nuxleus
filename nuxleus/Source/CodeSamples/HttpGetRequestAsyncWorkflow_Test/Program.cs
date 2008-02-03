@@ -15,7 +15,7 @@ namespace HttpGetAsyncResponse_Test {
 
     class Program {
 
-        static Dictionary<int, Stream> m_responseStreamDictionary = new Dictionary<int, Stream>();
+        static Dictionary<int, string> m_responseStreamDictionary = new Dictionary<int, string>();
 
         static void Main ( string[] args ) {
             // Download the URLs and wait until all of them complete
@@ -42,18 +42,16 @@ namespace HttpGetAsyncResponse_Test {
 
             // download response stream using the asynchronous extension method
             // instead of using synchronous StreamReader
+            // TODO: Sniff the response content type and pass this into ReadToEndAsync
+            // using the ResponseType enumeration.
             Async<string> responseString = stream.ReadToEndAsync().ExecuteAsync<string>();
             yield return responseString;
 
             Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
 
-            //TODO: Similar to the code HttpGetAsyncResponse code base, add in a dictionary for
-            //storing the response stream (or a variation of that response stream, e.g. a string,
-            //XmlReader, XDocument, XElement, etc.) to then iterate through the entire collection
-            //to process further.  This will blend well with web services such as SimpleDB.
-            //See: http://nuxleus.com/dev/browser/trunk/nuxleus/Source/CodeSamples/HttpGetAsyncResponse_Test/Program.cs#L63
-            //for example.
-            //m_responseStreamDictionary.Add(url.GetHashCode(), image);
+            //TODO: Use a Hashtable instead of a generic dictionary to store the result of each
+            //response stream for further processing.
+            m_responseStreamDictionary.Add(url.GetHashCode(), responseString.Result);
         }
 
 
