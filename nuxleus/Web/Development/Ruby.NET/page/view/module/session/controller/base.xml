@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<view:module class="base" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="session-controller-menu" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+    <view:item id="session-controller-nav" src="/page/view/menu/navigation/session-nav/base.xml" />
+  </view:container>
+</view:module>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<view:container id="search-box-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <view:item id="search-box">
+    <form id="search-form" method="get" action="/summary" target="_top">
+      <input id="search-text" class="single-input" type="text" name="search" maxlength="255"/>
+      <button class="Button submit">
+        <span class="ButtonLabel">plug me in!</span>
+      </button>
+    </form>
+  </view:item>
+</view:container>
