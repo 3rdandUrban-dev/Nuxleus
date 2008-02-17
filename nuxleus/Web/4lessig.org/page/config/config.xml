@@ -22,13 +22,13 @@
   xmlns:html="http://www.w3.org/1999/xhtml">
   <page:advice>
     <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
-    <advice:date>December 9th, 2007</advice:date>
+    <advice:date>February 16th, 2008</advice:date>
     <advice:protocol>http://</advice:protocol>
     <advice:space>&#160;</advice:space>
     <advice:dot>.</advice:dot>
     <advice:colon>:</advice:colon>
-    <advice:domain-name>dev.amp</advice:domain-name>
-    <advice:root>fm</advice:root>
+    <advice:domain-name>4lessig</advice:domain-name>
+    <advice:root>org</advice:root>
     <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
     <advice:domain.label>amp.fm</advice:domain.label>
     <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
@@ -64,8 +64,6 @@
     <advice:toggle.duration>500</advice:toggle.duration>
     <advice:onload.mySlider>mySlider.toggle()</advice:onload.mySlider>
     <advice:atom>application/atom+xml</advice:atom>
-    <advice:bungee.app>fc0e61d2-0dea-4e3e-bc5f-4a9a29d70d74</advice:bungee.app>
-    <advice:bungee.grid>http://grid-den.bungeegrid.com</advice:bungee.grid>
   </page:advice>
 </page:config>
 
