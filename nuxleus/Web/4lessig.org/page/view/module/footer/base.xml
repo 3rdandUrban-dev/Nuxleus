@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<view:module id="unboxed" xmlns:view="http://atomictalk.org/page/view">
+  <view:container>
+    <view:item>
+      <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab" id="Player_eaefe27b-4a48-42c6-b727-babbbdd28ecc" WIDTH="100%" HEIGHT="100%">
+        <PARAM NAME="movie" VALUE="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxsltblogcom-20%2F8007%2Feaefe27b-4a48-42c6-b727-babbbdd28ecc&amp;Operation=GetDisplayTemplate"/>
+        <PARAM NAME="quality" VALUE="high"/>
+        <PARAM NAME="bgcolor" VALUE="#FFFFFF"/>
+        <PARAM NAME="allowscriptaccess" VALUE="always"/>
+        <embed src="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxsltblogcom-20%2F8007%2Feaefe27b-4a48-42c6-b727-babbbdd28ecc&amp;Operation=GetDisplayTemplate" id="Player_eaefe27b-4a48-42c6-b727-babbbdd28ecc" quality="high" bgcolor="#ffffff" name="Player_eaefe27b-4a48-42c6-b727-babbbdd28ecc" allowscriptaccess="always" type="application/x-shockwave-flash" align="middle" height="100%" width="100%"/>
+      </OBJECT>
+      <NOSCRIPT>
+        <A HREF="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxsltblogcom-20%2F8007%2Feaefe27b-4a48-42c6-b727-babbbdd28ecc&amp;Operation=NoScript">Amazon.com Widgets</A>
+      </NOSCRIPT>
+    </view:item>
+  </view:container>
+</view:module>

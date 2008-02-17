@@ -1,0 +1,21 @@
+<model:collection id="top-login" style="RtoL" xmlns="http://www.w3.org/1999/xhtml" xmlns:model="http://atomictalk.org/page/model"
+    xmlns:collection="http://atomictalk.org/page/model/collection" xmlns:doc="http://atomictalk.org/feed/doc">
+    <!--<view:item base="@@current:whatsnew@@" style="selected" use-template="view:link"/>
+            <view:item base="@@host:blog@@" use-template="view:link"/>
+            <view:item base="@@host:login@@" use-template="view:link"/>
+            <view:item base="@@openid:signup@@" use-template="view:link"/>
+            <view:item base="@@host:help@@" use-template="view:link"/>-->
+    <collection:item style="selected">
+        <a href="@@base-uri@@/">What's New</a>
+    </collection:item>
+    <collection:item>
+        <a href="@@base-uri@@/blog/">amp.fm Blog</a>
+    </collection:item>
+    <doc:session.openid href="/service/session/generate-request-guid" base-uri="@@base-uri@@" />
+    <collection:item>
+        <a href="/about">About</a>
+    </collection:item>
+    <collection:item>
+        <a href="/help">Help</a>
+    </collection:item>
+</model:collection>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<model:module id="img-nav" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:collection="http://atomictalk.org/page/model/collection"
+    xmlns:model="http://atomictalk.org/page/model">
+    <model:collection id="search-box" style="transparency-90">
+        <form id="search-form" method="get" action="@@search-summary@@" target="_top">
+            <input id="search-text" class="single-input" type="text" name="search" maxlength="255" />
+            <button class="Button submit">
+                <span class="ButtonLabel">plug me in!</span>
+            </button>
+        </form>
+    </model:collection>
+    <model:collection id="search-categories">
+        <collection:item style="selected">
+            <a href="#foo">Everything</a>
+        </collection:item>
+        <collection:item>
+            <a href="#foo">Events</a>
+        </collection:item>
+        <collection:item>
+            <a href="#foo">Genre</a>
+        </collection:item>
+        <collection:item>
+            <a href="#foo">Charts</a>
+        </collection:item>
+        <collection:item>
+            <a href="#foo">On This Page</a>
+        </collection:item>
+    </model:collection>
+</model:module>
