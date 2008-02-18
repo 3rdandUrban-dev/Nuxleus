@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+<view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:request="http://nuxleus.com/session/request" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
   <div class="form" id="pledgeSupport">
     <h1>Pledge your support 4Lessig 4Congress!</h1>
-    <form id="lessig" method="GET" action="/service/4lessig/add-support" target="_top">
+    <form id="lessig" method="GET" action="/service/4lessig/add-support/" target="_top">
       <table id="pledgeSupportTable">
         <tr>
           <td>Name:</td>
@@ -27,5 +27,24 @@
         </tr>
       </table>
     </form>
+    <h2>Debug Info</h2>
+    <ul>
+      <li>IP: <geo:ip/>
+      </li>
+      <li>City: <geo:location />
+      </li>
+      <li>GeoLat: <geo:lat />
+      </li>
+      <li>GeoLong: <geo:long />
+      </li>
+      <li>SessionID: <session:id />
+      </li>
+      <li>RequestID: <session:request-id />
+      </li>
+      <li>RequestDate: <session:request-date />
+      </li>
+      <li>RequestTime: <session:request-time />
+      </li>
+    </ul>
   </div>
 </view:module>

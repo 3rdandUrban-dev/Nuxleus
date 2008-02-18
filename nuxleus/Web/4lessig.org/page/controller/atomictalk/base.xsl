@@ -6,7 +6,7 @@
   Contributors to this code base include, 
   Russ Miles (mailto:aohacker@gmail.com; http://www.russmiles.com/)
 -->
-<xsl:stylesheet version="1.0" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:response="http://nuxleus.com/message/response" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:layout="http://atomictalk.org/page/view/layout" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common" xmlns:resource="http://atomictalk.org/page/resource" xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#" xmlns:atompub="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="html exsl my app response advice atom head page service resource output form body view menu model msxsl doc atompub">
+<xsl:stylesheet version="1.0" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:request="http://nuxleus.com/session/request" xmlns:response="http://nuxleus.com/message/response" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:layout="http://atomictalk.org/page/view/layout" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common" xmlns:resource="http://atomictalk.org/page/resource" xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#" xmlns:atompub="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="html exsl my app response advice atom head page service resource output form body view menu model msxsl doc atompub">
 
   <xsl:param name="closure-token-pre-delimiter" select="'|@@'"/>
   <xsl:param name="closure-token-post-delimiter" select="'@@|'"/>
@@ -30,13 +30,15 @@
   <xsl:param name="parameter-list-delimeter" select="','"/>
   <xsl:param name="parameter-value-assigment-token" select="'='"/>
 
-  <xsl:variable name="session-info" select="document('/service/session/get-session-request-info/')/response:message"/>
+  <xsl:variable name="session-info" select="document('/service/session/validate-request/')/response:message"/>
   <xsl:variable name="session-name" select="$session-info/response:session/@openid"/>
   <xsl:variable name="session-id" select="$session-info/response:session/@session-id"/>
-  <xsl:variable name="request-id" select="$session-info/response:session/response:request-guid"/>
-  <xsl:variable name="request-date" select="$session-info/response:session/response:request-date"/>
+  <xsl:variable name="request-id" select="$session-info/response:request-guid"/>
+  <xsl:variable name="request-date" select="$session-info/response:request-date"/>
+  <xsl:variable name="request-time" select="$session-info/response:request-time"/>
   <xsl:variable name="geo-ip" select="$session-info/response:geo"/>
-  <xsl:variable name="location" select="$geo-ip//response:city"/>
+  <xsl:variable name="ip" select="$geo-ip/response:ip"/>
+  <xsl:variable name="location" select="$geo-ip/response:city"/>
   <xsl:variable name="lat" select="$geo-ip/response:lat"/>
   <xsl:variable name="long" select="$geo-ip/response:long"/>
 
@@ -108,11 +110,37 @@
     </head>
   </xsl:template>
 
-<!--   <xsl:template name="geo-ip-map-script">
-    <xsl:param name="lat"/>
-    <xsl:param name="long"/>
+  <xsl:template match="geo:location">
+    <xsl:value-of select="$location"/>
+  </xsl:template>
 
-  </xsl:template> -->
+  <xsl:template match="geo:lat">
+    <xsl:value-of select="$lat"/>
+  </xsl:template>
+
+  <xsl:template match="geo:long">
+    <xsl:value-of select="$long"/>
+  </xsl:template>
+
+  <xsl:template match="session:id">
+    <xsl:value-of select="$session-id"/>
+  </xsl:template>
+
+  <xsl:template match="session:request-id">
+    <xsl:value-of select="$request-id"/>
+  </xsl:template>
+
+  <xsl:template match="session:request-date">
+    <xsl:value-of select="$request-date"/>
+  </xsl:template>
+
+  <xsl:template match="session:request-time">
+    <xsl:value-of select="$request-time"/>
+  </xsl:template>
+  
+  <xsl:template match="geo:ip">
+    foo: <xsl:value-of select="$ip"/>
+  </xsl:template>
 
   <xsl:template match="page:body">
     <body>
@@ -262,7 +290,6 @@
   </xsl:template>
 
   <xsl:template match="geo:location">
-    <!-- <xsl:value-of select="$geo.location//response:city"/> -->
     <xsl:value-of select="$location"/>
   </xsl:template>
 
@@ -289,16 +316,13 @@
         </xsl:otherwise>
       </xsl:choose>
     </xsl:variable> -->
-    <!-- <xsl:apply-templates select="$local-news-doc/response:*[local-name() = current()/@topic]" mode="message"/> -->
-  </xsl:template>
+    <!-- <xsl:apply-templates select="$local-news-doc/response:*[local-name() = current()/@topic]" mode="message"/> --></xsl:template>
 
   <xsl:template match="doc:local-flickr-photos">
-    <!-- <xsl:apply-templates select="$local-flickr-images/response:*[local-name() = current()/@topic]" mode="flickr"/> -->
-  </xsl:template>
+    <!-- <xsl:apply-templates select="$local-flickr-images/response:*[local-name() = current()/@topic]" mode="flickr"/> --></xsl:template>
 
   <xsl:template match="doc:local-blog-entries">
-    <!-- <xsl:apply-templates select="$local-blog-entries/response:*[local-name() = current()/@topic]" mode="blogs"/> -->
-  </xsl:template>
+    <!-- <xsl:apply-templates select="$local-blog-entries/response:*[local-name() = current()/@topic]" mode="blogs"/> --></xsl:template>
 
   <xsl:template match="*" mode="blogs">
     <xsl:apply-templates mode="blogs" />
