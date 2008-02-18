@@ -8,7 +8,7 @@ body {
 }
 h1 {
  color:#990000;
- font-size:32pt; 
+ font-size:36pt; 
 }
 img {
     border:0;
@@ -114,10 +114,10 @@ ul.RtoL li {
 	background:#4371A3;
 }
 #pledgeSupport {
- width:700px;
+ width:768px;
  margin:0 auto;
  text-align:center;
- margin-top:80px;
+ margin-top:75px;
  z-index:100; 
 }
 #pledgeSupportTable{
