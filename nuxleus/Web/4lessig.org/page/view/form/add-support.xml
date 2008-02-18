@@ -29,23 +29,32 @@
     </form>
     <h2>Debug Info</h2>
     <ul>
-      <li>IP: <geo:ip/>
+      <li>IP: <span style="color:red"><geo:ip/>
+        </span>
       </li>
-      <li>City: <geo:location />
+      <li>City: <span style="color:red"><geo:location />
+        </span>
       </li>
-      <li>Country: <geo:country />
+      <li>Country: <span style="color:red"><geo:country />
+        </span>
       </li>
-      <li>GeoLat: <geo:lat />
+      <li>GeoLat: <span style="color:red"><geo:lat />
+        </span>
       </li>
-      <li>GeoLong: <geo:long />
+      <li>GeoLong: <span style="color:red"><geo:long />
+        </span>
       </li>
-      <li>SessionID: <session:id />
+      <li>SessionID: <span style="color:red"><session:id />
+        </span>
       </li>
-      <li>RequestID: <session:request-id />
+      <li>RequestID: <span style="color:red"><session:request-id />
+        </span>
       </li>
-      <li>RequestDate: <session:request-date />
+      <li>RequestDate: <span style="color:red"><session:request-date />
+        </span>
       </li>
-      <li>RequestTime: <session:request-time />
+      <li>RequestTime: <span style="color:red"><session:request-time />
+        </span>
       </li>
     </ul>
   </div>
