@@ -59,6 +59,8 @@ namespace Nuxleus.Web.HttpHandler
 
             using(XmlWriter writer = XmlWriter.Create(context.Response.Output))
             {
+                DateTime now = DateTime.Now;
+
                 writer.WriteStartDocument();
                     writer.WriteStartElement("message", "http://nuxleus.com/message/response");
                         writer.WriteStartElement("session");
@@ -70,12 +72,18 @@ namespace Nuxleus.Web.HttpHandler
                             //writer.WriteEndAttribute();
                         writer.WriteEndElement();
                         writer.WriteStartElement("request-date");
-                            writer.WriteString(DateTime.Now.ToShortDateString());
+                            writer.WriteString(now.ToShortDateString());
+                        writer.WriteEndElement();
+                        writer.WriteStartElement("request-time");
+                            writer.WriteString(now.ToLongTimeString());
                         writer.WriteEndElement();
                         writer.WriteStartElement("request-guid");
                             writer.WriteString(Guid.NewGuid().ToString());
                         writer.WriteEndElement();
                         writer.WriteStartElement("geo");
+                            writer.WriteStartElement("ip");
+                                writer.WriteString(context.Request.UserHostAddress);
+                            writer.WriteEndElement();
                             writer.WriteStartElement("city");
                                 writer.WriteString(location.City);
                             writer.WriteEndElement();
