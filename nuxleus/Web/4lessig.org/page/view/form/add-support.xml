@@ -2,7 +2,7 @@
 <view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
   <div class="form" id="pledgeSupport">
     <h1>Pledge your support 4Lessig 4Congress!</h1>
-    <form method="post" action="/service/4lessig/add-support">
+    <form id="lessig" method="GET" action="/service/4lessig/add-support" target="_top">
       <table id="pledgeSupportTable">
         <tr>
           <td>Name:</td>
@@ -20,7 +20,9 @@
             </select>
           </td>
           <td>
-            <input type="submit" value="Make My Pledge!" />
+            <button class="Button submit">
+              <span class="ButtonLabel">Make My Pledge!</span>
+            </button>
           </td>
         </tr>
       </table>

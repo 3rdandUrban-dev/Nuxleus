@@ -14,8 +14,7 @@
       <xsl:value-of select="func:resolve-variable(.)"/>
     </xsl:element>
   </xsl:template>
-
-
+  
   <xsl:function name="func:resolve-variable" as="xs:string">
     <xsl:param name="operator"/>
     <xsl:sequence select="if (contains($operator, '{')) then func:evaluate-collection(substring-before(substring-after($operator, '{'), '}')) else $operator" />
@@ -24,7 +23,6 @@
   <xsl:function name="func:evaluate-collection" as="xs:string">
     <xsl:param name="operator"/>
     <xsl:sequence select="if (starts-with($operator, '$')) then $session-params[local-name() = substring-after($operator, '$')] else if (starts-with($operator, 'request')) then func:evaluate-request($request, substring-after($operator, ':')) else request-collection:GetValue($request, substring-before($operator, ':'), substring-after($operator, ':'))"/>
-
   </xsl:function>
 
   <xsl:function name="func:evaluate-request">
