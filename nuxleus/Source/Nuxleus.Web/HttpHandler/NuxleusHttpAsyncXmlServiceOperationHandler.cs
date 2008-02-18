@@ -149,7 +149,11 @@ namespace Nuxleus.Web.HttpHandler {
 
                 switch (m_httpMethod) {
                     case "GET":
-                    case "HEAD": {
+                    case "HEAD":
+                    case "POST":{
+                            string name = String.Format("Name: {0}", context.Request.QueryString["name"]);
+                            Console.WriteLine("QueryString Length: {0}", context.Request.QueryString.Count);
+                            Console.WriteLine(name);
                             Console.WriteLine("If-None-Match: {0}, RequestHashCode: {1}", context.Request.Headers["If-None-Match"], m_requestHashcode);
                             if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
                                 Console.WriteLine("They matched.");
@@ -175,9 +179,6 @@ namespace Nuxleus.Web.HttpHandler {
                             break;
                         }
                     case "PUT": {
-                            goto CompleteCall;
-                        }
-                    case "POST": {
                             goto CompleteCall;
                         }
                     case "DELETE": {
