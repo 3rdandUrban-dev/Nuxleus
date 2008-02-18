@@ -37,10 +37,10 @@
   <xsl:variable name="request-date" select="$session-info/response:request-date"/>
   <xsl:variable name="request-time" select="$session-info/response:request-time"/>
   <xsl:variable name="geo-ip" select="$session-info/response:geo"/>
-  <xsl:variable name="ip" select="$geo-ip/response:ip"/>
+  <xsl:variable name="ip" select="$geo-ip//response:ip"/>
   <xsl:variable name="location" select="$geo-ip/response:city"/>
-  <xsl:variable name="lat" select="$geo-ip/response:lat"/>
-  <xsl:variable name="long" select="$geo-ip/response:long"/>
+  <xsl:variable name="lat" select="$geo-ip//response:lat"/>
+  <xsl:variable name="long" select="$geo-ip//response:long"/>
 
   <xsl:variable name="vendor" select="system-property('xsl:vendor')"/>
   <xsl:variable name="vendor-uri" select="system-property('xsl:vendor-uri')"/>
@@ -108,38 +108,6 @@
       </style>
       <xsl:apply-templates select="head:include[@fileType = 'javascript']"/>
     </head>
-  </xsl:template>
-
-  <xsl:template match="geo:location">
-    <xsl:value-of select="$location"/>
-  </xsl:template>
-
-  <xsl:template match="geo:lat">
-    <xsl:value-of select="$lat"/>
-  </xsl:template>
-
-  <xsl:template match="geo:long">
-    <xsl:value-of select="$long"/>
-  </xsl:template>
-
-  <xsl:template match="session:id">
-    <xsl:value-of select="$session-id"/>
-  </xsl:template>
-
-  <xsl:template match="session:request-id">
-    <xsl:value-of select="$request-id"/>
-  </xsl:template>
-
-  <xsl:template match="session:request-date">
-    <xsl:value-of select="$request-date"/>
-  </xsl:template>
-
-  <xsl:template match="session:request-time">
-    <xsl:value-of select="$request-time"/>
-  </xsl:template>
-  
-  <xsl:template match="geo:ip">
-    foo: <xsl:value-of select="$ip"/>
   </xsl:template>
 
   <xsl:template match="page:body">
@@ -291,6 +259,34 @@
 
   <xsl:template match="geo:location">
     <xsl:value-of select="$location"/>
+  </xsl:template>
+
+  <xsl:template match="geo:lat">
+    <xsl:value-of select="$lat"/>
+  </xsl:template>
+
+  <xsl:template match="geo:long">
+    <xsl:value-of select="$long"/>
+  </xsl:template>
+
+  <xsl:template match="session:id">
+    <xsl:value-of select="$session-id"/>
+  </xsl:template>
+
+  <xsl:template match="session:request-id">
+    <xsl:value-of select="$request-id"/>
+  </xsl:template>
+
+  <xsl:template match="session:request-date">
+    <xsl:value-of select="$request-date"/>
+  </xsl:template>
+
+  <xsl:template match="session:request-time">
+    <xsl:value-of select="$request-time"/>
+  </xsl:template>
+  
+  <xsl:template match="geo:ip">
+    <xsl:value-of select="$ip"/>
   </xsl:template>
 
   <xsl:template match="doc:local-news">
