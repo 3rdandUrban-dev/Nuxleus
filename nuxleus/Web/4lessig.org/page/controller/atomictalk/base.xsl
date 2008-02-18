@@ -83,7 +83,7 @@
   <xsl:strip-space elements="*"/>
 
   <xsl:output cdata-section-elements="script" doctype-system="-//W3C//DTD HTML 4.01//EN" doctype-public="http://www.w3.org/TR/html4/strict.dtd" method="html" indent="no"/>
-  
+
   <xsl:template match="my:session">
     <xsl:apply-templates/>
   </xsl:template>
@@ -262,6 +262,10 @@
     <xsl:value-of select="$city"/>
   </xsl:template>
 
+  <xsl:template match="geo:country">
+    <xsl:value-of select="$country"/>
+  </xsl:template>
+
   <xsl:template match="geo:lat">
     <xsl:value-of select="$lat"/>
   </xsl:template>
@@ -285,7 +289,7 @@
   <xsl:template match="session:request-time">
     <xsl:value-of select="$request-time"/>
   </xsl:template>
-  
+
   <xsl:template match="geo:ip">
     <xsl:value-of select="$ip"/>
   </xsl:template>
