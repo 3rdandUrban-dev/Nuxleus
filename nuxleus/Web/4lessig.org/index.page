@@ -16,7 +16,7 @@
         </page:config>
         <page:output>
             <page:head src="/page/output/head/base.xml" />
-            <page:body src="/page/output/body/base.xml" />
+            <page:body src="/page/output/body/base.xml" /> 
         </page:output>
     </my:page>
 </my:session>
