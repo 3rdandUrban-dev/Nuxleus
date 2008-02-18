@@ -1,37 +1,12 @@
 <?xml version="1.0"?>
-<page:body xmlns:page="http://atomictalk.org/page" xmlns:body="http://atomictalk.org/page/output/body">
+<page:body xmlns:page="http://atomictalk.org/page"
+  xmlns:body="http://atomictalk.org/page/output/body">
   <body:layout xmlns:view="http://atomictalk.org/page/view">
     <layout:view xmlns:layout="http://atomictalk.org/page/view/layout">
       <view:module>
         <view:container>
-          <body:layout xmlns:view="http://atomictalk.org/page/view">
-            <layout:view xmlns:layout="http://atomictalk.org/page/view/layout">
-              <view:module>
-                <view:container>
-                  <div>
-                    <div id="top-bar"></div>
-                    <div id="bottom-bar"></div>
-                  </div>
-                  <div id="lessig-body">
-                    <div id="4lessig">
-                      <div id="id4lessig-01">
-                        <img src="images/4lessig_01.jpg" width="262" height="236" alt="" />
-                      </div>
-                      <div id="id4lessig-02">
-                        <img src="images/4lessig_02.gif" width="762" height="236" alt="" />
-                      </div>
-                      <div id="id4lessig-03">
-                        <img src="images/4lessig_03.png" width="1024" height="48" alt="" />
-                      </div>
-                      <div id="id4lessig-04">
-                        <img src="images/4lessig_04.png" width="1024" height="484" alt="" />
-                      </div>
-                    </div>
-                  </div>
-                </view:container>
-              </view:module>
-            </layout:view>
-          </body:layout>
+          <view:module id="header" src="/page/view/module/header/base.xml"/>
+          <view:module id="body" src="/page/view/module/content/base.xml"/>
         </view:container>
       </view:module>
     </layout:view>
