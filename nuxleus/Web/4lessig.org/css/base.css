@@ -48,12 +48,13 @@ ul.RtoL li {
 }
 .base {
 }
+
 #id4lessig-01 {
   position:absolute;
   left:0px;
   top:0px;
   width:262px;
-  height:246px;
+  height:236px;
 }
 
 #id4lessig-02 {
@@ -61,15 +62,15 @@ ul.RtoL li {
   left:262px;
   top:0px;
   width:762px;
-  height:246px;
+  height:236px;
 }
 
 #id4lessig-03 {
   position:absolute;
   left:0px;
-  top:246px;
+  top:236px;
   width:1024px;
-  height:38px;
+  height:48px;
 }
 
 #id4lessig-04 {
@@ -79,6 +80,7 @@ ul.RtoL li {
   width:1024px;
   height:484px;
 }
+
 
 #lessig-body{
  position:absolute;
@@ -102,7 +104,7 @@ ul.RtoL li {
 }
 #bottom-bar {
 	width:100%;
-	height:44px;
+	height:34px;
   border-top:1px solid #FFF;
 	margin-top:0px;
 	background:#4371A3;
