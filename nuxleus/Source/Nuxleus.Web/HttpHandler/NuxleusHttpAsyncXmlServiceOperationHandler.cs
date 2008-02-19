@@ -155,24 +155,29 @@ namespace Nuxleus.Web.HttpHandler {
                             Console.WriteLine("QueryString Length: {0}", context.Request.QueryString.Count);
                             Console.WriteLine(name);
                             Console.WriteLine("If-None-Match: {0}, RequestHashCode: {1}", context.Request.Headers["If-None-Match"], m_requestHashcode);
-                            if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
-                                Console.WriteLine("They matched.");
-                                Console.WriteLine("Use memcached: {0}, KeyExists: {1}, XmlSource Changed: {2}", m_USE_MEMCACHED, m_memcachedClient.KeyExists(m_lastModifiedKey), hasXmlSourceChanged);
-                                Console.WriteLine("Last Modified Key Value: {0}", m_lastModifiedKey);
-                                if (m_USE_MEMCACHED && m_memcachedClient.KeyExists(m_lastModifiedKey) && !hasXmlSourceChanged) {
-                                    m_lastModifiedDate = (string)m_memcachedClient.Get(m_lastModifiedKey);
-                                    Console.WriteLine("Last Modified Date: {0}", m_lastModifiedDate);
-                                    if (context.Request.Headers["If-Modified-Since"] == m_lastModifiedDate) {
-                                        context.Response.StatusCode = 304;
-                                        m_returnOutput = false;
-                                        goto CompleteCall;
-                                    } else {
-                                        goto Process;
+                            Console.WriteLine(context.Request.Path);
+                            if (context.Request.Path != "/service/4lessig/add-support/service.op") {
+                                if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
+                                    Console.WriteLine("They matched.");
+                                    Console.WriteLine("Use memcached: {0}, KeyExists: {1}, XmlSource Changed: {2}", m_USE_MEMCACHED, m_memcachedClient.KeyExists(m_lastModifiedKey), hasXmlSourceChanged);
+                                    Console.WriteLine("Last Modified Key Value: {0}", m_lastModifiedKey);
+                                    if (m_USE_MEMCACHED && m_memcachedClient.KeyExists(m_lastModifiedKey) && !hasXmlSourceChanged) {
+                                        m_lastModifiedDate = (string)m_memcachedClient.Get(m_lastModifiedKey);
+                                        Console.WriteLine("Last Modified Date: {0}", m_lastModifiedDate);
+                                        if (context.Request.Headers["If-Modified-Since"] == m_lastModifiedDate) {
+                                            context.Response.StatusCode = 304;
+                                            m_returnOutput = false;
+                                            goto CompleteCall;
+                                        } else {
+                                            goto Process;
+                                        }
                                     }
-                                }
 
-                            } else if (m_CONTENT_IS_MEMCACHED) {
-                                goto CompleteCall;
+                                } else if (m_CONTENT_IS_MEMCACHED) {
+                                    goto CompleteCall;
+                                } else {
+                                    goto Process;
+                                }
                             } else {
                                 goto Process;
                             }
