@@ -37,6 +37,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="erb, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\erb\erb\bin\Debug\erb.dll</HintPath>
+    </Reference>
+    <Reference Include="QUT.SymbolWriter, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8b16d9e060688056, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\erb\erb\bin\Debug\QUT.SymbolWriter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>

@@ -211,7 +211,7 @@ namespace Nuxleus.Web.HttpHandler {
             if (m_lastModifiedDate == String.Empty) {
                 m_lastModifiedDate = DateTime.UtcNow.ToString("r");
             }
-            context.Response.AppendHeader("Cache-Control", "max-age=3600");
+            context.Response.AppendHeader("Cache-Control", "max-age=86400");
             context.Response.AddHeader("Last-Modified", m_lastModifiedDate);
             context.Response.AddHeader("ETag", String.Format("\"{0}\"", m_requestHashcode));
             m_nuxleusAsyncResult.CompleteCall();
@@ -228,7 +228,7 @@ namespace Nuxleus.Web.HttpHandler {
             }
             if (!m_CONTENT_IS_MEMCACHED && m_USE_MEMCACHED) {
                 Console.WriteLine("Adding Last Modified Key: {0}", m_lastModifiedKey);
-                m_memcachedClient.Set(m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(4));
+                m_memcachedClient.Set(m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(24));
                 m_memcachedClient.Set(m_lastModifiedKey, m_lastModifiedDate);
             }
             //}

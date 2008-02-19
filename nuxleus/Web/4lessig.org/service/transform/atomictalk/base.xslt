@@ -69,7 +69,8 @@
     </xsl:choose>
   </xsl:variable>
   <xsl:variable name="lb">
-    <xsl:text></xsl:text>
+    <xsl:text>
+</xsl:text>
   </xsl:variable>
   <xsl:variable name="q">"</xsl:variable>
   <xsl:variable name="sq">'</xsl:variable>
