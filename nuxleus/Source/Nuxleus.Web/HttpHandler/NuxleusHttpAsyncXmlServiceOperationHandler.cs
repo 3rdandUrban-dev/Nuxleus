@@ -126,6 +126,10 @@ namespace Nuxleus.Web.HttpHandler {
             }
             bool hasXmlSourceChanged = m_xmlServiceOperationManager.HasXmlSourceChanged(m_context.RequestXmlETag, requestUri);
 
+            if (context.Request.Path == "/service/4lessig/add-support/service.op") {
+                m_USE_MEMCACHED = false;
+            }
+
             if (m_USE_MEMCACHED) {
 
                 string obj = (string)m_memcachedClient.Get(m_context.GetRequestHashcode(true).ToString());
@@ -180,6 +184,7 @@ namespace Nuxleus.Web.HttpHandler {
                                     goto Process;
                                 }
                             } else {
+                                Console.WriteLine("Processing Pledge");
                                 m_returnOutput = true;
                                 goto Process;
                             }
@@ -203,6 +208,7 @@ namespace Nuxleus.Web.HttpHandler {
             }
         Process:
             try {
+                Console.WriteLine("Processing Transformation");
                 XmlReader reader = m_xmlServiceOperationManager.GetXmlReader(m_context.RequestXmlETag, requestUri);
                 XmlServiceOperationReader serviceOperationReader = new XmlServiceOperationReader(context, m_context, m_transformContext, reader, m_request, m_response, m_xslTransformationManager);
                 m_response = serviceOperationReader.Process();
