@@ -157,6 +157,7 @@ namespace Nuxleus.Web.HttpHandler {
                             Console.WriteLine("If-None-Match: {0}, RequestHashCode: {1}", context.Request.Headers["If-None-Match"], m_requestHashcode);
                             Console.WriteLine(context.Request.Path);
                             if (context.Request.Path != "/service/4lessig/add-support/service.op") {
+                                Console.WriteLine("{0} != /service/4lessig/add-support/service.op", context.Request.Path);
                                 if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
                                     Console.WriteLine("They matched.");
                                     Console.WriteLine("Use memcached: {0}, KeyExists: {1}, XmlSource Changed: {2}", m_USE_MEMCACHED, m_memcachedClient.KeyExists(m_lastModifiedKey), hasXmlSourceChanged);
@@ -179,6 +180,7 @@ namespace Nuxleus.Web.HttpHandler {
                                     goto Process;
                                 }
                             } else {
+                                m_returnOutput = true;
                                 goto Process;
                             }
                             break;
@@ -216,9 +218,9 @@ namespace Nuxleus.Web.HttpHandler {
             if (m_lastModifiedDate == String.Empty) {
                 m_lastModifiedDate = DateTime.UtcNow.ToString("r");
             }
-            context.Response.AppendHeader("Cache-Control", "max-age=86400");
-            context.Response.AddHeader("Last-Modified", m_lastModifiedDate);
-            context.Response.AddHeader("ETag", String.Format("\"{0}\"", m_requestHashcode));
+            //context.Response.AppendHeader("Cache-Control", "max-age=86400");
+            //context.Response.AddHeader("Last-Modified", m_lastModifiedDate);
+            //context.Response.AddHeader("ETag", String.Format("\"{0}\"", m_requestHashcode));
             m_nuxleusAsyncResult.CompleteCall();
             return m_nuxleusAsyncResult;
         }
