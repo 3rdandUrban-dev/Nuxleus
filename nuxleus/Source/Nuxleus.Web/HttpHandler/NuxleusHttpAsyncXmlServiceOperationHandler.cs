@@ -218,9 +218,9 @@ namespace Nuxleus.Web.HttpHandler {
             if (m_lastModifiedDate == String.Empty) {
                 m_lastModifiedDate = DateTime.UtcNow.ToString("r");
             }
-            //context.Response.AppendHeader("Cache-Control", "max-age=86400");
-            //context.Response.AddHeader("Last-Modified", m_lastModifiedDate);
-            //context.Response.AddHeader("ETag", String.Format("\"{0}\"", m_requestHashcode));
+            context.Response.AppendHeader("Cache-Control", "max-age=86400");
+            context.Response.AddHeader("Last-Modified", m_lastModifiedDate);
+            context.Response.AddHeader("ETag", String.Format("\"{0}\"", m_requestHashcode));
             m_nuxleusAsyncResult.CompleteCall();
             return m_nuxleusAsyncResult;
         }
