@@ -20,6 +20,7 @@ using Nuxleus.Bucker;
 using System.Web.Hosting;
 using Nuxleus.Geo;
 using Nuxleus.Geo.MaxMind;
+using Amazon.SimpleDB;
 
 namespace Nuxleus.Web.HttpApplication {
     public class Global : System.Web.HttpApplication {
@@ -45,6 +46,7 @@ namespace Nuxleus.Web.HttpApplication {
         BaseXsltContext m_baseXsltContext;
         String m_baseUri;
         UTF8Encoding m_encoding;
+        AmazonSimpleDBClient m_amazonSimpleDBClient;
         static HashAlgorithm m_hashAlgorithm = HashAlgorithm.MD5;
 
         protected void Application_Start ( object sender, EventArgs e ) {
@@ -70,17 +72,24 @@ namespace Nuxleus.Web.HttpApplication {
             m_geoIPLookup = new Dictionary<String, IPLocation>();
             m_requestXsltParams = null;
             m_encoding = new UTF8Encoding();
+            string sdbAccessKey = String.Empty;
+            string sdbSecretKey = String.Empty;
+            
 
             using (XmlReader configReader = XmlReader.Create(HttpContext.Current.Server.MapPath("~/App_Data/aws.config"))) {
                 while (configReader.Read()) {
                     if (configReader.IsStartElement()) {
                         switch (configReader.Name) {
                             case "sdb-access-key": {
-                                    Environment.SetEnvironmentVariable("SDB_ACCESS_KEY", configReader.ReadString());
+                                    sdbAccessKey = configReader.ReadString();
+                                    Environment.SetEnvironmentVariable("SDB_ACCESS_KEY", sdbAccessKey);
+                                    Console.WriteLine("SDB_ACCESS_KEY: {0}", sdbAccessKey);
                                     break;
                                 }
                             case "sdb-secret-key": {
-                                    Environment.SetEnvironmentVariable("SDB_SECRET_KEY", configReader.ReadString());
+                                    sdbSecretKey = configReader.ReadString();
+                                    Environment.SetEnvironmentVariable("SDB_SECRET_KEY", sdbSecretKey);
+                                    Console.WriteLine("SDB_PRIVATE_KEY: {0}", sdbSecretKey);
                                     break;
                                 }
                             default:
@@ -89,6 +98,8 @@ namespace Nuxleus.Web.HttpApplication {
                     }
                 }
             }
+
+            m_amazonSimpleDBClient = new AmazonSimpleDBClient(sdbAccessKey, sdbSecretKey);
 
             if (m_xameleonConfiguration.DebugMode == "yes")
                 m_DEBUG = true;
@@ -144,6 +155,7 @@ namespace Nuxleus.Web.HttpApplication {
             Application["as_debug"] = m_DEBUG;
             Application["as_hashkey"] = hashkey;
             Application["as_encoding"] = m_encoding;
+            Application["as_simpledbclient"] = m_amazonSimpleDBClient;
         }
 
         protected void Application_BeginRequest ( object sender, EventArgs e ) {
@@ -158,6 +170,7 @@ namespace Nuxleus.Web.HttpApplication {
             Application["debug"] = Application["as_debug"];
             Application["hashkey"] = Application["as_hashkey"];
             Application["encoding"] = Application["as_encoding"];
+            Application["simpledbclient"] = Application["as_simpledbclient"];
         }
 
         protected void Application_EndRequest ( object sender, EventArgs e ) {

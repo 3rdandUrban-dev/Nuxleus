@@ -19,8 +19,7 @@ namespace Nuxleus.Web.HttpHandler {
 
         static string m_fileRedirect = "/thanks";
         static int m_statusCode = 303;
-        static string m_awsAccessKey = System.Environment.GetEnvironmentVariable("SDB_ACCESS_KEY");
-        static string m_awsSecretKey = System.Environment.GetEnvironmentVariable("SDB_SECRET_KEY");
+
         AmazonSimpleDBClient m_amazonSimpleDBClient;
 
         public void ProcessRequest ( HttpContext context ) {
@@ -47,7 +46,7 @@ namespace Nuxleus.Web.HttpHandler {
             response.RedirectLocation = m_fileRedirect;
             response.StatusCode = m_statusCode;
 
-            m_amazonSimpleDBClient = new AmazonSimpleDBClient(m_awsAccessKey, m_awsSecretKey);
+            m_amazonSimpleDBClient = (AmazonSimpleDBClient)context.Application["simpledbclient"];
 
             PutAttributes putAttributes = new PutAttributes();
             putAttributes.DomainName = "4lessig";
