@@ -2,60 +2,55 @@
 <view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:debug="http://nuxleus.com/session/debug" xmlns:request="http://nuxleus.com/session/request" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
   <div class="form" id="pledgeSupport">
     <h1>Pledge your support 4Lessig 4Congress!</h1>
-    <form id="lessig" method="GET" action="/service/4lessig/add-support/" target="_top">
-      <table id="pledgeSupportTable">
-        <tr>
-          <td>Name:</td>
-          <td>
-            <input type="text" name="name" id="name" />
-          </td>
-          <td>Location:</td>
-          <td>
-            <select name="location" id="location">
-              <option>Please select the closest match...</option>
-              <option value="ca12thdistrict">California 12th District</option>
-              <option value="ca">California</option>
-              <option value="usa">United States</option>
-              <option value="international">International</option>
-            </select>
-          </td>
-          <td>
-            <button class="Button submit">
-              <span class="ButtonLabel">Make My Pledge!</span>
-            </button>
-          </td>
-        </tr>
-      </table>
+    <form id="lessig" method="POST" action="/service/4lessig/add-support/" target="_top">
+      <div id="pledgeSupportDiv">
+        <div class="formRow">
+          <ul class="LtoR row">
+            <li class="left">
+              <label for="name">Name:</label>
+            </li>
+            <li class="right">
+              <input class="text" type="text" name="name" id="name" />
+            </li>
+          </ul>
+        </div>
+        <div class="formRow">
+          <ul class="LtoR row">
+            <li class="left">
+              <label for="email">Email:</label>
+            </li>
+            <li class="right">
+              <input class="text" type="text" name="email" id="email" />
+            </li>
+            <li class="left">
+              <label for="email">Zip:</label>
+            </li>
+            <li class="right">
+              <input class="zip" type="text" name="zip" id="zip" />
+            </li>
+          </ul>
+        </div>
+        <div class="formRow">
+          <ul class="LtoR row">
+            <li class="left">
+              <label for="location">Location:</label>
+            </li>
+            <li class="right">
+              <select class="location" name="location" id="location">
+                <option>Please select the closest match...</option>
+                <option value="ca12thdistrict">California 12th District</option>
+                <option value="bayarea">Bay Area</option>
+                <option value="ca">California</option>
+                <option value="usa">United States</option>
+                <option value="international">International</option>
+              </select>
+            </li>
+            <li class="right">
+              <input type="submit" name="submit" id="submitPledge" value="Make My Pledge!" />
+            </li>
+          </ul>
+        </div>
+      </div>
     </form>
-    <h2>Debug Info</h2>
-    <ul>
-      <li>IP: <span style="color:red"><geo:ip/>
-        </span>
-      </li>
-      <li>City: <span style="color:red"><geo:location />
-        </span>
-      </li>
-      <li>Country: <span style="color:red"><geo:country />
-        </span>
-      </li>
-      <li>GeoLat: <span style="color:red"><geo:lat />
-        </span>
-      </li>
-      <li>GeoLong: <span style="color:red"><geo:long />
-        </span>
-      </li>
-      <li>SessionID: <span style="color:red"><session:id />
-        </span>
-      </li>
-      <li>RequestID: <span style="color:red"><session:request-id />
-        </span>
-      </li>
-      <li>RequestDate: <span style="color:red"><session:request-date />
-        </span>
-      </li>
-      <li>RequestTime: <span style="color:red"><session:request-time />
-        </span>
-      </li>
-    </ul>
   </div>
 </view:module>
