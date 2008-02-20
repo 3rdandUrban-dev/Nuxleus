@@ -57,6 +57,7 @@ namespace Nuxleus.Web.HttpHandler {
             Console.WriteLine("Form Length: {0}", request.Form.Count);
             Console.WriteLine("Name: {0}, Email: {1}, Zip: {2}, Location: {3}", name, email, zip, location);
 
+            nuxleusAsyncResult.CompleteCall();
             return nuxleusAsyncResult;
 
             //builder.AppendFormat("<request time='{0}' filePath='{1}'>", DateTime.Now, request.FilePath);
