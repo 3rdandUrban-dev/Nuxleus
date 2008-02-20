@@ -30,7 +30,8 @@ namespace Nuxleus.Web.HttpHandler
     public struct NuxleusHttpAsyncRequestValidationHandler : IHttpAsyncHandler
     {
         NuxleusAsyncResult m_asyncResult;
-        PledgeCount m_pledgeCount;
+        int m_pledgeCountDistrict;
+        int m_pledgeCountTotal;
         
         public void ProcessRequest(HttpContext context)
         {
@@ -48,7 +49,19 @@ namespace Nuxleus.Web.HttpHandler
         {
             m_asyncResult = new NuxleusAsyncResult(cb, extraData);
 
-            m_pledgeCount = (PledgeCount)context.Application["pledgeCount"];
+            Queue<string> pledgeQueue = (Queue<string>)context.Application["pledgeQueue"];
+
+            if (pledgeQueue.Count > 0) {
+                while (pledgeQueue.Count != 0) {
+                    string location = pledgeQueue.Dequeue();
+                    if (location == "ca12thdistrict") {
+                        m_pledgeCountDistrict++;
+                        m_pledgeCountTotal++;
+                    } else {
+                        m_pledgeCountTotal++;
+                    }
+                }
+            }
 
             using(XmlWriter writer = XmlWriter.Create(context.Response.Output))
             {
@@ -58,10 +71,10 @@ namespace Nuxleus.Web.HttpHandler
                     writer.WriteStartElement("message", "http://nuxleus.com/message/response");
                         writer.WriteStartElement("session");
                             writer.WriteStartAttribute("request-total");
-                                writer.WriteString(m_pledgeCount.PledgeCountTotal.ToString());
+                            writer.WriteString(m_pledgeCountTotal.ToString());
                             writer.WriteEndAttribute();
                             writer.WriteStartAttribute("request-district");
-                            writer.WriteString(m_pledgeCount.PledgeCountDistrict.ToString());
+                            writer.WriteString(m_pledgeCountDistrict.ToString());
                             writer.WriteEndAttribute();
                         writer.WriteEndElement();
                     writer.WriteEndElement();

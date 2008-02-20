@@ -48,6 +48,7 @@ namespace Nuxleus.Web.HttpApplication {
         UTF8Encoding m_encoding;
         AmazonSimpleDBClient m_amazonSimpleDBClient;
         PledgeCount m_pledgeCount;
+        Queue<string> m_pledgeQueue;
         static HashAlgorithm m_hashAlgorithm = HashAlgorithm.MD5;
 
         protected void Application_Start ( object sender, EventArgs e ) {
@@ -74,6 +75,7 @@ namespace Nuxleus.Web.HttpApplication {
             m_requestXsltParams = null;
             m_encoding = new UTF8Encoding();
             m_pledgeCount = new PledgeCount(0, 0);
+            m_pledgeQueue = new Queue<string>();
             
             string sdbAccessKey = String.Empty;
             string sdbSecretKey = String.Empty;
@@ -160,6 +162,7 @@ namespace Nuxleus.Web.HttpApplication {
             Application["as_encoding"] = m_encoding;
             Application["as_simpledbclient"] = m_amazonSimpleDBClient;
             Application["as_pledgeCount"] = m_pledgeCount;
+            Application["as_pledgeQueue"] = m_pledgeQueue;
         }
 
         protected void Application_BeginRequest ( object sender, EventArgs e ) {
@@ -176,6 +179,7 @@ namespace Nuxleus.Web.HttpApplication {
             Application["encoding"] = Application["as_encoding"];
             Application["simpledbclient"] = Application["as_simpledbclient"];
             Application["pledgeCount"] = Application["as_pledgeCount"];
+            Application["pledgeQueue"] = Application["as_pledgeQueue"];
         }
 
         protected void Application_EndRequest ( object sender, EventArgs e ) {
