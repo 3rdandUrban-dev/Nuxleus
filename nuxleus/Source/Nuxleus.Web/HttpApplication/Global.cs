@@ -47,8 +47,7 @@ namespace Nuxleus.Web.HttpApplication {
         String m_baseUri;
         UTF8Encoding m_encoding;
         AmazonSimpleDBClient m_amazonSimpleDBClient;
-        int m_pledgeCountTotal;
-        int m_pledgeCountDistrict;
+        PledgeCount m_pledgeCount;
         static HashAlgorithm m_hashAlgorithm = HashAlgorithm.MD5;
 
         protected void Application_Start ( object sender, EventArgs e ) {
@@ -70,15 +69,15 @@ namespace Nuxleus.Web.HttpApplication {
             m_namedXsltHashtable = new Hashtable();
             m_globalXsltParams = new Hashtable();
             m_transformContextHashtable = new Hashtable();
-            m_xmlServiceOperationManager = new XmlServiceOperationManager (new Dictionary<int, XmlReader>());
+            m_xmlServiceOperationManager = new XmlServiceOperationManager(new Dictionary<int, XmlReader>());
             m_geoIPLookup = new Dictionary<String, IPLocation>();
             m_requestXsltParams = null;
             m_encoding = new UTF8Encoding();
-            m_pledgeCountTotal = 0;
-            m_pledgeCountDistrict = 0;
+            m_pledgeCount = new PledgeCount(0, 0);
+            
             string sdbAccessKey = String.Empty;
             string sdbSecretKey = String.Empty;
-            
+
 
             using (XmlReader configReader = XmlReader.Create(HttpContext.Current.Server.MapPath("~/App_Data/aws.config"))) {
                 while (configReader.Read()) {
@@ -160,8 +159,7 @@ namespace Nuxleus.Web.HttpApplication {
             Application["as_hashkey"] = hashkey;
             Application["as_encoding"] = m_encoding;
             Application["as_simpledbclient"] = m_amazonSimpleDBClient;
-            Application["as_pledgeCountDistrict"] = m_pledgeCountDistrict;
-            Application["as_pledgeCountTotal"] = m_pledgeCountTotal;
+            Application["as_pledgeCount"] = m_pledgeCount;
         }
 
         protected void Application_BeginRequest ( object sender, EventArgs e ) {
@@ -177,8 +175,7 @@ namespace Nuxleus.Web.HttpApplication {
             Application["hashkey"] = Application["as_hashkey"];
             Application["encoding"] = Application["as_encoding"];
             Application["simpledbclient"] = Application["as_simpledbclient"];
-            Application["pledgeCountDistrict"] = Application["as_pledgeCountDistrict"];
-            Application["pledgeCountTotal"] = Application["as_pledgeCountTotal"];
+            Application["pledgeCount"] = Application["as_pledgeCount"];
         }
 
         protected void Application_EndRequest ( object sender, EventArgs e ) {
@@ -199,5 +196,19 @@ namespace Nuxleus.Web.HttpApplication {
             QueueClientPool.Shutdown();
             SockIOPool.GetInstance().Shutdown();
         }
+    }
+
+    public struct PledgeCount {
+
+        int m_pledgeCountTotal;
+        int m_pledgeCountDistrict;
+
+        public PledgeCount ( int pledgeCountTotal, int pledgeCountDistrict ) {
+            m_pledgeCountTotal = pledgeCountTotal;
+            m_pledgeCountDistrict = pledgeCountDistrict;
+        }
+
+        public int PledgeCountTotal { get { return m_pledgeCountTotal; } set { m_pledgeCountTotal = value; } }
+        public int PledgeCountDistrict { get { return m_pledgeCountDistrict; } set { m_pledgeCountDistrict = value; } }
     }
 }

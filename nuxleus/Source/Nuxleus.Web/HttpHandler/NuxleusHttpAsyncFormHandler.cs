@@ -12,6 +12,7 @@ using System.Collections;
 using Amazon.SimpleDB;
 using Amazon.SimpleDB.Model;
 using Nuxleus.Agent;
+using Nuxleus.Web.HttpApplication;
 
 namespace Nuxleus.Web.HttpHandler {
 
@@ -26,8 +27,7 @@ namespace Nuxleus.Web.HttpHandler {
         AmazonSimpleDBClient m_amazonSimpleDBClient;
         PutAttributes m_putAttributes;
 
-        int m_pledgeCountTotal;
-        int m_pledgeCountDistrict;
+        PledgeCount m_pledgeCount;
 
         public void ProcessRequest ( HttpContext context ) {
             //not called
@@ -53,8 +53,7 @@ namespace Nuxleus.Web.HttpHandler {
             response.StatusCode = m_statusCode;
 
             m_amazonSimpleDBClient = (AmazonSimpleDBClient)context.Application["simpledbclient"];
-            m_pledgeCountDistrict = (int)context.Application["pledgeCountDistrict"];
-            m_pledgeCountTotal = (int)context.Application["pledgeCountTotal"];
+            m_pledgeCount = (PledgeCount)context.Application["pledgeCount"];
 
             m_putAttributes = new PutAttributes();
             m_putAttributes.DomainName = "4lessig-dev";
@@ -69,11 +68,12 @@ namespace Nuxleus.Web.HttpHandler {
 
             if (location == "ca12thdistrict") {
                 lock (m_lock) {
-                    m_pledgeCountDistrict = m_pledgeCountDistrict + 1;
+                    m_pledgeCount.PledgeCountDistrict = m_pledgeCount.PledgeCountDistrict + 1;
+                    m_pledgeCount.PledgeCountTotal = m_pledgeCount.PledgeCountTotal + 1;
                 }
             } else {
                 lock (m_lock) {
-                    m_pledgeCountTotal = m_pledgeCountTotal + 1;
+                    m_pledgeCount.PledgeCountTotal = m_pledgeCount.PledgeCountTotal + 1;
                 }
             }
 

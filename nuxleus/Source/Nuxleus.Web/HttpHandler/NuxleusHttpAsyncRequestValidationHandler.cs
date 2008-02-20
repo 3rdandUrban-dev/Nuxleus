@@ -23,14 +23,14 @@ using Nuxleus.Storage;
 using Nuxleus.Geo;
 using Nuxleus.Async;
 using System.Net;
+using Nuxleus.Web.HttpApplication;
 
 namespace Nuxleus.Web.HttpHandler
 {
     public struct NuxleusHttpAsyncRequestValidationHandler : IHttpAsyncHandler
     {
         NuxleusAsyncResult m_asyncResult;
-        int m_pledgeCountTotal;
-        int m_pledgeCountDistrict;
+        PledgeCount m_pledgeCount;
         
         public void ProcessRequest(HttpContext context)
         {
@@ -48,8 +48,7 @@ namespace Nuxleus.Web.HttpHandler
         {
             m_asyncResult = new NuxleusAsyncResult(cb, extraData);
 
-            m_pledgeCountDistrict = (int)context.Application["pledgeCountDistrict"];
-            m_pledgeCountTotal = (int)context.Application["pledgeCountTotal"];
+            m_pledgeCount = (PledgeCount)context.Application["pledgeCount"];
 
             using(XmlWriter writer = XmlWriter.Create(context.Response.Output))
             {
@@ -59,10 +58,10 @@ namespace Nuxleus.Web.HttpHandler
                     writer.WriteStartElement("message", "http://nuxleus.com/message/response");
                         writer.WriteStartElement("session");
                             writer.WriteStartAttribute("request-total");
-                                writer.WriteString(m_pledgeCountTotal.ToString());
+                                writer.WriteString(m_pledgeCount.PledgeCountTotal.ToString());
                             writer.WriteEndAttribute();
                             writer.WriteStartAttribute("request-district");
-                                writer.WriteString(m_pledgeCountDistrict.ToString());
+                            writer.WriteString(m_pledgeCount.PledgeCountDistrict.ToString());
                             writer.WriteEndAttribute();
                         writer.WriteEndElement();
                     writer.WriteEndElement();
