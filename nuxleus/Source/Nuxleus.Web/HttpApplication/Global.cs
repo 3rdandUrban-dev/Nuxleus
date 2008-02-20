@@ -47,6 +47,8 @@ namespace Nuxleus.Web.HttpApplication {
         String m_baseUri;
         UTF8Encoding m_encoding;
         AmazonSimpleDBClient m_amazonSimpleDBClient;
+        int m_pledgeCountTotal;
+        int m_pledgeCountDistrict;
         static HashAlgorithm m_hashAlgorithm = HashAlgorithm.MD5;
 
         protected void Application_Start ( object sender, EventArgs e ) {
@@ -72,6 +74,8 @@ namespace Nuxleus.Web.HttpApplication {
             m_geoIPLookup = new Dictionary<String, IPLocation>();
             m_requestXsltParams = null;
             m_encoding = new UTF8Encoding();
+            m_pledgeCountTotal = 0;
+            m_pledgeCountDistrict = 0;
             string sdbAccessKey = String.Empty;
             string sdbSecretKey = String.Empty;
             
@@ -156,6 +160,8 @@ namespace Nuxleus.Web.HttpApplication {
             Application["as_hashkey"] = hashkey;
             Application["as_encoding"] = m_encoding;
             Application["as_simpledbclient"] = m_amazonSimpleDBClient;
+            Application["as_pledgeCountDistrict"] = m_pledgeCountDistrict;
+            Application["as_pledgeCountTotal"] = m_pledgeCountTotal;
         }
 
         protected void Application_BeginRequest ( object sender, EventArgs e ) {
@@ -171,6 +177,8 @@ namespace Nuxleus.Web.HttpApplication {
             Application["hashkey"] = Application["as_hashkey"];
             Application["encoding"] = Application["as_encoding"];
             Application["simpledbclient"] = Application["as_simpledbclient"];
+            Application["pledgeCountDistrict"] = Application["as_pledgeCountDistrict"];
+            Application["pledgeCountTotal"] = Application["as_pledgeCountTotal"];
         }
 
         protected void Application_EndRequest ( object sender, EventArgs e ) {

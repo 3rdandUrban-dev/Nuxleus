@@ -29,6 +29,8 @@ namespace Nuxleus.Web.HttpHandler
     public struct NuxleusHttpAsyncRequestValidationHandler : IHttpAsyncHandler
     {
         NuxleusAsyncResult m_asyncResult;
+        int m_pledgeCountTotal;
+        int m_pledgeCountDistrict;
         
         public void ProcessRequest(HttpContext context)
         {
@@ -45,17 +47,9 @@ namespace Nuxleus.Web.HttpHandler
         public IAsyncResult BeginProcessRequest (HttpContext context, AsyncCallback cb, object extraData)
         {
             m_asyncResult = new NuxleusAsyncResult(cb, extraData);
-            IPLocation location = new IPLocation(context.Request.UserHostAddress);
-            HttpCookieCollection collection = context.Request.Cookies;
 
-            string guid = "not-set";
-            string openid = "not-set";
-
-            if (collection.Count > 0)
-            {
-                if (collection.Get("guid").Value != null)
-                    guid = collection.Get("guid").Value;
-            }
+            m_pledgeCountDistrict = (int)context.Application["pledgeCountDistrict"];
+            m_pledgeCountTotal = (int)context.Application["pledgeCountTotal"];
 
             using(XmlWriter writer = XmlWriter.Create(context.Response.Output))
             {
@@ -64,38 +58,12 @@ namespace Nuxleus.Web.HttpHandler
                 writer.WriteStartDocument();
                     writer.WriteStartElement("message", "http://nuxleus.com/message/response");
                         writer.WriteStartElement("session");
-                            writer.WriteStartAttribute("session-id");
-                                writer.WriteString(guid);
+                            writer.WriteStartAttribute("request-total");
+                                writer.WriteString(m_pledgeCountTotal.ToString());
                             writer.WriteEndAttribute();
-                            //writer.WriteStartAttribute("openid");
-                            //    writer.WriteString(openid);
-                            //writer.WriteEndAttribute();
-                        writer.WriteEndElement();
-                        writer.WriteStartElement("request-date");
-                            writer.WriteString(now.ToShortDateString());
-                        writer.WriteEndElement();
-                        writer.WriteStartElement("request-time");
-                            writer.WriteString(now.ToLongTimeString());
-                        writer.WriteEndElement();
-                        writer.WriteStartElement("request-guid");
-                            writer.WriteString(Guid.NewGuid().ToString());
-                        writer.WriteEndElement();
-                        writer.WriteStartElement("geo");
-                            writer.WriteStartElement("ip");
-                                writer.WriteString(context.Request.UserHostAddress);
-                            writer.WriteEndElement();
-                            writer.WriteStartElement("city");
-                                writer.WriteString(location.City);
-                            writer.WriteEndElement();
-                            writer.WriteStartElement("country");
-                                writer.WriteString(location.Country);
-                            writer.WriteEndElement();
-                            writer.WriteStartElement("lat");
-                                writer.WriteString(location.Lat);
-                            writer.WriteEndElement();
-                            writer.WriteStartElement("long");
-                                writer.WriteString(location.Long);
-                            writer.WriteEndElement();
+                            writer.WriteStartAttribute("request-district");
+                                writer.WriteString(m_pledgeCountDistrict.ToString());
+                            writer.WriteEndAttribute();
                         writer.WriteEndElement();
                     writer.WriteEndElement();
                 writer.WriteEndDocument();
