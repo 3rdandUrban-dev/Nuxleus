@@ -77,7 +77,7 @@ namespace Nuxleus.Web.HttpHandler {
                 }
             }
 
-            //Console.WriteLine("Form Length: {0}", request.Form.Count);
+            Console.WriteLine("District Count: {0}, Total Count: {1}", m_pledgeCount.PledgeCountDistrict, m_pledgeCount.PledgeCountTotal);
             //Console.WriteLine("Name: {0}, Email: {1}, Zip: {2}, Location: {3}", name, email, zip, location);
 
             string pledge = String.Format("<pledge time='{0}' email='{1}'><name>{2}</name><location>{3}</location><zip>{4}</zip></pledge>\r\n", DateTime.Now, email, name, location, zip);
