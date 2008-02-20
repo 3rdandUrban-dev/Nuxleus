@@ -69,11 +69,11 @@ namespace Nuxleus.Web.HttpHandler {
 
             if (location == "ca12thdistrict") {
                 lock (m_lock) {
-                    m_pledgeCountDistrict++;
+                    m_pledgeCountDistrict = m_pledgeCountDistrict + 1;
                 }
             } else {
                 lock (m_lock) {
-                    m_pledgeCountTotal++;
+                    m_pledgeCountTotal = m_pledgeCountTotal + 1;
                 }
             }
 
