@@ -17,7 +17,6 @@ namespace Nuxleus.Web.HttpHandler {
 
     public struct NuxleusHttpAsyncFormHandler : IHttpAsyncHandler {
 
-        //static object m_lock = new object();
         static string m_fileRedirect = "/thanks";
         static int m_statusCode = 303;
         static string m_awsAccessKey = System.Environment.GetEnvironmentVariable("SDB_ACCESS_KEY");
@@ -54,6 +53,14 @@ namespace Nuxleus.Web.HttpHandler {
             putAttributes.DomainName = "4lessig";
             putAttributes.ItemName = email;
 
+            putAttributes.WithAttribute(
+                createReplacableAttribute("name", name, false),
+                createReplacableAttribute("location", name, false),
+                createReplacableAttribute("zip", name, false)
+                );
+
+            m_amazonSimpleDBClient.PutAttributes(putAttributes);
+
             Console.WriteLine("Form Length: {0}", request.Form.Count);
             Console.WriteLine("Name: {0}, Email: {1}, Zip: {2}, Location: {3}", name, email, zip, location);
 
@@ -83,5 +90,15 @@ namespace Nuxleus.Web.HttpHandler {
             //m_file.EndWrite(result);
             //m_file.Close();
         }
+
+        private ReplaceableAttribute createReplacableAttribute ( string name, string value, bool replacable ) {
+            ReplaceableAttribute replacableAttribute = new ReplaceableAttribute();
+            replacableAttribute.Name = name;
+            replacableAttribute.Value = value;
+            replacableAttribute.Replace = replacable;
+            return replacableAttribute;
+        }
+
+
     }
 }
