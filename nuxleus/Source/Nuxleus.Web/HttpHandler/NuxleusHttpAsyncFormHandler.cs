@@ -53,8 +53,8 @@ namespace Nuxleus.Web.HttpHandler {
 
             m_putAttributes.WithAttribute(
                 createReplacableAttribute("name", name, false),
-                createReplacableAttribute("location", name, false),
-                createReplacableAttribute("zip", name, false)
+                createReplacableAttribute("location", location, false),
+                createReplacableAttribute("zip", zip, false)
                 );
 
             //Console.WriteLine("Form Length: {0}", request.Form.Count);
