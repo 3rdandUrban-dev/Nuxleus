@@ -60,7 +60,7 @@ namespace Nuxleus.Web.HttpHandler {
 
 
             m_putAttributes = new PutAttributes();
-            m_putAttributes.DomainName = "4lessig-dev";
+            m_putAttributes.DomainName = "4lessig";
             m_putAttributes.ItemName = email;
 
             m_putAttributes.WithAttribute(
@@ -71,17 +71,6 @@ namespace Nuxleus.Web.HttpHandler {
                 );
 
             pledgeQueue.Enqueue(location);
-
-            //if (location == "ca12thdistrict") {
-            //    lock (m_lock) {
-            //        m_pledgeCount.PledgeCountDistrict = m_pledgeCount.PledgeCountDistrict + 1;
-            //        m_pledgeCount.PledgeCountTotal = m_pledgeCount.PledgeCountTotal + 1;
-            //    }
-            //} else {
-            //    lock (m_lock) {
-            //        m_pledgeCount.PledgeCountTotal = m_pledgeCount.PledgeCountTotal + 1;
-            //    }
-            //}
 
             Console.WriteLine("District Count: {0}, Total Count: {1}", m_pledgeCount.PledgeCountDistrict, m_pledgeCount.PledgeCountTotal);
             //Console.WriteLine("Name: {0}, Email: {1}, Zip: {2}, Location: {3}", name, email, zip, location);
