@@ -329,7 +329,7 @@
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/Sdb/*.cs"/>
+        <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/**/*.cs"/>
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
@@ -692,6 +692,19 @@
       </references>
     </csc>
   </target>
+    <target name="LocationComplete_Test" depends="init">
+    <csc target="exe" output="${build.dir}/LocationComplete_Test.exe">
+      <arg if="${platform::is-unix()}" value="-langversion:linq"/>
+      <sources>
+        <include name="${source.dir}/CodeSamples/Nuxleus.Extension.Amp.Fm.LocationComplete_SoapTest/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="FileSystemWatcher" depends="init Nuxleus Nuxleus.Service">
     <csc target="exe" output="${build.dir}/Watcher.exe" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
@@ -921,6 +934,7 @@
     <call target="LLUPSubscriberService"/>
     <call target="HttpGetAsyncResponse"/>
     <call target="HttpGetRequestAsyncWorkflow_Test"/>
+    <call target="dependencies"/>
 <!--<call target="System.Messaging" />-->
   </target>
   <target name="production" depends="all">
@@ -945,6 +959,15 @@
     <copy todir="${test.web.install.dir}" overwrite="true">
       <fileset basedir="${build.dir}">
         <include name="**"/>
+        <exclude name="*.mdb"/>
+        <exclude name="*.pdb"/>
+      </fileset>
+    </copy>
+  </target>
+  <target name="dependencies" depends="init">
+    <copy todir="${build.dir}" overwrite="true">
+      <fileset basedir="${dependencies.dir}">
+        <include name="*.dll"/>
         <exclude name="*.mdb"/>
         <exclude name="*.pdb"/>
       </fileset>

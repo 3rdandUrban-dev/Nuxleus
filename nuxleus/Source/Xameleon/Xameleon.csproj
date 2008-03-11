@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.20706</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -68,10 +68,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\saxon9.dll</HintPath>
     </Reference>
-    <Reference Include="SgmlReaderDll, Version=1.7.2818.38825, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\SgmlReaderDll.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -118,6 +114,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dependencies\sgmlreader-1.7.2\sgmlreaderdll\SgmlReaderDll8.csproj">
+      <Project>{D7BBFCCD-F523-400A-89C6-7AD879FBC56C}</Project>
+      <Name>SgmlReaderDll8</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Agent\Nuxleus.Agent.csproj">
       <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>
       <Name>Nuxleus.Agent</Name>
