@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:debug="http://nuxleus.com/session/debug" xmlns:request="http://nuxleus.com/session/request" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <div class="form" id="pledgeSupport">
+    <h1>Add a new entry...</h1>
+    <form id="entry" method="POST" action="/service/atompub/add" target="_top">
+      <div id="pledgeSupportDiv">
+        <div class="formRow">
+          <ul class="LtoR row">
+            <li class="left">
+              <label for="name">Name:</label>
+            </li>
+            <li class="right">
+              <input class="text" type="text" name="name" id="name" />
+            </li>
+          </ul>
+        </div>
+        <div class="formRow">
+          <ul class="LtoR row">
+            <li class="left">
+              <label for="email">Email:</label>
+            </li>
+            <li class="right">
+              <input class="text" type="text" name="email" id="email" />
+            </li>
+            <li class="left">
+              <label for="email">Zip:</label>
+            </li>
+            <li class="right">
+              <input class="zip" type="text" name="zip" id="zip" />
+            </li>
+          </ul>
+        </div>
+        <div class="formRow">
+          <ul class="LtoR row">
+            <li class="left">
+              <label for="location">Location:</label>
+            </li>
+            <li class="right">
+              <select class="location" name="location" id="location">
+                <option>Please select the closest match...</option>
+                <option value="ca12thdistrict">California 12th District</option>
+                <option value="bayarea">Bay Area</option>
+                <option value="ca">California</option>
+                <option value="usa">United States</option>
+                <option value="international">International</option>
+              </select>
+            </li>
+            <li class="right">
+              <input type="submit" name="submit" id="submitPledge" value="Make My Pledge!" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </form>
+  </div>
+</view:module>
