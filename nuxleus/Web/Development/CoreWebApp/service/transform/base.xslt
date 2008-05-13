@@ -44,7 +44,6 @@
         <xsl:output-character character="&#47;" string="&#47;" />
     </xsl:character-map>
 
-
     <xsl:output name="xhtml" doctype-public="-//W3C//DTD XHTML 1.1//EN" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1.1.dtd"
         include-content-type="yes" indent="no" media-type="text/html" method="xhtml" />
 

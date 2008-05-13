@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:transform version="2.0" xmlns="http://www.w3.org/2005/Atom" xmlns:tapi="http://api.technorati.com/dtd/tapi-002.xml" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:saxon="http://saxon.sf.net/" xmlns:clitype="http://saxon.sf.net/clitype" xmlns:at="http://atomictalk.org" xmlns:func="http://atomictalk.org/function" xmlns:http-sgml-to-xml="clitype:Xameleon.Function.HttpSgmlToXml?partialname=Xameleon" xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web" xmlns:proxy="http://xameleon.org/service/proxy" xmlns:html="http://www.w3.org/1999/xhtml" exclude-result-prefixes="#all">
 
-  <xsl:import href="../../../functions/funcset-Util.xslt" />
-  <xsl:param name="current-context" />
+  <xsl:import href="../../base.xslt" />
+  
+  <xsl:output method="xml" cdata-section-elements="atom:content" />
 
   <xsl:template match="proxy:return-blog-entries-by-location">
     <xsl:variable name="location" select="func:resolve-variable(@location)" />
@@ -67,15 +68,21 @@
   <xsl:template match="atom:summary|atom:author|atom:link" mode="googleblogs">
     <xsl:copy-of select="."/>
   </xsl:template>
+  
+  <xsl:template match="atom:title" mode="googleblogs">
+    <atom:title type="text">
+      <xsl:value-of select="text()"/>
+    </atom:title>
+  </xsl:template>
 
   <xsl:template match="atom:summary|atom:author|atom:link" mode="technorati">
     <xsl:copy-of select="."/>
   </xsl:template>
 
-  <xsl:template match="atom:content|atom:title" mode="googleblogs">
+  <xsl:template match="atom:content" mode="googleblogs">
     <xsl:element name="{name()}">
       <xsl:attribute name="type">text</xsl:attribute>
-      <xsl:value-of select="replace(replace(replace(text(), '&lt;b&gt;', ''), '&lt;/b&gt;', ''), '&lt;br&gt;', '')" />
+      <xsl:value-of select="replace(replace(replace(replace(text(), '&lt;b&gt;', ''), '&lt;/b&gt;', ''), '&lt;br&gt;', ''), '&lt; /br&gt;', '')" />
     </xsl:element>
   </xsl:template>
 

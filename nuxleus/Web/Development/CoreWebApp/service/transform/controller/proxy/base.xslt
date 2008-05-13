@@ -11,10 +11,8 @@
     exclude-result-prefixes="xs xsl xsi fn clitype at func http-sgml-to-xml aspnet-context proxy saxon html">
 
     <xsl:import href="../../functions/funcset-Util.xslt" />
-    <xsl:import href="./return-news-by-location/base.xslt"/>
-    <xsl:import href="./return-images-by-tag-name/base.xslt"/>
-    <xsl:import href="./return-blog-entries-by-location/base.xslt"/>
-    <xsl:import href="./get-geo-info-by-ip/base.xslt"/>
+    <xsl:import href="../base.xslt"/>
+
     <xsl:param name="current-context" />
 
     <xsl:template match="proxy:return-xml-from-html">

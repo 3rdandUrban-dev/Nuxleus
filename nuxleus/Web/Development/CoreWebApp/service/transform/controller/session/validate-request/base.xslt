@@ -9,6 +9,7 @@
     xmlns:browser="http://xameleon.org/service/http/request/browser"
     xmlns:browser-capabilities="clitype:System.Web.HttpBrowserCapabilities?partialname=System.Web" exclude-result-prefixes="#all">
 
+    <xsl:import href="../../base.xslt" />
     <xsl:import href="../../../functions/funcset-Util.xslt" />
     <xsl:param name="current-context" />
     <xsl:param name="request" />
