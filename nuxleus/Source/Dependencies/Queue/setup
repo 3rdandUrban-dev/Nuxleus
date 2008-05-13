@@ -1,0 +1,8 @@
+#!/bin/sh
+cd axon; python setup.py install; cd ../
+cd kamaelia; python setup.py install; cd ../
+cd bridge; python setup.py install; cd ../
+cd bucker; python setup.py install; cd ../
+cd cherrypy; python setup.py install; cd ../
+cd llup; python setup.py install; cd ../
+cd python-memcached-1.40; python setup.py install; cd ../
