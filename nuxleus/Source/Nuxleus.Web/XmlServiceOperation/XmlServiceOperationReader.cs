@@ -7,6 +7,7 @@ using Nuxleus.Transform;
 using Nuxleus.Extension;
 using System.IO;
 using System.Globalization;
+using System.Xml.XPath;
 
 namespace Nuxleus.Web {
 
@@ -35,7 +36,11 @@ namespace Nuxleus.Web {
         }
 
         public TransformResponse Process () {
-            XmlReader reader = m_reader;
+            
+            Console.WriteLine("Hello");
+            XPathNavigator navigator = new XPathDocument(m_reader).CreateNavigator().Clone();
+            XmlReader reader = XmlReader.Create(new StringReader(navigator.OuterXml));
+
             string xmlStylesheetHref = String.Empty;
             bool processWithEmbeddedPIStylsheet = false;
 
@@ -58,8 +63,19 @@ namespace Nuxleus.Web {
                     case XmlNodeType.Element:
                         if (reader.IsStartElement()) {
                             switch (reader.Name) {
+                                case "service:compile":
+                                    if (reader.HasAttributes) {
+                                        bool USEMEMCACHE;
+                                        bool SUCCESS = bool.TryParse(reader.GetAttribute("cache-result"), out USEMEMCACHE);
+                                        Console.WriteLine(String.Format("Operation succeeded: {0}, Use memcached: {1}", SUCCESS, USEMEMCACHE));
+                                    }
+                                    break;
+                                case "service:session":
+                                    Console.WriteLine("service:session reached");
+                                    break;
                                 case "service:operation":
                                 case "my:page":
+                                    Console.WriteLine("service:operation or my:page reached");
                                     Uri baseXsltUri = new Uri(m_httpContext.Request.MapPath(xmlStylesheetHref));
                                     m_xslTransformationManager.BaseXsltUri = baseXsltUri;
                                     string baseXslt = baseXsltUri.GetHashCode().ToString();
@@ -69,6 +85,7 @@ namespace Nuxleus.Web {
                                         m_xslTransformationManager.NamedXsltHashtable.Add(baseXslt, baseXsltUri);
                                     }
                                     if (!m_xslTransformationManager.XmlSourceHashtable.ContainsKey(m_context.RequestXmlETag)) {
+                                        Console.WriteLine(reader.ReadOuterXml());
                                         using (MemoryStream stream = new MemoryStream(m_encoding.GetBytes(reader.ReadOuterXml().ToCharArray()))) {
                                             m_xslTransformationManager.AddXmlSource(m_context.RequestXmlETag.ToString(), (Stream)stream);
                                         }
@@ -84,6 +101,7 @@ namespace Nuxleus.Web {
                                     m_response = m_transform.BeginTransformProcess(m_request);
                                     break;
                                 default:
+                                    Console.WriteLine("XML: ", reader.ReadOuterXml());
                                     break;
                             }
                         }

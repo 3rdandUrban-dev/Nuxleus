@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ALAZ.SystemEx</name>
+    </assembly>
+    <members>
+        <member name="T:ALAZ.SystemEx.BaseDisposable">
+            <summary>
+            Base class for disposable objects.
+            </summary>
+        </member>
+        <member name="M:ALAZ.SystemEx.BaseDisposable.Free(System.Boolean)">
+            <summary>
+            This method is called when object is being disposed. Override this method to free resources.
+            </summary>
+            <param name="canAccessFinalizable">
+            Indicates if the method can access Finalizable member objects.
+            If canAccessFinalizable = false the method was called by GC and you can´t access finalizable member objects.
+            If canAccessFinalizable = true the method was called by user and you can access all member objects.
+            </param>
+        </member>
+        <member name="M:ALAZ.SystemEx.BaseDisposable.CheckDisposedWithException">
+            <summary>
+            Checks if object is already disposed.
+            </summary>
+        </member>
+        <member name="M:ALAZ.SystemEx.BaseDisposable.Dispose">
+            <summary>
+            Dispose object resources.
+            </summary>
+        </member>
+        <member name="P:ALAZ.SystemEx.BaseDisposable.Disposed">
+            <summary>
+            Indicates is object is already disposed.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.BaseFinalizable">
+            <summary>
+            Base class for finalizable objects.
+            </summary>
+        </member>
+        <member name="M:ALAZ.SystemEx.BaseFinalizable.Dispose">
+            <summary>
+            Disposes object resources.
+            </summary>
+        </member>
+    </members>
+</doc>

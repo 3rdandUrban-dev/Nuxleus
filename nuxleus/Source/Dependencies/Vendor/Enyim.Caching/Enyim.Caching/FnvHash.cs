@@ -57,73 +57,53 @@ namespace Enyim
 		}
 	}
 
-	// algorithm found at http://bretm.home.comcast.net/hash/6.html
-	// provides better distribution but it's only 32 bit long
-	public sealed class ModifiedFNV : HashAlgorithm
+	public class FNV1a : HashAlgorithm
 	{
-		private const uint MOD_FNV_PRIME = 0x1000193;
-		private const uint MOD_FNV_INIT = 0x811C9DC5;
+		private const uint Prime = 16777619;
+		private const uint Offset = 2166136261;
 
-		private uint currentHashValue;
+		protected uint CurrentHashValue;
 
-		public ModifiedFNV()
+		public FNV1a()
 		{
 			this.HashSizeValue = 32;
-
 			this.Initialize();
 		}
 
 		public override void Initialize()
 		{
-			this.currentHashValue = MOD_FNV_INIT;
+			this.CurrentHashValue = Offset;
 		}
-		
+
 		protected override void HashCore(byte[] array, int ibStart, int cbSize)
 		{
 			int end = ibStart + cbSize;
 
 			for (int i = ibStart; i < end; i++)
 			{
-				this.currentHashValue = (this.currentHashValue ^ array[i]) * MOD_FNV_PRIME;
+				this.CurrentHashValue = (this.CurrentHashValue ^ array[i]) * FNV1a.Prime;
 			}
 		}
 
 		protected override byte[] HashFinal()
 		{
-			this.currentHashValue += this.currentHashValue << 13;
-			this.currentHashValue ^= this.currentHashValue >> 7;
-			this.currentHashValue += this.currentHashValue << 3;
-			this.currentHashValue ^= this.currentHashValue >> 17;
-			this.currentHashValue += this.currentHashValue << 5;
-
-			return BitConverter.GetBytes(this.currentHashValue);
+			return BitConverter.GetBytes(this.CurrentHashValue);
 		}
+	}
 
-		public uint CurrentHashValue
+	// algorithm found at http://bretm.home.comcast.net/hash/6.html
+	// provides better distribution but it's only 32 bit long
+	public class ModifiedFNV : FNV1a
+	{
+		protected override byte[] HashFinal()
 		{
-			get { return this.currentHashValue; }
+			this.CurrentHashValue += this.CurrentHashValue << 13;
+			this.CurrentHashValue ^= this.CurrentHashValue >> 7;
+			this.CurrentHashValue += this.CurrentHashValue << 3;
+			this.CurrentHashValue ^= this.CurrentHashValue >> 17;
+			this.CurrentHashValue += this.CurrentHashValue << 5;
+
+			return base.HashFinal();
 		}
 	}
 }
-
-#region [ License information          ]
-/* ************************************************************
- *
- * Copyright (c) Attila Kiskó, enyim.com, 2007
- *
- * This source code is subject to terms and conditions of 
- * Microsoft Permissive License (Ms-PL).
- * 
- * A copy of the license can be found in the License.html
- * file at the root of this distribution. If you can not 
- * locate the License, please send an email to a@enyim.com
- * 
- * By using this source code in any fashion, you are 
- * agreeing to be bound by the terms of the Microsoft 
- * Permissive License.
- *
- * You must not remove this notice, or any other, from this
- * software.
- *
- * ************************************************************/
-#endregion

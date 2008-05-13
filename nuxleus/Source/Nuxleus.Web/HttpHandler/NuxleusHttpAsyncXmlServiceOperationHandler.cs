@@ -27,13 +27,16 @@ using Nuxleus.Cryptography;
 using Nuxleus.Bucker;
 using Nuxleus.Async;
 using System.Globalization;
+using Nuxleus.Web;
+using log4net;
 using Nuxleus.Agent;
+using System.Xml.XPath;
 
 namespace Nuxleus.Web.HttpHandler {
 
     public struct NuxleusHttpAsyncXmlServiceOperationHandler : IHttpAsyncHandler {
 
-        XmlServiceOperationManager m_xmlServiceOperationManager;
+        XPathServiceOperationManager m_xmlServiceOperationManager;
         XsltTransformationManager m_xslTransformationManager;
         Transform.Context m_transformContext;
         Transform.Transform m_transform;
@@ -48,7 +51,7 @@ namespace Nuxleus.Web.HttpHandler {
         HttpContext m_httpContext;
         String m_requestHashcode;
         Dictionary<int, int> m_xmlSourceETagDictionary;
-        Dictionary<int, XmlReader> m_xmlReaderDictionary;
+        Dictionary<int, XPathNavigator> m_xmlReaderDictionary;
         Nuxleus.Agent.NuxleusAsyncResult m_nuxleusAsyncResult;
         AsyncCallback m_callback;
         String m_httpMethod;
@@ -68,6 +71,8 @@ namespace Nuxleus.Web.HttpHandler {
         NuxleusAgentAsyncRequest m_transformRequest;
         Transform.Agent m_agent;
         IAsyncResult m_asyncResult;
+        XmlReader initialReader;
+        static ILog m_logger = Web.Agent.GetBasicLogger();
 
         public void ProcessRequest ( HttpContext context ) {
             //not called
@@ -84,7 +89,7 @@ namespace Nuxleus.Web.HttpHandler {
             m_stopwatch.Start();
 
             FileInfo fileInfo = new FileInfo(context.Request.MapPath(context.Request.CurrentExecutionFilePath));
-            //Console.WriteLine("File Date: {0}; File Length: {1}", fileInfo.LastWriteTimeUtc, fileInfo.Length);
+            m_logger.DebugFormat("File Date: {0}; File Length: {1}", fileInfo.LastWriteTimeUtc, fileInfo.Length);
             m_CONTENT_IS_MEMCACHED = false;
             m_USE_MEMCACHED = false;
             m_httpContext = context;
@@ -94,7 +99,7 @@ namespace Nuxleus.Web.HttpHandler {
             m_encoding = (UTF8Encoding)context.Application["encoding"];
             m_queueClient = (QueueClient)context.Application["queueclient"];
             m_hashkey = (string)context.Application["hashkey"];
-            m_xmlServiceOperationManager = (XmlServiceOperationManager)context.Application["xmlServiceOperationManager"];
+            m_xmlServiceOperationManager = (XPathServiceOperationManager)context.Application["xmlServiceOperationManager"];
             m_xslTransformationManager = (XsltTransformationManager)context.Application["xslTransformationManager"];
             m_transform = m_xslTransformationManager.Transform;
             m_xsltParams = (Hashtable)context.Application["globalXsltParams"];
@@ -103,7 +108,7 @@ namespace Nuxleus.Web.HttpHandler {
             m_xmlSourceETagDictionary = m_xmlServiceOperationManager.XmlSourceETagDictionary;
             m_xmlReaderDictionary = m_xmlServiceOperationManager.XmlReaderDictionary;
             m_context = new Context(context, m_hashAlgorithm, m_hashkey, fileInfo, fileInfo.LastWriteTimeUtc, fileInfo.Length);
-            //Console.WriteLine("File Date: {0}; File Length: {1}", m_context.RequestXmlFileInfo.LastWriteTimeUtc, m_context.RequestXmlFileInfo.Length);
+            m_logger.DebugFormat("File Date: {0}; File Length: {1}", m_context.RequestXmlFileInfo.LastWriteTimeUtc, m_context.RequestXmlFileInfo.Length);
             m_nuxleusAsyncResult = new Nuxleus.Agent.NuxleusAsyncResult(cb, extraData);
             m_callback = cb;
             m_nuxleusAsyncResult.m_context = context;
@@ -119,76 +124,76 @@ namespace Nuxleus.Web.HttpHandler {
             Guid requestGuid = Guid.NewGuid();
             m_request.ID = requestGuid;
 
+            
+            context.Response.ContentType = "text/xml";
+
             IEnumerator headers = context.Request.Headers.GetEnumerator();
             for (int i = 0; headers.MoveNext(); i++) {
                 string local = context.Request.Headers.AllKeys[i].ToString();
-                Console.WriteLine("KeyName: {0}, KeyValue: {1}", local, context.Request.Headers[local]);
+                m_logger.DebugFormat("KeyName: {0}, KeyValue: {1}", local, context.Request.Headers[local]);
             }
             bool hasXmlSourceChanged = m_xmlServiceOperationManager.HasXmlSourceChanged(m_context.RequestXmlETag, requestUri);
 
-            if (context.Request.Path == "/service/4lessig/add-support/service.op") {
-                m_USE_MEMCACHED = false;
-            }
+            //if (m_USE_MEMCACHED) {
 
-            if (m_USE_MEMCACHED) {
+            //    string obj = (string)m_memcachedClient.Get(m_context.GetRequestHashcode(true).ToString());
 
-                string obj = (string)m_memcachedClient.Get(m_context.GetRequestHashcode(true).ToString());
+            //    if (obj != null && !hasXmlSourceChanged) {
+            //        m_response.TransformResult = (string)obj;
+            //        m_CONTENT_IS_MEMCACHED = true;
+            //        if ((bool)context.Application["debug"]) {
+            //            context.Response.ContentType = "text";
+            //        }
+            //    } else {
+            //        //m_writer = new StringWriter(m_builder);
+            //        m_CONTENT_IS_MEMCACHED = false;
+            //    }
+            //} else {
+            //    m_writer = new StringWriter(m_builder);
+            //}
 
-                if (obj != null && !hasXmlSourceChanged) {
-                    m_response.TransformResult = (string)obj;
-                    m_CONTENT_IS_MEMCACHED = true;
-                    if ((bool)context.Application["debug"])
-                        context.Response.ContentType = "text";
-                    else
-                        context.Response.ContentType = "text/xml";
-                } else {
-                    //m_writer = new StringWriter(m_builder);
-                    m_CONTENT_IS_MEMCACHED = false;
-                }
-            } else {
-                m_writer = new StringWriter(m_builder);
-            }
+            m_writer = new StringWriter(m_builder);
 
             try {
 
                 switch (m_httpMethod) {
                     case "GET":
                     case "HEAD":
-                    case "POST":{
-                            string name = String.Format("Name: {0}", context.Request.QueryString["name"]);
-                            Console.WriteLine("QueryString Length: {0}", context.Request.QueryString.Count);
-                            Console.WriteLine(name);
-                            Console.WriteLine("If-None-Match: {0}, RequestHashCode: {1}", context.Request.Headers["If-None-Match"], m_requestHashcode);
-                            Console.WriteLine(context.Request.Path);
-                            if (context.Request.Path != "/service/4lessig/add-support/service.op") {
-                                Console.WriteLine("{0} != /service/4lessig/add-support/service.op", context.Request.Path);
-                                if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
-                                    Console.WriteLine("They matched.");
-                                    Console.WriteLine("Use memcached: {0}, KeyExists: {1}, XmlSource Changed: {2}", m_USE_MEMCACHED, m_memcachedClient.KeyExists(m_lastModifiedKey), hasXmlSourceChanged);
-                                    Console.WriteLine("Last Modified Key Value: {0}", m_lastModifiedKey);
-                                    if (m_USE_MEMCACHED && m_memcachedClient.KeyExists(m_lastModifiedKey) && !hasXmlSourceChanged) {
-                                        m_lastModifiedDate = (string)m_memcachedClient.Get(m_lastModifiedKey);
-                                        Console.WriteLine("Last Modified Date: {0}", m_lastModifiedDate);
-                                        if (context.Request.Headers["If-Modified-Since"] == m_lastModifiedDate) {
-                                            context.Response.StatusCode = 304;
-                                            m_returnOutput = false;
-                                            goto CompleteCall;
-                                        } else {
-                                            goto Process;
-                                        }
-                                    }
+                    case "POST": {
+                            //string name = String.Format("Name: {0}", context.Request.QueryString["name"]);
+                            //m_logger.DebugFormat("QueryString Length: {0}", context.Request.QueryString.Count);
+                            //m_logger.DebugFormat(name);
+                            //m_logger.DebugFormat("If-None-Match: {0}, RequestHashCode: {1}", context.Request.Headers["If-None-Match"], m_requestHashcode);
+                            //m_logger.DebugFormat(context.Request.Path);
+                            //if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
+                            //    m_logger.Debug("They matched.");
+                            //    m_logger.DebugFormat("Use memcached: {0}, KeyExists: {1}, XmlSource Changed: {2}", m_USE_MEMCACHED, m_memcachedClient.KeyExists(m_lastModifiedKey), hasXmlSourceChanged);
+                            //    m_logger.DebugFormat("Last Modified Key Value: {0}", m_lastModifiedKey);
+                            //    if (m_USE_MEMCACHED && m_memcachedClient.KeyExists(m_lastModifiedKey) && !hasXmlSourceChanged) {
+                            //        m_lastModifiedDate = (string)m_memcachedClient.Get(m_lastModifiedKey);
+                            //        m_logger.DebugFormat("Last Modified Date: {0}", m_lastModifiedDate);
+                            //        if (context.Request.Headers["If-Modified-Since"] == m_lastModifiedDate) {
 
-                                } else if (m_CONTENT_IS_MEMCACHED) {
-                                    goto CompleteCall;
-                                } else {
-                                    goto Process;
-                                }
-                            } else {
-                                Console.WriteLine("Processing Pledge");
-                                m_returnOutput = true;
-                                goto Process;
-                            }
-                            break;
+                            //            context.Response.StatusCode = 304;
+                            //            m_returnOutput = false;
+                            //            goto CompleteCall;
+                            //        } else {
+                            //            goto Process;
+                            //        }
+                            //    } else if (m_CONTENT_IS_MEMCACHED) {
+                            //        goto CompleteCall;
+                            //    } else {
+                            //        goto Process;
+                            //    }
+                            //} else {
+                            //    m_logger.Debug("Headers do not match.  Beginning transformation process...");
+                            //    m_returnOutput = true;
+                            //    goto Process;
+                            //}
+                            //break;
+
+                            m_returnOutput = true;
+                            goto Process;
                         }
                     case "PUT": {
                             goto CompleteCall;
@@ -208,11 +213,22 @@ namespace Nuxleus.Web.HttpHandler {
             }
         Process:
             try {
-                Console.WriteLine("Processing Transformation");
-                XmlReader reader = m_xmlServiceOperationManager.GetXmlReader(m_context.RequestXmlETag, requestUri);
-                XmlServiceOperationReader serviceOperationReader = new XmlServiceOperationReader(context, m_context, m_transformContext, reader, m_request, m_response, m_xslTransformationManager);
+                m_logger.Debug("Processing Transformation");
+                m_logger.DebugFormat("Request XML ETag Value: {0}, Request URI: {1}", m_context.RequestXmlETag, requestUri);
+
+                XPathNavigator navigator = m_xmlServiceOperationManager.GetXPathNavigator(m_context.RequestXmlETag, requestUri);
+                //if (initialReader == null) {
+                //    initialReader = reader;
+                //} else {
+                //    m_logger.DebugFormat("XmlReaders are the same object: {0}", initialReader.Equals(reader));
+                //}
+                //m_logger.DebugFormat("XML Reader Value: {0}", reader.ReadOuterXml());
+                //m_logger.DebugFormat("XML Reader Hash: {0}", reader.GetHashCode());
+                XPathServiceOperationNavigator serviceOperationReader = new XPathServiceOperationNavigator(context, m_context, m_transformContext, navigator, m_request, m_response, m_xslTransformationManager);
                 m_response = serviceOperationReader.Process();
+
             } catch (Exception e) {
+                m_logger.DebugFormat("Error: {0} in transformation.", e.Message);
                 m_exception = e;
                 WriteError();
             }
@@ -220,7 +236,7 @@ namespace Nuxleus.Web.HttpHandler {
             goto CompleteCall;
 
         CompleteCall:
-            Console.WriteLine("CompleteCall reached");
+            m_logger.Debug("CompleteCall reached");
             if (m_lastModifiedDate == String.Empty) {
                 m_lastModifiedDate = DateTime.UtcNow.ToString("r");
             }
@@ -232,7 +248,6 @@ namespace Nuxleus.Web.HttpHandler {
         }
 
         public void EndProcessRequest ( IAsyncResult result ) {
-            //using (m_writer) {
             string output = m_response.TransformResult;
             if (m_returnOutput) {
                 using (TextWriter writer = m_httpContext.Response.Output) {
@@ -240,13 +255,13 @@ namespace Nuxleus.Web.HttpHandler {
                 }
             }
             if (!m_CONTENT_IS_MEMCACHED && m_USE_MEMCACHED) {
-                Console.WriteLine("Adding Last Modified Key: {0}", m_lastModifiedKey);
+                m_logger.DebugFormat("Adding Last Modified Key: {0}", m_lastModifiedKey);
                 m_memcachedClient.Set(m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(24));
                 m_memcachedClient.Set(m_lastModifiedKey, m_lastModifiedDate);
             }
             //}
             m_stopwatch.Stop();
-            Console.WriteLine("Total processing time:\t\t{0} ms", m_stopwatch.ElapsedMilliseconds);
+            m_logger.DebugFormat("Total processing time: {0} ms", m_stopwatch.ElapsedMilliseconds);
             m_stopwatch.Reset();
         }
 

@@ -416,14 +416,16 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Logging" depends="init">
+  <target name="Nuxleus.Logging" depends="init Nuxleus.Agent">
     <csc target="library" output="${build.dir}/Nuxleus.Logging.dll" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Logging/**/*.cs"/>
       </sources>
       <references>
-        <include name="System.dll"/>
+        <include name="${build.dir}/Nuxleus.Agent.dll"/>
+	<include name="${dependencies.dir}/log4net.dll"/>
+	<include name="System.dll"/>
         <include name="System.Xml.dll"/>
       </references>
     </csc>
@@ -554,7 +556,8 @@
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
+        <include name="System.Web.dll"/> 
+        <include name="System.Web.Services.dll"/>
       </references>
     </csc>
   </target>
@@ -606,7 +609,8 @@
         <include name="System.Web.dll"/>
         <include name="System.Core.dll"/>
         <include name="System.ServiceProcess.dll"/>
-        <include name="${build.dir}/Nuxleus.Agent.dll"/>
+        <include name="${dependencies.dir}/log4net.dll"/>
+	<include name="${build.dir}/Nuxleus.Agent.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>

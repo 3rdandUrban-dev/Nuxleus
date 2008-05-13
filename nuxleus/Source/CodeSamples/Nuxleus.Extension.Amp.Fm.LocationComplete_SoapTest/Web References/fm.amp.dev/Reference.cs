@@ -28,7 +28,6 @@ namespace Amp.Fm.fm.amp.dev {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="LocationCompleteSoap", Namespace="http://amp.fm/service")]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ValueType))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(object[]))]
     public partial class LocationComplete : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback GetLocationOperationCompleted;
@@ -76,24 +75,25 @@ namespace Amp.Fm.fm.amp.dev {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://amp.fm/service/GetLocation", RequestNamespace="http://amp.fm/service", ResponseNamespace="http://amp.fm/service", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public object[] GetLocation(string regEx) {
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
+        public Entity[] GetLocation(string regularExpression) {
             object[] results = this.Invoke("GetLocation", new object[] {
-                        regEx});
-            return ((object[])(results[0]));
+                        regularExpression});
+            return ((Entity[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetLocationAsync(string regEx) {
-            this.GetLocationAsync(regEx, null);
+        public void GetLocationAsync(string regularExpression) {
+            this.GetLocationAsync(regularExpression, null);
         }
         
         /// <remarks/>
-        public void GetLocationAsync(string regEx, object userState) {
+        public void GetLocationAsync(string regularExpression, object userState) {
             if ((this.GetLocationOperationCompleted == null)) {
                 this.GetLocationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLocationOperationCompleted);
             }
             this.InvokeAsync("GetLocation", new object[] {
-                        regEx}, this.GetLocationOperationCompleted, userState);
+                        regularExpression}, this.GetLocationOperationCompleted, userState);
         }
         
         private void OnGetLocationOperationCompleted(object arg) {
@@ -123,21 +123,11 @@ namespace Amp.Fm.fm.amp.dev {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Entity))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.1433")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://amp.fm/service")]
-    public partial class ValueType {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.1433")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://amp.fm/service")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://nuxleus.com/entity")]
     public partial class Entity : ValueType {
         
         private string termField;
@@ -178,6 +168,16 @@ namespace Amp.Fm.fm.amp.dev {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Entity))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.1433")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://amp.fm/service")]
+    public partial class ValueType {
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.1433")]
     public delegate void GetLocationCompletedEventHandler(object sender, GetLocationCompletedEventArgs e);
     
@@ -195,10 +195,10 @@ namespace Amp.Fm.fm.amp.dev {
         }
         
         /// <remarks/>
-        public object[] Result {
+        public Entity[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((object[])(this.results[0]));
+                return ((Entity[])(this.results[0]));
             }
         }
     }

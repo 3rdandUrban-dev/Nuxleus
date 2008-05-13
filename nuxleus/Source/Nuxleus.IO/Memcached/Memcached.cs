@@ -4,17 +4,15 @@ using System.Text;
 using Memcached.ClientLibrary;
 using Nuxleus.Configuration;
 
-namespace Nuxleus.Memcached
-{
-    public class Client : MemcachedClient
-    {
-        public Client(MemcachedClient memcachedClient, AspNetMemcachedConfiguration memcachedConfiguration)
-        {
+namespace Nuxleus.Memcached {
+
+    public class Client : MemcachedClient {
+
+        public Client ( MemcachedClient memcachedClient, AspNetMemcachedConfiguration memcachedConfiguration ) {
 
             SockIOPool pool = SockIOPool.GetInstance();
             List<string> serverList = new List<string>();
-            foreach (MemcachedServer server in memcachedConfiguration.MemcachedServerCollection)
-            {
+            foreach (MemcachedServer server in memcachedConfiguration.MemcachedServerCollection) {
                 serverList.Add(server.IP + ":" + server.Port);
             }
             pool.SetServers(serverList.ToArray());
@@ -35,6 +33,5 @@ namespace Nuxleus.Memcached
             pool.Nagle = (bool)poolConfig.Nagle;
             pool.Initialize();
         }
-
     }
 }

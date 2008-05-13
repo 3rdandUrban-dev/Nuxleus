@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nuxleus.Agent</name>
+    </assembly>
+    <members>
+        <member name="T:Nuxleus.Agent.PostOffice">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Agent.PostOffice.Post(Nuxleus.Agent.Notification)">
+            <summary>
+            Notify that a notification is ready to be processed.
+            </summary>
+        </member>
+        <member name="E:Nuxleus.Agent.PostOffice.Mailbox">
+            <summary>
+            Register delegates to be notified of a new notification
+            to process.
+            </summary>
+        </member>
+    </members>
+</doc>

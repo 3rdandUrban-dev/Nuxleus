@@ -118,9 +118,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SgmlReaderDll\SgmlReaderDll8.csproj">
+    <ProjectReference Include="..\sgmlreaderdll\SgmlReaderDll.csproj">
       <Project>{499527FF-AE52-450F-B3E3-4AD53E1712AD}</Project>
-      <Name>SgmlReaderDll8</Name>
+      <Name>SgmlReaderDll</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

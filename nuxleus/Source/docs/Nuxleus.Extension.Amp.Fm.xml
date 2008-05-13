@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nuxleus.Extension.Amp.Fm</name>
+    </assembly>
+    <members>
+        <member name="T:Nuxleus.Extension.Amp.Fm.Search">
+            <summary>
+            Summary description for Search service
+            </summary>
+        </member>
+    </members>
+</doc>

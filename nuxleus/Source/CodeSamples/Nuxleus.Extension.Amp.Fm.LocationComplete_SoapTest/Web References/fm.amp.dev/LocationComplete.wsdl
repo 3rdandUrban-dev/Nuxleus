@@ -2,19 +2,31 @@
 <definitions xmlns:s0="http://amp.fm/service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" name="LocationComplete" targetNamespace="http://amp.fm/service" xmlns="http://schemas.xmlsoap.org/wsdl/">
   <types>
     <xs:schema elementFormDefault="qualified" targetNamespace="http://amp.fm/service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://nuxleus.com/entity" />
       <xs:element name="GetLocation">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="1" name="regEx" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="regularExpression" type="xs:string" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:complexType name="ArrayOfAnyType">
+      <xs:complexType name="ArrayOfEntity">
         <xs:sequence>
-          <xs:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+          <xs:element xmlns:q1="http://nuxleus.com/entity" minOccurs="0" maxOccurs="unbounded" name="Entity" type="q1:Entity" />
         </xs:sequence>
       </xs:complexType>
       <xs:complexType name="ValueType" />
+      <xs:element name="GetLocationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetLocationResult" type="s0:ArrayOfEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ArrayOfEntity" nillable="true" type="s0:ArrayOfEntity" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://nuxleus.com/entity" elementFormDefault="qualified" targetNamespace="http://nuxleus.com/entity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://amp.fm/service" />
       <xs:complexType name="Entity">
         <xs:complexContent mixed="false">
           <xs:extension base="s0:ValueType">
@@ -26,14 +38,6 @@
           </xs:extension>
         </xs:complexContent>
       </xs:complexType>
-      <xs:element name="GetLocationResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="1" name="GetLocationResult" type="s0:ArrayOfAnyType" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="ArrayOfAnyType" nillable="true" type="s0:ArrayOfAnyType" />
     </xs:schema>
   </types>
   <message name="GetLocationSoapIn">
@@ -43,41 +47,41 @@
     <part name="parameters" element="s0:GetLocationResponse" />
   </message>
   <message name="GetLocationHttpGetIn">
-    <part name="regEx" type="s:string" />
+    <part name="regularExpression" type="s:string" />
   </message>
   <message name="GetLocationHttpGetOut">
-    <part name="Body" element="s0:ArrayOfAnyType" />
+    <part name="Body" element="s0:ArrayOfEntity" />
   </message>
   <message name="GetLocationHttpPostIn">
-    <part name="regEx" type="s:string" />
+    <part name="regularExpression" type="s:string" />
   </message>
   <message name="GetLocationHttpPostOut">
-    <part name="Body" element="s0:ArrayOfAnyType" />
+    <part name="Body" element="s0:ArrayOfEntity" />
   </message>
   <portType name="LocationCompleteSoap">
     <operation name="GetLocation">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegEx</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegularExpression</wsdl:documentation>
       <input message="s0:GetLocationSoapIn" />
       <output message="s0:GetLocationSoapOut" />
     </operation>
   </portType>
   <portType name="LocationCompleteSoap12">
     <operation name="GetLocation">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegEx</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegularExpression</wsdl:documentation>
       <input message="s0:GetLocationSoapIn" />
       <output message="s0:GetLocationSoapOut" />
     </operation>
   </portType>
   <portType name="LocationCompleteHttpGet">
     <operation name="GetLocation">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegEx</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegularExpression</wsdl:documentation>
       <input message="s0:GetLocationHttpGetIn" />
       <output message="s0:GetLocationHttpGetOut" />
     </operation>
   </portType>
   <portType name="LocationCompleteHttpPost">
     <operation name="GetLocation">
-      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegEx</wsdl:documentation>
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegularExpression</wsdl:documentation>
       <input message="s0:GetLocationHttpPostIn" />
       <output message="s0:GetLocationHttpPostOut" />
     </operation>

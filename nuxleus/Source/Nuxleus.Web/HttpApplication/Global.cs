@@ -21,6 +21,7 @@ using System.Web.Hosting;
 using Nuxleus.Geo;
 using Nuxleus.Geo.MaxMind;
 using Amazon.SimpleDB;
+using System.Xml.XPath;
 
 namespace Nuxleus.Web.HttpApplication {
     public class Global : System.Web.HttpApplication {
@@ -33,7 +34,7 @@ namespace Nuxleus.Web.HttpApplication {
         AspNetBungeeAppConfiguration m_bungeeAppConfguration;
         AspNetQueueServerConfiguration m_queueServerConfiguration;
         XsltTransformationManager m_xsltTransformationManager;
-        XmlServiceOperationManager m_xmlServiceOperationManager;
+        XPathServiceOperationManager m_xmlServiceOperationManager;
         Transform.Transform m_transform;
         Processor m_processor;
         Serializer m_serializer;
@@ -70,7 +71,7 @@ namespace Nuxleus.Web.HttpApplication {
             m_namedXsltHashtable = new Hashtable();
             m_globalXsltParams = new Hashtable();
             m_transformContextHashtable = new Hashtable();
-            m_xmlServiceOperationManager = new XmlServiceOperationManager(new Dictionary<int, XmlReader>());
+            m_xmlServiceOperationManager = new XPathServiceOperationManager(new Dictionary<int, XPathNavigator>());
             m_geoIPLookup = new Dictionary<String, IPLocation>();
             m_requestXsltParams = null;
             m_encoding = new UTF8Encoding();

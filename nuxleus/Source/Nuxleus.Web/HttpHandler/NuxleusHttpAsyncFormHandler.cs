@@ -22,7 +22,7 @@ namespace Nuxleus.Web.HttpHandler {
         FileStream m_file;
         static long m_position = 0;
         static object m_lock = new object();
-        static string m_fileRedirect = "/thanks";
+        static string m_fileRedirect = "/";
         static int m_statusCode = 303;
 
         AmazonSimpleDBClient m_amazonSimpleDBClient;
@@ -58,7 +58,6 @@ namespace Nuxleus.Web.HttpHandler {
 
             Queue<string> pledgeQueue = (Queue<string>)context.Application["pledgeQueue"];
 
-
             m_putAttributes = new PutAttributes();
             m_putAttributes.DomainName = "4lessig-dev";
             m_putAttributes.ItemName = email;
@@ -72,22 +71,7 @@ namespace Nuxleus.Web.HttpHandler {
 
             pledgeQueue.Enqueue(location);
 
-            //if (location == "ca12thdistrict") {
-            //    lock (m_lock) {
-            //        m_pledgeCount.PledgeCountDistrict = m_pledgeCount.PledgeCountDistrict + 1;
-            //        m_pledgeCount.PledgeCountTotal = m_pledgeCount.PledgeCountTotal + 1;
-            //    }
-            //} else {
-            //    lock (m_lock) {
-            //        m_pledgeCount.PledgeCountTotal = m_pledgeCount.PledgeCountTotal + 1;
-            //    }
-            //}
-
-            Console.WriteLine("District Count: {0}, Total Count: {1}", m_pledgeCount.PledgeCountDistrict, m_pledgeCount.PledgeCountTotal);
-            //Console.WriteLine("Name: {0}, Email: {1}, Zip: {2}, Location: {3}", name, email, zip, location);
-
             string pledge = String.Format("<pledge time='{0}' email='{1}'><name>{2}</name><location>{3}</location><zip>{4}</zip></pledge>\r\n", DateTime.Now, email, name, location, zip);
-
 
             byte[] output = Encoding.ASCII.GetBytes(pledge);
             lock (m_lock) {

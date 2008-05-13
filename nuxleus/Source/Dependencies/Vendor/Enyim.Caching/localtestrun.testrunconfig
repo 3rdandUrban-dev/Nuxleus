@@ -21,7 +21,7 @@
       <_size type="System.Int32">1</_size>
       <_version type="System.Int32">1</_version>
     </codeCoverageItems>
-    <codeCoverageKeyFile type="System.String" />
+    <codeCoverageKeyFile type="System.String">D:\Enyim\keys\enyim.snk</codeCoverageKeyFile>
     <aspNetProjectCoverageItems type="System.Collections.Generic.List`1[[Microsoft.VisualStudio.TestTools.Common.AspNetProjectItem, Microsoft.VisualStudio.QualityTools.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]">
       <_size type="System.Int32">0</_size>
       <_version type="System.Int32">0</_version>

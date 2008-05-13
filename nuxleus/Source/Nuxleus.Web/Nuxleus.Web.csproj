@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.20706</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -50,6 +50,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Memcached.ClientLibrary.dll</HintPath>
@@ -76,6 +80,9 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Net">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -135,12 +142,15 @@
     <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationStatusHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncJobStatusRequestHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncStaticFileHandler.cs" />
     <Compile Include="HttpHandler\temp.cs" />
     <Compile Include="HttpModule\NuxleusAsyncRequestOpenIDAuthenticationHttpModule.cs" />
     <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerReaderHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncFormHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncRequestValidationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncRedirectHandler.cs" />
+    <Compile Include="HttpHandler\XPathServiceOperationManager.cs" />
     <Compile Include="XmlServiceOperation\Context.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs" />
@@ -159,6 +169,7 @@
     <Compile Include="HttpApplication\Global.cs" />
     <Compile Include="XmlServiceOperation\XmlServiceOperationManager.cs" />
     <Compile Include="XmlServiceOperation\XmlServiceOperationReader.cs" />
+    <Compile Include="XPathServiceOperationNavigator\XPathServiceOperationNavigator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Agent\Nuxleus.Agent.csproj">

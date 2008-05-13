@@ -43,6 +43,8 @@ namespace Nuxleus.Transform
             transformer.InputXmlResolver = transformationManager.Resolver;
             transformer.InitialContextNode = transformationManager.GetXdmNode(transformContext.Context.RequestXmlETag, transformContext.Context.RequestUri);
 
+            Console.WriteLine(transformer.InitialContextNode.OuterXml);
+
             Serializer destination = transformationManager.Serializer;
 
             StringBuilder builder = new StringBuilder();

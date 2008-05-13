@@ -1,40 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vendor", "Vendor", "{582EFFC3-C504-457E-9112-1C1FCE5D2A69}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuxleus.Core", "Nuxleus.Core", "{0A887F73-C7E8-430A-AB73-EA9E5F822CB4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xameleon.Core", "Xameleon.Core", "{138403FE-C587-460E-A3C8-77B713E904C9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceApps", "ServiceApps", "{216314AA-0FA4-4DD9-8BD9-77D5D8869820}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mono", "Mono", "{54CDA684-6431-45D5-9BF4-61C2D97FEC9C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ALAZ", "ALAZ", "{CF2BE8C5-4DCE-4D5C-9A06-787487549BC0}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F0A70542-6B74-44BF-8981-3EB62B4E050E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{5003C67E-977C-43F3-A1A9-27BC064E2BED}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{579F092F-9569-44F6-BF19-BD3148965997}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Home", "Home", "{A8E2A79E-05A1-4836-9C06-564FA8208A1C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{77ADD1A4-735E-42C1-9EA0-15817D92C597}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{3DC608FC-980F-456B-9878-B868D82CBB9D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{E80016D7-1492-464E-99BD-C173A610DA69}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Log", "Log", "{C978DAAB-FE27-4D6F-9AE6-E3E99301E662}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{8C91D63B-9064-41B8-AF8B-B2691EE62A12}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{88EBFF5A-FEA8-49BC-A541-215C4935C1B4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus", "Nuxleus\Nuxleus.csproj", "{B0D68D3E-8ACE-4F33-9E85-F32CED622614}"
-EndProject
+# Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Authentication", "Nuxleus.Authentication\Nuxleus.Authentication.csproj", "{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Build", "Nuxleus.Build\Nuxleus.Build.csproj", "{A605AE3C-C79F-43F4-8979-2624544DFC84}"
@@ -83,8 +49,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Web", "Nuxleus.Web\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Web.Services", "Nuxleus.Web.Services\Nuxleus.Web.Services.csproj", "{1CCD9440-9E26-4731-8F89-224690867EB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xameleon", "Xameleon\Xameleon.csproj", "{A800D9F1-D877-4076-99BA-CBD73BCFB203}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSP", "XSP\XSP.csproj", "{B5AB69BA-2B93-4850-9DA0-302D257B154B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemWatcher", "ConsoleApps\FileSystemWatcher\FileSystemWatcher.csproj", "{64C1203C-1912-4FE0-BA73-01BA2B0758E4}"
@@ -94,26 +58,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALAZ.SystemEx", "Dependencies\ALAZ\Source\ALAZ.SystemEx\ALAZ.SystemEx.csproj", "{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALAZ.SystemEx.NetEx", "Dependencies\ALAZ\Source\ALAZ.SystemEx.NetEx\ALAZ.SystemEx.NetEx.csproj", "{25162422-3B32-4FB3-8A99-6BCFBE30D9AE}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Development", "..\Web\Development\", "{206017F7-D34B-4662-B015-2620778CE537}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFramework = "2.0"
-		Debug.AspNetCompiler.VirtualPath = "/Development"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\Private\Web\Development\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Development\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/Development"
-		Release.AspNetCompiler.PhysicalPath = "..\..\Private\Web\Development\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Development\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "1585"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Agent", "Nuxleus.Agent\Nuxleus.Agent.csproj", "{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}"
 EndProject
@@ -153,11 +97,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Drawing", "Nuxleus.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.MySpace", "Nuxleus.Extension.MySpace\Nuxleus.Extension.MySpace.csproj", "{1A6A1729-0B96-40A7-A4B5-6DADE71682B3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Enyim", "Enyim", "{8F4A7357-D018-4EFD-871D-28E99E0A15EF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enyim.Caching", "Dependencies\Vendor\Enyim.Caching\Enyim.Caching\Enyim.Caching.csproj", "{D438C0B3-A168-40B8-BDDD-61F0939DFF35}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SgmlReader", "SgmlReader", "{7E846A6D-92F5-4F49-851F-4C4C45A86D58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SgmlReaderDll", "Dependencies\sgmlreader-1.7.2\sgmlreaderdll\SgmlReaderDll.csproj", "{499527FF-AE52-450F-B3E3-4AD53E1712AD}"
 EndProject
@@ -165,15 +105,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SgmlReaderDll8", "Dependenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SgmlReaderDll71", "Dependencies\sgmlreader-1.7.2\sgmlreaderdll\SgmlReaderDll71.csproj", "{54BFAB0E-44DC-44DA-A291-3B58B4A2D304}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commandline", "Commandline", "{698C495A-88F6-4B51-9D83-8DB95DB4D9BC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SgmlReader", "Dependencies\sgmlreader-1.7.2\CommandLine\SgmlReader.csproj", "{606C348A-9A72-4179-9C55-4DD9914C22CC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SgmlReader8", "Dependencies\sgmlreader-1.7.2\CommandLine\SgmlReader8.csproj", "{EC508F4F-28B0-4C88-B2FA-C22C87C1532E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SgmlReader71", "Dependencies\sgmlreader-1.7.2\CommandLine\SgmlReader71.csproj", "{87A4DFC8-ABA4-4711-B3B8-2CB0EB492644}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Amp.Fm.LocationComplete_SoapTest", "CodeSamples\Nuxleus.Extension.Amp.Fm.LocationComplete_SoapTest\Nuxleus.Extension.Amp.Fm.LocationComplete_SoapTest.csproj", "{5D56B440-8497-4547-A684-F60580E10251}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Aws.Ebs", "Nuxleus.Extension.Aws.Ebs\Nuxleus.Extension.Aws.Ebs.csproj", "{D84AC614-DDD2-435B-97EA-8BCE626F535A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemcachedProviders", "Dependencies\Vendor\MemcachedProviders\MemcachedProviders\MemcachedProviders.csproj", "{B062D12C-EFB7-4CB5-B560-FB2387468E82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity_Test", "CodeSamples\Buyer_Test\Buyer_Test\Entity_Test.csproj", "{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xameleon", "Xameleon\Xameleon.csproj", "{A800D9F1-D877-4076-99BA-CBD73BCFB203}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -185,16 +129,6 @@ Global
 		Release|Mixed Platforms = Release|Mixed Platforms
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614}.Release|.NET.ActiveCfg = Release|Any CPU
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{B0D68D3E-8ACE-4F33-9E85-F32CED622614}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -435,16 +369,6 @@ Global
 		{1CCD9440-9E26-4731-8F89-224690867EB2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CCD9440-9E26-4731-8F89-224690867EB2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1CCD9440-9E26-4731-8F89-224690867EB2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|.NET.ActiveCfg = Release|Any CPU
-		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B5AB69BA-2B93-4850-9DA0-302D257B154B}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{B5AB69BA-2B93-4850-9DA0-302D257B154B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B5AB69BA-2B93-4850-9DA0-302D257B154B}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -495,16 +419,6 @@ Global
 		{25162422-3B32-4FB3-8A99-6BCFBE30D9AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{25162422-3B32-4FB3-8A99-6BCFBE30D9AE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{25162422-3B32-4FB3-8A99-6BCFBE30D9AE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{206017F7-D34B-4662-B015-2620778CE537}.Debug|.NET.ActiveCfg = Debug|.NET
-		{206017F7-D34B-4662-B015-2620778CE537}.Debug|.NET.Build.0 = Debug|.NET
-		{206017F7-D34B-4662-B015-2620778CE537}.Debug|Any CPU.ActiveCfg = Debug|.NET
-		{206017F7-D34B-4662-B015-2620778CE537}.Debug|Mixed Platforms.ActiveCfg = Debug|.NET
-		{206017F7-D34B-4662-B015-2620778CE537}.Debug|Mixed Platforms.Build.0 = Debug|.NET
-		{206017F7-D34B-4662-B015-2620778CE537}.Release|.NET.ActiveCfg = Debug|.NET
-		{206017F7-D34B-4662-B015-2620778CE537}.Release|.NET.Build.0 = Debug|.NET
-		{206017F7-D34B-4662-B015-2620778CE537}.Release|Any CPU.ActiveCfg = Debug|.NET
-		{206017F7-D34B-4662-B015-2620778CE537}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
-		{206017F7-D34B-4662-B015-2620778CE537}.Release|Mixed Platforms.Build.0 = Debug|.NET
 		{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -735,16 +649,6 @@ Global
 		{54BFAB0E-44DC-44DA-A291-3B58B4A2D304}.Release|Any CPU.Build.0 = Release|Any CPU
 		{54BFAB0E-44DC-44DA-A291-3B58B4A2D304}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{54BFAB0E-44DC-44DA-A291-3B58B4A2D304}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{606C348A-9A72-4179-9C55-4DD9914C22CC}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{606C348A-9A72-4179-9C55-4DD9914C22CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{606C348A-9A72-4179-9C55-4DD9914C22CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{606C348A-9A72-4179-9C55-4DD9914C22CC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{606C348A-9A72-4179-9C55-4DD9914C22CC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{606C348A-9A72-4179-9C55-4DD9914C22CC}.Release|.NET.ActiveCfg = Release|Any CPU
-		{606C348A-9A72-4179-9C55-4DD9914C22CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{606C348A-9A72-4179-9C55-4DD9914C22CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{606C348A-9A72-4179-9C55-4DD9914C22CC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{606C348A-9A72-4179-9C55-4DD9914C22CC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EC508F4F-28B0-4C88-B2FA-C22C87C1532E}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{EC508F4F-28B0-4C88-B2FA-C22C87C1532E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC508F4F-28B0-4C88-B2FA-C22C87C1532E}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -775,6 +679,46 @@ Global
 		{5D56B440-8497-4547-A684-F60580E10251}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5D56B440-8497-4547-A684-F60580E10251}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{5D56B440-8497-4547-A684-F60580E10251}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A}.Release|.NET.ActiveCfg = Release|Any CPU
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82}.Release|.NET.ActiveCfg = Release|Any CPU
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}.Release|.NET.ActiveCfg = Release|Any CPU
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|.NET.ActiveCfg = Release|Any CPU
+		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -819,6 +763,7 @@ Global
 		{D937BA9E-1E6C-4757-98CC-7D932F4697B0} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{13FADE77-14DD-4F14-A52E-63AE71DB1756} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{1A6A1729-0B96-40A7-A4B5-6DADE71682B3} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
+		{D84AC614-DDD2-435B-97EA-8BCE626F535A} = {0A887F73-C7E8-430A-AB73-EA9E5F822CB4}
 		{A800D9F1-D877-4076-99BA-CBD73BCFB203} = {138403FE-C587-460E-A3C8-77B713E904C9}
 		{64C1203C-1912-4FE0-BA73-01BA2B0758E4} = {216314AA-0FA4-4DD9-8BD9-77D5D8869820}
 		{DC9DABBE-3A78-4847-A494-73970802E651} = {216314AA-0FA4-4DD9-8BD9-77D5D8869820}
@@ -830,6 +775,7 @@ Global
 		{54CDA684-6431-45D5-9BF4-61C2D97FEC9C} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
 		{8F4A7357-D018-4EFD-871D-28E99E0A15EF} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
 		{7E846A6D-92F5-4F49-851F-4C4C45A86D58} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
+		{26F2E375-50C3-47CC-942F-CC7B776A230D} = {582EFFC3-C504-457E-9112-1C1FCE5D2A69}
 		{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2} = {CF2BE8C5-4DCE-4D5C-9A06-787487549BC0}
 		{25162422-3B32-4FB3-8A99-6BCFBE30D9AE} = {CF2BE8C5-4DCE-4D5C-9A06-787487549BC0}
 		{206017F7-D34B-4662-B015-2620778CE537} = {F0A70542-6B74-44BF-8981-3EB62B4E050E}
@@ -841,13 +787,32 @@ Global
 		{A128AED6-F1C8-4D86-A22B-97EB0D892C70} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 		{C09BBBAE-2874-4168-874C-D3C9E780B6FE} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 		{5D56B440-8497-4547-A684-F60580E10251} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
+		{319543BD-6FF2-41CC-8B48-6D23FF7CF1B9} = {88EBFF5A-FEA8-49BC-A541-215C4935C1B4}
 		{D438C0B3-A168-40B8-BDDD-61F0939DFF35} = {8F4A7357-D018-4EFD-871D-28E99E0A15EF}
+		{698C495A-88F6-4B51-9D83-8DB95DB4D9BC} = {7E846A6D-92F5-4F49-851F-4C4C45A86D58}
 		{499527FF-AE52-450F-B3E3-4AD53E1712AD} = {7E846A6D-92F5-4F49-851F-4C4C45A86D58}
 		{D7BBFCCD-F523-400A-89C6-7AD879FBC56C} = {7E846A6D-92F5-4F49-851F-4C4C45A86D58}
 		{54BFAB0E-44DC-44DA-A291-3B58B4A2D304} = {7E846A6D-92F5-4F49-851F-4C4C45A86D58}
-		{698C495A-88F6-4B51-9D83-8DB95DB4D9BC} = {7E846A6D-92F5-4F49-851F-4C4C45A86D58}
 		{606C348A-9A72-4179-9C55-4DD9914C22CC} = {698C495A-88F6-4B51-9D83-8DB95DB4D9BC}
 		{EC508F4F-28B0-4C88-B2FA-C22C87C1532E} = {698C495A-88F6-4B51-9D83-8DB95DB4D9BC}
 		{87A4DFC8-ABA4-4711-B3B8-2CB0EB492644} = {698C495A-88F6-4B51-9D83-8DB95DB4D9BC}
+		{EAF584A0-A5F1-47BF-BC54-004C3978ACE8} = {26F2E375-50C3-47CC-942F-CC7B776A230D}
+		{B062D12C-EFB7-4CB5-B560-FB2387468E82} = {26F2E375-50C3-47CC-942F-CC7B776A230D}
+		{DB3A5DF6-A085-4003-8BED-4980FA6D0E75} = {26F2E375-50C3-47CC-942F-CC7B776A230D}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs06.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DbSQL\\DbSQL.dbp
+		SccProjectName1 = DbSQL
+		SccLocalPath1 = DbSQL
+		SccProjectUniqueName2 = MemcachedProviders\\MemcachedProviders.csproj
+		SccProjectName2 = MemcachedProviders
+		SccLocalPath2 = MemcachedProviders
+		SccProjectUniqueName3 = CacheProvider.Test\\CacheProvider.Test.csproj
+		SccProjectName3 = CacheProvider.Test
+		SccLocalPath3 = CacheProvider.Test
 	EndGlobalSection
 EndGlobal

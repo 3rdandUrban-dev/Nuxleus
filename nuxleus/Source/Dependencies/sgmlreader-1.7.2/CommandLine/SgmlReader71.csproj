@@ -87,7 +87,7 @@
       <Name>System.XML</Name>
     </Reference>
     <ProjectReference Include="..\sgmlreaderdll\SgmlReaderDll.csproj">
-      <Name>SgmlReaderDll71</Name>
+      <Name>SgmlReaderDll</Name>
       <Project>{499527FF-AE52-450F-B3E3-4AD53E1712AD}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>

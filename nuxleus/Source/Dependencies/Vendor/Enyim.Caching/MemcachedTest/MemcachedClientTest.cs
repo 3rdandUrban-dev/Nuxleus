@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using Enyim.Caching;
 using Enyim.Caching.Memcached;
 using System.Threading;
+using Enyim.Caching.Configuration;
+using System.Net;
+
 namespace MemcachedTest
 {
 	/// <summary>
@@ -37,6 +40,59 @@ namespace MemcachedTest
 			public string FieldB;
 			public int FieldC;
 			public bool FieldD;
+		}
+
+		/// <summary>
+		/// Tests if the client can initialize itself from enyim.com/memcached
+		/// </summary>
+		[TestMethod]
+		public void DefaultConfigurationTest()
+		{
+			new MemcachedClient();
+		}
+
+		/// <summary>
+		/// Tests if the client can initialize itself from a specific config
+		/// </summary>
+		[TestMethod]
+		public void NamedConfigurationTest()
+		{
+			new MemcachedClient("test/validConfig");
+		}
+
+		/// <summary>
+		/// Tests if the client can handle an invalid configuration
+		/// </summary>
+		[TestMethod]
+		public void InvalidConfigurationTest()
+		{
+			MemcachedClient mc = new MemcachedClient("test/invalidConfig");
+
+			mc.Stats();
+		}
+
+		/// <summary>
+		/// Tests if the client can be decleratively initialized
+		/// </summary>
+		[TestMethod]
+		public void ProgrammaticConfigurationTest()
+		{
+			// try to hit all lines in the config classes
+			MemcachedClientConfiguration mcc = new MemcachedClientConfiguration();
+
+			mcc.Servers.Add(new System.Net.IPEndPoint(IPAddress.Loopback, 20000));
+			mcc.Servers.Add(new System.Net.IPEndPoint(IPAddress.Loopback, 20002));
+
+			mcc.NodeLocator = typeof(DefaultNodeLocator);
+			mcc.KeyTransformer = typeof(SHA1KeyTransformer);
+			mcc.Transcoder = typeof(DefaultTranscoder);
+
+			mcc.SocketPool.MinPoolSize = 10;
+			mcc.SocketPool.MaxPoolSize = 100;
+			mcc.SocketPool.ConnectionTimeout = new TimeSpan(0, 0, 10);
+			mcc.SocketPool.DeadTimeout = new TimeSpan(0, 0, 30);
+
+			new MemcachedClient(mcc);
 		}
 
 		/// <summary>
@@ -182,18 +238,6 @@ namespace MemcachedTest
 			Assert.AreEqual("16", mc.Get("VALUE"), "Add failed");
 		}
 
-		//[TestMethod]
-		//public void AbsolutExpirationTest()
-		//{
-		//    Assert.Fail("Implement the test.");
-		//}
-
-		//[TestMethod]
-		//public void SlidingExpirationTest()
-		//{
-		//    Assert.Fail("Implement the test.");
-		//}
-
 		[TestMethod]
 		public void IncrementTest()
 		{
@@ -212,6 +256,38 @@ namespace MemcachedTest
 
 			Assert.AreEqual(98L, mc.Decrement("VALUE", 2));
 			Assert.AreEqual(88L, mc.Decrement("VALUE", 10));
+		}
+
+		[TestMethod]
+		public void MultiGetTest()
+		{
+			// note, this test will fail, if memcached version is < 1.2.4
+			MemcachedClient mc = new MemcachedClient();
+
+			List<string> keys = new List<string>();
+
+			for (int i = 0; i < 100; i++)
+			{
+				string k = "multi_get_test_" + i;
+				keys.Add(k);
+
+				mc.Store(StoreMode.Set, k, i);
+			}
+
+			IDictionary<string, ulong> cas;
+			IDictionary<string, object> retvals = mc.Get(keys, out cas);
+
+			Assert.AreEqual<int>(100, retvals.Count, "MultiGet should have returned 100 items.");
+
+			object value;
+
+			for (int i = 0; i < retvals.Count; i++)
+			{
+				string key = "multi_get_test_" + i;
+
+				Assert.IsTrue(retvals.TryGetValue(key, out value), "missing key: " + key);
+				Assert.AreEqual(value, i, "Invalid value returned: " + value);
+			}
 		}
 
 		[TestMethod]

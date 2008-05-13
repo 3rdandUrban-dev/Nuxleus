@@ -1,0 +1,1031 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nuxleus.Web.Services</name>
+    </assembly>
+    <members>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.#ctor">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RegisterImage(Nuxleus.Web.Services.Aws.Ec2.RegisterImageType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RegisterImageAsync(Nuxleus.Web.Services.Aws.Ec2.RegisterImageType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RegisterImageAsync(Nuxleus.Web.Services.Aws.Ec2.RegisterImageType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeregisterImage(Nuxleus.Web.Services.Aws.Ec2.DeregisterImageType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeregisterImageAsync(Nuxleus.Web.Services.Aws.Ec2.DeregisterImageType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeregisterImageAsync(Nuxleus.Web.Services.Aws.Ec2.DeregisterImageType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RunInstances(Nuxleus.Web.Services.Aws.Ec2.RunInstancesType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RunInstancesAsync(Nuxleus.Web.Services.Aws.Ec2.RunInstancesType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RunInstancesAsync(Nuxleus.Web.Services.Aws.Ec2.RunInstancesType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.CreateKeyPair(Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.CreateKeyPairAsync(Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.CreateKeyPairAsync(Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeKeyPairs(Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeKeyPairsAsync(Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeKeyPairsAsync(Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeleteKeyPair(Nuxleus.Web.Services.Aws.Ec2.DeleteKeyPairType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeleteKeyPairAsync(Nuxleus.Web.Services.Aws.Ec2.DeleteKeyPairType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeleteKeyPairAsync(Nuxleus.Web.Services.Aws.Ec2.DeleteKeyPairType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.GetConsoleOutput(Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.GetConsoleOutputAsync(Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.GetConsoleOutputAsync(Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.TerminateInstances(Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.TerminateInstancesAsync(Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.TerminateInstancesAsync(Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RebootInstances(Nuxleus.Web.Services.Aws.Ec2.RebootInstancesType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RebootInstancesAsync(Nuxleus.Web.Services.Aws.Ec2.RebootInstancesType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RebootInstancesAsync(Nuxleus.Web.Services.Aws.Ec2.RebootInstancesType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeInstances(Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeInstancesAsync(Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeInstancesAsync(Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeImages(Nuxleus.Web.Services.Aws.Ec2.DescribeImagesType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeImagesAsync(Nuxleus.Web.Services.Aws.Ec2.DescribeImagesType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeImagesAsync(Nuxleus.Web.Services.Aws.Ec2.DescribeImagesType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.CreateSecurityGroup(Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.CreateSecurityGroupAsync(Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.CreateSecurityGroupAsync(Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeleteSecurityGroup(Nuxleus.Web.Services.Aws.Ec2.DeleteSecurityGroupType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeleteSecurityGroupAsync(Nuxleus.Web.Services.Aws.Ec2.DeleteSecurityGroupType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeleteSecurityGroupAsync(Nuxleus.Web.Services.Aws.Ec2.DeleteSecurityGroupType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeSecurityGroups(Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeSecurityGroupsAsync(Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeSecurityGroupsAsync(Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.AuthorizeSecurityGroupIngress(Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.AuthorizeSecurityGroupIngressAsync(Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.AuthorizeSecurityGroupIngressAsync(Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RevokeSecurityGroupIngress(Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RevokeSecurityGroupIngressAsync(Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RevokeSecurityGroupIngressAsync(Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ModifyImageAttribute(Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ModifyImageAttributeAsync(Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ModifyImageAttributeAsync(Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ResetImageAttribute(Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ResetImageAttributeAsync(Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ResetImageAttributeAsync(Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeImageAttribute(Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeImageAttributeAsync(Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeImageAttributeAsync(Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ConfirmProductInstance(Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ConfirmProductInstanceAsync(Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceType)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ConfirmProductInstanceAsync(Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceType,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RegisterImageCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeregisterImageCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RunInstancesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.CreateKeyPairCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeKeyPairsCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeleteKeyPairCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.GetConsoleOutputCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.TerminateInstancesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RebootInstancesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeInstancesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeImagesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.CreateSecurityGroupCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DeleteSecurityGroupCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeSecurityGroupsCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.AuthorizeSecurityGroupIngressCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.RevokeSecurityGroupIngressCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ModifyImageAttributeCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ResetImageAttributeCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.DescribeImageAttributeCompleted">
+            <remarks/>
+        </member>
+        <member name="E:Nuxleus.Web.Services.Aws.Ec2.AmazonEC2.ConfirmProductInstanceCompleted">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RegisterImageType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RegisterImageType.imageLocation">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceResponseType.return">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceResponseType.ownerId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceType.productCode">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceType.instanceId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeResponseType.imageId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeResponseType.Item">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.LaunchPermissionListType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.LaunchPermissionListType.item">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.LaunchPermissionItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.LaunchPermissionItemType.Item">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.LaunchPermissionItemType.ItemElementName">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ItemChoiceType">
+            <remarks/>
+        </member>
+        <member name="F:Nuxleus.Web.Services.Aws.Ec2.ItemChoiceType.group">
+            <remarks/>
+        </member>
+        <member name="F:Nuxleus.Web.Services.Aws.Ec2.ItemChoiceType.userId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ProductCodeListType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ProductCodeListType.item">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ProductCodeItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ProductCodeItemType.Item">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeType.imageId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeType.launchPermission">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeType.productCodes">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.EmptyElementType">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeResponseType.return">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeType.imageId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeType.launchPermission">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeResponseType.return">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.LaunchPermissionOperationType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.LaunchPermissionOperationType.Item">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.LaunchPermissionOperationType.ItemElementName">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ItemChoiceType1">
+            <remarks/>
+        </member>
+        <member name="F:Nuxleus.Web.Services.Aws.Ec2.ItemChoiceType1.add">
+            <remarks/>
+        </member>
+        <member name="F:Nuxleus.Web.Services.Aws.Ec2.ItemChoiceType1.remove">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeType.imageId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeType.Item">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressResponseType.return">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressType.userId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressType.groupName">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressType.ipPermissions">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.IpPermissionType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.IpPermissionType.ipProtocol">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.IpPermissionType.fromPort">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.IpPermissionType.toPort">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.IpPermissionType.groups">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.IpPermissionType.ipRanges">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.UserIdGroupPairType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.UserIdGroupPairType.userId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.UserIdGroupPairType.groupName">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.IpRangeItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.IpRangeItemType.cidrIp">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressResponseType.return">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressType.userId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressType.groupName">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressType.ipPermissions">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.SecurityGroupItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.SecurityGroupItemType.ownerId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.SecurityGroupItemType.groupName">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.SecurityGroupItemType.groupDescription">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.SecurityGroupItemType.ipPermissions">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsResponseType.securityGroupInfo">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsSetItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsSetItemType.groupName">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsType.securityGroupSet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeleteSecurityGroupResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DeleteSecurityGroupResponseType.return">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeleteSecurityGroupType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DeleteSecurityGroupType.groupName">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupResponseType.return">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupType.groupName">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupType.groupDescription">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesResponseItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesResponseItemType.imageId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesResponseItemType.imageLocation">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesResponseItemType.imageState">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesResponseItemType.imageOwnerId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesResponseItemType.isPublic">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesResponseItemType.productCodes">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ProductCodesSetItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ProductCodesSetItemType.productCode">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesResponseType.imagesSet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesOwnerType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesOwnerType.owner">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesItemType.imageId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesExecutableByType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesExecutableByType.user">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesType.executableBySet">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesType.imagesSet">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesType.ownersSet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesResponseType.reservationSet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ReservationInfoType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ReservationInfoType.reservationId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ReservationInfoType.ownerId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ReservationInfoType.groupSet">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ReservationInfoType.instancesSet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.GroupItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.GroupItemType.groupId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.instanceId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.imageId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.instanceState">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.privateDnsName">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.dnsName">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.reason">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.keyName">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.amiLaunchIndex">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.productCodes">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.instanceType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunningInstancesItemType.launchTime">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.InstanceStateType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.InstanceStateType.code">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.InstanceStateType.name">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesItemType.instanceId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesType.instancesSet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RebootInstancesResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RebootInstancesResponseType.return">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RebootInstancesItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RebootInstancesItemType.instanceId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RebootInstancesType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RebootInstancesType.instancesSet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesResponseItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesResponseItemType.instanceId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesResponseItemType.shutdownState">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesResponseItemType.previousState">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesResponseType.instancesSet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesItemType.instanceId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesType.instancesSet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputResponseType.instanceId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputResponseType.timestamp">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputResponseType.output">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputType.instanceId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeleteKeyPairResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DeleteKeyPairResponseType.return">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeleteKeyPairType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DeleteKeyPairType.keyName">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsResponseItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsResponseItemType.keyName">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsResponseItemType.keyFingerprint">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsResponseType.keySet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsItemType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsItemType.keyName">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsType.keySet">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairResponseType.keyName">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairResponseType.keyFingerprint">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairResponseType.keyMaterial">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairType.keyName">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.UserDataType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.UserDataType.data">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.UserDataType.Text">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.UserDataType.version">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.UserDataType.encoding">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RunInstancesType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunInstancesType.imageId">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunInstancesType.minCount">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunInstancesType.maxCount">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunInstancesType.keyName">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunInstancesType.groupSet">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunInstancesType.additionalInfo">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunInstancesType.userData">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunInstancesType.addressingType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunInstancesType.instanceType">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeregisterImageResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DeregisterImageResponseType.return">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeregisterImageType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DeregisterImageType.imageId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RegisterImageResponseType">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RegisterImageResponseType.imageId">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RegisterImageCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RegisterImageCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RegisterImageCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeregisterImageCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeregisterImageCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DeregisterImageCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RunInstancesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RunInstancesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RunInstancesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.CreateKeyPairCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeKeyPairsCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeleteKeyPairCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeleteKeyPairCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DeleteKeyPairCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.GetConsoleOutputCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.TerminateInstancesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RebootInstancesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RebootInstancesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RebootInstancesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeInstancesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImagesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.CreateSecurityGroupCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeleteSecurityGroupCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DeleteSecurityGroupCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DeleteSecurityGroupCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeSecurityGroupsCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.AuthorizeSecurityGroupIngressCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.RevokeSecurityGroupIngressCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ModifyImageAttributeCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ResetImageAttributeCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.DescribeImageAttributeCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:Nuxleus.Web.Services.Aws.Ec2.ConfirmProductInstanceCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+    </members>
+</doc>
