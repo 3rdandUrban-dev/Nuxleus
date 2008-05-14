@@ -14,7 +14,7 @@ namespace Zorba_Test
         {
             ZorbaProcess process = new ZorbaProcess();
             process.RunQuery(args[0]);
-            XmlReader xReader = XmlReader.Create(new StringReader(process.Output.ReadToEnd()));
+            XmlReader xReader = process.GetXmlReader();
             do
             {
                 if(xReader.IsStartElement())

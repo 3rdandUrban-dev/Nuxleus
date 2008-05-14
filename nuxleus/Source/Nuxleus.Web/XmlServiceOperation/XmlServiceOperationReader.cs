@@ -23,7 +23,7 @@ namespace Nuxleus.Web {
         Transform.Transform m_transform;
         UTF8Encoding m_encoding;
 
-        public XmlServiceOperationReader ( HttpContext httpContext, Context context, Transform.Context transformContext, XmlReader reader, TransformRequest request, TransformResponse response, XsltTransformationManager transformationManager ) {
+        public XmlServiceOperationReader(HttpContext httpContext, Context context, Transform.Context transformContext, XmlReader reader, TransformRequest request, TransformResponse response, XsltTransformationManager transformationManager) {
             m_reader = reader;
             m_httpContext = httpContext;
             m_context = context;
@@ -35,12 +35,11 @@ namespace Nuxleus.Web {
             m_encoding = new UTF8Encoding();
         }
 
-        public TransformResponse Process () {
-            
-            Console.WriteLine("Hello");
+        public TransformResponse Process() {
+
             XPathNavigator navigator = new XPathDocument(m_reader).CreateNavigator().Clone();
             XmlReader reader = XmlReader.Create(new StringReader(navigator.OuterXml));
-
+            //TODO: FIX THIS!  Need to update logic to use XPathNavigator directly.
             string xmlStylesheetHref = String.Empty;
             bool processWithEmbeddedPIStylsheet = false;
 

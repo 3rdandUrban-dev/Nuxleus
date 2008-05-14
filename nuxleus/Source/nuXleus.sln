@@ -113,7 +113,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Amp.Fm.Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xameleon", "Xameleon\Xameleon.csproj", "{A800D9F1-D877-4076-99BA-CBD73BCFB203}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zorba_Test", "Zorba_Test\Zorba_Test.csproj", "{155A25CF-FB13-4A01-B204-BF6F56655306}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zorba_Test", "CodeSamples\Zorba_Test\Zorba_Test.csproj", "{155A25CF-FB13-4A01-B204-BF6F56655306}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

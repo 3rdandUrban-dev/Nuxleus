@@ -4,11 +4,18 @@
         <name>Nuxleus.IO</name>
     </assembly>
     <members>
-        <member name="P:Nuxleus.Storage.FileSystemStorageResourceInfo.Target">
+        <member name="P:Nuxleus.Storage.StorageResourceInfo.Data">
             <summary>
-            Get or sets FileInfo to be used when the data has to be stored on the filesystem
+            Gets or sets the actual data to be stored
             </summary>
-            <value>FileInfo instance.</value>
+            <value>bytes representing the content.</value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:Nuxleus.Storage.MemcachedStorageResourceInfo.Client" -->
+        <member name="P:Nuxleus.Storage.MemcachedStorageResourceInfo.Key">
+            <summary>
+            Gets or sets the key to be used when storing into memcached
+            </summary>
+            <value>An identifier for the memcached servers.</value>
         </member>
         <member name="M:Nuxleus.IO.GlobalClip.AspNetMode">
             <summary>
@@ -34,12 +41,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="P:Nuxleus.Storage.StorageResourceInfo.Data">
-            <summary>
-            Gets or sets the actual data to be stored
-            </summary>
-            <value>bytes representing the content.</value>
-        </member>
         <member name="M:Nuxleus.IO.ClipData`1.#ctor">
             <summary>
             
@@ -50,12 +51,11 @@
             
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Nuxleus.Storage.MemcachedStorageResourceInfo.Client" -->
-        <member name="P:Nuxleus.Storage.MemcachedStorageResourceInfo.Key">
+        <member name="P:Nuxleus.Storage.FileSystemStorageResourceInfo.Target">
             <summary>
-            Gets or sets the key to be used when storing into memcached
+            Get or sets FileInfo to be used when the data has to be stored on the filesystem
             </summary>
-            <value>An identifier for the memcached servers.</value>
+            <value>FileInfo instance.</value>
         </member>
         <member name="M:Nuxleus.IO.ClipItem.#ctor">
             <summary>

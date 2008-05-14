@@ -49,7 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.Process\Nuxleus.Process.csproj">
+    <ProjectReference Include="..\..\Nuxleus.Process\Nuxleus.Process.csproj">
       <Project>{62B71546-D55D-4B35-9D84-CDF8ED555E52}</Project>
       <Name>Nuxleus.Process</Name>
     </ProjectReference>

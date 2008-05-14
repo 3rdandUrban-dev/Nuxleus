@@ -4,6 +4,11 @@
         <name>ALAZ.SystemEx</name>
     </assembly>
     <members>
+        <member name="T:ALAZ.SystemEx.BaseFinalizable">
+            <summary>
+            Base class for finalizable objects.
+            </summary>
+        </member>
         <member name="T:ALAZ.SystemEx.BaseDisposable">
             <summary>
             Base class for disposable objects.
@@ -32,11 +37,6 @@
         <member name="P:ALAZ.SystemEx.BaseDisposable.Disposed">
             <summary>
             Indicates is object is already disposed.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.BaseFinalizable">
-            <summary>
-            Base class for finalizable objects.
             </summary>
         </member>
         <member name="M:ALAZ.SystemEx.BaseFinalizable.Dispose">

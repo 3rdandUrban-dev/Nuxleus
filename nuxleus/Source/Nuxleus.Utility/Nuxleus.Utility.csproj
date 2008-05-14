@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30428</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3D54F988-AF1D-4B5C-A013-C85525926692}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -58,7 +58,6 @@
     <Compile Include="Utility\S3\Bucket.cs" />
     <Compile Include="Utility\S3\CommonPrefixEntry.cs" />
     <Compile Include="Utility\S3\GetResponse.cs" />
-    <Compile Include="Utility\S3\Utility.cs" />
     <Compile Include="Utility\S3\GetTimeStamp.cs" />
     <Compile Include="Utility\S3\ListAllMyBucketsResponse.cs" />
     <Compile Include="Utility\S3\ListBucketResponse.cs" />
@@ -69,11 +68,13 @@
     <Compile Include="Utility\S3\S3Object.cs" />
     <Compile Include="Utility\S3\Utils.cs" />
     <Compile Include="Utility\StringMatching.cs" />
-    <Compile Include="Xml\CustomXmlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
     <None Include="Utility\S3\README" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Xml\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

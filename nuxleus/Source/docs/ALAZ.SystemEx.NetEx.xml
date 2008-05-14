@@ -4,9 +4,9 @@
         <name>ALAZ.SystemEx.NetEx</name>
     </assembly>
     <members>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketServer">
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketClient">
             <summary>
-            Server connection host.
+            Socket client host.
             </summary>
         </member>
         <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionHost">
@@ -88,244 +88,22 @@
             Disconnect callback.
             </summary>
         </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketServer.AddListener(System.String,System.Net.IPEndPoint)">
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketClient.BeginReconnect(ALAZ.SystemEx.NetEx.SocketsEx.ClientSocketConnection)">
             <summary>
-            Add the server connector (SocketListener).
+            Reconnects the connection adjusting the reconnect timer.
             </summary>
-            <param name="localEndPoint"></param>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketConnector">
-            <summary>
-            Client socket creator.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionCreator">
-            <summary>
-            Connection creator using in BaseSocketConnectionHost.
-            </summary>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionCreator.InitializeConnection(System.Object)">
-            <summary>
-            Initializes the connection with encryption.
-            </summary>
-            <param name="connection"></param>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketConnector.#ctor(ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionHost,System.String,System.Net.IPEndPoint,ALAZ.SystemEx.NetEx.SocketsEx.ProxyInfo,ALAZ.SystemEx.NetEx.SocketsEx.EncryptType,ALAZ.SystemEx.NetEx.SocketsEx.CompressionType,ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService,System.Int32,System.Int32,System.Net.IPEndPoint)">
-            <summary>
-            Base SocketConnector creator.
-            </summary>
-            <param name="host">
-            Host.
+            <param name="connection">
+            Connection.
             </param>
-            <param name="remoteEndPoint">
-            The remote endpoint to connect.
-            </param>
-            <param name="encryptType">
-            Encrypt type.
-            </param>
-            <param name="compressionType">
-            Compression type.
-            </param>
-            <param name="cryptoService">
-            CryptoService. if null, will not be used.
-            </param>
-            <param name="localEndPoint">
-            Local endpoint. if null, will be any address/port.
+            <param name="sleepTimeOutValue">
+            Sleep timeout before reconnect.
             </param>
         </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketConnector.BeginConnect">
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketClient.AddConnector(System.String,System.Net.IPEndPoint)">
             <summary>
-            Begin the connection with host.
+            Adds the client connector (SocketConnector).
             </summary>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketConnector.BeginConnectCallback(System.IAsyncResult)">
-            <summary>
-            Connect callback!
-            </summary>
-            <param name="ar"></param>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.CallbackData">
-            <summary>
-            Keeps connection event information between callbacks
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketService">
-            <summary>
-            Base class for ISocketServive. Use it overriding the virtual methods.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService">
-            <summary>
-            Socket service methods.
-            </summary>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnConnected(ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs)">
-            <summary>
-            Fired when connected.
-            </summary>
-            <param name="e">
-            Information about the connection.
-            </param>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnReceived(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)">
-            <summary>
-            Fired when data arrives.
-            </summary>
-            <param name="e">
-            Information about the Message.
-            </param>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnSent(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)">
-            <summary>
-            Fired when data is sent.
-            </summary>
-            <param name="e">
-            Information about the Message.
-            </param>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnDisconnected(ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs)">
-            <summary>
-            Fired when disconnected.
-            </summary>
-            <param name="e">
-            Information about the connection.
-            </param>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnException(ALAZ.SystemEx.NetEx.SocketsEx.ExceptionEventArgs)">
-            <summary>
-            Fired when exception occurs.
-            </summary>
-            <param name="e">
-            Information about the exception and connection.
-            </param>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseCryptoService">
-            <summary>
-            Base class for ICryptoServive. Use it overriding the virtual methods.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService">
-            <summary>
-            Crypto service methods.
-            </summary>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService.OnSymmetricAuthenticate(ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection,System.Security.Cryptography.RSACryptoServiceProvider@,System.Byte[]@)">
-            <summary>
-            Fired when symmetric encryption is used.
-            </summary>
-            <param name="serverKey">
-            The RSA provider used to encrypt symmetric IV and Key.
-            </param>
-            
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService.OnSSLClientAuthenticate(ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection,System.String@,System.Security.Cryptography.X509Certificates.X509Certificate2Collection@,System.Boolean@)">
-            <summary>
-            Fired when SSL encryption is used in client host.
-            </summary>
-            <param name="ServerName">
-            The host name in certificate.
-            </param>
-            <param name="certs">
-            The certification collection to be used (null if not using client certification).
-            </param>
-            <param name="checkRevocation">
-            Indicates if the certificated must be checked for revocation.
-            </param>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService.OnSSLClientValidateServerCertificate(System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors,System.Boolean@)">
-            <summary>
-            
-            </summary>
-            <param name="connection"></param>
-            <param name="serverCertificate"></param>
-            <param name="chain"></param>
-            <param name="sslPolicyErrors"></param>
-            <param name="acceptCertificate"></param>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService.OnSSLServerAuthenticate(ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection,System.Security.Cryptography.X509Certificates.X509Certificate2@,System.Boolean@,System.Boolean@)">
-            <summary>
-            Fired when SSL encryption is used in server host.
-            </summary>
-            <param name="certificate">
-            The certificate to be used.
-            </param>
-            <param name="clientAuthenticate">
-            Indicates if client connection will be authenticated (uses certificate).
-            </param>
-            <param name="checkRevocation">
-            Indicates if the certificated must be checked for revocation.
-            </param>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ExceptionEventArgs">
-            <summary>
-            Exception event arguments for exception event.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs">
-            <summary>
-            Base event arguments for connection events.
-            </summary>
-        </member>
-        <member name="P:ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs.Connection">
-            <summary>
-            Gets the ISocketConnection from event.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs">
-            <summary>
-            Message event arguments for message events.
-            </summary>
-        </member>
-        <member name="P:ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs.Buffer">
-            <summary>
-            Gets sent or received buffer.
-            </summary>
-        </member>
-        <member name="P:ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs.SentByServer">
-            <summary>
-            Indicates if event was fired by server´s BeginSendTo() or BeginSendToAll().
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.AuthenticateCallbackData">
-            <summary>
-            Keeps connection authenticate information between callbacks.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketListener">
-            <summary>
-            Server socket connector.
-            </summary>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketListener.#ctor(ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionHost,System.String,System.Net.IPEndPoint,ALAZ.SystemEx.NetEx.SocketsEx.EncryptType,ALAZ.SystemEx.NetEx.SocketsEx.CompressionType,ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService,System.Byte,System.Byte)">
-            <summary>
-            Base SocketListener creator.
-            </summary>
-            <param name="host">
-            Host.
-            </param>
-            <param name="localEndPoint">
-            Local endpoint to be used.
-            </param>
-            <param name="encryptType">
-            Encryption to be used.
-            </param>
-            <param name="compressionType">
-            Compression to be used.
-            </param>
-            <param name="cryptoService">
-            CryptoService. if null, will not be used.
-            </param>
-            <param name="backLog">
-            Socket backlog queue number.
-            </param>
-            <param name="acceptThreads">
-            Number of accept events to be used.
-            </param>
-        </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketListener.BeginAcceptCallback(System.IAsyncResult)">
-            <summary>
-            Accept callback!
-            </summary>
+            <param name="remoteEndPoint"></param>
         </member>
         <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.MessageBuffer">
             <summary>
@@ -362,19 +140,152 @@
             The new length of buffer.
             </param>
         </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ClientSocketConnection">
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketListener">
             <summary>
-            Client socket connection implementation.
+            Server socket connector.
             </summary>
         </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnection">
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionCreator">
             <summary>
-            Base socket connection
+            Connection creator using in BaseSocketConnectionHost.
             </summary>
         </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection">
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionCreator.InitializeConnection(System.Object)">
             <summary>
-            Common connection properties and methods.
+            Initializes the connection with encryption.
+            </summary>
+            <param name="connection"></param>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketListener.#ctor(ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionHost,System.String,System.Net.IPEndPoint,ALAZ.SystemEx.NetEx.SocketsEx.EncryptType,ALAZ.SystemEx.NetEx.SocketsEx.CompressionType,ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService,System.Byte,System.Byte)">
+            <summary>
+            Base SocketListener creator.
+            </summary>
+            <param name="host">
+            Host.
+            </param>
+            <param name="localEndPoint">
+            Local endpoint to be used.
+            </param>
+            <param name="encryptType">
+            Encryption to be used.
+            </param>
+            <param name="compressionType">
+            Compression to be used.
+            </param>
+            <param name="cryptoService">
+            CryptoService. if null, will not be used.
+            </param>
+            <param name="backLog">
+            Socket backlog queue number.
+            </param>
+            <param name="acceptThreads">
+            Number of accept events to be used.
+            </param>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketListener.BeginAcceptCallback(System.IAsyncResult)">
+            <summary>
+            Accept callback!
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketServer">
+            <summary>
+            Server connection host.
+            </summary>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketServer.AddListener(System.String,System.Net.IPEndPoint)">
+            <summary>
+            Add the server connector (SocketListener).
+            </summary>
+            <param name="localEndPoint"></param>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs">
+            <summary>
+            Message event arguments for message events.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs">
+            <summary>
+            Base event arguments for connection events.
+            </summary>
+        </member>
+        <member name="P:ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs.Connection">
+            <summary>
+            Gets the ISocketConnection from event.
+            </summary>
+        </member>
+        <member name="P:ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs.Buffer">
+            <summary>
+            Gets sent or received buffer.
+            </summary>
+        </member>
+        <member name="P:ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs.SentByServer">
+            <summary>
+            Indicates if event was fired by server´s BeginSendTo() or BeginSendToAll().
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ReconnectAttemptsException">
+            <summary>
+            Max reconnect attempts reached.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BadDelimiterException">
+            <summary>
+            Bad Delimiter.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.MessageLengthException">
+            <summary>
+            Message length is greater than the maximum value.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SymmetricAuthenticationException">
+            <summary>
+            Symmetric authentication failure.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SSLAuthenticationException">
+            <summary>
+            SSL authentication failure.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ProxyAuthenticationException">
+            <summary>
+            Proxy authentication failure.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.HostType">
+            <summary>
+            Defines the host type.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.EncryptType">
+            <summary>
+            Defines the encrypt method used.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.CompressionType">
+            <summary>
+            Defines the compression method used.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.DelimiterType">
+            <summary>
+            Defines message delimiter type.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ProxyType">
+            <summary>
+            Defines the proxy host type.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SOCKS5AuthMode">
+            <summary>
+            Defines the SOCK5 authentication mode.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SOCKS5Phase">
+            <summary>
+            Defines the SOCKS5 authentication phase
             </summary>
         </member>
         <member name="P:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnectionInfo.CustomData">
@@ -410,6 +321,11 @@
         <member name="P:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnectionInfo.RemoteEndPoint">
             <summary>
             Remote socket endpoint.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection">
+            <summary>
+            Common connection properties and methods.
             </summary>
         </member>
         <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection.SetTTL(System.Int16)">
@@ -483,71 +399,6 @@
             Proxy information.
             </summary>
         </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ReconnectAttemptsException">
-            <summary>
-            Max reconnect attempts reached.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BadDelimiterException">
-            <summary>
-            Bad Delimiter.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.MessageLengthException">
-            <summary>
-            Message length is greater than the maximum value.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SymmetricAuthenticationException">
-            <summary>
-            Symmetric authentication failure.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SSLAuthenticationException">
-            <summary>
-            SSL authentication failure.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ProxyAuthenticationException">
-            <summary>
-            Proxy authentication failure.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.HostType">
-            <summary>
-            Defines the host type.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.EncryptType">
-            <summary>
-            Defines the encrypt method used.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.CompressionType">
-            <summary>
-            Defines the compression method used.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.DelimiterType">
-            <summary>
-            Defines message delimiter type.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ProxyType">
-            <summary>
-            Defines the proxy host type.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SOCKS5AuthMode">
-            <summary>
-            Defines the SOCK5 authentication mode.
-            </summary>
-        </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SOCKS5Phase">
-            <summary>
-            Defines the SOCKS5 authentication phase
-            </summary>
-        </member>
         <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.IServerSocketConnection">
             <summary>
             Server connection methods.
@@ -591,31 +442,141 @@
             Get all the connections.
             </summary>
         </member>
-        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketClient">
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService">
             <summary>
-            Socket client host.
+            Socket service methods.
             </summary>
         </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketClient.BeginReconnect(ALAZ.SystemEx.NetEx.SocketsEx.ClientSocketConnection)">
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnConnected(ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs)">
             <summary>
-            Reconnects the connection adjusting the reconnect timer.
+            Fired when connected.
             </summary>
-            <param name="connection">
-            Connection.
-            </param>
-            <param name="sleepTimeOutValue">
-            Sleep timeout before reconnect.
+            <param name="e">
+            Information about the connection.
             </param>
         </member>
-        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketClient.AddConnector(System.String,System.Net.IPEndPoint)">
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnReceived(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)">
             <summary>
-            Adds the client connector (SocketConnector).
+            Fired when data arrives.
             </summary>
-            <param name="remoteEndPoint"></param>
+            <param name="e">
+            Information about the Message.
+            </param>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnSent(ALAZ.SystemEx.NetEx.SocketsEx.MessageEventArgs)">
+            <summary>
+            Fired when data is sent.
+            </summary>
+            <param name="e">
+            Information about the Message.
+            </param>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnDisconnected(ALAZ.SystemEx.NetEx.SocketsEx.ConnectionEventArgs)">
+            <summary>
+            Fired when disconnected.
+            </summary>
+            <param name="e">
+            Information about the connection.
+            </param>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ISocketService.OnException(ALAZ.SystemEx.NetEx.SocketsEx.ExceptionEventArgs)">
+            <summary>
+            Fired when exception occurs.
+            </summary>
+            <param name="e">
+            Information about the exception and connection.
+            </param>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService">
+            <summary>
+            Crypto service methods.
+            </summary>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService.OnSymmetricAuthenticate(ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection,System.Security.Cryptography.RSACryptoServiceProvider@,System.Byte[]@)">
+            <summary>
+            Fired when symmetric encryption is used.
+            </summary>
+            <param name="serverKey">
+            The RSA provider used to encrypt symmetric IV and Key.
+            </param>
+            
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService.OnSSLClientAuthenticate(ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection,System.String@,System.Security.Cryptography.X509Certificates.X509Certificate2Collection@,System.Boolean@)">
+            <summary>
+            Fired when SSL encryption is used in client host.
+            </summary>
+            <param name="ServerName">
+            The host name in certificate.
+            </param>
+            <param name="certs">
+            The certification collection to be used (null if not using client certification).
+            </param>
+            <param name="checkRevocation">
+            Indicates if the certificated must be checked for revocation.
+            </param>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService.OnSSLClientValidateServerCertificate(System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors,System.Boolean@)">
+            <summary>
+            
+            </summary>
+            <param name="connection"></param>
+            <param name="serverCertificate"></param>
+            <param name="chain"></param>
+            <param name="sslPolicyErrors"></param>
+            <param name="acceptCertificate"></param>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService.OnSSLServerAuthenticate(ALAZ.SystemEx.NetEx.SocketsEx.ISocketConnection,System.Security.Cryptography.X509Certificates.X509Certificate2@,System.Boolean@,System.Boolean@)">
+            <summary>
+            Fired when SSL encryption is used in server host.
+            </summary>
+            <param name="certificate">
+            The certificate to be used.
+            </param>
+            <param name="clientAuthenticate">
+            Indicates if client connection will be authenticated (uses certificate).
+            </param>
+            <param name="checkRevocation">
+            Indicates if the certificated must be checked for revocation.
+            </param>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketService">
+            <summary>
+            Base class for ISocketServive. Use it overriding the virtual methods.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseCryptoService">
+            <summary>
+            Base class for ICryptoServive. Use it overriding the virtual methods.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.CallbackData">
+            <summary>
+            Keeps connection event information between callbacks
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ClientSocketConnection">
+            <summary>
+            Client socket connection implementation.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnection">
+            <summary>
+            Base socket connection
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.AuthenticateCallbackData">
+            <summary>
+            Keeps connection authenticate information between callbacks.
+            </summary>
         </member>
         <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ServerSocketConnection">
             <summary>
             Server connection implementation.
+            </summary>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.ExceptionEventArgs">
+            <summary>
+            Exception event arguments for exception event.
             </summary>
         </member>
         <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.CryptUtils">
@@ -674,6 +635,45 @@
             <param name="maxBufferSize">
             Max buffer size accepted.
             </param>
+        </member>
+        <member name="T:ALAZ.SystemEx.NetEx.SocketsEx.SocketConnector">
+            <summary>
+            Client socket creator.
+            </summary>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketConnector.#ctor(ALAZ.SystemEx.NetEx.SocketsEx.BaseSocketConnectionHost,System.String,System.Net.IPEndPoint,ALAZ.SystemEx.NetEx.SocketsEx.ProxyInfo,ALAZ.SystemEx.NetEx.SocketsEx.EncryptType,ALAZ.SystemEx.NetEx.SocketsEx.CompressionType,ALAZ.SystemEx.NetEx.SocketsEx.ICryptoService,System.Int32,System.Int32,System.Net.IPEndPoint)">
+            <summary>
+            Base SocketConnector creator.
+            </summary>
+            <param name="host">
+            Host.
+            </param>
+            <param name="remoteEndPoint">
+            The remote endpoint to connect.
+            </param>
+            <param name="encryptType">
+            Encrypt type.
+            </param>
+            <param name="compressionType">
+            Compression type.
+            </param>
+            <param name="cryptoService">
+            CryptoService. if null, will not be used.
+            </param>
+            <param name="localEndPoint">
+            Local endpoint. if null, will be any address/port.
+            </param>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketConnector.BeginConnect">
+            <summary>
+            Begin the connection with host.
+            </summary>
+        </member>
+        <member name="M:ALAZ.SystemEx.NetEx.SocketsEx.SocketConnector.BeginConnectCallback(System.IAsyncResult)">
+            <summary>
+            Connect callback!
+            </summary>
+            <param name="ar"></param>
         </member>
     </members>
 </doc>

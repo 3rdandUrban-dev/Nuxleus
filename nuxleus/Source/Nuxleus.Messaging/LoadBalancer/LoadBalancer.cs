@@ -1,43 +1,36 @@
 using System;
 using System.Collections;
 
-namespace Nuxleus.Messaging
-{
+namespace Nuxleus.Messaging {
 
-    public struct LoadBalancer
-    {
+    public struct LoadBalancer {
 
         static readonly LoadBalancer instance = new LoadBalancer(Environment.ProcessorCount);
 
-        ArrayList _postOfficeArrayList;
-        int _loadBalancePostOfficeIndex;
+        ArrayList m_postOfficeArrayList;
+        int m_loadBalancePostOfficeIndex;
 
-        LoadBalancer (int processors)
-        {
-            _postOfficeArrayList = new ArrayList();
-            _loadBalancePostOfficeIndex = 0;
-            for (int p = 0; p < processors; p++)
-            {
+        LoadBalancer(int processors) {
+            m_postOfficeArrayList = new ArrayList();
+            m_loadBalancePostOfficeIndex = 0;
+            for (int p = 0; p < processors; p++) {
                 PostOffice m_postOffice = new PostOffice();
-                _postOfficeArrayList.Add(m_postOffice);
+                m_postOfficeArrayList.Add(m_postOffice);
             }
         }
 
-        public static LoadBalancer GetLoadBalancer ()
-        {
+        public static LoadBalancer GetLoadBalancer() {
             return instance;
         }
 
-        public PostOffice GetPostOffice
-        {
-            get
-            {
-                int i = _loadBalancePostOfficeIndex;
-                _loadBalancePostOfficeIndex++;
-                return (PostOffice)_postOfficeArrayList[i];
+        public PostOffice GetPostOffice {
+            get {
+                int i = m_loadBalancePostOfficeIndex;
+                m_loadBalancePostOfficeIndex++;
+                return (PostOffice)m_postOfficeArrayList[i];
             }
         }
 
-        public int GetPostOfficeCount { get { return _postOfficeArrayList.Count; } }
+        public int GetPostOfficeCount { get { return m_postOfficeArrayList.Count; } }
     }
 }
