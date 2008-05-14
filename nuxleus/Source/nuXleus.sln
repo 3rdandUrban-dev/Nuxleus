@@ -113,6 +113,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus.Extension.Amp.Fm.Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xameleon", "Xameleon\Xameleon.csproj", "{A800D9F1-D877-4076-99BA-CBD73BCFB203}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zorba_Test", "Zorba_Test\Zorba_Test.csproj", "{155A25CF-FB13-4A01-B204-BF6F56655306}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -683,6 +685,16 @@ Global
 		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{A800D9F1-D877-4076-99BA-CBD73BCFB203}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{155A25CF-FB13-4A01-B204-BF6F56655306}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{155A25CF-FB13-4A01-B204-BF6F56655306}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{155A25CF-FB13-4A01-B204-BF6F56655306}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{155A25CF-FB13-4A01-B204-BF6F56655306}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{155A25CF-FB13-4A01-B204-BF6F56655306}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{155A25CF-FB13-4A01-B204-BF6F56655306}.Release|.NET.ActiveCfg = Release|Any CPU
+		{155A25CF-FB13-4A01-B204-BF6F56655306}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{155A25CF-FB13-4A01-B204-BF6F56655306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{155A25CF-FB13-4A01-B204-BF6F56655306}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{155A25CF-FB13-4A01-B204-BF6F56655306}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

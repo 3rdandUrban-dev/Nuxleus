@@ -49,7 +49,7 @@
         <include name="System.Web.Services.dll"/>
         <include name="${dependencies.dir}/IKVM.OpenJDK.ClassLibrary.dll"/>
         <include name="${dependencies.dir}/IKVM.Runtime.dll"/>
-<!--<include name="${dependencies.dir}/Lucene.Net.dll" />-->
+        <!--<include name="${dependencies.dir}/Lucene.Net.dll" />-->
         <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
         <include name="${dependencies.dir}/Mono.Posix.dll"/>
         <include name="${dependencies.dir}/Mono.Security.dll"/>
@@ -424,8 +424,8 @@
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Agent.dll"/>
-	<include name="${dependencies.dir}/log4net.dll"/>
-	<include name="System.dll"/>
+        <include name="${dependencies.dir}/log4net.dll"/>
+        <include name="System.dll"/>
         <include name="System.Xml.dll"/>
       </references>
     </csc>
@@ -556,7 +556,7 @@
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/> 
+        <include name="System.Web.dll"/>
         <include name="System.Web.Services.dll"/>
       </references>
     </csc>
@@ -610,7 +610,7 @@
         <include name="System.Core.dll"/>
         <include name="System.ServiceProcess.dll"/>
         <include name="${dependencies.dir}/log4net.dll"/>
-	<include name="${build.dir}/Nuxleus.Agent.dll"/>
+        <include name="${build.dir}/Nuxleus.Agent.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
@@ -696,7 +696,7 @@
       </references>
     </csc>
   </target>
-    <target name="LocationComplete_Test" depends="init">
+  <target name="LocationComplete_Test" depends="init">
     <csc target="exe" output="${build.dir}/LocationComplete_Test.exe">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
@@ -855,6 +855,23 @@
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
+        <include name="${build.dir}/Nuxleus.Web.dll"/>
+        <include name="System.dll"/>
+        <include name="System.ServiceProcess.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+      </references>
+    </csc>
+  </target>
+    <target name="Zorba_Test" depends="init Nuxleus.Process">
+    <csc target="exe" output="${build.dir}/Zorba_Test.exe" keyfile="./Dependencies/Extf.Net.snk">
+      <arg if="${platform::is-unix()}" value="-langversion:linq"/>
+      <sources>
+        <include name="${source.dir}/CodeSamples/Zorba_Test/Program.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Process.dll"/>
         <include name="${build.dir}/Nuxleus.Web.dll"/>
         <include name="System.dll"/>
         <include name="System.ServiceProcess.dll"/>
