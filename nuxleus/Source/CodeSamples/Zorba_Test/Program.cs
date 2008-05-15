@@ -14,12 +14,15 @@ namespace Zorba_Test
         {
             ZorbaProcess process = new ZorbaProcess();
             process.RunQuery(args[0]);
-            XmlReader xReader = process.GetXmlReader();
-            do
-            {
-                if(xReader.IsStartElement())
-                    Console.WriteLine(xReader.ReadOuterXml());
-            } while (xReader.Read());
+            try {
+                XmlReader xReader = process.GetXmlReader();
+                do {
+                    if (xReader.IsStartElement())
+                        Console.WriteLine(xReader.ReadOuterXml());
+                } while (xReader.Read());
+            } catch {
+                Console.WriteLine(process.Output.ReadToEnd());
+            }
         }
     }
 }
