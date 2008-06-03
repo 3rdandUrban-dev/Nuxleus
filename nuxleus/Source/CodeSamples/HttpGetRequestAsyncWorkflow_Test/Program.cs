@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Nuxleus.Web;
 using System.IO;
 using System.Threading;
 using System.Diagnostics;
-
 using EeekSoft.Asynchronous;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -87,10 +85,10 @@ namespace HttpGetAsyncResponse_Test {
             Stopwatch stopwatch = new Stopwatch();
 
             Console.WriteLine("Current thread id:\t {0}", Thread.CurrentThread.ManagedThreadId);
+
             stopwatch.Start();
 
-            var methods = Async.Parallel(requestOperations);
-            yield return methods;
+            yield return Async.Parallel(requestOperations);
 
             stopwatch.Stop();
 
