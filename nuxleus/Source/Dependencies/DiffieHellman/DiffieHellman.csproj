@@ -3,22 +3,21 @@
     <ProjectType>Local</ProjectType>
     <ProductVersion>9.0.30428</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{327E25D4-D8DF-4704-ABA3-274F8E777847}</ProjectGuid>
+    <ProjectGuid>{51A5DB78-BDDF-466D-911D-FCD600413726}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>App.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>sharpSshTest</AssemblyName>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyName>DiffieHellman</AssemblyName>
+    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>sharpSshTest</RootNamespace>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DiffieHellman</RootNamespace>
     <StartupObject>
     </StartupObject>
     <FileUpgradeFlags>
@@ -26,7 +25,8 @@
     <OldToolsVersion>0.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <PublishUrl>http://localhost/sharpSshTest/</PublishUrl>
+    <SignAssembly>true</SignAssembly>
+    <PublishUrl>http://localhost/DiffieHellman/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -43,8 +43,8 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\bin\Debug\</OutputPath>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
@@ -54,9 +54,6 @@
     </DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
-    <NoStdLib>false</NoStdLib>
-    <NoWarn>
-    </NoWarn>
     <Optimize>false</Optimize>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
@@ -66,20 +63,16 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\bin\Release\</OutputPath>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>out.xml</DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
-    <NoStdLib>false</NoStdLib>
-    <NoWarn>
-    </NoWarn>
     <Optimize>true</Optimize>
     <RegisterForComInterop>false</RegisterForComInterop>
     <RemoveIntegerChecks>false</RemoveIntegerChecks>
@@ -95,100 +88,53 @@
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
-    <Reference Include="System.Drawing">
-      <Name>System.Drawing</Name>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
-      <Name>System.Windows.Forms</Name>
-    </Reference>
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.ico" />
-    <Content Include="jsch_samples\README.txt" />
-    <Compile Include="AssemblyInfo.cs">
+    <Compile Include="DHKeyGeneration.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ConsoleProgressBar.cs">
+    <Compile Include="DHParameters.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\AES.cs">
+    <Compile Include="DiffieHellman.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\ChangePassphrase.cs">
+    <Compile Include="DiffieHellmanManaged.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\KeyGen.cs">
+    <Compile Include="mono\BigInteger.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\KnownHosts.cs">
+    <Compile Include="mono\ConfidenceFactor.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\PortForwardingL.cs">
+    <Compile Include="mono\MiniParser.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\PortForwardingR.cs">
+    <Compile Include="mono\NextPrimeFinder.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\ScpFrom.cs">
+    <Compile Include="mono\PrimalityTests.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\ScpTo.cs">
+    <Compile Include="mono\PrimeGeneratorBase.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\Sftp.cs">
+    <Compile Include="mono\SecurityParser.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\Shell.cs">
+    <Compile Include="mono\SequentialSearchPrimeGeneratorBase.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\StreamForwarding.cs">
+    <Compile Include="TestApp.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="jsch_samples\Subsystem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="jsch_samples\UserAuthPubKey.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="jsch_samples\util\ConsoleProgressBar.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="jsch_samples\util\InputForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="jsch_samples\ViaHTTP.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="sharpSshTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="sharpssh_samples\SshExeTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="sharpssh_samples\SshExpectTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="sharpssh_samples\SshFileTransferTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="sharpssh_samples\SshShellTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="sharpssh_samples\Util.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <EmbeddedResource Include="jsch_samples\util\InputForm.resx">
-      <DependentUpon>InputForm.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharpSSH\SharpSSH.csproj">
-      <Project>{D27CF69D-4681-492A-BE4D-D3D209104423}</Project>
-      <Name>SharpSSH</Name>
-    </ProjectReference>
+    <None Include="Extf.Net.snk" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

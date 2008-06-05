@@ -1,6 +1,5 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LastOpenVersion>7.10.3077</LastOpenVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ReferencePath>
@@ -46,7 +45,7 @@
     </StartURL>
     <StartWorkingDirectory>
     </StartWorkingDirectory>
-    <StartWithIE>false</StartWithIE>
+    <StartWithIE>true</StartWithIE>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <EnableASPDebugging>false</EnableASPDebugging>

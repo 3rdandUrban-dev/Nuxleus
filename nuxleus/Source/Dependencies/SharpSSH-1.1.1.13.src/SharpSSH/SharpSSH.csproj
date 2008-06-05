@@ -10,8 +10,7 @@
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>Tamir.SharpSSH</AssemblyName>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
@@ -26,7 +25,7 @@
     <OldToolsVersion>0.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
     <PublishUrl>http://localhost/Tamir.SharpSSH/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -90,14 +89,6 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DiffieHellman">
-      <Name>DiffieHellman</Name>
-      <HintPath>lib\DiffieHellman.dll</HintPath>
-    </Reference>
-    <Reference Include="Org.Mentalis.Security">
-      <Name>Org.Mentalis.Security</Name>
-      <HintPath>lib\Org.Mentalis.Security.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -548,6 +539,19 @@
       <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Extf.Net.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DiffieHellman\DiffieHellman.csproj">
+      <Project>{51A5DB78-BDDF-466D-911D-FCD600413726}</Project>
+      <Name>DiffieHellman</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SecurityServices-0.0.2\SecurityServices\SecurityServices.csproj">
+      <Project>{92268E63-E20E-4ED1-86DB-B621712F9A80}</Project>
+      <Name>SecurityServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

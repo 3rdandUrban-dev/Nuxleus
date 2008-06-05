@@ -35,7 +35,7 @@ namespace Tamir.SharpSsh.jsch.jce
 	{
 		private const String name="hmac-md5";
 		private const int bsize=16;
-		private Org.Mentalis.Security.Cryptography.HMAC mentalis_mac;
+        private Org.Mentalis.SecurityServices.Cryptography.HMAC mentalis_mac;
 		private System.Security.Cryptography.CryptoStream cs;
 		//private Mac mac;
 		public int getBlockSize(){return bsize;}
@@ -50,7 +50,7 @@ namespace Tamir.SharpSsh.jsch.jce
 			//    SecretKeySpec skey=new SecretKeySpec(key, "HmacMD5");
 			//    mac=Mac.getInstance("HmacMD5");
 			//    mac.init(skey);
-			mentalis_mac = new Org.Mentalis.Security.Cryptography.HMAC(new System.Security.Cryptography.MD5CryptoServiceProvider(), key);
+            mentalis_mac = new Org.Mentalis.SecurityServices.Cryptography.HMAC(new System.Security.Cryptography.MD5CryptoServiceProvider(), key);
 			cs = new System.Security.Cryptography.CryptoStream( System.IO.Stream.Null, mentalis_mac, System.Security.Cryptography.CryptoStreamMode.Write);
 		} 
 
