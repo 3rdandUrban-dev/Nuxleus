@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30428</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -114,9 +114,9 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dependencies\sgmlreader-1.7.2\sgmlreaderdll\SgmlReaderDll8.csproj">
-      <Project>{D7BBFCCD-F523-400A-89C6-7AD879FBC56C}</Project>
-      <Name>SgmlReaderDll8</Name>
+    <ProjectReference Include="..\Dependencies\sgmlreader-1.7.2\sgmlreaderdll\SgmlReaderDll71.csproj">
+      <Project>{54BFAB0E-44DC-44DA-A291-3B58B4A2D304}</Project>
+      <Name>SgmlReaderDll71</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Agent\Nuxleus.Agent.csproj">
       <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>

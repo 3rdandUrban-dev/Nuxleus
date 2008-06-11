@@ -40,6 +40,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IdentityModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Runtime.Serialization">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -49,6 +52,9 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
@@ -60,6 +66,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SimpleDB\SdbAction.cs" />
+    <Compile Include="SimpleDB\SimpleDBService.cs" />
+    <Compile Include="Utils\HMACSigner.cs" />
     <Compile Include="Web References\Ec2\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -75,7 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
-    <Compile Include="Web References\Sdb\Reference.cs">
+    <Compile Include="Web References\SimpleDB\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -329,29 +338,29 @@
     <None Include="Web References\S3\Status.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\Sdb\AmazonSimpleDB.wsdl" />
-    <None Include="Web References\Sdb\CreateDomainResponse.datasource">
+    <None Include="Web References\SimpleDB\AmazonSimpleDB.wsdl" />
+    <None Include="Web References\SimpleDB\CreateDomainResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\Sdb\DeleteAttributesResponse.datasource">
+    <None Include="Web References\SimpleDB\DeleteAttributesResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\Sdb\DeleteDomainResponse.datasource">
+    <None Include="Web References\SimpleDB\DeleteDomainResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\Sdb\GetAttributesResponse.datasource">
+    <None Include="Web References\SimpleDB\GetAttributesResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\Sdb\ListDomainsResponse.datasource">
+    <None Include="Web References\SimpleDB\ListDomainsResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\Sdb\PutAttributesResponse.datasource">
+    <None Include="Web References\SimpleDB\PutAttributesResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\Sdb\QueryResponse.datasource">
+    <None Include="Web References\SimpleDB\QueryResponse.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\Sdb\Reference.map">
+    <None Include="Web References\SimpleDB\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -416,14 +425,14 @@
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://sdb.amazonaws.com/doc/2007-11-07/AmazonSimpleDB.wsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Sdb\</RelPath>
+      <RelPath>Web References\SimpleDB\</RelPath>
       <UpdateFromURL>http://sdb.amazonaws.com/doc/2007-11-07/AmazonSimpleDB.wsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>Nuxleus_Extension_AWS_Sdb_AmazonSimpleDB</CachedSettingsPropName>
+      <CachedSettingsPropName>Nuxleus_Extension_AWS_SimpleDB_AmazonSimpleDB</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="https://fps.amazonaws.com/doc/2007-01-08/AmazonFPS.wsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
@@ -447,6 +456,12 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Nuxleus_Extension_AWS_Ec2_AmazonEC2</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Extension\Nuxleus.Extension.csproj">
+      <Project>{3EC9EEB0-71CA-4F71-BF8E-AAF0365D4234}</Project>
+      <Name>Nuxleus.Extension</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

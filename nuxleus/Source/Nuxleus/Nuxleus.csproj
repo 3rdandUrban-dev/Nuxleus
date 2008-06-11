@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.20706</ProductVersion>
+    <ProductVersion>9.0.30428</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B0D68D3E-8ACE-4F33-9E85-F32CED622614}</ProjectGuid>
     <OutputType>Exe</OutputType>
@@ -16,6 +16,21 @@
     </StartupObject>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <PublishUrl>http://localhost/Nuxleus/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,14 +52,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="erb, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\erb\erb\bin\Debug\erb.dll</HintPath>
-    </Reference>
-    <Reference Include="QUT.SymbolWriter, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8b16d9e060688056, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\erb\erb\bin\Debug\QUT.SymbolWriter.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -61,7 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
-    <Compile Include="Core.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Service\Core.cs" />
     <Compile Include="InvokeRequest.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -69,6 +77,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SshUtil\SshRemoteExecution.cs" />
+    <Compile Include="SshUtil\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
@@ -78,6 +88,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dependencies\SharpSSH-1.1.1.13.src\SharpSSH\SharpSSH.csproj">
+      <Project>{D27CF69D-4681-492A-BE4D-D3D209104423}</Project>
+      <Name>SharpSSH</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Agent\Nuxleus.Agent.csproj">
       <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>
       <Name>Nuxleus.Agent</Name>
@@ -105,6 +119,10 @@
     <ProjectReference Include="..\Nuxleus.Extension.Amp.Fm\Nuxleus.Extension.Amp.Fm.csproj">
       <Project>{284A2E2B-6FD6-4650-A001-AC9D64D31EBF}</Project>
       <Name>Nuxleus.Extension.Amp.Fm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
+      <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
+      <Name>Nuxleus.Extension.Aws</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Extension.Silverlight\Nuxleus.Extension.Silverlight.csproj">
       <Project>{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}</Project>
@@ -150,6 +168,28 @@
       <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
       <Name>Xameleon</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

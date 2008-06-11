@@ -3,6 +3,7 @@ using System.Xml;
 using System.Collections;
 using Nuxleus;
 using Nuxleus.Amp.Fm;
+using System.Security.Cryptography;
 
 namespace Nuxleus.Command
 {

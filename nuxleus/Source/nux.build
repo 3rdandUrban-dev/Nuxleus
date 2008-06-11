@@ -307,19 +307,22 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Extension.Aws" depends="init">
+  <target name="Nuxleus.Extension.Aws" depends="init Nuxleus.Extension">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.dll" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
         <include name="${source.dir}/Nuxleus.Extension.Aws/**/*.cs"/>
       </sources>
       <references>
+        <include name="${build.dir}/Nuxleus.Extension.dll"/>
         <include name="System.dll"/>
         <include name="System.Collections.dll"/>
         <include name="System.Collections.Generic.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
+        <include name="System.Xml.Linq.dll"/>
         <include name="System.Web.dll"/>
+        <include name="/usr/lib//mono/3.0/System.ServiceModel.dll"/>
         <include name="System.Web.Services.dll"/>
         <include name="System.EnterpriseServices.dll"/>
       </references>
@@ -864,7 +867,7 @@
       </references>
     </csc>
   </target>
-    <target name="Zorba_Test" depends="init Nuxleus.Process">
+  <target name="Zorba_Test" depends="init Nuxleus.Process">
     <csc target="exe" output="${build.dir}/Zorba_Test.exe" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
@@ -874,7 +877,23 @@
         <include name="${build.dir}/Nuxleus.Process.dll"/>
         <include name="${build.dir}/Nuxleus.Web.dll"/>
         <include name="System.dll"/>
-        <include name="System.ServiceProcess.dll"/>
+        <include name="System.ServiceModel.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="SdbSOAP_Test" depends="init Nuxleus.Extension.Aws">
+    <csc target="exe" output="${build.dir}/Sdb_SOAP_Test.exe" keyfile="./Dependencies/Extf.Net.snk">
+      <arg if="${platform::is-unix()}" value="-langversion:linq"/>
+      <sources>
+        <include name="${source.dir}/CodeSamples/AwsSdbSOAP_Test/Program.cs"/>
+      </sources>
+      <references>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
+        <include name="System.dll"/>
+        <include name="/usr/lib/mono/3.0/System.ServiceModel.dll"/>
         <include name="System.Xml.dll"/>
         <include name="System.Web.dll"/>
         <include name="System.Web.Services.dll"/>
