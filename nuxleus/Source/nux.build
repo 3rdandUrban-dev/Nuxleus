@@ -76,7 +76,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus" depends="init Xameleon Nuxleus.Agent Nuxleus.Messaging Nuxleus.Command Nuxleus.Entity Nuxleus.Service">
+  <target name="Nuxleus" depends="init Xameleon Nuxleus.Agent Nuxleus.Messaging Nuxleus.Command Nuxleus.Entity Nuxleus.Service Nuxleus.Extension">
     <csc target="exe" output="${build.dir}/Nuxleus.exe" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
@@ -89,6 +89,8 @@
         <include name="${build.dir}/Nuxleus.Entity.dll"/>
         <include name="${build.dir}/Nuxleus.Messaging.dll"/>
         <include name="${build.dir}/Nuxleus.Service.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.dll"/>
+        <include name="${dependencies.dir}/Tamir.SharpSSH.dll"/>
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
