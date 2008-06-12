@@ -171,7 +171,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                     yield return response;
                     Console.WriteLine("[] got response on thread: {0}", Thread.CurrentThread.ManagedThreadId);
                     Stream stream = response.Result.GetResponseStream();
-                    Async<T> responseObject = stream.ReadToEndAsync(typeof(T)).ExecuteAsync<T>();
+                    Async<T> responseObject = stream.ReadToEndAsync<T>().ExecuteAsync<T>();
                     yield return responseObject;
                     responseList.Add(responseObject.Result);
                     //} finally (System.Net.WebException e) {

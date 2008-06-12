@@ -307,7 +307,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Extension.Aws" depends="init Nuxleus.Extension Nuxleus.Extension.Linq Nuxleus.MetaData">
+  <target name="Nuxleus.Extension.Aws" depends="init Nuxleus.Extension Nuxleus.Extension.Linq Nuxleus.MetaData Scope">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.dll" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
@@ -317,6 +317,7 @@
         <include name="${build.dir}/Nuxleus.Extension.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
         <include name="${build.dir}/Nuxleus.MetaData.dll"/>
+        <include name="${build.dir}/Scope.dll"/>
         <include name="System.dll"/>
         <include name="System.Collections.dll"/>
         <include name="System.Collections.Generic.dll"/>
@@ -659,6 +660,19 @@
       </references>
     </csc>
   </target>
+  <target name="Scope" depends="init">
+    <csc target="library" output="${build.dir}/Scope.dll" keyfile="./Dependencies/Extf.Net.snk">
+      <arg if="${platform::is-unix()}" value="-langversion:linq"/>
+      <sources>
+        <include name="./Dependencies/Scope/Scope/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.Xml.dll"/>
+      </references>
+    </csc>
+  </target>
   <target name="sdb-test" depends="init Nuxleus.Extension.Aws.Sdb">
     <csc target="exe" output="${build.dir}/sdb-test.exe">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
@@ -886,22 +900,25 @@
       </references>
     </csc>
   </target>
-  <target name="SdbSOAP_Test" depends="init Nuxleus.Extension.Aws">
+  <target name="SdbSOAP_Test" depends="init Nuxleus.Extension.Aws Scope">
     <csc target="exe" output="${build.dir}/Sdb_SOAP_Test.exe" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
-        <include name="${source.dir}/CodeSamples/AwsSdbSOAP_Test/Program.cs"/>
+        <include name="${source.dir}/CodeSamples/AwsSdbSOAP_Test/**/*.cs"/>
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
         <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
+        <include name="${build.dir}/Scope.dll"/>
         <include name="System.dll"/>
+        <include name="System.Configuration.dll"/>
         <include name="System.Xml.Linq.dll"/>
         <include name="System.Xml.dll"/>
         <include name="System.Web.dll"/>
         <include name="System.Web.Services.dll"/>
       </references>
     </csc>
+    <copy file="CodeSamples/AwsSdbSOAP_Test/App.config" tofile="${build.dir}/Sdb_SOAP_Test.exe.config"/>
   </target>
 <!--    
 	<target name="System.Messaging" depends="init">

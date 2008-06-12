@@ -127,6 +127,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuxleus", "Nuxleus\Nuxleus.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwsSdbSOAP_Test", "CodeSamples\AwsSdbSOAP_Test\AwsSdbSOAP_Test.csproj", "{A1DF0E96-5699-4219-80B9-CE6EDE8599EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scope", "Dependencies\Scope\Scope\Scope.csproj", "{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScopeTest", "Dependencies\Scope\ScopeTest\ScopeTest.csproj", "{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -1027,6 +1031,34 @@ Global
 		{A1DF0E96-5699-4219-80B9-CE6EDE8599EC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{A1DF0E96-5699-4219-80B9-CE6EDE8599EC}.Release|x64.ActiveCfg = Release|Any CPU
 		{A1DF0E96-5699-4219-80B9-CE6EDE8599EC}.Release|x86.ActiveCfg = Release|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Release|.NET.ActiveCfg = Release|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Release|x64.ActiveCfg = Release|Any CPU
+		{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}.Release|x86.ActiveCfg = Release|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Release|.NET.ActiveCfg = Release|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Release|x64.ActiveCfg = Release|Any CPU
+		{A1C69CA6-2CBF-4B80-9FAC-78AFB6523B22}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

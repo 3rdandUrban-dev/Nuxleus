@@ -56,7 +56,7 @@ namespace EeekSoft.Asynchronous {
         /// Asynchronously gets response from the internet using BeginGetResponse method.
         /// </summary>
         public static Async<WebResponse> GetResponseAsync(this WebRequest req) {
-            return new AsyncPrimitive<WebResponse>(req.BeginGetResponse, req.EndGetResponse);
+            return new AsyncPrimitive<WebResponse>(req.BeginGetResponse, req.EndGetResponse, HandleWebException);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace EeekSoft.Asynchronous {
         /// </summary>
         /// <returns>Returns string using the 'Result' class.</returns>
         public static IEnumerable<IAsync> ReadToEndAsync(this Stream stream) {
-            return stream.ReadToEndAsync(typeof(String));
+            return stream.ReadToEndAsync<String>();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace EeekSoft.Asynchronous {
         /// as a string using StreamReader.
         /// </summary>
         /// <param name="returnType">Specifies the desired return type.  The default is System.String.</param>
-        public static IEnumerable<IAsync> ReadToEndAsync(this Stream stream, Type returnType) {
+        public static IEnumerable<IAsync> ReadToEndAsync<T>(this Stream stream) {
             MemoryStream ms = new MemoryStream();
             int read = -1;
             while (read != 0) {
@@ -101,8 +101,8 @@ namespace EeekSoft.Asynchronous {
             }
 
             ms.Seek(0, SeekOrigin.Begin);
-
-            switch (returnType.FullName) {
+            
+            switch (typeof(T).FullName) {
                 case "System.Xml.XmlReader":
                     yield return new Result<XmlReader>(XmlReader.Create(ms));
                     break;
@@ -124,6 +124,10 @@ namespace EeekSoft.Asynchronous {
                     yield return new Result<string>(s);
                     break;
             }
+        }
+
+        public static WebResponse HandleWebException(Exception ex) {
+            return ((WebException)ex).Response;
         }
 
         #endregion
@@ -268,6 +272,17 @@ namespace EeekSoft.Asynchronous {
 
         public AsyncPrimitive(Func<AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, T> end) {
             this.func = (cont) => begin(delegate(IAsyncResult res) { cont(end(res)); }, null);
+        }
+
+        public AsyncPrimitive(Func<AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, T> end, Func<Exception, T> we) {
+            this.func = (cont) =>
+                begin(delegate(IAsyncResult res) {
+                    try {
+                        cont(end(res));
+                    } catch (Exception e) {
+                        cont(we(e));
+                    }
+                }, null);
         }
 
         public override void ExecuteStep(Action cont) {

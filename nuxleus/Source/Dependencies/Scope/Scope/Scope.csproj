@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30428</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -48,6 +48,12 @@
     <Compile Include="HandlerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scope.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Nuxleus.Extension.Linq\Nuxleus.Extension.Linq.csproj">
+      <Project>{D937BA9E-1E6C-4757-98CC-7D932F4697B0}</Project>
+      <Name>Nuxleus.Extension.Linq</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
