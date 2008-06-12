@@ -458,9 +458,17 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Extension.Linq\Nuxleus.Extension.Linq.csproj">
+      <Project>{D937BA9E-1E6C-4757-98CC-7D932F4697B0}</Project>
+      <Name>Nuxleus.Extension.Linq</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Extension\Nuxleus.Extension.csproj">
       <Project>{3EC9EEB0-71CA-4F71-BF8E-AAF0365D4234}</Project>
       <Name>Nuxleus.Extension</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.MetaData\Nuxleus.MetaData.csproj">
+      <Project>{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}</Project>
+      <Name>Nuxleus.MetaData</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

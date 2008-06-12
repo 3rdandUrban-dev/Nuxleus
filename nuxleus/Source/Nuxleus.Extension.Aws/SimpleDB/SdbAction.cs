@@ -5,10 +5,26 @@ using System.Text;
 using System.Xml.Linq;
 using System.Security.Cryptography;
 using System.Globalization;
+using Nuxleus.MetaData;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
-    public enum RequestType { Query, CreateDomain, DeleteDomain, ListDomains, PutAttributes, DeleteAttributes, GetAttributes }
+    public enum RequestType {
+        [Label("Query")]
+        Query,
+        [Label("CreateDomain")]
+        CreateDomain,
+        [Label("DeleteDomain")]
+        DeleteDomain,
+        [Label("ListDomains")]
+        ListDomains,
+        [Label("PutAttributes")]
+        PutAttributes,
+        [Label("DeleteAttributes")]
+        DeleteAttributes,
+        [Label("GetAttributes")] 
+        GetAttributes 
+    }
 
     public struct SdbAction {
 

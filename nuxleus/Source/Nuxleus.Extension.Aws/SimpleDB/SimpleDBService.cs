@@ -10,12 +10,15 @@ using System.Web;
 using System.Web.Services.Protocols;
 using System.Globalization;
 using Nuxleus.Extension;
+using EeekSoft.Asynchronous;
+using System.Collections.Generic;
+using System.Threading;
+using Nuxleus.MetaData;
+using System.Collections;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
-    public class SimpleDBService {
-
-        public SimpleDBService() { }
+    public struct SimpleDBService {
 
         public XContainer GetMessage(RequestType requestType, params string[] paramArray) {
 
@@ -84,32 +87,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         public StreamReader MakeRequest(RequestType requestType, XContainer message) {
 
-            
-            string rType = String.Empty;
-            switch (requestType) {
-                case RequestType.PutAttributes:
-                    rType = "PutAttributes";
-                    break;
-                case RequestType.ListDomains:
-                    rType = "ListDomains";
-                    break;
-                case RequestType.GetAttributes:
-                    rType = "GetAttributes";
-                    break;
-                case RequestType.DeleteDomain:
-                    rType = "DeleteDomain";
-                    break;
-                case RequestType.DeleteAttributes:
-                    rType = "DeleteAttributes";
-                    break;
-                case RequestType.CreateDomain:
-                    rType = "CreateDomain";
-                    break;
-                case RequestType.Query:
-                default:
-                    rType = "Query";
-                    break;
-            }
+            string rType = LabelAttribute.FromMember(requestType);
 
             Encoding encoding = new UTF8Encoding();
 
@@ -147,6 +125,66 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 Console.WriteLine("Failed! Reason: {0}, Message: {1}", e.Response, e.Message);
                 return new StreamReader(e.Response.GetResponseStream());
             }
+        }
+
+        public static IEnumerable<IAsync> MakeSoapRequestAsync<T>(RequestType requestType, XContainer message, List<T> responseList) {
+
+            string rType = LabelAttribute.FromMember(requestType);
+
+            Encoding encoding = new UTF8Encoding();
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://sdb.amazonaws.com/");
+
+            request.Timeout = 10000 /*TODO: This should be set dynamically*/;
+            request.KeepAlive = true;
+            request.Pipelined = true;
+
+            XmlReader xreader = message.CreateReader();
+            StringBuilder output = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+
+            byte[] buffer = null;
+
+            do {
+                if (xreader.IsStartElement()) {
+                    output.Append(xreader.ReadOuterXml());
+                    Console.WriteLine("Output: {0} :/Output", output.ToString());
+                    buffer = encoding.GetBytes(output.ToString());
+                }
+            } while (xreader.Read());
+
+            int contentLength = buffer.Length;
+            request.ContentLength = contentLength;
+            request.Method = "POST";
+            request.ContentType = "application/soap+xml";
+            request.Headers.Add("SOAPAction", rType);
+
+            request.Timeout = 10000 /*TODO: This should be set dynamically*/;
+            request.KeepAlive = true;
+            request.Pipelined = true;
+
+            Console.WriteLine("[] starting on thread: {0}", Thread.CurrentThread.ManagedThreadId);
+
+            using (Stream newStream = request.GetRequestStream()) {
+                try {
+                    newStream.Write(buffer, 0, contentLength);
+                    Async<WebResponse> response = request.GetResponseAsync();
+                    yield return response;
+                    Console.WriteLine("[] got response on thread: {0}", Thread.CurrentThread.ManagedThreadId);
+                    Stream stream = response.Result.GetResponseStream();
+                    Async<T> responseObject = stream.ReadToEndAsync(typeof(T)).ExecuteAsync<T>();
+                    yield return responseObject;
+                    responseList.Add(responseObject.Result);
+                    //} finally (System.Net.WebException e) {
+                    //    Console.WriteLine("Failed! Reason: {0}, Message: {1}", e.Response, e.Message);
+                    //    return new StreamReader(e.Response.GetResponseStream());
+                    //}
+                } finally {
+                    
+                }
+            }
+
+            Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
+            
         }
     }
 }

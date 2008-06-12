@@ -307,7 +307,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Extension.Aws" depends="init Nuxleus.Extension">
+  <target name="Nuxleus.Extension.Aws" depends="init Nuxleus.Extension Nuxleus.Extension.Linq Nuxleus.MetaData">
     <csc target="library" output="${build.dir}/Nuxleus.Extension.Aws.dll" keyfile="./Dependencies/Extf.Net.snk">
       <arg if="${platform::is-unix()}" value="-langversion:linq"/>
       <sources>
@@ -315,6 +315,8 @@
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Extension.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
+        <include name="${build.dir}/Nuxleus.MetaData.dll"/>
         <include name="System.dll"/>
         <include name="System.Collections.dll"/>
         <include name="System.Collections.Generic.dll"/>
@@ -892,8 +894,9 @@
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.Linq.dll"/>
         <include name="System.dll"/>
-        <include name="/usr/lib/mono/3.0/System.ServiceModel.dll"/>
+        <include name="System.Xml.Linq.dll"/>
         <include name="System.Xml.dll"/>
         <include name="System.Web.dll"/>
         <include name="System.Web.Services.dll"/>

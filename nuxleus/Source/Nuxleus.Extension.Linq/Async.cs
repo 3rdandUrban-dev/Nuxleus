@@ -16,8 +16,8 @@ namespace EeekSoft.Asynchronous {
     /// situations where void can't be used
     /// </summary>
     public class Unit {
-        private Unit () { }
-        static Unit () {
+        private Unit() { }
+        static Unit() {
             Value = new Unit();
         }
         public static Unit Value { get; private set; }
@@ -35,11 +35,11 @@ namespace EeekSoft.Asynchronous {
     /// <typeparam name="T"></typeparam>
     public class Result<T> : IAsync {
         public T ReturnValue { get; private set; }
-        public Result ( T value ) {
+        public Result(T value) {
             ReturnValue = value;
         }
 
-        public void ExecuteStep ( Action cont ) {
+        public void ExecuteStep(Action cont) {
             throw new InvalidOperationException
                 ("Cannot call ExecuteStep on IAsync created as a 'Result'.");
         }
@@ -55,7 +55,7 @@ namespace EeekSoft.Asynchronous {
         /// <summary>
         /// Asynchronously gets response from the internet using BeginGetResponse method.
         /// </summary>
-        public static Async<WebResponse> GetResponseAsync ( this WebRequest req ) {
+        public static Async<WebResponse> GetResponseAsync(this WebRequest req) {
             return new AsyncPrimitive<WebResponse>(req.BeginGetResponse, req.EndGetResponse);
         }
 
@@ -67,9 +67,9 @@ namespace EeekSoft.Asynchronous {
         /// <param name="offset">Byte offset in the buffer</param>
         /// <param name="count">Maximum number of bytes to read</param>
         /// <returns>Returns non-zero if there are still some data to read</returns>
-        public static Async<int> ReadAsync ( this Stream stream, byte[] buffer, int offset, int count ) {
+        public static Async<int> ReadAsync(this Stream stream, byte[] buffer, int offset, int count) {
             return new AsyncPrimitive<int>(
-                ( callback, st ) => stream.BeginRead(buffer, offset, count, callback, st),
+                (callback, st) => stream.BeginRead(buffer, offset, count, callback, st),
                 stream.EndRead);
         }
 
@@ -78,8 +78,8 @@ namespace EeekSoft.Asynchronous {
         /// as a string using StreamReader.
         /// </summary>
         /// <returns>Returns string using the 'Result' class.</returns>
-        public static IEnumerable<IAsync> ReadToEndAsync ( this Stream stream ) {
-            return stream.ReadToEndAsync(ReturnType.String);
+        public static IEnumerable<IAsync> ReadToEndAsync(this Stream stream) {
+            return stream.ReadToEndAsync(typeof(String));
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace EeekSoft.Asynchronous {
         /// as a string using StreamReader.
         /// </summary>
         /// <param name="returnType">Specifies the desired return type.  The default is System.String.</param>
-        public static IEnumerable<IAsync> ReadToEndAsync ( this Stream stream, ReturnType returnType ) {
+        public static IEnumerable<IAsync> ReadToEndAsync(this Stream stream, Type returnType) {
             MemoryStream ms = new MemoryStream();
             int read = -1;
             while (read != 0) {
@@ -102,23 +102,23 @@ namespace EeekSoft.Asynchronous {
 
             ms.Seek(0, SeekOrigin.Begin);
 
-            switch (returnType) {
-                case ReturnType.XmlReader:
+            switch (returnType.FullName) {
+                case "System.Xml.XmlReader":
                     yield return new Result<XmlReader>(XmlReader.Create(ms));
                     break;
-                case ReturnType.XDocument:
+                case "System.Xml.Linq.XDocument":
                     yield return new Result<XDocument>(XDocument.Parse(new StreamReader(ms).ReadToEnd()));
                     break;
-                case ReturnType.XElement:
+                case "System.Xml.Linq.XElement":
                     yield return new Result<XElement>(XElement.Parse(new StreamReader(ms).ReadToEnd()));
                     break;
-                case ReturnType.XStreamingElement:
+                case "System.Xml.Linq.XStreamingElement":
                     yield return new Result<XStreamingElement>(new XStreamingElement("Result", XElement.Parse(new StreamReader(ms).ReadToEnd())));
                     break;
-                case ReturnType.XNode:
+                case "System.Xml.Linq.XNode":
                     yield return new Result<XNode>(XNode.ReadFrom(XmlReader.Create(ms)));
                     break;
-                case ReturnType.String:
+                case "System.String":
                 default:
                     string s = new StreamReader(ms).ReadToEnd();
                     yield return new Result<string>(s);
@@ -134,7 +134,7 @@ namespace EeekSoft.Asynchronous {
         /// Executes asynchronous method and blocks the calling thread until the operation completes.
         /// </summary>
         /// <param name="async"></param>
-        public static void ExecuteAndWait ( this IEnumerable<IAsync> async ) {
+        public static void ExecuteAndWait(this IEnumerable<IAsync> async) {
             ManualResetEvent wh = new ManualResetEvent(false);
             AsyncExtensions.Run(async.GetEnumerator(),
                 () => wh.Set());
@@ -146,7 +146,7 @@ namespace EeekSoft.Asynchronous {
         /// Spawns the asynchronous method without waiting for the result.
         /// </summary>
         /// <param name="async"></param>
-        public static void Execute ( this IEnumerable<IAsync> async ) {
+        public static void Execute(this IEnumerable<IAsync> async) {
             AsyncExtensions.Run(async.GetEnumerator());
         }
 
@@ -154,7 +154,7 @@ namespace EeekSoft.Asynchronous {
         /// Executes the asynchronous method in another asynchronous method, 
         /// and assumes that the method returns result of type T.
         /// </summary>
-        public static Async<T> ExecuteAsync<T> ( this IEnumerable<IAsync> async ) {
+        public static Async<T> ExecuteAsync<T>(this IEnumerable<IAsync> async) {
             return new AsyncWithResult<T>(async);
         }
 
@@ -162,7 +162,7 @@ namespace EeekSoft.Asynchronous {
         /// Executes the asynchronous method in another asynchronous method, 
         /// and assumes that the method doesn't return any result.
         /// </summary>
-        public static Async<Unit> ExecuteAsync ( this IEnumerable<IAsync> async ) {
+        public static Async<Unit> ExecuteAsync(this IEnumerable<IAsync> async) {
             return new AsyncWithUnitResult(async);
         }
 
@@ -170,10 +170,10 @@ namespace EeekSoft.Asynchronous {
 
         #region Implementation
 
-        internal static void Run<T> ( IEnumerator<IAsync> en, Action<T> cont ) {
+        internal static void Run<T>(IEnumerator<IAsync> en, Action<T> cont) {
             if (!en.MoveNext())
                 throw new InvalidOperationException("Asynchronous workflow executed using"
-					+ "'AsyncWithResult' didn't return result using 'Result'!");
+                    + "'AsyncWithResult' didn't return result using 'Result'!");
 
             var res = (en.Current as Result<T>);
             if (res != null) { cont(res.ReturnValue); return; }
@@ -182,13 +182,13 @@ namespace EeekSoft.Asynchronous {
                 (() => AsyncExtensions.Run<T>(en, cont));
         }
 
-        internal static void Run ( IEnumerator<IAsync> en, Action cont ) {
+        internal static void Run(IEnumerator<IAsync> en, Action cont) {
             if (!en.MoveNext()) { cont(); return; }
             en.Current.ExecuteStep
                 (() => AsyncExtensions.Run(en, cont));
         }
 
-        internal static void Run ( IEnumerator<IAsync> en ) {
+        internal static void Run(IEnumerator<IAsync> en) {
             if (!en.MoveNext())
                 return;
             en.Current.ExecuteStep
@@ -207,8 +207,8 @@ namespace EeekSoft.Asynchronous {
         /// Combines the given asynchronous methods and returns an asynchronous method that,
         /// when executed - executes the methods in parallel.
         /// </summary>
-        public static Async<Unit> Parallel ( params IEnumerable<IAsync>[] operations ) {
-            return new AsyncPrimitive<Unit>(( cont ) => {
+        public static Async<Unit> Parallel(params IEnumerable<IAsync>[] operations) {
+            return new AsyncPrimitive<Unit>((cont) => {
                 bool[] completed = new bool[operations.Length];
                 for (int i = 0; i < operations.Length; i++)
                     ExecuteAndSet(operations[i], completed, i, cont).Execute();
@@ -217,7 +217,7 @@ namespace EeekSoft.Asynchronous {
 
         #region Implementation
 
-        private static IEnumerable<IAsync> ExecuteAndSet ( IEnumerable<IAsync> op, bool[] flags, int index, Action<Unit> cont ) {
+        private static IEnumerable<IAsync> ExecuteAndSet(IEnumerable<IAsync> op, bool[] flags, int index, Action<Unit> cont) {
             foreach (IAsync async in op)
                 yield return async;
             bool allSet = true;
@@ -238,7 +238,7 @@ namespace EeekSoft.Asynchronous {
     /// This interface should be used only in asynchronous method declaration.
     /// </summary>
     public interface IAsync {
-        void ExecuteStep ( Action cont );
+        void ExecuteStep(Action cont);
     }
 
     /// <summary>
@@ -256,22 +256,22 @@ namespace EeekSoft.Asynchronous {
             }
         }
 
-        abstract public void ExecuteStep ( Action cont );
+        abstract public void ExecuteStep(Action cont);
     }
 
     public class AsyncPrimitive<T> : Async<T> {
         Action<Action<T>> func;
 
-        public AsyncPrimitive ( Action<Action<T>> function ) {
+        public AsyncPrimitive(Action<Action<T>> function) {
             this.func = function;
         }
 
-        public AsyncPrimitive ( Func<AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, T> end ) {
-            this.func = ( cont ) => begin(delegate( IAsyncResult res ) { cont(end(res)); }, null);
+        public AsyncPrimitive(Func<AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, T> end) {
+            this.func = (cont) => begin(delegate(IAsyncResult res) { cont(end(res)); }, null);
         }
 
-        public override void ExecuteStep ( Action cont ) {
-            func(( res ) => {
+        public override void ExecuteStep(Action cont) {
+            func((res) => {
                 result = res;
                 completed = true;
                 cont();
@@ -282,12 +282,12 @@ namespace EeekSoft.Asynchronous {
     public class AsyncWithResult<T> : Async<T> {
         IEnumerable<IAsync> en;
 
-        public AsyncWithResult ( IEnumerable<IAsync> async ) {
+        public AsyncWithResult(IEnumerable<IAsync> async) {
             en = async;
         }
 
-        public override void ExecuteStep ( Action cont ) {
-            AsyncExtensions.Run<T>(en.GetEnumerator(), ( res ) => {
+        public override void ExecuteStep(Action cont) {
+            AsyncExtensions.Run<T>(en.GetEnumerator(), (res) => {
                 completed = true;
                 result = res;
                 cont();
@@ -298,12 +298,12 @@ namespace EeekSoft.Asynchronous {
     public class AsyncWithUnitResult : Async<Unit> {
         IEnumerable<IAsync> en;
 
-        public AsyncWithUnitResult ( IEnumerable<IAsync> async ) {
+        public AsyncWithUnitResult(IEnumerable<IAsync> async) {
             en = async;
             result = Unit.Value;
         }
 
-        public override void ExecuteStep ( Action cont ) {
+        public override void ExecuteStep(Action cont) {
             AsyncExtensions.Run(en.GetEnumerator(), () => {
                 completed = true;
                 cont();
