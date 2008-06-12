@@ -161,7 +161,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             request.KeepAlive = true;
             request.Pipelined = true;
 
-            Console.WriteLine("[] starting on thread: {0}", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
 
             using (Stream newStream = request.GetRequestStream()) {
 
@@ -175,7 +175,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                     responseList.Add(message, responseObject.Result);
             }
 
-            Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("End Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
             
         }
     }

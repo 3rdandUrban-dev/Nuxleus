@@ -14,15 +14,12 @@
 using System.Collections;
 using System.Xml;
 
-namespace Nuxleus.Extension.Aws.Sdb
-{
-    public class GetAttributesResponse : Response
-    {
+namespace Nuxleus.Extension.Aws.Sdb {
+    public class GetAttributesResponse : Response {
         private ArrayList attributes = new ArrayList();
         private string responseName = "GetAttributesResponse";
 
-        public GetAttributesResponse (string response)
-        {
+        public GetAttributesResponse(string response) {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(response);
 
@@ -30,26 +27,19 @@ namespace Nuxleus.Extension.Aws.Sdb
 
             processResponse(responseName, doc);
 
-            foreach (XmlNode node in doc.ChildNodes)
-            {
-                if (node.Name.Equals(responseName))
-                {
-                    foreach (XmlNode attributesNode in node.ChildNodes)
-                    {
-                        if (attributesNode.Name.Equals("Attribute"))
-                        {
+            foreach (XmlNode node in doc.ChildNodes) {
+                if (node.Name.Equals(responseName)) {
+                    foreach (XmlNode attributesNode in node.ChildNodes) {
+                        if (attributesNode.Name.Equals("Attribute")) {
                             string name = "";
                             string value = "";
 
                             foreach (XmlNode attributeNode in
-                                 attributesNode.ChildNodes)
-                            {
-                                if (attributeNode.Name.Equals("Name"))
-                                {
+                                 attributesNode.ChildNodes) {
+                                if (attributeNode.Name.Equals("Name")) {
                                     name = attributeNode.InnerText;
                                 }
-                                if (attributeNode.Name.Equals("Value"))
-                                {
+                                if (attributeNode.Name.Equals("Value")) {
                                     value = attributeNode.InnerText;
                                 }
                             }
@@ -61,8 +51,7 @@ namespace Nuxleus.Extension.Aws.Sdb
             }
         }
 
-        public ICollection Attributes ()
-        {
+        public ICollection Attributes() {
             return attributes;
         }
     }
