@@ -19,28 +19,55 @@ namespace AwsSdbSOAP_Test {
         static LoggerScope logger = new LoggerScope();
         static ExceptionHandlerScope exShield = new ExceptionHandlerScope();
         static ProfilerScope profiler = new ProfilerScope();
-        static Scope scope;
 
         static void Main(string[] args) {
 
             System.Environment.SetEnvironmentVariable("AWS_PUBLIC_KEY", ConfigurationManager.AppSettings["AWS_PUBLIC_KEY"]);
             System.Environment.SetEnvironmentVariable("AWS_PRIVATE_KEY", ConfigurationManager.AppSettings["AWS_PRIVATE_KEY"]);
 
-            scope = new Scope();
+            int jobs = (args.Length >= 1) ? int.Parse(args[0]) : int.Parse(ConfigurationManager.AppSettings["DefaultJobs"]);
+            int workers = (args.Length >= 2) ? int.Parse(args[1]) : (int.Parse(ConfigurationManager.AppSettings["WorkerQueueMultiplier"]) * Environment.ProcessorCount);
+
+            int minWorkerThreads = int.Parse(ConfigurationManager.AppSettings["MinimumWorkerThreads"]);
+            int minAsyncIOThreads = int.Parse(ConfigurationManager.AppSettings["MinimumAsyncIOThreds"]);
+            int maxWorkerThreads = int.Parse(ConfigurationManager.AppSettings["MaximumWorkerThreads"]);
+            int maxAsyncIOThreads = int.Parse(ConfigurationManager.AppSettings["MaximumAsyncIOThreads"]);
+
+            ThreadPool.SetMaxThreads(maxWorkerThreads, maxAsyncIOThreads);
+            ThreadPool.SetMinThreads(minWorkerThreads, minAsyncIOThreads);
+
+            Scope scope = new Scope();
             scope += profiler.Scope;
             scope += logger.Scope;
             scope += exShield.Scope;
 
-            logger.Message = "Processing SOAP requests";
+            Console.WriteLine("Jobs: {0}, Workers: {1}, MinWorkerThreads: {2}, MinAsyncIOThreads: {3}, MaxWorkerThreads: {4}, MaxAsyncIOThreads: {5}", jobs, workers, minWorkerThreads, minAsyncIOThreads, maxWorkerThreads, maxAsyncIOThreads);
+            
 
             // Inject code to scope
+            //scope.Begin = () => {
+            //    PutAttributes().ExecuteAndWait();
+            //};
+
+            Stopwatch stopwatch = new Stopwatch();
+
+            Console.WriteLine("Current thread id:\t {0}", Thread.CurrentThread.ManagedThreadId);
+
+            stopwatch.Start();
+            logger.Message = "Processing SOAP requests";
             scope.Begin = () => {
-                PutAttributes(scope).ExecuteAndWait();
+                using (WorkerQueue q = new WorkerQueue(workers)) {
+                    for (int i = 0; i < jobs; i++) {
+                        q.EnqueueTask(PutAttributes());
+                    }
+                    Console.WriteLine("{0} jobs have been queued to be processed by {1} worker threads.", jobs, workers);
+                }
             };
 
-            Console.WriteLine("Time ellapsed {0} ms.", profiler.EllapsedTime.TotalMilliseconds); 
+            stopwatch.Stop();
 
-            
+            Console.WriteLine("Completed all in:\t {0}ms", stopwatch.ElapsedMilliseconds);
+
 
             //RequestType.Query, "geonames", "100", null, String.Format("['{0}' starts-with '{1}' OR '{0}' = '{1}']", "names", "seattle")))
             //RequestType.GetAttributes, "geonames", "5750997", "timezone", "latitude", "longitude"
@@ -58,15 +85,15 @@ namespace AwsSdbSOAP_Test {
             //}
         }
 
-        static IEnumerable<IAsync> PutAttributes(Scope scope) {
+        static IEnumerable<IAsync> PutAttributes() {
 
             Dictionary<XElement, XElement> responseList = new Dictionary<XElement, XElement>();
 
             SimpleDBService service = new SimpleDBService();
 
             IEnumerable<IAsync>[] requestOperations = new IEnumerable<IAsync>[] {
-                SimpleDBService.MakeSoapRequestAsync<XElement>(RequestType.PutAttributes, service.GetMessage(RequestType.PutAttributes, "testfoobazzle", "test1", "foo=bar", "bar=baz", "baz=foo"), responseList),
-                SimpleDBService.MakeSoapRequestAsync<XElement>(RequestType.PutAttributes, service.GetMessage(RequestType.PutAttributes, "testfoo555", "test2", "foo=bar", "bar=baz", "baz=foo"), responseList),
+                SimpleDBService.MakeSoapRequestAsync<XElement>(RequestType.PutAttributes, service.GetMessage(RequestType.PutAttributes, "testfoo", "test1", "foo=bar", "bar=baz", "baz=foo"), responseList),
+                SimpleDBService.MakeSoapRequestAsync<XElement>(RequestType.PutAttributes, service.GetMessage(RequestType.PutAttributes, "testfoo", "test2", "foo=bar", "bar=baz", "baz=foo"), responseList),
                 SimpleDBService.MakeSoapRequestAsync<XElement>(RequestType.PutAttributes, service.GetMessage(RequestType.PutAttributes, "testfoo", "test3", "foo=bar", "bar=baz", "baz=foo"), responseList),
                 SimpleDBService.MakeSoapRequestAsync<XElement>(RequestType.PutAttributes, service.GetMessage(RequestType.PutAttributes, "testfoo", "test4", "foo=bar", "bar=baz", "baz=foo"), responseList),
                 SimpleDBService.MakeSoapRequestAsync<XElement>(RequestType.PutAttributes, service.GetMessage(RequestType.PutAttributes, "testfoo", "test5", "foo=bar", "bar=baz", "baz=foo"), responseList),
@@ -79,18 +106,19 @@ namespace AwsSdbSOAP_Test {
 
             stopwatch.Start();
 
+
+
             yield return Async.Parallel(requestOperations);
 
             stopwatch.Stop();
 
             Console.WriteLine("Completed all in:\t {0}ms", stopwatch.ElapsedMilliseconds);
             Console.WriteLine("There are a total of {0} result objects in the result dictionary", responseList.Count);
-
             int c = 1;
             IEnumerator responseEnumerator = responseList.GetEnumerator();
 
-            while (responseEnumerator.MoveNext()){
-                KeyValuePair<XElement,XElement> responseItem = (KeyValuePair<XElement,XElement>)responseEnumerator.Current;
+            while (responseEnumerator.MoveNext()) {
+                KeyValuePair<XElement, XElement> responseItem = (KeyValuePair<XElement, XElement>)responseEnumerator.Current;
                 Console.WriteLine(".......................... Begin Message {0} ............................", c);
                 Console.WriteLine("\n");
                 Console.WriteLine("[Message {0} Sent]", c);
