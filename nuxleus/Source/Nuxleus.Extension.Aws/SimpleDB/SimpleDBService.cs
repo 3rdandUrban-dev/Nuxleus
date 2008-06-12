@@ -20,11 +20,11 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
     public struct SimpleDBService {
 
-        public XContainer GetMessage(RequestType requestType, params string[] paramArray) {
+        public XElement GetMessage(RequestType requestType, params string[] paramArray) {
 
             XNamespace s = "http://schemas.xmlsoap.org/soap/envelope/";
 
-            XContainer awsSOAPMessage =
+            XElement awsSOAPMessage =
                 new XElement(s + "Envelope",
                     new XElement(s + "Body",
                         GetRequestXElement(requestType, paramArray)
@@ -85,7 +85,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             }
         }
 
-        public StreamReader MakeRequest(RequestType requestType, XContainer message) {
+        public StreamReader MakeRequest(RequestType requestType, XElement message) {
 
             string rType = LabelAttribute.FromMember(requestType);
 
@@ -127,7 +127,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             }
         }
 
-        public static IEnumerable<IAsync> MakeSoapRequestAsync<T>(RequestType requestType, XContainer message, List<T> responseList) {
+        public static IEnumerable<IAsync> MakeSoapRequestAsync<T>(RequestType requestType, XElement message, Dictionary<XElement,T> responseList) {
 
             string rType = LabelAttribute.FromMember(requestType);
 
@@ -147,7 +147,6 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             do {
                 if (xreader.IsStartElement()) {
                     output.Append(xreader.ReadOuterXml());
-                    Console.WriteLine("Output: {0} :/Output", output.ToString());
                     buffer = encoding.GetBytes(output.ToString());
                 }
             } while (xreader.Read());
@@ -165,7 +164,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             Console.WriteLine("[] starting on thread: {0}", Thread.CurrentThread.ManagedThreadId);
 
             using (Stream newStream = request.GetRequestStream()) {
-                try {
+
                     newStream.Write(buffer, 0, contentLength);
                     Async<WebResponse> response = request.GetResponseAsync();
                     yield return response;
@@ -173,14 +172,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                     Stream stream = response.Result.GetResponseStream();
                     Async<T> responseObject = stream.ReadToEndAsync<T>().ExecuteAsync<T>();
                     yield return responseObject;
-                    responseList.Add(responseObject.Result);
-                    //} finally (System.Net.WebException e) {
-                    //    Console.WriteLine("Failed! Reason: {0}, Message: {1}", e.Response, e.Message);
-                    //    return new StreamReader(e.Response.GetResponseStream());
-                    //}
-                } finally {
-                    
-                }
+                    responseList.Add(message, responseObject.Result);
             }
 
             Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);

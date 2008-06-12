@@ -11,6 +11,7 @@ using EeekSoft.Asynchronous;
 using System.Threading;
 using System.Xml.Linq;
 using VVMF.SOA.Common;
+using System.Collections;
 
 namespace AwsSdbSOAP_Test {
     class Program {
@@ -30,11 +31,11 @@ namespace AwsSdbSOAP_Test {
             scope += logger.Scope;
             scope += exShield.Scope;
 
-            logger.Message = "DoSomething()";
+            logger.Message = "Processing SOAP requests";
 
             // Inject code to scope
             scope.Begin = () => {
-                PutAttributes().ExecuteAndWait();
+                PutAttributes(scope).ExecuteAndWait();
             };
 
             Console.WriteLine("Time ellapsed {0} ms.", profiler.EllapsedTime.TotalMilliseconds); 
@@ -57,9 +58,9 @@ namespace AwsSdbSOAP_Test {
             //}
         }
 
-        static IEnumerable<IAsync> PutAttributes() {
+        static IEnumerable<IAsync> PutAttributes(Scope scope) {
 
-            List<XElement> responseList = new List<XElement>();
+            Dictionary<XElement, XElement> responseList = new Dictionary<XElement, XElement>();
 
             SimpleDBService service = new SimpleDBService();
 
@@ -83,7 +84,24 @@ namespace AwsSdbSOAP_Test {
             stopwatch.Stop();
 
             Console.WriteLine("Completed all in:\t {0}ms", stopwatch.ElapsedMilliseconds);
-            Console.WriteLine("There are a total of {0} XElement objects in the result list", responseList.Count);
+            Console.WriteLine("There are a total of {0} result objects in the result dictionary", responseList.Count);
+
+            int c = 1;
+            IEnumerator responseEnumerator = responseList.GetEnumerator();
+
+            while (responseEnumerator.MoveNext()){
+                KeyValuePair<XElement,XElement> responseItem = (KeyValuePair<XElement,XElement>)responseEnumerator.Current;
+                Console.WriteLine(".......................... Begin Message {0} ............................", c);
+                Console.WriteLine("\n");
+                Console.WriteLine("[Message {0} Sent]", c);
+                responseItem.Key.Save(Console.Out);
+                Console.WriteLine("\n");
+                Console.WriteLine("[Message {0} Received]", c);
+                responseItem.Value.Save(Console.Out);
+                Console.WriteLine("\n");
+                Console.WriteLine(".......................... End Message {0} ............................", c);
+                c++;
+            }
         }
     }
 }
