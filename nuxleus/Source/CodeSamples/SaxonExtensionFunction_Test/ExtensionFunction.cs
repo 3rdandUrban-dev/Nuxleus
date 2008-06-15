@@ -4,10 +4,10 @@ namespace GenericTypeOperation {
 
     public struct ExtensionFunction<T> {
 
-        T obj;
+        T m_obj;
 
         public ExtensionFunction(params object[] parameters) {
-            obj = Create(parameters);
+            m_obj = Create(parameters);
         }
 
         public static T Create(params object[] parameters) {
