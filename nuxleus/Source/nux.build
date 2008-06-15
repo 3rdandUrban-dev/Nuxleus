@@ -89,7 +89,7 @@
         <include name="${build.dir}/Nuxleus.Entity.dll"/>
         <include name="${build.dir}/Nuxleus.Messaging.dll"/>
         <include name="${build.dir}/Nuxleus.Service.dll"/>
-        <include name="${build.dir}/Nuxleus.Extension.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
         <include name="${dependencies.dir}/Tamir.SharpSSH.dll"/>
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
@@ -922,7 +922,7 @@
     </csc>
     <copy file="CodeSamples/AwsSdbSOAP_Test/App.config" tofile="${build.dir}/Sdb_SOAP_Test.exe.config"/>
   </target>
-<!--    
+  <!--    
 	<target name="System.Messaging" depends="init">
         <csc target="library" output="${build.dir}/System.Messaging.dll">
             <sources>

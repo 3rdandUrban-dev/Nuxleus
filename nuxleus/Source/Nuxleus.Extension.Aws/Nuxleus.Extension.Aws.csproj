@@ -66,28 +66,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SimpleDB\Model\Attribute.cs" />
-    <Compile Include="SimpleDB\Model\CreateDomain.cs" />
-    <Compile Include="SimpleDB\Model\CreateDomainResponse.cs" />
-    <Compile Include="SimpleDB\Model\DeleteAttributes.cs" />
-    <Compile Include="SimpleDB\Model\DeleteAttributesResponse.cs" />
-    <Compile Include="SimpleDB\Model\DeleteDomain.cs" />
-    <Compile Include="SimpleDB\Model\DeleteDomainResponse.cs" />
-    <Compile Include="SimpleDB\Model\Error.cs" />
-    <Compile Include="SimpleDB\Model\ErrorResponse.cs" />
-    <Compile Include="SimpleDB\Model\GetAttributes.cs" />
-    <Compile Include="SimpleDB\Model\GetAttributesResponse.cs" />
-    <Compile Include="SimpleDB\Model\GetAttributesResult.cs" />
-    <Compile Include="SimpleDB\Model\ListDomains.cs" />
-    <Compile Include="SimpleDB\Model\ListDomainsResponse.cs" />
-    <Compile Include="SimpleDB\Model\ListDomainsResult.cs" />
-    <Compile Include="SimpleDB\Model\PutAttributes.cs" />
-    <Compile Include="SimpleDB\Model\PutAttributesResponse.cs" />
-    <Compile Include="SimpleDB\Model\Query.cs" />
-    <Compile Include="SimpleDB\Model\QueryResponse.cs" />
-    <Compile Include="SimpleDB\Model\QueryResult.cs" />
-    <Compile Include="SimpleDB\Model\ReplaceableAttribute.cs" />
-    <Compile Include="SimpleDB\Model\ResponseMetadata.cs" />
     <Compile Include="SimpleDB\SdbAction.cs" />
     <Compile Include="SimpleDB\SimpleDBService.cs" />
     <Compile Include="Utils\HMACSigner.cs" />
@@ -492,6 +470,9 @@
       <Project>{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}</Project>
       <Name>Nuxleus.MetaData</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SimpleDB\Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

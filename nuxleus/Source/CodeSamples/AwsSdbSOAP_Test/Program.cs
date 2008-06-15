@@ -12,6 +12,7 @@ using System.Threading;
 using System.Xml.Linq;
 using VVMF.SOA.Common;
 using System.Collections;
+using System.Net;
 
 namespace AwsSdbSOAP_Test {
     class Program {
@@ -21,6 +22,8 @@ namespace AwsSdbSOAP_Test {
         static ProfilerScope profiler = new ProfilerScope();
 
         static void Main(string[] args) {
+
+            ServicePointManager.DefaultConnectionLimit = 100; 
 
             System.Environment.SetEnvironmentVariable("AWS_PUBLIC_KEY", ConfigurationManager.AppSettings["AWS_PUBLIC_KEY"]);
             System.Environment.SetEnvironmentVariable("AWS_PRIVATE_KEY", ConfigurationManager.AppSettings["AWS_PRIVATE_KEY"]);
@@ -67,6 +70,7 @@ namespace AwsSdbSOAP_Test {
             stopwatch.Stop();
 
             Console.WriteLine("Completed all in:\t {0}ms", stopwatch.ElapsedMilliseconds);
+            Console.WriteLine("ServicePoint Connections: {0}", ServicePointManager.DefaultConnectionLimit);
 
 
             //RequestType.Query, "geonames", "100", null, String.Format("['{0}' starts-with '{1}' OR '{0}' = '{1}']", "names", "seattle")))
