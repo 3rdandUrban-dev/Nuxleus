@@ -95,6 +95,9 @@ namespace AwsSdbSOAP_Test {
 
             SimpleDBService service = new SimpleDBService();
 
+            Task<Nuxleus.Extension.AWS.SimpleDB.Task.Query> task = new Task<Nuxleus.Extension.AWS.SimpleDB.Task.Query>();
+
+
             IEnumerable<IAsync>[] requestOperations = new IEnumerable<IAsync>[] {
                 SimpleDBService.MakeSoapRequestAsync<XElement>(RequestType.PutAttributes, service.GetMessage(RequestType.PutAttributes, "testfoo", "test1", "foo=bar", "bar=baz", "baz=foo"), responseList),
                 SimpleDBService.MakeSoapRequestAsync<XElement>(RequestType.PutAttributes, service.GetMessage(RequestType.PutAttributes, "testfoo", "test2", "foo=bar", "bar=baz", "baz=foo"), responseList),

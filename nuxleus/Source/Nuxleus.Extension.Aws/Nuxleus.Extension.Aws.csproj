@@ -66,8 +66,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Request\IRequest.cs" />
+    <Compile Include="Response\IResponse.cs" />
     <Compile Include="SimpleDB\SdbAction.cs" />
     <Compile Include="SimpleDB\SimpleDBService.cs" />
+    <Compile Include="SimpleDB\Task\CreateDomain.cs" />
+    <Compile Include="SimpleDB\Task\DeleteDomain.cs" />
+    <Compile Include="SimpleDB\Task\GetAttributes.cs" />
+    <Compile Include="SimpleDB\Task\ITask.cs" />
+    <Compile Include="SimpleDB\Task\ListDomains.cs" />
+    <Compile Include="SimpleDB\Task\PutAttributes.cs" />
+    <Compile Include="SimpleDB\Task\Query.cs" />
+    <Compile Include="SimpleDB\Task\Task.cs" />
     <Compile Include="Utils\HMACSigner.cs" />
     <Compile Include="Web References\Ec2\Reference.cs">
       <AutoGen>True</AutoGen>
