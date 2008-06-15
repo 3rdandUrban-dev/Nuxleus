@@ -23,7 +23,7 @@ namespace AwsSdbSOAP_Test {
 
         static void Main(string[] args) {
 
-            ServicePointManager.DefaultConnectionLimit = 100; 
+            ServicePointManager.DefaultConnectionLimit = int.Parse(ConfigurationManager.AppSettings["DefaultConnectionLimit"]); 
 
             System.Environment.SetEnvironmentVariable("AWS_PUBLIC_KEY", ConfigurationManager.AppSettings["AWS_PUBLIC_KEY"]);
             System.Environment.SetEnvironmentVariable("AWS_PRIVATE_KEY", ConfigurationManager.AppSettings["AWS_PRIVATE_KEY"]);
