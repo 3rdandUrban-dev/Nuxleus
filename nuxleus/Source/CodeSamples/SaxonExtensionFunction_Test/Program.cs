@@ -10,9 +10,17 @@ namespace GenericTypeOperation {
 
         static void Main(string[] args) {
             Stopwatch stopwatch = new Stopwatch();
-            int count = 100;
+            int count = 1000;
+
+            //Warming things up...
+            TestDirect(10, stopwatch);
+            TestGenerics(10, stopwatch);
+
+            //This time for real
             TestDirect(count, stopwatch);
             TestGenerics(count, stopwatch);
+
+
             Console.WriteLine("Completed direct test in:\t {0}ms", directEllapsedTime);
             Console.WriteLine("Completed generics test in:\t {0}ms", genericsEllapsedTime);
         }
