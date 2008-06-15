@@ -4,12 +4,6 @@ namespace GenericTypeOperation {
 
     public struct ExtensionFunction<T> {
 
-        T m_obj;
-
-        public ExtensionFunction(params object[] parameters) {
-            m_obj = Create(parameters);
-        }
-
         public static T Create(params object[] parameters) {
             return (T)typeof(T).GetConstructor(GetTypes(parameters)).Invoke(parameters);
         }
