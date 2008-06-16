@@ -42,9 +42,7 @@ namespace Nuxleus.Extension.Aws {
 
             logger.Message = "Processing SOAP requests";
 
-
-            scope.Begin = () => {
-                
+            scope.Begin = () => {  
                 using (WorkerQueue q = new WorkerQueue(m_workers)) {
                     List<string> lines = new List<string>();
                     using (StreamReader csvReader = new StreamReader("AD.txt", Encoding.UTF8, true)) {
@@ -70,14 +68,13 @@ namespace Nuxleus.Extension.Aws {
                             totalQueues += 1;
                         }
                     }
-
                     if (operation.Count > 0) {
                         totalTasksEnqueued += operation.Count;
                         totalQueues += 1;
                         q.EnqueueTask(InvokeOperation<T>(operation));
                     }
-
                     System.Console.WriteLine("Total Tasks Enqueued: {0}, Total Queues: {1}", totalTasksEnqueued, totalQueues);
+                    System.Console.WriteLine("Total Processing Time: {0}", profiler.EllapsedTime.Milliseconds);
                 }
             };
         }
@@ -93,21 +90,21 @@ namespace Nuxleus.Extension.Aws {
                 i++;
             }
             yield return Async.Parallel(processList);
-            int c = 1;
-            IEnumerator responseEnumerator = responseList.GetEnumerator();
-            while (responseEnumerator.MoveNext()) {
-                KeyValuePair<XElement, XElement> responseItem = (KeyValuePair<XElement, XElement>)responseEnumerator.Current;
-                System.Console.WriteLine(".......................... Begin Message {0} ............................", c);
-                System.Console.WriteLine("\n");
-                System.Console.WriteLine("[Message {0} Sent]", c);
-                responseItem.Key.Save(System.Console.Out);
-                System.Console.WriteLine("\n");
-                System.Console.WriteLine("[Message {0} Received]", c);
-                responseItem.Value.Save(System.Console.Out);
-                System.Console.WriteLine("\n");
-                System.Console.WriteLine(".......................... End Message {0} ............................", c);
-                c++;
-            }
+            //int c = 1;
+            //IEnumerator responseEnumerator = responseList.GetEnumerator();
+            //while (responseEnumerator.MoveNext()) {
+            //    KeyValuePair<XElement, XElement> responseItem = (KeyValuePair<XElement, XElement>)responseEnumerator.Current;
+            //    System.Console.WriteLine(".......................... Begin Message {0} ............................", c);
+            //    System.Console.WriteLine("\n");
+            //    System.Console.WriteLine("[Message {0} Sent]", c);
+            //    responseItem.Key.Save(System.Console.Out);
+            //    System.Console.WriteLine("\n");
+            //    System.Console.WriteLine("[Message {0} Received]", c);
+            //    responseItem.Value.Save(System.Console.Out);
+            //    System.Console.WriteLine("\n");
+            //    System.Console.WriteLine(".......................... End Message {0} ............................", c);
+            //    c++;
+            //}
         }
 
         private static PutAttributes CreateTask<T>(string[] inputArray) {
