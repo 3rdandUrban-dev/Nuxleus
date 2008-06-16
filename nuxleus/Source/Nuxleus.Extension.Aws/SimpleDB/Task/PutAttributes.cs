@@ -82,7 +82,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
             request.Timeout = 10000 /*TODO: This should be set dynamically*/;
             request.KeepAlive = true;
-            request.Pipelined = true;
+            request.Pipelined = false;
 
             XmlReader xreader = awsSOAPMessage.CreateReader();
             StringBuilder output = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
