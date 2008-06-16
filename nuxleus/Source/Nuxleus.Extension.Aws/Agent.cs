@@ -34,7 +34,7 @@ namespace Nuxleus.Extension.Aws {
             ThreadPool.SetMinThreads(minWorkerThreads, minAsyncIOThreads);
         }
 
-        public void Invoke<T>() {
+        public void Invoke<T>(string fileName) {
             Scope scope = new Scope();
             scope += profiler.Scope;
             scope += logger.Scope;
@@ -45,7 +45,7 @@ namespace Nuxleus.Extension.Aws {
             scope.Begin = () => {  
                 using (WorkerQueue q = new WorkerQueue(m_workers)) {
                     List<string> lines = new List<string>();
-                    using (StreamReader csvReader = new StreamReader("AD.txt", Encoding.UTF8, true)) {
+                    using (StreamReader csvReader = new StreamReader(fileName, Encoding.UTF8, true)) {
                         string inputLine;
                         while ((inputLine = csvReader.ReadLine()) != null) {
                             lines.Add(inputLine);
