@@ -26,64 +26,64 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
             XElement awsSOAPMessage =
                 new XElement(s + "Envelope",
-                    new XElement(s + "Body",
-                        GetRequestXElement(requestType, paramArray)
+                    new XElement(s + "Body"
+                        //GetRequestXElement(requestType, paramArray)
                     )
                 );
 
             return awsSOAPMessage;
         }
 
-        static XElement GetRequestXElement(RequestType requestType, params string[] paramArray) {
-            switch (requestType) {
-                case RequestType.Query:
-                    return SdbAction.Query(paramArray[0], paramArray[1], paramArray[2], paramArray[3]);
-                case RequestType.CreateDomain:
-                    return SdbAction.CreateDomain(paramArray[0]);
-                case RequestType.DeleteDomain:
-                    return SdbAction.DeleteDomain(paramArray[0]);
-                case RequestType.ListDomains:
-                    return SdbAction.ListDomains(paramArray[0], paramArray[1]);
-                case RequestType.GetAttributes:
-                    String[] getattributes = new String[paramArray.Length - 2];
-                    int pa = 0;
-                    int ia = 0;
-                    foreach (String attribute in paramArray) {
-                        if (pa > 1) {
-                            getattributes[ia] = attribute;
-                            ia++;
-                        }
-                        pa++;
-                    }
-                    return SdbAction.GetAttributes(paramArray[0], paramArray[1], getattributes);
-                case RequestType.PutAttributes:
-                    SdbAttribute[] attributes = new SdbAttribute[paramArray.Length - 2];
-                    int p = 0;
-                    int i = 0;
-                    foreach (String attribute in paramArray) {
-                        if (p > 1) {
-                            attributes[i] = new SdbAttribute { Name = attribute.SubstringBefore("="), Value = attribute.SubstringAfter("=") };
-                            i++;
-                        }
-                        p++;
-                    }
-                    return SdbAction.PutAttributes(paramArray[0], paramArray[1], attributes);
-                case RequestType.DeleteAttributes:
-                    SdbAttribute[] delAttributes = new SdbAttribute[paramArray.Length - 2];
-                    int p1 = 0;
-                    int i1 = 0;
-                    foreach (String attribute in paramArray) {
-                        if (p1 > 1) {
-                            delAttributes[i1] = new SdbAttribute { Name = attribute.SubstringBefore("="), Value = attribute.SubstringAfter("=") };
-                            i1++;
-                        }
-                        p1++;
-                    }
-                    return SdbAction.DeleteAttributes(paramArray[0], paramArray[1], delAttributes);
-                default:
-                    return new XElement("null", null);
-            }
-        }
+        //static XElement GetRequestXElement(RequestType requestType, params string[] paramArray) {
+        //    switch (requestType) {
+        //        case RequestType.Query:
+        //            return SdbAction.Query(paramArray[0], paramArray[1], paramArray[2], paramArray[3]);
+        //        case RequestType.CreateDomain:
+        //            return SdbAction.CreateDomain(paramArray[0]);
+        //        case RequestType.DeleteDomain:
+        //            return SdbAction.DeleteDomain(paramArray[0]);
+        //        case RequestType.ListDomains:
+        //            return SdbAction.ListDomains(paramArray[0], paramArray[1]);
+        //        case RequestType.GetAttributes:
+        //            String[] getattributes = new String[paramArray.Length - 2];
+        //            int pa = 0;
+        //            int ia = 0;
+        //            foreach (String attribute in paramArray) {
+        //                if (pa > 1) {
+        //                    getattributes[ia] = attribute;
+        //                    ia++;
+        //                }
+        //                pa++;
+        //            }
+        //            return SdbAction.GetAttributes(paramArray[0], paramArray[1], getattributes);
+        //        case RequestType.PutAttributes:
+        //            SdbAttribute[] attributes = new SdbAttribute[paramArray.Length - 2];
+        //            int p = 0;
+        //            int i = 0;
+        //            foreach (String attribute in paramArray) {
+        //                if (p > 1) {
+        //                    attributes[i] = new SdbAttribute { Name = attribute.SubstringBefore("="), Value = attribute.SubstringAfter("=") };
+        //                    i++;
+        //                }
+        //                p++;
+        //            }
+        //            return SdbAction.PutAttributes(paramArray[0], paramArray[1], attributes);
+        //        case RequestType.DeleteAttributes:
+        //            SdbAttribute[] delAttributes = new SdbAttribute[paramArray.Length - 2];
+        //            int p1 = 0;
+        //            int i1 = 0;
+        //            foreach (String attribute in paramArray) {
+        //                if (p1 > 1) {
+        //                    delAttributes[i1] = new SdbAttribute { Name = attribute.SubstringBefore("="), Value = attribute.SubstringAfter("=") };
+        //                    i1++;
+        //                }
+        //                p1++;
+        //            }
+        //            return SdbAction.DeleteAttributes(paramArray[0], paramArray[1], delAttributes);
+        //        default:
+        //            return new XElement("null", null);
+        //    }
+        //}
 
         public StreamReader MakeRequest(RequestType requestType, XElement message) {
 
@@ -93,7 +93,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://sdb.amazonaws.com/");
 
-            request.Timeout = 10000 /*TODO: This should be set dynamically*/;
+            request.Timeout = 90000 /*TODO: This should be set dynamically*/;
             request.KeepAlive = true;
             request.Pipelined = true;
 

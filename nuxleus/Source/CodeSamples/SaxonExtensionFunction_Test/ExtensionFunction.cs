@@ -8,6 +8,10 @@ namespace GenericTypeOperation {
             return (T)typeof(T).GetConstructor(GetTypes(parameters)).Invoke(parameters);
         }
 
+        public static T Create(Type type, params object[] parameters) {
+            return (T)type.GetConstructor(GetTypes(parameters)).Invoke(parameters);
+        }
+
         public static T Invoke<T>(Object obj, String methodName, params object[] parameters) {
             return (T)obj.GetType().GetMethod(methodName).Invoke(obj, parameters);
         }

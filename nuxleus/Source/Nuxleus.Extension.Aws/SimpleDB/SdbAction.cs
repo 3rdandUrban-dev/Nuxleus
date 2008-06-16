@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System.Security.Cryptography;
 using System.Globalization;
 using Nuxleus.MetaData;
+using System.Collections;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
@@ -84,22 +85,22 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 );
         }
 
-        public static XElement PutAttributes(string domainName, string itemName, params SdbAttribute[] sdbAttributes) {
+        public static XElement PutAttributes(string domainName, string itemName, ArrayList attributes) {
             return
                 new XElement(aws + "PutAttributesRequest",
                     new XElement(aws + "DomainName", domainName),
                     new XElement(aws + "ItemName", itemName),
-                    CreateSdbAttributeElements(AttributeActionType.PUT, sdbAttributes),
+                    CreateSdbAttributeElements(AttributeActionType.PUT, attributes),
                     GetAuthorizationElements("PutAttributes")
                 );
         }
 
-        public static XElement DeleteAttributes(string domainName, string itemName, params SdbAttribute[] sdbAttributes) {
+        public static XElement DeleteAttributes(string domainName, string itemName, ArrayList attributes) {
             return 
                 new XElement(aws + "DeleteAttributes",
                     new XElement(aws + "DomainName", domainName),
                     new XElement(aws + "ItemName", itemName),
-                    CreateSdbAttributeElements(AttributeActionType.DELETE, sdbAttributes),
+                    CreateSdbAttributeElements(AttributeActionType.DELETE, attributes),
                     GetAuthorizationElements("DeleteAttributes")
                 );
         }
@@ -125,10 +126,10 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         }
 
-        private static XElement[] CreateSdbAttributeElements(AttributeActionType attributeActionType, params SdbAttribute[] sdbAttributes) {
-            XElement[] xElements = new XElement[sdbAttributes.Length];
+        private static XElement[] CreateSdbAttributeElements(AttributeActionType attributeActionType, ArrayList attributes) {
+            XElement[] xElements = new XElement[attributes.Count];
             int i = 0;
-            foreach (SdbAttribute attribute in sdbAttributes) {
+            foreach (Nuxleus.Extension.AWS.SimpleDB.Model.Attribute attribute in attributes) {
                 switch(attributeActionType){
                     case AttributeActionType.PUT:
                     case AttributeActionType.DELETE:
@@ -161,7 +162,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             return xElements;
         }
 
-        private static XElement CreateSdbAttributeElement(SdbAttribute attribute) {
+        private static XElement CreateSdbAttributeElement(Nuxleus.Extension.AWS.SimpleDB.Model.Attribute attribute) {
             return new XElement(aws + "Attribute",
                 new XElement(aws + "Name", attribute.Name),
                 new XElement(aws + "Value", attribute.Value),

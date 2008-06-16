@@ -321,6 +321,7 @@
         <include name="${build.dir}/Nuxleus.MetaData.dll"/>
         <include name="${build.dir}/Scope.dll"/>
         <include name="System.dll"/>
+        <include name="System.Configuration.dll"/>
         <include name="System.Collections.dll"/>
         <include name="System.Collections.Generic.dll"/>
         <include name="System.Data.dll"/>
@@ -921,6 +922,7 @@
       </references>
     </csc>
     <copy file="CodeSamples/AwsSdbSOAP_Test/App.config" tofile="${build.dir}/Sdb_SOAP_Test.exe.config"/>
+    <copy file="../Data/AD.txt" tofile="${build.dir}/AD.txt"/>
   </target>
   <!--    
 	<target name="System.Messaging" depends="init">
