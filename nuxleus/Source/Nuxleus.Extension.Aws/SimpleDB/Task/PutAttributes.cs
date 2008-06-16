@@ -12,6 +12,7 @@ using System.Xml;
 using System.IO;
 using System.Security.Cryptography;
 using System.Globalization;
+using System.Threading;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
@@ -80,7 +81,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://sdb.amazonaws.com/");
 
-            request.Timeout = 10000 /*TODO: This should be set dynamically*/;
+            request.Timeout = 30000 /*TODO: This should be set dynamically*/;
             request.KeepAlive = true;
             request.Pipelined = false;
 
@@ -102,17 +103,13 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             request.ContentType = "application/soap+xml";
             request.Headers.Add("SOAPAction", rType);
 
-            request.Timeout = 10000 /*TODO: This should be set dynamically*/;
-            request.KeepAlive = true;
-            request.Pipelined = true;
-
-            //Console.WriteLine("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
+            System.Console.WriteLine("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
 
             using (Stream newStream = request.GetRequestStream()) {
                 newStream.Write(buffer, 0, contentLength);
                 Async<WebResponse> response = request.GetResponseAsync();
                 yield return response;
-                //Console.WriteLine("[] got response on thread: {0}", Thread.CurrentThread.ManagedThreadId);
+                System.Console.WriteLine("[] got response on thread: {0}", Thread.CurrentThread.ManagedThreadId);
                 Stream stream = response.Result.GetResponseStream();
                 Async<T> responseObject = stream.ReadToEndAsync<T>().ExecuteAsync<T>();
                 yield return responseObject;
