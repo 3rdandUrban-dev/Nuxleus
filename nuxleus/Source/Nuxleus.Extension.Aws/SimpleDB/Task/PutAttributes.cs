@@ -66,20 +66,14 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         public IEnumerable<IAsync> Invoke<T>(Dictionary<XElement, T> responseList) {
 
-
             XNamespace s = "http://schemas.xmlsoap.org/soap/envelope/";
 
-            XElement awsSOAPMessage = 
-                new XElement(s + "Envelope",
-                    new XElement(s + "Body",
-                        SdbAction.PutAttributes(DomainName, ItemName, AttributeArray)
-                    )
-                );
+            XElement awsSOAPMessage = GetRequest();
 
-            foreach (Nuxleus.Extension.AWS.SimpleDB.Model.Attribute attribute in AttributeArray) {
-                System.Console.WriteLine("Name: {0}, Value: {1}, Replace: {2}", attribute.Name, attribute.Value, attribute.Replace);
-            }
+            return CallWebService<T>(awsSOAPMessage, responseList);
+        }
 
+        private IEnumerable<IAsync> CallWebService<T>(XElement awsSOAPMessage, Dictionary<XElement, T> responseList) {
             string rType = LabelAttribute.FromMember(RequestType);
 
             Encoding encoding = new UTF8Encoding();
@@ -115,7 +109,6 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             //Console.WriteLine("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
 
             using (Stream newStream = request.GetRequestStream()) {
-
                 newStream.Write(buffer, 0, contentLength);
                 Async<WebResponse> response = request.GetResponseAsync();
                 yield return response;
@@ -126,7 +119,6 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 responseList.Add(awsSOAPMessage, responseObject.Result);
             }
         }
-
         private XElement[] CreateAttributeElements() {
             XElement[] xElements = new XElement[m_attributeArray.Count];
             int i = 0;

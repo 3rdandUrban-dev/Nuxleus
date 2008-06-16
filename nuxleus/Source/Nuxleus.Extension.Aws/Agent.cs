@@ -44,34 +44,42 @@ namespace Nuxleus.Extension.Aws {
 
 
             scope.Begin = () => {
+                
                 using (WorkerQueue q = new WorkerQueue(m_workers)) {
-                    for (int i = 0; i < m_workers; i++) {
-                        List<string> lines = new List<string>();
-                        using (StreamReader csvReader = new StreamReader("AD.txt", Encoding.UTF8, true)) {
-                            string inputLine;
-                            while ((inputLine = csvReader.ReadLine()) != null) {
-                                lines.Add(inputLine);
-                            }
-                            int runningTotal = 0;
-                            List<string> operation = new List<string>();
-                            for (int l = 0; l < lines.Count; l++) {
-                                int length = lines[l].Length;
-                                string thisLine = lines[l];
-
-                                if (runningTotal >= 100) {
-                                    runningTotal = 0;
-                                    q.EnqueueTask(InvokeOperation<T>(operation));
-                                    operation = new List<string>();
-                                }
-                                operation.Add(thisLine);
-                                runningTotal += length;
-                            }
-
+                    List<string> lines = new List<string>();
+                    using (StreamReader csvReader = new StreamReader("AD.txt", Encoding.UTF8, true)) {
+                        string inputLine;
+                        while ((inputLine = csvReader.ReadLine()) != null) {
+                            lines.Add(inputLine);
                         }
                     }
+                    System.Console.WriteLine("Total Tasks: {0}", lines.Count);
+                    int loadBalance = (lines.Count / m_workers);
+                    System.Console.WriteLine("LoadBalance: {0}", loadBalance);
+                    int totalQueues = 0;
+                    int totalTasksEnqueued = 0;
+                    List<string> operation = new List<string>();
+                    for (int l = 0; l < lines.Count; l++) {
+                        string thisLine = lines[l];
+                        operation.Add(thisLine);
+                        if (operation.Count >= loadBalance) {
+                            System.Console.WriteLine("Operation Length: {0}", operation.Count);
+                            q.EnqueueTask(InvokeOperation<T>(operation));
+                            totalTasksEnqueued += operation.Count;
+                            operation = new List<string>();
+                            totalQueues += 1;
+                        }
+                    }
+
+                    if (operation.Count > 0) {
+                        totalTasksEnqueued += operation.Count;
+                        totalQueues += 1;
+                        q.EnqueueTask(InvokeOperation<T>(operation));
+                    }
+
+                    System.Console.WriteLine("Total Tasks Enqueued: {0}, Total Queues: {1}", totalTasksEnqueued, totalQueues);
                 }
             };
-
         }
 
 
@@ -106,27 +114,27 @@ namespace Nuxleus.Extension.Aws {
             System.Console.WriteLine(System.String.Format("Loading Item: {0}, with Place Name: {1}", (string)inputArray.GetValue(0), (string)inputArray.GetValue(1)));
             System.Console.WriteLine(System.String.Format("Array Length: {0}", inputArray.Length));
 
-            KeyValuePair<string, string>[] geoNames = new KeyValuePair<System.String, System.String>[] { 
-                            new KeyValuePair<string,string>("geonamesid",(string)inputArray.GetValue(0)),
-                            new KeyValuePair<string,string>("names",(string)inputArray.GetValue(1)),
-                            new KeyValuePair<string,string>("alternatenames",(string)inputArray.GetValue(3)), 
-                            new KeyValuePair<string,string>("latitude", (string)inputArray.GetValue(4)),
-                            new KeyValuePair<string,string>("longitude", (string)inputArray.GetValue(5)),
-                            new KeyValuePair<string,string>("feature_class", (string)inputArray.GetValue(6)),
-                            new KeyValuePair<string,string>("feature_code",(string)inputArray.GetValue(7)),
-                            new KeyValuePair<string,string>("country_code",(string)inputArray.GetValue(8)),
-                            new KeyValuePair<string,string>("cc2",(string)inputArray.GetValue(9)),
-                            new KeyValuePair<string,string>("admin1_code",(string)inputArray.GetValue(10)),
-                            new KeyValuePair<string,string>("admin2_code",(string)inputArray.GetValue(11)),
-                            new KeyValuePair<string,string>("admin3_code",(string)inputArray.GetValue(12)),
-                            new KeyValuePair<string,string>("admin4_code",(string)inputArray.GetValue(13)),
-                            new KeyValuePair<string,string>("population",(string)inputArray.GetValue(14)),
-                            new KeyValuePair<string,string>("elevation",(string)inputArray.GetValue(15)),
-                            new KeyValuePair<string,string>("gtopo30",(string)inputArray.GetValue(16)),
-                            new KeyValuePair<string,string>("timezone",(string)inputArray.GetValue(17)),
-                            new KeyValuePair<string,string>("modification_date",(string)inputArray.GetValue(18)),
-                        };
-
+            KeyValuePair<string, string>[] geoNames = 
+                new KeyValuePair<System.String, System.String>[] { 
+                    new KeyValuePair<string,string>("geonamesid",(string)inputArray.GetValue(0)),
+                    new KeyValuePair<string,string>("names",(string)inputArray.GetValue(1)),
+                    new KeyValuePair<string,string>("alternatenames",(string)inputArray.GetValue(3)), 
+                    new KeyValuePair<string,string>("latitude", (string)inputArray.GetValue(4)),
+                    new KeyValuePair<string,string>("longitude", (string)inputArray.GetValue(5)),
+                    new KeyValuePair<string,string>("feature_class", (string)inputArray.GetValue(6)),
+                    new KeyValuePair<string,string>("feature_code",(string)inputArray.GetValue(7)),
+                    new KeyValuePair<string,string>("country_code",(string)inputArray.GetValue(8)),
+                    new KeyValuePair<string,string>("cc2",(string)inputArray.GetValue(9)),
+                    new KeyValuePair<string,string>("admin1_code",(string)inputArray.GetValue(10)),
+                    new KeyValuePair<string,string>("admin2_code",(string)inputArray.GetValue(11)),
+                    new KeyValuePair<string,string>("admin3_code",(string)inputArray.GetValue(12)),
+                    new KeyValuePair<string,string>("admin4_code",(string)inputArray.GetValue(13)),
+                    new KeyValuePair<string,string>("population",(string)inputArray.GetValue(14)),
+                    new KeyValuePair<string,string>("elevation",(string)inputArray.GetValue(15)),
+                    new KeyValuePair<string,string>("gtopo30",(string)inputArray.GetValue(16)),
+                    new KeyValuePair<string,string>("timezone",(string)inputArray.GetValue(17)),
+                    new KeyValuePair<string,string>("modification_date",(string)inputArray.GetValue(18)),
+                };
 
             IEnumerator attributeArray = geoNames.GetEnumerator();
 
