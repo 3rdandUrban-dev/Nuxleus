@@ -137,7 +137,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
             string soapMessage = output.ToString();
             sdbRequest.RequestMessage = soapMessage;
-            Console.WriteLine("XML: {0}", soapMessage);
+            //Console.WriteLine("XML: {0}", soapMessage);
 
             byte[] buffer = encoding.GetBytes(soapMessage);
 
