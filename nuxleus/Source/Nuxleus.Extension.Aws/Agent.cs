@@ -22,14 +22,11 @@ namespace Nuxleus.Extension.Aws {
         static int m_workers = (int.Parse(ConfigurationManager.AppSettings["WorkerQueueMultiplier"]) * System.Environment.ProcessorCount);
 
         public void Initialize() {
-
             ServicePointManager.DefaultConnectionLimit = int.Parse(ConfigurationManager.AppSettings["DefaultConnectionLimit"]);
-
             int minWorkerThreads = int.Parse(ConfigurationManager.AppSettings["MinimumWorkerThreads"]);
             int minAsyncIOThreads = int.Parse(ConfigurationManager.AppSettings["MinimumAsyncIOThreds"]);
             int maxWorkerThreads = int.Parse(ConfigurationManager.AppSettings["MaximumWorkerThreads"]);
             int maxAsyncIOThreads = int.Parse(ConfigurationManager.AppSettings["MaximumAsyncIOThreads"]);
-
             ThreadPool.SetMaxThreads(maxWorkerThreads, maxAsyncIOThreads);
             ThreadPool.SetMinThreads(minWorkerThreads, minAsyncIOThreads);
         }
@@ -42,7 +39,7 @@ namespace Nuxleus.Extension.Aws {
 
             logger.Message = "Processing SOAP requests";
 
-            scope.Begin = () => {  
+            scope.Begin = () => {
                 using (WorkerQueue q = new WorkerQueue(m_workers)) {
                     List<string> lines = new List<string>();
                     using (StreamReader csvReader = new StreamReader(fileName, Encoding.UTF8, true)) {
@@ -79,9 +76,8 @@ namespace Nuxleus.Extension.Aws {
             };
         }
 
-
         private static IEnumerable<IAsync> InvokeOperation<T>(List<string> operation) {
-            Dictionary<XElement, T> responseList = new Dictionary<XElement, T>();
+            Dictionary<IRequest, T> responseList = new Dictionary<IRequest, T>();
             IEnumerable<IAsync>[] processList = new IEnumerable<IAsync>[operation.Count];
             int i = 0;
             foreach (string inputLine in operation) {
@@ -90,28 +86,11 @@ namespace Nuxleus.Extension.Aws {
                 i++;
             }
             yield return Async.Parallel(processList);
-            //int c = 1;
-            //IEnumerator responseEnumerator = responseList.GetEnumerator();
-            //while (responseEnumerator.MoveNext()) {
-            //    KeyValuePair<XElement, XElement> responseItem = (KeyValuePair<XElement, XElement>)responseEnumerator.Current;
-            //    System.Console.WriteLine(".......................... Begin Message {0} ............................", c);
-            //    System.Console.WriteLine("\n");
-            //    System.Console.WriteLine("[Message {0} Sent]", c);
-            //    responseItem.Key.Save(System.Console.Out);
-            //    System.Console.WriteLine("\n");
-            //    System.Console.WriteLine("[Message {0} Received]", c);
-            //    responseItem.Value.Save(System.Console.Out);
-            //    System.Console.WriteLine("\n");
-            //    System.Console.WriteLine(".......................... End Message {0} ............................", c);
-            //    c++;
-            //}
         }
 
         private static PutAttributes CreateTask<T>(string[] inputArray) {
-            System.Console.WriteLine(System.String.Format("Loading Item: {0}, with Place Name: {1}", (string)inputArray.GetValue(0), (string)inputArray.GetValue(1)));
-            System.Console.WriteLine(System.String.Format("Array Length: {0}", inputArray.Length));
 
-            KeyValuePair<string, string>[] geoNames = 
+            KeyValuePair<string, string>[] geoNames =
                 new KeyValuePair<System.String, System.String>[] { 
                     new KeyValuePair<string,string>("geonamesid",(string)inputArray.GetValue(0)),
                     new KeyValuePair<string,string>("names",(string)inputArray.GetValue(1)),
@@ -135,7 +114,7 @@ namespace Nuxleus.Extension.Aws {
 
             IEnumerator attributeArray = geoNames.GetEnumerator();
 
-            ArrayList attributes = new ArrayList();
+            List<Attribute> attributes = new List<Attribute>();
 
             while (attributeArray.MoveNext()) {
                 KeyValuePair<System.String, System.String> attribute = (KeyValuePair<System.String, System.String>)attributeArray.Current;
@@ -153,7 +132,25 @@ namespace Nuxleus.Extension.Aws {
                     }
                 }
             }
-            return new PutAttributes { DomainName = "foobar", ItemName = (string)inputArray.GetValue(0), AttributeArray = attributes };
+            return new PutAttributes { DomainName = "foobar", ItemName = (string)inputArray.GetValue(0), Attribute = attributes };
         }
+
+        //private void OutputResultList(Dictionary<XElement, T> responseList) {
+        //    int c = 1;
+        //    IEnumerator responseEnumerator = responseList.GetEnumerator();
+        //    while (responseEnumerator.MoveNext()) {
+        //        KeyValuePair<XElement, XElement> responseItem = (KeyValuePair<XElement, XElement>)responseEnumerator.Current;
+        //        System.Console.WriteLine(".......................... Begin Message {0} ............................", c);
+        //        System.Console.WriteLine("\n");
+        //        System.Console.WriteLine("[Message {0} Sent]", c);
+        //        responseItem.Key.Save(System.Console.Out);
+        //        System.Console.WriteLine("\n");
+        //        System.Console.WriteLine("[Message {0} Received]", c);
+        //        responseItem.Value.Save(System.Console.Out);
+        //        System.Console.WriteLine("\n");
+        //        System.Console.WriteLine(".......................... End Message {0} ............................", c);
+        //        c++;
+        //    }
+        //}
     }
 }

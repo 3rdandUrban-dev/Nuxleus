@@ -15,24 +15,14 @@ using System.Collections.Generic;
 using System.Threading;
 using Nuxleus.MetaData;
 using System.Collections;
+using System.Xml.Serialization;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
-    public struct SimpleDBService {
+    public struct SimpleDBService<TRequestType> {
 
-        public XElement GetMessage(RequestType requestType, params string[] paramArray) {
-
-            XNamespace s = "http://schemas.xmlsoap.org/soap/envelope/";
-
-            XElement awsSOAPMessage =
-                new XElement(s + "Envelope",
-                    new XElement(s + "Body"
-                        //GetRequestXElement(requestType, paramArray)
-                    )
-                );
-
-            return awsSOAPMessage;
-        }
+        static XNamespace s = "http://schemas.xmlsoap.org/soap/envelope/";
+        static XmlSerializer m_xSerializer = new System.Xml.Serialization.XmlSerializer(typeof(TRequestType));
 
         //static XElement GetRequestXElement(RequestType requestType, params string[] paramArray) {
         //    switch (requestType) {
@@ -127,56 +117,67 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             }
         }
 
-        public static IEnumerable<IAsync> MakeSoapRequestAsync<T>(RequestType requestType, XElement message, Dictionary<XElement,T> responseList) {
-
-            string rType = LabelAttribute.FromMember(requestType);
+        public static IEnumerable<IAsync> CallWebService<TRequestType, TResponseType>(ITask task, IRequest sdbRequest, Dictionary<IRequest, TResponseType> responseList) {
 
             Encoding encoding = new UTF8Encoding();
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://sdb.amazonaws.com/");
-
-            request.Timeout = 10000 /*TODO: This should be set dynamically*/;
+            request.Timeout = 30000 /*TODO: This should be set dynamically*/;
             request.KeepAlive = true;
-            request.Pipelined = true;
+            request.Pipelined = false;
 
-            XmlReader xreader = message.CreateReader();
             StringBuilder output = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-
-            byte[] buffer = null;
-
-            do {
-                if (xreader.IsStartElement()) {
-                    output.Append(xreader.ReadOuterXml());
-                    buffer = encoding.GetBytes(output.ToString());
+            using (XmlReader xreader = CreateSoapMessage(task, LabelAttribute.FromMember(sdbRequest.RequestType)).CreateReader()) {
+                while (xreader.Read()) {
+                    if (xreader.IsStartElement()) {
+                        output.Append(xreader.ReadOuterXml());
+                    }
                 }
-            } while (xreader.Read());
+            }
+
+            string soapMessage = output.ToString();
+            sdbRequest.RequestMessage = soapMessage;
+            Console.WriteLine("XML: {0}", soapMessage);
+
+            byte[] buffer = encoding.GetBytes(soapMessage);
 
             int contentLength = buffer.Length;
             request.ContentLength = contentLength;
             request.Method = "POST";
             request.ContentType = "application/soap+xml";
-            request.Headers.Add("SOAPAction", rType);
 
-            request.Timeout = 10000 /*TODO: This should be set dynamically*/;
-            request.KeepAlive = true;
-            request.Pipelined = true;
-
-            Console.WriteLine("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
-
-            using (Stream newStream = request.GetRequestStream()) {
-
-                    newStream.Write(buffer, 0, contentLength);
-                    Async<WebResponse> response = request.GetResponseAsync();
-                    yield return response;
-                    Console.WriteLine("[] got response on thread: {0}", Thread.CurrentThread.ManagedThreadId);
-                    Stream stream = response.Result.GetResponseStream();
-                    Async<T> responseObject = stream.ReadToEndAsync<T>().ExecuteAsync<T>();
-                    yield return responseObject;
-                    responseList.Add(message, responseObject.Result);
+            foreach (KeyValuePair<string, string> header in sdbRequest.Headers) {
+                request.Headers.Add(header.Key, header.Value);
             }
 
-            Console.WriteLine("End Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
+            System.Console.WriteLine("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
+
+            using (Stream newStream = request.GetRequestStream()) {
+                newStream.Write(buffer, 0, contentLength);
+                Async<WebResponse> response = request.GetResponseAsync();
+                yield return response;
+                System.Console.WriteLine("[] got response on thread: {0}", Thread.CurrentThread.ManagedThreadId);
+                Stream stream = response.Result.GetResponseStream();
+                Async<TResponseType> responseObject = stream.ReadToEndAsync<TResponseType>().ExecuteAsync<TResponseType>();
+                yield return responseObject;
+                responseList.Add(sdbRequest, responseObject.Result);
+            }
+        }
+
+        private static XElement CreateSoapMessage(ITask task, String action) {
             
+            StringBuilder builder = new StringBuilder();
+            using (TextWriter writer = new StringWriter(builder)) {
+                m_xSerializer.Serialize(writer, (TRequestType)task);
+            }
+            XElement body = XElement.Parse(builder.ToString());
+            body.Add(SdbAction.GetAuthorizationElements(action));
+
+            return new XElement(s + "Envelope",
+                    new XElement(s + "Body",
+                        body
+                    )
+                );
         }
     }
 }

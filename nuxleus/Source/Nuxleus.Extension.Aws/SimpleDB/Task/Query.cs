@@ -16,6 +16,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
         string m_queryExpression;
         string m_maxNumberOfItems;
         string m_nextToken;
+        static System.Guid m_taskID = new System.Guid();
 
         [XmlElementAttribute(ElementName = "DomainName")]
         public String DomainName {
@@ -42,11 +43,20 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             get { throw new NotImplementedException(); }
         }
 
+        public IRequest Request {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
         public System.Xml.Linq.XElement[] GetXMLBody {
             get { throw new NotImplementedException(); }
         }
 
-        public IEnumerable<IAsync> Invoke<T>(Dictionary<XElement, T> responseList) {
+        public System.Guid TaskID {
+            get { return m_taskID; }
+        }
+
+        public IEnumerable<IAsync> Invoke<T>(Dictionary<IRequest, T> responseList) {
             throw new NotImplementedException();
         }
 

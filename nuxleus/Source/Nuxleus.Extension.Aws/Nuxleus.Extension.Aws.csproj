@@ -70,10 +70,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Request\IRequest.cs" />
+    <Compile Include="Request\PutAttributesRequest.cs" />
     <Compile Include="Response\IResponse.cs" />
     <Compile Include="Scope\LoggerScope.cs" />
     <Compile Include="Scope\ProfilerScope.cs" />
     <Compile Include="SimpleDB\Model\Attribute.cs" />
+    <Compile Include="SimpleDB\Model\Domain.cs" />
+    <Compile Include="SimpleDB\Model\Item.cs" />
     <Compile Include="SimpleDB\Operation\Operation.cs" />
     <Compile Include="SimpleDB\SdbAction.cs" />
     <Compile Include="SimpleDB\SimpleDBService.cs" />
@@ -86,6 +89,9 @@
     <Compile Include="SimpleDB\Task\Query.cs" />
     <Compile Include="SimpleDB\Task\Task.cs" />
     <Compile Include="Utils\HMACSigner.cs" />
+    <Compile Include="Utils\PropertyCaller.cs" />
+    <Compile Include="Utils\Serializer.cs" />
+    <Compile Include="Utils\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />

@@ -36,7 +36,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 if (task == null) {
                     return;
                 }
-                Console.WriteLine("Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
+                //Console.WriteLine("Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
                 task.ExecuteAndWait();
             }
         }

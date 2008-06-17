@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Xml.Linq;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace EeekSoft.Asynchronous {
 
@@ -94,8 +95,6 @@ namespace EeekSoft.Asynchronous {
                 byte[] buffer = new byte[1024];
                 Async<int> count = stream.ReadAsync(buffer, 0, 1024);
                 yield return count;
-
-                Console.WriteLine("[{0}] got data: {1}", "url", count.Result);
                 ms.Write(buffer, 0, count.Result);
                 read = count.Result;
             }
@@ -119,9 +118,13 @@ namespace EeekSoft.Asynchronous {
                     yield return new Result<XNode>(XNode.ReadFrom(XmlReader.Create(ms)));
                     break;
                 case "System.String":
-                default:
                     string s = new StreamReader(ms).ReadToEnd();
                     yield return new Result<string>(s);
+                    break;
+                default:
+                    string sr = new StreamReader(ms).ReadToEnd();
+                    XmlSerializer serializer = new XmlSerializer(typeof(T));
+                    yield return new Result<T>((T)serializer.Deserialize(new StringReader(sr)));
                     break;
             }
         }

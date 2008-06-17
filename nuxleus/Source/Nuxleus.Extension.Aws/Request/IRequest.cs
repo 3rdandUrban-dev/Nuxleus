@@ -5,9 +5,9 @@ using System.Text;
 using System.Xml.Linq;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
-    interface IRequest {
-        KeyValuePair<string, string>[] Headers { get; set; }
-        RequestType RequestType { get; set; }
-        //T Request { get; set; }
+    public interface IRequest {
+        KeyValuePair<string, string>[] Headers { get; }
+        RequestType RequestType { get; }
+        String RequestMessage { get; set; }
     }
 }

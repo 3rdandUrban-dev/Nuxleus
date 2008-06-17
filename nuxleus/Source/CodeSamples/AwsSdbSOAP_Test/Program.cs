@@ -27,7 +27,7 @@ namespace AwsSdbSOAP_Test {
 
             stopwatch.Start();
             agent.Initialize();
-            agent.Invoke<XElement>(args[0]);
+            agent.Invoke<XElement>("AD.txt");
             stopwatch.Stop();
 
             Console.WriteLine("Completed all in:\t {0}ms", stopwatch.ElapsedMilliseconds);

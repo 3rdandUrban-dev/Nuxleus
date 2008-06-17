@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -7,6 +6,7 @@ using System.Security.Cryptography;
 using System.Globalization;
 using Nuxleus.MetaData;
 using System.Collections;
+using Nuxleus.Extension.AWS.SimpleDB.Model;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
@@ -23,8 +23,8 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
         PutAttributes,
         [Label("DeleteAttributes")]
         DeleteAttributes,
-        [Label("GetAttributes")] 
-        GetAttributes 
+        [Label("GetAttributes")]
+        GetAttributes
     }
 
     public struct SdbAction {
@@ -35,7 +35,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
         static XNamespace i = "http://www.w3.org/2001/XMLSchema-instance";
 
         public static XElement Query(string domainName, string maxNumberOfTokens, string nextToken, string queryExpression) {
-            return 
+            return
                 new XElement(aws + "Query",
                     new XElement(aws + "DomainName", domainName),
                     new XElement(aws + "MaxNumberOfItems", maxNumberOfTokens),
@@ -51,7 +51,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
         }
 
         public static XElement CreateDomain(string domainName) {
-            return 
+            return
                 new XElement(aws + "CreateDomain",
                     new XElement(aws + "DomainName", domainName),
                     GetAuthorizationElements("CreateDomain")
@@ -59,7 +59,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
         }
 
         public static XElement DeleteDomain(string domainName) {
-            return 
+            return
                 new XElement(aws + "DeleteDomain",
                     new XElement(aws + "DomainName", domainName),
                     GetAuthorizationElements("DeleteDomain")
@@ -67,7 +67,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
         }
 
         public static XElement ListDomains(string maxNumberOfDomains, string nextToken) {
-            return 
+            return
                 new XElement(aws + "ListDomains",
                     (maxNumberOfDomains == null)
                         ?
@@ -85,7 +85,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 );
         }
 
-        public static XElement PutAttributes(string domainName, string itemName, ArrayList attributes) {
+        public static XElement PutAttributes(string domainName, string itemName, List<Attribute> attributes) {
             return
                 new XElement(aws + "PutAttributesRequest",
                     new XElement(aws + "DomainName", domainName),
@@ -95,8 +95,8 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 );
         }
 
-        public static XElement DeleteAttributes(string domainName, string itemName, ArrayList attributes) {
-            return 
+        public static XElement DeleteAttributes(string domainName, string itemName, List<Attribute> attributes) {
+            return
                 new XElement(aws + "DeleteAttributes",
                     new XElement(aws + "DomainName", domainName),
                     new XElement(aws + "ItemName", itemName),
@@ -105,8 +105,8 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 );
         }
 
-        public static XElement GetAttributes(string domainName, string itemName, params String[] attributeNames) {
-            return 
+        public static XElement GetAttributes(string domainName, string itemName, params string[] attributeNames) {
+            return
                 new XElement(aws + "GetAttributes",
                     new XElement(aws + "DomainName", domainName),
                     new XElement(aws + "ItemName", itemName),
@@ -115,9 +115,9 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 );
         }
 
-        private static XElement[] GetAuthorizationElements(string action) {
-            String timestamp = GetFormattedTimestamp();
-            return 
+        public static XElement[] GetAuthorizationElements(string action) {
+            string timestamp = GetFormattedTimestamp();
+            return
                 new XElement[] { 
                     new XElement(aws + "AWSAccessKeyId", AWS_PUBLIC_KEY),
                     new XElement(aws + "Timestamp", timestamp),
@@ -126,11 +126,11 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         }
 
-        private static XElement[] CreateSdbAttributeElements(AttributeActionType attributeActionType, ArrayList attributes) {
+        private static XElement[] CreateSdbAttributeElements(AttributeActionType attributeActionType, List<Attribute> attributes) {
             XElement[] xElements = new XElement[attributes.Count];
             int i = 0;
             foreach (Nuxleus.Extension.AWS.SimpleDB.Model.Attribute attribute in attributes) {
-                switch(attributeActionType){
+                switch (attributeActionType) {
                     case AttributeActionType.PUT:
                     case AttributeActionType.DELETE:
                         xElements[i] = CreateSdbAttributeElement(attribute);
@@ -153,9 +153,9 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                         xElements[i] = new XElement(aws + "AttributeName", attribute);
                         break;
                     case AttributeActionType.PUT:
-                    case AttributeActionType.DELETE:            
+                    case AttributeActionType.DELETE:
                     default:
-                        break;                   
+                        break;
                 }
                 i++;
             }
@@ -171,22 +171,22 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
         }
 
         private static XElement GetSignature(string action, string timestamp) {
-            return new XElement(aws + "Signature", Sign(String.Format("{0}{1}", action, timestamp), AWS_PRIVATE_KEY));
+            return new XElement(aws + "Signature", Sign(System.String.Format("{0}{1}", action, timestamp), AWS_PRIVATE_KEY));
         }
 
-        private static String Sign(String data, String key) {
+        private static string Sign(string data, string key) {
             Encoding encoding = new UTF8Encoding();
             HMACSHA1 signature = new HMACSHA1(encoding.GetBytes(key));
-            return Convert.ToBase64String(signature.ComputeHash(
+            return System.Convert.ToBase64String(signature.ComputeHash(
                 encoding.GetBytes(data.ToCharArray())));
         }
 
-        private static String GetFormattedTimestamp() {
-            DateTime dateTime = DateTime.Now;
-            return 
-                new DateTime(dateTime.Year, dateTime.Month, dateTime.Day,
+        private static string GetFormattedTimestamp() {
+            System.DateTime dateTime = System.DateTime.Now;
+            return
+                new System.DateTime(dateTime.Year, dateTime.Month, dateTime.Day,
                              dateTime.Hour, dateTime.Minute, dateTime.Second,
-                             dateTime.Millisecond, DateTimeKind.Local)
+                             dateTime.Millisecond, System.DateTimeKind.Local)
                             .ToUniversalTime().ToString("yyyy-MM-dd\\THH:mm:ss.fff\\Z", CultureInfo.InvariantCulture);
         }
     }

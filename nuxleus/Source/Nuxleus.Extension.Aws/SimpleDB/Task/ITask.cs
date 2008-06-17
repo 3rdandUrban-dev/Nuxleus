@@ -6,12 +6,10 @@ using System.Xml.Linq;
 using EeekSoft.Asynchronous;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
-    interface ITask {
-        //Guid TaskID { get; set; }
-        //IRequest Request { get; set; }
+    public interface ITask {
+        Guid TaskID { get; }
+        IRequest Request { get; }
         //IResponse<T> Response { get; set; }
-        RequestType RequestType { get; }
-        XElement[] GetXMLBody { get; }
-        IEnumerable<IAsync> Invoke<T>(Dictionary<XElement, T> responseList);
+        IEnumerable<IAsync> Invoke<T>(Dictionary<IRequest, T> responseList);
     }
 }
