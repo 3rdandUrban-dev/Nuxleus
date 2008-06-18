@@ -10,23 +10,6 @@ using Nuxleus.Extension.AWS.SimpleDB.Model;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
-    public enum RequestType {
-        [Label("Query")]
-        Query,
-        [Label("CreateDomain")]
-        CreateDomain,
-        [Label("DeleteDomain")]
-        DeleteDomain,
-        [Label("ListDomains")]
-        ListDomains,
-        [Label("PutAttributes")]
-        PutAttributes,
-        [Label("DeleteAttributes")]
-        DeleteAttributes,
-        [Label("GetAttributes")]
-        GetAttributes
-    }
-
     public struct SdbAction {
 
         static string AWS_PUBLIC_KEY = System.Environment.GetEnvironmentVariable("AWS_PUBLIC_KEY");

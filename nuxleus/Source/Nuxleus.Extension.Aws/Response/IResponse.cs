@@ -5,8 +5,8 @@ using System.Text;
 using System.Xml.Linq;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
-    interface IResponse<T> {
+    public interface IResponse {
         KeyValuePair<string,string>[] Headers { get; set;}
-        T Response { get; set; }
+        String Response { get; set; }
     }
 }

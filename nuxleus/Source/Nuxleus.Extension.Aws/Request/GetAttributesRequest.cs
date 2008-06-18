@@ -5,7 +5,7 @@ using Nuxleus.MetaData;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
-    public struct PutAttributesRequest : IRequest {
+    public struct GetAttributesRequest : IRequest {
 
         String m_requestBody;
 
@@ -22,7 +22,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         public RequestType RequestType {
             get {
-                return RequestType.PutAttributes;
+                return RequestType.GetAttributes;
             }
         }
 

@@ -9,7 +9,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
     public interface ITask {
         Guid TaskID { get; }
         IRequest Request { get; }
-        //IResponse<T> Response { get; set; }
+        IResponse Response { get; set; }
         IEnumerable<IAsync> Invoke<T>(Dictionary<IRequest, T> responseList);
     }
 }

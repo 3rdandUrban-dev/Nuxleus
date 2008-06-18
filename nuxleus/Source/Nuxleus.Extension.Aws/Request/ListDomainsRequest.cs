@@ -5,7 +5,7 @@ using Nuxleus.MetaData;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
-    public struct PutAttributesRequest : IRequest {
+    public struct ListDomainsRequest : IRequest {
 
         String m_requestBody;
 
@@ -13,7 +13,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         public KeyValuePair<string, string>[] Headers {
             get {
-                return 
+                return
                     new KeyValuePair<string, string>[] {
                         new KeyValuePair<string,string>("SOAPAction", LabelAttribute.FromMember(RequestType)),
                     };
@@ -22,7 +22,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         public RequestType RequestType {
             get {
-                return RequestType.PutAttributes;
+                return RequestType.ListDomains;
             }
         }
 

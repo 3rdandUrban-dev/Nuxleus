@@ -69,6 +69,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Request\QueryRequest.cs" />
+    <Compile Include="Request\ListDomainsRequest.cs" />
+    <Compile Include="Request\DeleteDomainRequest.cs" />
+    <Compile Include="Request\CreateDomainRequest.cs" />
+    <Compile Include="Request\GetAttributesRequest.cs" />
     <Compile Include="Request\IRequest.cs" />
     <Compile Include="Request\PutAttributesRequest.cs" />
     <Compile Include="Response\IResponse.cs" />
@@ -89,9 +94,6 @@
     <Compile Include="SimpleDB\Task\Query.cs" />
     <Compile Include="SimpleDB\Task\Task.cs" />
     <Compile Include="Utils\HMACSigner.cs" />
-    <Compile Include="Utils\PropertyCaller.cs" />
-    <Compile Include="Utils\Serializer.cs" />
-    <Compile Include="Utils\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
