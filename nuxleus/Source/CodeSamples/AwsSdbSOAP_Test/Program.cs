@@ -16,7 +16,7 @@ namespace AwsSdbSOAP_Test {
 
         static void Main(string[] args) {
 
-            Agent agent = new Agent();
+            Agent<Program> agent = new Agent<Program>();
 
             System.Environment.SetEnvironmentVariable("AWS_PUBLIC_KEY", ConfigurationManager.AppSettings["AWS_PUBLIC_KEY"]);
             System.Environment.SetEnvironmentVariable("AWS_PRIVATE_KEY", ConfigurationManager.AppSettings["AWS_PRIVATE_KEY"]);

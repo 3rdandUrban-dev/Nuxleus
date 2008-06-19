@@ -2,7 +2,7 @@
 using System.Text;
 using Nuxleus.Extension.AWS.SimpleDB;
 using VVMF.SOA.Common;
-using EeekSoft.Asynchronous;
+using Nuxleus.Asynchronous;
 using System.Net;
 using System.Configuration;
 using System.Threading;
@@ -11,15 +11,25 @@ using System.Collections;
 using System.IO;
 using Nuxleus.Extension.AWS.SimpleDB.Model;
 using System.Xml.Linq;
+using Nuxleus.Extension;
+using log4net;
+using log4net.Config;
 
 namespace Nuxleus.Extension.Aws {
 
-    public struct Agent {
+    public struct Agent<T> {
+
+        static readonly ILog m_loggerInstance = LogManager.GetLogger(typeof(T));
 
         static LoggerScope logger = new LoggerScope();
         static ExceptionHandlerScope exShield = new ExceptionHandlerScope();
         static ProfilerScope profiler = new ProfilerScope();
         static int m_workers = (int.Parse(ConfigurationManager.AppSettings["WorkerQueueMultiplier"]) * System.Environment.ProcessorCount);
+
+        public static ILog GetBasicLogger() {
+            XmlConfigurator.Configure(new System.IO.FileInfo(("log4net.config")));
+            return m_loggerInstance;
+        }
 
         public void Initialize() {
             ServicePointManager.DefaultConnectionLimit = int.Parse(ConfigurationManager.AppSettings["DefaultConnectionLimit"]);

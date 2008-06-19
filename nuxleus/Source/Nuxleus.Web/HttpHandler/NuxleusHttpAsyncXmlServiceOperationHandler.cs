@@ -72,7 +72,7 @@ namespace Nuxleus.Web.HttpHandler {
         Transform.Agent m_agent;
         IAsyncResult m_asyncResult;
         XmlReader initialReader;
-        static ILog m_logger = Web.Agent.GetBasicLogger();
+        static ILog m_logger = Web.Agent<NuxleusHttpAsyncXmlServiceOperationHandler>.GetBasicLogger();
 
         public void ProcessRequest ( HttpContext context ) {
             //not called

@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -59,9 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
-    <Compile Include="AwsConnection\HttpQueryConnection.cs" />
-    <Compile Include="AwsConnection\IAwsConnection.cs" />
     <Compile Include="Handler\ExceptionHandler.cs" />
+    <Compile Include="HttpQueryConnection.cs" />
+    <Compile Include="IAwsConnection.cs" />
     <Compile Include="LoadBalancer\WorkerQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -76,14 +80,19 @@
     <Compile Include="Request\GetAttributesRequest.cs" />
     <Compile Include="Request\IRequest.cs" />
     <Compile Include="Request\PutAttributesRequest.cs" />
+    <Compile Include="Response\CreateDomainResponse.cs" />
+    <Compile Include="Response\DeleteDomainResponse.cs" />
+    <Compile Include="Response\QueryResponse.cs" />
+    <Compile Include="Response\ListDomainsResponse.cs" />
+    <Compile Include="Response\GetAttributesResponse.cs" />
     <Compile Include="Response\IResponse.cs" />
+    <Compile Include="Response\PutAttributesResponse.cs" />
     <Compile Include="Scope\LoggerScope.cs" />
     <Compile Include="Scope\ProfilerScope.cs" />
     <Compile Include="SimpleDB\Model\Attribute.cs" />
     <Compile Include="SimpleDB\Model\Domain.cs" />
     <Compile Include="SimpleDB\Model\Item.cs" />
     <Compile Include="SimpleDB\Operation\Operation.cs" />
-    <Compile Include="SimpleDB\SdbAction.cs" />
     <Compile Include="SimpleDB\SimpleDBService.cs" />
     <Compile Include="SimpleDB\Task\CreateDomain.cs" />
     <Compile Include="SimpleDB\Task\DeleteDomain.cs" />
@@ -92,11 +101,12 @@
     <Compile Include="SimpleDB\Task\ListDomains.cs" />
     <Compile Include="SimpleDB\Task\PutAttributes.cs" />
     <Compile Include="SimpleDB\Task\Query.cs" />
-    <Compile Include="SimpleDB\Task\Task.cs" />
-    <Compile Include="Utils\HMACSigner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -117,6 +127,10 @@
       <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>
       <Name>Nuxleus.Agent</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Asynchronous\Nuxleus.Asynchronous.csproj">
+      <Project>{EDD96E5A-5BEE-4A0C-89AA-A6C9CE68C710}</Project>
+      <Name>Nuxleus.Asynchronous</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Extension.Linq\Nuxleus.Extension.Linq.csproj">
       <Project>{D937BA9E-1E6C-4757-98CC-7D932F4697B0}</Project>
       <Name>Nuxleus.Extension.Linq</Name>
@@ -129,6 +143,9 @@
       <Project>{82ACAECC-C5E3-470D-91C4-9F6C43CCC1CC}</Project>
       <Name>Nuxleus.MetaData</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

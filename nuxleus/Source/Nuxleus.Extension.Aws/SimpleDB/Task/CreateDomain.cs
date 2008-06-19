@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using EeekSoft.Asynchronous;
-using Nuxleus.Extension.AWS.SimpleDB.Model;
+using Nuxleus.Asynchronous;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
@@ -11,13 +10,14 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
     public struct CreateDomain : ITask {
 
         string m_domainName;
-        List<String> m_attributeNameArray;
-        static Guid m_taskID = new Guid();
-        static IRequest m_request = new GetAttributesRequest();
+        Guid m_taskID;
+        IRequest m_request;
+        IResponse m_response;
 
         [XmlElementAttribute(ElementName = "DomainName")]
         public string DomainName {
-            get { return m_domainName; }
+            get {
+                return m_domainName; }
             set { m_domainName = value; }
         }
 
@@ -31,10 +31,21 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             }
         }
 
-        public IResponse Response { get; set; }
+        public IResponse Response {
+            get {
+                return m_response;
+            }
+        }
 
         public IEnumerable<IAsync> Invoke<T>(Dictionary<IRequest, T> responseList) {
+            Init();
             return SimpleDBService<CreateDomain>.CallWebService<T>(this, Request, responseList);
+        }
+
+        void Init() {
+            m_request = new CreateDomainRequest();
+            m_response = new CreateDomainResponse();
+            m_taskID = System.Guid.NewGuid();
         }
     }
 }

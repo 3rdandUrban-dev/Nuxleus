@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using EeekSoft.Asynchronous;
+using Nuxleus.Asynchronous;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
@@ -13,11 +13,15 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
         string m_queryExpression;
         string m_maxNumberOfItems;
         string m_nextToken;
-        static Guid m_taskID = new Guid();
+        Guid m_taskID;
+        IRequest m_request;
+        IResponse m_response;
 
         [XmlElementAttribute(ElementName = "DomainName")]
         public String DomainName {
-            get { return m_domainName; }
+            get {
+                return m_domainName;
+            }
             set { m_domainName = value; }
         }
 
@@ -39,7 +43,6 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             set { m_nextToken = value; }
         }
 
-
         #region ITask Members
 
         public RequestType RequestType {
@@ -51,14 +54,25 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
             set { throw new NotImplementedException(); }
         }
 
-        public IResponse Response { get; set; }
+        public IResponse Response {
+            get {
+                return m_response;
+            }
+        }
 
         public Guid TaskID {
             get { return m_taskID; }
         }
 
         public IEnumerable<IAsync> Invoke<T>(Dictionary<IRequest, T> responseList) {
+            Init();
             throw new NotImplementedException();
+        }
+
+        void Init() {
+            m_request = new QueryRequest();
+            m_response = new QueryResponse();
+            m_taskID = System.Guid.NewGuid();
         }
 
         #endregion

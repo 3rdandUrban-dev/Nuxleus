@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.20706</ProductVersion>
+    <ProductVersion>9.0.30428</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A128AED6-F1C8-4D86-A22B-97EB0D892C70}</ProjectGuid>
     <OutputType>Exe</OutputType>
@@ -53,9 +53,9 @@
       <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>
       <Name>Nuxleus.Agent</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Nuxleus.Extension.Linq\Nuxleus.Extension.Linq.csproj">
-      <Project>{D937BA9E-1E6C-4757-98CC-7D932F4697B0}</Project>
-      <Name>Nuxleus.Extension.Linq</Name>
+    <ProjectReference Include="..\..\Nuxleus.Asynchronous\Nuxleus.Asynchronous.csproj">
+      <Project>{EDD96E5A-5BEE-4A0C-89AA-A6C9CE68C710}</Project>
+      <Name>Nuxleus.Asynchronous</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Nuxleus.Web\Nuxleus.Web.csproj">
       <Project>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</Project>

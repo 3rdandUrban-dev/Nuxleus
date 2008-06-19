@@ -6,7 +6,7 @@ using Nuxleus.Web;
 using System.IO;
 using System.Threading;
 using System.Diagnostics;
-using EeekSoft.Asynchronous;
+using Nuxleus.Asynchronous;
 using System.Collections;
 
 namespace HttpGetAsyncResponse_Test {

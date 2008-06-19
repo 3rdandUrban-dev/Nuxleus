@@ -65,13 +65,13 @@
       <Project>{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}</Project>
       <Name>Scope</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Nuxleus.Asynchronous\Nuxleus.Asynchronous.csproj">
+      <Project>{EDD96E5A-5BEE-4A0C-89AA-A6C9CE68C710}</Project>
+      <Name>Nuxleus.Asynchronous</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
       <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
       <Name>Nuxleus.Extension.Aws</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Nuxleus.Extension.Linq\Nuxleus.Extension.Linq.csproj">
-      <Project>{D937BA9E-1E6C-4757-98CC-7D932F4697B0}</Project>
-      <Name>Nuxleus.Extension.Linq</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -8,9 +8,9 @@ using System.Web;
 
 namespace Nuxleus.Web {
 
-    public struct Agent : IAgent {
+    public struct Agent<T> : IAgent {
 
-        static readonly ILog m_loggerInstance = LogManager.GetLogger(typeof(Agent));
+        static readonly ILog m_loggerInstance = LogManager.GetLogger(typeof(T));
 
         public System.Collections.Hashtable Result {
             get {

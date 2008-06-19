@@ -10,12 +10,14 @@ using System.Web;
 using System.Web.Services.Protocols;
 using System.Globalization;
 using Nuxleus.Extension;
-using EeekSoft.Asynchronous;
+using Nuxleus.Asynchronous;
 using System.Collections.Generic;
 using System.Threading;
 using Nuxleus.MetaData;
 using System.Collections;
 using System.Xml.Serialization;
+using Nuxleus.Extension.Aws;
+using log4net;
 
 namespace Nuxleus.Extension.AWS.SimpleDB {
 
@@ -44,6 +46,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
         static XNamespace aws = "http://sdb.amazonaws.com/doc/2007-11-07/";
         static XNamespace i = "http://www.w3.org/2001/XMLSchema-instance";
         static XmlSerializer m_xSerializer = new XmlSerializer(typeof(TRequestType));
+        static ILog m_logger = Agent<SimpleDBService<TRequestType>>.GetBasicLogger();
 
         public static IEnumerable<IAsync> CallWebService<TResultType>(ITask task, IRequest sdbRequest, Dictionary<IRequest, TResultType> responseList) {
 
@@ -63,9 +66,11 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 }
             }
 
+            Console.WriteLine("TaskID: {0}", task.TaskID);
+
             string soapMessage = output.ToString();
             sdbRequest.RequestMessage = soapMessage;
-            //Console.WriteLine("XML: {0}", soapMessage);
+            m_logger.DebugFormat("SOAP message for task {0}: {1}", task.TaskID, soapMessage);
 
             byte[] buffer = encoding.GetBytes(soapMessage);
 
@@ -78,13 +83,14 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 request.Headers.Add(header.Key, header.Value);
             }
 
-            //System.Console.WriteLine("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
+            m_logger.DebugFormat("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
 
             using (Stream newStream = request.GetRequestStream()) {
                 newStream.Write(buffer, 0, contentLength);
+                m_logger.DebugFormat("Sending request for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
                 Async<WebResponse> response = request.GetResponseAsync();
                 yield return response;
-                //System.Console.WriteLine("[] got response on thread: {0}", Thread.CurrentThread.ManagedThreadId);
+                m_logger.DebugFormat("Received response for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
                 Stream stream = response.Result.GetResponseStream();
                 Async<TResultType> responseObject = stream.ReadToEndAsync<TResultType>().ExecuteAsync<TResultType>();
                 yield return responseObject;
