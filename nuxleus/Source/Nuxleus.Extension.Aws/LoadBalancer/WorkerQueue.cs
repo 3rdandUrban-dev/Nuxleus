@@ -3,12 +3,12 @@ using System.Threading;
 using System.Collections.Generic;
 using Nuxleus.Asynchronous;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
 
-    public class WorkerQueue : IDisposable {
-        object m_lock = new object();
+    public struct WorkerQueue : IDisposable {
+        static object m_lock = new object();
         Thread[] workers;
-        Queue<IEnumerable<IAsync>> queue = new Queue<IEnumerable<IAsync>>();
+        static Queue<IEnumerable<IAsync>> queue = new Queue<IEnumerable<IAsync>>();
 
         public WorkerQueue(int workerCount) {
             workers = new Thread[workerCount];
@@ -36,7 +36,6 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
                 if (task == null) {
                     return;
                 }
-                //Console.WriteLine("Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
                 task.ExecuteAndWait();
             }
         }

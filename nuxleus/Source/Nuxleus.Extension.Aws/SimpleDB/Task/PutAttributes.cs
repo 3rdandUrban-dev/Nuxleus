@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 using Nuxleus.Asynchronous;
-using Nuxleus.Extension.AWS.SimpleDB.Model;
+using Nuxleus.Extension.Aws.SimpleDb.Model;
 
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
 
     [XmlTypeAttribute(Namespace = "http://sdb.amazonaws.com/doc/2007-11-07/")]
     [XmlRootAttribute(Namespace = "http://sdb.amazonaws.com/doc/2007-11-07/", IsNullable = false)]

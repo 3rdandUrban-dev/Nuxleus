@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Nuxleus.Extension.AWS.SimpleDB;
+using Nuxleus.Extension.Aws.SimpleDb;
 using Nuxleus.MetaData;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
 
-    public struct QueryRequest : IRequest {
+    public struct DeleteDomainRequest : IRequest {
 
         String m_requestBody;
 
@@ -22,7 +22,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         public RequestType RequestType {
             get {
-                return RequestType.Query;
+                return RequestType.DeleteDomain;
             }
         }
 

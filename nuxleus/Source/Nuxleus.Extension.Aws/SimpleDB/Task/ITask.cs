@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml.Linq;
 using Nuxleus.Asynchronous;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
     public interface ITask {
         Guid TaskID { get; }
         IRequest Request { get; }

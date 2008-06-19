@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using VVMF.SOA.Common;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
 
     public class ProfilerScope : HandlerBase {
 

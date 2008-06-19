@@ -8,7 +8,7 @@ using Nuxleus.Asynchronous;
 using System.IO;
 using System.Xml.Linq;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
     public class ExceptionHandlerScope : HandlerBase {
 
         WebException we;

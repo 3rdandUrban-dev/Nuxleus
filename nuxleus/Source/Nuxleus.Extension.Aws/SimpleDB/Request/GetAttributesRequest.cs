@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Nuxleus.Extension.AWS.SimpleDB;
+using Nuxleus.Extension.Aws.SimpleDb;
 using Nuxleus.MetaData;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
 
-    public struct CreateDomainRequest : IRequest {
+    public struct GetAttributesRequest : IRequest {
 
         String m_requestBody;
 
@@ -13,7 +13,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         public KeyValuePair<string, string>[] Headers {
             get {
-                return
+                return 
                     new KeyValuePair<string, string>[] {
                         new KeyValuePair<string,string>("SOAPAction", LabelAttribute.FromMember(RequestType)),
                     };
@@ -22,7 +22,7 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         public RequestType RequestType {
             get {
-                return RequestType.CreateDomain;
+                return RequestType.GetAttributes;
             }
         }
 

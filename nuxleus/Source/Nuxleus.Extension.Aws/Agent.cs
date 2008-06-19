@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using Nuxleus.Extension.AWS.SimpleDB;
+using Nuxleus.Extension.Aws.SimpleDb;
 using VVMF.SOA.Common;
 using Nuxleus.Asynchronous;
 using System.Net;
@@ -9,7 +9,7 @@ using System.Threading;
 using System.Runtime.Remoting;
 using System.Collections;
 using System.IO;
-using Nuxleus.Extension.AWS.SimpleDB.Model;
+using Nuxleus.Extension.Aws.SimpleDb.Model;
 using System.Xml.Linq;
 using Nuxleus.Extension;
 using log4net;

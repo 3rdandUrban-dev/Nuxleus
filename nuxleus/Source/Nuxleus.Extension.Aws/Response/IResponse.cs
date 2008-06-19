@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
     public interface IResponse {
         KeyValuePair<string,string>[] Headers { get; set;}
         String Response { get; }

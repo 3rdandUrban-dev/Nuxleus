@@ -73,26 +73,26 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Request\QueryRequest.cs" />
-    <Compile Include="Request\ListDomainsRequest.cs" />
-    <Compile Include="Request\DeleteDomainRequest.cs" />
-    <Compile Include="Request\CreateDomainRequest.cs" />
-    <Compile Include="Request\GetAttributesRequest.cs" />
     <Compile Include="Request\IRequest.cs" />
-    <Compile Include="Request\PutAttributesRequest.cs" />
-    <Compile Include="Response\CreateDomainResponse.cs" />
-    <Compile Include="Response\DeleteDomainResponse.cs" />
-    <Compile Include="Response\QueryResponse.cs" />
-    <Compile Include="Response\ListDomainsResponse.cs" />
-    <Compile Include="Response\GetAttributesResponse.cs" />
     <Compile Include="Response\IResponse.cs" />
-    <Compile Include="Response\PutAttributesResponse.cs" />
     <Compile Include="Scope\LoggerScope.cs" />
     <Compile Include="Scope\ProfilerScope.cs" />
     <Compile Include="SimpleDB\Model\Attribute.cs" />
     <Compile Include="SimpleDB\Model\Domain.cs" />
     <Compile Include="SimpleDB\Model\Item.cs" />
     <Compile Include="SimpleDB\Operation\Operation.cs" />
+    <Compile Include="SimpleDB\Request\CreateDomainRequest.cs" />
+    <Compile Include="SimpleDB\Request\DeleteDomainRequest.cs" />
+    <Compile Include="SimpleDB\Request\GetAttributesRequest.cs" />
+    <Compile Include="SimpleDB\Request\ListDomainsRequest.cs" />
+    <Compile Include="SimpleDB\Request\PutAttributesRequest.cs" />
+    <Compile Include="SimpleDB\Request\QueryRequest.cs" />
+    <Compile Include="SimpleDB\Response\CreateDomainResponse.cs" />
+    <Compile Include="SimpleDB\Response\DeleteDomainResponse.cs" />
+    <Compile Include="SimpleDB\Response\GetAttributesResponse.cs" />
+    <Compile Include="SimpleDB\Response\ListDomainsResponse.cs" />
+    <Compile Include="SimpleDB\Response\PutAttributesResponse.cs" />
+    <Compile Include="SimpleDB\Response\QueryResponse.cs" />
     <Compile Include="SimpleDB\SimpleDBService.cs" />
     <Compile Include="SimpleDB\Task\CreateDomain.cs" />
     <Compile Include="SimpleDB\Task\DeleteDomain.cs" />

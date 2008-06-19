@@ -5,7 +5,7 @@ using System.Text;
 using Nuxleus.Asynchronous;
 using VVMF.SOA.Common;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
     public struct Operation<T> {
 
     }

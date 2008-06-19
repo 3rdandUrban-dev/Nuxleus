@@ -1,5 +1,4 @@
 ﻿using System;
-using Nuxleus.Extension.AWS.SimpleDB;
 using System.Xml;
 using System.Xml.Linq;
 using System.Net;
@@ -7,7 +6,6 @@ using System.IO;
 using System.Text;
 using System.Security.Cryptography;
 using System.Web;
-using System.Web.Services.Protocols;
 using System.Globalization;
 using Nuxleus.Extension;
 using Nuxleus.Asynchronous;
@@ -19,7 +17,7 @@ using System.Xml.Serialization;
 using Nuxleus.Extension.Aws;
 using log4net;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
 
     public enum RequestType {
         [Label("Query")]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using Nuxleus.Asynchronous;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
 
     [XmlTypeAttribute(Namespace = "http://sdb.amazonaws.com/doc/2007-11-07/")]
     [XmlRootAttribute(Namespace = "http://sdb.amazonaws.com/doc/2007-11-07/", IsNullable = false)]
@@ -27,8 +27,12 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         [XmlElementAttribute(ElementName = "QueryExpression")]
         public String QueryExpression {
-            get { return m_queryExpression; }
-            set { m_queryExpression = value; }
+            get { 
+                return m_queryExpression; 
+            }
+            set { 
+                m_queryExpression = value; 
+            }
         }
 
         [XmlElementAttribute(ElementName = "MaxNumberOfItems")]
@@ -51,7 +55,6 @@ namespace Nuxleus.Extension.AWS.SimpleDB {
 
         public IRequest Request {
             get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
         }
 
         public IResponse Response {

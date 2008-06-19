@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Nuxleus.Extension.AWS.SimpleDB {
+namespace Nuxleus.Extension.Aws.SimpleDb {
 
-    public struct PutAttributesResponse : IResponse {
+    public struct ListDomainsResponse : IResponse {
         #region IResponse Members
 
         public KeyValuePair<string, string>[] Headers {
