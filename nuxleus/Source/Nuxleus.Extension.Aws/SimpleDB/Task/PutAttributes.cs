@@ -55,6 +55,12 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="responseList"></param>
+        /// <returns>IEnumerable<IAsync></returns>
         public IEnumerable<IAsync> Invoke<T>(Dictionary<IRequest, T> responseList) {
             Init();
             return SimpleDBService<PutAttributes>.CallWebService<T>(this, Request, responseList);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Nuxleus.Asynchronous;
+using Nuxleus.Extension.Log;
 
 namespace Nuxleus.Extension.Aws.SimpleDb {
 
@@ -17,6 +18,9 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
         IRequest m_request;
         IResponse m_response;
 
+        /// <summary>
+        /// gets or sets the domain name to query
+        /// </summary>
         [XmlElementAttribute(ElementName = "DomainName")]
         public String DomainName {
             get {
@@ -25,6 +29,9 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
             set { m_domainName = value; }
         }
 
+        /// <summary>
+        /// gets or sets the query expression
+        /// </summary>
         [XmlElementAttribute(ElementName = "QueryExpression")]
         public String QueryExpression {
             get { 
@@ -35,12 +42,18 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
             }
         }
 
+        /// <summary>
+        /// gets or sets the maximum number of items to return in the result
+        /// </summary>
         [XmlElementAttribute(ElementName = "MaxNumberOfItems")]
         public String MaxNumberOfItems {
             get { return m_maxNumberOfItems; }
             set { m_maxNumberOfItems = value; }
         }
 
+        /// <summary>
+        /// gets or sets the token that should be used if more results exist
+        /// </summary>
         [XmlElementAttribute(ElementName = "NextToken")]
         public String NextToken {
             get { return m_nextToken; }
@@ -49,10 +62,9 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
 
         #region ITask Members
 
-        public RequestType RequestType {
-            get { throw new NotImplementedException(); }
-        }
-
+        /// <summary>
+        /// gets the <c>IRequest</c> for this <c>ITask</c>
+        /// </summary>
         public IRequest Request {
             get { throw new NotImplementedException(); }
         }

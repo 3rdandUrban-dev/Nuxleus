@@ -145,6 +145,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="EC2\" />
+    <Folder Include="S3\" />
+    <Folder Include="SQS\" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

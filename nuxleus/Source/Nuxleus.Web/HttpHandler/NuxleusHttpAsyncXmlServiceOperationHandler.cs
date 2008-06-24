@@ -31,6 +31,7 @@ using Nuxleus.Web;
 using log4net;
 using Nuxleus.Agent;
 using System.Xml.XPath;
+using Nuxleus.Extension.Log;
 
 namespace Nuxleus.Web.HttpHandler {
 
@@ -61,18 +62,12 @@ namespace Nuxleus.Web.HttpHandler {
         bool m_CONTENT_IS_MEMCACHED;
         bool m_USE_MEMCACHED;
         static HashAlgorithm m_hashAlgorithm = HashAlgorithm.SHA1;
-        XmlWriter m_debugXmlWriter;
         string m_lastModifiedKey;
         string m_lastModifiedDate;
         UTF8Encoding m_encoding;
         static Stopwatch m_stopwatch = new Stopwatch();
         TransformRequest m_request;
         TransformResponse m_response;
-        NuxleusAgentAsyncRequest m_transformRequest;
-        Transform.Agent m_agent;
-        IAsyncResult m_asyncResult;
-        XmlReader initialReader;
-        static ILog m_logger = Web.Agent<NuxleusHttpAsyncXmlServiceOperationHandler>.GetBasicLogger();
 
         public void ProcessRequest ( HttpContext context ) {
             //not called
@@ -89,7 +84,7 @@ namespace Nuxleus.Web.HttpHandler {
             m_stopwatch.Start();
 
             FileInfo fileInfo = new FileInfo(context.Request.MapPath(context.Request.CurrentExecutionFilePath));
-            m_logger.DebugFormat("File Date: {0}; File Length: {1}", fileInfo.LastWriteTimeUtc, fileInfo.Length);
+            this.LogDebug("File Date: {0}; File Length: {1}", fileInfo.LastWriteTimeUtc, fileInfo.Length);
             m_CONTENT_IS_MEMCACHED = false;
             m_USE_MEMCACHED = false;
             m_httpContext = context;
@@ -108,7 +103,7 @@ namespace Nuxleus.Web.HttpHandler {
             m_xmlSourceETagDictionary = m_xmlServiceOperationManager.XmlSourceETagDictionary;
             m_xmlReaderDictionary = m_xmlServiceOperationManager.XmlReaderDictionary;
             m_context = new Context(context, m_hashAlgorithm, m_hashkey, fileInfo, fileInfo.LastWriteTimeUtc, fileInfo.Length);
-            m_logger.DebugFormat("File Date: {0}; File Length: {1}", m_context.RequestXmlFileInfo.LastWriteTimeUtc, m_context.RequestXmlFileInfo.Length);
+            this.LogDebug("File Date: {0}; File Length: {1}", m_context.RequestXmlFileInfo.LastWriteTimeUtc, m_context.RequestXmlFileInfo.Length);
             m_nuxleusAsyncResult = new Nuxleus.Agent.NuxleusAsyncResult(cb, extraData);
             m_callback = cb;
             m_nuxleusAsyncResult.m_context = context;
@@ -130,7 +125,7 @@ namespace Nuxleus.Web.HttpHandler {
             IEnumerator headers = context.Request.Headers.GetEnumerator();
             for (int i = 0; headers.MoveNext(); i++) {
                 string local = context.Request.Headers.AllKeys[i].ToString();
-                m_logger.DebugFormat("KeyName: {0}, KeyValue: {1}", local, context.Request.Headers[local]);
+                this.LogDebug("KeyName: {0}, KeyValue: {1}", local, context.Request.Headers[local]);
             }
             bool hasXmlSourceChanged = m_xmlServiceOperationManager.HasXmlSourceChanged(m_context.RequestXmlETag, requestUri);
 
@@ -159,41 +154,37 @@ namespace Nuxleus.Web.HttpHandler {
                 switch (m_httpMethod) {
                     case "GET":
                     case "HEAD":
-                    case "POST": {
-                            //string name = String.Format("Name: {0}", context.Request.QueryString["name"]);
-                            //m_logger.DebugFormat("QueryString Length: {0}", context.Request.QueryString.Count);
-                            //m_logger.DebugFormat(name);
-                            //m_logger.DebugFormat("If-None-Match: {0}, RequestHashCode: {1}", context.Request.Headers["If-None-Match"], m_requestHashcode);
-                            //m_logger.DebugFormat(context.Request.Path);
-                            //if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
-                            //    m_logger.Debug("They matched.");
-                            //    m_logger.DebugFormat("Use memcached: {0}, KeyExists: {1}, XmlSource Changed: {2}", m_USE_MEMCACHED, m_memcachedClient.KeyExists(m_lastModifiedKey), hasXmlSourceChanged);
-                            //    m_logger.DebugFormat("Last Modified Key Value: {0}", m_lastModifiedKey);
-                            //    if (m_USE_MEMCACHED && m_memcachedClient.KeyExists(m_lastModifiedKey) && !hasXmlSourceChanged) {
-                            //        m_lastModifiedDate = (string)m_memcachedClient.Get(m_lastModifiedKey);
-                            //        m_logger.DebugFormat("Last Modified Date: {0}", m_lastModifiedDate);
-                            //        if (context.Request.Headers["If-Modified-Since"] == m_lastModifiedDate) {
+                    case "POST": {                     
+                            string name = String.Format("Name: {0}", context.Request.QueryString["name"]);
+                            this.LogDebug("QueryString Length: {0}", context.Request.QueryString.Count);
+                            this.LogDebug(name);
+                            this.LogDebug("If-None-Match: {0}, RequestHashCode: {1}", context.Request.Headers["If-None-Match"], m_requestHashcode);
+                            this.LogDebug(context.Request.Path);
+                            if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
+                                this.LogDebug("They matched.");
+                                this.LogDebug("Use memcached: {0}, KeyExists: {1}, XmlSource Changed: {2}", m_USE_MEMCACHED, m_memcachedClient.KeyExists(m_lastModifiedKey), hasXmlSourceChanged);
+                                this.LogDebug("Last Modified Key Value: {0}", m_lastModifiedKey);
+                                if (m_USE_MEMCACHED && m_memcachedClient.KeyExists(m_lastModifiedKey) && !hasXmlSourceChanged) {
+                                    m_lastModifiedDate = (string)m_memcachedClient.Get(m_lastModifiedKey);
+                                    this.LogDebug("Last Modified Date: {0}", m_lastModifiedDate);
+                                    if (context.Request.Headers["If-Modified-Since"] == m_lastModifiedDate) {
 
-                            //            context.Response.StatusCode = 304;
-                            //            m_returnOutput = false;
-                            //            goto CompleteCall;
-                            //        } else {
-                            //            goto Process;
-                            //        }
-                            //    } else if (m_CONTENT_IS_MEMCACHED) {
-                            //        goto CompleteCall;
-                            //    } else {
-                            //        goto Process;
-                            //    }
-                            //} else {
-                            //    m_logger.Debug("Headers do not match.  Beginning transformation process...");
-                            //    m_returnOutput = true;
-                            //    goto Process;
-                            //}
-                            //break;
-
-                            m_returnOutput = true;
-                            goto Process;
+                                        context.Response.StatusCode = 304;
+                                        m_returnOutput = false;
+                                        goto CompleteCall;
+                                    } else {
+                                        goto Process;
+                                    }
+                                } else if (m_CONTENT_IS_MEMCACHED) {
+                                    goto CompleteCall;
+                                } else {
+                                    goto Process;
+                                }
+                            } else {
+                                this.LogDebug("Headers do not match.  Beginning transformation process...");
+                                m_returnOutput = true;
+                                goto Process;
+                            }
                         }
                     case "PUT": {
                             goto CompleteCall;
@@ -213,22 +204,22 @@ namespace Nuxleus.Web.HttpHandler {
             }
         Process:
             try {
-                m_logger.Debug("Processing Transformation");
-                m_logger.DebugFormat("Request XML ETag Value: {0}, Request URI: {1}", m_context.RequestXmlETag, requestUri);
+                this.LogDebug("Processing Transformation");
+                this.LogDebug("Request XML ETag Value: {0}, Request URI: {1}", m_context.RequestXmlETag, requestUri);
 
                 XPathNavigator navigator = m_xmlServiceOperationManager.GetXPathNavigator(m_context.RequestXmlETag, requestUri);
                 //if (initialReader == null) {
                 //    initialReader = reader;
                 //} else {
-                //    m_logger.DebugFormat("XmlReaders are the same object: {0}", initialReader.Equals(reader));
+                //    this.LogDebug("XmlReaders are the same object: {0}", initialReader.Equals(reader));
                 //}
-                //m_logger.DebugFormat("XML Reader Value: {0}", reader.ReadOuterXml());
-                //m_logger.DebugFormat("XML Reader Hash: {0}", reader.GetHashCode());
+                //this.LogDebug("XML Reader Value: {0}", reader.ReadOuterXml());
+                //this.LogDebug("XML Reader Hash: {0}", reader.GetHashCode());
                 XPathServiceOperationNavigator serviceOperationReader = new XPathServiceOperationNavigator(context, m_context, m_transformContext, navigator, m_request, m_response, m_xslTransformationManager);
                 m_response = serviceOperationReader.Process();
 
             } catch (Exception e) {
-                m_logger.DebugFormat("Error: {0} in transformation.", e.Message);
+                this.LogDebug("Error: {0} in transformation.", e.Message);
                 m_exception = e;
                 WriteError();
             }
@@ -236,7 +227,7 @@ namespace Nuxleus.Web.HttpHandler {
             goto CompleteCall;
 
         CompleteCall:
-            m_logger.Debug("CompleteCall reached");
+            this.LogDebug("CompleteCall reached");
             if (m_lastModifiedDate == String.Empty) {
                 m_lastModifiedDate = DateTime.UtcNow.ToString("r");
             }
@@ -255,13 +246,13 @@ namespace Nuxleus.Web.HttpHandler {
                 }
             }
             if (!m_CONTENT_IS_MEMCACHED && m_USE_MEMCACHED) {
-                m_logger.DebugFormat("Adding Last Modified Key: {0}", m_lastModifiedKey);
+                this.LogDebug("Adding Last Modified Key: {0}", m_lastModifiedKey);
                 m_memcachedClient.Set(m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(24));
                 m_memcachedClient.Set(m_lastModifiedKey, m_lastModifiedDate);
             }
             //}
             m_stopwatch.Stop();
-            m_logger.DebugFormat("Total processing time: {0} ms", m_stopwatch.ElapsedMilliseconds);
+            this.LogDebug("Total processing time: {0} ms", m_stopwatch.ElapsedMilliseconds);
             m_stopwatch.Reset();
         }
 
