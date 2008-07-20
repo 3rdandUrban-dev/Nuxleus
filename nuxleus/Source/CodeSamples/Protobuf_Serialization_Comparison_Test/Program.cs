@@ -116,7 +116,7 @@ namespace Nuxleus.Messaging {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(PerformanceLogCollection));
 
             foreach (SerializerPerformanceTestAgent item in serializerPeformanceItem) {
-                string fileName = String.Format("{0}Performance.xml", item.TypeLabel);
+                string fileName = String.Format("../../Report/{0}Performance.xml", item.TypeLabel);
                 using (FileStream stream = new FileStream(fileName, FileMode.Create)) {
                     Console.WriteLine("Generating {0}", fileName);
                     xmlSerializer.Serialize(stream, item.PerformanceLogCollection);

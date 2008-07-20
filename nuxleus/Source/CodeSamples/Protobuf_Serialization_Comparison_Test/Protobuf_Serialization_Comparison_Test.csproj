@@ -33,7 +33,11 @@
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Dependencies\log4net.dll</HintPath>
+      <HintPath>Dependencies\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dependencies\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -70,17 +74,9 @@
     <Compile Include="Nuxleus.WebService\HttpWebService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Dependencies\Json20\Src\Newtonsoft.Json\Newtonsoft.Json.csproj">
-      <Project>{A9AE40FF-1A21-414A-9FE7-3BE13644CC6D}</Project>
-      <Name>Newtonsoft.Json</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Dependencies\Vendor\protobut-net\ProtoBuf\ProtoBuf.csproj">
+    <ProjectReference Include="protobuf-net\ProtoBuf\ProtoBuf.csproj">
       <Project>{8649E5E9-4159-4214-B85D-4539799EB09B}</Project>
       <Name>ProtoBuf</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Dependencies\Scope\Scope\Scope.csproj">
-      <Project>{4A22EAF7-9A35-4F0E-A1CC-3D8A2DDB6830}</Project>
-      <Name>Scope</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
