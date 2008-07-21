@@ -74,9 +74,9 @@
     <Compile Include="Nuxleus.WebService\HttpWebService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="protobuf-net\ProtoBuf\ProtoBuf.csproj">
-      <Project>{8649E5E9-4159-4214-B85D-4539799EB09B}</Project>
-      <Name>ProtoBuf</Name>
+    <ProjectReference Include="protobuf-net\protobuf-net\protobuf-net.csproj">
+      <Project>{8374E4D7-2A91-48F1-9360-09B09CF27C3F}</Project>
+      <Name>protobuf-net</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

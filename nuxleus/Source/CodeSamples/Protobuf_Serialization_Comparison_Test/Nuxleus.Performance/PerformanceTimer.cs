@@ -44,8 +44,8 @@ namespace Nuxleus.Performance {
 
         /// <summary>
         /// Provides a way to inject code into a timed container using a lambda expression.  
-        /// When the lambda expression has completed, use [name of perf timer object].Duration 
-        /// to get the total duration of the scoped code block. 
+        /// When the invocation of the lambda expression has completed, use 
+        /// [name of perf timer object].Duration to get the total duration of the scoped code block. 
         /// 
         /// Scope CodeBlock's can be nested one with another at an infinite depth.
         /// </summary>

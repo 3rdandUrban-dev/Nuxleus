@@ -5,11 +5,9 @@ using System.Text;
 using log4net;
 using log4net.Config;
 using log4net.Core;
-using System.Security.Permissions;
 
 namespace Nuxleus.Extension {
 
-    [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.AllFlags)]
     public static class Log {
 
         static bool IsConfigured;

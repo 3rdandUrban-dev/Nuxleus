@@ -41,49 +41,37 @@ namespace Nuxleus.Messaging {
             new SerializerPerformanceTestAgent{ 
                 TypeLabel = "Binary", 
                 ISerializerTestAgent = new TestBinarySerializer(), 
-                PerformanceLogCollection = new PerformanceLogCollection { 
-                    Log = new List<PerformanceLog>()
-                }, 
+                PerformanceLogCollection = new PerformanceLogCollection(),
                 FileExtension = "dat"
             },
             new SerializerPerformanceTestAgent{ 
                 TypeLabel = "DataContract", 
                 ISerializerTestAgent = new TestDataContractSerializer(), 
-                PerformanceLogCollection = new PerformanceLogCollection { 
-                    Log = new List<PerformanceLog>()
-                }, 
+                PerformanceLogCollection = new PerformanceLogCollection(),
                 FileExtension = "contract"
             },
             new SerializerPerformanceTestAgent{ 
                 TypeLabel = "JSON", 
                 ISerializerTestAgent = new TestJsonSerializer(), 
-                PerformanceLogCollection = new PerformanceLogCollection { 
-                    Log = new List<PerformanceLog>()
-                }, 
+                PerformanceLogCollection = new PerformanceLogCollection(),
                 FileExtension = "json"
             },
             new SerializerPerformanceTestAgent{ 
                 TypeLabel = "ProtoBuffer", 
                 ISerializerTestAgent = new TestProtoBufSerializer(), 
-                PerformanceLogCollection = new PerformanceLogCollection { 
-                    Log = new List<PerformanceLog>()
-                }, 
+                PerformanceLogCollection = new PerformanceLogCollection(),
                 FileExtension = "proto"
             },
             new SerializerPerformanceTestAgent{ 
                 TypeLabel = "SOAP", 
                 ISerializerTestAgent = new TestSOAPSerializer(), 
-                PerformanceLogCollection = new PerformanceLogCollection { 
-                    Log = new List<PerformanceLog>()
-                }, 
+                PerformanceLogCollection = new PerformanceLogCollection(), 
                 FileExtension = "soap"
             },
             new SerializerPerformanceTestAgent{ 
                 TypeLabel = "XML", 
                 ISerializerTestAgent = new TestXmlSerializer(), 
-                PerformanceLogCollection = new PerformanceLogCollection { 
-                    Log = new List<PerformanceLog>()
-                }, 
+                PerformanceLogCollection = new PerformanceLogCollection(), 
                 FileExtension = "xml"
             },
         };

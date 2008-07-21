@@ -11,14 +11,20 @@ namespace Nuxleus.Performance {
     [Serializable]
     [XmlType(Namespace = "http://nuxleus.com/Nuxleus/Performance/")]
     [XmlRootAttribute(Namespace = "http://nuxleus.com/Nuxleus/Performance/", IsNullable = false)]
-    public struct PerformanceLogCollection {
+    public class PerformanceLogCollection {
+
+        List<PerformanceLog> m_log = new List<PerformanceLog>();
 
         public void Add(PerformanceLog log) {
             Log.Add(log);
         }
 
         [XmlElement(ElementName = "PerformanceLog")]
-        public List<PerformanceLog> Log { get; set; }
+        public List<PerformanceLog> Log {
+            get {
+                return m_log;
+            }
+        }
     }
 
     [Serializable]
