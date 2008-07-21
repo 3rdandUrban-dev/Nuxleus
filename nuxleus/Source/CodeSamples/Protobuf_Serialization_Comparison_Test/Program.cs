@@ -105,8 +105,8 @@ namespace Nuxleus.Messaging {
             using (m_timer) {
                 m_timer.Scope = () => {
                     for (int i = 0; i < repeatTest; i++) {
-                        foreach (SerializerPerformanceTestAgent item in serializerPeformanceItem) {
-                            item.PerformanceLogCollection.Add(RunSerializationTest(i, item));
+                        foreach (SerializerPerformanceTestAgent agent in serializerPeformanceItem) {
+                            agent.PerformanceLogCollection.Add(RunSerializationTest(i, agent));
                         }
                     }
                 };
