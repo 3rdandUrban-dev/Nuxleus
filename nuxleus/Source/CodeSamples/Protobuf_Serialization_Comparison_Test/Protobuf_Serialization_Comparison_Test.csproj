@@ -8,8 +8,8 @@
     <ProjectGuid>{D65C4EAF-5072-406E-8790-037EF1D5F30B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Protobuf_XML_Comparison_Test</RootNamespace>
-    <AssemblyName>Protobuf_XML_Comparison_Test</AssemblyName>
+    <RootNamespace>Protobuf_Serialization_Comparison_Test</RootNamespace>
+    <AssemblyName>Protobuf_Serialization_Comparison_Test</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
