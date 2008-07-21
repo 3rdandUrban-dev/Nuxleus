@@ -115,11 +115,11 @@ namespace Nuxleus.Messaging {
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(PerformanceLogCollection));
 
-            foreach (SerializerPerformanceTestAgent item in serializerPeformanceItem) {
-                string fileName = String.Format("../../Report/{0}Performance.xml", item.TypeLabel);
+            foreach (SerializerPerformanceTestAgent agent in serializerPeformanceItem) {
+                string fileName = String.Format("../../Report/{0}Performance.xml", agent.TypeLabel);
                 using (FileStream stream = new FileStream(fileName, FileMode.Create)) {
                     Console.WriteLine("Generating {0}", fileName);
-                    xmlSerializer.Serialize(stream, item.PerformanceLogCollection);
+                    xmlSerializer.Serialize(stream, agent.PerformanceLogCollection);
                     Console.WriteLine("Generation of {0} complete.", fileName);
                 }
             }
