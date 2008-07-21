@@ -33,9 +33,9 @@ namespace Nuxleus.Messaging {
         // Create a PerformanceTimer to measure performance
         static PerformanceTimer m_timer = new PerformanceTimer();
 
-        // Create a SerializerPerformanceTestItem array which will then allow us to iterate through each 
-        // SerializerPerformanceTestItem contained in the array, keeping our test code clean and simple
-        // by placing placing the various objects and values associated with each SerializerPerformanceTestItem
+        // Create a SerializerPerformanceTestAgent array which will then allow us to iterate through each 
+        // SerializerPerformanceTestAgent contained in the array, keeping our test code clean and simple
+        // by placing placing the various objects and values associated with each SerializerPerformanceTestAgent
         // within easy reach.
         static SerializerPerformanceTestAgent[] serializerPeformanceItem = new SerializerPerformanceTestAgent[] {
             new SerializerPerformanceTestAgent{ 
