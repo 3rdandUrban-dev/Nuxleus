@@ -1,0 +1,13 @@
+Index: protobuf-net/protobuf-net/ProtoContractAttribute.cs
+===================================================================
+--- protobuf-net/protobuf-net/ProtoContractAttribute.cs	(revision 43)
++++ protobuf-net/protobuf-net/ProtoContractAttribute.cs	(working copy)
+@@ -6,7 +6,7 @@
+     /// <summary>
+     /// Indicates that a type is defined for protocol-buffer serialization.
+     /// </summary>
+-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Enum,
++    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Struct,
+         AllowMultiple = false, Inherited = true)]
+     public sealed class ProtoContractAttribute : Attribute
+     {
