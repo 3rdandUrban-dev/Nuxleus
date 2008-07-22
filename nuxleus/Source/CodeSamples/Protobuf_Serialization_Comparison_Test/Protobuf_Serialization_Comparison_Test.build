@@ -15,7 +15,7 @@
   </target>
   <target name="patch">
     <if test="${platform::is-unix()}">
-      <exec program="patch" commandline="-p0 -i ProtoContractAttribute.cs.patch "/>
+      <exec program="patch" commandline="-p0 -i ProtoContractAttribute.cs.patch " failonerror="false"/>
     </if>
   </target>
   <target name="ProtoBuf" depends="init patch">
@@ -32,6 +32,24 @@
       </references>
     </csc>
   </target>
+
+  <!-- This doesn't work quite yet.
+  <target name="ProtoBuf.Silverlight" depends="init patch">
+    <property name="nant.settings.currentframework" value="moonlight-2.0" />
+    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+      <sources>
+        <include name="${source.dir}/protobuf-net/protobuf-net/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="System.Core.dll"/>
+        <include name="System.Runtime.Serialization.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Xml.Core.dll"/>
+        <include name="System.Xml.Serialization.dll"/>
+        <include name="System.ServiceModel.dll"/>
+      </references>
+    </csc>
+  </target> -->
 
   <target name="ProtoBuf_Serialization_Comparison_Test" depends="init">
     <property name="nant.settings.currentframework" value="mono-3.5" />
