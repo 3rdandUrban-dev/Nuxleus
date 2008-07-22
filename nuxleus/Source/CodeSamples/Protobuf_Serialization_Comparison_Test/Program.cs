@@ -184,9 +184,12 @@ namespace Nuxleus.Messaging {
         }
 
         static Person CreatePerson(int fileSequence) {
+            List<PhoneNumber> phoneNumbers = new List<PhoneNumber>();
+            phoneNumbers.Add(new PhoneNumber { Number = "555.555.5555", Type = PhoneType.HOME });
             return new Person {
                 Name = String.Format("John Doe{0}", fileSequence),
-                Email = String.Format("jdoe{0}@example.com", fileSequence)
+                Email = String.Format("jdoe{0}@example.com", fileSequence),
+                Phone = phoneNumbers
             };
         }
 
