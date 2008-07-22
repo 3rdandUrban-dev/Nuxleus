@@ -21,7 +21,7 @@ namespace Nuxleus.Messaging.Protobuf {
     }
 
     [Serializable, ProtoContract]
-    public struct PhoneNumber {
+    public class PhoneNumber {
         [ProtoMember(1, Name = "Number", IsRequired = true)]
         public string Number { get; set; }
         [ProtoMember(2, Name = "Type", IsRequired = true)]
