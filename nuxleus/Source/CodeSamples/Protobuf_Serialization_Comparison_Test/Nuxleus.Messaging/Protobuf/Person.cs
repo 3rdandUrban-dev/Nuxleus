@@ -14,9 +14,7 @@ namespace Nuxleus.Messaging.Protobuf {
         public int ID { get; set; }
         [ProtoMember(3, Name = "Email", IsRequired = true)]
         public string Email { get; set; }
-        // No support at the moment for arrays/collections in the protobuf-net project,
-        // though I assume that will change soon.
-        //[ProtoMember(4, Name = "Phone", IsRequired = false)]
+        [ProtoMember(4, Name = "Phone", IsRequired = false)]
         public List<PhoneNumber> Phone { get; set; } 
     }
 
