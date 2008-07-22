@@ -9,8 +9,8 @@ using System.Runtime.Serialization;
 namespace Nuxleus.Performance {
 
     [Serializable]
-    [XmlType(Namespace = "http://nuxleus.com/Nuxleus/Performance/")]
-    [XmlRootAttribute(Namespace = "http://nuxleus.com/Nuxleus/Performance/", IsNullable = false)]
+    [XmlType(Namespace = "http://nuxleus.com/Nuxleus/Performance")]
+    [XmlRootAttribute(Namespace = "http://nuxleus.com/Nuxleus/Performance", IsNullable = false)]
     public class PerformanceLogCollection {
 
         List<PerformanceLog> m_log = new List<PerformanceLog>();
@@ -28,7 +28,7 @@ namespace Nuxleus.Performance {
     }
 
     [Serializable]
-    [XmlTypeAttribute(Namespace = "http://nuxleus.com/Nuxleus/Performance/")]
+    [XmlTypeAttribute(Namespace = "http://nuxleus.com/Nuxleus/Performance")]
     public struct PerformanceLog {
 
         public void LogData(string description, double value) {
@@ -48,14 +48,13 @@ namespace Nuxleus.Performance {
         [XmlElement(ElementName = "Entry")]
         public List<Entry> Entries { get; set; }
 
-        [DataMember(Name = "UnitPrecision", IsRequired = false)]
         [XmlAttribute(AttributeName = "UnitPrecision")]
         public UnitPrecision UnitPrecision { get; set; }
 
     }
 
     [Serializable]
-    [XmlType(Namespace = "http://nuxleus.com/Nuxleus/Performance/")]
+    [XmlType(Namespace = "http://nuxleus.com/Nuxleus/Performance")]
     public struct Entry {
         public string Description { get; set; }
         public object Value { get; set; }

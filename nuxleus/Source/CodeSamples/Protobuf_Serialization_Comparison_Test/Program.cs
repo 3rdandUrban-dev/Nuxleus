@@ -44,12 +44,14 @@ namespace Nuxleus.Messaging {
                 PerformanceLogCollection = new PerformanceLogCollection(),
                 FileExtension = "dat"
             },
+            #if NET_3_0 || NET_3_5
             new SerializerPerformanceTestAgent{ 
                 TypeLabel = "DataContract", 
                 ISerializerTestAgent = new TestDataContractSerializer(), 
                 PerformanceLogCollection = new PerformanceLogCollection(),
                 FileExtension = "contract"
             },
+            #endif
             new SerializerPerformanceTestAgent{ 
                 TypeLabel = "JSON", 
                 ISerializerTestAgent = new TestJsonSerializer(), 

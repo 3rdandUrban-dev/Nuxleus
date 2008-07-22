@@ -89,6 +89,7 @@ namespace Nuxleus.Messaging {
             return (T)m_soapFormatter.Deserialize(stream);
         }
     }
+#if NET_3_0
     public struct TestDataContractSerializer : ISerializerTestAgent {
         static DataContractSerializer m_dataContractSerializer = new DataContractSerializer(typeof(Person));
         public object Serializer {
@@ -104,6 +105,7 @@ namespace Nuxleus.Messaging {
             return (T)m_dataContractSerializer.ReadObject(stream);
         }
     }
+#endif
     public struct TestProtoBufSerializer : ISerializerTestAgent {
         public object Serializer {
             get {
