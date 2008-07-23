@@ -214,8 +214,8 @@ namespace Nuxleus.Messaging {
             PhoneNumber[] newPhone = newPerson.Phone.ToArray();
 
             for (int i = 0; i < phone.Length; i++) {
-                perfLog.LogData(String.Format("PhoneNumber[{0}].Number from newPersonFrom{1}.Phone is the same as PhoneNumber[{0}].Number from person{1}.Phone", i, streamType.Name), phone[i].Number.Equals(newPhone[i].Number));
-                perfLog.LogData(String.Format("PhoneNumber[{0}].Type from newPersonFrom{1}.Phone is the same as PhoneNumber[{0}].Type from person{1}.Phone", i, streamType.Name), phone[i].Type.Equals(newPhone[i].Type));
+                perfLog.LogData(String.Format("PhoneNumber[{0}].Number from newPerson{1}From{2}.Phone is the same as PhoneNumber[{0}].Number from person.Phone", i, newPerson.Name, streamType.Name), phone[i].Number.Equals(newPhone[i].Number));
+                perfLog.LogData(String.Format("PhoneNumber[{0}].Type from newPerson{1}From{2}.Phone is the same as PhoneNumber[{0}].Type from person.Phone", i, newPerson.Name, streamType.Name), phone[i].Type.Equals(newPhone[i].Type));
             }
         }
 
