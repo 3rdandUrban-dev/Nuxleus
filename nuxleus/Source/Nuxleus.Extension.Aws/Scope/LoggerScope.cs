@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using VVMF.SOA.Common;
+using System.Security.Permissions;
 
 namespace Nuxleus.Extension.Aws.SimpleDb
 {
+
+    //[PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
     public class LoggerScope : HandlerBase
     {
         public LoggerScope() : base() { }

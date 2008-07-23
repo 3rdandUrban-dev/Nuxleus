@@ -32,13 +32,14 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
 
         #region ITask Members
 
-        public RequestType RequestType {
+        public SdbRequestType RequestType {
             get { throw new NotImplementedException(); }
         }
 
         public IRequest Request {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get {
+                return m_request;
+            }
         }
 
         public IResponse Response {
@@ -51,9 +52,14 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
             get { return m_taskID; }
         }
 
-        public IEnumerable<IAsync> Invoke<T>(Dictionary<IRequest, T> responseList) {
+        public IEnumerable<IAsync> InvokeAsync() {
             Init();
-            throw new NotImplementedException();
+            return HttpWebService<ListDomains>.CallWebService(this);
+        }
+
+        public IResponse Invoke(ITask task) {
+            Init();
+            return HttpWebService<ListDomains>.CallWebServiceSync(task);
         }
 
         #endregion

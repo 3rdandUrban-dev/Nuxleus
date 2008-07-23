@@ -19,7 +19,7 @@ using log4net;
 
 namespace Nuxleus.Extension.Aws.SimpleDb {
 
-    public enum RequestType {
+    public enum SdbRequestType {
         [Label("Query")]
         Query,
         [Label("CreateDomain")]
@@ -36,24 +36,40 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
         GetAttributes
     }
 
-    public struct SimpleDBService<TRequestType> {
+    public enum WebServiceType {
+        SOAP,
+        REST,
+        QUERY
+    }
 
-        static string AWS_PUBLIC_KEY = System.Environment.GetEnvironmentVariable("AWS_PUBLIC_KEY");
-        static string AWS_PRIVATE_KEY = System.Environment.GetEnvironmentVariable("AWS_PRIVATE_KEY");
-        static XNamespace s = "http://schemas.xmlsoap.org/soap/envelope/";
-        static XNamespace aws = "http://sdb.amazonaws.com/doc/2007-11-07/";
-        static XNamespace i = "http://www.w3.org/2001/XMLSchema-instance";
+    public struct HttpRequestSettings {
+        public WebServiceType WebServiceType { get; set; }
+        public int Timeout { get; set; }
+        public bool KeepAlive { get; set; }
+        public bool Pipelined { get; set; }
+        public string Method { get; set; }
+        public string ContentType { get; set; }
+    }
+
+    public struct HttpWebService<TRequestType> {
+
+        static readonly string AWS_PUBLIC_KEY = System.Environment.GetEnvironmentVariable("AWS_PUBLIC_KEY");
+        static readonly string AWS_PRIVATE_KEY = System.Environment.GetEnvironmentVariable("AWS_PRIVATE_KEY");
+        static readonly string AWS_URI_ENDPOINT = System.Environment.GetEnvironmentVariable("AWS_URI_ENDPOINT");
+        static readonly XNamespace s = "http://schemas.xmlsoap.org/soap/envelope/";
+        static readonly XNamespace aws = "http://sdb.amazonaws.com/doc/2007-11-07/";
+        static readonly XNamespace i = "http://www.w3.org/2001/XMLSchema-instance";
         static XmlSerializer m_xSerializer = new XmlSerializer(typeof(TRequestType));
-        static ILog m_logger = Agent<SimpleDBService<TRequestType>>.GetBasicLogger();
+        static Encoding m_encoding = new UTF8Encoding();
 
-        public static IEnumerable<IAsync> CallWebService<TResultType>(ITask task, IRequest sdbRequest, Dictionary<IRequest, TResultType> responseList) {
+        public static IResponse CallWebServiceSync(ITask task) {
 
-            Encoding encoding = new UTF8Encoding();
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://sdb.amazonaws.com/");
-            request.Timeout = 30000 /*TODO: This should be set dynamically*/;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(AWS_URI_ENDPOINT);
+            request.Timeout = 5000 /*TODO: This should be set dynamically*/;
             request.KeepAlive = true;
-            request.Pipelined = false;
+            request.Pipelined = true;
+
+            IRequest sdbRequest = task.Request;
 
             StringBuilder output = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
             using (XmlReader xreader = CreateSoapMessage(task, LabelAttribute.FromMember(sdbRequest.RequestType)).CreateReader()) {
@@ -68,9 +84,9 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
 
             string soapMessage = output.ToString();
             sdbRequest.RequestMessage = soapMessage;
-            m_logger.DebugFormat("SOAP message for task {0}: {1}", task.TaskID, soapMessage);
+            Log.LogDebug<HttpWebService<TRequestType>>("SOAP message for task {0}: {1}", task.TaskID, soapMessage);
 
-            byte[] buffer = encoding.GetBytes(soapMessage);
+            byte[] buffer = m_encoding.GetBytes(soapMessage);
 
             int contentLength = buffer.Length;
             request.ContentLength = contentLength;
@@ -81,18 +97,221 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
                 request.Headers.Add(header.Key, header.Value);
             }
 
-            m_logger.DebugFormat("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
+            Log.LogDebug<HttpWebService<TRequestType>>("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
 
             using (Stream newStream = request.GetRequestStream()) {
                 newStream.Write(buffer, 0, contentLength);
-                m_logger.DebugFormat("Sending request for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
-                Async<WebResponse> response = request.GetResponseAsync();
-                yield return response;
-                m_logger.DebugFormat("Received response for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
-                Stream stream = response.Result.GetResponseStream();
-                Async<TResultType> responseObject = stream.ReadToEndAsync<TResultType>().ExecuteAsync<TResultType>();
-                yield return responseObject;
-                responseList.Add(sdbRequest, responseObject.Result);
+                Log.LogInfo<HttpWebService<TRequestType>>("Sending request for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
+                WebResponse response = request.GetResponse();
+                Log.LogInfo<HttpWebService<TRequestType>>("Received response for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
+                using (StreamReader stream = new StreamReader(response.GetResponseStream())) {
+                    task.Response.Response = stream.ReadToEnd();
+                }
+                return task.Response;
+            }
+        }
+
+        public static IEnumerable<IAsync> CallWebService(ITask task) {
+
+            IRequest sdbRequest = task.Request;
+
+            StringBuilder output = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+            using (XmlReader xreader = CreateSoapMessage(task, LabelAttribute.FromMember(sdbRequest.RequestType)).CreateReader()) {
+                while (xreader.Read()) {
+                    if (xreader.IsStartElement()) {
+                        output.Append(xreader.ReadOuterXml());
+                    }
+                }
+            }
+
+            string soapMessage = output.ToString();
+            sdbRequest.RequestMessage = soapMessage;
+            byte[] buffer = m_encoding.GetBytes(soapMessage);
+
+            int contentLength = buffer.Length;
+
+            HttpWebRequest request = null;
+
+            try {
+                request = (HttpWebRequest)WebRequest.Create(AWS_URI_ENDPOINT);
+                request.Timeout = 10000 /*TODO: This should be set dynamically*/;
+                request.KeepAlive = true;
+                request.Pipelined = true;
+                request.ContentLength = contentLength;
+                request.Method = "POST";
+                request.ContentType = "application/soap+xml";
+            } catch (UriFormatException ufe) {
+                Log.LogInfo<HttpWebService<TRequestType>>("Caught UriFormatException on WebRequest.Create: {0}", ufe.Message);
+            }
+
+            foreach (KeyValuePair<string, string> header in sdbRequest.Headers) {
+                request.Headers.Add(header.Key, header.Value);
+            }
+
+            Stream webStream = null;
+
+            try {
+                webStream = request.GetRequestStream();
+            } catch (WebException we) {
+                Log.LogInfo<HttpWebService<TRequestType>>("Caught WebException on GetResponseAsync: {0}", we.Message);
+            }
+            if (webStream != null) {
+                using (webStream) {
+                    webStream.Write(buffer, 0, contentLength);
+                    Log.LogInfo<HttpWebService<TRequestType>>("Sending request for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
+
+                    Async<WebResponse> response = null;
+                    try {
+                        response = request.GetResponseAsync();
+                        Log.LogInfo<HttpWebService<TRequestType>>("Received response for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
+                    } catch (WebException we) {
+                        Log.LogDebug<HttpWebService<TRequestType>>("The call to GetResponseAsync for {0} failed with the error: {1}.", task.TaskID, we.Message);
+                        //TODO: Add the failed task to a retry queue.
+                    }
+                    if (response != null) {
+                        yield return response;
+                        Stream stream = null;
+                        try {
+                            stream = response.Result.GetResponseStream();
+                        } catch (NotSupportedException nse) {
+                            Log.LogDebug<HttpWebService<TRequestType>>("Caught NotSupportedException on Result.GetResponseStream(): {0}", nse.Message);
+                        } catch (WebException we) {
+                            Log.LogDebug<HttpWebService<TRequestType>>("Caught WebException on Result.GetResponseStream(): {0}", we.Message);
+                        } catch (Exception e) {
+                            Log.LogDebug<HttpWebService<TRequestType>>("Caught Exception on Result.GetResponseStream(): {0}", e.Message);
+                        }
+                        if (stream != null) {
+                            Async<String> responseObject = null;
+                            try {
+                                responseObject = stream.ReadToEndAsync<String>().ExecuteAsync<String>();
+                            } catch (Exception e) {
+                                //TODO: Add the failed task to a retry queue.
+                                Log.LogDebug<HttpWebService<TRequestType>>("The call to stream.ReadToEndAsync<String>().ExecuteAsync<String>() for {0} failed with the error: {1}.", task.TaskID, e.Message);
+                            }
+
+                            string result = String.Empty;
+
+                            if (responseObject != null) {
+                                yield return responseObject;
+                                result = responseObject.Result;
+                            }
+
+                            task.Response.Response = result;
+                        }
+                    } else {
+                        Log.LogDebug<HttpWebService<TRequestType>>("Task {0} has failed. Need to add to to new queue to be reprocessed.", task.TaskID);
+                        //TODO: Add the failed task to a retry queue.
+                    }
+                }
+            } else {
+                Log.LogDebug<HttpWebService<TRequestType>>("Task {0} has failed. Need to add to to new queue to be reprocessed.", task.TaskID);
+                //TODO: Add the failed task to a retry queue.
+            }
+        }
+
+        public static IEnumerable<IAsync> CallWebService(ITask task, HttpRequestSettings settings) {
+
+            WebServiceType type = settings.WebServiceType;
+
+            HttpWebRequest request = null;
+            try {
+                request = (HttpWebRequest)WebRequest.Create(AWS_URI_ENDPOINT);
+                request.Timeout = settings.Timeout;
+                request.KeepAlive = settings.KeepAlive;
+                request.Pipelined = settings.Pipelined;
+                request.Method = settings.Method;
+                request.ContentType = settings.ContentType;
+            } catch (UriFormatException ufe) {
+                Log.LogInfo<HttpWebService<TRequestType>>("Caught UriFormatException on WebRequest.Create: {0}", ufe.Message);
+            }
+            IRequest webServiceRequest = task.Request;
+            byte[] buffer = null;
+
+            switch (type) {
+                case WebServiceType.REST:
+                    break;
+                case WebServiceType.SOAP:
+                    StringBuilder output = new StringBuilder();
+                    //output.Append("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+                    using (XmlReader xreader = CreateSoapMessage(task, LabelAttribute.FromMember(webServiceRequest.RequestType)).CreateReader()) {
+                        while (xreader.Read()) {
+                            if (xreader.IsStartElement()) {
+                                output.Append(xreader.ReadOuterXml());
+                            }
+                        }
+                    }
+                    string soapMessage = output.ToString();
+                    webServiceRequest.RequestMessage = soapMessage;
+                    buffer = m_encoding.GetBytes(soapMessage);
+                    
+                    break;
+            }
+
+            int contentLength = buffer.Length;
+            request.ContentLength = contentLength;
+
+            foreach (KeyValuePair<string, string> header in webServiceRequest.Headers) {
+                request.Headers.Add(header.Key, header.Value);
+            }
+
+            Stream webStream = null;
+
+            try {
+                webStream = request.GetRequestStream();
+            } catch (WebException we) {
+                Log.LogInfo<HttpWebService<TRequestType>>("Caught WebException on GetResponseAsync: {0}", we.Message);
+            }
+            if (webStream != null) {
+                using (webStream) {
+                    webStream.Write(buffer, 0, contentLength);
+                    Log.LogInfo<HttpWebService<TRequestType>>("Sending request for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
+
+                    Async<WebResponse> response = null;
+                    try {
+                        response = request.GetResponseAsync();
+                        Log.LogInfo<HttpWebService<TRequestType>>("Received response for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
+                    } catch (WebException we) {
+                        Log.LogDebug<HttpWebService<TRequestType>>("The call to GetResponseAsync for {0} failed with the error: {1}.", task.TaskID, we.Message);
+                        //TODO: Add the failed task to a retry queue.
+                    }
+                    if (response != null) {
+                        yield return response;
+                        Stream stream = null;
+                        try {
+                            stream = response.Result.GetResponseStream();
+                        } catch (NotSupportedException nse) {
+                            Log.LogDebug<HttpWebService<TRequestType>>("Caught NotSupportedException on Result.GetResponseStream(): {0}", nse.Message);
+                        } catch (WebException we) {
+                            Log.LogDebug<HttpWebService<TRequestType>>("Caught WebException on Result.GetResponseStream(): {0}", we.Message);
+                        } catch (Exception e) {
+                            Log.LogDebug<HttpWebService<TRequestType>>("Caught Exception on Result.GetResponseStream(): {0}", e.Message);
+                        }
+                        if (stream != null) {
+                            Async<String> responseObject = null;
+                            try {
+                                responseObject = stream.ReadToEndAsync<String>().ExecuteAsync<String>();
+                            } catch (Exception e) {
+                                //TODO: Add the failed task to a retry queue.
+                                Log.LogDebug<HttpWebService<TRequestType>>("The call to stream.ReadToEndAsync<String>().ExecuteAsync<String>() for {0} failed with the error: {1}.", task.TaskID, e.Message);
+                            }
+
+                            string result = String.Empty;
+
+                            if (responseObject != null) {
+                                yield return responseObject;
+                                result = responseObject.Result;
+                            }
+
+                            task.Response.Response = result;
+                        }
+                    } else {
+                        Log.LogDebug<HttpWebService<TRequestType>>("Task {0} has failed. Need to add to to new queue to be reprocessed.", task.TaskID);
+                        //TODO: Add the failed task to a retry queue.
+                    }
+                }
+            } else {
+                Log.LogDebug<HttpWebService<TRequestType>>("Task {0} has failed. Need to add to to new queue to be reprocessed.", task.TaskID);
+                //TODO: Add the failed task to a retry queue.
             }
         }
 
@@ -128,19 +347,23 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
         }
 
         private static string Sign(string data, string key) {
-            Encoding encoding = new UTF8Encoding();
-            HMACSHA1 signature = new HMACSHA1(encoding.GetBytes(key));
-            return System.Convert.ToBase64String(signature.ComputeHash(
-                encoding.GetBytes(data.ToCharArray())));
+            HMACSHA1 signature = new HMACSHA1(m_encoding.GetBytes(key));
+            return System.Convert.ToBase64String(signature.ComputeHash(m_encoding.GetBytes(data.ToCharArray())));
         }
 
         private static string GetFormattedTimestamp() {
             System.DateTime dateTime = System.DateTime.Now;
             return
-                new System.DateTime(dateTime.Year, dateTime.Month, dateTime.Day,
-                             dateTime.Hour, dateTime.Minute, dateTime.Second,
-                             dateTime.Millisecond, System.DateTimeKind.Local)
-                                .ToUniversalTime().ToString("yyyy-MM-dd\\THH:mm:ss.fff\\Z", CultureInfo.InvariantCulture);
+                new System.DateTime(
+                        dateTime.Year,
+                        dateTime.Month,
+                        dateTime.Day,
+                        dateTime.Hour,
+                        dateTime.Minute,
+                        dateTime.Second,
+                        dateTime.Millisecond,
+                        System.DateTimeKind.Local
+                    ).ToUniversalTime().ToString("yyyy-MM-dd\\THH:mm:ss.fff\\Z", CultureInfo.InvariantCulture);
         }
     }
 }

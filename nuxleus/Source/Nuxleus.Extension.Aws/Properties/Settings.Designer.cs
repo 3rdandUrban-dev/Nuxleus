@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Nuxleus.Extension.AWS.Properties {
+namespace Nuxleus.Extension.Aws.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

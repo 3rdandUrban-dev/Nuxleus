@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Nuxleus.Asynchronous;
-using Nuxleus.Extension.Log;
+using Nuxleus.Extension;
 
 namespace Nuxleus.Extension.Aws.SimpleDb {
 
@@ -62,11 +62,10 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
 
         #region ITask Members
 
-        /// <summary>
-        /// gets the <c>IRequest</c> for this <c>ITask</c>
-        /// </summary>
         public IRequest Request {
-            get { throw new NotImplementedException(); }
+            get {
+                return m_request;
+            }
         }
 
         public IResponse Response {
@@ -79,9 +78,14 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
             get { return m_taskID; }
         }
 
-        public IEnumerable<IAsync> Invoke<T>(Dictionary<IRequest, T> responseList) {
+        public IEnumerable<IAsync> InvokeAsync() {
             Init();
-            throw new NotImplementedException();
+            return HttpWebService<Query>.CallWebService(this);
+        }
+
+        public IResponse Invoke(ITask task) {
+            Init();
+            return HttpWebService<Query>.CallWebServiceSync(task);
         }
 
         void Init() {

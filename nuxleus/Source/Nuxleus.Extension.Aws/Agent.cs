@@ -14,25 +14,32 @@ using System.Xml.Linq;
 using Nuxleus.Extension;
 using log4net;
 using log4net.Config;
+using System.Web;
+using Nuxleus.Extension;
+using System.Web.Configuration;
 
 namespace Nuxleus.Extension.Aws {
 
-    public struct Agent<T> {
-
-        static readonly ILog m_loggerInstance = LogManager.GetLogger(typeof(T));
+    public struct Agent {
 
         static LoggerScope logger = new LoggerScope();
         static ExceptionHandlerScope exShield = new ExceptionHandlerScope();
         static ProfilerScope profiler = new ProfilerScope();
         static int m_workers = (int.Parse(ConfigurationManager.AppSettings["WorkerQueueMultiplier"]) * System.Environment.ProcessorCount);
 
-        public static ILog GetBasicLogger() {
-            XmlConfigurator.Configure(new System.IO.FileInfo(("log4net.config")));
-            return m_loggerInstance;
-        }
-
         public void Initialize() {
             ServicePointManager.DefaultConnectionLimit = int.Parse(ConfigurationManager.AppSettings["DefaultConnectionLimit"]);
+            
+            //EnableDnsRoundRobin is not implemented on Mono
+            ServicePointManager.EnableDnsRoundRobin = true;
+
+            //ServicePointManager.Expect100Continue = true;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            HttpRuntimeSection configSection = (HttpRuntimeSection)config.GetSection("system.web/httpRuntime");
+            this.LogInfo("ServicePointManager Default Connection Limit: {0}", ServicePointManager.DefaultConnectionLimit);
+            this.LogInfo("system.web/httpRuntime/minFreeThreads: {0}", configSection.MinFreeThreads);
+            this.LogInfo("system.web/httpRuntime/minLocalRequestFreeThreads: {0}", configSection.MinLocalRequestFreeThreads);
+
             int minWorkerThreads = int.Parse(ConfigurationManager.AppSettings["MinimumWorkerThreads"]);
             int minAsyncIOThreads = int.Parse(ConfigurationManager.AppSettings["MinimumAsyncIOThreds"]);
             int maxWorkerThreads = int.Parse(ConfigurationManager.AppSettings["MaximumWorkerThreads"]);
@@ -50,7 +57,7 @@ namespace Nuxleus.Extension.Aws {
             logger.Message = "Processing SOAP requests";
 
             scope.Begin = () => {
-                using (WorkerQueue q = new WorkerQueue(m_workers)) {
+                using (IEnumerableTWorkerQueue<IAsync> q = new IEnumerableTWorkerQueue<IAsync>(m_workers)) {
                     List<string> lines = new List<string>();
                     using (StreamReader csvReader = new StreamReader(fileName, Encoding.UTF8, true)) {
                         string inputLine;
@@ -87,18 +94,17 @@ namespace Nuxleus.Extension.Aws {
         }
 
         private static IEnumerable<IAsync> InvokeOperation<T>(List<string> operation) {
-            Dictionary<IRequest, T> responseList = new Dictionary<IRequest, T>();
             IEnumerable<IAsync>[] processList = new IEnumerable<IAsync>[operation.Count];
             int i = 0;
             foreach (string inputLine in operation) {
                 string[] inputArray = inputLine.Split(new char[] { '\u0009' });
-                processList[i] = CreateTask<T>(inputArray).Invoke(responseList);
+                processList[i] = CreateTask(inputArray).InvokeAsync();
                 i++;
             }
             yield return Async.Parallel(processList);
         }
 
-        private static PutAttributes CreateTask<T>(string[] inputArray) {
+        private static PutAttributes CreateTask(string[] inputArray) {
 
             KeyValuePair<string, string>[] geoNames =
                 new KeyValuePair<System.String, System.String>[] { 

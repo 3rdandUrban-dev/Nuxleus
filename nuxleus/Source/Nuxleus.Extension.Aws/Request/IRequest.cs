@@ -7,7 +7,7 @@ using System.Xml.Linq;
 namespace Nuxleus.Extension.Aws.SimpleDb {
     public interface IRequest {
         KeyValuePair<string, string>[] Headers { get; }
-        RequestType RequestType { get; }
+        SdbRequestType RequestType { get; }
         String RequestMessage { get; set; }
     }
 }

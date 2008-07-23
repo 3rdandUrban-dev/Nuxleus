@@ -20,9 +20,9 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
             }
         }
 
-        public RequestType RequestType {
+        public SdbRequestType RequestType {
             get {
-                return RequestType.GetAttributes;
+                return SdbRequestType.GetAttributes;
             }
         }
 

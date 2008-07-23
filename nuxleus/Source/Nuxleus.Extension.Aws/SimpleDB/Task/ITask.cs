@@ -10,6 +10,7 @@ namespace Nuxleus.Extension.Aws.SimpleDb {
         Guid TaskID { get; }
         IRequest Request { get; }
         IResponse Response { get; }
-        IEnumerable<IAsync> Invoke<T>(Dictionary<IRequest, T> responseList);
+        IEnumerable<IAsync> InvokeAsync();
+        IResponse Invoke(ITask task);
     }
 }

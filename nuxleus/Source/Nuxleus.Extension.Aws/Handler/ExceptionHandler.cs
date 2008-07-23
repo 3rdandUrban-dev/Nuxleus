@@ -11,8 +11,6 @@ using System.Xml.Linq;
 namespace Nuxleus.Extension.Aws.SimpleDb {
     public class ExceptionHandlerScope : HandlerBase {
 
-        WebException we;
-
         protected override void Call() {
             try {
                 base.Call();
