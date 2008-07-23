@@ -23,10 +23,11 @@ namespace Nuxleus.Messaging.Protobuf {
         [ProtoMember(1, Name = "Number", IsRequired = true)]
         public string Number { get; set; }
         [ProtoMember(2, Name = "Type", IsRequired = true)]
-        [DefaultValue(PhoneType.HOME)]
         public PhoneType Type { get; set; }
     }
 
     [Serializable, ProtoContract]
     public enum PhoneType { MOBILE, HOME, WORK }
+
+    
 }

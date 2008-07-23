@@ -37,21 +37,21 @@ namespace Nuxleus.Messaging {
         // SerializerPerformanceTestAgent contained in the array, keeping our test code clean and simple
         // by placing placing the various objects and values associated with each SerializerPerformanceTestAgent
         // within easy reach.
-        static SerializerPerformanceTestAgent[] serializerPeformanceItem = new SerializerPerformanceTestAgent[] {
+        static SerializerPerformanceTestAgent[] serializerPeformanceTestAgent = new SerializerPerformanceTestAgent[] {
             new SerializerPerformanceTestAgent{ 
                 TypeLabel = "Binary", 
                 ISerializerTestAgent = new TestBinarySerializer(), 
                 PerformanceLogCollection = new PerformanceLogCollection(),
                 FileExtension = "dat"
             },
-            #if NET_3_0 || NET_3_5
-            new SerializerPerformanceTestAgent{ 
-                TypeLabel = "DataContract", 
-                ISerializerTestAgent = new TestDataContractSerializer(), 
-                PerformanceLogCollection = new PerformanceLogCollection(),
-                FileExtension = "contract"
-            },
-            #endif
+            //#if NET_3_0 || NET_3_5
+            //new SerializerPerformanceTestAgent{ 
+            //    TypeLabel = "DataContract", 
+            //    ISerializerTestAgent = new TestDataContractSerializer(), 
+            //    PerformanceLogCollection = new PerformanceLogCollection(),
+            //    FileExtension = "contract"
+            //},
+            //#endif
             new SerializerPerformanceTestAgent{ 
                 TypeLabel = "JSON", 
                 ISerializerTestAgent = new TestJsonSerializer(), 
@@ -95,7 +95,7 @@ namespace Nuxleus.Messaging {
             using (m_timer) {
                 m_timer.Scope = () => {
                     for (int i = 0; i < repeatTest; i++) {
-                        foreach (SerializerPerformanceTestAgent agent in serializerPeformanceItem) {
+                        foreach (SerializerPerformanceTestAgent agent in serializerPeformanceTestAgent) {
                             agent.PerformanceLogCollection.Add(RunSerializationTest(i, agent));
                         }
                     }
@@ -105,7 +105,7 @@ namespace Nuxleus.Messaging {
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(PerformanceLogCollection));
 
-            foreach (SerializerPerformanceTestAgent agent in serializerPeformanceItem) {
+            foreach (SerializerPerformanceTestAgent agent in serializerPeformanceTestAgent) {
                 string fileName = String.Format("../../Report/{0}Performance.xml", agent.TypeLabel);
                 using (FileStream stream = new FileStream(fileName, FileMode.Create)) {
                     Console.WriteLine("Generating {0}", fileName);
@@ -184,8 +184,12 @@ namespace Nuxleus.Messaging {
         }
 
         static Person CreatePerson(int fileSequence) {
+
             List<PhoneNumber> phoneNumbers = new List<PhoneNumber>();
-            phoneNumbers.Add(new PhoneNumber { Number = "555.555.5555", Type = PhoneType.HOME });
+            phoneNumbers.Add(new PhoneNumber { Number = "555.555.1234", Type = PhoneType.HOME });
+            phoneNumbers.Add(new PhoneNumber { Number = "555.555.5678", Type = PhoneType.MOBILE });
+            phoneNumbers.Add(new PhoneNumber { Number = "555.555.9012", Type = PhoneType.WORK });
+
             return new Person {
                 Name = String.Format("John Doe{0}", fileSequence),
                 Email = String.Format("jdoe{0}@example.com", fileSequence),
@@ -193,14 +197,26 @@ namespace Nuxleus.Messaging {
             };
         }
 
+
         static void WriteValuesToConsole(Person person) {
-            Console.WriteLine("person.Name: {0}, person.Email: {1}", person.Name, person.Email);
+            Console.WriteLine("person.Name: {0}, person.Email: {1}, person.ID", person.Name, person.Email, person.ID);
+            foreach (PhoneNumber phone in person.Phone) {
+                Console.WriteLine("phone.Number: {0}, phone.Type: {1}", phone.Number, phone.Type);
+            }
         }
 
         static void CompareValuesAndLogResults(Person person, Person newPerson, PerformanceLog perfLog, Type streamType) {
             perfLog.LogData(String.Format("newPersonFrom{0}.Name and person.Name are equal", streamType.Name), String.Equals(newPerson.Name, person.Name));
             perfLog.LogData(String.Format("newPersonFrom{0}.ID and person.ID are equal", streamType.Name), int.Equals(newPerson.ID, person.ID));
             perfLog.LogData(String.Format("newPersonFrom{0}.Email and person.Email are equal", streamType.Name), String.Equals(newPerson.Email, person.Email));
+
+            PhoneNumber[] phone = person.Phone.ToArray();
+            PhoneNumber[] newPhone = newPerson.Phone.ToArray();
+
+            for (int i = 0; i < phone.Length; i++) {
+                perfLog.LogData(String.Format("PhoneNumber[{0}].Number from newPersonFrom{1}.Phone is the same as PhoneNumber[{0}].Number from person{1}.Phone", i, streamType.Name), phone[i].Number.Equals(newPhone[i].Number));
+                perfLog.LogData(String.Format("PhoneNumber[{0}].Type from newPersonFrom{1}.Phone is the same as PhoneNumber[{0}].Type from person{1}.Phone", i, streamType.Name), phone[i].Type.Equals(newPhone[i].Type));
+            }
         }
 
         static bool StoreObjectToS3(string fileName, bool compressFile) {
