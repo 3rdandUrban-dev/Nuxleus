@@ -114,9 +114,9 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dependencies\sgmlreader-1.7.2\sgmlreaderdll\SgmlReaderDll71.csproj">
-      <Project>{54BFAB0E-44DC-44DA-A291-3B58B4A2D304}</Project>
-      <Name>SgmlReaderDll71</Name>
+    <ProjectReference Include="..\Dependencies\sgmlreader-1.7.2\sgmlreaderdll\SgmlReaderDll.csproj">
+      <Project>{499527FF-AE52-450F-B3E3-4AD53E1712AD}</Project>
+      <Name>SgmlReaderDll</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Agent\Nuxleus.Agent.csproj">
       <Project>{C556BDDD-DF33-4C40-AC9B-3AE90FC214DA}</Project>

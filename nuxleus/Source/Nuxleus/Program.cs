@@ -10,7 +10,8 @@ namespace Nuxleus {
     public class Program {
 
         const int NUX_SSH_REMOTE_EXECUTION = 1;
-        const int NUX_EXIT = 2;
+        const int NUX_VERSION = 2;
+        const int NUX_EXIT = 3;
 
         static void Main(string[] args) {
             while (true) {
@@ -19,6 +20,7 @@ namespace Nuxleus {
                 Console.WriteLine("Available Commands:");
                 Console.WriteLine("=============");
                 Console.WriteLine("{0})\tRemote SSH Execution", NUX_SSH_REMOTE_EXECUTION);
+                Console.WriteLine("{0})\tVersion", NUX_VERSION);
                 Console.WriteLine("{0})\tExit", NUX_EXIT);
                 Console.WriteLine();
 
@@ -38,6 +40,9 @@ namespace Nuxleus {
                 switch (i) {
                     case NUX_SSH_REMOTE_EXECUTION:
                         SshRemoteExecution.RunExample();
+                        break;
+                    case NUX_VERSION:
+                        PrintVersion();
                         break;
                     case NUX_EXIT:
                         return;

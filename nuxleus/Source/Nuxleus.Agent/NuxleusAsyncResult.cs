@@ -5,6 +5,7 @@ using System.IO;
 
 namespace Nuxleus.Agent {
 
+    [Serializable]
     public class NuxleusAsyncResult : IAsyncResult {
 
         Boolean m_isCompleted;

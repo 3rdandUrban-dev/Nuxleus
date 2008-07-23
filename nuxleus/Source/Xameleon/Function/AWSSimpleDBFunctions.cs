@@ -35,7 +35,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
             }
         }
         public void PutAttributes (string domain, string item, ArrayList attributes)
@@ -48,7 +48,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
             }
         }
 
@@ -61,7 +61,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
             }
         }
         public void DeleteAttribute (string domain, string item, string attName)
@@ -75,7 +75,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
             }
         }
         public void DeleteAttribute (string domain, string item, string attName, string attValue)
@@ -89,7 +89,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
             }
         }
         public void DeleteItem (string domain, string item)
@@ -101,7 +101,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
             }
         }
         public void DeleteItem (Item item)
@@ -112,7 +112,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
             }
         }
         public Domain GetDomain (string domainName)
@@ -123,7 +123,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
                 throw;
             }
         }
@@ -136,7 +136,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
                 return null;
             }
         }
@@ -148,7 +148,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
                 return null;
             }
         }
@@ -161,7 +161,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
                 throw;
             }
         }
@@ -173,7 +173,7 @@ namespace Xameleon.Function
             }
             catch (SdbException ex)
             {
-                handleException(ex);
+                HandleException(ex);
                 throw;
             }
         }
@@ -190,7 +190,7 @@ namespace Xameleon.Function
             Domain myDomain = GetDomain(domain);
             return myDomain.Query("[\"attName\" = \"attValue\"]");
         }
-        public static void handleException (SdbException ex)
+        public static void HandleException (SdbException ex)
         {
             System.Console.WriteLine("Failure: {0}: {1} ({2})", ex.ErrorCode, ex.Message, ex.RequestId);
         }

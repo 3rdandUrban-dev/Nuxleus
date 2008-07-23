@@ -60,7 +60,14 @@ namespace Nuxleus.Asynchronous {
         /// Asynchronously gets response from the internet using BeginGetResponse method.
         /// </summary>
         public static Async<WebResponse> GetResponseAsync(this WebRequest req) {
-            return new AsyncPrimitive<WebResponse>(req.BeginGetResponse, req.EndGetResponse, HandleWebException);
+            return new AsyncPrimitive<WebResponse>(req.BeginGetResponse, req.EndGetResponse, HandleWebException, req);
+        }
+
+        /// <summary>
+        /// Asynchronously gets response from the internet using BeginGetResponse method.
+        /// </summary>
+        public static Async<WebResponse> GetResponseAsyncFailover(this WebRequest req) {
+            return new AsyncPrimitive<WebResponse>(req.BeginGetResponse, req.EndGetResponse, HandleWebException, req);
         }
 
         /// <summary>
@@ -103,7 +110,7 @@ namespace Nuxleus.Asynchronous {
             }
 
             ms.Seek(0, SeekOrigin.Begin);
-            
+
             switch (typeof(T).FullName) {
                 case "System.Xml.XmlReader":
                     yield return new Result<XmlReader>(XmlReader.Create(ms));
@@ -132,7 +139,7 @@ namespace Nuxleus.Asynchronous {
             }
         }
 
-        public static WebResponse HandleWebException(Exception ex) {
+        public static WebResponse HandleWebException(Exception ex, WebRequest request) {
             return ((WebException)ex).Response;
         }
 
@@ -229,7 +236,8 @@ namespace Nuxleus.Asynchronous {
 
         private static IEnumerable<IAsync> ExecuteAndSet(IEnumerable<IAsync> op, bool[] flags, int index, Action<Unit> cont) {
             foreach (IAsync async in op)
-                yield return async;
+                if (async != null)
+                    yield return async;
             bool allSet = true;
             lock (flags) {
                 flags[index] = true;
@@ -280,13 +288,13 @@ namespace Nuxleus.Asynchronous {
             this.func = (cont) => begin(delegate(IAsyncResult res) { cont(end(res)); }, null);
         }
 
-        public AsyncPrimitive(Func<AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, T> end, Func<Exception, T> we) {
+        public AsyncPrimitive(Func<AsyncCallback, object, IAsyncResult> begin, Func<IAsyncResult, T> end, Func<Exception, WebRequest, T> we, WebRequest wr) {
             this.func = (cont) =>
                 begin(delegate(IAsyncResult res) {
                     try {
                         cont(end(res));
-                    } catch (Exception e) {
-                        cont(we(e));
+                    } catch (WebException e) {
+                        cont(we(e, wr));
                     }
                 }, null);
         }

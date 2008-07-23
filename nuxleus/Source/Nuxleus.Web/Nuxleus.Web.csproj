@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30428</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -239,6 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
+    <None Include="Nuxleus.Web.cd" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

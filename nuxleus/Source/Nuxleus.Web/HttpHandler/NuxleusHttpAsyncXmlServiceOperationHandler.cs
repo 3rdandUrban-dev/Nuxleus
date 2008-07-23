@@ -31,7 +31,7 @@ using Nuxleus.Web;
 using log4net;
 using Nuxleus.Agent;
 using System.Xml.XPath;
-using Nuxleus.Extension.Log;
+using Nuxleus.Extension;
 
 namespace Nuxleus.Web.HttpHandler {
 

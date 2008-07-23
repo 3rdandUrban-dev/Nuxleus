@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
+    <Compile Include="Attributes\FileExtension.cs" />
     <Compile Include="Attributes\Label.cs" />
     <Compile Include="Attributes\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
