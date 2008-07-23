@@ -28,7 +28,7 @@ namespace Nuxleus.Messaging {
         public ISerializerTestAgent ISerializerTestAgent { get; set; }
     }
 
-    public struct Program {
+    public class Program {
 
         // Create a PerformanceTimer to measure performance
         static PerformanceTimer m_timer = new PerformanceTimer();
