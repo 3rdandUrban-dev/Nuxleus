@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="openid-container" style="base list LtoR width">
+    <view:item id="center">
+      <span>You may logout from the OpenID server by clicking the following button.
+      <form action="/logout" method="post">
+      	<input type="submit" value="Logout" class="Button submit"/>
+      </form>
+      </span>
+    </view:item>
+  </view:container>
+</view:module>

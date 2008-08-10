@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/controller/atomictalk/base.xslt"?>
+<service:compile cache-result="true" xmlns:service="http://atomictalk.org/page/service">
+    <service:session xmlns:my="http://xameleon.org/my">
+        <my:page xmlns:doc="http://atomictalk.org/feed/doc" xmlns:page="http://atomictalk.org/page"
+            xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head"
+            xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice">
+            <page:config src="/page/config/config.xml">
+                <page:advice>
+                	<advice:page-title>@@domain.label@@</advice:page-title>
+                	<advice:feed>index.atom</advice:feed>
+		</page:advice>
+            </page:config>
+            <page:output>
+                <page:head src="/page/output/head/base.xml" />
+                <page:body src="/page/output/body/base.xml" />
+            </page:output>
+        </my:page>
+    </service:session>
+</service:compile>

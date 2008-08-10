@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<model:module id="img-nav" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:collection="http://atomictalk.org/page/model/collection"
+    xmlns:model="http://atomictalk.org/page/model">
+    <model:collection style="list LtoR local-links" id="local-links">
+        <collection:item style="selected">
+            <a href="#foo">Art &amp; Imagery</a>
+        </collection:item>
+        <collection:item>
+            <a href="#foo">Music News</a>
+        </collection:item>
+        <collection:item>
+            <a href="#foo">Events Map</a>
+        </collection:item>
+        <collection:item>
+            <a href="#foo">Charts Map</a>
+        </collection:item>
+        <collection:item>
+            <a href="#foo">Playlists Map</a>
+        </collection:item>
+        <collection:item>
+            <a href="#foo">"Off-the-Record" Quotes Map</a>
+        </collection:item>
+    </model:collection>
+    <model:collection id="info-module" style="width" src="/page/view/module/info/base.xml" />
+    <model:collection id="calendar-menu" style="RtoL" src="/page/view/menu/calendar/base.xml" />
+</model:module>

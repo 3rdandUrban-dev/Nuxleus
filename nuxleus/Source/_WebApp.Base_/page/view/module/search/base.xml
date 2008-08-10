@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <!-- <view:container id="content" style="base list LtoR width">
+    <view:item id="center">
+      <view:container>
+        <view:item>
+          <h1>
+            <geo:location value="|$$test:@@search.location@@IfTrue:@@search.location@@IfFalse:@@current-location.label@@$$|"/>
+          </h1>
+        </view:item>
+        <doc:local-news topic="music" location="@@search.location@@"/>
+      </view:container>
+    </view:item>
+  </view:container> -->
+</view:module>

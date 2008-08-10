@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page:head xmlns:page="http://atomictalk.org/page" xmlns:head="http://atomictalk.org/page/output/head">
+  <head:title>@@page-title@@</head:title>
+  <head:link rel="alternate" type="application/atom+xml" title="Amp.fm ON THE AIR" href="http://dev.amp.fm/ontheair.atom" />
+  <head:link rel="alternate" type="application/xml" title="Amp.fm ON THE AIR" href="http://dev.amp.fm/ontheair.atom" />
+  <head:link rel="shortcut icon" href="/images/Amp.FM.icon.png" type="image/png"/>
+  <head:include fileType="css" href="@@static@@/css/base.css" />
+  <head:include fileType="css" href="@@static@@/css/transparency.css" />
+  <head:include fileType="css" href="@@static-css-browser@@.css" />
+  <head:include fileType="css" href="@@static@@/css/base_@@base.theme@@.css" />
+</page:head>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<view:module type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view" xmlns:doc="http://atomictalk.org/feed/doc">
+  <view:container id="top-login" style="RtoL" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+    <doc:nav/>
+  </view:container>
+</view:module>

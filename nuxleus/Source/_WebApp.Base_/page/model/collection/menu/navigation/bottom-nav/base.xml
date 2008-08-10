@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<model:collection type="xhtml" style="nav-menu RtoL" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:model="http://atomictalk.org/page/model"
+  xmlns:collection="http://atomictalk.org/page/model/collection">
+  <collection:item>
+    <a href="/home/playlists/"> My Playlists </a>
+  </collection:item>
+  <collection:item>
+    <a href="/home/events/"> My Events </a>
+  </collection:item>
+  <collection:item>
+    <a href="/home/clipboard/"> My Clipboard </a>
+  </collection:item>
+  <collection:item>
+    <a href="/home/friends/"> My Friends </a>
+  </collection:item>
+  <collection:item>
+    <a href="/home/friends/"> My Feed Subscriptions </a>
+  </collection:item>
+  <collection:item>
+    <a href="/home/toolbox/"> My Toolbox </a>
+  </collection:item>
+</model:collection>
