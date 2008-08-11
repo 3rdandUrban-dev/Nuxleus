@@ -2,13 +2,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30428</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{D438C0B3-A168-40B8-BDDD-61F0939DFF35}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Enyim.Caching</RootNamespace>
-    <AssemblyName>Enyim.Caching</AssemblyName>
+    <RootNamespace>Memcached.ClientLibrary</RootNamespace>
+    <AssemblyName>Memcached.ClientLibrary</AssemblyName>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -65,11 +65,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System">
+      <HintPath>c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration">
+      <HintPath>c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web">
+      <HintPath>c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\System.XML.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationHelper.cs" />
