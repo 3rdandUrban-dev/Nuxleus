@@ -28,7 +28,7 @@
                 <include name="${source.dir}/Xameleon/Properties/**/*.resx"/>
             </resources>
             <references>         
-                <include name="${dependencies.dir}/SgmlReaderDll.dll"/>
+                <include name="${dependencies.dir}/SgmlReader8Dll.dll"/>
 		<include name="${dependencies.dir}/log4net.dll"/>
                 <include name="${build.dir}/Nuxleus.IO.dll"/>
                 <include name="${build.dir}/Nuxleus.Agent.dll"/>
