@@ -76,7 +76,7 @@
   <ItemGroup>
     <ProjectReference Include="protobuf-net\protobuf-net\protobuf-net.csproj">
       <Project>{8374E4D7-2A91-48F1-9360-09B09CF27C3F}</Project>
-      <Name>protobuf-net</Name>
+      <Name>protobuf-net %28ProtoBuf\protobuf-net\protobuf-net%29</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

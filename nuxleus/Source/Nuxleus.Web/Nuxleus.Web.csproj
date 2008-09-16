@@ -234,12 +234,11 @@
     </ProjectReference>
     <ProjectReference Include="..\Xameleon\Xameleon.csproj">
       <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
-      <Name>Xameleon</Name>
+      <Name>Xameleon %28Xameleon\Xameleon%29</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
-    <None Include="Nuxleus.Web.cd" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

@@ -1,20 +1,19 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading;
+using System.Web;
 using System.Xml;
 using System.Xml.Linq;
-using System.Net;
-using System.IO;
-using System.Text;
-using System.Security.Cryptography;
-using System.Web;
-using System.Globalization;
-using Nuxleus.Extension;
-using Nuxleus.Asynchronous;
-using System.Collections.Generic;
-using System.Threading;
-using Nuxleus.MetaData;
-using System.Collections;
 using System.Xml.Serialization;
-using log4net;
+using Nuxleus.Asynchronous;
+using Nuxleus.Extension;
+using Nuxleus.MetaData;
 
 namespace Nuxleus.WebService {
 
@@ -50,55 +49,6 @@ namespace Nuxleus.WebService {
         static readonly XNamespace i = "http://www.w3.org/2001/XMLSchema-instance";
         static XmlSerializer m_xSerializer = new XmlSerializer(typeof(TRequestType));
         static Encoding m_encoding = new UTF8Encoding();
-
-        //public static IResponse CallWebServiceSync(ITask task) {
-
-        //    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(AWS_URI_ENDPOINT);
-        //    request.Timeout = 5000 /*TODO: This should be set dynamically*/;
-        //    request.KeepAlive = true;
-        //    request.Pipelined = true;
-
-        //    IRequest sdbRequest = task.Request;
-
-        //    StringBuilder output = new StringBuilder("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-        //    using (XmlReader xreader = CreateSoapMessage(task, LabelAttribute.FromMember(sdbRequest.RequestType)).CreateReader()) {
-        //        while (xreader.Read()) {
-        //            if (xreader.IsStartElement()) {
-        //                output.Append(xreader.ReadOuterXml());
-        //            }
-        //        }
-        //    }
-
-        //    Console.WriteLine("TaskID: {0}", task.TaskID);
-
-        //    string soapMessage = output.ToString();
-        //    sdbRequest.RequestMessage = soapMessage;
-        //    Log.LogDebug<HttpWebServiceRequest<TRequestType>>("SOAP message for task {0}: {1}", task.TaskID, soapMessage);
-
-        //    byte[] buffer = m_encoding.GetBytes(soapMessage);
-
-        //    int contentLength = buffer.Length;
-        //    request.ContentLength = contentLength;
-        //    request.Method = "POST";
-        //    request.ContentType = "application/soap+xml";
-
-        //    foreach (KeyValuePair<string, string> header in sdbRequest.Headers) {
-        //        request.Headers.Add(header.Key, header.Value);
-        //    }
-
-        //    Log.LogDebug<HttpWebServiceRequest<TRequestType>>("Start Request: Thread is background: {0}, Thread ID: {1}, Thread is managed: {2}", Thread.CurrentThread.IsBackground, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
-
-        //    using (Stream newStream = request.GetRequestStream()) {
-        //        newStream.Write(buffer, 0, contentLength);
-        //        Log.LogInfo<HttpWebServiceRequest<TRequestType>>("Sending request for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
-        //        WebResponse response = request.GetResponse();
-        //        Log.LogInfo<HttpWebServiceRequest<TRequestType>>("Received response for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
-        //        using (StreamReader stream = new StreamReader(response.GetResponseStream())) {
-        //            task.Response.Response = stream.ReadToEnd();
-        //        }
-        //        return task.Response;
-        //    }
-        //}
 
         public static IEnumerable<IAsync> CallWebServiceAsync(ITask task, HttpRequestSettings settings) {
 

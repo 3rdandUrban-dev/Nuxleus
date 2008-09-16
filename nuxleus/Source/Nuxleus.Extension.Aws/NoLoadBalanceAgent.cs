@@ -1,27 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using Nuxleus.Extension.Aws.SimpleDb;
-using VVMF.SOA.Common;
-using Nuxleus.Asynchronous;
-using System.Net;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
-using System.Threading;
-using System.Runtime.Remoting;
-using System.Collections;
 using System.IO;
-using Nuxleus.Extension.Aws.SimpleDb.Model;
-using System.Xml.Linq;
-using Nuxleus.Extension;
-using System.Web;
-using Nuxleus.Extension;
-using System.Web.Configuration;
 using System.Linq;
-using System.Security.Permissions;
+using System.Net;
+using System.Threading;
+using System.Web.Configuration;
+using Nuxleus.Asynchronous;
+using Nuxleus.Extension.Aws.SimpleDb;
+using Nuxleus.Extension.Aws.SimpleDb.Model;
+using VVMF.SOA.Common;
 
 namespace Nuxleus.Extension.Aws {
 
-
-    //[PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
     public struct NoLoadBalanceAgent {
 
         static LoggerScope logger = new LoggerScope();

@@ -1,19 +1,9 @@
 ﻿using System;
-using System.IO;
-using System.Text;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Soap;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 using System.Xml.Serialization;
-using System.Diagnostics;
-using System.ComponentModel;
-using Nuxleus.Performance;
-using Nuxleus.MetaData;
 using Nuxleus.Messaging.Protobuf;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using ProtoBuf;
+using Nuxleus.Performance;
 
 
 namespace Nuxleus.Messaging {

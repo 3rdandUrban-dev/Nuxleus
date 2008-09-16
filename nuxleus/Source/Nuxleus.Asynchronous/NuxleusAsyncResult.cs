@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Threading;
-using System.Web;
+using System.IO;
 
-namespace Nuxleus.Async {
+namespace Nuxleus.Asynchronous {
 
     public class NuxleusAsyncResult : IAsyncResult {
 
         Boolean m_isCompleted;
         AsyncCallback m_cb = null;
         Object m_asyncState;
-        public HttpContext m_context = null;
+        //public HttpContext m_context = null;
 
         public NuxleusAsyncResult ( AsyncCallback cb, Object extraData ) {
             this.m_cb = cb;
@@ -33,7 +33,7 @@ namespace Nuxleus.Async {
         public WaitHandle AsyncWaitHandle {
             get {
                 throw new InvalidOperationException(
-                          "ASP.Net should never use this property");
+                          "Silverlight should never use this property");
             }
         }
 
