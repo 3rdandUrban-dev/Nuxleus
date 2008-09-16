@@ -47,7 +47,7 @@ start)
   fi
   
   echo "Starting the queue server on port $PORT against memcached servers at $MEMCACHED_SERVERS"
-  queue-server.py -s $MEMCACHED_SERVERS -p $PORT -i $PID_FILE &
+  /usr/local/bin/queue-server.py -s $MEMCACHED_SERVERS -p $PORT -i $PID_FILE &
 ;;
 
 stop)
