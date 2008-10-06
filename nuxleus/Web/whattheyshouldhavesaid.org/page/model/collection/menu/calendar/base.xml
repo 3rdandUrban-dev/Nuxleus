@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<model:collection style="list RtoL local-links" xmlns:model="http://atomictalk.org/page/model"
+  xmlns:collection="http://atomictalk.org/page/model/collection">
+  <collection:item>
+    <a href="#foo">Friday</a>
+  </collection:item>
+  <collection:item>
+    <a href="#foo">Saturday</a>
+  </collection:item>
+  <collection:item>
+    <a href="#foo">Sunday</a>
+  </collection:item>
+  <collection:item style="selected">
+    <a href="#foo">Monday November 12th, 2007</a>
+  </collection:item>
+  <collection:item>
+    <a href="#foo">Tuesday</a>
+  </collection:item>
+  <collection:item>
+    <a href="#foo">Wednesday</a>
+  </collection:item>
+  <collection:item>
+    <a href="#foo">Thursday</a>
+  </collection:item>
+  <collection:item style="single">
+    <a href="#foo">&lt;</a>
+  </collection:item>
+  <collection:item style="single">
+    <a href="#foo">></a>
+  </collection:item>
+</model:collection>

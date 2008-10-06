@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<view:module type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="top-nav" style="TtoB">
+    <view:item id="top-login-module" style="width" src="/page/view/menu/navigation/top-login.xml"/>
+    <view:item id="top-sub-nav-module" style="width" src="/page/view/menu/navigation/top-sub-nav.xml"/>
+  </view:container>
+</view:module>

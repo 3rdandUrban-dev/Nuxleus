@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<view:module class="base" id="feedmap" xmlns:view="http://atomictalk.org/page/view">
+  <div id="gmap"/>
+  <script type="text/javascript"> 
+    <![CDATA[
+    $('document').ready(function(){ 
+        geo.init();
+       geo.show_points('@@map.feed@@'); 
+    }); 
+    ]]>
+  </script>
+</view:module>
+
+
