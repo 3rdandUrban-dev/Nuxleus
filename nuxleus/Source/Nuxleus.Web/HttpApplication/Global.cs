@@ -95,7 +95,7 @@ namespace Nuxleus.Web.HttpApplication {
                             case "sdb-secret-key": {
                                     sdbSecretKey = configReader.ReadString();
                                     Environment.SetEnvironmentVariable("SDB_SECRET_KEY", sdbSecretKey);
-                                    Console.WriteLine("SDB_PRIVATE_KEY: {0}", sdbSecretKey);
+                                    Console.WriteLine("SDB_SECRET_KEY: {0}", sdbSecretKey);
                                     break;
                                 }
                             default:
