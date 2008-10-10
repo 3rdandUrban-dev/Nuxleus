@@ -85,7 +85,7 @@
 										<div class="suggestion-form">
 											<form id="suggestion-form-mccain" method="POST" action="/service/atompub/add" target="_top">
 												<div>
-													<h2 class="what rebublican">What should have Senator McCain said?</h2>
+													<h2 class="what republican">What should have Senator McCain said?</h2>
 												</div>
 												<div>
 													<p class="policy">We encourage you to share your thoughts in regards to how you feel Senator McCain should have responded to this question. However, comments that are obscene, overly personal, racist or otherwise inappropriate will be removed.</p>
