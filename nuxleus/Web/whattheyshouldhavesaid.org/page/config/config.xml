@@ -27,10 +27,10 @@
     <advice:space>&#160;</advice:space>
     <advice:dot>.</advice:dot>
     <advice:colon>:</advice:colon>
-    <advice:domain-name>4lessig</advice:domain-name>
+    <advice:domain-name>whattheyshouldhavesaid</advice:domain-name>
     <advice:root>org</advice:root>
     <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
-    <advice:domain.label>4Lessig.org</advice:domain.label>
+    <advice:domain.label>whattheyshouldhavesaid.org</advice:domain.label>
     <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
     <advice:service-gateway>@@base-uri@@/service</advice:service-gateway>
     <advice:openid-gateway>/gatekeeper/login?</advice:openid-gateway>
