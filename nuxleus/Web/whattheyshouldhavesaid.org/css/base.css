@@ -89,7 +89,13 @@ text-align: right;
 }
 .base {
 }
-
+#main-container {
+    width:95%;
+    margin:0 auto;
+}
+#title {
+    text-align:center;
+}
 #top-bar {
 width: 100%;
 height: auto;

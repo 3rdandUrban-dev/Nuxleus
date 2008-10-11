@@ -8,4 +8,9 @@
   <head:include fileType="css" href="@@static@@/css/transparency.css" />
   <head:include fileType="css" href="@@static-css-browser@@.css" />
   <head:include fileType="css" href="@@static@@/css/base_@@base.theme@@.css" />
+	<head:include fileType="javascript" src="@@static@@/js/jquery.js" />
+  <head:include fileType="javascript" src="@@static@@/js/jquery.history.js" />
+  <head:include fileType="javascript" src="@@static@@/js/sarissa.js" />
+  <head:include fileType="javascript" src="@@static@@/js/sarissa_ieemu_xpath.js" />
+  <head:include fileType="javascript" src="@@static@@/js/jquery.xslTransform.js" />
 </page:head>

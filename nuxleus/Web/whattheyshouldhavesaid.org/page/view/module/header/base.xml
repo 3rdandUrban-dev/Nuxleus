@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <view:module xmlns:view="http://atomictalk.org/page/view" xmlns:pledge="http://4lessig.org/pledge" class="base" id="header">
 	<view:container>
-		<div id="main-container" style="width:95%;margin:0 auto;">
+		<div id="main-container">
 			<div id="top-bar">
-				<div id="title" style="text-align:center">
+				<div id="title">
 					<h1 class="title">WhatTheyShouldHaveSaid.org</h1>
 				</div>
 				<div>
