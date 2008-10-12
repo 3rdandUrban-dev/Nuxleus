@@ -22,7 +22,6 @@
   xmlns:html="http://www.w3.org/1999/xhtml">
   <page:advice>
     <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
-    <advice:date>February 16th, 2008</advice:date>
     <advice:protocol>http://</advice:protocol>
     <advice:space>&#160;</advice:space>
     <advice:dot>.</advice:dot>

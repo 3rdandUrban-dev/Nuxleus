@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<view:module xmlns:view="http://atomictalk.org/page/view" xmlns:pledge="http://4lessig.org/pledge" class="base" id="header">
+<view:module xmlns:view="http://atomictalk.org/page/view" class="base" id="header">
 	<view:container>
 		<div id="main-container">
 			<div id="top-bar">
@@ -28,38 +28,29 @@
 					<tr style="width:100%;">
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-right:1px solid #999;">
 							<h2 class="participant candidate democrat">Senator Obama</h2>
-							<table>
-								<tr>
-									<td>
-										<p class="participant-comment">Well, Allen, thank you very much for the question. I want to first obviously thank Belmont University. Tom, thank you, and to all of you who are participating tonight and those of you who sent e-mail questions in. I think everybody knows now we are in the worst financial crisis since the Great Depression. And a lot of you, I think, are worried about your jobs, your pensions, your retirement accounts, your ability to send your child or your grandchild to college. And I believe this is a final verdict on the failed economic policies of the last eight years, strongly promoted by President Bush and supported by Senator McCain, that essentially said that we should strip away regulations, consumer protections, let the market run wild, and prosperity would rain down on all of us. It hasn't worked out that way, and so now we've got to take some decisive action. Now step one was a rescue package that was passed last week. We've got to make sure that works properly, and that means strong oversight, making sure that investors -- taxpayers are getting their money back and treated as investors.</p>
-										<p class="participant-comment">It means that we are cracking down on CEOs and making sure that they're not getting bonuses or golden parachutes as a consequence of this package. And in fact, we just found out that AIG, a company that got a bailout, just a week after they got help went on a $400,000 junket. And I tell you what, the Treasury should demand that money back and those executives should be fired. But that's only step one. The middle class need a rescue package, and that means tax cuts for the middle class. It means help for homeowners so that they can stay in their homes. It means that we are helping state and local governments set up road projects and bridge projects that keep people in their jobs. And then long term we've got to fix our health care system, we've got to fix our energy system that is putting such an enormous burden on families. You need somebody working for you. And you've got to have somebody in Washington who's thinking about the middle class and not just those who can afford to hire lobbyists.</p>
-									</td>
-								</tr>
-								<tr style="width:100%;">
-									<td style="width:49%;text-align:center;vertical-align:top;padding:10px;margin:0 auto">
-										<div class="suggestion-form">
-											<form id="suggestion-form-mccain" method="POST" action="/service/atompub/add" target="_top">
-												<div>
-													<h2 class="what democrat">What should have Senator Obama said?</h2>
-												</div>
-												<div>
-													<p class="policy">We encourage you to share your thoughts in regards to how you feel Senator Obama should have responded to this question. However, comments that are obscene, overly personal, racist or otherwise inappropriate will be removed.</p>
-												</div>
-												<div class="suggestion-container">
-													<textarea class="suggestion" name="description" id="what-should-mccain-have-said">
-					            </textarea>
-												</div>
-												<div class="submit-container">
-													<input class="submit-suggestion democrat" type="submit" name="submit" id="submitMySuggestionForMcCain" value="Submit"/>
-												</div>
-											</form>
-										</div>
-									</td>
-								</tr>
-							</table>
+							<p class="participant-comment">Well, Allen, thank you very much for the question. I want to first obviously thank Belmont University. Tom, thank you, and to all of you who are participating tonight and those of you who sent e-mail questions in. I think everybody knows now we are in the worst financial crisis since the Great Depression. And a lot of you, I think, are worried about your jobs, your pensions, your retirement accounts, your ability to send your child or your grandchild to college. And I believe this is a final verdict on the failed economic policies of the last eight years, strongly promoted by President Bush and supported by Senator McCain, that essentially said that we should strip away regulations, consumer protections, let the market run wild, and prosperity would rain down on all of us. It hasn't worked out that way, and so now we've got to take some decisive action. Now step one was a rescue package that was passed last week. We've got to make sure that works properly, and that means strong oversight, making sure that investors -- taxpayers are getting their money back and treated as investors.</p>
+							<p class="participant-comment">It means that we are cracking down on CEOs and making sure that they're not getting bonuses or golden parachutes as a consequence of this package. And in fact, we just found out that AIG, a company that got a bailout, just a week after they got help went on a $400,000 junket. And I tell you what, the Treasury should demand that money back and those executives should be fired. But that's only step one. The middle class need a rescue package, and that means tax cuts for the middle class. It means help for homeowners so that they can stay in their homes. It means that we are helping state and local governments set up road projects and bridge projects that keep people in their jobs. And then long term we've got to fix our health care system, we've got to fix our energy system that is putting such an enormous burden on families. You need somebody working for you. And you've got to have somebody in Washington who's thinking about the middle class and not just those who can afford to hire lobbyists.</p>
 						</td>
 						<td style="width:.5%;"/>
-						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;"/>
+						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;">
+							<div class="suggestion-form">
+								<form id="suggestion-form-obama" method="POST" action="/service/atompub/add" target="_top">
+									<div>
+										<h2 class="what democrat">What should have Senator Obama said?</h2>
+									</div>
+									<div>
+										<p class="policy">We encourage you to share your thoughts in regards to how you feel Senator Obama should have responded to this question. However, comments that are obscene, overly personal, racist or otherwise inappropriate will be removed.</p>
+									</div>
+									<div class="suggestion-container">
+										<textarea class="suggestion" name="description" id="what-should-mccain-have-said">
+		            </textarea>
+									</div>
+									<div class="submit-container">
+										<input class="submit-suggestion democrat" type="submit" name="submit" id="submitMySuggestionForMcCain" value="Submit"/>
+									</div>
+								</form>
+							</div>
+						</td>
 					</tr>
 				</table>
 				<div class="question">
@@ -68,40 +59,31 @@
 				</div>
 				<table style="width:100%;margin:0 auto;">
 					<tr style="width:100%;">
-						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-right:1px solid #999;"/>
+						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-right:1px solid #999;">
+							<div class="suggestion-form">
+								<form id="suggestion-form-mccain" method="POST" action="/service/atompub/add" target="_top">
+									<div>
+										<h2 class="what republican">What should have Senator McCain said?</h2>
+									</div>
+									<div>
+										<p class="policy">We encourage you to share your thoughts in regards to how you feel Senator McCain should have responded to this question. However, comments that are obscene, overly personal, racist or otherwise inappropriate will be removed.</p>
+									</div>
+									<div class="suggestion-container">
+										<textarea class="suggestion" name="description" id="what-should-mccain-have-said">
+		            </textarea>
+									</div>
+									<div class="submit-container">
+										<input class="submit-suggestion republican" type="submit" name="submit" id="submitMySuggestionForMcCain" value="Submit"/>
+									</div>
+								</form>
+							</div>
+						</td>
 						<td style="width:.5%;"/>
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;">
 							<h2 class="participant candidate republican">Senator McCain</h2>
-							<table>
-								<tr/>
-								<tr>
-									<td>
+
 										<p class="participant-comment">Well, thank you, Tom. Thank you, Belmont University. And Senator Obama, it's good to be with you at a town hall meeting.</p>
 										<p class="participant-comment">We've got to stop sending $700 billion a year to countries that don't want us very -- like us very much. We have to keep Americans' taxes low, all Americans' taxes low. Let's not raise taxes on anybody today. We obviously have to stop the spending spree that's going on in Washington. Do you know that we've laid a $10 trillion debt on these young Americans who are, who are here with us tonight? Five hundred billion of it we owe to China. We've got to have a package of reforms, and it's got to lead to reform, prosperity and peace in the world. And I think that this problem has become so severe, as you know, that we're going to have to do something about home values. You know that home values of retirees continues to, to decline. And people are no longer able to afford their mortgage payments. As president of the United States, Allen, I would order the secretary of the Treasury to immediately buy up the bad home-loan mortgages in America and renegotiate at the new value of those homes, at the diminished value of those homes, and let people make those -- be able to make those payments and stay in their homes. Is it expensive? Yes. But we all know, my friends, until we stabilize home values in America, we're never going to start turning around and creating jobs and fixing our economy. And we've got to give some trust and confidence back to America. I know how to do that, my friends. And it's my proposal. It's not Senator Obama's proposal; it's not President Bush's proposal. But I know how to get America working again, restore our economy and take care of working Americans. Thank you.</p>
-									</td>
-								</tr>
-								<tr>
-									<td style="width:49%;text-align:center;vertical-align:top;padding:10px;margin:0 auto">
-										<div class="suggestion-form">
-											<form id="suggestion-form-mccain" method="POST" action="/service/atompub/add" target="_top">
-												<div>
-													<h2 class="what republican">What should have Senator McCain said?</h2>
-												</div>
-												<div>
-													<p class="policy">We encourage you to share your thoughts in regards to how you feel Senator McCain should have responded to this question. However, comments that are obscene, overly personal, racist or otherwise inappropriate will be removed.</p>
-												</div>
-												<div class="suggestion-container">
-													<textarea class="suggestion" name="description" id="what-should-mccain-have-said">
-					            </textarea>
-												</div>
-												<div class="submit-container">
-													<input class="submit-suggestion republican" type="submit" name="submit" id="submitMySuggestionForMcCain" value="Submit"/>
-												</div>
-											</form>
-										</div>
-									</td>
-								</tr>
-							</table>
 						</td>
 					</tr>
 				</table>
