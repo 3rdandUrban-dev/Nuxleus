@@ -6,7 +6,7 @@
   Contributors to this code base include, 
   Russ Miles (mailto:aohacker@gmail.com; http://www.russmiles.com/)
 -->
-<xsl:stylesheet version="1.0" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:pledge="http://4lessig.org/pledge"
+<xsl:stylesheet version="1.0" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:render="http://atomictalk.org/render"
     xmlns:debug="http://nuxleus.com/session/debug" xmlns:request="http://nuxleus.com/session/request"
     xmlns:response="http://nuxleus.com/message/response" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo"
     xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc"
@@ -119,6 +119,18 @@
         <xsl:apply-templates select="$navigation//response:path/*" mode="navigation" />
     </xsl:template>
 
+		<xsl:template match="render:xslt">
+			<div id="{@id}">
+				<script type="text/javascript">
+				$('#<xsl:value-of select="@id"/>').getTransform('/page/controller/<xsl:value-of select="@controller"/>.xsl', '<xsl:value-of select="@model"/>/atom.xml', 
+					{ params:{showModal:'1'},
+        		callback: function(){
+	        	}
+      		});
+				</script>
+			</div>
+		</xsl:template>
+
     <xsl:template match="response:*" mode="navigation">
         <li>
             <a href="{.}">
@@ -139,14 +151,6 @@
         <meta>
             <xsl:apply-templates select="@*" />
         </meta>
-    </xsl:template>
-
-    <xsl:template match="pledge:count[@type = 'total']">
-        <xsl:value-of select="$request-total" />
-    </xsl:template>
-
-    <xsl:template match="pledge:count[@type = 'district']">
-        <xsl:value-of select="$request-district" />
     </xsl:template>
 
     <xsl:template match="head:include[@fileType = 'css']">

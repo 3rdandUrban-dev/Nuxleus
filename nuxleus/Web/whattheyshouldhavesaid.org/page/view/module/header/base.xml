@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<view:module xmlns:view="http://atomictalk.org/page/view" class="base" id="header">
+<view:module xmlns:view="http://atomictalk.org/page/view" xmlns:render="http://atomictalk.org/render" xmlns:doc="http://atomictalk.org/feed/doc" class="base" id="header">
 	<view:container>
 		<div id="main-container">
 			<div id="top-bar">
@@ -13,13 +13,13 @@
 								<a class="navigation" href="#previous" rel="">&#xAB; Previous Question</a>
 							</td>
 							<td style="width:50%;text-align:right;vertical-align:top;">
-								<a class="navigation" href="#next" rel="/question/1:main">Next Question &#xBB;</a>
+								<a class="navigation" href="#next" rel="/question/1:answer">Next Question &#xBB;</a>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<div class="question">
-					<h2 class="participant moderator">Lead-in Question From Mr. Brokaw</h2>
+					<h2 class="participant moderator">Lead-in Question, Moderated by Mr. Brokaw</h2>
 					<p class="moderator-comment">Q. With the economy on the downturn, and retired and older citizens and workers losing their incomes, what's the fastest, most positive solution to bail these people out of the economic ruin?</p>
 				</div>
 			</div>
@@ -28,15 +28,7 @@
 					<tr style="width:100%;">
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-right:1px solid #999;">
 							<h2 class="participant candidate democrat">Senator Obama</h2>
-							<div id="obama-1">
-							<script type="text/javascript">
-								$('#obama-1').getTransform('/page/controller/main.xsl', '/question/1/atom.xml', 
-									{ params:{showModal:'1'},
-				        		callback: function(){
-					        	}
-				      		});
-							</script>
-						</div>
+							<render:xslt id="obama-1" controller="answer" model="/question/1"/>
 						</td>
 						<td style="width:.5%;"/>
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;">
