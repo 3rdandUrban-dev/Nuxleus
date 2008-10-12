@@ -18,7 +18,6 @@
 	$(document).ready(function(){
 		//$.history.init(pageload);
 		
-		
 		$("a[@class='navigation']").click(function(){
       var hash = this.href;
       var current = hash.replace(/^.*#/, '');

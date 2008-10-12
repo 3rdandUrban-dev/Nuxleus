@@ -125,6 +125,15 @@ padding: 20px 0 0;
 width: 100%;
 margin: 10px auto;
 }
+h1.title a {
+color: #000;
+background-color:#FFF;
+padding:2px 5px;
+}
+h1.title a:hover {
+color: #000;
+background-color:#EEE;
+}
 h2.participant {
 font-size: x-large;
 

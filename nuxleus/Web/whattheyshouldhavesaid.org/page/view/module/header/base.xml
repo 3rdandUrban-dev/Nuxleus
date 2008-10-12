@@ -4,7 +4,9 @@
 		<div id="main-container">
 			<div id="top-bar">
 				<div id="title">
-					<h1 class="title">WhatTheyShouldHaveSaid.org</h1>
+					<h1 class="title">
+						<a href="/">WhatTheyShouldHaveSaid.org</a>
+					</h1>
 				</div>
 				<div>
 					<table style="width:100%;">
@@ -28,7 +30,7 @@
 					<tr style="width:100%;">
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-right:1px solid #999;">
 							<h2 class="participant candidate democrat">Senator Obama</h2>
-							<render:xslt id="obama-1" controller="answer" model="/question/1"/>
+							<render:xslt id="obama-1" controller="answer" model="/question/1/obama.1"/>
 						</td>
 						<td style="width:.5%;"/>
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;">
@@ -81,8 +83,7 @@
 						<td style="width:.5%;"/>
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;">
 							<h2 class="participant candidate republican">Senator McCain</h2>
-							<p class="participant-comment">Well, thank you, Tom. Thank you, Belmont University. And Senator Obama, it's good to be with you at a town hall meeting.</p>
-							<p class="participant-comment">We've got to stop sending $700 billion a year to countries that don't want us very -- like us very much. We have to keep Americans' taxes low, all Americans' taxes low. Let's not raise taxes on anybody today. We obviously have to stop the spending spree that's going on in Washington. Do you know that we've laid a $10 trillion debt on these young Americans who are, who are here with us tonight? Five hundred billion of it we owe to China. We've got to have a package of reforms, and it's got to lead to reform, prosperity and peace in the world. And I think that this problem has become so severe, as you know, that we're going to have to do something about home values. You know that home values of retirees continues to, to decline. And people are no longer able to afford their mortgage payments. As president of the United States, Allen, I would order the secretary of the Treasury to immediately buy up the bad home-loan mortgages in America and renegotiate at the new value of those homes, at the diminished value of those homes, and let people make those -- be able to make those payments and stay in their homes. Is it expensive? Yes. But we all know, my friends, until we stabilize home values in America, we're never going to start turning around and creating jobs and fixing our economy. And we've got to give some trust and confidence back to America. I know how to do that, my friends. And it's my proposal. It's not Senator Obama's proposal; it's not President Bush's proposal. But I know how to get America working again, restore our economy and take care of working Americans. Thank you.</p>
+							<render:xslt id="mccain-1" controller="answer" model="/question/1/mccain.1"/>
 						</td>
 					</tr>
 				</table>

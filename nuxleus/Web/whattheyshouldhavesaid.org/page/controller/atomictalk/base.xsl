@@ -122,7 +122,7 @@
 		<xsl:template match="render:xslt">
 			<div id="{@id}">
 				<script type="text/javascript">
-				$('#<xsl:value-of select="@id"/>').getTransform('/page/controller/<xsl:value-of select="@controller"/>.xsl', '<xsl:value-of select="@model"/>/atom.xml', 
+				$('#<xsl:value-of select="@id"/>').getTransform('/page/controller/<xsl:value-of select="@controller"/>.xsl', '<xsl:value-of select="@model"/>.xml', 
 					{ params:{showModal:'1'},
         		callback: function(){
 	        	}
