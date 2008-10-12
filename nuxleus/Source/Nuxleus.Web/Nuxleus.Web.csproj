@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30428</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -86,6 +86,9 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\ApplicationServer.cs">
@@ -139,6 +142,7 @@
     <Compile Include="Agent.cs" />
     <Compile Include="HttpApplication\FileMessageQueue_Global.cs" />
     <Compile Include="HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncSuggestionFormHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationStatusHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncJobStatusRequestHandler.cs" />
