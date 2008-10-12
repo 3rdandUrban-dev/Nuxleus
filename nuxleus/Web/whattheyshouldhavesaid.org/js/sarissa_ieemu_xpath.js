@@ -3,7 +3,7 @@
  * About
  * ====================================================================
  * Sarissa cross browser XML library - IE XPath Emulation 
- * @version 0.9.9
+ * @version 0.9.9.4
  * @author: Copyright 2004-2007 Emmanouil Batsis, mailto: mbatsis at users full stop sourceforge full stop net
  *
  * This script emulates Internet Explorer's selectNodes and selectSingleNode
@@ -34,41 +34,49 @@
  */
 if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath", "3.0")){
     /**
-    * <p>SarissaNodeList behaves as a NodeList but is only used as a result to <code>selectNodes</code>,
-    * so it also has some properties IEs proprietery object features.</p>
-    * @private
-    * @constructor
-    * @argument i the (initial) list size
-    */
+     * <p>SarissaNodeList behaves as a NodeList but is only used as a result to <code>selectNodes</code>,
+     * so it also has some properties IEs proprietery object features.</p>
+     * @private
+     * @constructor
+     * @argument i the (initial) list size
+     */
     SarissaNodeList = function (i){
         this.length = i;
     };
-    /** <p>Set an Array as the prototype object</p> */
-    SarissaNodeList.prototype = new Array(0);
-    /** <p>Inherit the Array constructor </p> */
+    /** 
+     * <p>Set an Array as the prototype object</p> 
+     * @private
+     */
+    SarissaNodeList.prototype = [];
+    /** 
+     * <p>Inherit the Array constructor </p> 
+     * @private
+     */
     SarissaNodeList.prototype.constructor = Array;
     /**
-    * <p>Returns the node at the specified index or null if the given index
-    * is greater than the list size or less than zero </p>
-    * <p><b>Note</b> that in ECMAScript you can also use the square-bracket
-    * array notation instead of calling <code>item</code>
-    * @argument i the index of the member to return
-    * @returns the member corresponding to the given index
-    */
+     * <p>Returns the node at the specified index or null if the given index
+     * is greater than the list size or less than zero </p>
+     * <p><b>Note</b> that in ECMAScript you can also use the square-bracket
+     * array notation instead of calling <code>item</code>
+     * @argument i the index of the member to return
+     * @returns the member corresponding to the given index
+     * @private
+     */
     SarissaNodeList.prototype.item = function(i) {
         return (i < 0 || i >= this.length)?null:this[i];
     };
     /**
-    * <p>Emulate IE's expr property
-    * (Here the SarissaNodeList object is given as the result of selectNodes).</p>
-    * @returns the XPath expression passed to selectNodes that resulted in
-    *          this SarissaNodeList
-    */
+     * <p>Emulate IE's expr property
+     * (Here the SarissaNodeList object is given as the result of selectNodes).</p>
+     * @returns the XPath expression passed to selectNodes that resulted in
+     *          this SarissaNodeList
+     * @private
+     */
     SarissaNodeList.prototype.expr = "";
     /** dummy, used to accept IE's stuff without throwing errors */
     if(window.XMLDocument && (!XMLDocument.prototype.setProperty)){
         XMLDocument.prototype.setProperty  = function(x,y){};
-    };
+    }
     /**
     * <p>Programmatically control namespace URI/prefix mappings for XPath
     * queries.</p>
@@ -79,7 +87,7 @@ if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath
     * are looking for elements in the null namespace. If you need to look
     * for nodes in the default namespace, you need to map a prefix to it
     * first like:</p>
-    * <pre>Sarissa.setXpathNamespaces(oDoc, &quot;xmlns:myprefix=&amp;aposhttp://mynsURI&amp;apos&quot;);</pre>
+    * <pre>Sarissa.setXpathNamespaces(oDoc, "xmlns:myprefix'http://mynsURI'");</pre>
     * <p><b>Note 1 </b>: Use this method only if the source document features
     * a default namespace (without a prefix), otherwise just use IE's setProperty
     * (moz will rezolve non-default namespaces by itself). You will need to map that
@@ -96,8 +104,8 @@ if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath
     Sarissa.setXpathNamespaces = function(oDoc, sNsSet) {
         //oDoc._sarissa_setXpathNamespaces(sNsSet);
         oDoc._sarissa_useCustomResolver = true;
-        var namespaces = sNsSet.indexOf(" ")>-1?sNsSet.split(" "):new Array(sNsSet);
-        oDoc._sarissa_xpathNamespaces = new Array(namespaces.length);
+        var namespaces = sNsSet.indexOf(" ")>-1?sNsSet.split(" "):[sNsSet];
+        oDoc._sarissa_xpathNamespaces = [];
         for(var i=0;i < namespaces.length;i++){
             var ns = namespaces[i];
             var colonPos = ns.indexOf(":");
@@ -108,8 +116,8 @@ if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath
                 oDoc._sarissa_xpathNamespaces[prefix] = uri;
             }else{
                 throw "Bad format on namespace declaration(s) given";
-            };
-        };
+            }
+        }
     };
     /**
     * @private Flag to control whether a custom namespace resolver should
@@ -117,7 +125,7 @@ if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath
     */
     XMLDocument.prototype._sarissa_useCustomResolver = false;
     /** @private */
-    XMLDocument.prototype._sarissa_xpathNamespaces = new Array();
+    XMLDocument.prototype._sarissa_xpathNamespaces = [];
     /**
     * <p>Extends the XMLDocument to emulate IE's selectNodes.</p>
     * @argument sExpr the XPath expression to use
@@ -128,13 +136,21 @@ if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath
     */
     XMLDocument.prototype.selectNodes = function(sExpr, contextNode, returnSingle){
         var nsDoc = this;
-        var nsresolver = this._sarissa_useCustomResolver
-        ? function(prefix){
-            var s = nsDoc._sarissa_xpathNamespaces[prefix];
-            if(s)return s;
-            else throw "No namespace URI found for prefix: '" + prefix+"'";
-            }
-        : this.createNSResolver(this.documentElement);
+        var nsresolver;
+        if(this._sarissa_useCustomResolver){
+            nsresolver = function(prefix){
+                var s = nsDoc._sarissa_xpathNamespaces[prefix];
+                if(s){
+                    return s;
+                }
+                else {
+                    throw "No namespace URI found for prefix: '" + prefix+"'";
+                }
+            };
+        }
+        else{
+            nsresolver = this.createNSResolver(this.documentElement);
+        }
         var result = null;
         if(!returnSingle){
             var oResult = this.evaluate(sExpr,
@@ -143,16 +159,17 @@ if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath
                 XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
             var nodeList = new SarissaNodeList(oResult.snapshotLength);
             nodeList.expr = sExpr;
-            for(var i=0;i<nodeList.length;i++)
+            for(var i=0;i<nodeList.length;i++){
                 nodeList[i] = oResult.snapshotItem(i);
+            }
             result = nodeList;
         }
         else {
-            result = oResult = this.evaluate(sExpr,
+            result = this.evaluate(sExpr,
                 (contextNode?contextNode:this),
                 nsresolver,
                 XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-        };
+        }
         return result;      
     };
     /**
@@ -165,10 +182,12 @@ if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath
     */
     Element.prototype.selectNodes = function(sExpr){
         var doc = this.ownerDocument;
-        if(doc.selectNodes)
+        if(doc.selectNodes){
             return doc.selectNodes(sExpr, this);
-        else
+        }
+        else{
             throw "Method selectNodes is only supported by XML Elements";
+        }
     };
     /**
     * <p>Extends the XMLDocument to emulate IE's selectSingleNode.</p>
@@ -190,10 +209,12 @@ if(Sarissa._SARISSA_HAS_DOM_FEATURE && document.implementation.hasFeature("XPath
     */
     Element.prototype.selectSingleNode = function(sExpr){
         var doc = this.ownerDocument;
-        if(doc.selectSingleNode)
+        if(doc.selectSingleNode){
             return doc.selectSingleNode(sExpr, this);
-        else
+        }
+        else{
             throw "Method selectNodes is only supported by XML Elements";
+        }
     };
     Sarissa.IS_ENABLED_SELECT_NODES = true;
-};
+}
