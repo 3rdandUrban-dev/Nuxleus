@@ -7,16 +7,17 @@
 	<head:include fileType="css" href="@@static@@/css/base.css"/>
 	<head:include fileType="css" href="@@static@@/css/transparency.css"/>
 	<head:include fileType="css" href="@@static-css-browser@@.css"/>
-	<head:include fileType="javascript" src="@@static@@/js/jquery.js"/>
+	<head:include fileType="javascript" src="@@static@@/js/jquery-1.2.6.min.js"/>
 	<head:include fileType="javascript" src="@@static@@/js/jquery.history.js"/>
-	<head:include fileType="javascript" src="@@static@@/js/sarissa.js"/>
-	<head:include fileType="javascript" src="@@static@@/js/sarissa_ieemu_xpath.js"/>
+	<head:include fileType="javascript" src="@@static@@/js/sarissa-compressed.js"/>
+	<head:include fileType="javascript" src="@@static@@/js/sarissa_ieemu_xpath-compressed.js"/>
 	<head:include fileType="javascript" src="@@static@@/js/jquery.xslTransform.js"/>
 	<head:include fileType="javascript"><![CDATA[
 		
 		
 	$(document).ready(function(){
 		//$.history.init(pageload);
+		
 		
 		$("a[@class='navigation']").click(function(){
       var hash = this.href;

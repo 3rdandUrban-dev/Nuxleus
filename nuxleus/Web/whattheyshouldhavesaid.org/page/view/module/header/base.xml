@@ -28,8 +28,15 @@
 					<tr style="width:100%;">
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-right:1px solid #999;">
 							<h2 class="participant candidate democrat">Senator Obama</h2>
-							<p class="participant-comment">Well, Allen, thank you very much for the question. I want to first obviously thank Belmont University. Tom, thank you, and to all of you who are participating tonight and those of you who sent e-mail questions in. I think everybody knows now we are in the worst financial crisis since the Great Depression. And a lot of you, I think, are worried about your jobs, your pensions, your retirement accounts, your ability to send your child or your grandchild to college. And I believe this is a final verdict on the failed economic policies of the last eight years, strongly promoted by President Bush and supported by Senator McCain, that essentially said that we should strip away regulations, consumer protections, let the market run wild, and prosperity would rain down on all of us. It hasn't worked out that way, and so now we've got to take some decisive action. Now step one was a rescue package that was passed last week. We've got to make sure that works properly, and that means strong oversight, making sure that investors -- taxpayers are getting their money back and treated as investors.</p>
-							<p class="participant-comment">It means that we are cracking down on CEOs and making sure that they're not getting bonuses or golden parachutes as a consequence of this package. And in fact, we just found out that AIG, a company that got a bailout, just a week after they got help went on a $400,000 junket. And I tell you what, the Treasury should demand that money back and those executives should be fired. But that's only step one. The middle class need a rescue package, and that means tax cuts for the middle class. It means help for homeowners so that they can stay in their homes. It means that we are helping state and local governments set up road projects and bridge projects that keep people in their jobs. And then long term we've got to fix our health care system, we've got to fix our energy system that is putting such an enormous burden on families. You need somebody working for you. And you've got to have somebody in Washington who's thinking about the middle class and not just those who can afford to hire lobbyists.</p>
+							<div id="obama-1">
+							<script type="text/javascript">
+								$('#obama-1').getTransform('/page/controller/main.xsl', '/question/1/atom.xml', 
+									{ params:{showModal:'1'},
+				        		callback: function(){
+					        	}
+				      		});
+							</script>
+						</div>
 						</td>
 						<td style="width:.5%;"/>
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;">
