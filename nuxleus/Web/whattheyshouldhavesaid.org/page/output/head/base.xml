@@ -15,21 +15,21 @@
 	<head:include fileType="javascript"><![CDATA[
 	$(document).ready(function(){
 		var options = { 
-	        target:        '#output2',   // target element(s) to be updated with server response 
+	        target:        '#test',   // target element(s) to be updated with server response 
 	        beforeSubmit:  showRequest,  // pre-submit callback 
 	        success:       showResponse,  // post-submit callback 
 
 	        // other available options: 
 	        //url:       url         // override for form's 'action' attribute 
 	        //type:      type        // 'get' or 'post', override for form's 'method' attribute 
-	        //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
+	        dataType:  'xml',        // 'xml', 'script', or 'json' (expected server response type) 
 	        clearForm: true,        // clear all form fields after successful submit 
 	        resetForm: true        // reset the form after successful submit 
 
 	        // $.ajax options can be used here too, for example: 
 	        //timeout:   3000 
 	    };
-			$("form[@class='ajaxForm-temp']").submit(function() { 
+			$("form[@class='ajaxForm']").submit(function() { 
 	        // inside event callbacks 'this' is the DOM element so we first 
 	        // wrap it in a jQuery object and then invoke ajaxSubmit 
 	        $(this).ajaxSubmit(options); 
@@ -84,6 +84,44 @@
 
 	    alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
 	        '\n\nThe output div should have already been updated with the responseText.'); 
+	
+					$('#test').getTransform('/page/controller/answer.xsl', responseText, 
+						{ params:{showModal:'1'},
+		        	callback: function(){
+		        	}
+		      });
+	
+					var serializer = new XMLSerializer();
+
+					//var xmlString = serializer.serializeToString(responseText);
+					transformDoc('/page/controller/answer.xsl', responseText);
+			
+     return false;
+	}
+	
+	var serializer = new XMLSerializer();
+	
+	function transformDoc(xsltSrc, xmlDoc){
+	var processor = new XSLTProcessor();
+  var req = new XMLHttpRequest();
+    req.open('GET', xsltSrc, true);
+    req.overrideMimeType('text/xml');
+    req.onreadystatechange = function (aEvt) {
+      if (req.readyState == 4) {
+         if(req.status == 200) {
+
+          	processor.importStylesheet(req.responseXML);
+
+						var transformResult = processor.transformToDocument(xmlDoc);
+						var xmlSerializer = new XMLSerializer();
+						// serialize
+						var markup = xmlSerializer.serializeToString(transformResult);
+						alert(markup);
+						return false;
+						}
+						}
+					};
+  				req.send(null);
 	}
 ]]></head:include>
 </page:head>

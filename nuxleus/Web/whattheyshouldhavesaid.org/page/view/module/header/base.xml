@@ -35,12 +35,7 @@
 						<td style="width:.5%;"/>
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;">
 							<div class="suggestion-form">
-								<form class="ajaxForm" id="suggestion-form-obama" name="suggestion-form-obama" method="POST" action="/service/atompub/add" target="_top">
-									<input type="hidden" name="slug" value="/question/1/obama"/>
-									<input type="hidden" name="name" value="/question/1/obama"/>
-									<input type="hidden" name="base_uri" value="http://whattheyshouldhavesaid.org"/>
-									<input type="hidden" name="base_path" value="/question/1/obama"/>
-									<input type="hidden" name="title" value="/question/1/obama/foo"/>
+								<form class="ajaxForm" id="suggestion-form-obama" method="POST" action="/service/atompub/add/"  target="_top">
 									<div>
 										<h2 class="what democrat">What should have Senator Obama said?</h2>
 									</div>
@@ -50,6 +45,11 @@
 									<div class="suggestion-container">
 										<textarea class="suggestion" name="suggestion" id="what-should-obama-have-said">
 		            </textarea>
+								<input type="hidden" name="slug" value="/question/1/obama"/>
+								<input type="hidden" name="name" value="/question/1/obama"/>
+								<input type="hidden" name="base_uri" value="http://whattheyshouldhavesaid.org"/>
+								<input type="hidden" name="base_path" value="/question/1/obama"/>
+								<input type="hidden" name="title" value="/question/1/obama/foo"/>
 									</div>
 									<div class="submit-container">
 										<input class="submit-suggestion democrat" type="submit" name="submit" id="submitMySuggestionForMcCain" value="Submit"/>
