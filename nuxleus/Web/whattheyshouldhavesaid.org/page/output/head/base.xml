@@ -29,7 +29,7 @@
 	        // $.ajax options can be used here too, for example: 
 	        //timeout:   3000 
 	    };
-			$("form[@class='ajaxForm']").submit(function() { 
+			$("form[@class='ajaxForm-temp']").submit(function() { 
 	        // inside event callbacks 'this' is the DOM element so we first 
 	        // wrap it in a jQuery object and then invoke ajaxSubmit 
 	        $(this).ajaxSubmit(options); 
