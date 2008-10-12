@@ -12,11 +12,7 @@
 	<head:include fileType="javascript" src="@@static@@/js/sarissa_ieemu_xpath-compressed.js"/>
 	<head:include fileType="javascript" src="@@static@@/js/jquery.xslTransform.js"/>
 	<head:include fileType="javascript"><![CDATA[
-		
-		
 	$(document).ready(function(){
-		//$.history.init(pageload);
-		
 		$("a[@class='navigation']").click(function(){
       var hash = this.href;
       var current = hash.replace(/^.*#/, '');
