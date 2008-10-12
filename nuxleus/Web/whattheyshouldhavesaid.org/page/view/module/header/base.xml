@@ -35,7 +35,7 @@
 						<td style="width:.5%;"/>
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;">
 							<div class="suggestion-form">
-								<form id="suggestion-form-obama" method="POST" action="/service/atompub/add" target="_top">
+								<form class="ajaxForm" id="suggestion-form-obama" name="suggestion-form-obama" method="POST" action="/service/atompub/add" target="_top">
 									<div>
 										<h2 class="what democrat">What should have Senator Obama said?</h2>
 									</div>
@@ -43,7 +43,7 @@
 										<p class="policy">We encourage you to share your thoughts in regards to how you feel Senator Obama should have responded to this question. However, comments that are obscene, overly personal, racist or otherwise inappropriate will be removed.</p>
 									</div>
 									<div class="suggestion-container">
-										<textarea class="suggestion" name="description" id="what-should-mccain-have-said">
+										<textarea class="suggestion" name="suggestion" id="what-should-obama-have-said">
 		            </textarea>
 									</div>
 									<div class="submit-container">
@@ -63,7 +63,7 @@
 					<tr style="width:100%;">
 						<td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-right:1px solid #999;">
 							<div class="suggestion-form">
-								<form id="suggestion-form-mccain" method="POST" action="/service/atompub/add" target="_top">
+								<form class="ajaxForm" id="suggestion-form-mccain" name="suggestion-form-mccain" method="POST" action="/service/atompub/add" target="_top">
 									<div>
 										<h2 class="what republican">What should have Senator McCain said?</h2>
 									</div>
@@ -71,7 +71,7 @@
 										<p class="policy">We encourage you to share your thoughts in regards to how you feel Senator McCain should have responded to this question. However, comments that are obscene, overly personal, racist or otherwise inappropriate will be removed.</p>
 									</div>
 									<div class="suggestion-container">
-										<textarea class="suggestion" name="description" id="what-should-mccain-have-said">
+										<textarea class="suggestion" name="suggestion" id="what-should-mccain-have-said">
 		            </textarea>
 									</div>
 									<div class="submit-container">

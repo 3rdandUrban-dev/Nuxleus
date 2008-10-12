@@ -4,7 +4,7 @@
 		<xsl:apply-templates select="/atom:feed/atom:entry/atom:content"/>
 	</xsl:template>
 	<xsl:template match="atom:content">
-		<xsl:copy-of select="*"/>
+			<xsl:copy-of select="*"/>
 	</xsl:template>
 	<xsl:template match="text()"/>
 </xsl:stylesheet>
