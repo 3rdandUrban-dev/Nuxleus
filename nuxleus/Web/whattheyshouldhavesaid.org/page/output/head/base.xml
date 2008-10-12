@@ -62,7 +62,7 @@
 	    // DOM element for the form do this: 
 	    // var formElement = jqForm[0]; 
 
-	    alert('About to submit: \n\n' + queryString); 
+	    //alert('About to submit: \n\n' + queryString); 
 
 	    // here we could return false to prevent the form from being submitted; 
 	    // returning anything other than false will allow the form submit to continue 
@@ -82,8 +82,8 @@
 	    // property set to 'json' then the first argument to the success callback 
 	    // is the json data object returned by the server 
 
-	    alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
-	        '\n\nThe output div should have already been updated with the responseText.'); 
+	    //alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
+	    //    '\n\nThe output div should have already been updated with the responseText.'); 
 	
 					$('#test').getTransform('/page/controller/answer.xsl', responseText, 
 						{ params:{showModal:'1'},
@@ -91,10 +91,10 @@
 		        	}
 		      });
 	
-					var serializer = new XMLSerializer();
+					//var serializer = new XMLSerializer();
 
 					//var xmlString = serializer.serializeToString(responseText);
-					transformDoc('/page/controller/answer.xsl', responseText);
+					//transformDoc('/page/controller/answer.xsl', responseText);
 			
      return false;
 	}
