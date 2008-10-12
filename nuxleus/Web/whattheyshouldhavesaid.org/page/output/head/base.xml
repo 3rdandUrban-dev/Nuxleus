@@ -16,9 +16,19 @@
 		
 		
 	$(document).ready(function(){
-		$.history.init(pageload);
-	}
-
-
+		//$.history.init(pageload);
+		
+		$("a[@class='navigation']").click(function(){
+      var hash = this.href;
+      var current = hash.replace(/^.*#/, '');
+			var data_controller = this.rel.split(':');
+      $('#test').getTransform('/page/controller/'.concat(data_controller[1]).concat('.xsl'), data_controller[0].concat('/index.atom'), 
+				{ params:{showModal:'1'},
+        	callback: function(){
+        	}
+      });
+      return false;
+    });
+	});
 ]]></head:include>
 </page:head>
