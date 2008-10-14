@@ -16,6 +16,9 @@ using Nuxleus.Atom;
 using System.Xml.Serialization;
 using System.Xml;
 using System.Xml.Linq;
+using System.Linq;
+using System.Xml.Xsl;
+using Sgml;
 
 namespace Nuxleus.Web.HttpHandler {
 
@@ -26,6 +29,8 @@ namespace Nuxleus.Web.HttpHandler {
         static object m_lock = new object();
         static XmlSerializer m_xSerializer = new XmlSerializer(typeof(Entry));
         static Encoding m_encoding = new UTF8Encoding();
+        static XNamespace h = "http://www.w3.org/1999/xhtml";
+        static XslCompiledTransform cleanseHtml = new XslCompiledTransform();
 
         AmazonSimpleDBClient m_amazonSimpleDBClient;
         PutAttributes m_putAttributes;
@@ -40,10 +45,21 @@ namespace Nuxleus.Web.HttpHandler {
             get { return false; }
         }
 
+        static NuxleusHttpAsyncSuggestionFormHandler() {
+
+            // In the back of my mind there's this nagging thought "There's a reason /NOT/ to use a static
+            // constructor to pre-load the XslCompiledTransform", but for life of me I can't remember why that might be.
+            // TODO: Talk to somebody who knows better and verify if there are reasons why this might be a bad idea.
+            cleanseHtml.Load(String.Format("{0}/service/transform/cleansehtml.xsl", Environment.CurrentDirectory));
+        }
+
         public IAsyncResult BeginProcessRequest(HttpContext context, AsyncCallback cb, object extraData) {
 
             HttpRequest request = context.Request;
             m_response = context.Response;
+            m_response.ContentType = "text/xml";
+
+            //cleanseHtml.Load(String.Format("{0}/service/transform/cleansehtml.xsl", Environment.CurrentDirectory));
 
             NameValueCollection form = request.Form;
 
@@ -53,15 +69,48 @@ namespace Nuxleus.Web.HttpHandler {
             string base_path = form.Get("base_path");
             string title = form.Get("title");
             string ip = context.Request.UserHostAddress.ToString();
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(String.Format("<p xmlns=\"http://www.w3.org/1999/xhtml\">{0}</p>", form.Get("suggestion")));
 
-            XHTMLBody body = new XHTMLBody { Elements = new XmlNode[] { doc.DocumentElement } };
+            var paragraphs = from line in ReadParagraphsFromContent(HttpUtility.HtmlDecode(form.Get("suggestion")))
+                             select GetXmlFromHtmlString(line);
+
+            XDocument doc = new XDocument(
+                new XElement(h + "div",
+                    GetXmlFromHtmlString(HttpUtility.HtmlDecode(form.Get("suggestion")))
+                )
+            );
+
+            using (XmlReader reader = doc.CreateReader()) {
+                while (reader.Read()) {
+                    Console.WriteLine(reader.ReadOuterXml());
+                }
+            }
+
+            // TODO: I need to rewrite Sylvain's Nuxleus.Atom.Feed and Nuxleus.Atom.Entry classes to 
+            // use System.Xml.Linq instead of System.Xml. For now we'll revert back to XmlDocument
+            // which we can then extract the DocumentElement to gain access to the underlying XmlNode
+            // which is required by the XHTMLBody class.  Of course, I'm not really sure it will save
+            // all that much as far as resources are concerned which is why I'm being lazy about it ;-)
+            XmlDocument nDoc = new XmlDocument();
+            using (MemoryStream stream = new MemoryStream()) {
+                using (XmlWriter writer = new XmlTextWriter(stream, Encoding.UTF8)) {
+                    cleanseHtml.Transform(doc.CreateReader(), null, writer);
+                    stream.Seek(0, 0);
+                    nDoc.Load(stream);
+                }
+            }
+
+            //XmlNodeList nodeList = nDoc.GetElementsByTagName("p", "http://www.w3.org/1999/xhtml");
+            //XmlNode[] elements = new XmlNode[nodeList.Count];
+
+            //int i = 0;
+            //foreach (XmlNode node in nodeList) {
+            //    elements[i] = node;
+            //    i++;
+            //}
+
+            XHTMLBody body = new XHTMLBody { Elements = new XmlNode[] { nDoc.DocumentElement } };
             Content content = new Content { Div = body, Type = "xhtml" };
-
             Entry entry = new Entry { Content = content, Published = DateTime.Now, Updated = DateTime.Now, Title = title };
-
-            Console.WriteLine("Published: {0}, Updated: {1}, Title: {2}, Content: {3}", entry.Published, entry.Updated, entry.Title, entry.Content.Text);
 
             m_amazonSimpleDBClient = (AmazonSimpleDBClient)context.Application["simpledbclient"];
             m_pledgeCount = (PledgeCount)context.Application["pledgeCount"];
@@ -80,39 +129,39 @@ namespace Nuxleus.Web.HttpHandler {
             //    );
 
             //pledgeQueue.Enqueue(title);
-            
-            byte[] output;
+
+
             using (MemoryStream stream = new MemoryStream()) {
+
+                m_xSerializer.Serialize(stream, (Entry)entry);
                 stream.Seek(0, 0);
-                using (XmlWriter writer = new XmlTextWriter(stream, Encoding.Unicode)) {
-                    m_xSerializer.Serialize(writer, (Entry)entry);
-                    output = stream.GetBuffer();
-                    char[] chars = m_encoding.GetChars(Encoding.Convert(Encoding.Unicode, Encoding.UTF8, output, 0, output.Length));
-                    
 
-                    using (TextWriter sWriter = Console.Out) {
-                        sWriter.Write(chars, 0, chars.Length);
-                    }
+                byte[] output = stream.GetBuffer();
+                char[] chars = m_encoding.GetChars(output, 0, output.Length);
+
+                using (XmlReader reader = XmlReader.Create(stream)) {
                     using (StreamWriter sWriter = new StreamWriter(m_response.OutputStream, Encoding.UTF8)) {
-                        sWriter.Write(chars, 0, chars.Length);
-                    }
-
-                    lock (m_lock) {
-                        string basePath = request.MapPath(String.Format("~{0}", base_path));
-                        Console.WriteLine(basePath);
-                        if (!Directory.Exists(basePath)) {
-                            Directory.CreateDirectory(basePath);
+                        while (reader.Read()) {
+                            sWriter.Write(reader.ReadOuterXml());
                         }
-                        m_file = new FileStream(String.Format("{0}/{1}.xml", basePath, Guid.NewGuid()), FileMode.Create, FileAccess.Write, FileShare.ReadWrite, 1024, true);
-                        m_file.Seek(0, 0);
-                        return m_file.BeginWrite(output, 0, output.Length, cb, extraData);
                     }
+                }
+
+                lock (m_lock) {
+                    string basePath = request.MapPath(String.Format("~{0}", base_path));
+                    Console.WriteLine(basePath);
+                    if (!Directory.Exists(basePath)) {
+                        Directory.CreateDirectory(basePath);
+                    }
+                    m_file = new FileStream(String.Format("{0}/{1}.xml", basePath, Guid.NewGuid()), FileMode.Create, FileAccess.Write, FileShare.ReadWrite, 1024, true);
+                    m_file.Seek(0, 0);
+                    return m_file.BeginWrite(output, 0, output.Length, cb, extraData);
                 }
             }
         }
 
         public void EndProcessRequest(IAsyncResult result) {
-            m_response.ContentType = "text/xml";
+
             m_file.Close();
             m_response.OutputStream.Close();
             //m_amazonSimpleDBClient.PutAttributes(m_putAttributes);
@@ -125,5 +174,51 @@ namespace Nuxleus.Web.HttpHandler {
             replacableAttribute.Replace = replacable;
             return replacableAttribute;
         }
+
+        public static IEnumerable<string> ReadParagraphsFromContent(string content) {
+            using (StringReader reader = new StringReader(content)) {
+                while (true) {
+                    string s = reader.ReadLine();
+                    if (s == null)
+                        break;
+                    if (s.Length == 0)
+                        continue;
+                    yield return String.Format("{0}<br/>", s);
+                }
+            }
+        }
+
+        public static XNode MarkupWithHtmlParagraph(string paragraph) {
+            return new XElement(h + "p",
+                    GetXmlFromHtmlString(paragraph)
+                );
+        }
+
+        public static XNode GetXmlFromHtmlString(String html) {
+            using (SgmlReader sr = new SgmlReader()) {
+                string htmlWrapper = String.Format("<div xmlns=\"http://www.w3.org/1999/xhtml\">{0}</div>", html);
+                try {
+                    sr.InputStream = new StringReader(htmlWrapper);
+                    return XElement.Parse(sr.ReadOuterXml(), LoadOptions.None);
+                } catch {
+                    return new XText(HttpUtility.HtmlEncode(html));
+                }
+            }
+        }
+
+        //string ConvertLinebreaks(String content) {
+        //    StringBuilder builder = new StringBuilder();
+        //    using (StringReader reader = new StringReader(content)) {
+        //        while (true) {
+        //            string s = reader.ReadLine();
+        //            if (s == null)
+        //                break;
+        //            if (s.Length == 0)
+        //                continue;
+        //            builder.Append(String.Format("{0}<br/>", s));
+        //        }
+        //    }
+        //    return builder.ToString();
+        //}
     }
 }

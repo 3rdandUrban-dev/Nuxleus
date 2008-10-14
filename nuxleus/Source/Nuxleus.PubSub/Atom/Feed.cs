@@ -14,73 +14,73 @@ using System.Xml;
 using System.Xml.Serialization;
 
 namespace Nuxleus.Atom {
-    [XmlRootAttribute("feed", Namespace="http://www.w3.org/2005/Atom", IsNullable=false)]
+    [XmlRootAttribute("feed", Namespace = "http://www.w3.org/2005/Atom", IsNullable = false)]
     public class Feed {
         private static XmlSerializerNamespaces xmlns = null;
 
-        [XmlAttribute("lang", Form=System.Xml.Schema.XmlSchemaForm.Qualified,
-              Namespace="http://www.w3.org/XML/1998/namespace")]
+        [XmlAttribute("lang", Form = System.Xml.Schema.XmlSchemaForm.Qualified,
+              Namespace = "http://www.w3.org/XML/1998/namespace")]
         public string Lang;
 
-        [XmlAttribute("base", Form=System.Xml.Schema.XmlSchemaForm.Qualified,
-              Namespace="http://www.w3.org/XML/1998/namespace")]
+        [XmlAttribute("base", Form = System.Xml.Schema.XmlSchemaForm.Qualified,
+              Namespace = "http://www.w3.org/XML/1998/namespace")]
         public string Base;
 
-        [XmlElement(ElementName="id", IsNullable=false)]
+        [XmlElement(ElementName = "id", IsNullable = false)]
         public string Id;
 
-        [XmlElement(ElementName="title", IsNullable=false)]
+        [XmlElement(ElementName = "title", IsNullable = false)]
         public string Title;
 
-        [XmlElement(ElementName="subtitle")]
+        [XmlElement(ElementName = "subtitle")]
         public string Subtitle;
 
-        [XmlElement(ElementName="icon")]
+        [XmlElement(ElementName = "icon")]
         public string Icon;
 
-        [XmlElement(ElementName="logo")]
+        [XmlElement(ElementName = "logo")]
         public string Logo;
 
-        [XmlElement(Type=typeof(DateTime), ElementName="updated")]
+        [XmlElement(Type = typeof(DateTime), ElementName = "updated")]
         public DateTime Updated = DateTime.UtcNow;
 
-        [XmlElement(Type=typeof(Author), ElementName="author")]
+        [XmlElement(Type = typeof(Author), ElementName = "author")]
         public Author[] Authors;
 
-        [XmlElement(Type=typeof(Contributor), ElementName="contributor")]
+        [XmlElement(Type = typeof(Contributor), ElementName = "contributor")]
         public Contributor[] Contributors;
 
-        [XmlElement(Type=typeof(Category), ElementName="category")]
+        [XmlElement(Type = typeof(Category), ElementName = "category")]
         public Category[] Categories;
 
-        [XmlElement(Type=typeof(Link), ElementName="link")]
+        [XmlElement(Type = typeof(Link), ElementName = "link")]
         public Link[] Links;
 
-        [XmlElement(Type=typeof(Nuxleus.Atom.Generator), ElementName="generator")]
+        [XmlElement(Type = typeof(Nuxleus.Atom.Generator), ElementName = "generator")]
         public Nuxleus.Atom.Generator Generator;
 
-        [XmlElement(Type=typeof(Nuxleus.Atom.Rights), ElementName="rights")]
+        [XmlElement(Type = typeof(Nuxleus.Atom.Rights), ElementName = "rights")]
         public Nuxleus.Atom.Rights Rights;
 
-        [XmlElement(Type=typeof(Entry), ElementName="entry")]
+        [XmlElement(Type = typeof(Entry), ElementName = "entry")]
         public Entry[] Entries;
 
-        [XmlElement(Type=typeof(Collection), ElementName="collection",
-             Namespace="http://www.w3.org/2007/app")]
+        [XmlElement(Type = typeof(Collection), ElementName = "collection",
+             Namespace = "http://www.w3.org/2007/app")]
         public Nuxleus.Atom.Collection Collection;
 
-        public static Feed Parse ( string xml ) {
+        public static Feed Parse(string xml) {
             XmlReader reader = XmlReader.Create(new StringReader(xml));
             XmlSerializer serializer = new XmlSerializer(typeof(Feed));
             return (Feed)serializer.Deserialize(reader);
         }
 
-        public static Feed Parse ( Stream stream ) {
+        public static Feed Parse(Stream stream) {
             XmlSerializer serializer = new XmlSerializer(typeof(Feed));
             return (Feed)serializer.Deserialize(stream);
         }
 
-        public override string ToString () {
+        public override string ToString() {
             if (xmlns == null) {
                 xmlns = new XmlSerializerNamespaces();
                 xmlns.Add(String.Empty, "http://www.w3.org/2005/Atom");
