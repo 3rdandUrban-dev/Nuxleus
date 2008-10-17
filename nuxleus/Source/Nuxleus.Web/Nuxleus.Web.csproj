@@ -146,6 +146,9 @@
     <Compile Include="Agent.cs" />
     <Compile Include="HttpApplication\FileMessageQueue_Global.cs" />
     <Compile Include="HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncAtomEntryRatingServiceHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncGenerateAtomServiceDocHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncCreateNewAtomEntryHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncSuggestionFormHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationStatusHandler.cs" />

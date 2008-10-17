@@ -62,13 +62,16 @@ namespace Nuxleus.Web.HttpHandler {
             //cleanseHtml.Load(String.Format("{0}/service/transform/cleansehtml.xsl", Environment.CurrentDirectory));
 
             NameValueCollection form = request.Form;
+            NameValueCollection headers = request.Headers;
 
             string name = form.Get("name");
-            string slug = form.Get("slug");
+            string slug = headers.Get("slug");
             string base_uri = form.Get("base_uri");
             string base_path = form.Get("base_path");
             string title = form.Get("title");
             string ip = context.Request.UserHostAddress.ToString();
+
+            Console.WriteLine("Slug: {0}", slug);
 
             var paragraphs = from line in ReadParagraphsFromContent(HttpUtility.HtmlDecode(form.Get("suggestion")))
                              select GetXmlFromHtmlString(line);
@@ -88,8 +91,9 @@ namespace Nuxleus.Web.HttpHandler {
             // TODO: I need to rewrite Sylvain's Nuxleus.Atom.Feed and Nuxleus.Atom.Entry classes to 
             // use System.Xml.Linq instead of System.Xml. For now we'll revert back to XmlDocument
             // which we can then extract the DocumentElement to gain access to the underlying XmlNode
-            // which is required by the XHTMLBody class.  Of course, I'm not really sure it will save
-            // all that much as far as resources are concerned which is why I'm being lazy about it ;-)
+            // which is required by the XHTMLBody class.  Of course, I'm not really 100% sure switching 
+            // to System.Xml.Linq sure it will save all that much as far as resources are concerned 
+            // which is why I'm being lazy about it ;-)
             XmlDocument nDoc = new XmlDocument();
             using (MemoryStream stream = new MemoryStream()) {
                 using (XmlWriter writer = new XmlTextWriter(stream, Encoding.UTF8)) {
