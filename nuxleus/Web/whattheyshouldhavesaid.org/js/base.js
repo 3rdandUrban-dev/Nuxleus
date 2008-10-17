@@ -26,6 +26,14 @@ $(document) .ready(function ()
         return false;
     });
     
+    $("a[@class='vote']").click(function () {
+        $.post("/service/pub/vote/", { id: this.href, vote: this.rel },
+            function (data) {
+                alert("Data recieved: " + data);
+            });
+          return false;
+    });
+    
     $("a[@class='navigation']") .click(function ()
     {
         var hash = this .href;

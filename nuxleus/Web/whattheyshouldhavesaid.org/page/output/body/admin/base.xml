@@ -4,8 +4,8 @@
         <layout:view xmlns:layout="http://atomictalk.org/page/view/layout">
             <view:module>
                 <view:container>
-                    <view:module id="header" src="/page/view/module/header/base.xml" />
-                    <view:module id="body" src="/page/view/module/body/answers.xml" />
+                    <view:module id="header" src="/page/view/module/header/admin/base.xml" />
+                    <view:module id="body" src="/page/view/module/body/admin/base.xml" />
                 </view:container>
             </view:module>
         </layout:view>
