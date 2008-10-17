@@ -623,7 +623,8 @@
                 <include name="System.Core.dll"/>
                 <include name="System.ServiceProcess.dll"/>
                 <include name="${dependencies.dir}/log4net.dll"/>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
+                <include name="System.Xml.Linq.dll"/>
+		<include name="${build.dir}/Nuxleus.Agent.dll"/>
                 <include name="${build.dir}/Nuxleus.Extension.dll"/>
                 <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
                 <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
@@ -648,6 +649,7 @@
                 <include name="${dependencies.dir}/Saxon.Api.dll"/>
                 <include name="${dependencies.dir}/saxon9.dll"/>
                 <include name="${dependencies.dir}/agsXMPP.dll"/>
+		<include name="${dependencies.dir}/SgmlReader8Dll.dll"/>
             </references>
         </csc>
     </target>
