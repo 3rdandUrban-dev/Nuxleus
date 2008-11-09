@@ -26,12 +26,17 @@ $(document) .ready(function ()
         return false;
     });
     
-    $("a[@class='vote']").click(function () {
-        $.post("/service/pub/vote/", { id: this.href, vote: this.rel },
-            function (data) {
-                alert("Data recieved: " + data);
-            });
-          return false;
+    $("a[@class='vote']") .click(function ()
+    {
+        $.post("/service/pub/vote/",
+        {
+            id: this .href, vote: this .rel
+        },
+        function (data)
+        {
+            alert("Data recieved: " + data);
+        });
+        return false;
     });
     
     $("a[@class='navigation']") .click(function ()
@@ -41,9 +46,9 @@ $(document) .ready(function ()
         var data_controller = this .rel.split(':');
         $('#test') .getTransform('/page/controller/' .concat(data_controller[1]) .concat('.xsl'), data_controller[0].concat('/atom.xml'),
         {
-params:
+            params:
             {
-showModal: '1'
+                showModal: '1'
             },
             callback: function ()
             {
@@ -63,9 +68,9 @@ function showResponse(responseXml, statusText)
 {
     $('#test') .getTransform('/page/controller/answer.xsl', responseXml,
     {
-params:
+        params:
         {
-showModal: '1'
+            showModal: '1'
         },
         callback: function ()
         {

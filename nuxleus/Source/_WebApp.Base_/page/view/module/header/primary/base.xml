@@ -1,10 +1,33 @@
 <?xml version="1.0"?>
-<view:module type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
-  <view:container id="top-nav" style="TtoB">
-    <view:item id="top-login-module" style="width" src="/page/view/menu/navigation/top-login.xml"/>
-    <view:item id="top-sub-nav-module" style="width" src="/page/view/menu/navigation/top-sub-nav.xml"/>
-    <view:item id="get-plugged-in" style="width" src="/page/view/module/get-plugged-in.xml"/>
-    <view:item id="search-module" style="width" src="/page/view/search/base.xml"/>
-    <view:item id="quick-view-module" style="width" src="/page/view/quick-view/base.xml"/>
-  </view:container>
+<view:module xmlns:view="http://atomictalk.org/page/view" xmlns:render="http://atomictalk.org/render"
+    xmlns:doc="http://atomictalk.org/feed/doc" class="base" id="header">
+    <view:container>
+        <div id="main-container">
+            <div style="position:absolute;top:5px;right:5px;">
+                <form id="openid-login" method="get" action="http://whattheyshouldhavesaid.org/gatekeeper/login?" target="_top">
+                    <input id="openid-text" type="text" name="uname" class="single-input" maxlength="255" value="Authenticate w/ OpenID"
+                        onclick="if (this.value == 'Authenticate w/ OpenID') this.value = ''; return true;"
+                        onblur="if (this.value == '') this.value = 'Authenticate w/ OpenID'; return true;" />
+                    <input type="hidden" name="return_location" value="http://whattheyshouldhavesaid.org/?" />
+                    <button class="Button submit">
+                        <span class="ButtonLabel">Submit</span>
+                    </button>
+                </form>
+            </div>
+            <div id="top-bar">
+                <div id="title">
+                    <h1 class="title">
+                        <a href="/">WhatTheyShouldHaveSaid.org</a>
+                    </h1>
+                </div>
+                <div class="question">
+                    <h2 class="participant moderator">Debates</h2>
+                </div>
+                <div>
+                    <render:xslt id="debates" controller="list" model="/debate/index" />
+                </div>
+            </div>
+            <div id="bottom-bar"> </div>
+        </div>
+    </view:container>
 </view:module>

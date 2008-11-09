@@ -1,124 +1,253 @@
-body {
-margin:0px;
-padding:0px;
-color:#333;
-background:#FFF;
-font-size: small;
-font-family: Georgia, Verdana, Geneva, Arial, sans-serif; 
+body
+{
+    margin: 0px;
+    padding: 0px;
+    color: #333;
+    background: #FFF;
+    font-size: 100%;
+    font-family: Georgia, Verdana, Geneva, Arial, sans-serif;
+    border-top: 3px solid #000;
 }
-h1 {
-color:#990000;
-font-size:36pt; 
+img
+{
+    border: 0;
 }
-img {
-border:0;
+a
+{
+    color: #CC3300;
+    background-color: inherit;
+    text-decoration: none;
 }
-a {
-color:#CC3300;
-background-color:inherit;
-text-decoration:none;
+a:hover
+{
+    color: #333;
+    text-decoration: underline;
+    background-color: #CCC;
 }
-a:hover {
-color:#333;
-text-decoration:underline;
-background-color:#FFFFEE;
+a.navigation
+{
+    color:#330066;
+    padding:2px 5px;
 }
-ul {
-display:block;
-list-style-type:none;
-margin:0px;
-padding:0px;
-width:100%;
+a.navigation:hover
+{
+    background-color:#330066;
+    color:#FFF;
 }
-li {
-display:inline;
-width:auto;
+a.republican
+{
+    color:#990000;
 }
-ul.list li {
-display: block;
+a.republican:hover
+{
+    background-color:#990000;
+    color:#FFF;
 }
-ul.TtoB li {
-display:block;
+p
+{
+    line-height: 175%;
 }
-ul.LtoR li {
-display:inline;
-text-align: left;
+p.moderator-comment
+{
+    font-size: x-large;
+    color: #000;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0 150px;
 }
-ul.LtoR li:first-child {
-margin-left:5px;
+p.participant-comment
+{
+    padding: 10px;
+    text-align: left;
+    font-size: 1em;
+    color: #111;
 }
-ul.RtoL li {
-text-align: right;
+p.policy
+{
+    font-size: small;
+    color: #000;
+    text-align: left;
+    border: 1px solid #999;
+    padding: 1em;
+    background-color: #CCC;
+    line-height: 140%;
 }
-.base {
+p.align-left
+{
+    text-align:left;
 }
-
-#top-bar {
-width:100%;
-height:172px;
-margin-top:29px;
-background:#003466;
+p.align-right
+{
+    text-align:right;
 }
-#bottom-bar {
-width:100%;
-height:34px;
-border-top:1px solid #FFF;
-margin-top:0px;
-background:#4371A3;
+ul
+{
+    display: block;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
 }
-#pledgeSupport {
-width:768px;
-margin:0 auto;
-text-align:center;
-margin-top:75px;
-z-index:100; 
+li
+{
+    display: inline;
+    width: auto;
 }
-#pledgeSupportDiv {
-width:500px;
-margin:0 auto;
-text-align:center;
-} 
-input.text {
-  width:358px;
-  text-align:left;
+ul.list li
+{
+    display: block;
 }
-label {
-  width:100px;
-  color:#000;
-  font-size:small;
-  margin:0 .5em;
+ul.TtoB li
+{
+    display: block;
 }
-.row{
- width:500px;
- text-align:left;  
- margin:5px 0;
+ul.LtoR li
+{
+    display: inline;
+    text-align: left;
 }
-.right {
- text-align: right;
- width:300px; 
+ul.LtoR li:first-child
+{
+    margin-left: 5px;
 }
-.left {
- text-align: left; 
- width:100px;
+ul.RtoL li
+{
+    text-align: right;
 }
-.formRow{
- width:400px;  
- text-align:center;
+.base
+{
 }
-#location{
- width:212px; 
+#main-container
+{
+    width:95%;
+    margin:0 auto;
 }
-#zip{
- width:75px; 
+#title
+{
+    text-align:center;
 }
-#submitForm{
- text-align:center; 
- margin:5px 0; 
+#top-bar
+{
+    width: 100%;
+    height: auto;
 }
-#submitPledge{
- width:130px;
- margin-left:.5em; 
+#bottom-bar
+{
+    width: 100%;
+    height: auto;
+    margin-top: 0px;
 }
-#email{
- width:242px; 
+#question
+{
+    width: 100%;
+    margin: 0 auto;
+    border-bottom: 1px solid #999;
+}
+h1.title
+{
+    color: #000;
+    font-size: 3em;
+    padding: 20px 0 0;
+    width: 100%;
+    margin: 10px auto;
+}
+h1.title a
+{
+    color: #000;
+    background-color:#FFF;
+    padding:2px 5px;
+}
+h1.title a:hover
+{
+    color: #000;
+    background-color:#EEE;
+}
+h2.title
+{
+    font-size:large;
+    text-align:center;
+}
+h2.participant
+{
+    font-size: x-large;
+}
+h2.moderator
+{
+    color: #330066;
+    text-align: center;
+}
+h2.candidate
+{
+}
+h2.democrat
+{
+    color: #003366;
+}
+h2.republican
+{
+    color:#990000;
+}
+div.question
+{
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+div.submit-container
+{
+    margin: 5px 0;
+    text-align: center;
+}
+input.submit-suggestion
+{
+    border: 1px solid #999;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: #CCC;
+    color: #333;
+    cursor: pointer;
+    font-size:1em;
+}
+input.democrat:hover
+{
+    border: 1px solid #000033;
+    background-color: #003366;
+    color:#FFF;
+}
+input.republican:hover
+{
+    border: 1px solid #330000;
+    background-color: #990000;
+    color:#FFF;
+}
+div.suggestion-form
+{
+    border: 1px solid #999;
+    padding: .5em .75em;
+    background-color: #EEE;
+    color: #333;
+}
+div.suggestion-container
+{
+    text-align: center;
+    width: auto;
+}
+textarea.suggestion
+{
+    width: 100%;
+    border: 1px solid #999;
+    height: 300px
+}
+h2.what
+{
+    text-align:center;
+    padding:0 .5em;
+    font-size:x-large;
+}
+h2.republican
+{
+    color:#990000;
+}
+h2.democrat
+{
+    color: #003366;
 }

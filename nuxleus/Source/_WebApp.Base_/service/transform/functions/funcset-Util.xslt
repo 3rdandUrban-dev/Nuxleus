@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
-<xsl:transform version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:param="http://xameleon.org/service/session/param" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:func="http://atomictalk.org/function" xmlns:saxon="http://saxon.sf.net/" xmlns:string="clitype:System.IO.MemoryStream" xmlns:request-collection="clitype:Xameleon.Function.HttpRequestCollection?partialname=Xameleon" xmlns:aspnet-request="clitype:System.Web.HttpRequest?partialname=System.Web" xmlns:http-utility="clitype:System.Web.HttpUtility?partialname=System.Web" xmlns:clitype="http://saxon.sf.net/clitype" exclude-result-prefixes="xs func clitype saxon request-collection">
-  
+<xsl:transform version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+    xmlns:param="http://xameleon.org/service/session/param" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:func="http://atomictalk.org/function" xmlns:saxon="http://saxon.sf.net/" xmlns:string="clitype:System.IO.MemoryStream" xmlns:request-collection="clitype:Xameleon.Function.HttpRequestCollection?partialname=Xameleon" xmlns:aspnet-request="clitype:System.Web.HttpRequest?partialname=System.Web" xmlns:http-utility="clitype:System.Web.HttpUtility?partialname=System.Web" xmlns:clitype="http://saxon.sf.net/clitype" exclude-result-prefixes="xs func clitype saxon request-collection">
+
+  <xsl:param name="request"/>
+
   <xsl:function name="func:eval-params" as="element()+">
     <xsl:param name="params"/>
     <xsl:apply-templates select="$params" mode="evalparam"/>
@@ -11,7 +14,7 @@
       <xsl:value-of select="func:resolve-variable(.)"/>
     </xsl:element>
   </xsl:template>
-
+  
   <xsl:function name="func:resolve-variable" as="xs:string">
     <xsl:param name="operator"/>
     <xsl:sequence select="if (contains($operator, '{')) then func:evaluate-collection(substring-before(substring-after($operator, '{'), '}')) else $operator" />
