@@ -6,7 +6,7 @@
   Contributors to this code base include, 
   Russ Miles (mailto:aohacker@gmail.com; http://www.russmiles.com/)
 -->
-<xsl:stylesheet xmlns:html="http://www.w3.org/1999/xhtml" xmlns:debug="http://nuxleus.com/session/debug" xmlns:request="http://atomictalk.org/function/aspnet/request" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:layout="http://atomictalk.org/page/view/layout" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common" xmlns:resource="http://atomictalk.org/page/resource" xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#" xmlns:atompub="http://www.w3.org/2007/app" xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web" xmlns:response="http://atomictalk.org/function/aspnet/response" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:func="http://atomictalk.org/function" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" version="2.0">
+<xsl:stylesheet xmlns:html="http://www.w3.org/1999/xhtml" xmlns:render="http://atomictalk.org/render" xmlns:debug="http://nuxleus.com/session/debug" xmlns:request="http://atomictalk.org/function/aspnet/request" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:my="http://xameleon.org/my" xmlns:page="http://atomictalk.org/page" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:service="http://atomictalk.org/page/service" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice" xmlns:view="http://atomictalk.org/page/view" xmlns:layout="http://atomictalk.org/page/view/layout" xmlns:form="http://atomictalk.org/page/view/form" xmlns:menu="http://atomictalk.org/page/view/menu" xmlns:exsl="http://exslt.org/common" xmlns:resource="http://atomictalk.org/page/resource" xmlns:model="http://atomictalk.org/page/model" xmlns:app="http://purl.org/atom/app#" xmlns:atompub="http://www.w3.org/2007/app" xmlns:aspnet-context="clitype:System.Web.HttpContext?partialname=System.Web" xmlns:response="http://atomictalk.org/function/aspnet/response" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:func="http://atomictalk.org/function" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" version="2.0">
 		
   <xsl:import href="../atomictalk.base.xslt" />
 	
@@ -102,6 +102,9 @@
     <debug:info/>
   </xsl:template>
   <xsl:template match="geo:*">
+    <xsl:copy-of select="."/>
+  </xsl:template>
+	<xsl:template match="render:*">
     <xsl:copy-of select="."/>
   </xsl:template>
   <xsl:template match="my:page">
