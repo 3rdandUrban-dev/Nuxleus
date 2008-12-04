@@ -1,94 +1,84 @@
 <?xml version="1.0"?>
 <project name="saxon9" default="all">
-	<property name="pathsep" value=":" />
-	<property overwrite="false" name="signoption" value="-keyfile:Extf.Net.snk" />
-	<property name="saxon9.dir" value="${nant.project.basedir}/Saxon" />
-	<if test="${platform::is-win32()}">
-		<property name="pathsep" value=";" />
-	</if>
+  <property name="pathsep" value=":" />
+  <property name="saxon9.dir" value="${nant.project.basedir}/Saxon" />
+  <if test="${platform::is-win32()}">
+    <property name="pathsep" value=";" />
+  </if>
 
-	<target name="checkout">
-		<exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/latest9.0/bj Saxon" />
-	</target>
-	<target name="allsources">
-		<if test="${platform::is-win32()}">
-			<exec program="cmd" commandline="/c dir /s/b Saxon\*.java > allsources.lst" />
-		</if>
-		<!-- Can't seem to figure out how to get the find command to work properly -->
-		<!-- on Linux. For now, will simply run this from the commandline -->
-		<!-- find Saxon/ -name *.java > allsources.lst -->
-                <!--<if test="${platform::is-unix()}">
-                        <exec program="find">
-				<arg value="-name *.java" />
-				<arg value="> allsources.lst"/>
-			</exec>
-                </if>-->
-		<if test="${platform::is-unix()}">
-                        <exec program="sh" commandline="./prep.sh"/>
-                </if>
-	</target>
-	<target name="patch">
-		 <if test="${platform::is-unix()}">
-                        <exec program="sh" commandline="./patch.sh"/>
-                </if>
-	</target>
-	<target name="cp.depends" depends="allsources">
-		<property name="classpathstub.dir" value="/usr/lib/ikvm" />
-		<property name="saxon9.dir" value="${nant.project.basedir}/Saxon" />
-		<property name="allsources" value="allsources.lst" />
-	</target>
-	<target name="classes" depends="cp.depends" description="Saxon8 Java Classes">
-		<delete>
-			<fileset basedir="${saxon9.dir}">
-				<include name="**.class"/>
-			</fileset>
-		</delete>
-		<delete>
-			<fileset basedir=".">
-				<include name="**.class"/>
-			</fileset>
-		</delete>
-		<exec program="ecj" commandline="-g -1.5 -nowarn -cp ${classpathstub.dir}/IKVM.OpenJDK.ClassLibrary.jar${pathsep}${classpathstub.dir}/IKVM.Runtime.jar${pathsep}./jars/stax-api-1.0.1.jar${pathsep}./jars/dom4j-1.6.1.jar${pathsep}./jars/xom-1.1.jar${pathsep}./jars/servlet.jar${pathsep}./jars/jdom-1.0.jar${pathsep}${classpathstub.dir}/mscorlib.jar${pathsep}/${classpathstub.dir}/System.jar${pathsep}${classpathstub.dir}/System.Xml.jar @${allsources}" useruntimeengine="false" />
-	</target>
-	
-	<target name="saxon9" depends="classes">
-		<exec program="ikvmc" useruntimeengine="false">
-			<arg value="-version:9.0.0.1" />
-			<arg value="${signoption}" />
-			<arg value="-compressresources" />
-			<arg value="-opt:fields" />
-			<arg value="-strictfinalfieldsemantics" />
-			<arg value="-out:saxon9.dll" />
-			<arg value="-exclude:exclude.lst" />
-			<arg value="-target:library" />
-			<arg value="-recurse:./jars/*.jar" />
-			<arg value="-recurse:${saxon9.dir}/*.class" />
-			<arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.dll" />
-			<arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.Xml.dll" />
-			<arg value="-resource:META-INF/MANIFEST.MF=META-INF/MANIFEST.MF" />
-			<arg value="-resource:META-INF/services/javax.xml.transform.TransformerFactory=META-INF/services/javax.xml.transform.TransformerFactory" />
-			<arg value="-resource:META-INF/services/javax.xml.xpath.XPathFactory=META-INF/services/javax.xml.xpath.XPathFactory" />
-		</exec>
-		<copy file="saxon9.dll" tofile="../bin/saxon9.dll.new" />
-		<if test="${nant.platform.win32}">
-			<call target="peverify-classpath"/>
-		</if>
-		<copy file="saxon9.dll" todir="../" />
-		<delete file="saxon9.dll.new" />
-	</target>
-	
-	<target name="all">
-		<call target="checkout" />
-		<call target="patch" />
-		<call target="classes" />
-		<call target="saxon9" />
-	</target>
-	
-	<target name="clean">
-		<delete failonerror="false" file="allsources.lst" />
-		<delete failonerror="false" file="saxon9.dll" />
-		<delete failonerror="false" dir="Saxon" />
-	</target>
+  <target name="checkout">
+    <exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/latest9.1/bj Saxon" />
+  </target>
+  <target name="allsources">
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/ant" />
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/s9api" />
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/dom" />
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/jdom" />
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/dom4j" />
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/java" />
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/xom" />
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/xpath" />
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/xqj" />
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/pull/PullToStax.java" />
+      <delete failonerror="false" dir="Saxon/net/sf/saxon/pull/StaxBridge.java" />
+      <exec program="cmd" commandline="/c dir /s/b Saxon\*.java > allsources.lst" />
+  </target>
+  <target name="cp.depends" depends="allsources">
+    <property name="classpathstub.dir" value="./jars" />
+    <property name="saxon9.dir" value="${nant.project.basedir}/Saxon" />
+    <property name="allsources" value="allsources.lst" />
+  </target>
+  <target name="classes" depends="cp.depends" description="Saxon9 Java Classes">
+    <delete>
+      <fileset basedir="${saxon9.dir}">
+        <include name="**.class"/>
+      </fileset>
+    </delete>
+    <delete>
+      <fileset basedir=".">
+        <include name="**.class"/>
+      </fileset>
+    </delete>
+    
+    <exec program="ecj" commandline="-g -1.5 -nowarn -cp ./jars/mscorlib.jar${pathsep}./jars/System.jar${pathsep}./jars/IKVM.OpenJDK.ClassLibrary.jar${pathsep}./jars/IKVM.Runtime.jar${pathsep}./jars/stax-api-1.0.1.jar${pathsep}./jars/dom4j-1.6.1.jar${pathsep}./jars/xom-1.1.jar${pathsep}./jars/servlet.jar${pathsep}./jars/jdom-1.0.jar${pathsep}./jars/System.Xml.jar${pathsep}./jars/System.Security.jar @${allsources}" useruntimeengine="false" />
+  </target>
+
+  <target name="saxon9" depends="classes">
+    <exec program="ikvmc" useruntimeengine="false">
+      <arg value="-version:9.1.0.2" />
+      <arg value="-compressresources" />
+      <arg value="-opt:fields" />
+      <arg value="-strictfinalfieldsemantics" />
+      <arg value="-out:saxon9.dll" />
+      <arg value="-exclude:exclude.lst" />
+      <arg value="-target:library" />
+      <arg value="-recurse:./jars/*.jar" />
+      <arg value="-recurse:${saxon9.dir}/*.class" />
+      <arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.dll" />
+      <arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.Xml.dll" />
+      <arg value="-resource:META-INF/MANIFEST.MF=META-INF/MANIFEST.MF" />
+      <arg value="-resource:META-INF/services/javax.xml.transform.TransformerFactory=META-INF/services/javax.xml.transform.TransformerFactory" />
+      <arg value="-resource:META-INF/services/javax.xml.xpath.XPathFactory=META-INF/services/javax.xml.xpath.XPathFactory" />
+    </exec>
+    <copy file="saxon9.dll" tofile="../bin/saxon9.dll.new" />
+    <if test="${nant.platform.win32}">
+      <call target="peverify-classpath"/>
+    </if>
+    <copy file="saxon9.dll" todir="../" />
+    <delete file="saxon9.dll.new" />
+  </target>
+
+  <target name="all">
+    <call target="checkout" />
+    <call target="classes" />
+    <call target="saxon9" />
+  </target>
+
+  <target name="clean">
+    <delete failonerror="false" file="allsources.lst" />
+    <delete failonerror="false" file="saxon9.dll" />
+    <delete failonerror="false" dir="Saxon" />
+  </target>
 </project>
 
 
