@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<view:module xmlns:view="http://atomictalk.org/page/view">
+  <view:container>
+    <view:item id="control-center" src="/page/view/menu/navigation/bottom-nav/m/base.xml" />
+  </view:container>
+</view:module>

@@ -250,7 +250,7 @@ namespace Mono.WebServer
 			}
 
 			string old_path = path;
-			Paths.GetPathsFromUri (old_path, out path, out pathInfo);
+			//Paths.GetPathsFromUri (old_path, out path, out pathInfo);
 			if (path [path.Length - 1] == '/')
 				path = path + indexFiles [0];
 			return true;

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<model:collection id="content" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:collection="http://atomictalk.org/page/model/collection" xmlns:doc="http://atomictalk.org/feed/doc"
+    xmlns:model="http://atomictalk.org/page/model">
+    <collection:item id="left">
+        <doc:feed href="/feed/feed.xml" characterCount="400" />
+    </collection:item>
+    <collection:item id="center">
+        <doc:feed href="/feed/feed.xml" characterCount="400" />
+    </collection:item>
+    <collection:item id="right">
+        <doc:feed href="/feed/feed.xml" characterCount="400" />
+    </collection:item>
+</model:collection>

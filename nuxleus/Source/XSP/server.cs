@@ -431,7 +431,7 @@ namespace Mono.XSP
 					key = security.KeyPair;
 					webSource = new XSPWebSource (ipaddr, port, security.Protocol, security.ServerCertificate, 
 						new PrivateKeySelectionCallback (GetPrivateKey), 
-						security.AcceptClientCertificates, security.RequireClientCertificates);
+						security.AcceptClientCertificates, security.RequireClientCertificates, true);
 				}
 				catch (CryptographicException ce) {
 					Console.WriteLine (ce.Message);

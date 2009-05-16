@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<model:collection class="base" id="get-plugged-in" xmlns:view="http://atomictalk.org/page/view"
+    xmlns:model="http://atomictalk.org/page/model" xmlns:collection="http://atomictalk.org/page/model/collection">
+    <collection:item id="icon">
+        <img src="/images/Amp.FM.png" height="80" width="400" />
+    </collection:item>
+    <collection:item>
+        <span style="font-size:14pt; color:#999;">to</span>
+    </collection:item>
+    <collection:item id="current-region">@@current-location.label@@</collection:item>
+</model:collection>

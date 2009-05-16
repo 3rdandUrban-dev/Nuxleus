@@ -1,0 +1,253 @@
+body
+{
+    margin: 0px;
+    padding: 0px;
+    color: #333;
+    background: #FFF;
+    font-size: 100%;
+    font-family: Georgia, Verdana, Geneva, Arial, sans-serif;
+    border-top: 3px solid #000;
+}
+img
+{
+    border: 0;
+}
+a
+{
+    color: #CC3300;
+    background-color: inherit;
+    text-decoration: none;
+}
+a:hover
+{
+    color: #333;
+    text-decoration: underline;
+    background-color: #CCC;
+}
+a.navigation
+{
+    color:#330066;
+    padding:2px 5px;
+}
+a.navigation:hover
+{
+    background-color:#330066;
+    color:#FFF;
+}
+a.republican
+{
+    color:#990000;
+}
+a.republican:hover
+{
+    background-color:#990000;
+    color:#FFF;
+}
+p
+{
+    line-height: 175%;
+}
+p.moderator-comment
+{
+    font-size: x-large;
+    color: #000;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 0 150px;
+}
+p.participant-comment
+{
+    padding: 10px;
+    text-align: left;
+    font-size: 1em;
+    color: #111;
+}
+p.policy
+{
+    font-size: small;
+    color: #000;
+    text-align: left;
+    border: 1px solid #999;
+    padding: 1em;
+    background-color: #CCC;
+    line-height: 140%;
+}
+p.align-left
+{
+    text-align:left;
+}
+p.align-right
+{
+    text-align:right;
+}
+ul
+{
+    display: block;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+li
+{
+    display: inline;
+    width: auto;
+}
+ul.list li
+{
+    display: block;
+}
+ul.TtoB li
+{
+    display: block;
+}
+ul.LtoR li
+{
+    display: inline;
+    text-align: left;
+}
+ul.LtoR li:first-child
+{
+    margin-left: 5px;
+}
+ul.RtoL li
+{
+    text-align: right;
+}
+.base
+{
+}
+#main-container
+{
+    width:95%;
+    margin:0 auto;
+}
+#title
+{
+    text-align:center;
+}
+#top-bar
+{
+    width: 100%;
+    height: auto;
+}
+#bottom-bar
+{
+    width: 100%;
+    height: auto;
+    margin-top: 0px;
+}
+#question
+{
+    width: 100%;
+    margin: 0 auto;
+    border-bottom: 1px solid #999;
+}
+h1.title
+{
+    color: #000;
+    font-size: 3em;
+    padding: 20px 0 0;
+    width: 100%;
+    margin: 10px auto;
+}
+h1.title a
+{
+    color: #000;
+    background-color:#FFF;
+    padding:2px 5px;
+}
+h1.title a:hover
+{
+    color: #000;
+    background-color:#EEE;
+}
+h2.title
+{
+    font-size:large;
+    text-align:center;
+}
+h2.participant
+{
+    font-size: x-large;
+}
+h2.moderator
+{
+    color: #330066;
+    text-align: center;
+}
+h2.candidate
+{
+}
+h2.democrat
+{
+    color: #003366;
+}
+h2.republican
+{
+    color:#990000;
+}
+div.question
+{
+    border-top: 1px solid #999;
+    border-bottom: 1px solid #999;
+}
+div.submit-container
+{
+    margin: 5px 0;
+    text-align: center;
+}
+input.submit-suggestion
+{
+    border: 1px solid #999;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: #CCC;
+    color: #333;
+    cursor: pointer;
+    font-size:1em;
+}
+input.democrat:hover
+{
+    border: 1px solid #000033;
+    background-color: #003366;
+    color:#FFF;
+}
+input.republican:hover
+{
+    border: 1px solid #330000;
+    background-color: #990000;
+    color:#FFF;
+}
+div.suggestion-form
+{
+    border: 1px solid #999;
+    padding: .5em .75em;
+    background-color: #EEE;
+    color: #333;
+}
+div.suggestion-container
+{
+    text-align: center;
+    width: auto;
+}
+textarea.suggestion
+{
+    width: 100%;
+    border: 1px solid #999;
+    height: 300px
+}
+h2.what
+{
+    text-align:center;
+    padding:0 .5em;
+    font-size:x-large;
+}
+h2.republican
+{
+    color:#990000;
+}
+h2.democrat
+{
+    color: #003366;
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="content" style="base list LtoR width">
+    <view:item id="left">
+      <h2>Music</h2>
+      <doc:local-news topic="music"/>
+    </view:item>
+    <view:item id="center">
+      <div>
+        <doc:feed href="./entry.atom"/>
+      </div>
+      <!--       
+      <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/?ie=UTF8&amp;z=16&amp;om=1&amp;ll=40.76719,-111.883935&amp;output=embed&amp;s=AARTsJqzARj-Z8VnW5pkPMLMmZbqrJcYpw"></iframe>
+      <br />
+      <small>
+        <a href="http://maps.google.com/?ie=UTF8&amp;z=16&amp;om=1&amp;ll=40.76719,-111.883935&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a>
+      </small> 
+      -->
+    </view:item>
+    <view:item id="right">
+      <h2>Film</h2>
+      <doc:local-news topic="film"/>
+    </view:item>
+  </view:container>
+</view:module>

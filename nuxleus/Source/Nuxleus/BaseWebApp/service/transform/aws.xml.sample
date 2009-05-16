@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<aws>
+  <key id="AWS-ACCOUNT-ID" friendly-name="PICK-ONE">
+    <public>ENTER-PUBLIC-KEY-FOR-RELATED-ACCOUNT</public>
+    <private>ENTER-PRIVATE-KEY-FOR-RELATED-ACCOUNT</private>
+  </key>
+</aws>

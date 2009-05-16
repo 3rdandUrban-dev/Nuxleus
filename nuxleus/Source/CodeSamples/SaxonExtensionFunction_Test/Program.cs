@@ -2,14 +2,17 @@
 using System.Diagnostics;
 using System.Reflection;
 
-namespace GenericTypeOperation {
+namespace GenericTypeOperation
+{
 
-    class Program {
+    class Program
+    {
 
         static long directEllapsedTime = 0;
         static long genericsEllapsedTime = 0;
 
-        static void Main(string[] args) {
+        static void Main(string[] args)
+        {
             Stopwatch stopwatch = new Stopwatch();
             int count = 1000;
 
@@ -26,10 +29,12 @@ namespace GenericTypeOperation {
             Console.WriteLine("Completed generics test in:\t {0}ms", genericsEllapsedTime);
         }
 
-        public static void TestDirect(int count, Stopwatch stopwatch){
+        public static void TestDirect(int count, Stopwatch stopwatch)
+        {
             Console.WriteLine("Starting direct object creation and method invocation test.");
             stopwatch.Start();
-            for (int i = 0; i <= count; i++) {
+            for (int i = 0; i <= count; i++)
+            {
                 Test obj1 = new Test();
                 Test obj2 = new Test("Created with a single string parameter");
                 Test obj3 = new Test("Created with two", "string parameters");
@@ -43,10 +48,12 @@ namespace GenericTypeOperation {
             stopwatch.Reset();
         }
 
-        public static void TestGenerics(int count, Stopwatch stopwatch) {
+        public static void TestGenerics(int count, Stopwatch stopwatch)
+        {
             Console.WriteLine("Starting generic object creation and method invocation test.");
             stopwatch.Start();
-            for (int i = 0; i <= count; i++) {
+            for (int i = 0; i <= count; i++)
+            {
                 Test obj1 = ExtensionFunction<Test>.Create();
                 Test obj2 = ExtensionFunction<Test>.Create("Created with a single string parameter");
                 Test obj3 = ExtensionFunction<Test>.Create("Created with two", "string parameters");

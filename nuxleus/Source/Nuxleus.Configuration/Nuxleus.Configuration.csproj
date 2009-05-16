@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.20706</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0FFD8B77-2852-4CB0-9B85-29424C40FC44}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuxleus.Configuration</RootNamespace>
+    <AssemblyName>Nuxleus.Configuration</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\docs\Nuxleus.Configuration.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent.cs" />
+    <Compile Include="Configuration\AspNetAwsConfiguration.cs" />
+    <Compile Include="Configuration\AspNetBungeeConfiguration.cs" />
+    <Compile Include="Configuration\AspNetMemcachedConfiguration.cs" />
+    <Compile Include="Configuration\AspNetQueueServerConfiguration.cs" />
+    <Compile Include="Configuration\AspNetXameleonTransform.cs" />
+    <Compile Include="Configuration\AwsKey.cs" />
+    <Compile Include="Configuration\AwsKeyCollection.cs" />
+    <Compile Include="Configuration\AwsS3.cs" />
+    <Compile Include="Configuration\AwsS3Collection.cs" />
+    <Compile Include="Configuration\BaseSetting.cs" />
+    <Compile Include="Configuration\BaseSettingCollection.cs" />
+    <Compile Include="Configuration\BungeeApp.cs" />
+    <Compile Include="Configuration\BungeeAppCollection.cs" />
+    <Compile Include="Configuration\Configuration.cs" />
+    <Compile Include="Configuration\MemcachedPoolConfig.cs" />
+    <Compile Include="Configuration\MemcachedPoolConfigCollection.cs" />
+    <Compile Include="Configuration\MemcachedServer.cs" />
+    <Compile Include="Configuration\MemcachedServerCollection.cs" />
+    <Compile Include="Configuration\PreCompiledXslt.cs" />
+    <Compile Include="Configuration\PreCompiledXsltCollection.cs" />
+    <Compile Include="Configuration\XsltParamCollection.cs" />
+    <Compile Include="Configuration\XsltParams.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Configuration\App.config" />
+    <None Include="Extf.Net.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<model:collection id="top-nav-menu" style="LtoR nav-menu" type="application/atomictalk+xhtml"
+  xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:model="http://atomictalk.org/page/model"
+  xmlns:collection="http://atomictalk.org/page/model/collection">
+  <collection:item class="top-level selected">
+    <a href="@@base-uri@@">@@location.label@@<span>@</span>@@domain.label@@</a>
+  </collection:item>
+</model:collection>

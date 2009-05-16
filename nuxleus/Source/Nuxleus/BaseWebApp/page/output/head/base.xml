@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page:head xmlns:page="http://atomictalk.org/page" xmlns:head="http://atomictalk.org/page/output/head">
+    <head:title>@@page-title@@</head:title>
+    <head:link rel="alternate" type="application/atom+xml" title="@@page-title@@" href="@@static@@/feed.atom" />
+    <head:link rel="alternate" type="application/xml" title="@@page-title@@" href="@@static@@/feed.atom" />
+    <head:link rel="shortcut icon" href="@@shortcut-icon@@" type="image/png" />
+    <head:include fileType="css" href="@@static@@/css/base.css" />
+    <head:include fileType="css" href="@@static@@/css/transparency.css" />
+    <head:include fileType="javascript" src="@@static@@/js/jquery-min.js" />
+    <head:include fileType="javascript" src="@@static@@/js/sarissa-min.js" />
+    <head:include fileType="javascript" src="@@static@@/js/sarissa_ieemu_xpath-min.js" />
+    <head:include fileType="javascript" src="@@static@@/js/jquery.xslTransform-min.js" />
+    <head:include fileType="javascript" src="@@static@@/js/jquery.form-min.js" />
+    <head:include fileType="javascript" src="@@static@@/js/util-min.js" />
+    <head:include fileType="javascript" src="@@static@@/js/base.js" />
+</page:head>

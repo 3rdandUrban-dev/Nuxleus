@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/controller/atomictalk/base.xslt"?>
+<my:session xmlns:my="http://xameleon.org/my" xmlns:doc="http://atomictalk.org/feed/doc">
+    <my:page xmlns:page="http://atomictalk.org/page" xmlns:output="http://atomictalk.org/page/output"
+        xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body"
+        xmlns:advice="http://atomictalk.org/page/advice">
+        <page:config src="/page/config/config.xml">
+            <page:advice>
+                <advice:page-title>@@domain.label@@</advice:page-title>
+                <advice:hello>hello</advice:hello>
+                <advice:location.label>whattheyshouldhavesaid.org</advice:location.label>
+                <advice:base.theme>993300-999999</advice:base.theme>
+                <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
+                <advice:current-location.label>What They Should Have Said :: Home</advice:current-location.label>
+                <advice:feed>http://whattheyshouldhavesaid.org/feed.atom</advice:feed>
+            </page:advice>
+        </page:config>
+        <page:output>
+            <page:head src="/page/output/head/base.xml" />
+            <page:body src="/page/output/body/base.xml" />
+        </page:output>
+    </my:page>
+</my:session>

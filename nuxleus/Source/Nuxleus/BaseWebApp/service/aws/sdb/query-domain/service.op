@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/base.xslt"?>
+<service:operation 
+  xmlns:at="http://atomictalk.org" 
+  xmlns:aws="http://xameleon.org/function/aws"
+  xmlns:sdb="http://xameleon.org/function/aws/sdb" 
+  xmlns:service="http://xameleon.org/service"
+  xmlns:operation="http://xameleon.org/service/operation"
+  xmlns:param="http://xameleon.org/service/session/param">
+  <param:domain>{query-string:domain}</param:domain>
+  <param:item>{query-string:item}</param:item>
+  <param:query>{query-string:item}</param:query>
+  <operation:aws>
+    <aws:sdb>
+      <sdb:query-domain domain="{$domain}" item="{$item}" query="{$query}"/>
+    </aws:sdb>
+  </operation:aws>
+</service:operation>

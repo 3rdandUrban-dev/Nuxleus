@@ -9,7 +9,7 @@ using Nuxleus.Asynchronous;
 using System.Net;
 using System.Text.RegularExpressions;
 
-namespace HttpGetAsyncResponse_Test {
+namespace HttpGetAsyncWorkflow_Test {
 
     class Program {
 
@@ -32,8 +32,18 @@ namespace HttpGetAsyncResponse_Test {
 
             // asynchronously get the response from http server
             Async<WebResponse> response = request.GetResponseAsync();
-            yield return response;
 
+            try
+            {
+                yield return response;
+            }
+            finally
+            {
+                if (response != null)
+                    Console.WriteLine(response.Result);
+                else
+                    Console.WriteLine("The responseString was null");
+            }
             Console.WriteLine("[{0}] got response on thread: {1}", url, Thread.CurrentThread.ManagedThreadId);
 
             Stream stream = response.Result.GetResponseStream();
@@ -43,7 +53,17 @@ namespace HttpGetAsyncResponse_Test {
             // TODO: Sniff the response content type and pass this into ReadToEndAsync
             // using the ResponseType enumeration.
             Async<string> responseString = stream.ReadToEndAsync().ExecuteAsync<string>();
-            yield return responseString;
+            try
+            {
+                yield return responseString;
+            }
+            finally
+            {
+                if (responseString != null)
+                    Console.WriteLine(responseString.Result);
+                else
+                    Console.WriteLine("The responseString was null");
+            }
 
             Console.WriteLine("Current thread id: {0}", Thread.CurrentThread.ManagedThreadId);
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<project name="Xameleon" default="all">
+<project name="Xameleon" xmlns="http://nant.sf.net/release/0.85/nant.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nant.sf.net/release/0.85/nant.xsd http://nant.sourceforge.net/release/0.85/nant.xsd" default="all">
     <property name="project.version" value="0.2.3.4"/>
     <property name="source.dir" value="."/>
     <property name="dependencies.dir" value="./Dependencies"/>
@@ -12,7 +12,7 @@
     <target name="init">
         <mkdir dir="${build.dir}" failonerror="false"/>
     </target>
-    <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Agent Nuxleus.Command Nuxleus.Configuration Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.Extension.Aws.Sdb Nuxleus.Extension.Aws Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility">
+    <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Core Nuxleus.Command Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.Extension.Aws Nuxleus.Messaging Nuxleus.PubSub">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" unsafe="True" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Xameleon/*.cs"/>
@@ -27,21 +27,15 @@
             <resources dynamicprefix="true">
                 <include name="${source.dir}/Xameleon/Properties/**/*.resx"/>
             </resources>
-            <references>         
-                <include name="${dependencies.dir}/SgmlReader8Dll.dll"/>
-		<include name="${dependencies.dir}/log4net.dll"/>
-                <include name="${build.dir}/Nuxleus.IO.dll"/>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
+            <references>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
                 <include name="${build.dir}/Nuxleus.Authentication.dll"/>
                 <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
                 <include name="${build.dir}/Nuxleus.Command.dll"/>
-                <include name="${build.dir}/Nuxleus.Configuration.dll"/>
                 <include name="${build.dir}/Nuxleus.Extension.Facebook.dll"/>
-                <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
                 <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
                 <include name="${build.dir}/Nuxleus.PubSub.dll"/>
-                <include name="${build.dir}/Nuxleus.Process.dll"/>
-                <include name="${build.dir}/Nuxleus.Utility.dll"/>
                 <include name="${build.dir}/Nuxleus.Messaging.dll"/>
                 <include name="System.Drawing.dll"/>
                 <include name="System.Data.dll"/>
@@ -59,7 +53,7 @@
                 <include name="${dependencies.dir}/Mvp.Xml.dll"/>
                 <include name="${dependencies.dir}/Saxon.Api.dll"/>
                 <include name="${dependencies.dir}/saxon9.dll"/>
-                <include name="${dependencies.dir}/SgmlReaderDll.dll"/>
+                <include name="${dependencies.dir}/SgmlReader8Dll.dll"/>
                 <include name="${dependencies.dir}/agsXMPP.dll"/>
             </references>
         </csc>
@@ -88,7 +82,7 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus" depends="init Xameleon Nuxleus.Agent Nuxleus.Messaging Nuxleus.Command Nuxleus.Entity Nuxleus.Service Nuxleus.Extension">
+    <target name="Nuxleus" depends="init Xameleon Nuxleus.Web Nuxleus.Core Nuxleus.Messaging Nuxleus.Command Nuxleus.Service">
         <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus/**/*.cs"/>
@@ -96,13 +90,14 @@
             <references>
                 <include name="${dependencies.dir}/log4net.dll"/>
                 <include name="${build.dir}/Xameleon.dll"/>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
                 <include name="${build.dir}/Nuxleus.Command.dll"/>
-                <include name="${build.dir}/Nuxleus.Entity.dll"/>
                 <include name="${build.dir}/Nuxleus.Messaging.dll"/>
                 <include name="${build.dir}/Nuxleus.Service.dll"/>
                 <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
+                <include name="${build.dir}/Nuxleus.Web.dll"/>
                 <include name="${dependencies.dir}/Tamir.SharpSSH.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="System.dll"/>
                 <include name="System.Data.dll"/>
                 <include name="System.Xml.dll"/>
@@ -113,75 +108,20 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Agent" depends="init">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.Agent/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="System.dll"/>
-                <include name="System.Web.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.Asynchronous" depends="init">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.Asynchronous/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="System.dll"/>
-                <include name="System.Data.dll"/>
-                <include name="System.Linq.dll"/>
-                <include name="System.Xml.Linq.dll"/>
-                <include name="System.Xml.dll"/>
-                <include name="System.Web.dll"/>
-                <include name="System.Web.Services.dll"/>
-                <include name="System.EnterpriseServices.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.Authentication" depends="init Nuxleus.Utility">
+    <target name="Nuxleus.Authentication" depends="init Nuxleus.Core">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Authentication/**/*.cs"/>
             </sources>
             <references>
-                <include name="${build.dir}/Nuxleus.Utility.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
                 <include name="System.dll"/>
                 <include name="System.Data.dll"/>
                 <include name="System.Xml.dll"/>
                 <include name="System.Web.dll"/>
                 <include name="System.Web.Services.dll"/>
                 <include name="System.EnterpriseServices.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.Build" depends="init">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.Build/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="System.dll"/>
-                <include name="System.Data.dll"/>
-                <include name="System.Xml.dll"/>
-                <include name="System.Web.dll"/>
-                <include name="System.Configuration.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.Configuration" depends="init">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.Configuration/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="System.dll"/>
-                <include name="System.Data.dll"/>
-                <include name="System.Xml.dll"/>
-                <include name="System.Web.dll"/>
-                <include name="System.Configuration.dll"/>
             </references>
         </csc>
     </target>
@@ -196,6 +136,28 @@
                 <include name="System.Xml.dll"/>
                 <include name="System.Web.dll"/>
                 <include name="System.Web.Services.dll"/>
+                <include name="System.EnterpriseServices.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Core" depends="init">
+        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Core/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="${dependencies.dir}/Saxon.Api.dll"/>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Data.dll"/>
+                <include name="System.Configuration.dll"/>
+                <include name="System.Xml.Linq.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+                <include name="System.Runtime.Serialization.dll"/>
+                <include name="System.Runtime.Serialization.Formatters.Soap.dll"/>
                 <include name="System.EnterpriseServices.dll"/>
             </references>
         </csc>
@@ -215,27 +177,14 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Entity" depends="init">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.Entity/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="System.dll"/>
-                <include name="System.Data.dll"/>
-                <include name="System.Xml.dll"/>
-                <include name="System.Web.dll"/>
-                <include name="System.Web.Services.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.Drawing" depends="init Nuxleus.Agent">
+    <target name="Nuxleus.Drawing" depends="init Nuxleus.Core">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Drawing/**/*.cs"/>
             </sources>
             <references>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="System.Web.dll"/>
                 <include name="System.ServiceProcess.dll"/>
                 <include name="System.Configuration.Install.dll"/>
@@ -244,38 +193,19 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Profile" depends="init Nuxleus.Agent Nuxleus.Entity">
+    <target name="Nuxleus.Profile" depends="init Nuxleus.Core">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Profile/**/*.cs"/>
             </sources>
             <references>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
-                <include name="${build.dir}/Nuxleus.Entity.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="System.dll"/>
                 <include name="System.Data.dll"/>
                 <include name="System.Xml.dll"/>
                 <include name="System.Web.dll"/>
                 <include name="System.Web.Services.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.Extension" depends="init Nuxleus.Cryptography">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.Extension/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="${dependencies.dir}/log4net.dll"/>
-                <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-                <include name="System.dll"/>
-                <include name="System.Core.dll"/>
-                <include name="System.Collections.dll"/>
-                <include name="System.Collections.Generic.dll"/>
-                <include name="System.Data.dll"/>
-                <include name="System.Xml.dll"/>
-                <include name="System.Xml.Linq.dll"/>
-                <include name="System.Web.dll"/>
             </references>
         </csc>
     </target>
@@ -327,17 +257,17 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Extension.Aws" depends="init Nuxleus.Extension Nuxleus.Asynchronous Nuxleus.MetaData Scope">
+    <target name="Nuxleus.Extension.Aws" depends="init Nuxleus.Core Scope">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Extension.Aws/**/*.cs"/>
             </sources>
             <references>
-                <include name="${build.dir}/Nuxleus.Extension.dll"/>
-                <include name="${build.dir}/Nuxleus.Asynchronous.dll"/>
-                <include name="${build.dir}/Nuxleus.MetaData.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
                 <include name="${build.dir}/Scope.dll"/>
-                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${dependencies.dir}/protobuf-net.dll"/>
+		<include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="System.dll"/>
                 <include name="System.Configuration.dll"/>
                 <include name="System.Collections.dll"/>
@@ -346,25 +276,12 @@
                 <include name="System.Xml.dll"/>
                 <include name="System.Xml.Linq.dll"/>
                 <include name="System.Web.dll"/>
-                <include name="/usr/lib//mono/3.0/System.ServiceModel.dll"/>
+                <include name="System.ServiceModel.dll"/>
                 <include name="System.Web.Services.dll"/>
                 <include name="System.EnterpriseServices.dll"/>
             </references>
         </csc>
         <copy file="Nuxleus.Extension.Aws/log4net.config" tofile="${build.dir}/log4net.config"/>
-    </target>
-    <target name="Nuxleus.Extension.Aws.Sdb" depends="init Nuxleus.Extension.Aws">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.Extension.Aws.Sdb/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="${dependencies.dir}/log4net.dll"/>
-                <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
-                <include name="System.Web.dll"/>
-                <include name="System.dll"/>
-            </references>
-        </csc>
     </target>
     <target name="Nuxleus.Extension.Silverlight" depends="init">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
@@ -381,13 +298,14 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Extension.Amp.Fm" depends="init Nuxleus.Entity">
+    <target name="Nuxleus.Extension.Amp.Fm" depends="init Nuxleus.Core">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Extension.Amp.Fm/**/*.cs"/>
             </sources>
             <references>
-                <include name="${build.dir}/Nuxleus.Entity.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="System.dll"/>
                 <include name="System.Data.dll"/>
                 <include name="System.Xml.dll"/>
@@ -397,63 +315,35 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Geo" depends="init Nuxleus.Agent">
+    <target name="Nuxleus.Geo" depends="init Nuxleus.Core">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Geo/**/*.cs"/>
             </sources>
             <references>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
-                <include name="System.dll"/>
-                <include name="System.Xml.dll"/>
-                <include name="System.Web.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.IO" depends="init Nuxleus.Configuration Nuxleus.Process Nuxleus.Utility Nuxleus.Vendor">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.IO/**/*.cs"/>
-            </sources>
-            <references>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
                 <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-                <include name="${dependencies.dir}/Saxon.Api.dll"/>
-                <include name="${build.dir}/Nuxleus.Utility.dll"/>
-                <include name="${build.dir}/Nuxleus.Configuration.dll"/>
-                <include name="${build.dir}/Nuxleus.Process.dll"/>
                 <include name="System.dll"/>
-                <include name="System.Data.dll"/>
                 <include name="System.Xml.dll"/>
                 <include name="System.Web.dll"/>
-                <include name="System.Configuration.dll"/>
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Language" depends="init">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.Language/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="System.dll"/>
-                <include name="System.Xml.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.Logging" depends="init Nuxleus.Agent">
+    <target name="Nuxleus.Logging" depends="init Nuxleus.Core">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Logging/**/*.cs"/>
             </sources>
             <references>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="${dependencies.dir}/log4net.dll"/>
                 <include name="System.dll"/>
                 <include name="System.Xml.dll"/>
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Messaging" depends="init Nuxleus.Agent Nuxleus.Entity Nuxleus.PubSub Nuxleus.Vendor">
+    <target name="Nuxleus.Messaging" depends="init Nuxleus.Core Nuxleus.PubSub Nuxleus.Vendor">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Messaging/**/*.cs"/>
@@ -461,40 +351,15 @@
             <references>
                 <include name="System.dll"/>
                 <include name="System.Xml.dll"/>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
-                <include name="${build.dir}/Nuxleus.Entity.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="${build.dir}/Nuxleus.PubSub.dll"/>
                 <include name="${build.dir}/Nuxleus.Vendor.dll"/>
                 <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.MetaData" depends="init Nuxleus.Agent">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.MetaData/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="System.dll"/>
-                <include name="System.Xml.dll"/>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.Process" depends="init">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.Process/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="System.dll"/>
-                <include name="System.Data.dll"/>
-                <include name="System.Xml.dll"/>
-                <include name="System.Web.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.PubSub" depends="init Nuxleus.Cryptography Nuxleus.IO">
+    <target name="Nuxleus.PubSub" depends="init Nuxleus.Core Nuxleus.Cryptography ">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.PubSub/**/*.cs"/>
@@ -502,7 +367,8 @@
             <references>
                 <include name="${dependencies.dir}/agsXMPP.dll"/>
                 <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-                <include name="${build.dir}/Nuxleus.IO.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="System.dll"/>
                 <include name="System.Data.dll"/>
                 <include name="System.Xml.dll"/>
@@ -511,19 +377,20 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Semantics" depends="init Nuxleus.Agent">
+    <target name="Nuxleus.Semantics" depends="init Nuxleus.Core">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Semantics/**/*.cs"/>
             </sources>
             <references>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="System.dll"/>
                 <include name="System.Xml.dll"/>
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Service" depends="init Nuxleus.Drawing Nuxleus.Utility Nuxleus.Logging Nuxleus.Configuration Nuxleus.Messaging Nuxleus.Vendor">
+    <target name="Nuxleus.Service" depends="init Nuxleus.Core Nuxleus.Drawing Nuxleus.Logging Nuxleus.Messaging Nuxleus.Vendor">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Service/**/*.cs"/>
@@ -532,9 +399,7 @@
                 <include name="${dependencies.dir}/Saxon.Api.dll"/>
                 <include name="${build.dir}/Nuxleus.Logging.dll"/>
                 <include name="${build.dir}/Nuxleus.Drawing.dll"/>
-                <include name="${build.dir}/Nuxleus.Utility.dll"/>
-                <include name="${build.dir}/Nuxleus.Process.dll"/>
-                <include name="${build.dir}/Nuxleus.Configuration.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
                 <include name="${build.dir}/Nuxleus.Messaging.dll"/>
                 <include name="${build.dir}/Nuxleus.Vendor.dll"/>
                 <include name="System.dll"/>
@@ -550,29 +415,15 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Synchronization" depends="init Nuxleus.Agent">
+    <target name="Nuxleus.Synchronization" depends="init ">
         <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Synchronization/**/*.cs"/>
             </sources>
             <references>
-                <include name="${build.dir}/Nuxleus.Agent.dll"/>
+
                 <include name="System.dll"/>
                 <include name="System.Xml.dll"/>
-            </references>
-        </csc>
-    </target>
-    <target name="Nuxleus.Utility" depends="init">
-        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-            <sources>
-                <include name="${source.dir}/Nuxleus.Utility/**/*.cs"/>
-            </sources>
-            <references>
-                <include name="System.dll"/>
-                <include name="System.Data.dll"/>
-                <include name="System.Xml.dll"/>
-                <include name="System.Web.dll"/>
-                <include name="System.Web.Services.dll"/>
             </references>
         </csc>
     </target>
@@ -592,11 +443,15 @@
             </references>
         </csc>
     </target>
-    <target name="Nuxleus.Web" depends="init Nuxleus.Drawing Nuxleus.Service Nuxleus.Agent Nuxleus.Geo Nuxleus.Configuration Nuxleus.MetaData Nuxleus.Cryptography Nuxleus.Extension Nuxleus.Extension.Aws Nuxleus.Extension.Aws.Sdb Nuxleus.IO Nuxleus.Messaging Nuxleus.Process Nuxleus.PubSub Nuxleus.Utility Xameleon">
+    <target name="Nuxleus.Web" depends="init Nuxleus.Drawing Nuxleus.Service Nuxleus.Geo Nuxleus.Cryptography Nuxleus.Extension.Aws Nuxleus.Messaging Nuxleus.PubSub Xameleon">
         <csc target="library" unsafe="True" output="${build.dir}/${target::get-current-target()}.dll" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/Nuxleus.Web/**/*.cs"/>
-                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/ApplicationServer.cs"/>
+                <exclude name="${source.dir}/Nuxleus.Web/HttpHandler/NuxleusHttpAsyncFormHandler.cs"/>
+                <exclude name="${source.dir}/Nuxleus.Web/HttpHandler/NuxleusHttpAsyncSuggestionFormHandler.cs"/>
+                <exclude name="${source.dir}/Nuxleus.Web/HttpHandler/NuxleusHttpAsyncQueryEntityHandler.cs"/>
+                <exclude name="${source.dir}/Nuxleus.Web/WebServer/WebServer.cs"/>
+		<!--<include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/ApplicationServer.cs"/>
                 <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/BaseApplicationHost.cs"/>
                 <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/BaseRequestBroker.cs"/>
                 <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/IApplicationHost.cs"/>
@@ -613,32 +468,28 @@
                 <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/Paths.cs"/>
                 <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/VPathToHost.cs"/>
                 <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/Tracing.cs"/>
-                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/AssemblyInfo2.cs"/>
+                <include name="${source.dir}/Dependencies/Vendor/Mono/xsp/src/Mono.WebServer/AssemblyInfo2.cs"/>-->
             </sources>
             <references>
-                <include name="System.dll"/>
+                <include name="${dependencies.dir}/protobuf-net.dll"/>
+		<include name="System.dll"/>
                 <include name="System.Data.dll"/>
                 <include name="System.Xml.dll"/>
+                <include name="System.Xml.Linq.dll"/>
                 <include name="System.Web.dll"/>
                 <include name="System.Core.dll"/>
                 <include name="System.ServiceProcess.dll"/>
+                <include name="System.Runtime.Serialization.dll"/>
+                <include name="System.Runtime.Serialization.Formatters.Soap.dll"/>
                 <include name="${dependencies.dir}/log4net.dll"/>
-                <include name="System.Xml.Linq.dll"/>
-		<include name="${build.dir}/Nuxleus.Agent.dll"/>
-                <include name="${build.dir}/Nuxleus.Extension.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
                 <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
-                <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
-                <include name="${build.dir}/Nuxleus.Configuration.dll"/>
                 <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
                 <include name="${build.dir}/Nuxleus.Drawing.dll"/>
                 <include name="${build.dir}/Nuxleus.Geo.dll"/>
-                <include name="${build.dir}/Nuxleus.IO.dll"/>
                 <include name="${build.dir}/Nuxleus.Messaging.dll"/>
-                <include name="${build.dir}/Nuxleus.MetaData.dll"/>
-                <include name="${build.dir}/Nuxleus.Process.dll"/>
                 <include name="${build.dir}/Nuxleus.PubSub.dll"/>
                 <include name="${build.dir}/Nuxleus.Service.dll"/>
-                <include name="${build.dir}/Nuxleus.Utility.dll"/>
                 <include name="${build.dir}/Xameleon.dll"/>
                 <include name="${dependencies.dir}/IKVM.OpenJDK.ClassLibrary.dll"/>
                 <include name="${dependencies.dir}/IKVM.Runtime.dll"/>
@@ -649,7 +500,7 @@
                 <include name="${dependencies.dir}/Saxon.Api.dll"/>
                 <include name="${dependencies.dir}/saxon9.dll"/>
                 <include name="${dependencies.dir}/agsXMPP.dll"/>
-		<include name="${dependencies.dir}/SgmlReader8Dll.dll"/>
+                <include name="${dependencies.dir}/SgmlReader8Dll.dll"/>
             </references>
         </csc>
     </target>
@@ -705,48 +556,46 @@
             </references>
         </csc>
     </target>
-    <target name="sdb-test" depends="init Nuxleus.Extension.Aws.Sdb">
+    <target name="sdb-test" depends="init Nuxleus.Extension.Aws">
         <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe">
             <sources>
                 <include name="${source.dir}/CodeSamples/AwsSdb_Test/Program.cs"/>
             </sources>
             <references>
                 <include name="${dependencies.dir}/log4net.dll"/>
-                <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
+                <!--<include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>-->
                 <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
                 <include name="System.Web.dll"/>
                 <include name="System.dll"/>
             </references>
         </csc>
     </target>
-    <target name="sdb-load-csv" depends="init Nuxleus.Extension.Aws.Sdb">
+    <!-- <target name="sdb-load-csv" depends="init Nuxleus.Extension.Aws.Sdb">
         <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe">
             <sources>
                 <include name="${source.dir}/CodeSamples/AwsSdb_LoadGeoLatLong-Csv/Program.cs"/>
             </sources>
             <references>
                 <include name="${dependencies.dir}/log4net.dll"/>
-                <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
                 <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
                 <include name="System.Web.dll"/>
                 <include name="System.dll"/>
             </references>
         </csc>
-    </target>
-    <target name="sdb-load-geonames" depends="init Nuxleus.Extension.Aws.Sdb">
+    </target> -->
+    <!-- <target name="sdb-load-geonames" depends="init Nuxleus.Extension.Aws.Sdb">
         <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe">
             <sources>
                 <include name="${source.dir}/CodeSamples/AwsSdb_LoadGeonamesDataFile/Program.cs"/>
             </sources>
             <references>
                 <include name="${dependencies.dir}/log4net.dll"/>
-                <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
                 <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
                 <include name="System.Web.dll"/>
                 <include name="System.dll"/>
             </references>
         </csc>
-    </target>
+    </target> -->
     <target name="LocationComplete_Test" depends="init">
         <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe">
             <sources>
@@ -882,20 +731,15 @@
             </references>
         </csc>
     </target>
-    <target name="HttpGetAsyncResponse_Test" depends="init Nuxleus.Web Nuxleus.Asynchronous">
-        <csc 
-            target="exe" 
-            output="${build.dir}/${target::get-current-target()}.exe" 
-            keyfile="./Dependencies/Extf.Net.snk" 
-            debug="${not build.release}" 
-            optimize="${build.release}" 
-            doc="${doc.dir}/${target::get-current-target()}.xml">
+    <target name="HttpGetAsyncResponse_Test" depends="init Nuxleus.Web Nuxleus.Core">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/CodeSamples/HttpGetAsyncResponse_Test/Program.cs"/>
             </sources>
             <references>
                 <include name="${dependencies.dir}/log4net.dll"/>
-                <include name="${build.dir}/Nuxleus.Asynchronous.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="${build.dir}/Nuxleus.Web.dll"/>
                 <include name="System.dll"/>
                 <include name="System.ServiceProcess.dll"/>
@@ -905,14 +749,15 @@
             </references>
         </csc>
     </target>
-    <target name="HttpGetRequestAsyncWorkflow_Test" depends="init Nuxleus.Web Nuxleus.Asynchronous">
+    <target name="HttpGetRequestAsyncWorkflow_Test" depends="init Nuxleus.Web Nuxleus.Core">
         <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/CodeSamples/HttpGetRequestAsyncWorkflow_Test/Program.cs"/>
             </sources>
             <references>
                 <include name="${dependencies.dir}/log4net.dll"/>
-                <include name="${build.dir}/Nuxleus.Asynchronous.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="${build.dir}/Nuxleus.Web.dll"/>
                 <include name="System.dll"/>
                 <include name="System.ServiceProcess.dll"/>
@@ -922,14 +767,15 @@
             </references>
         </csc>
     </target>
-    <target name="Zorba_Test" depends="init Nuxleus.Process">
+    <target name="Zorba_Test" depends="init Nuxleus.Core">
         <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/CodeSamples/Zorba_Test/Program.cs"/>
             </sources>
             <references>
                 <include name="${dependencies.dir}/log4net.dll"/>
-                <include name="${build.dir}/Nuxleus.Process.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
                 <include name="${build.dir}/Nuxleus.Web.dll"/>
                 <include name="System.dll"/>
                 <include name="System.ServiceModel.dll"/>
@@ -939,7 +785,7 @@
             </references>
         </csc>
     </target>
-    <target name="SdbSOAP_Test" depends="init Nuxleus.Extension.Aws Scope">
+    <target name="SdbSOAP_Test" depends="init Nuxleus.Extension.Aws Nuxleus.Core">
         <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="./Dependencies/Extf.Net.snk" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
             <sources>
                 <include name="${source.dir}/CodeSamples/AwsSdbSOAP_Test/**/*.cs"/>
@@ -948,12 +794,14 @@
                 <include name="${dependencies.dir}/log4net.dll"/>
                 <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
                 <include name="${build.dir}/Nuxleus.Asynchronous.dll"/>
-                <include name="${build.dir}/Scope.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
                 <include name="System.dll"/>
                 <include name="System.Configuration.dll"/>
                 <include name="System.Xml.Linq.dll"/>
                 <include name="System.Xml.dll"/>
                 <include name="System.Web.dll"/>
+                <include name="System.Runtime.Serialization.dll"/>
+                <include name="System.Runtime.Serialization.Formatters.Soap.dll"/>
                 <include name="System.Web.Services.dll"/>
             </references>
         </csc>
@@ -984,50 +832,43 @@
       </csc>
   </target>
 	-->
+    <target name="test-projects">
+        <call target="HttpGetAsyncResponse_Test"/>
+        <call target="HttpGetRequestAsyncWorkflow_Test"/>
+        <call target="SdbSOAP_Test"/>
+        <call target="sdb-test"/>
+        <call target="sdb-load-csv"/>
+        <call target="sdb-load-geonames"/>
+    </target>
     <target name="all">
         <call target="init"/>
         <call target="Xameleon"/>
-        <call target="XSP"/>
+        <!--<call target="XSP"/>-->
         <call target="System.Threading"/>
         <call target="Nuxleus"/>
-        <call target="Nuxleus.Agent"/>
         <call target="Nuxleus.Authentication"/>
-        <call target="Nuxleus.Asynchronous"/>
-        <call target="Nuxleus.Build"/>
-        <call target="Nuxleus.Configuration"/>
-        <call target="Nuxleus.Extension"/>
-        <call target="Nuxleus.Entity"/>
         <call target="Nuxleus.Drawing"/>
         <call target="Nuxleus.Profile"/>
         <call target="Nuxleus.Cryptography"/>
         <call target="Nuxleus.Command"/>
-        <call target="Nuxleus.Extension"/>
         <call target="Nuxleus.Extension.Linq"/>
         <call target="Nuxleus.Extension.Amp.Fm"/>
         <call target="Nuxleus.Extension.Aws"/>
-<!-- <call target="Nuxleus.Extension.Aws.Sdb"/> -->
         <call target="Nuxleus.Extension.Community"/>
         <call target="Nuxleus.Extension.Facebook"/>
         <call target="Nuxleus.Extension.Silverlight"/>
         <call target="Nuxleus.Geo"/>
-        <call target="Nuxleus.IO"/>
-        <call target="Nuxleus.Language"/>
         <call target="Nuxleus.Logging"/>
         <call target="Nuxleus.Messaging"/>
-        <call target="Nuxleus.MetaData"/>
-        <call target="Nuxleus.Process"/>
         <call target="Nuxleus.PubSub"/>
         <call target="Nuxleus.Semantics"/>
         <call target="Nuxleus.Service"/>
         <call target="Nuxleus.Synchronization"/>
-        <call target="Nuxleus.Utility"/>
         <call target="Nuxleus.Vendor"/>
         <call target="Nuxleus.Web"/>
         <call target="Nuxleus.Web.Services"/>
+        <call target="Scope"/>
         <call target="MPAPI"/>
-        <call target="sdb-test"/>
-        <call target="sdb-load-csv"/>
-        <call target="sdb-load-geonames"/>
         <call target="FileSystemWatcher"/>
         <call target="ReplicationService"/>
         <call target="QueueServerService"/>
@@ -1035,9 +876,6 @@
         <call target="LLUPPublisherService"/>
         <call target="LLUPRouterService"/>
         <call target="LLUPSubscriberService"/>
-        <call target="HttpGetAsyncResponse_Test"/>
-        <call target="HttpGetRequestAsyncWorkflow_Test"/>
-        <call target="SdbSOAP_Test"/>
         <call target="dependencies"/>
 <!--<call target="System.Messaging" />-->
     </target>
@@ -1085,19 +923,18 @@
         <echo message="Building Nuxleus SDK documentation"/>
         <ndoc>
             <assemblies basedir="${build.dir}">
-                <!--><include name="Nuxleus.dll"/>
+                <!--<include name="Nuxleus.dll"/>
                 <include name="Nuxleus.Authentication.dll"/>
-                <include name="Nuxleus.Configuration.dll"/>
+                <include name=".dll"/>
                 <include name="Nuxleus.Cryptography.dll"/>
                 <include name="Nuxleus.Entity.dll"/>
                 <include name="Nuxleus.Extension.dll"/>
                 <include name="Nuxleus.Extension.Amp.Fm.dll"/>
-                <include name="Nuxleus.IO.dll"/>
                 <include name="Nuxleus.Messaging.dll"/>
                 <include name="Nuxleus.Process.dll"/>
                 <include name="Nuxleus.PubSub.dll"/>
                 <include name="Nuxleus.Service.dll"/>
-                <include name="Nuxleus.Utility.dll"/>
+                <include name=".dll"/>
                 <include name="Nuxleus.Web.dll"/>-->
                 <include name="Xameleon.dll"/>
             </assemblies>

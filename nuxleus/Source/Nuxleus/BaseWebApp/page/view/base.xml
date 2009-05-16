@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="login-container" style="base list TtoB">
+    <view:item id="login" style="center">
+      <div class="form" id="eventform">
+        <h2>Add a new event</h2>
+        <form method="post" action="/blog/pub/event">
+          <table>
+            <tr>
+              <td>Name:</td>
+              <td>
+                <input type="text" name="name" id="name" />
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">Description:</td>
+              <td>
+                <textarea name="description" cols="50" rows="5" id="description">
+                  
+                </textarea>
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align:top;">Location:</td>
+              <td>
+                <input type="hidden" name="location" id="location" />
+                <div id="gmap" />
+              </td>
+            </tr>
+            <tr>
+              <td>Venues:</td>
+              <td>
+                <select name="venue" id="venu">
+                  <option value="house-of-blues">House of Blues</option>
+                  <option value="jazz">Dan's Place</option>
+                  <option value="electronica">Monks</option>
+                  <option value="rock">House of Fire</option>
+                  <option value="funk">Boom Boom Room</option>
+                  <option value="hiphop">Joe's Bar &amp; Grill</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Start date:</td>
+              <td>
+                <input type="text" name="startdate" class="calendarSelectDate" id="startdate" />
+              </td>
+            </tr>
+            <tr>
+              <td>End date:</td>
+              <td>
+                <input type="text" name="enddate" class="calendarSelectDate" id="enddate" />
+              </td>
+            </tr>
+            <tr>
+              <td>Genre:</td>
+              <td>
+                <select name="genre" id="genre">
+                  <option value="blues">Blues</option>
+                  <option value="jazz">jazz</option>
+                  <option value="electronica">Electronica</option>
+                  <option value="rock">Rock</option>
+                  <option value="funk">Funk</option>
+                  <option value="hiphop">Hip-Hop</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Tags:</td>
+              <td>
+                <input type="text" name="tags" id="tags" />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <input type="submit" value="Go" />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div id="calendarDiv" />
+    </view:item>
+  </view:container>
+</view:module>
