@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Enyim.Caching.Memcached
 {
-	internal class DefaultTranscoder : ITranscoder
+	public sealed class DefaultTranscoder : ITranscoder
 	{
 		#region [ TypeCode from Reflector      ]
 	/*

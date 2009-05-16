@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 
 namespace Enyim.Caching.Memcached
 {
-	public sealed class SHA1HashTransformer : IKeyTransformer
+	public sealed class SHA1KeyTransformer : IKeyTransformer
 	{
 		string IKeyTransformer.Transform(string key)
 		{

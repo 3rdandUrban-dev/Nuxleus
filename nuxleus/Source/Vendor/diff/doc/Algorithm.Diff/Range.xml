@@ -1,0 +1,130 @@
+<Type Name="Range" FullName="Algorithm.Diff.Range">
+  <TypeSignature Language="C#" Value="public class Range : System.Collections.IList" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.IList</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Reflection.DefaultMember(MemberName="Item")</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Range (System.Collections.IList list, int start, int count);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="list" Type="System.Collections.IList" />
+        <Parameter Name="start" Type="System.Int32" />
+        <Parameter Name="count" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <summary>Constructs a new range for the given list, with the window starting at the given index and with the given length.</summary>
+        <param name="list">The list to wrap.</param>
+        <param name="start">The starting index in the list to wrap.</param>
+        <param name="count">The size of the window.</param>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    
+    <Member MemberName="Start">
+      <MemberSignature Language="C#" Value="public int Start { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The starting index of this range in the original list.</summary>
+        <value>The starting index of this range in the original list.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Count">
+      <MemberSignature Language="C#" Value="public int Count { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The length of the range.</summary>
+        <value>The length of the range (i.e. the size of the window).</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="End">
+      <MemberSignature Language="C#" Value="public int End { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The ending index of this range in the original list.</summary>
+        <value>The ending index of this range in the original list.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public object Item[int index] { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <summary>Returns an item from the original list exposed by this range.</summary>
+        <param name="index">The index of the item, from 0 to <see cref="P:Algorithm.Diff.Range.Count" />-1.</param>
+        <value>An element of the original list.</value>
+        <remarks>This property returns the element at the index <see cref="Algorithm.Diff.Range.Start" /> + <paramref name="index" /> in the original list.</remarks>
+      </Docs>
+    </Member>
+  <Member MemberName="Contains">
+      <MemberSignature Language="C#" Value="public bool Contains (object obj);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="obj" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="obj">The item to see if the range contains it.</param>
+        <summary>Returns whether the range contains the given item.</summary>
+        <returns>True if the object equals (via <see cref="M:System.Object.Equals" />) some object in the range, otherwise false.</returns>
+        <remarks>The test is performed as a linear search.</remarks>
+      </Docs>
+    </Member>
+  <Member MemberName="IndexOf">
+      <MemberSignature Language="C#" Value="public int IndexOf (object obj);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="obj" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="obj">The object to get the index of.</param>
+        <summary>Returns the index of the object in the range.</summary>
+        <returns>The first index of an object that equals (via <see cref="M:System.Object.Equals" />) <paramref name="obj" />, or -1 if no equal object is found.</returns>
+        <remarks>The search is done linearly.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>A window into another list.</summary>
+    <remarks>
+      <para>The Range object provides a window into a <see cref="T:System.Collections.IList" /> object, and exposes the window as a <see cref="T:System.Collections.ICollection" />.</para>
+
+<para>The elements in this range can be accessed either with the indexer or via a for-each over the Range.</para></remarks>
+  </Docs>
+</Type>

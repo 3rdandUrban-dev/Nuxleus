@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="MPAPI.RegistrationServer.RegistrationServer" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <FileName>NodeRegistrationServer\RegistrationServer.cs</FileName>
+      <HashCode>AAAAAAAAAiAAQAAAACAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Class Name="MPAPI.RegistrationServer.RegistrationServer.ProxyEndPointMap" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>NodeRegistrationServer\RegistrationServer.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MPAPI.RegistrationServer.RegistrationServerBootstrap" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>NodeRegistrationServer\RegistrationServerBootstrap.cs</FileName>
+      <HashCode>AAAAAAAAACAAIAAAAAAAAAAAAAAAAAAAAAAABAAgAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_registrationServer" />
+    </ShowAsAssociation>
+    <AssociationLine Name="_registrationServer" Type="MPAPI.RegistrationServer.RegistrationServer" FixedFromPoint="true">
+      <Path>
+        <Point X="11.5" Y="4.25" />
+        <Point X="11.5" Y="3.323" />
+      </Path>
+    </AssociationLine>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MPAPI.WorkerAddress">
+    <Position X="6.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>WorkerAddress.cs</FileName>
+      <HashCode>AAAAAAAAAAABAAAEgAAAAAAAACBAAMAAAAAACgAAAiA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MPAPI.Log">
+    <Position X="14.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Log.cs</FileName>
+      <HashCode>AALAAQACAAAAAYAKAAAAABAAAACAAAIQAIAgAEACAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MPAPI.Message">
+    <Position X="12" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Message.cs</FileName>
+      <HashCode>CAAAAAAAAgQEAAAFAIgFIAAAACBABAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="MessageLevel" />
+      <Property Name="ReceiverAddress" />
+      <Property Name="SenderAddress" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="MPAPI.Node" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>Node.cs</FileName>
+      <HashCode>QEAgQAABECABIAAAJCHAAEiEABAAAQCACAAQRAKAWEA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_registrationServerProxy" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_localWorkers" />
+      <Field Name="_remoteNodes" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MPAPI.SystemMessages">
+    <Position X="14" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>SystemMessages.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAABAAAEAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MPAPI.Worker" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Worker.cs</FileName>
+      <HashCode>AEQCARgAAQCEAAAACEHAAAlAEAgAAQgQgogAJAEAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_node" />
+      <Field Name="_monitoringWorker" />
+      <Property Name="Current" />
+      <Property Name="Node" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="MPAPI.RegistrationServer.IRegistrationServer">
+    <Position X="8.5" Y="8" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>NodeRegistrationServer\IRegistrationServer.cs</FileName>
+      <HashCode>AAAAAAAAAgAAQAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MPAPI.INode">
+    <Position X="5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>INode.cs</FileName>
+      <HashCode>AEAAAAAAAAAAAAAABAGAAACAAAAAAQAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MPAPI.INodeIdentity">
+    <Position X="2.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>INodeIdentity.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MPAPI.IRegisteredNode">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>IRegisteredNode.cs</FileName>
+      <HashCode>AAAAAAABAAAAIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MPAPI.IWorker">
+    <Position X="3.5" Y="7.75" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>IWorker.cs</FileName>
+      <HashCode>AAAAAAAAAQCAAAAAAEGAAAAAAAAAAAAQAggAAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="MPAPI.IWorkerNode">
+    <Position X="2.5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>IWorkerNode.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAECAAAAAAQAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MPAPI.LogLevel">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Log.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAYAAAAAAABAAAAAAAAAQAIAAAEEAAEA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MPAPI.LogType">
+    <Position X="13" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Log.cs</FileName>
+      <HashCode>AACAAAAAAAAAAAAAAgAAAAAAAAAEAAAAAAAAAAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MPAPI.MessageLevel">
+    <Position X="14" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Message.cs</FileName>
+      <HashCode>AAABAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

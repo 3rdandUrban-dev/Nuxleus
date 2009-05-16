@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Enyim.Caching.Memcached
 {
-	public sealed class Base64Transformer : IKeyTransformer
+	public sealed class Base64KeyTransformer : IKeyTransformer
 	{
 		string IKeyTransformer.Transform(string key)
 		{

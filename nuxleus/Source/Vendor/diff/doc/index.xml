@@ -1,0 +1,40 @@
+<Overview>
+  <Remarks>A library for diffs, patches, and merges.</Remarks>
+  <Copyright>See http://taubz.for.net/code/diff.</Copyright>
+  <Types>
+    <Namespace Name="Algorithm.Diff">
+      <Type Name="Patch" />
+      <Type Name="Diff" />
+      <Type Name="Diff+Hunk" />
+      <Type Name="Merge" />
+      <Type Name="Merge+Conflict" />
+      <Type Name="Merge+Hunk" />
+      <Type Name="Range" />
+      <Type Name="XmlOutputNodeInterface" />
+      <Type Name="StructuredDiff" />
+      <Type Name="XmlOutputStructuredDiff" />
+      <Type Name="NodeInterface" />
+      <Type Name="IDiff" />
+      <Type Name="Patch+Hunk" />
+      <Type Name="UnifiedDiff" />
+      <Type Name="TextDiff" />
+      <Type Name="Hunk" />
+    </Namespace>
+  </Types>
+  <Title>Diff</Title>
+  <Assemblies>
+    <Assembly Name="Diff" Version="0.0.0.0">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription(Description="A library for performing diffs, patches, and merges on lists of comparable objects.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright(Copyright="Copyright (c) 2004 Joshua Tauberer &lt;tauberer@for.net&gt;")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle(Title="Diff: A Diff/Patch/Merge Library")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Assembly>
+  </Assemblies>
+</Overview>

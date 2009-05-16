@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPAPI", "MPAPI\MPAPI.csproj", "{8727458C-E531-44BA-9AF5-686B239A0F20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationServer", "RegistrationServer\RegistrationServer.csproj", "{47A22F9B-BC4B-4AC2-A569-36E11AC71B7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8727458C-E531-44BA-9AF5-686B239A0F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8727458C-E531-44BA-9AF5-686B239A0F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8727458C-E531-44BA-9AF5-686B239A0F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8727458C-E531-44BA-9AF5-686B239A0F20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47A22F9B-BC4B-4AC2-A569-36E11AC71B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47A22F9B-BC4B-4AC2-A569-36E11AC71B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47A22F9B-BC4B-4AC2-A569-36E11AC71B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47A22F9B-BC4B-4AC2-A569-36E11AC71B7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

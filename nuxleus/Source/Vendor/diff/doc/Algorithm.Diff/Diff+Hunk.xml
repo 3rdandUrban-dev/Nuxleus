@@ -1,0 +1,68 @@
+<Type Name="Diff+Hunk" FullName="Algorithm.Diff.Diff+Hunk">
+  <TypeSignature Language="C#" Value="public class Hunk : Algorithm.Diff.Hunk" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Algorithm.Diff.Hunk</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Members>
+    <Member MemberName="DiffString">
+      <MemberSignature Language="C#" Value="public string DiffString ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns this hunk as a string in a diff-style format.</summary>
+        <returns>A string representation of this hunk, showing the corresponding lines in the first list followed by the corresponding lines in the second list.</returns>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Same">
+      <MemberSignature Language="C#" Value="public bool Same { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether this hunk represents ranges in the lists considered equal.</summary>
+        <value>True if the two lists did not differ in this hunk, otherwise false.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Left">
+      <MemberSignature Language="C#" Value="public Algorithm.Diff.Range Left { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Algorithm.Diff.Range</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The range of the first list that this hunk represents.</summary>
+        <value>The range of the first list that this hunk represents.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Right">
+      <MemberSignature Language="C#" Value="public Algorithm.Diff.Range Right { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Algorithm.Diff.Range</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The range of the second list that this hunk represents.</summary>
+        <value>The range of the second list that this hunk represents.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>A hunk is a segment of a diff.  It relates a region of the base document to a region of the changed document.</summary>
+    <remarks>
+      <para>Hunks are not only used for parts of a diff in which there are changes.  Hunks are created such that every line in each list is represented by some hunk.</para>
+    </remarks>
+  </Docs>
+</Type>

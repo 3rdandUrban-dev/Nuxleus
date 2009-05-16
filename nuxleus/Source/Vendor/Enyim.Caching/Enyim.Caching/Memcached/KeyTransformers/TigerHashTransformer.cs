@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Enyim.Caching.Memcached
 {
-	public sealed class TigerHashTransformer : IKeyTransformer
+	public sealed class TigerHashKeyTransformer : IKeyTransformer
 	{
 		string IKeyTransformer.Transform(string key)
 		{

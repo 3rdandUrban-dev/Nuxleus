@@ -1,0 +1,2641 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Org.Mentalis.SecurityServices</name>
+    </assembly>
+    <members>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.ApduReply">
+            <summary>
+            Represents the reply of a smartcard to an APDU.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.ApduReply.GetContents">
+            <summary>
+            The contents of the reply.
+            </summary>
+            <returns>An array of bytes that holds the contents of the reply.</returns>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.ApduReply.StatusWord1">
+            <summary>
+            The first byte of the status word.
+            </summary>
+            <value>A byte representing the first part of the status word.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.ApduReply.StatusWord2">
+            <summary>
+            The second byte of the status word.
+            </summary>
+            <value>A byte representing the second part of the status word.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.ApduReply.Length">
+            <summary>
+            Gets the length of the contents of the APDU reply.
+            </summary>
+            <value>An integer that contains the length of the contents of the APDU reply.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.ApduReply.Success">
+            <summary>
+            Indicates whether the APDU command was successfully executed.
+            </summary>
+            <value><b>true</b> if the command was successfully executed, <b>false</b> otherwise.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.CredentialCollection">
+            <summary>
+            Represents a collection of Credential objects. This class cannot be inherited. 
+            </summary>
+            <remarks>The CredentialCollection class requires Windows XP or higher.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CredentialCollection.#ctor(System.String)">
+            <summary>
+            Initializes an new CredentialCollection instance.
+            </summary>
+            <param name="targetFilter">The filter to use when looking for credentials -or- a null reference if all credentials should be returned.</param>
+            <exception cref="T:System.NotSupportedException">This functionality requires Windows XP or higher.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while retrieving the credentials.</exception>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.Atr">
+            <summary>
+            Represents an Answer To Reset (or ATR). An ATR could be thought of as an identification string
+            that a smartcard sends to the reader upon insertion.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.Atr.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new Atr instance.
+            </summary>
+            <param name="atr">The value of the ATR.</param>
+            <exception cref="T:System.ArgumentNullException"><i>atr</i> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException"><i>atr</i> has an invalid length.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.Atr.#ctor(System.Byte[],System.Byte[])">
+            <summary>
+            Initializes a new Atr instance.
+            </summary>
+            <param name="atr">The value of the ATR.</param>
+            <param name="mask">The mask that corresponds with the ATR.</param>
+            <exception cref="T:System.ArgumentNullException"><i>atr</i> or <i>mask</i> are a null reference.</exception>
+            <exception cref="T:System.ArgumentException"><i>atr</i> or <i>mask</i> have an invalid length.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.Atr.GetValue">
+            <summary>
+            The binary value of the ATR.
+            </summary>
+            <returns>An array of bytes that contains the value of the ATR.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.Atr.GetMask">
+            <summary>
+            The binary value of the mask that corresponds with the ATR.
+            </summary>
+            <returns>An array of bytes that contains the mask of the ATR.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.Atr.IsMatch(System.Byte[])">
+            <summary>
+            Checks whether a given array of bytes matches with this ATR.
+            </summary>
+            <param name="atr">The array of bytes to check.</param>
+            <returns><b>true</b> if the array of bytes matches with this Atr instance, <b>false</b> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException"><i>atr</i> is a null reference.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.Atr.Match(Org.Mentalis.SecurityServices.Smartcard.Atr)">
+            <summary>
+            Checks whether a given ATR matches with this ATR.
+            </summary>
+            <param name="atr">The ATR to check.</param>
+            <returns><b>true</b> if the given ATR matches with this Atr instance, <b>false</b> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException"><i>atr</i> is a null reference.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.Atr.Clone">
+            <summary>
+            Creates a copy of the ATR.
+            </summary>
+            <returns>An identical copy of the ATR.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.Atr.Equals(System.Object)">
+            <summary>
+            Determines whether two ATR instances are equal.
+            </summary>
+            <param name="obj">The Object to compare with the current ATR.</param>
+            <returns><b>true</b> if the specified Object is equal to the current ATR; otherwise, <b>false</b>. </returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.Atr.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type. GetHashCode is suitable for use in hashing algorithms and data structures like a hash table.
+            </summary>
+            <returns>A hash code for the current ATR.</returns>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.Atr.Length">
+            <summary>
+            Gets the length of the ATR.
+            </summary>
+            <value>An integer that holds the length of the ATR.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider">
+            <summary>
+            Accesses the unmanaged version of the <see cref="T:System.Security.Cryptography.Rijndael"/> algorithm. This class cannot be inherited.
+            </summary>
+            <remarks>
+            This class will use the unmanaged implementation of the Rijndael algorithm, when possible. If the unmanaged Rijndael algorithm is not available, it will fall back to the <see cref="T:System.Security.Cryptography.RijndaelManaged"/> implementation.
+            </remarks>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The AES cryptographic service provider could not be acquired.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider"/> class.
+            </summary>
+            <param name="forceUnmanaged">Forces the class to use the unmanaged AES implementation. An exception will be thrown if this is impossible.</param>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs while acquiring the AES CSP.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.Finalize">
+            <summary>
+            Releases all unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.Dispose(System.Boolean)">
+            <summary>
+            Releases all unmanaged resources.
+            </summary>
+            <param name="disposing"><b>true</b> to release both managed and unmanaged resources; <b>false</b> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.GenerateIV">
+            <summary>
+            Generates a random initialization vector (IV) to be used for the algorithm.
+            </summary>
+            <remarks>Use this method to generate a random IV when none is specified.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.GenerateKey">
+            <summary>
+            Generates a random Key to be used for the algorithm.
+            </summary>
+            <remarks>Use this method to generate a random key when none is specified.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.CreateDecryptor(System.Byte[],System.Byte[])">
+            <summary>
+            Creates a symmetric <see cref="T:System.Security.Cryptography.Rijndael"/> decryptor object with the specified <see cref="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.Key"/> and initialization vector (<see cref="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.IV"/>).
+            </summary>
+            <param name="rgbKey">The secret key to be used for the symmetric algorithm.</param>
+            <param name="rgbIV">The IV to be used for the symmetric algorithm.</param>
+            <returns>A symmetric Rijndael decryptor object.</returns>
+            <remarks>This method decrypts an encrypted message created using the <see cref="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.CreateEncryptor(System.Byte[],System.Byte[])"/> overload with the same signature.</remarks>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inputBuffer"/> or <paramref name="outputBuffer"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs while creating the decryptor.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.CreateEncryptor(System.Byte[],System.Byte[])">
+            <summary>
+            Creates a symmetric <see cref="T:System.Security.Cryptography.Rijndael"/> encryptor object with the specified <see cref="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.Key"/> and initialization vector (<see cref="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.IV"/>).
+            </summary>
+            <param name="rgbKey">The secret key to be used for the symmetric algorithm.</param>
+            <param name="rgbIV">The IV to be used for the symmetric algorithm.</param>
+            <returns>A symmetric Rijndael encryptor object.</returns>
+            <remarks>Use the <see cref="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.CreateDecryptor(System.Byte[],System.Byte[])"/> overload with the same signature to decrypt the result of this method.</remarks>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inputBuffer"/> or <paramref name="outputBuffer"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs while creating the encryptor.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.BlockSize">
+            <summary>
+            Gets or sets the block size of the cryptographic operation in bits.
+            </summary>
+            <value>The block size in bits.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The block size is invalid.</exception>
+            <remarks>The block size is the basic unit of data that can be encrypted or decrypted in one operation. Messages longer than the block size are handled as successive blocks; messages shorter than the block size must be padded with extra bits to reach the size of a block. Valid block sizes are determined by the symmetric algorithm used.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.FeedbackSize">
+            <summary>
+            Gets or sets the feedback size of the cryptographic operation in bits.
+            </summary>
+            <value>The feedback size in bits.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The feedback size is larger than the block size.</exception>
+            <remarks>The feedback size determines the amount of data that is fed back to successive encryption or decryption operations. The feedback size cannot be greater than the block size.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.IV">
+            <summary>
+            Gets or sets the initialization vector (IV) for the symmetric algorithm.
+            </summary>
+            <value>The initialization vector.</value>
+            <exception cref="T:System.ArgumentNullException">An attempt is made to set the IV to a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An attempt is made to set the IV to an invalid size.</exception>
+            <remarks>If this property is a null reference (<b>Nothing</b> in Visual Basic) when it is used, <see cref="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.GenerateIV"/> is called to create a new random value.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.Key">
+            <summary>
+            Gets or sets the secret key for the symmetric algorithm.
+            </summary>
+            <value>The secret key to be used for the symmetric algorithm.</value>
+            <exception cref="T:System.ArgumentNullException">An attempt is made to set the key to a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <remarks>
+            <p>The secret key is used both for encryption and for decryption. For a symmetric algorithm to be secure, the secret key must be known only to the sender and the receiver. The valid key sizes are specified by the particular symmetric algorithm implementation and are listed in <see cref="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.LegalKeySizes"/>.</p>
+            <p>If this property is a null reference (<b>Nothing</b> in Visual Basic) when it is used, <see cref="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.GenerateKey"/> is called to create a new random value.</p>
+            </remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.KeySize">
+            <summary>
+            Gets or sets the size of the secret key used by the symmetric algorithm in bits.
+            </summary>
+            <value>The size of the secret key used by the symmetric algorithm.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The key size is not valid.</exception>
+            <remarks>The valid key sizes are specified by the particular symmetric algorithm implementation and are listed in <see cref="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.LegalKeySizes"/>.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.LegalBlockSizes">
+            <summary>
+            Gets the block sizes that are supported by the symmetric algorithm.
+            </summary>
+            <value>An array containing the block sizes supported by the algorithm.</value>
+            <remarks>Only block sizes that match an entry in this array are supported by the symmetric algorithm.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.LegalKeySizes">
+            <summary>
+            Gets the key sizes that are supported by the symmetric algorithm.
+            </summary>
+            <value>An array containing the key sizes supported by the algorithm.</value>
+            <remarks>Only key sizes that match an entry in this array are supported by the symmetric algorithm.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.Mode">
+            <summary>
+            Gets or sets the mode for operation of the symmetric algorithm.
+            </summary>
+            <value>The mode for operation of the symmetric algorithm.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The cipher mode is not one of the CipherMode values.</exception>
+            <remarks>See CipherMode for a description of specific modes.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelCryptoServiceProvider.Padding">
+            <summary>
+            Gets or sets the padding mode used in the symmetric algorithm.
+            </summary>
+            <value>The padding mode used in the symmetric algorithm.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The padding mode is not one of the PaddingMode values.</exception>
+            <remarks>Most plain text messages do not consist of a number of bytes that completely fill blocks. Often, there are not enough bytes to fill the last block. When this happens, a padding string is added to the text. For example, if the block length is 64 bits and the last block contains only 40 bits, 24 bits of padding are added. See <see cref="T:System.Security.Cryptography.PaddingMode"/> for a description of specific modes.</remarks>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.PasswordValidator">
+            <summary>
+            Validates a password according to a set of validation rules.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.PasswordValidator.#ctor">
+            <summary>
+            Initializes a new PasswordValidator instance.
+            </summary>
+            <remarks>By default, passwords must contain at least one alphanumerical character, one symbol and must have a length of at lease 8 characters.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.PasswordValidator.#ctor(Org.Mentalis.SecurityServices.Authentication.IValidator[])">
+            <summary>
+            Initializes a new PasswordValidator instance.
+            </summary>
+            <param name="validators">The set of validators to use.</param>
+            <exception cref="T:System.ArgumentNullException"><i>validators</i> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException">At least one of the validators in <i>validators</i> is a null reference.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.PasswordValidator.Validate(System.String)">
+            <summary>
+            Validates a password.
+            </summary>
+            <param name="password">The password to validate.</param>
+            <returns><b>true</b> if the password could be validated, <b>false</b> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">The password is a null reference.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.PasswordValidator.Validate(System.Security.SecureString)">
+            <summary>
+            Validates a password.
+            </summary>
+            <param name="password">The password to validate.</param>
+            <returns><b>true</b> if the password could be validated, <b>false</b> otherwise.</returns>
+            <exception cref="T:System.ArgumentNullException">The password is a null reference.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.PasswordValidator.PasswordStrength(System.String)">
+            <summary>
+            Gives an indication of how strong the password is.
+            </summary>
+            <param name="password">The password to test.</param>
+            <returns>A double precision floating point number betzeen 0.0 and 1.0 that gives an indication of how strong the password is,
+            considering the validation requirements. A value of 1.0 corresponds with a validated password.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.PasswordValidator.PasswordStrength(System.Security.SecureString)">
+            <summary>
+            Gives an indication of how strong the password is.
+            </summary>
+            <param name="password">The password to test.</param>
+            <returns>A double precision floating point number betzeen 0.0 and 1.0 that gives an indication of how strong the password is,
+            considering the validation requirements. A value of 1.0 corresponds with a validated password.</returns>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.UI.InputPinForm">
+            <summary>
+            Represents a dialog that allows the user to input a PIN number.
+            </summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.UI.InputPinForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.UI.InputPinForm.#ctor">
+            <summary>
+            Initializes a new instance of the InputPinForm.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.UI.InputPinForm.#ctor(Org.Mentalis.SecurityServices.Authentication.PasswordValidator)">
+            <summary>
+            Initializes a new instance of the InputPinForm.
+            </summary>
+            <param name="validator">The validator that checks the PIN code for validity.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.UI.InputPinForm.#ctor(Org.Mentalis.SecurityServices.Authentication.PasswordValidator,System.String)">
+            <summary>
+            Initializes a new instance of the InputPinForm.
+            </summary>
+            <param name="validator">The validator that checks the PIN code for validity.</param>
+            <param name="description">A description that's shown to the user. If this parameter is a null reference, a default description will be shown.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.UI.InputPinForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.UI.InputPinForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.UI.InputPinForm.PIN">
+            <summary>
+            Gets the PIN entered by the user.
+            </summary>
+            <value>A string that contains the PIN.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">
+            <summary>
+            The exception that is thrown when a smartcard error occurs.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardException.#ctor">
+            <summary>
+            Initializes a new instance of the SmartcardException class.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SmartcardException class with its message string set to message and its inner exception set to a null reference (<b>Nothing</b> in Visual Basic).
+            </summary>
+            <param name="message">A String that describes the error. The content of message is intended to be understood by humans.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the SmartcardException class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">A String that describes the error. The content of message is intended to be understood by humans.</param>
+            <param name="innerException">The exception that is the cause of the current exception. If the innerException parameter is not a null reference (<b>Nothing</b> in Visual Basic), the current exception is raised in a <b>catch</b> block that handles the inner exception.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the Exception class with serialized data.
+            </summary>
+            <param name="info">The SerializationInfo that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The StreamingContext that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.ArgumentNullException">The <i>info</i> parameter is a null reference.</exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is a null reference or HResult is zero (0).</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardException.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the SmartcardException class with its message string set to message and its inner exception set to a null reference (<b>Nothing</b> in Visual Basic).
+            </summary>
+            <param name="message">A String that describes the error. The content of message is intended to be understood by humans.</param>
+            <param name="error">The error code of the exception.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardException.#ctor(System.String,System.UInt32)">
+            <summary>
+            Initializes a new instance of the SmartcardException class with its message string set to message and its inner exception set to a null reference (<b>Nothing</b> in Visual Basic).
+            </summary>
+            <param name="message">A String that describes the error. The content of message is intended to be understood by humans.</param>
+            <param name="error">The error code of the exception.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the SerializationInfo with information about the exception.
+            </summary>
+            <param name="info">The SerializationInfo that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The StreamingContext that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.ArgumentNullException">The <i>info</i> parameter is a null reference.</exception>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.RC4">
+            <summary>
+            Represents the base class from which all implementations of the RC4 symmetric stream cipher must inherit.
+            </summary>
+            <remarks>
+            RC4 is a trademark of RSA Data Security Inc.
+            </remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4.#ctor">
+            <summary>
+            Initializes a new instance of the RC4 class.
+            </summary>
+            <remarks>
+            The default keysize is 128 bits.
+            </remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4.GenerateIV">
+            <summary>
+            This is a stub method.
+            </summary>
+            <remarks>Since the RC4 cipher doesn't use an Initialization Vector, this method will not do anything.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4.GenerateKey">
+            <summary>
+            Generates a random Key to be used for the algorithm.
+            </summary>
+            <remarks>Use this method to generate a random key when none is specified.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4.Create">
+            <summary>
+            Creates an instance of the default cryptographic object used to perform the RC4 transformation.
+            </summary>
+            <returns>The instance of a cryptographic object used to perform the RC4 transformation.</returns>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs while acquiring the CSP.</exception>
+            <exception cref="T:System.InvalidOperationException">FIPS compliance is required, but the current implementation isn't FIPS verified.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4.Create(System.String)">
+            <summary>
+            Creates an instance of the specified cryptographic object used to perform the RC4 transformation.
+            </summary>
+            <param name="algName">The name of the specific implementation of <see cref="T:Org.Mentalis.SecurityServices.Cryptography.RC4"/> to create.</param>
+            <returns>A cryptographic object.</returns>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs while acquiring the CSP.</exception>
+            <exception cref="T:System.InvalidOperationException">FIPS compliance is required, but the current implementation isn't FIPS verified.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4.BlockSize">
+            <summary>
+            Gets or sets the block size of the cryptographic operation in bits.
+            </summary>
+            <value>The block size of RC4 is always 8 bits.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The block size is invalid.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4.FeedbackSize">
+            <summary>
+            Gets or sets the feedback size of the cryptographic operation in bits.
+            </summary>
+            <value>This property always throws a <see cref="T:System.Security.Cryptography.CryptographicException"/>.</value>
+            <exception cref="T:System.NotSupportedException">This exception is always thrown.</exception>
+            <remarks>RC4 doesn't use the FeedbackSize property.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4.IV">
+            <summary>
+            Gets or sets the initialization vector (IV) for the symmetric algorithm.
+            </summary>
+            <value>This property always returns a byte array of length one. The value of the byte in the array is always set to zero.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An attempt is made to set the IV to an invalid instance.</exception>
+            <remarks>RC4 doesn't use the IV property, however the property accepts IV's of up to one byte (RC4's <see cref="P:Org.Mentalis.SecurityServices.Cryptography.RC4.BlockSize"/>) in order to interoperate with software that has been written with the use of block ciphers in mind.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4.LegalBlockSizes">
+            <summary>
+            Gets the block sizes that are supported by the symmetric algorithm.
+            </summary>
+            <value>An array containing the block sizes supported by the algorithm.</value>
+            <remarks>Only a block size of one byte is supported by the RC4 algorithm.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4.LegalKeySizes">
+            <summary>
+            Gets the key sizes that are supported by the symmetric algorithm.
+            </summary>
+            <value>An array containing the key sizes supported by the algorithm.</value>
+            <remarks>Only key sizes that match an entry in this array are supported by the symmetric algorithm.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4.Mode">
+            <summary>
+            Gets or sets the mode for operation of the symmetric algorithm.
+            </summary>
+            <value>The mode for operation of the symmetric algorithm.</value>
+            <remarks>RC4 only supports the OFB cipher mode. See <see cref="T:System.Security.Cryptography.CipherMode"/> for a description of this mode.</remarks>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The cipher mode is not OFB.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4.Padding">
+            <summary>
+            Gets or sets the padding mode used in the symmetric algorithm.
+            </summary>
+            <value>The padding mode used in the symmetric algorithm. This property always returns PaddingMode.None.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The padding mode is set to a padding mode other than PaddingMode.None.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4.RngCsp">
+            <summary>
+            Returns an <see cref="T:System.Security.Cryptography.RNGCryptoServiceProvider"/> instance.
+            </summary>
+            <returns>An RNGCryptoServiceProvider instance.</returns>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.LengthValidator">
+            <summary>
+            A validator that checks the length of the password.
+            </summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.CharacterValidator">
+            <summary>
+            Defines a base class for the validators that check for the presence of a specific type of character.
+            </summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.IValidator">
+            <summary>
+            Defines methods that inspect a password, character by character, to determine whether it is a secure password or not.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.IValidator.InspectChar(System.Char)">
+            <summary>
+            Inspects one character of the password.
+            </summary>
+            <param name="input">The character to inspect.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.IValidator.IsValidated">
+            <summary>
+            Returns a boolean that indicates whether the inspected password can be considered secure by this validator.
+            </summary>
+            <returns>A boolean that indicates whether the inspected password can be considered secure by this validator.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.IValidator.Reset">
+            <summary>
+            Resets the internal status of the validator.
+            </summary>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Authentication.IValidator.PasswordStrength">
+            <summary>
+            Gives an indication of how 'far' the password is from being validated.
+            </summary>
+            <value>A double precision floating point number betzeen 0.0 and 1.0 that gives an indication of how strong the password is,
+            considering the validation requirements. A value of 1.0 corresponds with a validated password.</value>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CharacterValidator.#ctor">
+            <summary>
+            Initializes a new CharacterValidator instance.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CharacterValidator.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new CharacterValidator instance.
+            </summary>
+            <param name="required">The required number of matches.</param>
+            <param name="allowMore"><b>true</b> if more than the specified number of characters are allowed, <b>false</b> otherwise.</param>
+            <exception cref="T:System.ArgumentException"><i>required</i> has an invalid value.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CharacterValidator.IsValidated">
+            <summary>
+            Returns a boolean that indicates whether the inspected password can be considered secure by this validator.
+            </summary>
+            <returns>A boolean that indicates whether the inspected password can be considered secure by this validator.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CharacterValidator.Reset">
+            <summary>
+            Resets the internal status of the validator.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CharacterValidator.InspectChar(System.Char)">
+            <summary>
+            Inspects one character of the password.
+            </summary>
+            <param name="input">The character to inspect.</param>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Authentication.CharacterValidator.PasswordStrength">
+            <summary>
+            Gives an indication of how 'far' the password is from being validated.
+            </summary>
+            <value>A double precision floating point number betzeen 0.0 and 1.0 that gives an indication of how strong the password is,
+            considering the validation requirements. A value of 1.0 corresponds with a validated password.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Authentication.CharacterValidator.ValidatedChars">
+            <summary>
+            Holds the number of validated characters.
+            </summary>
+            <value>An integer that holds the number of validated characters.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Authentication.CharacterValidator.MinRequired">
+            <summary>
+            Holds the number of required valid characters.
+            </summary>
+            <value>An integer that holds the number of required valid characters.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Authentication.CharacterValidator.AllowMore">
+            <summary>
+            Specifies whether more valid characters than the specified number of minimum characters are allowed.
+            </summary>
+            <value><b>true</b> if more valid characters than the specified number of minimum characters are allowed, <b>false</b> otherwise.</value>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.LengthValidator.#ctor">
+            <summary>
+            Initializes a new CharacterValidator instance.
+            </summary>
+            <remarks>The minimum length that the password should have is 8 characters.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.LengthValidator.#ctor(System.Int32)">
+            <summary>
+            Initializes a new CharacterValidator instance.
+            </summary>
+            <param name="required">Defines the minimum length that the password should have.</param>
+            <exception cref="T:System.ArgumentException"><i>required</i> has an invalid value.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.LengthValidator.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new CharacterValidator instance.
+            </summary>
+            <param name="required">Defines the length that the password should have.</param>
+            <param name="allowMore"><b>true</b> if more than the specified number of characters are allowed, <b>false</b> otherwise.</param>
+            <exception cref="T:System.ArgumentException"><i>required</i> has an invalid value.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.LengthValidator.InspectChar(System.Char)">
+            <summary>
+            Inspects one character of the password.
+            </summary>
+            <param name="input">The character to inspect.</param>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Permissions.SmartcardConnectOption">
+            <summary>
+            Defines the different types of smartcard access
+            </summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Permissions.SmartcardConnectOption.None">
+            <summary>No access to a smartcard is permitted.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Permissions.SmartcardConnectOption.AllowedAtrs">
+            <summary>Access to smartcards with a specific ATR is permitted.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Permissions.SmartcardConnectOption.Unrestricted">
+            <summary>Access to any smartcard is permitted.</summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider">
+            <summary>
+            Defines a wrapper object to access the cryptographic service provider (CSP) version of the RC4 algorithm. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider"/> class.
+            </summary>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs while acquiring the CSP.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.GenerateIV">
+            <summary>
+            This is a stub method.
+            </summary>
+            <remarks>Since the RC4 cipher doesn't use an Initialization Vector, this method will not do anything.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.GenerateKey">
+            <summary>
+            Generates a random Key to be used for the algorithm.
+            </summary>
+            <remarks>Use this method to generate a random key when none is specified.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.CreateDecryptor(System.Byte[],System.Byte[])">
+            <summary>
+            Creates a symmetric decryptor object with the specified Key.
+            </summary>
+            <param name="rgbKey">The secret key to be used for the symmetric algorithm. </param>
+            <param name="rgbIV">Not used in RC4. It can be a null reference or a byte array with a length less than 2.</param>
+            <returns>A symmetric decryptor object.</returns>
+            <remarks>This method decrypts an encrypted message created using the <see cref="M:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.CreateEncryptor(System.Byte[],System.Byte[])"/> overload with the same parameters.</remarks>
+            <exception cref="T:System.ObjectDisposedException">The object is disposed.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="rgbKey"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException"></exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.CreateEncryptor(System.Byte[],System.Byte[])">
+            <summary>
+            Creates a symmetric encryptor object with the specified Key.
+            </summary>
+            <param name="rgbKey">The secret key to be used for the symmetric algorithm. </param>
+            <param name="rgbIV">Not used in RC4. It can be a null reference or a byte array with a length less than 2.</param>
+            <returns>A symmetric encryptor object.</returns>
+            <remarks>Use the <see cref="M:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.CreateDecryptor(System.Byte[],System.Byte[])"/> overload with the same parameters to decrypt the result of this method.</remarks>
+            <exception cref="T:System.ObjectDisposedException">The object is disposed.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="rgbKey"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException"></exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.CanUseUnmanaged(System.Int32)">
+            <summary>
+            Returns a boolean that indicates whether the unmanaged CSP can be used or not.
+            </summary>
+            <param name="keySize">The size of the required key (in bits).</param>
+            <returns><b>true</b> if the unmanaged CSP can be used to encrypt and decrypt data, <b>false</b> otherwise.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.Finalize">
+            <summary>
+            Finalizes the RC4CryptoServiceProvider.
+            </summary>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.BlockSize">
+            <summary>
+            Gets or sets the block size of the cryptographic operation in bits.
+            </summary>
+            <value>The block size of RC4 is always 8 bits.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The block size is invalid.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.FeedbackSize">
+            <summary>
+            Gets or sets the feedback size of the cryptographic operation in bits.
+            </summary>
+            <value>This property always throws a <see cref="T:System.Security.Cryptography.CryptographicException"/>.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">This exception is always thrown.</exception>
+            <remarks>RC4 doesn't use the FeedbackSize property.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.IV">
+            <summary>
+            Gets or sets the initialization vector (IV) for the symmetric algorithm.
+            </summary>
+            <value>This property always returns a byte array of length one. The value of the byte in the array is always set to zero.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An attempt is made to set the IV to an invalid instance.</exception>
+            <remarks>RC4 doesn't use the IV property, however the property accepts IV's of up to one byte (RC4's <see cref="P:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.BlockSize"/>) in order to interoperate with software that has been written with the use of block ciphers in mind.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.Key">
+            <summary>
+            Gets or sets the secret key for the symmetric algorithm.
+            </summary>
+            <value>The secret key to be used for the symmetric algorithm.</value>
+            <exception cref="T:System.ArgumentNullException">An attempt is made to set the key to a null reference (<b>Nothing</b> in Visual Basic).</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.KeySize">
+            <summary>
+            Gets or sets the size of the secret key used by the symmetric algorithm in bits.
+            </summary>
+            <value>The size of the secret key used by the symmetric algorithm.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The key size is not valid.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.LegalBlockSizes">
+            <summary>
+            Gets the block sizes that are supported by the symmetric algorithm.
+            </summary>
+            <value>An array containing the block sizes supported by the algorithm.</value>
+            <remarks>Only a block size of one byte is supported by the RC4 algorithm.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.LegalKeySizes">
+            <summary>
+            Gets the key sizes that are supported by the symmetric algorithm.
+            </summary>
+            <value>An array containing the key sizes supported by the algorithm.</value>
+            <remarks>Only key sizes that match an entry in this array are supported by the symmetric algorithm.</remarks>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.Mode">
+            <summary>
+            Gets or sets the mode for operation of the symmetric algorithm.
+            </summary>
+            <value>The mode for operation of the symmetric algorithm.</value>
+            <remarks>RC4 only supports the OFB cipher mode. See <see cref="T:System.Security.Cryptography.CipherMode"/> for a description of this mode.</remarks>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The cipher mode is not OFB.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4CryptoServiceProvider.Padding">
+            <summary>
+            Gets or sets the padding mode used in the symmetric algorithm.
+            </summary>
+            <value>The padding mode used in the symmetric algorithm. This property always returns PaddingMode.None.</value>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The padding mode is set to a padding mode other than PaddingMode.None.</exception>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.HMAC">
+            <summary>
+            Implements the HMAC keyed message authentication code algorithm.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.HMAC.#ctor(System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.HMAC"/> class. This class cannot be inherited.
+            </summary>
+            <param name="hash">The underlying hash algorithm to use.</param>
+            <remarks>A random key will be generated and used by the HMAC.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="hash"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.HMAC.#ctor(System.Security.Cryptography.HashAlgorithm,System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.HMAC"/> class.
+            </summary>
+            <param name="hash">The underlying hash algorithm to use.</param>
+            <param name="rgbKey">The key to use for the HMAC -or- a null reference (<b>Nothing</b> in Visual Basic).</param>
+            <remarks>If <paramref name="rgbKey"/> is a null reference, the HMAC class will generate a random key.</remarks>
+            <exception cref="T:System.ArgumentNullException"><paramref name="hash"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.HMAC.Initialize">
+            <summary>
+            Initializes the HMAC.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">The HMAC instance has been disposed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.HMAC.HashCore(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Routes data written to the object into the hash algorithm for computing the hash.
+            </summary>
+            <param name="array">The input for which to compute the hash code. </param>
+            <param name="ibStart">The offset into the byte array from which to begin using data. </param>
+            <param name="cbSize">The number of bytes in the byte array to use as data. </param>
+            <exception cref="T:System.ObjectDisposedException">The HMAC instance has been disposed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.HMAC.HashFinal">
+            <summary>
+            Finalizes the hash computation after the last data is processed by the cryptographic stream object.
+            </summary>
+            <returns>The computed hash code.</returns>
+            <exception cref="T:System.ObjectDisposedException">The HMAC instance has been disposed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.HMAC.Dispose(System.Boolean)">
+            <summary>
+            Releases the resources used by the HMAC.
+            </summary>
+            <param name="disposing"><b>true</b> to release both managed and unmanaged resources; <b>false</b> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.HMAC.Finalize">
+            <summary>
+            Finalizes the HMAC.
+            </summary>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.HMAC.HashSize">
+            <summary>
+            Gets the size of the computed hash code in bits.
+            </summary>
+            <value>The size of the computed hash code in bits.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform">
+            <summary>
+            Represents an ARCFour managed ICryptoTransform.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the ARCFourManagedTransform class.
+            </summary>
+            <param name="key">The key used to initialize the ARCFour state.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform.TransformBlock(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary>
+            Transforms the specified region of the input byte array and copies the resulting transform to the specified region of the output byte array.
+            </summary>
+            <param name="inputBuffer">The input for which to compute the transform.</param>
+            <param name="inputOffset">The offset into the input byte array from which to begin using data.</param>
+            <param name="inputCount">The number of bytes in the input byte array to use as data.</param>
+            <param name="outputBuffer">The output to which to write the transform.</param>
+            <param name="outputOffset">The offset into the output byte array from which to begin writing data.</param>
+            <returns>The number of bytes written.</returns>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inputBuffer"/> or <paramref name="outputBuffer"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="inputOffset"/>, <paramref name="inputCount"/> or <paramref name="outputOffset"/> is invalid.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform.TransformFinalBlock(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Transforms the specified region of the specified byte array.
+            </summary>
+            <param name="inputBuffer">The input for which to compute the transform.</param>
+            <param name="inputOffset">The offset into the byte array from which to begin using data.</param>
+            <param name="inputCount">The number of bytes in the byte array to use as data.</param>
+            <returns>The computed transform.</returns>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inputBuffer"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="inputOffset"/> or <paramref name="inputCount"/> is invalid.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform.Init">
+            <summary>
+            This method (re)initializes the cipher.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform.Dispose">
+            <summary>
+            Disposes of the cryptographic parameters.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform.Finalize">
+            <summary>
+            Finalizes the object.
+            </summary>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform.CanReuseTransform">
+            <summary>
+            Gets a value indicating whether the current transform can be reused.
+            </summary>
+            <value>This property returns <b>true</b>.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform.CanTransformMultipleBlocks">
+            <summary>
+            Gets a value indicating whether multiple blocks can be transformed.
+            </summary>
+            <value>This property returns <b>true</b>.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform.InputBlockSize">
+            <summary>
+            Gets the input block size.
+            </summary>
+            <value>The size of the input data blocks in bytes.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.ARCFourManagedTransform.OutputBlockSize">
+            <summary>
+            Gets the output block size.
+            </summary>
+            <value>The size of the input data blocks in bytes.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.SymbolValidator">
+            <summary>
+            A validator that checks for the presence of symbol characters in the password.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.SymbolValidator.#ctor">
+            <summary>
+            Initializes a new SymbolValidator instance.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.SymbolValidator.#ctor(System.Int32)">
+            <summary>
+            Initializes a new SymbolValidator instance.
+            </summary>
+            <param name="required">The required number of matches.</param>
+            <exception cref="T:System.ArgumentException"><i>required</i> has an invalid value.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.SymbolValidator.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new SymbolValidator instance.
+            </summary>
+            <param name="required">The required number of matches.</param>
+            <param name="allowMore"><b>true</b> if more than the specified number of characters are allowed, <b>false</b> otherwise.</param>
+            <exception cref="T:System.ArgumentException"><i>required</i> has an invalid value.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.SymbolValidator.InspectChar(System.Char)">
+            <summary>
+            Inspects one character of the password.
+            </summary>
+            <param name="input">The character to inspect.</param>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.NumericValidator">
+            <summary>
+            A validator that checks for the presence of numerical characters in the password.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.NumericValidator.#ctor">
+            <summary>
+            Initializes a new NumericValidator instance.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.NumericValidator.#ctor(System.Int32)">
+            <summary>
+            Initializes a new NumericValidator instance.
+            </summary>
+            <param name="required">The required number of matches.</param>
+            <exception cref="T:System.ArgumentException"><i>required</i> has an invalid value.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.NumericValidator.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new NumericValidator instance.
+            </summary>
+            <param name="required">The required number of matches.</param>
+            <param name="allowMore"><b>true</b> if more than the specified number of characters are allowed, <b>false</b> otherwise.</param>
+            <exception cref="T:System.ArgumentException"><i>required</i> has an invalid value.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.NumericValidator.InspectChar(System.Char)">
+            <summary>
+            Inspects one character of the password.
+            </summary>
+            <param name="input">The character to inspect.</param>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.PersistType">
+            <summary>
+            Defines the persistence of this credential.
+            </summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Authentication.PersistType.Session">
+            <summary>The credential persists for the life of the logon session. It will not be visible to other logon sessions of this same user. It will not exist after this user logs off and back on.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Authentication.PersistType.LocalMachine">
+            <summary>The credential persists for all subsequent logon sessions on this same computer. It is visible to other logon sessions of this same user on this same computer and not visible to logon sessions for this user on other computers.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Authentication.PersistType.Enterprise">
+            <summary>The credential persists for all subsequent logon sessions on this same computer. It is visible to other logon sessions of this same user on this same computer and to logon sessions for this user on other computers. This option can be implemented as locally persisted credential if the administrator or user configures the user account to not have roam-able state. For instance, if the user has no roaming profile, the credential will only persist locally.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Authentication.PersistType.None">
+            <summary>No credential can be stored. This value will be returned if the credential type is not supported or has been disabled by policy.</summary>
+        </member>
+        <member name="T:Resources.SecurityServicesMessages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_AcquireCSP">
+            <summary>
+              Looks up a localized string similar to Couldn&apos;t acquire crypto service provider context..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_AlgNotSupp">
+            <summary>
+              Looks up a localized string similar to The Cryptographic Service Provider does not support the selected algorithm..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_BigKey">
+            <summary>
+              Looks up a localized string similar to The key is too big..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_CannotReadSeekWrite">
+            <summary>
+              Looks up a localized string similar to The stream does not support reading, writing or seeking..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_CredentialDelete">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to delete the credential (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_CredentialEnumeration">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to enumerate the credentials (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_CredentialMaxPersistence">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to get the maximum credential persistence level (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_CredentialRead">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to read the credential (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_CredentialRename">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to rename the credential (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_CredentialWrite">
+            <summary>
+              Looks up a localized string similar to An error occurred while writing the credential (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_Decrypt">
+            <summary>
+              Looks up a localized string similar to An error occurred while decrypting the data..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_Disposed">
+            <summary>
+              Looks up a localized string similar to The specified object has been disposed..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_Encrypt">
+            <summary>
+              Looks up a localized string similar to An error occurred while encrypting the data..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_EnumEnded">
+            <summary>
+              Looks up a localized string similar to The enumeration has finished..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_EnumNotStarted">
+            <summary>
+              Looks up a localized string similar to The enumeration has not been initialized yet..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_GetKeyParams">
+            <summary>
+              Looks up a localized string similar to Cannot retrieve the key parameters..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_HashData">
+            <summary>
+              Looks up a localized string similar to The data could not be hashed..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_HashRead">
+            <summary>
+              Looks up a localized string similar to The hash value could not be read..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_InvalidCipherMode">
+            <summary>
+              Looks up a localized string similar to The specified cipher mode is invalid..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_InvalidHash">
+            <summary>
+              Looks up a localized string similar to The message hash does not correspond to the message body..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_InvalidIVSize">
+            <summary>
+              Looks up a localized string similar to The specified IV is invalid..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_InvalidKeySize">
+            <summary>
+              Looks up a localized string similar to The specified key is invalid..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_InvalidPaddingMode">
+            <summary>
+              Looks up a localized string similar to The specified padding mode is invalid..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_InvalidXMLBadVersion">
+            <summary>
+              Looks up a localized string similar to The version number embedded in the XML string is invalid..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_KeyExport">
+            <summary>
+              Looks up a localized string similar to Unable to export the key..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_KeygenFailed">
+            <summary>
+              Looks up a localized string similar to An error occurred while generating a cryptographic key..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_KeyImport">
+            <summary>
+              Looks up a localized string similar to Unable to import the key..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_KeyLength">
+            <summary>
+              Looks up a localized string similar to Unable to get the key length..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_NotAPermissionElement">
+            <summary>
+              Looks up a localized string similar to The XML element was not a permission element..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_ParamInvalid">
+            <summary>
+              Looks up a localized string similar to The specified parameter is invalid..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_ParamNull">
+            <summary>
+              Looks up a localized string similar to The specified parameter is a null reference..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_ParamOutOfRange">
+            <summary>
+              Looks up a localized string similar to The parameter was out of range..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_PrivateKeyAlg">
+            <summary>
+              Looks up a localized string similar to Unable to get the private key&apos;s algorithm..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_Randomizer">
+            <summary>
+              Looks up a localized string similar to Could not generate random data..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_RequiresFIPS">
+            <summary>
+              Looks up a localized string similar to The requested algorithm is not FIPS validated..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SetKeyParams">
+            <summary>
+              Looks up a localized string similar to Cannot set the key parameters..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SmartcardAlreadyConnected">
+            <summary>
+              Looks up a localized string similar to A connection to a smartcard has already been established..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SmartcardConnect">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to connect to the smartcard (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SmartcardEstablishContext">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to establish the smartcard reader context (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SmartcardGetAttributes">
+            <summary>
+              Looks up a localized string similar to An error occurred while retrieving the attributes from the card reader (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SmartcardGetStatus">
+            <summary>
+              Looks up a localized string similar to An error occurred while refreshing the smartcard reader status (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SmartcardLock">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to lock the smartcard (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SmartcardNotConnected">
+            <summary>
+              Looks up a localized string similar to A connection to a smartcard is required..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SmartcardReconnect">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to reconnect to the smartcard (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SmartcardTransmit">
+            <summary>
+              Looks up a localized string similar to An error occurred while sending data to the smartcard (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_SmartcardUnlock">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to unlock the smartcard (error code {0}, error message &quot;{1}&quot;)..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_Transform">
+            <summary>
+              Looks up a localized string similar to An error occurred while transforming the data..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Error_UnsupportedOS">
+            <summary>
+              Looks up a localized string similar to Your operating system is too old. {0} or higher is required..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Info_DeviceSerial">
+            <summary>
+              Looks up a localized string similar to Serial Number: {0}.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Info_DeviceType">
+            <summary>
+              Looks up a localized string similar to Device Type: {0}.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Info_DeviceVendor">
+            <summary>
+              Looks up a localized string similar to Vendor: {0}.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.Info_DeviceVersion">
+            <summary>
+              Looks up a localized string similar to Version: {0}.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.PinForm_Cancel">
+            <summary>
+              Looks up a localized string similar to Cancel.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.PinForm_Caption">
+            <summary>
+              Looks up a localized string similar to Enter your PIN....
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.PinForm_Description">
+            <summary>
+              Looks up a localized string similar to Please enter the PIN of your smartcard..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.PinForm_InvalidPin">
+            <summary>
+              Looks up a localized string similar to The PIN you entered is invalid. It contains illegal characters, or is of a wrong length. Please try again..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.PinForm_InvalidPinTitle">
+            <summary>
+              Looks up a localized string similar to Invalid PIN....
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.PinForm_OK">
+            <summary>
+              Looks up a localized string similar to OK.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.PinForm_PIN">
+            <summary>
+              Looks up a localized string similar to PIN:.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_Cancel">
+            <summary>
+              Looks up a localized string similar to Cancel.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_Caption">
+            <summary>
+              Looks up a localized string similar to Select reader....
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_Description">
+            <summary>
+              Looks up a localized string similar to Please select the smartcard reader you wish to use..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_Details">
+            <summary>
+              Looks up a localized string similar to Details.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_Inserted">
+            <summary>
+              Looks up a localized string similar to Available smartcard:.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_NoCard">
+            <summary>
+              Looks up a localized string similar to No card.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_NoCardDesc">
+            <summary>
+              Looks up a localized string similar to There is no card in the smartcard reader..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_NoReaders">
+            <summary>
+              Looks up a localized string similar to No smartcard readers have been found on this system..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_NoReadersTitle">
+            <summary>
+              Looks up a localized string similar to No readers....
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_OK">
+            <summary>
+              Looks up a localized string similar to OK.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_Readers">
+            <summary>
+              Looks up a localized string similar to Smartcard readers:.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_Status">
+            <summary>
+              Looks up a localized string similar to Smartcard status:.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_UnknownCard">
+            <summary>
+              Looks up a localized string similar to Unknown card.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_UnknownCardDesc">
+            <summary>
+              Looks up a localized string similar to The inserted card is of an unknown type..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_UnknownStatus">
+            <summary>
+              Looks up a localized string similar to Unknown status.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_UnknownStatusDesc">
+            <summary>
+              Looks up a localized string similar to The status of the smartcard reader is unknown..
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_ValidCard">
+            <summary>
+              Looks up a localized string similar to Valid card.
+            </summary>
+        </member>
+        <member name="P:Resources.SecurityServicesMessages.SelectReaderForm_ValidCardDesc">
+            <summary>
+              Looks up a localized string similar to The inserted card is a valid smart card..
+            </summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.ApduCommand">
+            <summary>
+            Represents an Application Protocol Data Unit (or APDU).
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.ApduCommand.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new ApduCommand instance.
+            </summary>
+            <param name="data">The binary data representing the APDU.</param>
+            <exception cref="T:System.ArgumentNullException"><i>data</i> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException"><i>data</i> represents an invalid APDU.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.ApduCommand.#ctor(System.Byte,System.Byte,System.Byte,System.Byte,System.Byte[])">
+            <summary>
+            Initializes a new ApduCommand instance.
+            </summary>
+            <param name="cls">The class byte of the APDU.</param>
+            <param name="instr">The instruction byte of the APDU.</param>
+            <param name="param1">The first parameter byte of the APDU.</param>
+            <param name="param2">The second parameter byte of the APDU.</param>
+            <param name="contents">The contents of the APDU.</param>
+            <exception cref="T:System.ArgumentNullException"><i>contents</i> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException"><i>contents</i> is too long.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.ApduCommand.#ctor(System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte[])">
+            <summary>
+            Initializes a new ApduCommand instance.
+            </summary>
+            <param name="cls">The class byte of the APDU.</param>
+            <param name="instr">The instruction byte of the APDU.</param>
+            <param name="param1">The first parameter byte of the APDU.</param>
+            <param name="param2">The second parameter byte of the APDU.</param>
+            <param name="length">The length byte of the APDU.</param>
+            <param name="contents">The contents of the APDU.</param>
+            <exception cref="T:System.ArgumentNullException"><i>contents</i> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException"><i>contents</i> is too long.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.ApduCommand.GetContents">
+            <summary>
+            The contents of the APDU.
+            </summary>
+            <returns>An array of bytes that holds the contents of the APDU.</returns>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.ApduCommand.Class">
+            <summary>
+            The class byte of the APDU.
+            </summary>
+            <value>A byte that holds the class of the apdu.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.ApduCommand.Instruction">
+            <summary>
+            The instruction byte of the APDU.
+            </summary>
+            <value>A byte that holds the instruction of the apdu.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.ApduCommand.Parameter1">
+            <summary>
+            The first parameter byte of the APDU.
+            </summary>
+            <value>A byte that holds the first parameter of the apdu.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.ApduCommand.Parameter2">
+            <summary>
+            The second parameter byte of the APDU.
+            </summary>
+            <value>A byte that holds the second parameter of the apdu.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.ApduCommand.Length">
+            <summary>
+            The length byte of the APDU.
+            </summary>
+            <value>A byte that holds the length of the apdu.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider">
+            <summary>
+            Computes the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD4"/> hash for the input data using the implementation provided by the cryptographic service provider (CSP).
+            </summary>
+            <remarks>Warning: The MD4 algorithm is a broken algorithm. It should <i>only</i> be used for compatibility with older systems.</remarks>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.MD4">
+            <summary>
+            Represents the abstract class from which all implementations of the MD4 hash algorithm inherit.
+            </summary>
+            <remarks>Warning: The MD4 algorithm is a broken algorithm. It should <i>only</i> be used for compatibility with older systems.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD4.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD4"/>.
+            </summary>
+            <remarks>You cannot create an instance of an abstract class. Application code will create a new instance of a derived class.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD4.Create">
+            <summary>
+            Creates an instance of the default implementation of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD4"/> hash algorithm.
+            </summary>
+            <returns>A new instance of the MD4 hash algorithm.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD4.Create(System.String)">
+            <summary>
+            Creates an instance of the specified implementation of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD4"/> hash algorithm.
+            </summary>
+            <param name="hashName">The name of the specific implementation of MD4 to use.</param>
+            <returns>A new instance of the specified implementation of MD4.</returns>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs while initializing the hash.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider"/> class. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider.Initialize">
+            <summary>
+            Initializes an instance of <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider"/>.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">The MD4CryptoServiceProvider instance has been disposed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider.HashCore(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Routes data written to the object into the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD4"/> hash algorithm for computing the hash.
+            </summary>
+            <param name="array">The array of data bytes.</param>
+            <param name="ibStart">The offset into the byte array from which to begin using data.</param>
+            <param name="cbSize">The number of bytes in the array to use as data.</param>
+            <exception cref="T:System.ObjectDisposedException">The MD4CryptoServiceProvider instance has been disposed.</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The data could not be hashed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider.HashFinal">
+            <summary>
+            Returns the computed <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider"/> hash as an array of bytes after all data has been written to the object.
+            </summary>
+            <returns>The computed hash value.</returns>
+            <exception cref="T:System.ObjectDisposedException">The MD4CryptoServiceProvider instance has been disposed.</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The data could not be hashed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider"/> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing"><b>true</b> to release both managed and unmanaged resources; <b>false</b> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD4CryptoServiceProvider.Finalize">
+            <summary>
+            Finalizes the MD4CryptoServiceProvider.
+            </summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.ARCFourManaged">
+            <summary>
+            Accesses the managed version of the ARCFour algorithm. This class cannot be inherited.
+            ARCFour is fully compatible with the RC4<sup>TM</sup> algorithm.
+            </summary>
+            <remarks>
+            RC4 is a trademark of RSA Data Security Inc.
+            </remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManaged.#ctor">
+            <summary>
+            Initializes a new instance of the ARCFourManaged class.
+            </summary>
+            <remarks>
+            The default keysize is 128 bits.
+            </remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManaged.CreateDecryptor(System.Byte[],System.Byte[])">
+            <summary>
+            Creates a symmetric <see cref="T:Org.Mentalis.SecurityServices.Cryptography.RC4"/> decryptor object with the specified Key.
+            </summary>
+            <param name="rgbKey">The secret key to be used for the symmetric algorithm.</param>
+            <param name="rgbIV">This parameter is not used an should be set to a null reference, or to an array with zero or one bytes.</param>
+            <returns>A symmetric ARCFour decryptor object.</returns>
+            <remarks>This method decrypts an encrypted message created using the <see cref="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManaged.CreateEncryptor(System.Byte[],System.Byte[])"/> overload with the same signature.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManaged.CreateEncryptor(System.Byte[],System.Byte[])">
+            <summary>
+            Creates a symmetric <see cref="T:Org.Mentalis.SecurityServices.Cryptography.RC4"/> encryptor object with the specified Key.
+            </summary>
+            <param name="rgbKey">The secret key to be used for the symmetric algorithm.</param>
+            <param name="rgbIV">This parameter is not used an should be set to a null reference, or to an array with zero or one bytes.</param>
+            <returns>A symmetric ARCFour encryptor object.</returns>
+            <remarks>Use the <see cref="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManaged.CreateDecryptor(System.Byte[],System.Byte[])"/> overload with the same signature to decrypt the result of this method.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.ARCFourManaged.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.ARCFourManaged"/> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing"><b>true</b> to release both managed and unmanaged resources; <b>false</b> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform">
+            <summary>
+            Represents an ARCFour managed ICryptoTransform.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform"/> class.
+            </summary>
+            <param name="key">The key used to initialize the RC4 state.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform.TransformBlock(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary>
+            Transforms the specified region of the input byte array and copies the resulting transform to the specified region of the output byte array.
+            </summary>
+            <param name="inputBuffer">The input for which to compute the transform.</param>
+            <param name="inputOffset">The offset into the input byte array from which to begin using data.</param>
+            <param name="inputCount">The number of bytes in the input byte array to use as data.</param>
+            <param name="outputBuffer">The output to which to write the transform.</param>
+            <param name="outputOffset">The offset into the output byte array from which to begin writing data.</param>
+            <returns>The number of bytes written.</returns>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inputBuffer"/> or <paramref name="outputBuffer"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="inputOffset"/>, <paramref name="inputCount"/> or <paramref name="outputOffset"/> is invalid.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform.TransformFinalBlock(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Transforms the specified region of the specified byte array.
+            </summary>
+            <param name="inputBuffer">The input for which to compute the transform.</param>
+            <param name="inputOffset">The offset into the byte array from which to begin using data.</param>
+            <param name="inputCount">The number of bytes in the byte array to use as data.</param>
+            <returns>The computed transform.</returns>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inputBuffer"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="inputOffset"/> or <paramref name="inputCount"/> is invalid.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform.Dispose">
+            <summary>
+            Disposes of the cryptographic parameters.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform.Finalize">
+            <summary>
+            Finalizes the object.
+            </summary>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform.CanReuseTransform">
+            <summary>
+            Gets a value indicating whether the current transform can be reused.
+            </summary>
+            <value>This property returns <b>true</b>.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform.CanTransformMultipleBlocks">
+            <summary>
+            Gets a value indicating whether multiple blocks can be transformed.
+            </summary>
+            <value>This property returns <b>true</b>.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform.InputBlockSize">
+            <summary>
+            Gets the input block size.
+            </summary>
+            <value>This property returns 1.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RC4UnmanagedTransform.OutputBlockSize">
+            <summary>
+            Gets the output block size.
+            </summary>
+            <value>This property returns 1.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider">
+            <summary>
+            Computes the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD2"/> hash for the input data using the implementation provided by the cryptographic service provider (CSP).
+            </summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.MD2">
+            <summary>
+            Represents the abstract class from which all implementations of the MD2 hash algorithm inherit.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD2.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD2"/>.
+            </summary>
+            <remarks>You cannot create an instance of an abstract class. Application code will create a new instance of a derived class.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD2.Create">
+            <summary>
+            Creates an instance of the default implementation of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD2"/> hash algorithm.
+            </summary>
+            <returns>A new instance of the MD2 hash algorithm.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD2.Create(System.String)">
+            <summary>
+            Creates an instance of the specified implementation of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD2"/> hash algorithm.
+            </summary>
+            <param name="hashName">The name of the specific implementation of MD2 to use.</param>
+            <returns>A new instance of the specified implementation of MD2.</returns>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs while initializing the hash.</exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider"/> class. This class cannot be inherited.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider.Initialize">
+            <summary>
+            Initializes an instance of <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider"/>.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">The MD2CryptoServiceProvider instance has been disposed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider.HashCore(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Routes data written to the object into the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD2"/> hash algorithm for computing the hash.
+            </summary>
+            <param name="array">The array of data bytes.</param>
+            <param name="ibStart">The offset into the byte array from which to begin using data.</param>
+            <param name="cbSize">The number of bytes in the array to use as data.</param>
+            <exception cref="T:System.ObjectDisposedException">The MD2CryptoServiceProvider instance has been disposed.</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The data could not be hashed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider.HashFinal">
+            <summary>
+            Returns the computed <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider"/> hash as an array of bytes after all data has been written to the object.
+            </summary>
+            <returns>The computed hash value.</returns>
+            <exception cref="T:System.ObjectDisposedException">The MD2CryptoServiceProvider instance has been disposed.</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">The data could not be hashed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider"/> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing"><b>true</b> to release both managed and unmanaged resources; <b>false</b> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.MD2CryptoServiceProvider.Finalize">
+            <summary>
+            Finalizes the MD2CryptoServiceProvider.
+            </summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.Credential">
+            <summary>
+            Represents a binary credential that is associated with the current logged on user.
+            </summary>
+            <remarks>The Credential class requires Windows XP or higher.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.#ctor(System.String)">
+            <summary>
+            Initializes a new Credential instance.
+            </summary>
+            <param name="targetName">The name of the credential.</param>
+            <remarks><b>targetName</b> must be at least one character and not longer than 32767 characters.</remarks>
+            <exception cref="T:System.NotSupportedException">This functionality requires Windows XP or higher.</exception>
+            <exception cref="T:System.ArgumentNullException"><b>targetName</b> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException"><b>targetName</b> is invalid.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while trying to retrieve the credential.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.#ctor(System.String,System.String,Org.Mentalis.SecurityServices.Authentication.PersistType)">
+            <summary>
+            Initializes a new Credential instance.
+            </summary>
+            <param name="targetName">The name of the credential.</param>
+            <param name="comment">A comment associated with the credential.</param>
+            <param name="persist">One of the PersistType values.</param>
+            <exception cref="T:System.NotSupportedException">This functionality requires Windows XP or higher.</exception>
+            <exception cref="T:System.ArgumentNullException"><b>targetName</b> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException">One of the input parameters is invalid.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while trying to retrieve the credential.</exception>
+            <remarks><b>targetName</b> must be at least one character and not longer than 32767 characters.<br/>
+            <b>comment</b> may be a null reference, but may not be longer than 256 characters.<br/>
+            <b>persist</b> may not have the value PersistType.None.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.Refresh">
+            <summary>
+            Refreshes the information in the credential.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">The Credential instance has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while trying to refresh the credential.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.Read">
+            <summary>
+            Returns the binary contents of the credential.
+            </summary>
+            <returns>A byte array that contains the contents of the credential.</returns>
+            <exception cref="T:System.ObjectDisposedException">The Credential instance has been closed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.Write(System.Byte[])">
+            <summary>
+            Replaces the binary contents of the credential.
+            </summary>
+            <param name="contents">The new contents to write.</param>
+            <exception cref="T:System.ObjectDisposedException">The Credential instance has been closed.</exception>
+            <exception cref="T:System.ArgumentNullException"><b>contents</b> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException"><b>contents</b> is invalid.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while trying to write the credential.</exception>
+            <remarks><b>contents</b> may not be larger than 512 bytes.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.Delete">
+            <summary>
+            Deletes the credential.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">The Credential instance has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while trying to delete the credential.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.Dispose">
+            <summary>
+            Closes the credential.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.GetContents">
+            <summary>
+            Gets or sets the contents of the credential.
+            </summary>
+            <value>An array of bytes with the contents of the credential.</value>
+            <exception cref="T:System.ObjectDisposedException">The Credential instance has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while trying to set the contents of the credential.</exception>
+            <exception cref="T:System.ArgumentNullException"><b>value</b> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException"><b>value</b> is invalid.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type. GetHashCode is suitable for use in hashing algorithms and data structures like a hash table. 
+            </summary>
+            <returns>A hash code for the current Credential.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.Equals(System.Object)">
+            <summary>
+            Determines whether the specified Object is equal to the current Credential. 
+            </summary>
+            <param name="obj">The Object to compare with the current Credential.</param>
+            <returns><b>true</b> if the specified Object is equal to the current Credential; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.ToString">
+            <summary>
+            Returns a String that represents the current Credential.
+            </summary>
+            <returns>A String that represents the current Credential.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.Finalize">
+            <summary>
+            Allows an Object to attempt to free resources and perform other cleanup operations before the Object is reclaimed by garbage collection.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.GetCredentials">
+            <summary>
+            Retrieves all credentials from the system that are associated with the current login.
+            </summary>
+            <returns>An instance of the CredentialCollection class with all the credentials that are associated with the current login.</returns>
+            <exception cref="T:System.NotSupportedException">This functionality requires Windows XP or higher.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while retrieving the credentials.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.Credential.GetCredentials(System.String)">
+            <summary>
+            Retrieves all credentials from the system that are associated with the current login and that match with the specified filter.
+            </summary>
+            <param name="filter">The filter that's used to match the names of the credentials.</param>
+            <returns>An instance of the CredentialCollection class with all the credentials that are associated with the current login and that match with the specified filter.</returns>
+            <remarks>The filter specifies a name prefix followed by an asterisk. For instance, the filter "FRED*" will return all credentials with a TargetName beginning with the string "FRED".</remarks>
+            <exception cref="T:System.NotSupportedException">This functionality requires Windows XP or higher.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while retrieving the credentials.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Authentication.Credential.Name">
+            <summary>
+            Gets or sets the name of the credential.
+            </summary>
+            <value>A string that contains the name of the credential.</value>
+            <exception cref="T:System.ObjectDisposedException">The Credential instance has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while trying to rename the credential.</exception>
+            <exception cref="T:System.ArgumentNullException"><b>value</b> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException"><b>value</b> is invalid.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Authentication.Credential.Comment">
+            <summary>
+            Gets or sets the comment of the credential.
+            </summary>
+            <value>A string that contains the comment of the credential.</value>
+            <exception cref="T:System.ObjectDisposedException">The Credential instance has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while trying to set the comment of the credential.</exception>
+            <exception cref="T:System.ArgumentException"><b>value</b> is invalid.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Authentication.Credential.Persist">
+            <summary>
+            Gets or sets the persistence type of the credential.
+            </summary>
+            <value>One of the PersistType values.</value>
+            <exception cref="T:System.ObjectDisposedException">The Credential instance has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while trying to set the comment of the credential.</exception>
+            <exception cref="T:System.ArgumentException"><b>value</b> is invalid.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Authentication.Credential.Exists">
+            <summary>
+            Gets a value that indicates whether the credential already exists in the system or not.
+            </summary>
+            <value><b>true</b> if the credential has already been saved, <b>false</b> otherwise.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Authentication.Credential.MaximumPersistence">
+            <summary>
+            Returns the maximum persistence type that's supported for the current login.
+            </summary>
+            <value>One of the PersistType values.</value>
+            <exception cref="T:System.NotSupportedException">This functionality requires Windows XP or higher.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">An error occurs while retrieving the maximum persistence.</exception>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.StringEncryption">
+            <summary>
+            Defines a number of easy-to-use methods to perform string-based encryption.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.#ctor">
+            <summary>
+            Initializes a new StringEncryption instance.
+            </summary>
+            <remarks>The default bulk cipher algorithm is Rijndael and the default hash algorithm is RIPEMD-160.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new StringEncryption instance.
+            </summary>
+            <param name="bulkCipher">The name of the bulk cipher algorithm to use.</param>
+            <param name="hash">The name of the hash algorithm to use.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.#ctor(System.Security.Cryptography.SymmetricAlgorithm,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Initializes a new StringEncryption instance.
+            </summary>
+            <param name="bulkCipher">The bulk cipher algorithm to use.</param>
+            <param name="hash">The hash algorithm to use.</param>
+            <exception cref="T:System.ArgumentNullException">One of the parameters is a null reference.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.Encrypt(System.Byte[])">
+            <summary>
+            Encrypts a given byte array.
+            </summary>
+            <param name="input">The array of bytes to encrypt.</param>
+            <returns>A string representation of the encrypted data.</returns>
+            <exception cref="T:System.ArgumentNullException"><i>input</i> is a null reference.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.Encrypt(System.String)">
+            <summary>
+            Encrypts a given string.
+            </summary>
+            <param name="input">The string to encrypt.</param>
+            <returns>A string representation of the encrypted data.</returns>
+            <remarks>The default encoding to convert the input string to an array of bytes is UTF-8.</remarks>
+            <exception cref="T:System.ArgumentNullException"><i>input</i> is a null reference.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.Encrypt(System.String,System.Text.Encoding)">
+            <summary>
+            Encrypts a given string.
+            </summary>
+            <param name="input">The string to encrypt.</param>
+            <param name="encoding">The encoding to use to convert the string to an array of bytes.</param>
+            <returns>A string representation of the encrypted data.</returns>
+            <exception cref="T:System.ArgumentNullException"><i>input</i> or <i>encoding</i> is a null reference.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.Decrypt(System.String)">
+            <summary>
+            Decrypts a given string.
+            </summary>
+            <param name="input">The string to decrypt.</param>
+            <returns>An array of bytes, containing the unencrypted data.</returns>
+            <exception cref="T:System.ArgumentNullException"><i>input</i> is a null reference.</exception>
+            <exception cref="T:System.FormatException"><i>input</i> is an invalid Base64 string.</exception>
+            <exception cref="T:System.ArgumentException">The length of <i>input</i> is invalid.</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs during the decryption or integrity verification.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.DecryptString(System.String,System.Text.Encoding)">
+            <summary>
+            Decrypts a given string.
+            </summary>
+            <param name="input">The string to decrypt.</param>
+            <param name="encoding">The encoding to use to convert the string to an array of bytes.</param>
+            <returns>A string containing the unencrypted data.</returns>
+            <exception cref="T:System.ArgumentNullException"><i>input</i> or <i>encoding</i> is a null reference.</exception>
+            <exception cref="T:System.FormatException"><i>input</i> is an invalid Base64 string.</exception>
+            <exception cref="T:System.ArgumentException">The length of <i>input</i> is invalid.</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs during the decryption or integrity verification.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.DecryptString(System.String)">
+            <summary>
+            Decrypts a given string.
+            </summary>
+            <param name="input">The string to decrypt.</param>
+            <returns>A string containing the unencrypted data.</returns>
+            <remarks>The default encoding to convert the input string to an array of bytes is UTF-8.</remarks>
+            <exception cref="T:System.ArgumentNullException"><i>input</i> is a null reference.</exception>
+            <exception cref="T:System.FormatException"><i>input</i> is an invalid Base64 string.</exception>
+            <exception cref="T:System.ArgumentException">The length of <i>input</i> is invalid.</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs during the decryption or integrity verification.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.Key">
+            <summary>
+            Gets or sets the key of the bulk cipher algorithm.
+            </summary>
+            <value>An array of bytes that contains the key of the bulk cipher algorithm.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.StringEncryption.IV">
+            <summary>
+            Gets or sets the initialization vector of the bulk cipher algorithm.
+            </summary>
+            <value>An array of bytes that contains the initialization vector of the bulk cipher algorithm.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.AlphaValidator">
+            <summary>
+            A validator that checks for the presence of letters in the password.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.AlphaValidator.#ctor">
+            <summary>
+            Initializes a new AlphaValidator instance.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.AlphaValidator.#ctor(System.Int32)">
+            <summary>
+            Initializes a new AlphaValidator instance.
+            </summary>
+            <param name="required">The required number of matches.</param>
+            <exception cref="T:System.ArgumentException"><i>required</i> has an invalid value.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.AlphaValidator.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new AlphaValidator instance.
+            </summary>
+            <param name="required">The required number of matches.</param>
+            <param name="allowMore"><b>true</b> if more than the specified number of characters are allowed, <b>false</b> otherwise.</param>
+            <exception cref="T:System.ArgumentException"><i>required</i> has an invalid value.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.AlphaValidator.InspectChar(System.Char)">
+            <summary>
+            Inspects one character of the password.
+            </summary>
+            <param name="input">The character to inspect.</param>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Authentication.CredentialException">
+            <summary>
+            The exception that is thrown when a credential error occurs.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CredentialException.#ctor">
+            <summary>
+            Initializes a new instance of the CredentialException class.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CredentialException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the CredentialException class with its message string set to message and its inner exception set to a null reference (<b>Nothing</b> in Visual Basic).
+            </summary>
+            <param name="message">A String that describes the error. The content of message is intended to be understood by humans.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CredentialException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the CredentialException class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">A String that describes the error. The content of message is intended to be understood by humans.</param>
+            <param name="innerException">The exception that is the cause of the current exception. If the innerException parameter is not a null reference (<b>Nothing</b> in Visual Basic), the current exception is raised in a <b>catch</b> block that handles the inner exception.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CredentialException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the Exception class with serialized data.
+            </summary>
+            <param name="info">The SerializationInfo that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The StreamingContext that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.ArgumentNullException">The <i>info</i> parameter is a null reference.</exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is a null reference or HResult is zero (0).</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CredentialException.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the CredentialException class with its message string set to message and its inner exception set to a null reference (<b>Nothing</b> in Visual Basic).
+            </summary>
+            <param name="message">A String that describes the error. The content of message is intended to be understood by humans.</param>
+            <param name="error">The error code of the exception.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CredentialException.#ctor(System.String,System.UInt32)">
+            <summary>
+            Initializes a new instance of the CredentialException class with its message string set to message and its inner exception set to a null reference (<b>Nothing</b> in Visual Basic).
+            </summary>
+            <param name="message">A String that describes the error. The content of message is intended to be understood by humans.</param>
+            <param name="error">The error code of the exception.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Authentication.CredentialException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the SerializationInfo with information about the exception.
+            </summary>
+            <param name="info">The SerializationInfo that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The StreamingContext that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.ArgumentNullException">The <i>info</i> parameter is a null reference.</exception>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Permissions.SmartcardPermissionAttribute">
+            <summary>
+            Controls the ability to communicate with a smartcard.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermissionAttribute.#ctor(System.Security.Permissions.SecurityAction)">
+            <summary>
+            Initializes a new SmartcardPermissionAttribute instance.
+            </summary>
+            <param name="action">One of the SecurityAction values.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermissionAttribute.#ctor(System.Security.Permissions.SecurityAction,Org.Mentalis.SecurityServices.Permissions.SmartcardConnectOption)">
+            <summary>
+            Initializes a new SmartcardPermissionAttribute instance.
+            </summary>
+            <param name="action">One of the SecurityAction values.</param>
+            <param name="options">One of the SmartcardConnectOptions values.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermissionAttribute.#ctor(System.Security.Permissions.SecurityAction,Org.Mentalis.SecurityServices.Smartcard.Atr[])">
+            <summary>
+            Initializes a new SmartcardPermissionAttribute instance.
+            </summary>
+            <param name="action">One of the SecurityAction values.</param>
+            <param name="allowed">A list of ATRs to allow.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermissionAttribute.CreatePermission">
+            <summary>
+            Creates and returns a new SmartcardPermission.
+            </summary>
+            <returns>A SmartcardPermission that corresponds to this attribute.</returns>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Permissions.SmartcardPermissionAttribute.AllowedAtrs">
+            <summary>
+            Gets or sets the list of allowed ATRs.
+            </summary>
+            <value>An array of ATR instances.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.VendorAttributes">
+            <summary>
+            Contains a number of attributes of the vendor of the smartcard reader.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.VendorAttributes.ToString">
+            <summary>
+            Returns a string representation of the card reader properties.
+            </summary>
+            <returns>A string that represents the properties of the card reader.</returns>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.VendorAttributes.SerialNumber">
+            <summary>
+            The serial number of the card reader.
+            </summary>
+            <value>A string that contains the serial number of the card reader.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.VendorAttributes.DeviceType">
+            <summary>
+            The type of the card reader.
+            </summary>
+            <value>A string containing the type of the card reader.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.VendorAttributes.VendorName">
+            <summary>
+            The name of the vendor of the card reader.
+            </summary>
+            <value>A string containing the name of the vendor of the card reader.</value>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.VendorAttributes.DeviceVersion">
+            <summary>
+            The version of the card reader.
+            </summary>
+            <value>A Version instance that contains the version of the card reader.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission">
+            <summary>
+            Controls the ability to communicate with a smartcard.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.#ctor(Org.Mentalis.SecurityServices.Permissions.SmartcardConnectOption)">
+            <summary>
+            Initializes a new SmartcardPermission instance.
+            </summary>
+            <param name="state">One of the SmartcardConnectOptions values.</param>
+            <exception cref="T:System.ArgumentException">The value of <i>state</i> is invalid.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.#ctor(Org.Mentalis.SecurityServices.Smartcard.Atr[])">
+            <summary>
+            Initializes a new SmartcardPermission instance.
+            </summary>
+            <param name="atr">An array of ATR objects that are allowed.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.#ctor(System.Security.Permissions.PermissionState)">
+            <summary>
+            Initializes a new SmartcardPermission instance.
+            </summary>
+            <param name="state">One of the PermissionState values.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.AddAllowedAtr(Org.Mentalis.SecurityServices.Smartcard.Atr)">
+            <summary>
+            Adds an ATR to the allowed list.
+            </summary>
+            <param name="atr">The ATR to add.</param>
+            <exception cref="T:System.ArgumentNullException"><i>atr</i> is invalid.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.AddAllowedAtrs(Org.Mentalis.SecurityServices.Smartcard.Atr[])">
+            <summary>
+            Adds an array of ATRs to the allowed list.
+            </summary>
+            <param name="atr">The array of ATRs to add.</param>
+            <exception cref="T:System.ArgumentNullException"><i>atr</i> is invalid.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.GetAllowedAtrs">
+            <summary>
+            Gets a list of the allowed ATRs.
+            </summary>
+            <returns>An array containing the allowed ATRs.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.IsUnrestricted">
+            <summary>
+            Returns a value indicating whether the current permission is unrestricted.
+            </summary>
+            <returns><b>true</b> if the current permission is unrestricted; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.IsEmpty">
+            <summary>
+            Retruns a value indicating whether the current permission is empty.
+            </summary>
+            <returns><b>true</b> if the current permission is empty; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.Copy">
+            <summary>
+            Creates and returns an identical copy of the current permission.
+            </summary>
+            <returns>A copy of the current permission. </returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.Intersect(System.Security.IPermission)">
+            <summary>
+            Creates and returns a permission that is the intersection of the current permission and the specified permission.
+            </summary>
+            <param name="target">A permission to intersect with the current permission. It must be the same type as the current permission. </param>
+            <returns>A new permission that represents the intersection of the current permission and the specified permission. This new permission is a null reference if the intersection is empty.</returns>
+            <exception cref="T:System.ArgumentException"><i>target</i> is not of the same type as the current permission.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.IsSubsetOf(System.Security.IPermission)">
+            <summary>
+            Determines whether the current permission is a subset of the specified permission.
+            </summary>
+            <param name="target">A permission that is to be tested for the subset relationship. This permission must be the same type as the current permission.</param>
+            <returns><b>true</b> if the current permission is a subset of the specified permission; otherwise, <b>false</b>.</returns>
+            <exception cref="T:System.ArgumentException"><i>target</i> is not of the same type as the current permission.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.Union(System.Security.IPermission)">
+            <summary>
+            Creates a permission that is the union of the current permission and the specified permission.
+            </summary>
+            <param name="target">A permission to combine with the current permission. It must be the same type as the current permission.</param>
+            <returns>A new permission that represents the union of the current permission and the specified permission.</returns>
+            <exception cref="T:System.ArgumentException"><i>target</i> is not of the same type as the current permission.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.ToXml">
+            <summary>
+            Creates an XML encoding of the permission and its current state.
+            </summary>
+            <returns>An XML encoding of the permission, including any state information.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Permissions.SmartcardPermission.FromXml(System.Security.SecurityElement)">
+            <summary>
+            Reconstructs a permission with a specified state from an XML encoding.
+            </summary>
+            <param name="e">The XML encoding used to reconstruct the permission.</param>
+            <exception cref="T:System.ArgumentNullException"><i>elem</i> is a null reference.</exception>
+            <exception cref="T:System.ArgumentException"><i>elem</i> does not contain valid XML for this permission.</exception>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader">
+            <summary>
+            Represents a smartcard reader.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.#ctor(System.String)">
+            <summary>
+            Initializes a new SmartcardReader instance.
+            </summary>
+            <param name="readerName">The name of the smartcard reader.</param>
+            <exception cref="T:System.ArgumentNullException"><i>readerName</i> is a null reference.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.#ctor(System.String,Org.Mentalis.SecurityServices.Smartcard.DatabaseScope)">
+            <summary>
+            Initializes a new SmartcardReader instance.
+            </summary>
+            <param name="readerName">The name of the smartcard reader.</param>
+            <param name="scope">The scope of the resource manager context.</param>
+            <exception cref="T:System.ArgumentNullException"><i>readerName</i> is a null reference.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Connect">
+            <summary>
+            Connects to the card in the smartcard reader.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Connect(Org.Mentalis.SecurityServices.Smartcard.SmartcardShare,Org.Mentalis.SecurityServices.Smartcard.SmartcardProtocols)">
+            <summary>
+            Connects to the card in the smartcard reader.
+            </summary>
+            <param name="share">A flag that indicates whether other applications may form connections to the card.</param>
+            <param name="protocol">A bit mask of acceptable protocols for the connection. Possible values may be combined with the <b>OR</b> operation.</param>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Reconnect(Org.Mentalis.SecurityServices.Smartcard.SmartcardShare,Org.Mentalis.SecurityServices.Smartcard.SmartcardProtocols,Org.Mentalis.SecurityServices.Smartcard.SmartcardDisposition)">
+            <summary>
+            Reconnects to the card in the smartcard reader.
+            </summary>
+            <param name="share">A flag that indicates whether other applications may form connections to the card.</param>
+            <param name="protocol">A bit mask of acceptable protocols for the connection. Possible values may be combined with the <b>OR</b> operation.</param>
+            <param name="disposition">Type of initialization that should be performed on the card.</param>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Lock">
+            <summary>
+            Starts a transaction, waiting for the completion of all other transactions before it begins.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.SendCommand(Org.Mentalis.SecurityServices.Smartcard.ApduCommand)">
+            <summary>
+            Sends an APDU to the smartcard.
+            </summary>
+            <param name="apdu">The apdu to send to the smartcard.</param>
+            <returns>An ApduReply instance, representing the reply from the smartcard.</returns>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:System.ArgumentNullException"><i>apdu</i> is a null reference.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Unlock">
+            <summary>
+            Completes a previously declared transaction, allowing other applications to resume interactions with the card.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Unlock(Org.Mentalis.SecurityServices.Smartcard.SmartcardDisposition)">
+            <summary>
+            Completes a previously declared transaction, allowing other applications to resume interactions with the card.
+            </summary>
+            <param name="disposition">Action to take on the card in the connected reader on close.</param>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Disconnect">
+            <summary>
+            Disconnects the connection with the smartcard.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Disconnect(Org.Mentalis.SecurityServices.Smartcard.SmartcardDisposition)">
+            <summary>
+            Disconnects the connection with the smartcard.
+            </summary>
+            <param name="disposition">Action to take on the card in the connected reader on close.</param>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Dispose">
+            <summary>
+            Releases all resources used by the SmartcardReader.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Dispose(Org.Mentalis.SecurityServices.Smartcard.SmartcardDisposition)">
+            <summary>
+            Releases all resources used by the SmartcardReader.
+            </summary>
+            <param name="disposition">Action to take on the card in the connected reader on close.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Finalize">
+            <summary>
+            Releases all resources used by the SmartcardReader.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.InternalGetReaders(System.IntPtr)">
+            <summary>
+            Returns a list of readers that are installed on the system.
+            </summary>
+            <param name="context">The SCard context to use.</param>
+            <returns>A list of readers.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.GetReaders">
+            <summary>
+            Returns a list of readers that are installed on the system.
+            </summary>
+            <returns>A list of readers.</returns>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.OpenReader">
+            <summary>
+            Opens a SmartcardReader.
+            </summary>
+            <returns>An instance of the SmartcardReader class -or- a null reference if no smartcard reader was found.</returns>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.OpenReader(System.Byte[])">
+            <summary>
+            Opens a SmartcardReader that has a card inserted with a specified ATR.
+            </summary>
+            <param name="atr">The ATR to search for.</param>
+            <returns>An instance of the SmartcardReader class -or- a null reference if no smartcard reader was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><i>atr</i> is a null reference.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.OpenReader(Org.Mentalis.SecurityServices.Smartcard.Atr)">
+            <summary>
+            Opens a SmartcardReader that has a card inserted with a specified ATR.
+            </summary>
+            <param name="atr">The ATR to search for.</param>
+            <returns>An instance of the SmartcardReader class -or- a null reference if no smartcard reader was found.</returns>
+            <exception cref="T:System.ArgumentNullException"><i>atr</i> is a null reference.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.ReaderName">
+            <summary>
+            Returns the name of the smartcard reader.
+            </summary>
+            <value>A string that holds the name of the smartcard reader.</value>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Status">
+            <summary>
+            Returns the status of the smartcard reader.
+            </summary>
+            <value>One of the SmartcardState values.</value>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Atr">
+            <summary>
+            Returns the ATR of the card in the smartcard reader.
+            </summary>
+            <value>An Atr instance.</value>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.ActiveProtocol">
+            <summary>
+            Returns the active protocol.
+            </summary>
+            <value>One of the SmartcardProtocol values.</value>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.SmartcardReader.Attributes">
+            <summary>
+            Returns the attributes of the smartcard reader.
+            </summary>
+            <value>A VendorAttributes instance.</value>
+            <exception cref="T:System.ObjectDisposedException">The SmartcardReader has been closed.</exception>
+            <exception cref="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardException">An error occurred while communication with the smartcard reader.</exception>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.DatabaseScope">
+            <summary>
+            Scope of the resource manager context.
+            </summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.DatabaseScope.User">
+            <summary>Database operations are performed within the domain of the user.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.DatabaseScope.System">
+            <summary>Database operations are performed within the domain of the system. The calling application must have appropriate access permissions for any database actions.</summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardProtocols">
+            <summary>
+            The acceptable protocols for the smartcard connection.
+            </summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardProtocols.Raw">
+            <summary>No protocol negotiation will be performed by the drivers</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardProtocols.T0">
+            <summary>T=0 is an acceptable protocol.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardProtocols.T1">
+            <summary>T=1 is an acceptable protocol.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardProtocols.Undefined">
+            <summary>SmartcardShare.Direct has been specified, so that no protocol negotiation has occurred.</summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardShare">
+            <summary>
+            Flag that indicates whether other applications may form connections to the card.
+            </summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardShare.Exclusive">
+            <summary>This application is not willing to share the card with other applications.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardShare.Shared">
+            <summary>This application is willing to share the card with other applications.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardShare.Direct">
+            <summary>This application is allocating the reader for its private use, and will be controlling it directly. No other applications are allowed access to it.</summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardDisposition">
+            <summary>
+            Action to take on the card in the connected reader on close.
+            </summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardDisposition.Leave">
+            <summary>Do not do anything special.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardDisposition.Reset">
+            <summary>Reset the card.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardDisposition.Unpower">
+            <summary>Power down the card.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardDisposition.Eject">
+            <summary>Eject the card.</summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.SmartcardState">
+            <summary>
+            Current state of the smart card in the reader.
+            </summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardState.Absent">
+            <summary>There is no card in the reader.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardState.Present">
+            <summary>There is a card in the reader, but it has not been moved into position for use.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardState.Swallowed">
+            <summary>There is a card in the reader in position for use. The card is not powered.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardState.Powered">
+            <summary>Power is being provided to the card, but the reader driver is unaware of the mode of the card.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardState.Negotiable">
+            <summary>The card has been reset and is awaiting PTS negotiation.</summary>
+        </member>
+        <member name="F:Org.Mentalis.SecurityServices.Smartcard.SmartcardState.Specific">
+            <summary>The card has been reset and specific communication protocols have been established.</summary>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Smartcard.UI.SelectReaderForm">
+            <summary>
+            Represents a dialog that allows the user to select a card reader to use.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.UI.SelectReaderForm.#ctor">
+            <summary>
+            Initializes a new instance of the SelectReaderForm.
+            </summary>
+            <remarks>All cards are considered valid.</remarks>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.UI.SelectReaderForm.#ctor(Org.Mentalis.SecurityServices.Smartcard.Atr[])">
+            <summary>
+            Initializes a new instance of the SelectReaderForm.
+            </summary>
+            <param name="atrs">A list of ATRs that are considered valid.</param>
+            <exception cref="T:System.ArgumentException"><i>atrs</i> is not a null reference, but it is empty or contains null references.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.UI.SelectReaderForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing"><b>true</b> to release both managed and unmanaged resources; <b>false</b> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Smartcard.UI.SelectReaderForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Smartcard.UI.SelectReaderForm.SelectedReader">
+            <summary>
+            Gets the selected reader.
+            </summary>
+            <value>A string with the name of the selected reader. This will be a null reference if the user clicked the cancel button.</value>
+        </member>
+        <member name="T:Org.Mentalis.SecurityServices.Cryptography.RijndaelUnmanagedTransform">
+            <summary>
+            Defines the basic operations of a unmanaged Rijndael cryptographic transformation.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelUnmanagedTransform.#ctor(Org.Mentalis.SecurityServices.Win32.CryptoAlgorithm,Org.Mentalis.SecurityServices.Win32.CryptoMethod,System.Byte[],System.Byte[],System.Security.Cryptography.CipherMode,System.Int32,System.Security.Cryptography.PaddingMode)">
+            <summary>
+            Initializes a new instance of the RijndaelUnmanagedTransform class.
+            </summary>
+            <param name="algorithm">One of the <see cref="T:Org.Mentalis.SecurityServices.Win32.CryptoAlgorithm"/> values.</param>
+            <param name="method">One of the <see cref="T:Org.Mentalis.SecurityServices.Win32.CryptoMethod"/> values.</param>
+            <param name="key">The key to use.</param>
+            <param name="iv">The IV to use.</param>
+            <param name="mode">One of the <see cref="T:System.Security.Cryptography.CipherMode"/> values.</param>
+            <param name="feedback">The feedback size of the cryptographic operation in bits.</param>
+            <param name="padding">One of the <see cref="T:System.Security.Cryptography.PaddingMode"/> values.</param>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs when acquiring the cryptographic context.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelUnmanagedTransform.Finalize">
+            <summary>
+            Releases all unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelUnmanagedTransform.Dispose">
+            <summary>
+            Releases all unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelUnmanagedTransform.TransformBlock(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary>
+            Transforms the specified region of the input byte array and copies the resulting transform to the specified region of the output byte array.
+            </summary>
+            <param name="inputBuffer">The input for which to compute the transform.</param>
+            <param name="inputOffset">The offset into the input byte array from which to begin using data.</param>
+            <param name="inputCount">The number of bytes in the input byte array to use as data.</param>
+            <param name="outputBuffer">The output to which to write the transform.</param>
+            <param name="outputOffset">The offset into the output byte array from which to begin writing data.</param>
+            <returns>The number of bytes written.</returns>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inputBuffer"/> or <paramref name="outputBuffer"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">One of the specified offsets or lengths is invalid.</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs while transforming the specified data.</exception>
+        </member>
+        <member name="M:Org.Mentalis.SecurityServices.Cryptography.RijndaelUnmanagedTransform.TransformFinalBlock(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Transforms the specified region of the specified byte array.
+            </summary>
+            <param name="inputBuffer">The input for which to compute the transform.</param>
+            <param name="inputOffset">The offset into the byte array from which to begin using data.</param>
+            <param name="inputCount">The number of bytes in the byte array to use as data.</param>
+            <returns>The computed transform.</returns>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="inputBuffer"/> is a null reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">The combination of offset and length is invalid.</exception>
+            <exception cref="T:System.Security.Cryptography.CryptographicException">An error occurs while transforming the specified data.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelUnmanagedTransform.CanReuseTransform">
+            <summary>
+            Gets a value indicating whether the current transform can be reused.
+            </summary>
+            <value><b>true</b> if the current transform can be reused; otherwise, <b>false</b>.</value>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelUnmanagedTransform.CanTransformMultipleBlocks">
+            <summary>
+            Gets a value indicating whether multiple blocks can be transformed.
+            </summary>
+            <value><b>true</b> if multiple blocks can be transformed; otherwise, <b>false</b>.</value>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelUnmanagedTransform.InputBlockSize">
+            <summary>
+            Gets the input block size.
+            </summary>
+            <value>The size of the input data blocks in bytes.</value>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+        </member>
+        <member name="P:Org.Mentalis.SecurityServices.Cryptography.RijndaelUnmanagedTransform.OutputBlockSize">
+            <summary>
+            Gets the output block size.
+            </summary>
+            <value>The size of the output data blocks in bytes.</value>
+            <exception cref="T:System.ObjectDisposedException">The object has been disposed.</exception>
+        </member>
+    </members>
+</doc>
