@@ -269,7 +269,7 @@ namespace Nuxleus.Core
             {
                 task.Transaction.Commit();
             }
-            catch (Exception e)
+            catch
             {
 
             }
