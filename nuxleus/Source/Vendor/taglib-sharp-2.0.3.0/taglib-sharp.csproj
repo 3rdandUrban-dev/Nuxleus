@@ -49,12 +49,13 @@
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\lib\</OutputPath>
     <Optimize>True</Optimize>
     <DefineConstants>TRACE;WINDOWS</DefineConstants>
     <DebugSymbols>false</DebugSymbols>
     <DebugType>None</DebugType>
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DocumentationFile>..\..\docs\taglib-sharp.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

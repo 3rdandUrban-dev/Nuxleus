@@ -66,15 +66,14 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\bin\Release\</OutputPath>
+    <OutputPath>..\..\..\lib\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>..\..\..\docs\Tamir.SharpSSH.XML</DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -553,11 +552,11 @@
   <ItemGroup>
     <ProjectReference Include="..\..\DiffieHellman\DiffieHellman.csproj">
       <Project>{51A5DB78-BDDF-466D-911D-FCD600413726}</Project>
-      <Name>DiffieHellman</Name>
+      <Name>DiffieHellman %28Security-and-Encryption\DiffieHellman\DiffieHellman%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SecurityServices-0.0.2\SecurityServices\SecurityServices.csproj">
       <Project>{92268E63-E20E-4ED1-86DB-B621712F9A80}</Project>
-      <Name>SecurityServices</Name>
+      <Name>SecurityServices %28Security-and-Encryption\SecurityServices\SecurityServices%29</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

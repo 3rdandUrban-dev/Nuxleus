@@ -63,14 +63,14 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\lib\</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE</DefineConstants>
-    <DocumentationFile>out.xml</DocumentationFile>
+    <DocumentationFile>Z:\Projects\Nuxleus\Public\Source\docs\DiffieHellman.xml</DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <Optimize>true</Optimize>

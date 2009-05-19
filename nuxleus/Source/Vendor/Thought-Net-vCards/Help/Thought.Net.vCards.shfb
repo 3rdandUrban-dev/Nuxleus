@@ -1,0 +1,38 @@
+﻿<project schemaVersion="1.3.3.1">
+    <assemblies>
+        <assembly assemblyPath="..\Solution\Thought.Net.vCards\bin\Debug\Thought.Net.vCards.dll" xmlCommentsPath="..\Solution\Thought.Net.vCards\bin\Debug\Thought.Net.vCards.xml" commentsOnly="False" />
+    </assemblies>
+    <namespaceSummaries>
+        <namespaceSummaryItem name="" isDocumented="False" />
+        <namespaceSummaryItem name="Thought.Net.vCards" isDocumented="True">A class library for manipulating vCard files.</namespaceSummaryItem>
+    </namespaceSummaries>
+    <contentPlacement>AboveNamespaces</contentPlacement>
+    <projectSummary />
+    <sandcastlePath />
+    <hhcPath />
+    <hxcompPath />
+    <outputPath>.\Help\</outputPath>
+    <helpFileFormat>HtmlHelp1x</helpFileFormat>
+    <cleanIntermediates>True</cleanIntermediates>
+    <purgeDuplicateTopics>True</purgeDuplicateTopics>
+    <cppCommentsFixup>False</cppCommentsFixup>
+    <frameworkVersion>2.0.50727</frameworkVersion>
+    <binaryTOC>True</binaryTOC>
+    <includeFavorites>False</includeFavorites>
+    <preliminary>True</preliminary>
+    <rootNSContainer>False</rootNSContainer>
+    <helpTitle>vCard Class Library for .NET</helpTitle>
+    <htmlHelpName>vCard</htmlHelpName>
+    <language>en-US</language>
+    <copyrightHref />
+    <copyrightText>Copyright (c) 2007 David Pinch</copyrightText>
+    <feedbackEMailAddress>dave@thoughtproject.com</feedbackEMailAddress>
+    <headerText />
+    <projectLinks>Local</projectLinks>
+    <sdkLinks>Msdn</sdkLinks>
+    <presentationStyle>Prototype</presentationStyle>
+    <namingMethod>Guid</namingMethod>
+    <syntaxFilters>Standard</syntaxFilters>
+    <missingTags>Summary, Parameter, Returns, AutoDocumentCtors</missingTags>
+    <visibleItems>InheritedMembers, InheritedFrameworkMembers, Protected, SealedProtected</visibleItems>
+</project>
