@@ -90,40 +90,40 @@
     <Compile Include="Utility\SshUtil\Util.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\build\bin\agsXMPP.dll">
+    <Content Include="..\lib\agsXMPP.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\ALAZ.SystemEx.dll">
+    <Content Include="..\lib\ALAZ.SystemEx.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\ALAZ.SystemEx.NetEx.dll">
+    <Content Include="..\lib\ALAZ.SystemEx.NetEx.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\DiffieHellman.dll">
+    <Content Include="..\lib\DiffieHellman.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\ICSharpCode.SharpZipLib.dll">
+    <Content Include="..\lib\ICSharpCode.SharpZipLib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\IKVM.OpenJDK.ClassLibrary.dll">
+    <Content Include="..\lib\IKVM.OpenJDK.ClassLibrary.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\IKVM.Runtime.dll">
+    <Content Include="..\lib\IKVM.Runtime.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\log4net.dll">
+    <Content Include="..\lib\log4net.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\Memcached.ClientLibrary.dll">
+    <Content Include="..\lib\Memcached.ClientLibrary.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\Mono.Posix.dll">
+    <Content Include="..\lib\Mono.Posix.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\Mono.Security.dll">
+    <Content Include="..\lib\Mono.Security.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\Mvp.Xml.dll">
+    <Content Include="..\lib\Mvp.Xml.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Authentication.dll">
@@ -168,22 +168,19 @@
     <Content Include="..\build\bin\Nuxleus.Web.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\Nuxleus.Web.Services.dll">
+    <Content Include="..\lib\Saxon.Api.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\Saxon.Api.dll">
+    <Content Include="..\lib\saxon9.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\saxon9.dll">
+    <Content Include="..\lib\SgmlReaderDll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\SgmlReaderDll.dll">
+    <Content Include="..\lib\Tamir.SharpSSH.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\build\bin\Tamir.SharpSSH.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Upnp.dll">
+    <Content Include="..\lib\Upnp.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Xameleon.dll">
