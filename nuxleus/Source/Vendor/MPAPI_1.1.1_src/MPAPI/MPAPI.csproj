@@ -29,10 +29,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>..\..\..\lib\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\..\docs\MPAPI.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="RemotingLite, Version=1.2.4.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">

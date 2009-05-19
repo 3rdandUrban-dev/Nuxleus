@@ -7,8 +7,8 @@
     <ProjectGuid>{D438C0B3-A168-40B8-BDDD-61F0939DFF35}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Memcached.ClientLibrary</RootNamespace>
-    <AssemblyName>Memcached.ClientLibrary</AssemblyName>
+    <RootNamespace>Enyim.Caching</RootNamespace>
+    <AssemblyName>Enyim.Caching</AssemblyName>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -54,11 +54,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\lib\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\..\..\docs\Enyim.Caching.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">

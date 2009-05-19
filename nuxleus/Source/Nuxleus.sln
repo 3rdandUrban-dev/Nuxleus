@@ -46,6 +46,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xameleon", "Xameleon\Xameleon.csproj", "{A800D9F1-D877-4076-99BA-CBD73BCFB203}"
 EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Enyim.Caching.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
 		Debug|Any CPU = Debug|Any CPU
