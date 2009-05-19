@@ -44,7 +44,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\..\</OutputPath>
+    <OutputPath>..\..\..\lib\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -119,12 +119,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\sgmlreaderdll\SgmlReaderDll.csproj">
-      <Project>{499527FF-AE52-450F-B3E3-4AD53E1712AD}</Project>
-      <Name>SgmlReaderDll</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework Client Profile</ProductName>
@@ -153,6 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Extf.Net.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SgmlReaderDll\SgmlReaderDll8.csproj">
+      <Project>{D7BBFCCD-F523-400A-89C6-7AD879FBC56C}</Project>
+      <Name>SgmlReaderDll8</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

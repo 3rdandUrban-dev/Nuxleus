@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -50,39 +50,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+    <Reference Include="Mono.Posix">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL">
+    <Reference Include="Mono.Security">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Memcached.ClientLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+    <Reference Include="Saxon.Api, Version=9.1.0.5, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Mono.Posix.dll</HintPath>
+      <HintPath>..\lib\Saxon.Api.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+    <Reference Include="SgmlReaderDll, Version=1.7.2.12878, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Mono.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Mvp.Xml.dll</HintPath>
-    </Reference>
-    <Reference Include="SgmlReaderDll, Version=1.7.2.5984, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\SgmlReaderDll.dll</HintPath>
+      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Net">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
@@ -90,56 +77,12 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
+    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL" />
+    <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f, processorArchitecture=MSIL" />
+    <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\ApplicationServer.cs">
-      <Link>WebServer\Mono.WebServer\ApplicationServer.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\BaseApplicationHost.cs">
-      <Link>WebServer\Mono.WebServer\BaseApplicationHost.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\BaseRequestBroker.cs">
-      <Link>WebServer\Mono.WebServer\BaseRequestBroker.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\HttpErrors.cs">
-      <Link>WebServer\Mono.WebServer\HttpErrors.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\IApplicationHost.cs">
-      <Link>WebServer\Mono.WebServer\IApplicationHost.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\InitialWorkerRequest.cs">
-      <Link>WebServer\Mono.WebServer\InitialWorkerRequest.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\IWebSource.cs">
-      <Link>WebServer\Mono.WebServer\IWebSource.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\LingeringNetworkStream.cs">
-      <Link>WebServer\Mono.WebServer\LingeringNetworkStream.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\MonoWorkerRequest.cs">
-      <Link>WebServer\Mono.WebServer\MonoWorkerRequest.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\Paths.cs">
-      <Link>WebServer\Mono.WebServer\Paths.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\VPathToHost.cs">
-      <Link>WebServer\Mono.WebServer\VPathToHost.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\XSPApplicationHost.cs">
-      <Link>WebServer\Mono.WebServer\XSPApplicationHost.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\XSPRequestBroker.cs">
-      <Link>WebServer\Mono.WebServer\XSPRequestBroker.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\XSPWebSource.cs">
-      <Link>WebServer\Mono.WebServer\XSPWebSource.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\XSPWorker.cs">
-      <Link>WebServer\Mono.WebServer\XSPWorker.cs</Link>
-    </Compile>
-    <Compile Include="..\Dependencies\vendor\mono\xsp\src\mono.webserver\XSPWorkerRequest.cs">
-      <Link>WebServer\Mono.WebServer\XSPWorkerRequest.cs</Link>
-    </Compile>
     <Compile Include="Agent.cs" />
     <Compile Include="HttpApplication\FileMessageQueue_Global.cs" />
     <Compile Include="HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs" />
@@ -184,24 +127,15 @@
     <Compile Include="HttpHandler\NuxleusHttpSessionLogoutHandler.cs" />
     <Compile Include="Message\Message.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncXmlServiceOperationHandler.cs" />
-    <Compile Include="WebServer\WebServer.cs" />
     <Compile Include="HttpApplication\Global.cs" />
     <Compile Include="XmlServiceOperation\XmlServiceOperationManager.cs" />
     <Compile Include="XmlServiceOperation\XmlServiceOperationReader.cs" />
     <Compile Include="XPathServiceOperationNavigator\XPathServiceOperationNavigator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dependencies\Vendor\Saxon.NET\Saxon.Api\Saxon.Api.csproj">
-      <Project>{2E81A819-C22A-4535-89AD-CE1DCCF6A07E}</Project>
-      <Name>Saxon.Api</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dependencies\Vendor\taglib-sharp-2.0.3.0\taglib-sharp.csproj">
-      <Project>{4CC18776-125E-4318-9D24-D60110AD9697}</Project>
-      <Name>taglib-sharp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
+      <Name>Nuxleus.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
       <Project>{76489AFC-B3D6-40E4-AA45-840D069E4F43}</Project>
@@ -233,7 +167,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Xameleon\Xameleon.csproj">
       <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
-      <Name>Xameleon %28Xameleon\Xameleon%29</Name>
+      <Name>Xameleon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -242,23 +176,18 @@
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AsyncResult\" />
     <Folder Include="Properties\" />
+    <Folder Include="WebServer\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -49,12 +49,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
+    <Reference Include="ALAZ.SystemEx.NetEx, Version=1.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Saxon.Api.dll</HintPath>
+      <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Saxon.Api, Version=9.1.0.5, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.Api.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -72,11 +76,11 @@
     </Compile>
     <Compile Include="Clipboard\*.cs" />
     <Compile Include="Drawing\NuxleusImageResizeProcessManager.cs" />
-    <Compile Include="Filesystem\*.cs" />
-    <Compile Include="Filesystem\Replication\*.cs">
+    <Compile Include="FileSystem\*.cs" />
+    <Compile Include="FileSystem\Replication\*.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Filesystem\RevisionControl\*.cs" />
+    <Compile Include="FileSystem\RevisionControl\*.cs" />
     <Compile Include="Filesystem\Watcher\FileSystemWatcherService.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -111,17 +115,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dependencies\ALAZ\Source\ALAZ.SystemEx.NetEx\ALAZ.SystemEx.NetEx.csproj">
-      <Project>{25162422-3B32-4FB3-8A99-6BCFBE30D9AE}</Project>
-      <Name>ALAZ.SystemEx.NetEx</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dependencies\ALAZ\Source\ALAZ.SystemEx\ALAZ.SystemEx.csproj">
-      <Project>{FA1EF4FC-2FC7-4B29-9EAB-2872593C89E2}</Project>
-      <Name>ALAZ.SystemEx</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
+      <Name>Nuxleus.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Drawing\Nuxleus.Drawing.csproj">
       <Project>{13FADE77-14DD-4F14-A52E-63AE71DB1756}</Project>
@@ -140,39 +136,27 @@
     <None Include="Extf.Net.snk" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Clipboard\" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework Client Profile</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
       <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Clipboard\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

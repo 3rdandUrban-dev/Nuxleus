@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -12,8 +12,6 @@
     <AssemblyName>Nuxleus</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <StartupObject>
-    </StartupObject>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
@@ -22,7 +20,6 @@
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <TargetZone>LocalIntranet</TargetZone>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
     <PublishUrl>http://localhost/Nuxleus/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -59,20 +56,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.IO.Log">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
@@ -80,18 +70,19 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Upnp, Version=0.5.0.0, Culture=neutral, PublicKeyToken=667b6f9c0b93f26b, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
+    <Reference Include="System.IO.Log" />
+    <Reference Include="Tamir.SharpSSH, Version=1.1.1.13, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\Upnp.dll</HintPath>
+      <HintPath>..\lib\Tamir.SharpSSH.dll</HintPath>
     </Reference>
+    <Reference Include="Upnp, Version=0.5.0.0, Culture=neutral, PublicKeyToken=667b6f9c0b93f26b, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="InvokeRequest.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,139 +91,102 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\build\bin\agsXMPP.dll">
-      <Link>BaseWebApp\bin\agsXMPP.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\ALAZ.SystemEx.dll">
-      <Link>BaseWebApp\bin\ALAZ.SystemEx.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\ALAZ.SystemEx.NetEx.dll">
-      <Link>BaseWebApp\bin\ALAZ.SystemEx.NetEx.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\DiffieHellman.dll">
-      <Link>BaseWebApp\bin\DiffieHellman.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\ICSharpCode.SharpZipLib.dll">
-      <Link>BaseWebApp\bin\ICSharpCode.SharpZipLib.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\IKVM.OpenJDK.ClassLibrary.dll">
-      <Link>BaseWebApp\bin\IKVM.OpenJDK.ClassLibrary.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\IKVM.Runtime.dll">
-      <Link>BaseWebApp\bin\IKVM.Runtime.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\log4net.dll">
-      <Link>BaseWebApp\bin\log4net.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Memcached.ClientLibrary.dll">
-      <Link>BaseWebApp\bin\Memcached.ClientLibrary.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Mono.Posix.dll">
-      <Link>BaseWebApp\bin\Mono.Posix.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Mono.Security.dll">
-      <Link>BaseWebApp\bin\Mono.Security.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Mvp.Xml.dll">
-      <Link>BaseWebApp\bin\Mvp.Xml.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Authentication.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Authentication.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Cryptography.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Cryptography.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Drawing.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Drawing.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Extension.Amp.Fm.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Extension.Amp.Fm.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Extension.Aws.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Extension.Aws.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Extension.Facebook.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Extension.Facebook.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Extension.Linq.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Extension.Linq.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Extension.Silverlight.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Extension.Silverlight.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Geo.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Geo.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Logging.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Logging.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Messaging.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Messaging.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.PubSub.dll">
-      <Link>BaseWebApp\bin\Nuxleus.PubSub.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Service.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Service.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Web.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Web.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Nuxleus.Web.Services.dll">
-      <Link>BaseWebApp\bin\Nuxleus.Web.Services.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Org.Mentalis.SecurityServices.dll">
-      <Link>BaseWebApp\bin\Org.Mentalis.SecurityServices.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Saxon.Api.dll">
-      <Link>BaseWebApp\bin\Saxon.Api.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\saxon9.dll">
-      <Link>BaseWebApp\bin\saxon9.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\SgmlReaderDll.dll">
-      <Link>BaseWebApp\bin\SgmlReaderDll.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Tamir.SharpSSH.dll">
-      <Link>BaseWebApp\bin\Tamir.SharpSSH.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Upnp.dll">
-      <Link>BaseWebApp\bin\Upnp.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\build\bin\Xameleon.dll">
-      <Link>BaseWebApp\bin\Xameleon.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="BaseWebApp\**\*.asmx">
@@ -272,22 +226,11 @@
     </Content>
     <None Include="BaseWebApp\page\view\template\link\xhtml.template" />
     <None Include="Extf.Net.snk" />
-    <None Include="Nuxleus_TemporaryKey.pfx" />
-    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dependencies\DiffieHellman\DiffieHellman.csproj">
-      <Project>{51A5DB78-BDDF-466D-911D-FCD600413726}</Project>
-      <Name>DiffieHellman</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dependencies\SharpSSH-1.1.1.13.src\SharpSSH\SharpSSH.csproj">
-      <Project>{D27CF69D-4681-492A-BE4D-D3D209104423}</Project>
-      <Name>SharpSSH</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Authentication\Nuxleus.Authentication.csproj">
       <Project>{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}</Project>
       <Name>Nuxleus.Authentication</Name>
@@ -298,7 +241,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
+      <Name>Nuxleus.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
       <Project>{76489AFC-B3D6-40E4-AA45-840D069E4F43}</Project>
@@ -328,17 +271,13 @@
       <Project>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</Project>
       <Name>Nuxleus.Service</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Web.Services\Nuxleus.Web.Services.csproj">
-      <Project>{1CCD9440-9E26-4731-8F89-224690867EB2}</Project>
-      <Name>Nuxleus.Web.Services</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Web\Nuxleus.Web.csproj">
       <Project>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</Project>
       <Name>Nuxleus.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\Xameleon\Xameleon.csproj">
       <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
-      <Name>Xameleon %28Xameleon\Xameleon%29</Name>
+      <Name>Xameleon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -360,30 +299,15 @@
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5</ProductName>
-      <Install>true</Install>
+      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PublishFile Include="SgmlReaderDll">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseWebApp\App_Data\" />

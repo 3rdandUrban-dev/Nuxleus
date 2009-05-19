@@ -41,7 +41,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputPath>..\..\..\build\bin\</OutputPath>
+    <OutputPath>..\..\lib\</OutputPath>
     <Optimize>False</Optimize>
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <DebugSymbols>true</DebugSymbols>

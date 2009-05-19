@@ -43,7 +43,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\..\..\build\bin\</OutputPath>
+    <OutputPath>..\..\..\lib\</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -551,9 +551,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Extf.Net.snk" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\DiffieHellman\DiffieHellman.csproj">
       <Project>{51A5DB78-BDDF-466D-911D-FCD600413726}</Project>
       <Name>DiffieHellman</Name>
@@ -562,6 +559,9 @@
       <Project>{92268E63-E20E-4ED1-86DB-B621712F9A80}</Project>
       <Name>SecurityServices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Extf.Net.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
