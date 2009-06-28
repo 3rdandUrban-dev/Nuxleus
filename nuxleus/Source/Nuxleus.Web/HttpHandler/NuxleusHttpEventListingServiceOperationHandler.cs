@@ -30,6 +30,7 @@ namespace Nuxleus.Web.HttpHandler
         static XNamespace r = "http://nuxleus.com/message/response";
         static List<string> sessionCookies = new List<string>();
         SelectTask m_task;
+        NuxleusAsyncResult m_iTaskResult;
 
         public void ProcessRequest(HttpContext context)
         {
@@ -66,21 +67,25 @@ namespace Nuxleus.Web.HttpHandler
             if (cookieDictionary.TryGetValue("userid", out currentUserId))
             {
                 m_task = new SelectTask { DomainName = new Domain { Name = "event" }, SelectExpression = String.Format("select * from event where eventcreator = '{0}'", currentUserId) };
-                m_task.Transaction.OnSuccessfulTransaction += new OnSuccessfulTransaction(Transaction_OnSuccessfulTransaction);
-                m_task.Transaction.OnFailedTransaction += new OnFailedTransaction(Transaction_OnFailedTransaction);
+                m_iTaskResult = new NuxleusAsyncResult(cb, extraData);
+            
+            m_task.Transaction.OnSuccessfulTransaction += new OnSuccessfulTransaction(Transaction_OnSuccessfulTransaction);
+            m_task.Transaction.OnFailedTransaction += new OnFailedTransaction(Transaction_OnFailedTransaction);
+
             }
-            NuxleusAsyncResult iTaskResult = new NuxleusAsyncResult(cb, extraData);
-            return m_task.BeginInvoke(iTaskResult);
+                        return m_task.BeginInvoke(m_iTaskResult);
         }
 
         public void Transaction_OnSuccessfulTransaction()
         {
             WriteDebugXmlToOutputStream(((SelectResult)m_task.Transaction.Response.Result).Item);
+            m_iTaskResult.CompleteCall();
         }
 
         public void Transaction_OnFailedTransaction()
         {
             WriteDebugXmlToOutputStream(((SelectResult)m_task.Transaction.Response.Result).Item);
+            m_iTaskResult.CompleteCall();
         }
 
 

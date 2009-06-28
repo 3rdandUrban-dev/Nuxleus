@@ -73,9 +73,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Saxon.Api.dll</HintPath>
     </Reference>
-    <Reference Include="SgmlReaderDll, Version=1.7.2.12878, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
+    <Reference Include="SgmlReader8Dll, Version=1.7.2.4159, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
+      <HintPath>..\lib\SgmlReader8Dll.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

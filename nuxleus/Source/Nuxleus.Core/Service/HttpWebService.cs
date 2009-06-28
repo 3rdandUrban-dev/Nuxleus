@@ -211,7 +211,6 @@ namespace Nuxleus.Core
             transaction.Successful = true;
             task.StatusCode = response.StatusCode;
             task.Transaction.Commit();
-            container.AsyncResult.CompleteCall();
         }
 
         public static IResponse CallWebService(ITask task)
@@ -269,7 +268,7 @@ namespace Nuxleus.Core
             {
                 task.Transaction.Commit();
             }
-            catch
+            catch (Exception e)
             {
 
             }

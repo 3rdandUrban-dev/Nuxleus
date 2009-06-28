@@ -28,6 +28,7 @@ namespace Nuxleus.Web.HttpHandler
         HttpCookieCollection m_cookieCollection;
         SelectTask m_task;
         static XNamespace r = "http://nuxleus.com/message/response";
+        NuxleusAsyncResult m_iTaskResult;
 
         public void ProcessRequest(HttpContext context)
         {
@@ -59,28 +60,23 @@ namespace Nuxleus.Web.HttpHandler
             string ip = m_request.UserHostAddress.ToString();
 
             m_task = new SelectTask { DomainName = new Domain { Name = "media" }, SelectExpression = String.Format("select * from media where mediacreator = '{0}' and CollectionId = '{1}'", userid, collection_id) };
-
-            NuxleusAsyncResult iTaskResult = new NuxleusAsyncResult(cb, extraData);
+            m_iTaskResult = new NuxleusAsyncResult(cb, extraData);
             
             m_task.Transaction.OnSuccessfulTransaction += new OnSuccessfulTransaction(Transaction_OnSuccessfulTransaction);
             m_task.Transaction.OnFailedTransaction += new OnFailedTransaction(Transaction_OnFailedTransaction);
-            return m_task.BeginInvoke(iTaskResult);
-            //return iTaskResult;
-        }
-
-        public void CompleteTask(IAsyncResult result)
-        {
-           
+            return m_task.BeginInvoke(m_iTaskResult);
         }
 
         public void Transaction_OnSuccessfulTransaction()
         {
             WriteDebugXmlToOutputStream(((SelectResult)m_task.Transaction.Response.Result).Item);
+            m_iTaskResult.CompleteCall();
         }
 
         public void Transaction_OnFailedTransaction()
         {
             WriteDebugXmlToOutputStream(((SelectResult)m_task.Transaction.Response.Result).Item);
+            m_iTaskResult.CompleteCall();
         }
 
         public void EndProcessRequest(IAsyncResult result)

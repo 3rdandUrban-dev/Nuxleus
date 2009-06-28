@@ -29,6 +29,7 @@ namespace Nuxleus.Web.HttpHandler
         NuxleusAsyncResult m_asyncResult;
         static XNamespace r = "http://nuxleus.com/message/response";
         SelectTask m_task;
+        NuxleusAsyncResult m_iTaskResult;
 
         public void ProcessRequest(HttpContext context)
         {
@@ -61,11 +62,11 @@ namespace Nuxleus.Web.HttpHandler
             string ip = m_request.UserHostAddress.ToString();
 
             m_task = new SelectTask { DomainName = new Domain { Name = "collections" }, SelectExpression = String.Format("select * from collections where CollectionOwner = '{0}'", userid) };
-            NuxleusAsyncResult iTaskResult = new NuxleusAsyncResult(cb, extraData);
+            m_iTaskResult = new NuxleusAsyncResult(cb, extraData);
 
             m_task.Transaction.OnSuccessfulTransaction += new OnSuccessfulTransaction(Transaction_OnSuccessfulTransaction);
             m_task.Transaction.OnFailedTransaction += new OnFailedTransaction(Transaction_OnFailedTransaction);
-            return m_task.BeginInvoke(iTaskResult);
+            return m_task.BeginInvoke(m_iTaskResult);
         }
 
         public void EndProcessRequest(IAsyncResult result)
@@ -76,11 +77,13 @@ namespace Nuxleus.Web.HttpHandler
         public void Transaction_OnSuccessfulTransaction()
         {
             WriteDebugXmlToOutputStream(((SelectResult)m_task.Transaction.Response.Result).Item);
+            m_iTaskResult.CompleteCall();
         }
 
         public void Transaction_OnFailedTransaction()
         {
             WriteDebugXmlToOutputStream(((SelectResult)m_task.Transaction.Response.Result).Item);
+            m_iTaskResult.CompleteCall();
         }
 
         void WriteDebugXmlToOutputStream(List<Item> items)
