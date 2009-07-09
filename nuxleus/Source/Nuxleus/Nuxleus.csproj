@@ -70,13 +70,18 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL" />
-    <Reference Include="System.IO.Log" />
-    <Reference Include="Tamir.SharpSSH, Version=1.1.1.13, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
+    <Reference Include="Tamir.SharpSSH, Version=1.1.1.13, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Tamir.SharpSSH.dll</HintPath>
     </Reference>
-    <Reference Include="Upnp, Version=0.5.0.0, Culture=neutral, PublicKeyToken=667b6f9c0b93f26b, processorArchitecture=MSIL" />
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Upnp, Version=0.5.0.0, Culture=neutral, PublicKeyToken=667b6f9c0b93f26b">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Upnp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
@@ -90,138 +95,6 @@
     <Compile Include="Utility\SshUtil\Util.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\lib\agsXMPP.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\ALAZ.SystemEx.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\ALAZ.SystemEx.NetEx.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\DiffieHellman.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\ICSharpCode.SharpZipLib.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\IKVM.OpenJDK.ClassLibrary.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\IKVM.Runtime.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\log4net.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\Memcached.ClientLibrary.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\Mono.Posix.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\Mono.Security.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\Mvp.Xml.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Authentication.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Cryptography.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Drawing.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Extension.Amp.Fm.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Extension.Aws.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Extension.Facebook.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Extension.Linq.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Extension.Silverlight.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Geo.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Logging.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Messaging.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.PubSub.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Service.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Nuxleus.Web.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\Saxon.Api.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\saxon9.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\SgmlReaderDll.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\Tamir.SharpSSH.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\lib\Upnp.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\build\bin\Xameleon.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseWebApp\**\*.asmx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseWebApp\**\*.aspx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseWebApp\**\*.page">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseWebApp\**\*.xsl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseWebApp\**\*.xslt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseWebApp\**\*.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseWebApp\**\*.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseWebApp\**\*.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseWebApp\App_Config\aws.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="BaseWebApp\page\atomictalk.rng" />
-    <None Include="BaseWebApp\page\base.rnc" />
-    <Content Include="BaseWebApp\Web.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BaseWebApp\Global.asax">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="BaseWebApp\page\view\template\link\xhtml.template" />
     <None Include="Extf.Net.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -280,86 +153,21 @@
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework Client Profile</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BaseWebApp\App_Data\" />
-    <Folder Include="BaseWebApp\images\" />
-    <Folder Include="BaseWebApp\page\model\atomictalk\svg\" />
-    <Folder Include="BaseWebApp\page\model\atomictalk\xaml\" />
-    <Folder Include="BaseWebApp\page\model\atomictalk\xhtml\" />
-    <Folder Include="BaseWebApp\page\model\atomictalk\xul\" />
-    <Folder Include="BaseWebApp\page\model\collection\module\content\bungee\" />
-    <Folder Include="BaseWebApp\page\model\xhtml\" />
-    <Folder Include="BaseWebApp\page\output\body\map\" />
-    <Folder Include="BaseWebApp\page\output\body\m\map\" />
-    <Folder Include="BaseWebApp\page\view\module\content\bungee\" />
-    <Folder Include="BaseWebApp\page\view\module\content\map\" />
-    <Folder Include="BaseWebApp\service\aws\alexa\get-site-thumbnail\" />
-    <Folder Include="BaseWebApp\service\aws\ec2\get-running-instances\" />
-    <Folder Include="BaseWebApp\service\aws\ec2\launch-new-instance\" />
-    <Folder Include="BaseWebApp\service\aws\ec2\restart-instance\" />
-    <Folder Include="BaseWebApp\service\aws\ec2\shutdown-instance\" />
-    <Folder Include="BaseWebApp\service\aws\ecs\" />
-    <Folder Include="BaseWebApp\service\aws\fps\" />
-    <Folder Include="BaseWebApp\service\aws\s3\" />
-    <Folder Include="BaseWebApp\service\aws\sqs\" />
-    <Folder Include="BaseWebApp\service\facebook\auth\createToken\" />
-    <Folder Include="BaseWebApp\service\facebook\auth\getSession\" />
-    <Folder Include="BaseWebApp\service\facebook\events\getMembers\" />
-    <Folder Include="BaseWebApp\service\facebook\events\get\" />
-    <Folder Include="BaseWebApp\service\facebook\fbml\refreshImgSrc\" />
-    <Folder Include="BaseWebApp\service\facebook\fbml\refreshRefUrl\" />
-    <Folder Include="BaseWebApp\service\facebook\fbml\setRefHandle\" />
-    <Folder Include="BaseWebApp\service\facebook\feed\fql\query\" />
-    <Folder Include="BaseWebApp\service\facebook\feed\profile\getFBML\" />
-    <Folder Include="BaseWebApp\service\facebook\feed\profile\setFBML\" />
-    <Folder Include="BaseWebApp\service\facebook\feed\publishActionOfUser\" />
-    <Folder Include="BaseWebApp\service\facebook\feed\publishStoryToUser\" />
-    <Folder Include="BaseWebApp\service\facebook\feed\publishTemplatizedAction\" />
-    <Folder Include="BaseWebApp\service\facebook\friends\areFriends\" />
-    <Folder Include="BaseWebApp\service\facebook\friends\getAppUsers\" />
-    <Folder Include="BaseWebApp\service\facebook\friends\get\" />
-    <Folder Include="BaseWebApp\service\facebook\groups\getMembers\" />
-    <Folder Include="BaseWebApp\service\facebook\groups\get\" />
-    <Folder Include="BaseWebApp\service\facebook\notifications\sendRequest\" />
-    <Folder Include="BaseWebApp\service\facebook\notifications\send\" />
-    <Folder Include="BaseWebApp\service\facebook\photos\addTag\" />
-    <Folder Include="BaseWebApp\service\facebook\photos\createAlbum\" />
-    <Folder Include="BaseWebApp\service\facebook\photos\getAlbums\" />
-    <Folder Include="BaseWebApp\service\facebook\photos\getTags\" />
-    <Folder Include="BaseWebApp\service\facebook\photos\get\" />
-    <Folder Include="BaseWebApp\service\facebook\photos\upload\" />
-    <Folder Include="BaseWebApp\service\facebook\users\getInfo\" />
-    <Folder Include="BaseWebApp\service\facebook\users\getLoggedInUser\" />
-    <Folder Include="BaseWebApp\service\facebook\users\hasAppPermission\" />
-    <Folder Include="BaseWebApp\service\facebook\users\isAppAdded\" />
-    <Folder Include="BaseWebApp\service\facebook\users\setStatus\" />
-    <Folder Include="BaseWebApp\service\transform\controller\aws\sdb\base.xslt\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
