@@ -3,22 +3,15 @@
 // Please see http://creativecommons.org/licenses/by/3.0/us/ for specific detail.
 
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Text;
 using System.Web;
 using System.Xml.Linq;
-using System.Xml.Serialization;
-using System.Xml.Xsl;
-using Nuxleus.Atom;
 using Nuxleus.Core;
-using Nuxleus.Extension.Aws.SimpleDb;
-using Sgml;
-using AwsSdbModel = Nuxleus.Extension.Aws.SimpleDb;
-using System.Xml;
 using Nuxleus.Geo;
 using Nuxleus.Geo.MaxMind;
+using System.Net;
 
 namespace Nuxleus.Web.HttpHandler
 {
@@ -60,15 +53,18 @@ namespace Nuxleus.Web.HttpHandler
             m_response = context.Response;
             m_cookieCollection = context.Request.Cookies;
             m_asyncResult = new NuxleusAsyncResult(cb, extraData);
-            string ip = m_request.UserHostAddress.ToString();
+            string ip = m_request.UserHostAddress;
             HttpCookie sessionid = m_cookieCollection["sessionid"];
             HttpCookie userid = m_cookieCollection["userid"];
             HttpCookie name = m_cookieCollection["name"];
             HttpCookie username = m_cookieCollection["username"];
             HttpCookie uservalidated = m_cookieCollection["uservalidated"];
 
-            String hostAddress = context.Request.UserHostAddress;
-            LatLongLocation location = new LatLongLocation(GetIPLocation(hostAddress));
+            if (ip == "::1" || ip == "127.0.0.1")
+                //ip = GetLocalIPAddress();
+                ip = "75.169.248.106";
+
+            LatLongLocation location = new LatLongLocation(GetIPLocation(ip));
 
             NameValueCollection form = request.Form;
             string user_id = null;
@@ -116,9 +112,7 @@ namespace Nuxleus.Web.HttpHandler
             {
                 user_validated = "not-set";
             }
-            if (ip == "::1")
-                ip = "71.32.225.49";
-
+            
             //IPLocation.DefaultCity = "Salt Lake City";
             //IPLocation.DefaultCountry = "UNITED STATES";
 
@@ -129,7 +123,6 @@ namespace Nuxleus.Web.HttpHandler
             //IResponse response = task.Invoke();
             //TextReader tReader = new StringReader(response.Response);
             //XmlReader reader = XmlReader.Create(tReader);
-
 
             XDocument doc = new XDocument(
                 new XElement(r + "message",
@@ -148,6 +141,9 @@ namespace Nuxleus.Web.HttpHandler
                         new XElement(r + "long", location.Long),
                         new XElement(r + "city", location.City),
                         new XElement(r + "country", location.Country),
+                        new XElement(r + "region", location.Region),
+                        new XElement(r + "postalCode", location.PostalCode),
+                        new XElement(r + "areaCode", location.AreaCode),
                         new XElement(r + "ip", ip)
                     )
                 )
@@ -182,7 +178,10 @@ namespace Nuxleus.Web.HttpHandler
                     maxMindLocation.countryName,
                     maxMindLocation.countryCode,
                     maxMindLocation.latitude.ToString(),
-                    maxMindLocation.longitude.ToString()
+                    maxMindLocation.longitude.ToString(),
+                    maxMindLocation.region,
+                    maxMindLocation.postalCode,
+                    maxMindLocation.area_code.ToString()
                 };
 
             }
@@ -193,11 +192,30 @@ namespace Nuxleus.Web.HttpHandler
                     "US",
                     "1",
                     "0",
-                    "0"
+                    "0",
+                    "Unknown Region",
+                    "Unknown Postal Code",
+                    "Unknown Area Code"
               };
             }
 
             return location;
         }
+        private string GetLocalIPAddress()
+        {
+            IPHostEntry host;
+            string localIP = String.Empty;
+            host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily.ToString() == "InterNetwork")
+                {
+                    localIP = ip.ToString();
+                }
+            }
+            return localIP;
+        }
     }
+
+
 }

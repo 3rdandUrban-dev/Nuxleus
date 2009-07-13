@@ -1,25 +1,17 @@
 ﻿using System;
-using System.Xml;
-using net.sf.saxon.value;
-using Saxon.Api;
-using Sgml;
-using System.Web;
-using Nuxleus.Memcached;
-using Nuxleus.Transform;
-using System.IO;
-using System.Text;
-using System.Collections;
 using System.Collections.Generic;
-using Mvp.Xml;
-using System.Xml.XPath;
+using System.IO;
+using System.Web;
 using Memcached.ClientLibrary;
+using Nuxleus.Transform;
+using Sgml;
 
 namespace Xameleon.Function
 {
 
     public class HttpSgmlToXml
     {
-        static IDictionary<String, String> _cacheDictionary = new Dictionary<String, String>();
+        static IDictionary<String, String> m_CacheDictionary = new Dictionary<String, String>();
 
         public HttpSgmlToXml () { }
 
@@ -81,14 +73,14 @@ namespace Xameleon.Function
         {
             string decodedUri = HttpUtility.UrlDecode(uri);
             string eTag = Context.GenerateETag(decodedUri, Nuxleus.Cryptography.HashAlgorithm.SHA1);
-            String xhtml;
+            String xhtml = String.Empty;
 
             try
             {
 
-                if (_cacheDictionary.ContainsKey(eTag))
+                if (m_CacheDictionary.ContainsKey(eTag))
                 {
-                    xhtml = _cacheDictionary[eTag];
+                    xhtml = m_CacheDictionary[eTag];
                 }
                 else
                 {
@@ -126,7 +118,7 @@ namespace Xameleon.Function
                         }
 
                         xhtml = sr.ReadOuterXml();
-                        _cacheDictionary.Add(eTag, xhtml);
+                        m_CacheDictionary.Add(eTag, xhtml);
 
                     }
                 }

@@ -1,12 +1,12 @@
 using System;
-using System.Text;
 using System.IO;
-using System.Web;
 using System.Net;
+using System.Text;
+using System.Web;
 
 namespace Nuxleus.Authentication
 {
-  public static class Facebook
+    public static class Facebook
     {
         /// <summary>
         /// Authenticate a user to Facebook allowing for  usage of the Facebook API.
@@ -46,8 +46,8 @@ namespace Nuxleus.Authentication
             body.Close();
             HttpWebResponse s1 = (HttpWebResponse)r1.GetResponse();
 
-	    s0.Close();
-	    s1.Close();
+            s0.Close();
+            s1.Close();
         }
     }
 }

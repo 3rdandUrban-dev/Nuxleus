@@ -14,6 +14,9 @@ namespace Nuxleus.Geo
         string m_countryCode;
         string m_lat;
         string m_long;
+        string m_region;
+        string m_postalCode;
+        string m_areaCode;
         string[] m_locationArray;
 
         public string City
@@ -41,6 +44,21 @@ namespace Nuxleus.Geo
             get { return m_long; }
             set { m_long = value; }
         }
+        public string Region
+        {
+            get { return m_region; }
+            set { m_region = value; }
+        }
+        public string PostalCode
+        {
+            get { return m_postalCode; }
+            set { m_postalCode = value; }
+        }
+        public string AreaCode
+        {
+            get { return m_areaCode; }
+            set { m_areaCode = value; }
+        }
         public string[] LocationArray
         {
             get { return m_locationArray; }
@@ -53,6 +71,9 @@ namespace Nuxleus.Geo
             m_countryCode = geoInfo[2];
             m_lat = geoInfo[3];
             m_long = geoInfo[4];
+            m_region = geoInfo[5];
+            m_postalCode = geoInfo[6];
+            m_areaCode = geoInfo[7];
             m_locationArray = geoInfo;
         }
 

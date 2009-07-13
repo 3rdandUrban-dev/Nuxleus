@@ -4,7 +4,7 @@ using System;
 
 namespace Nuxleus.Geo
 {
-    public struct LatLongByCityName : ILatLongLocation
+    public class LatLongByCityName : ILatLongLocation
     {
         string m_city;
         string m_country;
@@ -38,6 +38,21 @@ namespace Nuxleus.Geo
             get { return m_long; }
             set { m_long = value; }
         }
+        public string Region
+        {
+            get;
+            set;
+        }
+        public string PostalCode
+        {
+            get;
+            set;
+        }
+        public string AreaCode
+        {
+            get;
+            set;
+        }
         public string[] LocationArray
         {
             get { return m_locationArray; }
@@ -51,6 +66,9 @@ namespace Nuxleus.Geo
             m_countryCode = m_locationArray[2];
             m_lat = m_locationArray[3];
             m_long = m_locationArray[4];
+            Region = m_locationArray[5];
+            PostalCode = m_locationArray[6];
+            AreaCode = m_locationArray[7];
         }
         public LatLongByCityName (string[] geoInfo)
         {
@@ -59,6 +77,9 @@ namespace Nuxleus.Geo
             m_countryCode = geoInfo[2];
             m_lat = geoInfo[3];
             m_long = geoInfo[4];
+            Region = geoInfo[5];
+            PostalCode = geoInfo[6];
+            AreaCode = geoInfo[7];
             m_locationArray = geoInfo;
         }
 

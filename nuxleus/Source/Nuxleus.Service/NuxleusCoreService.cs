@@ -1,39 +1,29 @@
 using System;
-using System.Collections;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.ServiceProcess;
-using System.IO;
-using System.Threading;
-using System.Reflection;
-using System.Text;
-using System.Runtime.Remoting;
-using System.Runtime.Remoting.Messaging;
-using System.Configuration.Install;
 using Nuxleus.Messaging;
 using Nuxleus.Messaging.Core;
-using Nuxleus.Logging;
 
 namespace Nuxleus.Service
 {
     public class NuxleusCoreService : ServiceBase
     {
         Container components = null;
-        MessageServer _nuxleusCoreMessageServer = null;
-        NuxleusCoreHandler _nuxleusCoreHandler = null;
-        static string _serviceName = "Nuxleus Core Messaging Service";
+        MessageServer m_nuxleusCoreMessageServer = null;
+        NuxleusCoreHandler m_nuxleusCoreHandler = null;
+        static string m_serviceName = "Nuxleus Core Messaging Service";
 
         public NuxleusCoreService(int port)
         {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
 
-            _nuxleusCoreMessageServer = new MessageServer(port, "\r\n");
+            m_nuxleusCoreMessageServer = new MessageServer(port, "\r\n");
 
-            _nuxleusCoreHandler = new NuxleusCoreHandler();
-            _nuxleusCoreHandler.ReceiverService = _nuxleusCoreMessageServer.Service;
+            m_nuxleusCoreHandler = new NuxleusCoreHandler();
+            m_nuxleusCoreHandler.ReceiverService = m_nuxleusCoreMessageServer.Service;
 
-            ///TODO: This needs to be integrating into the core messaging server
+            ///TODO: This needs to be integrated into the core messaging server
             ///and used to dispatch requests based on the number of processors
             ///on the system.  See LoadBalancer folder for more detail.
 
@@ -52,7 +42,7 @@ namespace Nuxleus.Service
         private void InitializeComponent()
         {
             components = new Container();
-            this.ServiceName = _serviceName;
+            this.ServiceName = m_serviceName;
         }
 
         /// <summary>
@@ -77,8 +67,8 @@ namespace Nuxleus.Service
         {
             try
             {
-                Log.Write("Starting " + _serviceName);
-                _nuxleusCoreMessageServer.Start();
+                Log.Write("Starting " + m_serviceName);
+                m_nuxleusCoreMessageServer.Start();
             }
             catch (Exception ex)
             {
@@ -93,8 +83,8 @@ namespace Nuxleus.Service
         {
             try
             {
-                Log.Write("Stopping " + _serviceName);
-                _nuxleusCoreMessageServer.Stop();
+                Log.Write("Stopping " + m_serviceName);
+                m_nuxleusCoreMessageServer.Stop();
                 this.Dispose();
             }
             catch (Exception ex)

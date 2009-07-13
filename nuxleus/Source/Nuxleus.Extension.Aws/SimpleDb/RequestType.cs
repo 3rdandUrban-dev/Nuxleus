@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Nuxleus.MetaData;
+﻿using Nuxleus.MetaData;
 
 namespace Nuxleus.Extension.Aws.SimpleDb
 {
