@@ -6,7 +6,7 @@
 
 class SaxonNET(AutoPackageRecipe):
     name = 'Saxon.NET'
-    version = '9.0.0.1'
+    version = '9.1.0.7'
 
     buildRequires = [
         'mono:lib',
@@ -25,7 +25,6 @@ class SaxonNET(AutoPackageRecipe):
         r.addSource('query')
         r.addSource('build.sh')
 	r.addSource('saxon.pc')
-	r.addSource('Model.cs.patch')
 	r.addSource('saxon9.dll')
 	r.Install('saxon.pc', '%(libdir)s/pkgconfig/saxon.pc')
         r.addSource('gacinstalllist')
@@ -38,5 +37,3 @@ class SaxonNET(AutoPackageRecipe):
         r.Requires('%(libdir)s/cli-gac/saxon.gacinstall', 'cli-gac-tag:runtime')
         
         r.TagSpec('cli-gac', '%(libdir)s/cli-gac/saxon.gacinstall')
-        
-

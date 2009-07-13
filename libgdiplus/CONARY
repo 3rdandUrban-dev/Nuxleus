@@ -1,7 +1,7 @@
 stateversion 2
 name libgdiplus:source
-version /nuxleus.rpath.org@nux:devel/1179676151.146:1.2.4-1
+version /nuxleus.rpath.org@nux:devel/1246352061.773:2.4.2-1
 branch /nuxleus.rpath.org@nux:devel
 2
-f7ea3a00a6e94296a4ef529e9800c50e libgdiplus.recipe 740ccf60b1ce00e02cdd49e41bba2026523f83bd config /nuxleus.rpath.org@nux:devel/1.2.4-1
-e9b11adc66d939a0e861d124a69f1488 libgdiplus-1.2.4.tar.bz2 115cd502dbfc4287ab6740eeffb7bf43082d86d8 autosource /nuxleus.rpath.org@nux:devel/1.2.4-1
+6fa11aeadba42a2ea45410e99431f32f libgdiplus-2.4.2.tar.bz2 b2494c850fe68a3ccd02c0c1f7ca1467965013ec autosource /nuxleus.rpath.org@nux:devel/2.4.2-1
+f7ea3a00a6e94296a4ef529e9800c50e libgdiplus.recipe 2e9d1830865e5430f3c041168357aa640d4f31e5 config /nuxleus.rpath.org@nux:devel/2.4.2-1

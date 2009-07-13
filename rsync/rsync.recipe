@@ -1,0 +1,16 @@
+#
+# Copyright (c) 2005-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class RSync(AutoPackageRecipe):
+    name = 'rsync'
+    version = '3.0.6'
+
+    buildRequires = [
+        'popt:devel'
+    ]
+
+    def unpack(r):
+        r.addArchive('http://rsync.samba.org/ftp/%(name)s/%(name)s-%(version)s.tar.gz')

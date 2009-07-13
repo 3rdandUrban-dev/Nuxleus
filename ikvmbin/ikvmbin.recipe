@@ -9,7 +9,7 @@ class Ikvmbin(AutoPackageRecipe):
     buildRequires = ['mono:devel', 'mono:cil', 'mono:runtime', 'mono:lib', 'pkgconfig:devel', 'cli-gac-tag' ]
 
     name = "ikvmbin"
-    version = "0.36.0.5"
+    version = "0.40.0.1"
 
     def setup(r):
         r.addArchive('http://www.frijters.net/%(name)s-%(version)s.zip')
@@ -18,7 +18,17 @@ class Ikvmbin(AutoPackageRecipe):
         r.addSource('ikvmc')
         r.addSource('ikvmstub')
 	r.addSource('IKVM.Runtime.jar')
-	r.addSource('IKVM.OpenJDK.ClassLibrary.jar')
+	r.addSource('IKVM.OpenJDK.Charsets.jar')
+	r.addSource('IKVM.OpenJDK.Corba.jar')
+	r.addSource('IKVM.OpenJDK.Core.jar')
+	r.addSource('IKVM.OpenJDK.Jdbc.jar')
+	r.addSource('IKVM.OpenJDK.Management.jar')
+	r.addSource('IKVM.OpenJDK.Misc.jar')
+	r.addSource('IKVM.OpenJDK.Security.jar')
+	r.addSource('IKVM.OpenJDK.SwingAWT.jar')
+	r.addSource('IKVM.OpenJDK.Text.jar')
+	r.addSource('IKVM.OpenJDK.Util.jar')
+	r.addSource('IKVM.OpenJDK.XML.jar')
 	r.addSource('System.jar')
 	r.addSource('System.Xml.jar')
 	r.addSource('mscorlib.jar')
@@ -50,6 +60,7 @@ class Ikvmbin(AutoPackageRecipe):
 	r.Requires(exceptDeps=r'java\:\ com\.sun\.jndi\.ldap\.Ber\$EncodeException')
 	r.Requires(exceptDeps=r'java\:\ com\.sun\.org\.apache\.xalan\.internal\.xsltc\.cmdline\.getopt\.IllegalArgumentException')
 	r.Requires(exceptDeps=r'java\:\ com\.sun\.org\.apache\.xalan\.internal\.xsltc\.cmdline\.getopt\.MissingOptArgException')
+	r.Requires(exceptDeps=r'CIL\:\ ISymWrapper\(2\.0\.0\.0\)')
 	r.Requires('%(libdir)s/cli-gac/ikvm.gacinstall', 'cli-gac-tag')
         r.TagSpec('cli-gac', '%(libdir)s/cli-gac/ikvm.gacinstall')
 

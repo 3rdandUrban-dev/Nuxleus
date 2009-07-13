@@ -1,0 +1,23 @@
+class Cherokee(AutoPackageRecipe):
+    buildRequires = [ 'openssl:devel', 'pam:devel',
+                      'bison:runtime', 'flex:runtime',
+                      'chkconfig:runtime', 'mysql:devel', 
+		      'openldap:devel', 'pkgconfig:devel', 
+		      'pcre:devel', 'python:devel', 'GeoIP:devel', 'bzip2:devel', 'php-cgi:runtime', 'ffmpeg:devel' ]
+
+    name = 'cherokee'
+    version = '0.99.20'
+
+    extraConfigure = '--enable-tls=openssl'
+
+    def unpack(r):
+        r.macros.cflags += ' -I/usr/kerberos/include/'
+        r.macros.ldflags += ' -L/usr/kerberos/lib/'
+	#r.addArchive('http://www.cherokee-project.com/download/trunk/cherokee-latest-svn.tar.gz')
+        r.addArchive('http://www.cherokee-project.com/download/0.99/%(version)s/%(name)s-%(version)s.tar.gz')
+        r.addSource('cherokee.init', dest = '%(initdir)s/cherokee', mode = 0755, macros = True)
+
+    def makeinstall(r):
+        AutoPackageRecipe.makeinstall(r)
+	#r.Remove('%(bindir)s/spawn-fcgi')
+        r.Install('pam.d_cherokee', '%(sysconfdir)s/pam.d/cherokee')

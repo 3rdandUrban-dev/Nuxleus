@@ -13,13 +13,12 @@ Query.exe: Saxon.Api.dll
         
 getsvn:
 	sh ./build.sh
-#	patch api/Saxon.Api/Model.cs < Model.cs.patch        
 install: 
 	mkdir -p ${DESTDIR}/usr/bin
 	mkdir -p ${DESTDIR}/usr/lib/saxon
 	mkdir -p ${DESTDIR}/usr/lib/pkgconfig
 	cp *.exe *.dll ${DESTDIR}/usr/lib/saxon
 	cp transform query ${DESTDIR}/usr/bin
-	cp saxon.pc ${DESTDIR}/usr/lib/pkgconfig/saxon.pc
+	#cp saxon.pc ${DESTDIR}/usr/lib/pkgconfig/saxon.pc
 	chmod 755 ${DESTDIR}/usr/bin/transform
 	chmod 755 ${DESTDIR}/usr/bin/query
