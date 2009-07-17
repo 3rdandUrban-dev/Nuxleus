@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
     <PublishUrl>http://localhost/Nuxleus.Web/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>

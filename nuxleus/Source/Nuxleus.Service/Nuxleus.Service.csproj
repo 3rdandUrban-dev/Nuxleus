@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
