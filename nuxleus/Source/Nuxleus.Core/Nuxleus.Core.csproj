@@ -188,7 +188,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Configuration\App.config" />
-    <None Include="Extf.Net.snk" />
     <None Include="Utility\Utility\S3\README" />
   </ItemGroup>
   <ItemGroup>

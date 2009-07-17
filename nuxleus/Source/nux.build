@@ -15,7 +15,7 @@
     <mkdir dir="${build.dir}" failonerror="false"/>
     <mkdir dir="${doc.dir}" failonerror="false"/>
   </target>
-  <target name="Xameleon" depends="init Nuxleus.Authentication Nuxleus.Core Nuxleus.Command Nuxleus.Cryptography Nuxleus.Extension.Facebook Nuxleus.Extension.Aws Nuxleus.Messaging Nuxleus.PubSub">
+  <target name="Xameleon" depends="init Nuxleus.Core Nuxleus.Command Nuxleus.Extension Nuxleus.Extension.Aws Nuxleus.Messaging Nuxleus.PubSub">
     <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" unsafe="True" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/Xameleon/*.cs"/>
@@ -33,11 +33,9 @@
       <references>
         <include name="${dependencies.dir}/log4net.dll"/>
         <include name="${build.dir}/Nuxleus.Core.dll"/>
-        <include name="${build.dir}/Nuxleus.Authentication.dll"/>
-        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
         <include name="${build.dir}/Nuxleus.Command.dll"/>
-        <include name="${build.dir}/Nuxleus.Extension.Facebook.dll"/>
-        <include name="${build.dir}/Nuxleus.Extension.Aws.Sdb.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.dll"/>
+        <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
         <include name="${build.dir}/Nuxleus.PubSub.dll"/>
         <include name="${build.dir}/Nuxleus.Messaging.dll"/>
         <include name="System.Drawing.dll"/>
@@ -111,23 +109,6 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Authentication" depends="init Nuxleus.Core">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Authentication/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-        <include name="${build.dir}/Nuxleus.Core.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
   <target name="Nuxleus.Command" depends="init">
     <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
@@ -154,6 +135,7 @@
         <include name="${dependencies.dir}/log4net.dll"/>
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
+        <include name="System.Drawing.dll"/>
         <include name="System.Configuration.dll"/>
         <include name="System.Xml.Linq.dll"/>
         <include name="System.Xml.dll"/>
@@ -161,88 +143,6 @@
         <include name="System.Web.Services.dll"/>
         <include name="System.Runtime.Serialization.dll"/>
         <include name="System.Runtime.Serialization.Formatters.Soap.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Cryptography" depends="init">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Cryptography/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Drawing" depends="init Nuxleus.Core">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Drawing/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Core.dll"/>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.ServiceProcess.dll"/>
-        <include name="System.Configuration.Install.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Drawing.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Profile" depends="init Nuxleus.Core">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Profile/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Core.dll"/>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Extension.Linq" depends="init Nuxleus.Cryptography">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Linq/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Core.dll"/>
-        <include name="System.Collections.dll"/>
-        <include name="System.Collections.Generic.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.Linq.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Extension.Facebook" depends="init Nuxleus.Cryptography">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Facebook/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Collections.dll"/>
-        <include name="System.Collections.Generic.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
         <include name="System.EnterpriseServices.dll"/>
       </references>
     </csc>
@@ -272,25 +172,10 @@
     </csc>
     <copy file="Nuxleus.Extension.Aws/log4net.config" tofile="${build.dir}/log4net.config"/>
   </target>
-  <target name="Nuxleus.Extension.Silverlight" depends="init">
+  <target name="Nuxleus.Extension" depends="init Nuxleus.Core">
     <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Silverlight/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="System.dll"/>
-        <include name="System.Data.dll"/>
-        <include name="System.Xml.dll"/>
-        <include name="System.Web.dll"/>
-        <include name="System.Web.Services.dll"/>
-        <include name="System.EnterpriseServices.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Extension.Amp.Fm" depends="init Nuxleus.Core">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Extension.Amp.Fm/**/*.cs"/>
+        <include name="${source.dir}/Nuxleus.Extension/**/*.cs"/>
       </sources>
       <references>
         <include name="${build.dir}/Nuxleus.Core.dll"/>
@@ -298,6 +183,7 @@
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
+        <include name="System.Xml.Linq.dll"/>
         <include name="System.Web.dll"/>
         <include name="System.Web.Services.dll"/>
         <include name="System.EnterpriseServices.dll"/>
@@ -318,20 +204,6 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Logging" depends="init Nuxleus.Core">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Logging/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Core.dll"/>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-        <include name="${dependencies.dir}/log4net.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Xml.dll"/>
-      </references>
-    </csc>
-  </target>
   <target name="Nuxleus.Messaging" depends="init Nuxleus.Core Nuxleus.PubSub Nuxleus.Vendor">
     <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
@@ -348,7 +220,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.PubSub" depends="init Nuxleus.Core Nuxleus.Cryptography ">
+  <target name="Nuxleus.PubSub" depends="init Nuxleus.Core">
     <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/Nuxleus.PubSub/**/*.cs"/>
@@ -366,20 +238,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Semantics" depends="init Nuxleus.Core">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Semantics/**/*.cs"/>
-      </sources>
-      <references>
-        <include name="${build.dir}/Nuxleus.Core.dll"/>
-        <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-        <include name="System.dll"/>
-        <include name="System.Xml.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Nuxleus.Service" depends="init Nuxleus.Core Nuxleus.Drawing Nuxleus.Logging Nuxleus.Messaging Nuxleus.Vendor">
+  <target name="Nuxleus.Service" depends="init Nuxleus.Core Nuxleus.Messaging Nuxleus.Vendor">
     <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/Nuxleus.Service/**/*.cs"/>
@@ -404,18 +263,6 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Synchronization" depends="init ">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${source.dir}/Nuxleus.Synchronization/**/*.cs"/>
-      </sources>
-      <references>
-
-        <include name="System.dll"/>
-        <include name="System.Xml.dll"/>
-      </references>
-    </csc>
-  </target>
   <target name="Nuxleus.Vendor" depends="init">
     <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
@@ -432,7 +279,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Web" depends="init Nuxleus.Drawing Nuxleus.Service Nuxleus.Geo Nuxleus.Cryptography Nuxleus.Extension.Aws Nuxleus.Messaging Nuxleus.PubSub Xameleon">
+  <target name="Nuxleus.Web" depends="init Nuxleus.Service Nuxleus.Geo Nuxleus.Extension.Aws Nuxleus.Messaging Nuxleus.PubSub Xameleon">
     <csc target="library" unsafe="True" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/Nuxleus.Web/**/*.cs"/>
@@ -784,23 +631,12 @@
         <!--<call target="XSP"/>-->
     <call target="System.Threading"/>
     <call target="Nuxleus"/>
-    <call target="Nuxleus.Authentication"/>
-    <call target="Nuxleus.Drawing"/>
-    <call target="Nuxleus.Profile"/>
-    <call target="Nuxleus.Cryptography"/>
     <call target="Nuxleus.Command"/>
-    <call target="Nuxleus.Extension.Linq"/>
-    <call target="Nuxleus.Extension.Amp.Fm"/>
     <call target="Nuxleus.Extension.Aws"/>
-    <call target="Nuxleus.Extension.Facebook"/>
-    <call target="Nuxleus.Extension.Silverlight"/>
     <call target="Nuxleus.Geo"/>
-    <call target="Nuxleus.Logging"/>
     <call target="Nuxleus.Messaging"/>
     <call target="Nuxleus.PubSub"/>
-    <call target="Nuxleus.Semantics"/>
     <call target="Nuxleus.Service"/>
-    <call target="Nuxleus.Synchronization"/>
     <call target="Nuxleus.Vendor"/>
     <call target="Nuxleus.Web"/>
         <!-- <call target="Nuxleus.Web.Services"/> -->

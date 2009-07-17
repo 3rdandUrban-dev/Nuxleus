@@ -125,9 +125,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Extf.Net.snk" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
     </BootstrapperPackage>
