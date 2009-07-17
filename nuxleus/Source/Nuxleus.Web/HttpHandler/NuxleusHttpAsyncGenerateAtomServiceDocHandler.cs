@@ -17,7 +17,6 @@ namespace Nuxleus.Web.HttpHandler {
 
     public class NuxleusHttpAsyncGenerateAtomServiceDocHandler : IHttpAsyncHandler
     {
-
         FileStream m_file;
         HttpResponse m_response;
         static object m_lock = new object();
