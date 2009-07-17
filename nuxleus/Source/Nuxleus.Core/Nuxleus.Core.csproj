@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
@@ -56,6 +56,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
@@ -69,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\AmazonWebServices\AWSAuthConnection.cs" />
+    <Compile Include="Authentication\Facebook\Facebook.cs" />
+    <Compile Include="Core\Cryptography\Hash.cs" />
+    <Compile Include="Core\Cryptography\HashcodeGenerator.cs" />
+    <Compile Include="Drawing\CropImage.cs" />
+    <Compile Include="Drawing\ImageResize.cs" />
     <Compile Include="Extension\**\*.cs" />
     <Compile Include="Configuration\AspNetAwsConfiguration.cs" />
     <Compile Include="Configuration\AspNetBungeeConfiguration.cs" />
@@ -119,6 +126,7 @@
     <Compile Include="Core\IO\Storage\IStorage.cs" />
     <Compile Include="Core\IO\Storage\MemcachedStorage.cs" />
     <Compile Include="Core\IO\Storage\Storage.cs" />
+    <Compile Include="Logging\Log.cs" />
     <Compile Include="MetaData\Attributes\Label.cs" />
     <Compile Include="MetaData\Attributes\Message.cs" />
     <Compile Include="Core\Handler\ExceptionHandler.cs" />
@@ -182,6 +190,10 @@
     <None Include="Configuration\App.config" />
     <None Include="Extf.Net.snk" />
     <None Include="Utility\Utility\S3\README" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Authentication\OAuth\" />
+    <Folder Include="Command\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

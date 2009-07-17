@@ -119,14 +119,6 @@
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
       <Name>Nuxleus.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Drawing\Nuxleus.Drawing.csproj">
-      <Project>{13FADE77-14DD-4F14-A52E-63AE71DB1756}</Project>
-      <Name>Nuxleus.Drawing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Logging\Nuxleus.Logging.csproj">
-      <Project>{54C0DC78-3BF7-4DCF-BEA0-25E757B8BDC1}</Project>
-      <Name>Nuxleus.Logging</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
       <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
       <Name>Nuxleus.Messaging</Name>

@@ -13,7 +13,12 @@ namespace Nuxleus.Extension.Aws.SimpleDb
     [XmlRootAttribute(Namespace = "http://sdb.amazonaws.com/doc/2007-11-07/", IsNullable = false, ElementName = "Select")]
     public class SelectTask : ITask, IXmlSerializable
     {
+        static Guid m_taskID;
 
+        static SelectTask()
+        {
+            m_taskID = System.Guid.NewGuid();
+        }
         public SelectTask()
         {
             Transaction = new Transaction
@@ -21,7 +26,6 @@ namespace Nuxleus.Extension.Aws.SimpleDb
                 Request = new PutAttributesRequest(),
                 Response = new PutAttributesResponse()
             };
-            TaskID = System.Guid.NewGuid();
         }
 
         /// <summary>
@@ -72,8 +76,7 @@ namespace Nuxleus.Extension.Aws.SimpleDb
         [XmlIgnore]
         public Guid TaskID
         {
-            get;
-            private set;
+            get { return m_taskID; }
         }
 
         [XmlIgnore]
@@ -127,7 +130,6 @@ namespace Nuxleus.Extension.Aws.SimpleDb
             writer.WriteElementString("SelectExpression", SelectExpression);
             writer.WriteElementString("MaxNumberOfItems", MaxNumberOfItems);
             writer.WriteElementString("NextToken", NextToken);
-
             Utilities.GetAuthorizationElements("Select", writer);
         }
     }

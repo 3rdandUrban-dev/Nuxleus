@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <ManifestCertificateThumbprint>C78F7B4DBCF11531F97C51EBCB35069E1EBE3F83</ManifestCertificateThumbprint>
     <ManifestKeyFile>Nuxleus_TemporaryKey.pfx</ManifestKeyFile>
@@ -101,10 +101,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.Authentication\Nuxleus.Authentication.csproj">
-      <Project>{ACE1943D-302E-4D83-8E54-4A9ABBF20D97}</Project>
-      <Name>Nuxleus.Authentication</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Command\Nuxleus.Command.csproj">
       <Project>{091EC796-27A0-4EDF-9286-B7ABF7981769}</Project>
       <Name>Nuxleus.Command</Name>
@@ -113,21 +109,9 @@
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
       <Name>Nuxleus.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Cryptography\Nuxleus.Cryptography.csproj">
-      <Project>{76489AFC-B3D6-40E4-AA45-840D069E4F43}</Project>
-      <Name>Nuxleus.Cryptography</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Extension.Amp.Fm\Nuxleus.Extension.Amp.Fm.csproj">
-      <Project>{284A2E2B-6FD6-4650-A001-AC9D64D31EBF}</Project>
-      <Name>Nuxleus.Extension.Amp.Fm</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
       <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
       <Name>Nuxleus.Extension.Aws</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Extension.Silverlight\Nuxleus.Extension.Silverlight.csproj">
-      <Project>{BF27BEF5-350C-4361-A58F-0C73D1D47CBC}</Project>
-      <Name>Nuxleus.Extension.Silverlight</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
       <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
