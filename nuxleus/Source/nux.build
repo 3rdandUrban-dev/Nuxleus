@@ -309,7 +309,8 @@
         -->
       </sources>
       <references>
-        <include name="${dependencies.dir}/protobuf-net.dll"/>
+	<include name="${dependencies.dir}/Thought.Net.vCards.dll"/>  
+      <include name="${dependencies.dir}/protobuf-net.dll"/>
         <include name="System.dll"/>
         <include name="System.Data.dll"/>
         <include name="System.Xml.dll"/>
