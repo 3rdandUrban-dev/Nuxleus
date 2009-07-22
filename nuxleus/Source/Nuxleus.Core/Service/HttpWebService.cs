@@ -9,9 +9,19 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using Nuxleus.Asynchronous;
 using Nuxleus.MetaData;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 namespace Nuxleus.Core
 {
+    public class CustomPolicyHack : ICertificatePolicy
+    {
+        public bool CheckValidationResult(ServicePoint srvPoint, X509Certificate certificate, WebRequest request, int certificateProblem)
+        {
+            return true;
+        }
+    }
+
     public enum WebServiceType
     {
         SOAP,
@@ -83,6 +93,11 @@ namespace Nuxleus.Core
             ServicePointManager.MaxServicePoints = 20;
             ServicePointManager.MaxServicePointIdleTime = 10000;
             ServicePointManager.DefaultConnectionLimit = 100;
+            //Not implemented on Mono
+            //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback (ValidateServerCertificate); 
+            //We need to use the deprecated CertificatePolicy ICertificatePolicy implementation instead.
+            ServicePointManager.CertificatePolicy = new CustomPolicyHack();
+
         }
 
         public static HttpRequestSettings GetDefaultSettings()
@@ -99,13 +114,19 @@ namespace Nuxleus.Core
 
         }
 
+        public static bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            //Temporary hack
+            return true;
+        }
+
         static HttpWebRequest GetHttpWebRequest(ITask task, HttpRequestSettings settings)
         {
             byte[] buffer = null;
             IRequest webServiceRequest = task.Transaction.Request;
             WebServiceType wsType = settings.WebServiceType;
             string requestType = LabelAttribute.FromMember(webServiceRequest.RequestType);
-            
+
             switch (wsType)
             {
                 case WebServiceType.SOAP:

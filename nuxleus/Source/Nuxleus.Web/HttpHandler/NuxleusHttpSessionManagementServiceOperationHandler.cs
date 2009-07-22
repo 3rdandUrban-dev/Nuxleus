@@ -3,15 +3,17 @@
 // Please see http://creativecommons.org/licenses/by/3.0/us/ for specific detail.
 
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
+using System.Net;
 using System.Text;
 using System.Web;
 using System.Xml.Linq;
 using Nuxleus.Core;
 using Nuxleus.Geo;
 using Nuxleus.Geo.MaxMind;
-using System.Net;
+using Thought.Net.vCards;
 
 namespace Nuxleus.Web.HttpHandler
 {
@@ -21,6 +23,7 @@ namespace Nuxleus.Web.HttpHandler
 
         HttpRequest m_request;
         HttpResponse m_response;
+        static Dictionary<string, string> m_cookieDict;
         HttpCookieCollection m_cookieCollection;
         NuxleusAsyncResult m_asyncResult;
         static object m_lock = new object();
@@ -41,24 +44,37 @@ namespace Nuxleus.Web.HttpHandler
 
         static NuxleusHttpSessionManagementServiceOperationHandler()
         {
-
+            m_cookieDict = new Dictionary<string,string>();
+            m_cookieDict.Add("sessionid", "not-set");
+            m_cookieDict.Add("userid", "not-set");
+            m_cookieDict.Add("name", "not-set");
+            m_cookieDict.Add("username", "not-set");
+            m_cookieDict.Add("uservalidated", "not-set");
+            m_cookieDict.Add("location:country", "not-set");
+            m_cookieDict.Add("location:region", "not-set");
+            m_cookieDict.Add("location:city", "not-set");
+            m_cookieDict.Add("address:street", "not-set");
+            m_cookieDict.Add("address:region", "not-set");
+            m_cookieDict.Add("address:city", "not-set");
+            m_cookieDict.Add("address:postalCode", "not-set");
         }
 
         public IAsyncResult BeginProcessRequest(HttpContext context, AsyncCallback cb, object extraData)
         {
 
             HttpRequest request = context.Request;
-
+            Dictionary<string, string> cookies = new Dictionary<string, string>(m_cookieDict);
             m_request = context.Request;
             m_response = context.Response;
             m_cookieCollection = context.Request.Cookies;
             m_asyncResult = new NuxleusAsyncResult(cb, extraData);
             string ip = m_request.UserHostAddress;
-            HttpCookie sessionid = m_cookieCollection["sessionid"];
-            HttpCookie userid = m_cookieCollection["userid"];
-            HttpCookie name = m_cookieCollection["name"];
-            HttpCookie username = m_cookieCollection["username"];
-            HttpCookie uservalidated = m_cookieCollection["uservalidated"];
+
+            for (var i = 0; i < m_cookieCollection.Count; i++ )
+            {
+                cookies[m_cookieCollection[i].Name] = m_cookieCollection[i].Value;
+            }
+
 
             if (ip == "::1" || ip == "127.0.0.1")
                 //ip = GetLocalIPAddress();
@@ -67,51 +83,7 @@ namespace Nuxleus.Web.HttpHandler
             LatLongLocation location = new LatLongLocation(GetIPLocation(ip));
 
             NameValueCollection form = request.Form;
-            string user_id = null;
-            string session_id = null;
-            string session_name = null;
-            string user_name = null;
-            string user_validated = null;
-            try
-            {
-                user_id = userid.Value;
-            }
-            catch
-            {
-                user_id = "not-set";
-            }
-            try
-            {
-                session_name = name.Value;
-            }
-            catch
-            {
-                session_name = "not-set";
-            }
-            try
-            {
-                session_id = sessionid.Value;
-            }
-            catch
-            {
-                session_id = "not-set";
-            }
-            try
-            {
-                user_name = username.Value;
-            }
-            catch
-            {
-                user_name = "not-set";
-            }
-            try
-            {
-                user_validated = uservalidated.Value;
-            }
-            catch
-            {
-                user_validated = "not-set";
-            }
+
             
             //IPLocation.DefaultCity = "Salt Lake City";
             //IPLocation.DefaultCountry = "UNITED STATES";
@@ -127,14 +99,27 @@ namespace Nuxleus.Web.HttpHandler
             XDocument doc = new XDocument(
                 new XElement(r + "message",
                     new XAttribute("id", Guid.NewGuid()),
-                    new XAttribute("date", DateTime.Now),
+                    new XAttribute("date", DateTime.Now.Date),
                     new XAttribute("time", DateTime.Now.TimeOfDay),
                     new XElement(r + "session",
-                        new XAttribute("id", session_id),
-                        new XElement(r + "name", session_name),
-                        new XElement(r + "username", user_name),
-                        new XElement(r + "userid", user_id),
-                        new XElement(r + "uservalidated", user_validated)
+                        new XAttribute("id", cookies["sessionid"]),
+                        new XElement(r + "name", cookies["name"]),
+                        new XElement(r + "username", cookies["username"]),
+                        new XElement(r + "userid", cookies["userid"]),
+                        new XElement(r + "uservalidated", cookies["uservalidated"]),
+                        new XElement(r + "preferences",
+                            new XElement(r + "location",
+                                new XElement(r + "country", (cookies["location:country"] == "not-set") ? location.Country : cookies["location:country"]),
+                                new XElement(r + "region", (cookies["location:region"] == "not-set") ? location.Region : cookies["location:region"]),
+                                new XElement(r + "city", (cookies["location:city"] == "not-set") ? location.City : cookies["location:city"])
+                            ),
+                            new XElement(r + "address",
+                                new XElement(r + "street", (cookies["address:street"] == "not-set") ? location.Country : cookies["address:street"]),
+                                new XElement(r + "region", (cookies["address:region"] == "not-set") ? location.Region : cookies["address:region"]),
+                                new XElement(r + "city", (cookies["address:city"] == "not-set") ? location.City : cookies["address:city"]),
+                                new XElement(r + "postalCode", (cookies["address:postalCode"] == "not-set") ? location.City : cookies["address:postalCode"])
+                            )
+                        )
                     ),
                     new XElement(r + "geo",
                         new XElement(r + "lat", location.Lat),
@@ -163,6 +148,11 @@ namespace Nuxleus.Web.HttpHandler
         {
             m_response.ContentType = "text/xml";
         }
+
+        //private vCard GetAccountInfo(string accountID)
+        //{
+
+        //}
 
         private string[] GetIPLocation(String hostAddress)
         {

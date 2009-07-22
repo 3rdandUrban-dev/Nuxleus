@@ -71,7 +71,7 @@ namespace Nuxleus.Web.HttpApplication
 
             string sdbAccessKey = String.Empty;
             string sdbSecretKey = String.Empty;
-            string awsUriEndpoint = "http://sdb.amazonaws.com/";
+            string awsUriEndpoint = "https://sdb.amazonaws.com/";
 
             Environment.SetEnvironmentVariable("AWS_URI_ENDPOINT", awsUriEndpoint);
             

@@ -50,6 +50,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DDay.iCal, Version=0.70.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DDay.iCal.dll</HintPath>
+    </Reference>
     <Reference Include="Enyim.Caching, Version=1.2.0.4, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Enyim.Caching.dll</HintPath>
@@ -101,6 +105,10 @@
     <Reference Include="taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\taglib-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Thought.Net.vCards, Version=0.3.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Thought.Net.vCards.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
