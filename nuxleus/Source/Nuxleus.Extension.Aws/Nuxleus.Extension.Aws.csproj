@@ -62,15 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
-    <Compile Include="AwsBaseConnection\HttpQueryConnection.cs" />
-    <Compile Include="AwsBaseConnection\IAwsConnection.cs" />
     <Compile Include="Model\AwsMetadata.cs" />
-    <Compile Include="NoLoadBalanceAgent.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ProcessQueue.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="SimpleDb\Model\Attribute.cs" />
     <Compile Include="SimpleDb\Model\Domain.cs" />
     <Compile Include="SimpleDb\Model\Error.cs" />
