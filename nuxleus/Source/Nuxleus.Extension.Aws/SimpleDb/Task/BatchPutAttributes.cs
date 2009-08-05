@@ -62,6 +62,10 @@ namespace Nuxleus.Extension.Aws.SimpleDb
             {
                 return HttpWebService<BatchPutAttributesTask, BatchPutAttributesResponse>.CallWebServiceAsync(this);
             }
+            catch (InvalidCastException e)
+            {
+                return null;
+            }
             catch
             {
                 return null;
@@ -95,7 +99,7 @@ namespace Nuxleus.Extension.Aws.SimpleDb
         public void WriteXml(System.Xml.XmlWriter writer)
         {
             writer.WriteElementString("DomainName", DomainName.Name);
-            
+
             foreach (Item item in Item)
             {
                 writer.WriteStartElement("Item");
