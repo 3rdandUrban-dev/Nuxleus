@@ -116,7 +116,7 @@ namespace AwsSdbSOAP_Test
                         }
                         j++;
                     }
-                    RunAsyncProcessLoadBalance(jobs, int.Parse(args[1]), int.Parse(args[2]));
+                    //RunAsyncProcessLoadBalance(jobs, int.Parse(args[1]), int.Parse(args[2]));
                     break;
                 case "batch-async":
                     RunBatchAsync(args);
@@ -269,16 +269,16 @@ namespace AwsSdbSOAP_Test
             agent.Invoke<XElement>(InvokeBatchOperationAsync(ReadLinesFromFile(args[1]), args[2], 25), false);
         }
 
-        static void RunAsyncProcessLoadBalance(List<string> args, int maxWorkers, int cpuThrottle)
-        {
-            using (Nuxleus.Extension.Aws.ProcessQueue q = new Nuxleus.Extension.Aws.ProcessQueue(((args.Count <= maxWorkers) ? args.Count : maxWorkers), cpuThrottle))
-            {
-                foreach (string job in args)
-                {
-                    q.EnqueueTask(job);
-                }
-            }
-        }
+        //static void RunAsyncProcessLoadBalance(List<string> args, int maxWorkers, int cpuThrottle)
+        //{
+        //    using (Nuxleus.Extension.Aws.ProcessQueue q = new Nuxleus.Extension.Aws.ProcessQueue(((args.Count <= maxWorkers) ? args.Count : maxWorkers), cpuThrottle))
+        //    {
+        //        foreach (string job in args)
+        //        {
+        //            q.EnqueueTask(job);
+        //        }
+        //    }
+        //}
 
         // From Don Box @ http://www.pluralsight.com/community/blogs/dbox/archive/2007/10/09/48719.aspx
         // LINQ-compatible streaming I/O helper
