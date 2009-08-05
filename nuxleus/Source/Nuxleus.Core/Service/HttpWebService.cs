@@ -227,9 +227,17 @@ namespace Nuxleus.Core
             ITask task = container.Task;
             ITransaction transaction = task.Transaction;
             Stream responseStream = response.GetResponseStream();
-            transaction.Response = (IResponse)SerializeToObject(responseStream);
-            transaction.Response.Headers = response.Headers;
-            transaction.Successful = true;
+            try
+            {
+                transaction.Response = (IResponse)SerializeToObject(responseStream);
+                transaction.Response.Headers = response.Headers;
+                transaction.Successful = true;
+            }
+            catch (Exception e)
+            {
+                transaction.Successful = false;
+                Log.LogDebug<HttpWebService<TRequestType, TResponseType>>(e.Message);
+            }
             task.StatusCode = response.StatusCode;
             task.Transaction.Commit();
         }
@@ -314,6 +322,10 @@ namespace Nuxleus.Core
                 {
                     reader.ReadToDescendant(String.Format("{0}", typeof(TResponseType).Name), "http://sdb.amazonaws.com/doc/2007-11-07/");
                     response = (TResponseType)m_responseTypeXmlSerializer.Deserialize(reader.ReadSubtree());
+                }
+                catch (InvalidCastException ex)
+                {
+                    Log.LogDebug<HttpWebService<TRequestType, TResponseType>>(ex.Message);
                 }
                 catch (Exception e)
                 {
