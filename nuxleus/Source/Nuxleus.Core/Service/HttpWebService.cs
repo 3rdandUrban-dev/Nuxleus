@@ -233,6 +233,11 @@ namespace Nuxleus.Core
                 transaction.Response.Headers = response.Headers;
                 transaction.Successful = true;
             }
+            catch (InvalidCastException e)
+            {
+                transaction.Successful = false;
+                Log.LogDebug<HttpWebService<TRequestType, TResponseType>>(e.Message);
+            }
             catch (Exception e)
             {
                 transaction.Successful = false;
