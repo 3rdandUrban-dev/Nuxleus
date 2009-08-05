@@ -294,10 +294,19 @@ namespace Nuxleus.Core
             Stream stream = response.Result.GetResponseStream();
             Async<MemoryStream> resultStream = stream.ReadToEndAsync<MemoryStream>().ExecuteAsync<MemoryStream>();
             yield return resultStream;
-            task.Transaction.Response.Result = (IResult)SerializeToObject(resultStream.Result);
-            task.Transaction.Response.Headers = response.Result.Headers;
-            task.StatusCode = ((HttpWebResponse)response.Result as HttpWebResponse).StatusCode;
-            task.Transaction.Successful = ProcessHttpStatusCode(task.StatusCode);
+            try
+            {
+                task.Transaction.Response.Result = (IResult)SerializeToObject(resultStream.Result);
+                task.Transaction.Response.Headers = response.Result.Headers;
+                task.StatusCode = ((HttpWebResponse)response.Result as HttpWebResponse).StatusCode;
+                task.Transaction.Successful = ProcessHttpStatusCode(task.StatusCode);
+            }
+            catch (InvalidCastException e)
+            {
+                task.Transaction.Successful = false;
+                Log.LogDebug<HttpWebService<TRequestType, TResponseType>>(e.Message);
+            }
+            
             try
             {
                 task.Transaction.Commit();
