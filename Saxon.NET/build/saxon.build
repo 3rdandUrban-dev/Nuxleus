@@ -107,6 +107,7 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
   <target name="get-ikvm.net" description="Download the specified version of IKVM.NET if it doesn't already exist within the directory.">
     <call target="download-ikvm.net" if="${not directory::exists(ikvm.home)}"/>
   </target>
+  
   <target name="get-third-party-jars" description="Download third-party jar files.">
     <if test="${not directory::exists(jars.dir)}">
       <mkdir dir="${jars.dir}"/>
