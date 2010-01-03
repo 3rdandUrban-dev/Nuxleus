@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
-<project xmlns="http://nant.sf.net/release/0.85/nant.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nant.sf.net/release/0.85/nant.xsd http://nant.sourceforge.net/release/0.85/nant.xsd" name="saxon9" default="all">
+<project 
+	xmlns="http://nant.sf.net/release/0.85/nant.xsd" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://nant.sf.net/release/0.85/nant.xsd http://nant.sourceforge.net/release/0.85/nant.xsd" 
+	name="saxon9" 
+	default="all"
+	>
   <property name="bin.dir" value="${project::get-base-directory()}/bin" unless="${property::exists('bin.dir')}"/>
   <property name="src.dir" value="${project::get-base-directory()}/src" unless="${property::exists('src.dir')}"/>
   <property name="lib.dir" value="${project::get-base-directory()}/lib" unless="${property::exists('lib.dir')}"/>
@@ -16,7 +22,7 @@
   <property name="ikvm.base.dir" value="${bin.dir}/IKVM.NET"/>
   <property name="ikvm.home.dir" value="${ikvm.base.dir}/ikvm-${ikvm.version}"/>
   <property name="ikvm.bin" value="${ikvm.home.dir}/bin" unless="${property::exists('ikvm.bin')}"/>
-  <property name="keyfile" value="Extf.Net.snk" unless="${property::exists('keyfile')}"/>
+  <property name="keyfile" value="Nuxleus.snk" unless="${property::exists('keyfile')}"/>
   <property name="pathsep" value=":"/>
   <property name="dotnetexe" value="mono"/>
   <property name="build.dir.meta-inf" value="${build.dir}/META-INF"/>
@@ -50,6 +56,9 @@
     <if test="${not directory::exists(saxon.base.src.dir)}">
       <mkdir dir="${saxon.base.src.dir}"/>
     </if>
+    <if test="${not file::exists(keyfile)}">
+      <exec program="sn" commandline="-k ${keyfile}"/>
+    </if>
     <if test="${not directory::exists(build.dir)}">
       <mkdir dir="${build.dir.src}"/>
       <mkdir dir="${build.dir.output}"/>
@@ -62,8 +71,7 @@
     <call target="get-ikvm.net" if="${not directory::exists(ikvm.home.dir)}"/>
   </target>
   <patternset id="core.ikvm.openjdk.assemblies">
-    <include name="${ikvm.bin}/IKVM.OpenJDK.**.dll"/>
-    <include name="${ikvm.bin}/IKVM.Runtime.dll"/>
+    <include name="${ikvm.bin}/IKVM.**.dll"/>
   </patternset>
   <assemblyfileset id="core.assembly.refs">
     <patternset refid="core.ikvm.openjdk.assemblies"/>
