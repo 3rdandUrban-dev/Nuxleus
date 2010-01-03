@@ -6,25 +6,43 @@
 	name="saxon9" 
 	default="all"
 	>
+  <property name="target.framework" value="3.5"/>
+  <property name="mono.target.framework" value="mono-${target.framework}"/>
+  <property name="msnet.target.framework" value="net-${target.framework}"/>
+  <property name="build.timestamp" value="${datetime::get-ticks(datetime::now())}" unless="${property::exists('bin.dir')}"/>
+  <property name="saxon.product.name" value="Saxon" unless="${property::exists('saxon.product.name')}"/>
+  <property name="saxon.series.name" value="HE" unless="${property::exists('saxon.series.name')}"/>
+  <property name="saxon.version" value="9.2.0.3" unless="${property::exists('saxon.version')}"/>
+  <property name="saxon.platform.name.java" value="J" unless="${property::exists('saxon.platform.name.java')}"/>
+  <property name="saxon.platform.name.net" value="N" unless="${property::exists('saxon.platform.name.net')}"/>
+  <property name="saxon.release.name" value="${saxon.product.name}-${saxon.series.name}-${saxon.version}${saxon.platform.name.net}" unless="${property::exists('saxon.release.name')}"/>
+  <property name="ikvm.version" value="0.42.0.3" unless="${property::exists('ikvm.version')}"/>
+  <property name="ikvm.product.name" value="IKVM.NET" unless="${property::exists('ikvm.product.name')}"/>
+  <property name="ikvm.release.name" value="${ikvm.product.name}-${ikvm.version}" unless="${property::exists('ikvm.release.name')}"/>
+
+  <property name="project.release.name" value="${saxon.release.name}" unless="${property::exists('project.release.name')}"/>
+    
+  <property name="project.build.version.name" value="${saxon.release.name}_${ikvm.release.name}_${build.timestamp}" />
+  
   <property name="bin.dir" value="${project::get-base-directory()}/bin" unless="${property::exists('bin.dir')}"/>
   <property name="src.dir" value="${project::get-base-directory()}/src" unless="${property::exists('src.dir')}"/>
   <property name="lib.dir" value="${project::get-base-directory()}/lib" unless="${property::exists('lib.dir')}"/>
-  <property name="doc.dir" value="${project::get-base-directory()}/doc" unless="${property::exists('doc.dir')}"/>
-  <property name="build.dir" value="${project::get-base-directory()}/build" unless="${property::exists('build.dir')}"/>
-  <property name="test.dir" value="${project::get-base-directory()}/test" unless="${property::exists('test.dir')}"/>
-  <property name="release.dir" value="${project::get-base-directory()}/release" unless="${property::exists('release.dir')}"/>
+  <property name="doc.dir" value="${project::get-base-directory()}/doc/${project.build.version.name}" unless="${property::exists('doc.dir')}"/>
+  <property name="build.dir" value="${project::get-base-directory()}/build/${project.build.version.name}" unless="${property::exists('build.dir')}"/>
+  <property name="test.dir" value="${project::get-base-directory()}/test/${project.build.version.name}" unless="${property::exists('test.dir')}"/>
+  <property name="release.dir" value="${project::get-base-directory()}/release/${project.build.version.name}" unless="${property::exists('release.dir')}"/>
+  <property name="archive.dir" value="${project::get-base-directory()}/archive" unless="${property::exists('archive.dir')}"/>
   <property name="jars.dir" value="${project::get-base-directory()}/jars"/>
-  <property name="saxon.version" value="9.2.0.3" unless="${property::exists('saxon.version')}"/>
+
   <property name="saxon.base.src.dir" value="${src.dir}/saxon" unless="${property::exists('saxon.base.src.dir')}"/>
   <property name="saxon.src.dir" value="${src.dir}/saxon/${saxon.version}" unless="${property::exists('saxon.src.dir')}"/>
-  <property name="saxon.release.name" value="Saxon-HE-${saxon.version}N" unless="${property::exists('saxon.release.name')}"/>
-  <property name="ikvm.version" value="0.42.0.3" unless="${property::exists('ikvm.version')}"/>
   <property name="ikvm.base.dir" value="${bin.dir}/IKVM.NET"/>
   <property name="ikvm.home.dir" value="${ikvm.base.dir}/ikvm-${ikvm.version}"/>
   <property name="ikvm.bin" value="${ikvm.home.dir}/bin" unless="${property::exists('ikvm.bin')}"/>
+
   <property name="keyfile" value="Nuxleus.snk" unless="${property::exists('keyfile')}"/>
   <property name="pathsep" value=":"/>
-  <property name="dotnetexe" value="mono"/>
+  <property name="dotnet.runtime.cmd" value="mono" unless="${property::exists('dotnet.runtime.cmd')}"/>
   <property name="build.dir.meta-inf" value="${build.dir}/META-INF"/>
   <property name="build.dir.src" value="${build.dir}/src"/>
   <property name="build.dir.java.src" value="${build.dir.src}/java"/>
@@ -33,13 +51,171 @@
   <property name="allsources" value="${build.dir.src}/allsources.lst"/>
   <property name="build.release" value="false" unless="${property::exists('build.release')}"/>
   <property name="build.java.jars" value="false" unless="${property::exists('build.java.jars')}"/>
-  <target name="init">
+  
+  <patternset id="core.ikvm.openjdk.assemblies">
+    <include name="${ikvm.bin}/IKVM.**.dll"/>
+  </patternset>
+  
+  <assemblyfileset id="core.assembly.refs">
+    <patternset refid="core.ikvm.openjdk.assemblies"/>
+    <include name="${build.dir.output}/saxon9.dll"/>
+    <include name="System.dll"/>
+    <include name="System.Xml.dll"/>
+  </assemblyfileset>
+  
+  <target name="checkout">
+    <exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/tags/${saxon.version} ${saxon.src.dir}"/>
+  </target>
+  
+  <target name="export">
+    <delete failonerror="false" dir="${build.dir.java.src}"/>
+    <delete failonerror="false" dir="${build.dir.csharp.src}"/>
+    <exec program="svn" commandline="export ${saxon.src.dir}/hej ${build.dir.java.src}"/>
+    <exec program="svn" commandline="export ${saxon.src.dir}/hen/csource ${build.dir.csharp.src}"/>
+  </target>
+  
+  <target name="allsources" depends="checkout export">
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/ant"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/s9api"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/dom"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/jdom"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/dom4j"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/java"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/xom"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/xpath"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/xqj"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/option/sql"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/option/jdom"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/option/xom"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/option/dom4j"/>
+    <delete failonerror="false" dir="${build.dir.java.src}/edition.properties"/>
+    <echo file="${build.dir.meta-inf}/edition.properties">config=net.sf.saxon.Configuration
+platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
+    <echo file="${build.dir.meta-inf}/javax.xml.transform.TransformerFactory">net.sf.saxon.TransformerFactoryImpl</echo>
+    <echo file="${build.dir.meta-inf}/javax.xml.xpath.XPathFactory">net.sf.saxon.xpath.XPathFactoryImpl
+http\://java.sun.com/jaxp/xpath/dom:    net.sf.saxon.xpath.XPathFactoryImpl
+http\://saxon.sf.net/jaxp/xpath/om:     net.sf.saxon.xpath.XPathFactoryImpl
+http\://www.xom.nu/jaxp/xpath/xom:      net.sf.saxon.xpath.XPathFactoryImpl
+http\://jdom.org/jaxp/xpath/jdom:       net.sf.saxon.xpath.XPathFactoryImpl</echo>
+	<echo file="${build.dir}/exclude.lst">
+</echo>
+    <if test="${platform::is-win32()}">
+      <exec program="cmd" commandline="/c dir /s/b ${build.dir.java.src}\*.java &gt; ${allsources}"/>
+    </if>
+    <if test="${platform::is-unix()}">
+      <exec output="${allsources}" program="find" commandline="${build.dir.java.src} -name *.java"/>
+    </if>
+  </target>
+  
+  <target name="replace-javaonly-tokens">
+    <if failonerror="true" test="${replace::textinfile('${build.dir.java.src}/net/sf/saxon/Configuration.java', '/\*JAVAONLY\*/', '//')}">
+      <echo message="Successfully replaced text."/>
+    </if>
+  </target>
+  
+  <target name="get-ikvm.net" description="Download the specified version of IKVM.NET if it doesn't already exist within the directory.">
+    <get src="http://www.frijters.net/ikvmbin-${ikvm.version}.zip" dest="ikvmbin-${ikvm.version}.zip"/>
+    <unzip zipfile="ikvmbin-${ikvm.version}.zip" todir="${ikvm.base.dir}"/>
+    <delete failonerror="false" file="ikvmbin-${ikvm.version}.zip"/>
+  </target>
+  
+  <target name="classes" depends="allsources replace-javaonly-tokens" description="Saxon9 Java Classes">
+    <delete>
+      <fileset basedir="${build.dir.java.src}">
+        <include name="**.class"/>
+      </fileset>
+    </delete>
+    <delete>
+      <fileset basedir=".">
+        <include name="**.class"/>
+      </fileset>
+    </delete>
+    <exec program="javac" commandline="-g -target 1.5 -nowarn -cp ./jars/xerces.jar${pathsep}./jars/mscorlib.jar${pathsep}./jars/System.jar${pathsep}./jars/System.Xml.jar @${allsources}"/>
+  </target>
+  
+  <target name="saxon9" depends="classes">
+    <exec program="${dotnet.runtime.cmd}" commandline="${ikvm.bin}/ikvmc.exe">
+      <arg value="-version:${saxon.version}"/>
+      <arg value="-compressresources"/>
+      <arg value="-opt:fields"/>
+      <arg value="-strictfinalfieldsemantics"/>
+      <arg value="-out:${build.dir.output}/${target::get-current-target()}.dll"/>
+      <arg value="-exclude:${build.dir}/exclude.lst" />
+      <arg value="-target:library"/>
+      <arg value="-recurse:${jars.dir}/*.jar"/>
+      <arg value="-recurse:${build.dir.java.src}/*.class"/>
+      <arg value="-nowarn:0109"/>
+      <arg value="-nowarn:0105"/>
+      <arg value="-keyfile:${keyfile}"/>
+      <arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.Xml.dll"/>
+      <arg value="-resource:edition.properties=${build.dir.meta-inf}/edition.properties"/>
+      <arg value="-resource:META-INF/services/javax.xml.transform.TransformerFactory=${build.dir.meta-inf}/javax.xml.transform.TransformerFactory"/>
+      <arg value="-resource:META-INF/services/javax.xml.xpath.XPathFactory=${build.dir.meta-inf}/javax.xml.xpath.XPathFactory"/>
+    </exec>
+  </target>
+  
+  <target name="Saxon.Api" depends="saxon9">
+    <csc target="library" output="${build.dir.output}/${target::get-current-target()}.dll" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+      <sources>
+        <include name="${build.dir.csharp.src}/api/Saxon.Api/*.cs"/>
+      </sources>
+      <references refid="core.assembly.refs"/>
+    </csc>
+  </target>
+  
+  <target name="Transform">
+    <csc target="exe" output="${build.dir.output}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+      <sources>
+        <include name="${build.dir.csharp.src}/cmd/Transform.cs"/>
+      </sources>
+      <references refid="core.assembly.refs">
+        <include name="${build.dir.output}/Saxon.Api.dll"/>
+      </references>
+    </csc>
+  </target>
+  
+  <target name="Query">
+    <csc target="exe" output="${build.dir.output}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+      <sources>
+        <include name="${build.dir.csharp.src}/cmd/Query.cs"/>
+      </sources>
+      <references refid="core.assembly.refs">
+        <include name="${build.dir.output}/Saxon.Api.dll"/>
+      </references>
+    </csc>
+  </target>
+  
+  <target name="all">
+    <call target="init"/>
+    <call target="build"/>
+    <call target="test"/>
+    <call target="release"/>
+    <call target="archive"/>
+  </target>
+  
+  <target name="init">  
     <if test="${platform::is-win32()}">
       <property name="pathsep" value=";"/>
-      <property name="dotnetexe" value="cmd"/>
+      <if test="${framework::exists(msnet.target.framework)}">
+      	<property name="nant.settings.currentframework" value="${msnet.target.framework}"/>
+	<property name="dotnet.runtime.cmd" value="${framework::get-runtime-engine(nant.settings.currentframework)}"/>
+      </if>
+    </if>
+    <if test="${platform::is-unix()}">
+      <property name="pathsep" value=":"/>
+      <if test="${framework::exists(mono.target.framework)}">
+      	<property name="nant.settings.currentframework" value="${mono.target.framework}"/>
+	<property name="dotnet.runtime.cmd" value="${framework::get-runtime-engine(nant.settings.currentframework)}"/>
+      </if>
+    </if>
+    <if test="${not directory::exists(archive.dir)}">
+      <mkdir dir="${archive.dir}"/>
     </if>
     <if test="${not directory::exists(jars.dir)}">
       <mkdir dir="${jars.dir}"/>
+    </if>
+    <if test="${not directory::exists(lib.dir)}">
+      <mkdir dir="${lib.dir}"/>
     </if>
     <if test="${not directory::exists(bin.dir)}">
       <mkdir dir="${bin.dir}"/>
@@ -70,163 +246,83 @@
     </if>
     <call target="get-ikvm.net" if="${not directory::exists(ikvm.home.dir)}"/>
   </target>
-  <patternset id="core.ikvm.openjdk.assemblies">
-    <include name="${ikvm.bin}/IKVM.**.dll"/>
-  </patternset>
-  <assemblyfileset id="core.assembly.refs">
-    <patternset refid="core.ikvm.openjdk.assemblies"/>
-    <include name="${build.dir.output}/saxon9.dll"/>
-    <include name="System.dll"/>
-    <include name="System.Xml.dll"/>
-  </assemblyfileset>
-  <target name="checkout">
-    <exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/tags/${saxon.version} ${saxon.src.dir}"/>
-  </target>
-  <target name="export">
-    <delete failonerror="false" dir="${build.dir.java.src}"/>
-    <delete failonerror="false" dir="${build.dir.csharp.src}"/>
-    <exec program="svn" commandline="export ${saxon.src.dir}/hej ${build.dir.java.src}"/>
-    <exec program="svn" commandline="export ${saxon.src.dir}/hen/csource ${build.dir.csharp.src}"/>
-  </target>
-  <target name="allsources" depends="checkout export">
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/ant"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/s9api"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/dom"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/jdom"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/dom4j"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/java"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/xom"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/xpath"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/xqj"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/option/sql"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/option/jdom"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/option/xom"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/option/dom4j"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/edition.properties"/>
-    <echo file="${build.dir.meta-inf}/edition.properties">config=net.sf.saxon.Configuration
-platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
-    <echo file="${build.dir.meta-inf}/javax.xml.transform.TransformerFactory">net.sf.saxon.TransformerFactoryImpl</echo>
-    <echo file="${build.dir.meta-inf}/javax.xml.xpath.XPathFactory">net.sf.saxon.xpath.XPathFactoryImpl
-http\://java.sun.com/jaxp/xpath/dom:    net.sf.saxon.xpath.XPathFactoryImpl
-http\://saxon.sf.net/jaxp/xpath/om:     net.sf.saxon.xpath.XPathFactoryImpl
-http\://www.xom.nu/jaxp/xpath/xom:      net.sf.saxon.xpath.XPathFactoryImpl
-http\://jdom.org/jaxp/xpath/jdom:       net.sf.saxon.xpath.XPathFactoryImpl</echo>
-    <if test="${platform::is-win32()}">
-      <exec program="cmd" commandline="/c dir /s/b ${build.dir.java.src}\*.java &gt; ${allsources}"/>
-    </if>
-    <if test="${platform::is-unix()}">
-      <exec output="${allsources}" program="find" commandline="${build.dir.java.src} -name *.java"/>
-    </if>
-  </target>
-  <target name="replace-javaonly-tokens">
-    <if failonerror="true" test="${replace::textinfile('${build.dir.java.src}/net/sf/saxon/Configuration.java', '/\*JAVAONLY\*/', '//')}">
-      <echo message="Successfully replaced text."/>
-    </if>
-  </target>
-  <target name="get-ikvm.net" description="Download the specified version of IKVM.NET if it doesn't already exist within the directory.">
-    <get src="http://www.frijters.net/ikvmbin-${ikvm.version}.zip" dest="ikvmbin-${ikvm.version}.zip"/>
-    <unzip zipfile="ikvmbin-${ikvm.version}.zip" todir="${ikvm.base.dir}"/>
-    <delete failonerror="false" file="ikvmbin-${ikvm.version}.zip"/>
-  </target>
-  <target name="classes" depends="allsources replace-javaonly-tokens" description="Saxon9 Java Classes">
-    <delete>
-      <fileset basedir="${build.dir.java.src}">
-        <include name="**.class"/>
-      </fileset>
-    </delete>
-    <delete>
-      <fileset basedir=".">
-        <include name="**.class"/>
-      </fileset>
-    </delete>
-    <exec program="javac" commandline="-g -target 1.5 -nowarn -cp ./jars/xerces.jar${pathsep}./jars/mscorlib.jar${pathsep}./jars/System.jar${pathsep}./jars/System.Xml.jar @${allsources}" useruntimeengine="false"/>
-  </target>
-  <target name="saxon9" depends="classes">
-    <exec program="${dotnetexe}" commandline="${ikvm.bin}/ikvmc.exe" useruntimeengine="false">
-      <arg value="-version:${saxon.version}"/>
-      <arg value="-compressresources"/>
-      <arg value="-opt:fields"/>
-      <arg value="-strictfinalfieldsemantics"/>
-      <arg value="-out:${build.dir.output}/${target::get-current-target()}.dll"/>
-      <!--
-	<arg value="-exclude:exclude.lst" />
-	-->
-      <arg value="-target:library"/>
-      <arg value="-recurse:${jars.dir}/*.jar"/>
-      <arg value="-recurse:${build.dir.java.src}/*.class"/>
-      <arg value="-nowarn:0109"/>
-      <arg value="-nowarn:0105"/>
-      <arg value="-keyfile:${keyfile}"/>
-      <arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.Xml.dll"/>
-      <arg value="-resource:edition.properties=${build.dir.meta-inf}/edition.properties"/>
-      <arg value="-resource:META-INF/services/javax.xml.transform.TransformerFactory=${build.dir.meta-inf}/javax.xml.transform.TransformerFactory"/>
-      <arg value="-resource:META-INF/services/javax.xml.xpath.XPathFactory=${build.dir.meta-inf}/javax.xml.xpath.XPathFactory"/>
-    </exec>
-  </target>
-  <target name="Saxon.Api" depends="saxon9">
-    <csc target="library" output="${build.dir.output}/${target::get-current-target()}.dll" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${build.dir.csharp.src}/api/Saxon.Api/*.cs"/>
-      </sources>
-      <references refid="core.assembly.refs"/>
-    </csc>
-  </target>
-  <target name="Transform">
-    <csc target="exe" output="${build.dir.output}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${build.dir.csharp.src}/cmd/Transform.cs"/>
-      </sources>
-      <references refid="core.assembly.refs">
-        <include name="${build.dir.output}/Saxon.Api.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="Query">
-    <csc target="exe" output="${build.dir.output}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
-      <sources>
-        <include name="${build.dir.csharp.src}/cmd/Query.cs"/>
-      </sources>
-      <references refid="core.assembly.refs">
-        <include name="${build.dir.output}/Saxon.Api.dll"/>
-      </references>
-    </csc>
-  </target>
-  <target name="get-assembly-dependencies">
-    <foreach item="File" in="${build.dir.output}" property="filename">
-      <foreach item="String" in="${assembly::getdependencies(filename, 'IKVM.')}" delim="," property="assemblyname">
-        <copy file="${ikvm.bin}/${assemblyname}" tofile="${build.dir.output}/${assemblyname}"/>
-      </foreach>
-    </foreach>
-  </target>
-  <target name="test">
-    <!-- TODO: Build out a NUnit test harness based on the existing Saxon test suite-->
-  </target>
-  <target name="release">
-    <zip zipfile="${release.dir}/${saxon.release.name}.zip">
-      <fileset basedir="${build.dir.output}" prefix="${saxon.release.name}/bin">
-        <include name="**/*.dll"/>
-        <include name="**/*.exe"/>
-      </fileset>
-      <fileset basedir="${doc.dir}" prefix="${saxon.release.name}/doc">
-        <include name="**/*.xml"/>
-      </fileset>
-    </zip>
-  </target>
-  <target name="all">
-    <call target="init"/>
+  
+  <target name="build">
     <call target="Saxon.Api"/>
     <call target="Transform"/>
     <call target="Query"/>
-    <call target="get-assembly-dependencies"/>
-    <call target="test"/>
-    <call target="release"/>
-    <call target="clean"/>
   </target>
+  
+  <target name="test">
+    <copy todir="${test.dir}">
+	    <fileset basedir="${build.dir.output}">
+		<include name="**.*" />
+	    </fileset>
+    </copy>
+    <call target="get-assembly-dependencies"/>
+    <!-- TODO: Build out a NUnit test harness based on the existing Saxon test suite-->
+  </target>
+  
+  <target name="release">
+    <zip zipfile="${release.dir}/${project.release.name}.zip">
+      <fileset basedir="${test.dir}" prefix="${project.release.name}/bin">
+        <include name="**/*.*"/>
+        <exclude name="**/*.mdb"/>
+      </fileset>
+      <fileset basedir="${doc.dir}" prefix="${project.release.name}/doc">
+        <include name="**/*.xml"/>
+      </fileset>
+      <fileset basedir="${build.dir.java.src}" prefix="${project.release.name}/src/java">
+        <include name="**/*.java"/>
+      </fileset>
+      <fileset basedir="${build.dir.csharp.src}" prefix="${project.release.name}/src/csharp">
+        <include name="**/*.cs"/>
+      </fileset>
+    </zip>
+  </target>
+  
+  <target name="archive">
+    <zip zipfile="${archive.dir}/${project.build.version.name}.zip">
+      <fileset basedir="${test.dir}" prefix="${project.release.name}/test">
+        <include name="**/*.*"/>
+      </fileset>
+      <fileset basedir="${doc.dir}" prefix="${project.release.name}/doc">
+        <include name="**/*.*"/>
+      </fileset>
+      <fileset basedir="${build.dir}" prefix="${project.release.name}/build">
+        <include name="**/*.*"/>
+      </fileset>
+      <fileset basedir="${release.dir}" prefix="${project.release.name}/release">
+        <include name="**/*.*"/>
+      </fileset>
+      <fileset basedir="${lib.dir}" prefix="${project.release.name}/lib">
+        <include name="**/*.*"/>
+      </fileset>
+      <fileset basedir="${jars.dir}" prefix="${project.release.name}/jars">
+        <include name="**/*.*"/>
+      </fileset>
+      <fileset basedir="${project::get-base-directory()}" prefix="${project.release.name}">
+	      <include name="saxon.build"/>
+	      <include name="${keyfile}"/>
+      </fileset>
+    </zip>
+  </target>
+  
+  
   <target name="clean">
     <delete failonerror="false" dir="${build.dir}"/>
     <delete failonerror="false" dir="${doc.dir}"/>
     <delete failonerror="false" dir="${test.dir}"/>
   </target>
+  
+  <target name="get-assembly-dependencies">
+    <foreach item="File" in="${build.dir.output}" property="filename">
+      <foreach item="String" in="${assembly::getdependencies(filename, 'IKVM.')}" delim="," property="assemblyname">
+        <copy file="${ikvm.bin}/${assemblyname}" tofile="${test.dir}/${assemblyname}"/>
+      </foreach>
+    </foreach>
+  </target>
+  
   <script language="C#" prefix="replace">
     <code><![CDATA[
       [Function("textinfile")]
