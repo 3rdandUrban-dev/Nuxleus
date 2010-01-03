@@ -9,6 +9,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Web;
+using System.Xml;
 using System.Xml.Linq;
 using Nuxleus.Core;
 using Nuxleus.Geo;
@@ -97,6 +98,7 @@ namespace Nuxleus.Web.HttpHandler
             //XmlReader reader = XmlReader.Create(tReader);
 
             XDocument doc = new XDocument(
+		new XDeclaration("1.0", "UTF-8", "yes"),
                 new XElement(r + "message",
                     new XAttribute("id", Guid.NewGuid()),
                     new XAttribute("date", DateTime.Now.Date),
@@ -133,12 +135,15 @@ namespace Nuxleus.Web.HttpHandler
                     )
                 )
             );
+	    
             string xmlOutput = null;
-            using (TextWriter writer = new StringWriter())
+	    XmlWriterSettings settings = new XmlWriterSettings();
+	    settings.Encoding = Encoding.UTF8;
+	    
+            using (XmlWriter writer = XmlWriter.Create(m_response.Output, settings))
             {
-                doc.Save(writer);
-                xmlOutput = writer.ToString();
-                m_response.Write(xmlOutput);
+		doc.Save(writer);
+                writer.Flush();
             }
             m_asyncResult.CompleteCall();
             return m_asyncResult;

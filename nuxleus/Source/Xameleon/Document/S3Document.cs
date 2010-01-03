@@ -4,7 +4,7 @@ using Saxon.Api;
 namespace Nuxleus.Document {
 
 
-    public class S3Document : XmlDestination {
+    /* public class S3Document : XmlDestination {
 
         Result _result;
 
@@ -14,6 +14,6 @@ namespace Nuxleus.Document {
             this._result = new DocumentResult();
             return _result;
         }
-    }
+    } */
 
 }
