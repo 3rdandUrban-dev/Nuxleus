@@ -4,7 +4,6 @@
   <property name="pathsep" value=":"/>
   <property name="dotnetexe" value="mono"/>
   <property name="keyfile" value="Extf.Net.snk"/>
-  
   <property name="jars.dir" value="${project::get-base-directory()}/jars"/>
   <property name="unix-directory" value="${project::get-base-directory()}/unix"/>
   <property name="unix-bin-path" value="${unix-directory}/usr/local/wbin"/>
@@ -30,13 +29,11 @@
   <property name="build.release" value="false" unless="${property::exists('build.release')}"/>
   <property name="build.java.jars" value="false" unless="${property::exists('build.java.jars')}"/>
   <property name="saxon.src" value="${build.dir.java.src}"/>
-  
-  
   <target name="init">
-  <if test="${platform::is-win32()}">
-    <property name="pathsep" value=";"/>
-    <property name="dotnetexe" value="cmd"/>
-  </if>
+    <if test="${platform::is-win32()}">
+      <property name="pathsep" value=";"/>
+      <property name="dotnetexe" value="cmd"/>
+    </if>
     <if test="${not directory::exists(jars.dir)}">
       <mkdir dir="${jars.dir}"/>
     </if>
@@ -44,39 +41,32 @@
       <mkdir dir="${build.dir.src}"/>
       <mkdir dir="${build.dir.output}"/>
     </if>
-          <mkdir dir="${test.dir}"/>
-      <mkdir dir="${release.dir}"/>
+    <mkdir dir="${test.dir}"/>
+    <mkdir dir="${release.dir}"/>
     <if test="${not directory::exists(doc.dir)}">
       <mkdir dir="${doc.dir}"/>
     </if>
     <call target="get-ikvm.net" if="${not directory::exists(ikvm.home)}"/>
   </target>
-
-  
   <patternset id="core.ikvm.openjdk.assemblies">
     <include name="${ikvm.binary.home}/IKVM.OpenJDK.**.dll"/>
     <include name="${ikvm.binary.home}/IKVM.Runtime.dll"/>
   </patternset>
-  
   <assemblyfileset id="core.assembly.refs">
     <patternset refid="core.ikvm.openjdk.assemblies"/>
     <include name="${build.dir.output}/saxon9.dll"/>
     <include name="System.dll"/>
     <include name="System.Xml.dll"/>
   </assemblyfileset>
-  
-
   <target name="checkout">
     <exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/tags/${saxon.version}"/>
   </target>
-  
   <target name="export">
     <delete failonerror="false" dir="${build.dir.java.src}"/>
     <delete failonerror="false" dir="${build.dir.csharp.src}"/>
     <exec program="svn" commandline="export ${saxon.version}/hej ${build.dir.java.src}"/>
     <exec program="svn" commandline="export ${saxon.version}/hen/csource ${build.dir.csharp.src}"/>
   </target>
-  
   <target name="allsources" depends="checkout export">
     <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/ant"/>
     <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/s9api"/>
@@ -101,17 +91,14 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       <exec output="allsources.lst" program="find" commandline="${build.dir.java.src} -name *.java"/>
     </if>
   </target>
-  
   <target name="replace-javaonly-tokens">
     <if failonerror="true" test="${replace::textinfile('${build.dir.java.src}/net/sf/saxon/Configuration.java', '/\*JAVAONLY\*/', '//')}">
       <echo message="Successfully replaced text."/>
     </if>
   </target>
-  
   <target name="get-ikvm.net" description="Download the specified version of IKVM.NET if it doesn't already exist within the directory.">
     <call target="download-ikvm.net" if="${not directory::exists(ikvm.home)}"/>
   </target>
-  
   <target name="get-third-party-jars" description="Download third-party jar files.">
     <if test="${not directory::exists(jars.dir)}">
       <mkdir dir="${jars.dir}"/>
@@ -124,40 +111,32 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       <call target="get-servlet-jar" if="${not file::exists(servlet-jar)}"/>
     </if>
   </target>
-  
   <target name="download-ikvm.net">
     <get src="http://www.frijters.net/ikvmbin-${ikvm.version}.zip" dest="ikvmbin-${ikvm.version}.zip"/>
     <unzip zipfile="ikvmbin-${ikvm.version}.zip" todir="IKVM.NET"/>
     <delete failonerror="false" file="ikvmbin-${ikvm.version}.zip"/>
   </target>
-  
   <target name="get-dom4j-jar">
     <get src="http://mirrors.ibiblio.org/pub/mirrors/maven2/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar" dest="${dom4j-jar}"/>
   </target>
-  
   <target name="get-jdom-jar">
     <get src="http://www.ibiblio.org/maven/jdom/jars/jdom-1.0.jar" dest="${jdom-jar}"/>
   </target>
-  
   <target name="get-xom-jar">
     <get src="http://www.cafeconleche.org/XOM/xom-1.1.jar" dest="${xom-jar}"/>
   </target>
-  
   <target name="get-stax-jar">
     <get src="http://dist.codehaus.org/stax/jars/stax-api-1.0.1.jar" dest="${stax-jar}"/>
   </target>
-  
   <target name="get-servlet-jar">
     <get src="http://www.java2s.com/Code/JarDownload/servlet.jar.zip" dest="${servlet-jar}.zip"/>
     <unzip zipfile="${servlet-jar}.zip" todir="${jars.dir}"/>
     <delete failonerror="false" file="${servlet-jar}.zip"/>
   </target>
-  
   <target name="cp.depends" depends="allsources get-third-party-jars">
     <property name="saxon.src" value="${project::get-base-directory()}/${build.dir.java.src}"/>
     <property name="allsources" value="allsources.lst"/>
   </target>
-  
   <target name="classes" depends="cp.depends replace-javaonly-tokens" description="Saxon9 Java Classes">
     <delete>
       <fileset basedir="${saxon.src}">
@@ -171,7 +150,6 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
     </delete>
     <exec program="javac" commandline="-g -target 1.5 -nowarn -cp ./jars/xerces.jar${pathsep}./jars/mscorlib.jar${pathsep}./jars/System.jar${pathsep}./jars/System.Xml.jar @${allsources}" useruntimeengine="false"/>
   </target>
-  
   <target name="saxon9" depends="classes">
     <exec program="${dotnetexe}" commandline="${ikvm.binary.home}/ikvmc.exe" useruntimeengine="false">
       <arg value="-version:${saxon.version}"/>
@@ -194,7 +172,6 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       <arg value="-resource:META-INF/services/javax.xml.xpath.XPathFactory=META-INF/services/javax.xml.xpath.XPathFactory"/>
     </exec>
   </target>
-  
   <target name="Saxon.Api" depends="saxon9">
     <csc target="library" output="${build.dir.output}/${target::get-current-target()}.dll" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
@@ -203,7 +180,6 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       <references refid="core.assembly.refs"/>
     </csc>
   </target>
-  
   <target name="Transform">
     <csc target="exe" output="${build.dir.output}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
@@ -214,7 +190,6 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       </references>
     </csc>
   </target>
-  
   <target name="Query">
     <csc target="exe" output="${build.dir.output}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
@@ -225,7 +200,6 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       </references>
     </csc>
   </target>
-  
   <target name="get-assembly-dependencies">
     <foreach item="File" in="${build.dir.output}" property="filename">
       <foreach item="String" in="${assembly::getdependencies(filename, 'IKVM.')}" delim="," property="assemblyname">
@@ -233,7 +207,6 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       </foreach>
     </foreach>
   </target>
-  
   <target name="all">
     <call target="init"/>
     <call target="Saxon.Api"/>
@@ -241,7 +214,6 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
     <call target="Query"/>
     <call target="get-assembly-dependencies"/>
   </target>
-  
   <target name="clean">
     <delete failonerror="false" file="edition.properties"/>
     <delete failonerror="false" file="allsources.lst"/>
@@ -250,7 +222,6 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
     <delete failonerror="false" dir="${test.dir}"/>
     <delete failonerror="false" dir="${release.dir}"/>
   </target>
-  
   <script language="C#" prefix="replace">
     <code><![CDATA[
       [Function("textinfile")]
@@ -276,7 +247,6 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       }
     ]]></code>
   </script>
-  
   <script language="C#" prefix="assembly">
     <code><![CDATA[
       [Function("getdependencies")]
@@ -301,5 +271,4 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       }
     ]]></code>
   </script>
-  
 </project>
