@@ -6,10 +6,11 @@
 	name="saxon9" 
 	default="all"
 	>
+  <property name="project.dir" value="${project::get-base-directory()}" unless="${property::exists('project.dir')}"/>
   <property name="target.framework" value="3.5"/>
   <property name="mono.target.framework" value="mono-${target.framework}"/>
   <property name="msnet.target.framework" value="net-${target.framework}"/>
-  <property name="build.timestamp" value="${datetime::get-ticks(datetime::now())}" unless="${property::exists('bin.dir')}"/>
+  <property name="build.timestamp" value="${datetime::get-ticks(datetime::now())}" unless="${property::exists('build.timestamp')}"/>
   <property name="saxon.product.name" value="Saxon" unless="${property::exists('saxon.product.name')}"/>
   <property name="saxon.series.name" value="HE" unless="${property::exists('saxon.series.name')}"/>
   <property name="saxon.version" value="9.2.0.3" unless="${property::exists('saxon.version')}"/>
@@ -22,17 +23,17 @@
 
   <property name="project.release.name" value="${saxon.release.name}" unless="${property::exists('project.release.name')}"/>
     
-  <property name="project.build.version.name" value="${saxon.release.name}_${ikvm.release.name}_${build.timestamp}" />
+  <property name="project.build.version.name" value="${saxon.release.name}_${ikvm.release.name}_${build.timestamp}" unless="${property::exists('project.build.version.name')}" />
   
-  <property name="bin.dir" value="${project::get-base-directory()}/bin" unless="${property::exists('bin.dir')}"/>
-  <property name="src.dir" value="${project::get-base-directory()}/src" unless="${property::exists('src.dir')}"/>
-  <property name="lib.dir" value="${project::get-base-directory()}/lib" unless="${property::exists('lib.dir')}"/>
-  <property name="doc.dir" value="${project::get-base-directory()}/doc/${project.build.version.name}" unless="${property::exists('doc.dir')}"/>
-  <property name="build.dir" value="${project::get-base-directory()}/build/${project.build.version.name}" unless="${property::exists('build.dir')}"/>
-  <property name="test.dir" value="${project::get-base-directory()}/test/${project.build.version.name}" unless="${property::exists('test.dir')}"/>
-  <property name="release.dir" value="${project::get-base-directory()}/release/${project.build.version.name}" unless="${property::exists('release.dir')}"/>
-  <property name="archive.dir" value="${project::get-base-directory()}/archive" unless="${property::exists('archive.dir')}"/>
-  <property name="jars.dir" value="${project::get-base-directory()}/jars"/>
+  <property name="bin.dir" value="${project.dir}/bin" unless="${property::exists('bin.dir')}"/>
+  <property name="src.dir" value="${project.dir}/src" unless="${property::exists('src.dir')}"/>
+  <property name="lib.dir" value="${project.dir}/lib" unless="${property::exists('lib.dir')}"/>
+  <property name="doc.dir" value="${project.dir}/doc/${project.build.version.name}" unless="${property::exists('doc.dir')}"/>
+  <property name="build.dir" value="${project.dir}/build/${project.build.version.name}" unless="${property::exists('build.dir')}"/>
+  <property name="test.dir" value="${project.dir}/test/${project.build.version.name}" unless="${property::exists('test.dir')}"/>
+  <property name="release.dir" value="${project.dir}/release/${project.build.version.name}" unless="${property::exists('release.dir')}"/>
+  <property name="archive.dir" value="${project.dir}/archive" unless="${property::exists('archive.dir')}"/>
+  <property name="jars.dir" value="${project.dir}/jars" unless="${property::exists('jars.dir')}"/>
 
   <property name="saxon.base.src.dir" value="${src.dir}/saxon" unless="${property::exists('saxon.base.src.dir')}"/>
   <property name="saxon.src.dir" value="${src.dir}/saxon/${saxon.version}" unless="${property::exists('saxon.src.dir')}"/>
@@ -113,7 +114,7 @@ http\://jdom.org/jaxp/xpath/jdom:       net.sf.saxon.xpath.XPathFactoryImpl</ech
     </if>
   </target>
   
-  <target name="get-ikvm.net" description="Download the specified version of IKVM.NET if it doesn't already exist within the directory.">
+  <target name="get-ikvm.net" description="Download the specified version of IKVM.NET. This is only called if it doesn't already exist within the bin/IKVM.NET directory.">
     <get src="http://www.frijters.net/ikvmbin-${ikvm.version}.zip" dest="ikvmbin-${ikvm.version}.zip"/>
     <unzip zipfile="ikvmbin-${ikvm.version}.zip" todir="${ikvm.base.dir}"/>
     <delete failonerror="false" file="ikvmbin-${ikvm.version}.zip"/>
@@ -260,7 +261,7 @@ http\://jdom.org/jaxp/xpath/jdom:       net.sf.saxon.xpath.XPathFactoryImpl</ech
 	    </fileset>
     </copy>
     <call target="get-assembly-dependencies"/>
-    <!-- TODO: Build out a NUnit test harness based on the existing Saxon test suite-->
+    <!-- TODO: Build out an NUnit test harness based on the existing Saxon test suite-->
   </target>
   
   <target name="release">
@@ -301,7 +302,7 @@ http\://jdom.org/jaxp/xpath/jdom:       net.sf.saxon.xpath.XPathFactoryImpl</ech
       <fileset basedir="${jars.dir}" prefix="${project.release.name}/jars">
         <include name="**/*.*"/>
       </fileset>
-      <fileset basedir="${project::get-base-directory()}" prefix="${project.release.name}">
+      <fileset basedir="${project.dir}" prefix="${project.release.name}">
 	      <include name="saxon.build"/>
 	      <include name="${keyfile}"/>
       </fileset>
@@ -378,7 +379,7 @@ http\://jdom.org/jaxp/xpath/jdom:       net.sf.saxon.xpath.XPathFactoryImpl</ech
   However, I'm leaving the references here for now along with the associated "get-third-party-jars" target and subsequent referenced
   targets as I plan to build from this code to create a genericized version of this build file that can be
   used for a broader swath of projects wanting the ability to code from raw Java source code to .NET assemblies based on
-  any given release of IKVM.NET that have been fully tested, versioned, zipped up, and uploaded to a release server for distribution
+  any given release of IKVM.NET that have been fully tested, versioned, zipped up, and made available for immediate distribution.
   -->
   <property name="dom4j-jar" value="${jars.dir}/dom4j-1.6.1.jar"/>
   <property name="jdom-jar" value="${jars.dir}/jdom-1.0.jar"/>
