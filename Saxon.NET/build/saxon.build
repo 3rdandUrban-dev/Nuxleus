@@ -4,7 +4,7 @@
   <property name="pathsep" value=":"/>
   <property name="dotnetexe" value="mono"/>
   <property name="keyfile" value="Extf.Net.snk"/>
-  <property name="saxon9-dir" value="${project::get-base-directory()}/Saxon"/>
+  
   <property name="jars.dir" value="${project::get-base-directory()}/jars"/>
   <property name="unix-directory" value="${project::get-base-directory()}/unix"/>
   <property name="unix-bin-path" value="${unix-directory}/usr/local/wbin"/>
@@ -19,49 +19,53 @@
   <property name="ikvm.home" value="IKVM.NET/ikvm-${ikvm.version}"/>
   <property name="ikvm.binary.home" value="${ikvm.home}/bin"/>
   <property name="lib.dir" value="./lib"/>
-  <property name="build.release" value="false" unless="${property::exists('build.release')}"/>
-  <property name="build.java.jars" value="false" unless="${property::exists('build.java.jars')}"/>
-  <property name="doc.dir" value="doc"/>
-  <property name="build.dir" value="build"/>
-  <property name="build.dir.src" value="build/src"/>
+  <property name="doc.dir" value="./doc"/>
+  <property name="build.dir" value="./build"/>
+  <property name="build.dir.src" value="./build/src"/>
   <property name="build.dir.java.src" value="${build.dir.src}/java"/>
   <property name="build.dir.csharp.src" value="${build.dir.src}/csharp"/>
+  <property name="build.dir.output" value="${build.dir}/output"/>
+  <property name="test.dir" value="./test"/>
+  <property name="release.dir" value="./release"/>
+  <property name="build.release" value="false" unless="${property::exists('build.release')}"/>
+  <property name="build.java.jars" value="false" unless="${property::exists('build.java.jars')}"/>
+  <property name="saxon.src" value="${build.dir.java.src}"/>
   
+  
+  <target name="init">
   <if test="${platform::is-win32()}">
     <property name="pathsep" value=";"/>
     <property name="dotnetexe" value="cmd"/>
   </if>
-  
-  <patternset id="core.ikvm.openjdk.assemblies">
-    <include name="${ikvm.binary.home}/IKVM.OpenJDK.*.dll"/>
-    <include name="${ikvm.binary.home}/IKVM.Runtime.dll"/>
-    <include name="${ikvm.binary.home}/IKVM.OpenJDK.Charsets.dll"/>
-  </patternset>
-  
-  <assemblyfileset id="core.assembly.refs">
-    <patternset refid="core.ikvm.openjdk.assemblies"/>
-    <include name="${lib.dir}/saxon9.dll"/>
-    <include name="System.dll"/>
-    <include name="System.Xml.dll"/>
-  </assemblyfileset>
-  
-  <target name="init">
     <if test="${not directory::exists(jars.dir)}">
       <mkdir dir="${jars.dir}"/>
     </if>
-    <if test="${not directory::exists(lib.dir)}">
-      <mkdir dir="${lib.dir}"/>
-    </if>
     <if test="${not directory::exists(build.dir)}">
-      <mkdir dir="${build.dir}"/>
       <mkdir dir="${build.dir.src}"/>
+      <mkdir dir="${build.dir.output}"/>
     </if>
+          <mkdir dir="${test.dir}"/>
+      <mkdir dir="${release.dir}"/>
     <if test="${not directory::exists(doc.dir)}">
       <mkdir dir="${doc.dir}"/>
     </if>
     <call target="get-ikvm.net" if="${not directory::exists(ikvm.home)}"/>
   </target>
+
   
+  <patternset id="core.ikvm.openjdk.assemblies">
+    <include name="${ikvm.binary.home}/IKVM.OpenJDK.**.dll"/>
+    <include name="${ikvm.binary.home}/IKVM.Runtime.dll"/>
+  </patternset>
+  
+  <assemblyfileset id="core.assembly.refs">
+    <patternset refid="core.ikvm.openjdk.assemblies"/>
+    <include name="${build.dir.output}/saxon9.dll"/>
+    <include name="System.dll"/>
+    <include name="System.Xml.dll"/>
+  </assemblyfileset>
+  
+
   <target name="checkout">
     <exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/tags/${saxon.version}"/>
   </target>
@@ -150,13 +154,13 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
   </target>
   
   <target name="cp.depends" depends="allsources get-third-party-jars">
-    <property name="saxon9-dir" value="${project::get-base-directory()}/${build.dir.java.src}"/>
+    <property name="saxon.src" value="${project::get-base-directory()}/${build.dir.java.src}"/>
     <property name="allsources" value="allsources.lst"/>
   </target>
   
   <target name="classes" depends="cp.depends replace-javaonly-tokens" description="Saxon9 Java Classes">
     <delete>
-      <fileset basedir="${saxon9-dir}">
+      <fileset basedir="${saxon.src}">
         <include name="**.class"/>
       </fileset>
     </delete>
@@ -174,13 +178,13 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       <arg value="-compressresources"/>
       <arg value="-opt:fields"/>
       <arg value="-strictfinalfieldsemantics"/>
-      <arg value="-out:${build.dir}/${target::get-current-target()}.dll"/>
+      <arg value="-out:${build.dir.output}/${target::get-current-target()}.dll"/>
       <!--
 	<arg value="-exclude:exclude.lst" />
 	-->
       <arg value="-target:library"/>
       <arg value="-recurse:${jars.dir}/*.jar"/>
-      <arg value="-recurse:${saxon9-dir}/*.class"/>
+      <arg value="-recurse:${saxon.src}/*.class"/>
       <arg value="-nowarn:0109"/>
       <arg value="-nowarn:0105"/>
       <arg value="-keyfile:${keyfile}"/>
@@ -189,47 +193,43 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       <arg value="-resource:META-INF/services/javax.xml.transform.TransformerFactory=META-INF/services/javax.xml.transform.TransformerFactory"/>
       <arg value="-resource:META-INF/services/javax.xml.xpath.XPathFactory=META-INF/services/javax.xml.xpath.XPathFactory"/>
     </exec>
-    <copy file="${build.dir}/${target::get-current-target()}.dll" tofile="${lib.dir}/${target::get-current-target()}.dll"/>
   </target>
   
   <target name="Saxon.Api" depends="saxon9">
-    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+    <csc target="library" output="${build.dir.output}/${target::get-current-target()}.dll" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${build.dir.csharp.src}/api/Saxon.Api/*.cs"/>
       </sources>
       <references refid="core.assembly.refs"/>
     </csc>
-    <copy file="${build.dir}/${target::get-current-target()}.dll" tofile="${lib.dir}/${target::get-current-target()}.dll"/>
   </target>
   
   <target name="Transform">
-    <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+    <csc target="exe" output="${build.dir.output}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${build.dir.csharp.src}/cmd/Transform.cs"/>
       </sources>
       <references refid="core.assembly.refs">
-        <include name="${lib.dir}/Saxon.Api.dll"/>
+        <include name="${build.dir.output}/Saxon.Api.dll"/>
       </references>
     </csc>
-    <copy file="${build.dir}/${target::get-current-target()}.exe" tofile="${lib.dir}/${target::get-current-target()}.exe"/>
   </target>
   
   <target name="Query">
-    <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+    <csc target="exe" output="${build.dir.output}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${build.dir.csharp.src}/cmd/Query.cs"/>
       </sources>
       <references refid="core.assembly.refs">
-        <include name="${lib.dir}/Saxon.Api.dll"/>
+        <include name="${build.dir.output}/Saxon.Api.dll"/>
       </references>
     </csc>
-    <copy file="${build.dir}/${target::get-current-target()}.exe" tofile="${lib.dir}/${target::get-current-target()}.exe"/>
   </target>
   
-  <target name="package">
-    <foreach item="File" in="${lib.dir}" property="filename">
+  <target name="get-assembly-dependencies">
+    <foreach item="File" in="${build.dir.output}" property="filename">
       <foreach item="String" in="${assembly::getdependencies(filename, 'IKVM.')}" delim="," property="assemblyname">
-        <copy file="${ikvm.binary.home}/${assemblyname}" tofile="${lib.dir}/${assemblyname}"/>
+        <copy file="${ikvm.binary.home}/${assemblyname}" tofile="${build.dir.output}/${assemblyname}"/>
       </foreach>
     </foreach>
   </target>
@@ -239,15 +239,16 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
     <call target="Saxon.Api"/>
     <call target="Transform"/>
     <call target="Query"/>
-    <call target="package"/>
+    <call target="get-assembly-dependencies"/>
   </target>
   
   <target name="clean">
     <delete failonerror="false" file="edition.properties"/>
     <delete failonerror="false" file="allsources.lst"/>
-    <delete failonerror="false" dir="${lib.dir}"/>
     <delete failonerror="false" dir="${build.dir}"/>
     <delete failonerror="false" dir="${doc.dir}"/>
+    <delete failonerror="false" dir="${test.dir}"/>
+    <delete failonerror="false" dir="${release.dir}"/>
   </target>
   
   <script language="C#" prefix="replace">
@@ -282,14 +283,16 @@ platform=net.sf.saxon.dotnet.DotNetPlatform</echo>
       static public System.String GetAssemblyDependencies(string assemblyName, string filterByPrefix)
       {
         System.String assemblies = String.Empty;
-
-	System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFile(assemblyName);
-
-	foreach (System.Reflection.AssemblyName dep in assembly.GetReferencedAssemblies()){
-		System.String name = dep.Name + ".dll";
-		if(name.StartsWith(filterByPrefix)){
-			assemblies += System.String.Format("{0},", name);
-		}	
+	if(!assemblyName.EndsWith(".mdb")){
+		System.Reflection.Assembly assembly = System.Reflection.Assembly.LoadFile(assemblyName);
+	
+		
+		foreach (System.Reflection.AssemblyName dep in assembly.GetReferencedAssemblies()){
+			System.String name = dep.Name + ".dll";
+			if(name.StartsWith(filterByPrefix)){
+				assemblies += System.String.Format("{0},", name);
+			}	
+		}
 	}
 	
 	char[] charsToTrim = {',',' '};
