@@ -12,8 +12,8 @@
   <property name="msnet.target.framework" value="net-${target.framework}"/>
   <property name="build.timestamp" value="${datetime::get-ticks(datetime::now())}" unless="${property::exists('build.timestamp')}"/>
   <property name="saxon.product.name" value="Saxon" unless="${property::exists('saxon.product.name')}"/>
-  <property name="saxon.series.name" value="HE" unless="${property::exists('saxon.series.name')}"/>
-  <property name="saxon.version" value="9.2.0.3" unless="${property::exists('saxon.version')}"/>
+  <property name="saxon.series.name" value="B" unless="${property::exists('saxon.series.name')}"/>
+  <property name="saxon.version" value="9.1.0.8" unless="${property::exists('saxon.version')}"/>
   <property name="saxon.platform.name.java" value="J" unless="${property::exists('saxon.platform.name.java')}"/>
   <property name="saxon.platform.name.net" value="N" unless="${property::exists('saxon.platform.name.net')}"/>
   <property name="saxon.release.name" value="${saxon.product.name}-${saxon.series.name}-${saxon.version}${saxon.platform.name.net}" unless="${property::exists('saxon.release.name')}"/>
@@ -71,8 +71,8 @@
   <target name="export">
     <delete failonerror="false" dir="${build.dir.java.src}"/>
     <delete failonerror="false" dir="${build.dir.csharp.src}"/>
-    <exec program="svn" commandline="export ${saxon.src.dir}/hej ${build.dir.java.src}"/>
-    <exec program="svn" commandline="export ${saxon.src.dir}/hen/csource ${build.dir.csharp.src}"/>
+    <exec program="svn" commandline="export ${saxon.src.dir}/bj ${build.dir.java.src}"/>
+    <exec program="svn" commandline="export ${saxon.src.dir}/bn/csource ${build.dir.csharp.src}"/>
   </target>
   
   <target name="allsources" depends="checkout export">
@@ -81,7 +81,6 @@
     <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/dom"/>
     <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/jdom"/>
     <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/dom4j"/>
-    <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/java"/>
     <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/xom"/>
     <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/xpath"/>
     <delete failonerror="false" dir="${build.dir.java.src}/net/sf/saxon/xqj"/>
@@ -131,7 +130,7 @@ http\://jdom.org/jaxp/xpath/jdom:       net.sf.saxon.xpath.XPathFactoryImpl</ech
         <include name="**.class"/>
       </fileset>
     </delete>
-    <exec program="javac" commandline="-g -target 1.5 -nowarn -cp ./jars/xerces.jar${pathsep}./jars/mscorlib.jar${pathsep}./jars/System.jar${pathsep}./jars/System.Xml.jar @${allsources}"/>
+    <exec program="javac" commandline="-g -target 1.5 -nowarn -cp ${jars.dir}/IKVM.OpenJDK.ClassLibrary.jar${pathsep}${jars.dir}/mscorlib.jar${pathsep}/${jars.dir}/System.jar${pathsep}${jars.dir}/System.Xml.jar @${allsources}"/>
   </target>
   
   <target name="saxon9" depends="classes">
@@ -195,6 +194,7 @@ http\://jdom.org/jaxp/xpath/jdom:       net.sf.saxon.xpath.XPathFactoryImpl</ech
   </target>
   
   <target name="init">  
+  <echo>${build.dir}</echo>
     <if test="${platform::is-win32()}">
       <property name="pathsep" value=";"/>
       <if test="${framework::exists(msnet.target.framework)}">
@@ -311,9 +311,9 @@ http\://jdom.org/jaxp/xpath/jdom:       net.sf.saxon.xpath.XPathFactoryImpl</ech
   
   
   <target name="clean">
-    <delete failonerror="false" dir="${build.dir}"/>
-    <delete failonerror="false" dir="${doc.dir}"/>
-    <delete failonerror="false" dir="${test.dir}"/>
+    <delete failonerror="false" dir="./build"/>
+    <delete failonerror="false" dir="./test"/>
+    <delete failonerror="false" dir="./doc"/>
   </target>
   
   <target name="get-assembly-dependencies">
