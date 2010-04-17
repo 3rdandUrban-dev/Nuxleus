@@ -27,7 +27,7 @@ namespace Nuxleus.Messaging {
         /// </summary>
         public MessageServer ( int port, string delimiter ) {
             service = new MessageService();
-            server = new SocketServer(service);
+            server = new SocketServer(CallbackThreadType.ctWorkerThread, service);
             server.Delimiter = Encoding.ASCII.GetBytes(delimiter);
             server.DelimiterType = DelimiterType.dtMessageTailExcludeOnReceive;
 

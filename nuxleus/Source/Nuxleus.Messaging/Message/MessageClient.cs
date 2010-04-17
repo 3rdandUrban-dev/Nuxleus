@@ -33,7 +33,7 @@ namespace Nuxleus.Messaging
         public MessageClient(string ip, int port, string delimiter)
         {
             service = new MessageService();
-            client = new SocketClient(service);
+            client = new SocketClient(CallbackThreadType.ctWorkerThread, service);
             client.AddConnector(String.Format("MessageQueue {0}:{1}", ip, port),
                     new IPEndPoint(IPAddress.Parse(ip), port));
             client.Delimiter = Encoding.ASCII.GetBytes(delimiter);

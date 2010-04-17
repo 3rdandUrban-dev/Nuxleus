@@ -15,7 +15,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <ManifestCertificateThumbprint>C78F7B4DBCF11531F97C51EBCB35069E1EBE3F83</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>25EF75FC31930028B364933D147F3AD9EF41A9D1</ManifestCertificateThumbprint>
     <ManifestKeyFile>Nuxleus_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
@@ -95,6 +95,7 @@
     <Compile Include="Utility\SshUtil\Util.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Nuxleus_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
     </None>
