@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/page/controller/atomictalk/base.xsl"?>
+<?oxygen RNGSchema="base.rnc" type="compact"?>
+<entity:page
+    xmlns:session="http://xameleon.org/session"
+    xmlns:openid="http://openid.name/"
+    xmlns:entity="http://atomictalk.org/entity"
+    xmlns:page="http://atomictalk.org/page"
+    xmlns:config="http://atomictalk.org/page/config" 
+    xmlns:advice="http://atomictalk.org/page/config/advice"
+    xmlns:resource="http://atomictalk.org/page/resource"
+    xmlns:model="http://atomictalk.org/page/model"
+    xmlns:view="http://atomictalk.org/page/view"
+    xmlns:controller="http://atomictalk.org/page/controller"
+    xmlns:output="http://atomictalk.org/page/output" 
+    xmlns:head="http://atomictalk.org/page/output/head"
+    xmlns:body="http://atomictalk.org/page/output/body" 
+    xmlns:structure="http://atomictalk.org/page/output/body/structure"
+    xmlns:doc="http://atomictalk.org/feed/doc" 
+    xmlns="http://www.w3.org/1999/xhtml">
+    <page:config src="/page/config/config.xml">
+        <config:advice>
+            <advice:page>
+                <advice:title>@@domain.label@@ :: @@date@@</advice:title>
+            </advice:page>
+            <advice:theme base="@@my:theme@@">
+                <advice:base>993300-999999</advice:base>
+                <advice:blue>blue</advice:blue>
+            </advice:theme>
+            <advice:current-location base="@@base-uri@@/@@location@@">
+                <advice:label>your local scene</advice:label>
+            </advice:current-location>
+            <advice:foo>@@foo:bar@@</advice:foo>
+        </config:advice>
+        <config:session src="@@service:session@@">
+            <session:id>@@src:id@@</session:id>
+            <session:nonce>@@src:nonce@@</session:nonce>
+            <session:openid src="@@current:openid@@">
+                <openid:uri>@@src:uri@@</openid:uri>
+                <openid:humanid>@@src:human-name@@</openid:humanid>
+            </session:openid>
+        </config:session>
+    </page:config>
+    <page:resource>
+        <resource:my type="service" entity="@@service:ip@@" src="@@current:location@@" xmlns:my="http://member.amp.fm/m.david">
+            <my:name scheme="http://member.amp.fm/" label="M. David Peterson" term="myterm">M. David Peterson</my:name>
+        </resource:my>
+        <resource:lang type="service" entity="@@service:preferences@@" src="@@current:lang@@" />
+        <resource:help-support type="page" entity="@@base-uri:support@@" href="@@current@@" />
+        <resource:create-new-account type="page" entity="@@base-uri:create-new-account@@" href="@@current@@" />
+        <resource:login type="page" entity="@@base-uri:login@@" href="@@current@@" />
+    </page:resource>
+    <page:model>
+        <model:foo src="/page/model/collection/foo.collection"/>
+        <model:bar src="/page/model/collection/bar.collection"/>
+    </page:model>
+    <page:view>
+        <view:foo type="form" src="/page/view/form/foo.view"/>
+        <view:bar type="menu" src="/page/view/menu/bar.view"/>
+        <view:baz type="list" src="/page/view/list/baz.view"/>
+        <view:boo type="inline" src="/page/view/content/inline/boo.view"/>
+        <view:bop type="block" src="/page/view/content/block/boo.view"/>
+    </page:view>
+    <page:controller>
+        <controller:foo src="/page/controller/foo.template"/>
+        <controller:bar src="/page/controller/bar.template"/>
+    </page:controller>
+    <page:output>
+        <output:head>
+            <head:title>@@page-title@@</head:title>
+            <head:link rel="alternate" type="application/atom+xml" title="Amp.fm ON THE AIR" href="http://dev.amp.fm/ontheair.atom" />
+            <head:link rel="alternate" type="application/xml" title="Amp.fm ON THE AIR" href="http://dev.amp.fm/ontheair.atom" />
+            <head:link rel="shortcut icon" href="/images/Amp.FM.icon.png" type="image/png" />
+            <head:include fileType="css" href="@@static@@/css/base.css" />
+            <head:include fileType="css" href="@@static@@/css/transparency.css" />
+            <head:include fileType="css" href="@@static-css-browser@@.css" />
+            <head:include fileType="css" href="@@static@@/css/base_@@base.theme@@.css" />
+        </output:head>
+        <output:body>
+            <body:function action="onload" call="@@func:onpageload@@" />
+            <body:function action="onunload" call="@@func:onpageunload@@" />
+            <body:structure>
+                <structure:view id="main">
+                    <view:module id="session" src="/page/view/module/session/controller/base.xml" />
+                    <view:module id="header">
+                        <view:container id="top-nav">
+                            <view:item id="top-login-module" src="/page/view/menu/navigation/top-login.xml" />
+                            <view:item id="top-sub-nav-module" src="/page/view/menu/navigation/top-sub-nav.xml" />
+                            <view:item id="get-plugged-in" src="/page/view/module/get-plugged-in.xml" />
+                            <view:item id="search-module" src="/page/view/search/base.xml" />
+                            <view:item id="quick-view-module" src="/page/view/quick-view/base.xml" />
+                        </view:container>
+                    </view:module>
+                    <view:module id="body">
+                        <view:container id="content">
+                            <view:item id="left" src="@@amp.fm:genre/all/top100:feed@@"/>
+                            <view:item id="center" src="@@amp.fm:blog:feed@@"/>
+                            <view:item id="right" src="@@my:friends:feed@@"/>
+                        </view:container>
+                    </view:module>
+                    <view:module id="footer">
+                        <view:container>
+                            <view:item id="control-center" src="/page/view/menu/navigation/bottom-nav/base.xml" />
+                        </view:container>
+                    </view:module>
+                </structure:view>
+            </body:structure>
+        </output:body>
+    </page:output>
+</entity:page>

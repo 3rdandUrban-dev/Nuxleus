@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view:module class="base" id="answers" xmlns="http://www.w3.org/1999/xhtml" xmlns:debug="http://nuxleus.com/session/debug" xmlns:request="http://nuxleus.com/session/request" xmlns:session="http://atomictalk.org/session" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <div id="answers-body">
+
+  </div>
+</view:module>

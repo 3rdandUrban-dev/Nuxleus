@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  COPYRIGHT: (c) 2006, M. David Peterson (mailto:m.david@xmlhacker.com; http://mdavid.name/)
+  LICENSE: The code contained in this file is licensed under The MIT License. Please see
+  http://www.opensource.org/licenses/mit-license.php for specific detail.
+-->
+<page:resource xmlns:resource="http://atomictalk.org/page/resource">
+  <resource:ip-location type="string" src="@@service-gateway@@@@service:ip-location@@" />
+  <resource:help-support type="page" href="@@base-uri@@/support/" label="Help/Support" />
+  <resource:create-new-account type="page" href="@@base-uri@@/create-new-account/" label="Create New" />
+  <resource:login type="page" href="@@base-uri@@/login/" label="Login" />
+  <resource:lang type="string" src="@src@" label="model:lang/$@@language@@/@label" />
+</page:resource>
+

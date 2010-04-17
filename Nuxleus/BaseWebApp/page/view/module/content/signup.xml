@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<view:module id="create-account" xmlns:view="http://atomictalk.org/page/view">
+  <view:item>
+    <div id="create-member-account">
+      <form id="create-member-account-form" method="get" action="/service/profile/create-new/" target="_top">
+        <input id="username" class="single-input" type="text" name="username" maxlength="255" />
+        <input type="hidden" id="openid" name="openid" value="test"/>
+        <button class="Button submit">
+          <span class="ButtonLabel">Create</span>
+        </button>
+      </form>
+    </div>
+  </view:item>
+</view:module>

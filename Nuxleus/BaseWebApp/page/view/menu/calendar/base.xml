@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<view:container style="list RtoL local-links" xmlns:view="http://atomictalk.org/page/view">
+  <view:item>
+    <a href="#foo">Friday</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Saturday</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Sunday</a>
+  </view:item>
+  <view:item style="selected">
+    <a href="#foo">Monday November 12th, 2007</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Tuesday</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Wednesday</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Thursday</a>
+  </view:item>
+<!--  <view:item>
+    <a href="#foo">Day</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Week</a>
+  </view:item>
+  <view:item>
+    <a href="#foo">Month</a>
+  </view:item>-->
+  <!--<view:item style="single">
+      <a href="#foo">1</a>
+    </view:item>
+    <view:item style="single">
+      <a href="#foo">2</a>
+    </view:item>
+    <view:item style="single">
+      <a href="#foo">3</a>
+    </view:item>
+    <view:item style="single">
+      <a href="#foo">4</a>
+    </view:item>
+    <view:item style="single">
+      <a href="#foo">5</a>
+    </view:item>
+    <view:item style="single">
+      <a href="#foo">6</a>
+    </view:item>
+    <view:item style="single">
+      <a href="#foo">7</a>
+    </view:item>
+    <view:item style="selected single">
+      <a href="#foo">8</a>
+    </view:item>
+    <view:item style="single">
+      <a href="#foo">9</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">10</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">11</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">12</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">13</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">14</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">15</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">16</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">17</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">18</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">19</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">20</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">21</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">22</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">23</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">24</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">25</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">26</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">27</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">28</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">29</a>
+    </view:item>
+    <view:item>
+      <a href="#foo">30</a>
+    </view:item>-->
+  <view:item style="single">
+    <a href="#foo">&lt;</a>
+  </view:item>
+  <view:item style="single">
+    <a href="#foo">></a>
+  </view:item>
+</view:container>

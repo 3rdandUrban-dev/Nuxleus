@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="content" style="base list LtoR width">
+    <view:item id="left">
+      <h2>Music</h2>
+      <doc:local-news topic="music"/>
+    </view:item>
+    <view:item id="center">
+      <div>
+        <doc:profile src="@@current.location@@profile.xml" />
+      </div>
+      <div>
+        <h3>Talk about @@current-location@@</h3>
+        <form method="post" action="/service/atompub/event/comment/add/" name="ev_comment_form" enctype="multipart/form-data">
+          <input type="hidden" id="ev_base_uri" name="ev_base_uri" value="http://dev.amp.fm/" />
+          <input type="hidden" id="ev_base_path" name="ev_base_path" value="m.david/" />
+          <input type="hidden" id="ev_comment_title" name="ev_comment_title" value="m.david" />
+          <span>Name:</span>
+          <br />
+          <span>
+            <input type="text" id="ev_comment_name" name="ev_comment_name" />
+          </span>
+          <br />
+          <span>Have your say:</span>
+          <br />
+          <span>
+            <textarea name="ev_comment_desc" cols="100" rows="10" id="ev_comment_desc"></textarea>
+          </span>
+          <br />
+          <span>
+            <input type="file" name="ev_comment_pix" id="ev_comment_pix" accept="image/png,image/jpeg,image/gif"></input>
+          </span>
+          <br />
+          <span>
+            <input type="submit" value="Send" />
+          </span>
+        </form>
+      </div>
+      <!--       
+      <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/?ie=UTF8&amp;z=16&amp;om=1&amp;ll=40.76719,-111.883935&amp;output=embed&amp;s=AARTsJqzARj-Z8VnW5pkPMLMmZbqrJcYpw"></iframe>
+      <br />
+      <small>
+        <a href="http://maps.google.com/?ie=UTF8&amp;z=16&amp;om=1&amp;ll=40.76719,-111.883935&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a>
+      </small> 
+      -->
+    </view:item>
+    <view:item id="right">
+      <h2>Film</h2>
+      <doc:local-news topic="film"/>
+    </view:item>
+  </view:container>
+</view:module>
