@@ -1,0 +1,9 @@
+use_logd        yes
+logfacility     daemon
+keepalive 1
+warntime 2
+deadtime 10
+auto_failback on
+ucast eth0 @@PAIRED_MACHINES_IP@@
+node @@PRIMARY_MACHINE@@ @@SECONDARY_MACHINE@@
+crm     yes

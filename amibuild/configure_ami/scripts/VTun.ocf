@@ -1,0 +1,170 @@
+#!/bin/sh
+#
+# Resource script for VTun
+#
+# Author: M. David Peterson <m.david@xmlhacker.com>
+#
+# Description: Establishes a point-to-point tunnel with specified IP of VTun server.
+#
+#
+#    This can be given in the haresources file as:
+#
+#        VTun::10.251.126.214::my_tunnel::/usr/local/etc/vtund-client.conf
+#
+#    The above connects to 10.251.126.214 and establishes a relationship as defined by the my_tunnel profile contained in /usr/local/etc/vtund-client.conf
+#
+#      OCF parameters are as below:
+#        OCF_RESKEY_vtunProfile
+#        OCF_RESKEY_vtunServerIP
+#        OCF_RESKEY_vtunClientConfig
+#
+# License:  GNU General Public License (GPL)
+#
+# Copyright:    (C) 2008 M. David Peterson
+
+#######################################################################
+# Initialization:
+
+. /usr/share/ocf/resource.d/heartbeat/.ocf-shellfuncs
+
+#######################################################################
+
+usage() {
+  echo "Usage: $0 {start|stop|status|monitor|meta-data|validate-all}"
+}
+
+meta_data() {
+    cat <<END
+<?xml version="1.0"?>
+<!DOCTYPE resource-agent SYSTEM "ra-api-1.dtd">
+<resource-agent name="VTun">
+<version>1.0</version>
+
+<longdesc lang="en">
+This is a resource agent for VTun. It establishes a point-to-point tunnel client connection with a specified VTun server.
+</longdesc>
+<shortdesc lang="en">VTun resource agent</shortdesc>
+
+<parameters>
+<parameter name="vtunServerIP" unique="0" required="1">
+<longdesc lang="en">
+The IP address of the VTun server to establish a point-to-point tunnel client connection with.
+</longdesc>
+<shortdesc lang="en">VTun Server IP Address</shortdesc>
+<content type="string" default="" />
+</parameter>
+
+<parameter name="vtunProfile" unique="0">
+<longdesc lang="en">
+The profile used when establishing a connection w/ the VTun server.
+</longdesc>
+<shortdesc lang="en">VTun Client Configuration File</shortdesc>
+<content type="string" default="" />
+</parameter>
+</parameters>
+
+<parameter name="vtunClientConfig" unique="0">
+<longdesc lang="en">
+The VTun client configuration file.
+</longdesc>
+<shortdesc lang="en">VTun client configuration file</shortdesc>
+<content type="string" default="/usr/local/etc/vtund-client.conf" />
+</parameter>
+
+<actions>
+<action name="start" timeout="10" />
+<action name="stop" timeout="10" />
+<action name="status" depth="0" timeout="10" interval="10" start-delay="10" />
+<action name="monitor" depth="0" timeout="10" interval="10" start-delay="10" />
+<action name="meta-data" timeout="5" />
+<action name="validate-all" timeout="5" />
+</actions>
+</resource-agent>
+END
+}
+
+VTunProgram() {
+  /usr/local/sbin/vtund -f $1 $2 $3;
+}
+
+VTunStart() {
+  ocf_log info "Starting vtund with parameters: " $OCF_RESKEY_vtunClientConfig $OCF_RESKEY_vtunProfile $OCF_RESKEY_vtunServerIP;
+  VTunProgram $OCF_RESKEY_vtunClientConfig $OCF_RESKEY_vtunProfile $OCF_RESKEY_vtunServerIP;
+  ha_pseudo_resource VTun_${OCF_RESOURCE_INSTANCE} start
+}
+
+VTunStop () {
+  killall vtund
+    ha_pseudo_resource VTun_${OCF_RESOURCE_INSTANCE} stop
+}
+
+VTunStatus () {
+
+    if ha_pseudo_resource VTun_${OCF_RESOURCE_INSTANCE} monitor
+    then
+        echo "running"
+        return $OCF_SUCCESS
+    else
+        echo "stopped"
+        return $OCF_NOT_RUNNING
+    fi
+}
+
+VTunValidateAll () {
+
+# TO BE WRITTEN
+
+    return $OCF_SUCCESS
+}
+
+
+if
+  ( [ $# -ne 1 ] )
+then
+  usage
+  exit $OCF_ERR_GENERIC
+fi
+
+case $1 in
+  meta-data)        meta_data
+            exit $OCF_SUCCESS
+            ;;
+  status|monitor)    VTunStatus
+            exit $?
+            ;;
+  usage)        usage
+            exit $OCF_SUCCESS
+            ;;
+  *)            ;;
+esac
+
+if
+  [ -z "$OCF_RESKEY_vtunServerIP" ]
+then
+  ocf_log err "VTun server IP is required."
+  exit $OCF_ERR_GENERIC
+fi
+
+if
+  [ -z "$OCF_RESKEY_vtunProfile" ]
+then
+  ocf_log err "VTun profile is required."
+  exit $OCF_ERR_GENERIC
+fi
+
+case $1 in
+  start)        
+    VTunStart
+    ;;
+  stop)            
+    VTunStop
+    ;;
+  validate-all)        
+    VTunValidateAll
+    ;;
+  *)            
+    usage
+    exit $OCF_ERR_UNIMPLEMENTED
+    ;;
+esac
+exit $?

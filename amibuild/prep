@@ -1,0 +1,6 @@
+#!/bin/sh
+find /mnt -name "*.pyc" -exec rm -rf {} \;
+find /mnt -name "*.pyo" -exec rm -rf {} \;
+find /mnt -name "*.mdb" -exec rm -rf {} \;
+rm -rf /mnt/var/lib/conarydb/*
+rm -rf /mnt/usr/local/share

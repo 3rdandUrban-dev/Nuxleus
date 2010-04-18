@@ -1,0 +1,119 @@
+#!/bin/sh
+#
+# Resource script for killnfsd
+#
+# Author: M. David Peterson <m.david@xmlhacker.com>
+#
+# Description: Ensures that all nfsd processes have been killed before restarting them.
+#
+# License:  GNU General Public License (GPL)
+#
+# Copyright:    (C) 2008 M. David Peterson
+
+#######################################################################
+# Initialization:
+
+. /usr/share/ocf/resource.d/heartbeat/.ocf-shellfuncs
+
+#######################################################################
+
+ARGS="$0 $*"
+
+usage() {
+  echo "Usage: $0 {start|stop|status|monitor|meta-data|validate-all}"
+}
+
+meta_data() {
+    cat <<END
+<?xml version="1.0"?>
+<!DOCTYPE resource-agent SYSTEM "ra-api-1.dtd">
+<resource-agent name="killnfsd">
+<version>1.0</version>
+
+<longdesc lang="en">
+Ensures that all nfsd processes have been killed before restarting them.
+</longdesc>
+<shortdesc lang="en">kills all running nfsd processes</shortdesc>
+
+<actions>
+<action name="start" timeout="10" />
+<action name="stop" timeout="10" />
+<action name="status" depth="0" timeout="10" interval="10" start-delay="10" />
+<action name="monitor" depth="0" timeout="10" interval="10" start-delay="10" />
+<action name="meta-data" timeout="5" />
+<action name="validate-all" timeout="5" />
+</actions>
+</resource-agent>
+END
+}
+
+KillNFSDProgram() {
+  killall -9 nfsd;
+}
+
+killnfsdStart() {
+  ocf_log info "Killing all nfsd processes";
+  KillNFSDProgram;
+  ha_pseudo_resource killnfsd_${OCF_RESOURCE_INSTANCE} start
+}
+
+killnfsdStop () {
+  ocf_log info "Killing all nfsd processes";
+  KillNFSDProgram;
+    ha_pseudo_resource killnfsd_${OCF_RESOURCE_INSTANCE} stop
+}
+
+killnfsdStatus () {
+ 
+  ocf_log warn "Don't stat/monitor me! killnfsd is a pseudo resource agent, so the status reported may be incorrect"
+
+    if ha_pseudo_resource killnfsd_${OCF_RESOURCE_INSTANCE} monitor
+    then
+        ocf_log info "killnfsd process is running"
+        return $OCF_SUCCESS
+    else
+        ocf_log info "killnfsd process is stopped"
+        return $OCF_NOT_RUNNING
+    fi
+}
+
+killnfsdValidateAll () {
+
+# TO BE WRITTEN
+
+    return $OCF_SUCCESS
+}
+
+
+if
+  ( [ $# -ne 1 ] )
+then
+  usage
+  exit $OCF_ERR_GENERIC
+fi
+
+case $1 in
+  meta-data)        meta_data
+            exit $OCF_SUCCESS
+            ;;
+  status|monitor)    killnfsdStatus
+            exit $?
+            ;;
+  usage)        usage
+            exit $OCF_SUCCESS
+            ;;
+  *)            ;;
+esac
+
+case $1 in
+  start)        killnfsdStart
+            ;;
+  stop)            killnfsdStop
+            ;;
+  validate-all)        killnfsdValidateAll
+            ;;
+  *)            usage
+            exit $OCF_ERR_UNIMPLEMENTED
+            ;;
+esac
+exit $?

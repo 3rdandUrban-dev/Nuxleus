@@ -1,0 +1,4 @@
+#!/bin/bash
+rm -f rootfs.list
+cd new_image/
+find ./ -name "*" > ../rootfs.list

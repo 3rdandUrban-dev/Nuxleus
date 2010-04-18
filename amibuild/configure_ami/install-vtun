@@ -1,0 +1,6 @@
+#!/bin/sh
+wget http://superb-east.dl.sourceforge.net/sourceforge/vtun/vtun-3.0.1.tar.gz
+tar xf vtun-3.0.1.tar.gz
+cd vtun-3.0.1
+./configure; make; make install
+modprobe tun

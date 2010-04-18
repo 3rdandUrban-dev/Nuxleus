@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<configuration>
+    <drbd overwrite-data-of-peer="yes" name="the_off_ramp">
+      <node type="primary">
+        <machine-name></machine-name>
+        <machine-ip></machine-ip>
+      </node>
+      <node type="secondary">
+        <machine-name></machine-name>
+        <machine-ip></machine-ip>
+      </node>
+    </drbd>
+    <vtun>
+      <config-file-location>/usr/local/etc/vtund-client.conf</config-file-location>
+      <profile>
+        <config-file-location>/usr/local/etc/vtund-server.conf</config-file-location>
+        <name></name>
+        <password></password>
+        <vtun-server-ip></vtun-server-ip>
+      </profile>
+    </vtun>
+    <lvm>
+      <volume-device>/dev/sda2</volume-device>
+      <volume-group-name>the_off_ramp</volume-group-name>
+      <logical-volume>
+        <volume type="primary">
+          <name>mookie_blaylock</name>
+          <weight-of-total-pe>1</weight-of-total-pe>
+        </volume>
+        <volume type="backup">
+          <name>pearl_jam</name>
+          <weight-of-total-pe>1</weight-of-total-pe>
+        </volume>
+      </logical-volume>
+    </lvm>
+</configuration>

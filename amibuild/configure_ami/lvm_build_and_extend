@@ -1,0 +1,23 @@
+VOLUME_GROUP_NAME="volume_one"
+LOGICAL_VOLUME_NAME="lv1"
+PRIMARY_VOLUME_DEVICE=/dev/sdm
+DATA_DIR=/data
+DEVICE_MOUNT=/dev/$VOLUME_GROUP_NAME/$LOGICAL_VOLUME_NAME
+BLOCKSIZE=512
+
+pvcreate $PRIMARY_VOLUME_DEVICE
+vgcreate $VOLUME_GROUP_NAME $PRIMARY_VOLUME_DEVICE
+PE_SIZE=`vgdisplay $VOLUME_GROUP_NAME | grep "Total PE" | sed -e "s/Total PE//g" -e "s/ //g"`
+lvcreate -l $PE_SIZE $VOLUME_GROUP_NAME -n $LOGICAL_VOLUME_NAME
+vgextend $VOLUME_GROUP_NAME $PRIMARY_VOLUME_DEVICE
+mkdir $DATA_DIR
+mkfs.xfs -f -b size=$BLOCKSIZE $DEVICE_MOUNT
+mount $DEVICE_MOUNT $DATA_DIR
+EXTEND_WITH_DEVICE=/dev/sdg
+
+pvcreate $EXTEND_WITH_DEVICE
+vgextend $VOLUME_GROUP_NAME $EXTEND_WITH_DEVICE
+VG_EXTENTS=`vgdisplay $VOLUME_GROUP_NAME | grep "Free  PE / Size" | sed -e "s/Free  PE \/ Size//g" -e "s/ //g" -e "s/B//" | cut -d/ -f1`
+lvextend -l+$VG_EXTENTS $DEVICE_MOUNT
+xfs_growfs $DATA_DIR
+

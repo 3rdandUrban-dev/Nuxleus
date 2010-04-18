@@ -1,0 +1,3 @@
+#!/bin/bash
+qemu-img convert nuxleus.core.img -O qcow nuxleus-0.1.9-x86.qcow
+#dd if=./nuxleus-0.1.9-x86.qcow bs=1k | gzip -v9 > nuxleus-0.1.9-x86.qcow.gz
