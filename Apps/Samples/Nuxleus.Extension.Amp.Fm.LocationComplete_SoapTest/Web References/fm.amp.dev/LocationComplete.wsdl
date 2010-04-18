@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s0="http://amp.fm/service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" name="LocationComplete" targetNamespace="http://amp.fm/service" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://amp.fm/service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://nuxleus.com/entity" />
+      <xs:element name="GetLocation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="regularExpression" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="ArrayOfEntity">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://nuxleus.com/entity" minOccurs="0" maxOccurs="unbounded" name="Entity" type="q1:Entity" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ValueType" />
+      <xs:element name="GetLocationResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="GetLocationResult" type="s0:ArrayOfEntity" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ArrayOfEntity" nillable="true" type="s0:ArrayOfEntity" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://nuxleus.com/entity" elementFormDefault="qualified" targetNamespace="http://nuxleus.com/entity" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://amp.fm/service" />
+      <xs:complexType name="Entity">
+        <xs:complexContent mixed="false">
+          <xs:extension base="s0:ValueType">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="Term" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Label" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Scheme" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="GetLocationSoapIn">
+    <part name="parameters" element="s0:GetLocation" />
+  </message>
+  <message name="GetLocationSoapOut">
+    <part name="parameters" element="s0:GetLocationResponse" />
+  </message>
+  <message name="GetLocationHttpGetIn">
+    <part name="regularExpression" type="s:string" />
+  </message>
+  <message name="GetLocationHttpGetOut">
+    <part name="Body" element="s0:ArrayOfEntity" />
+  </message>
+  <message name="GetLocationHttpPostIn">
+    <part name="regularExpression" type="s:string" />
+  </message>
+  <message name="GetLocationHttpPostOut">
+    <part name="Body" element="s0:ArrayOfEntity" />
+  </message>
+  <portType name="LocationCompleteSoap">
+    <operation name="GetLocation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegularExpression</wsdl:documentation>
+      <input message="s0:GetLocationSoapIn" />
+      <output message="s0:GetLocationSoapOut" />
+    </operation>
+  </portType>
+  <portType name="LocationCompleteSoap12">
+    <operation name="GetLocation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegularExpression</wsdl:documentation>
+      <input message="s0:GetLocationSoapIn" />
+      <output message="s0:GetLocationSoapOut" />
+    </operation>
+  </portType>
+  <portType name="LocationCompleteHttpGet">
+    <operation name="GetLocation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegularExpression</wsdl:documentation>
+      <input message="s0:GetLocationHttpGetIn" />
+      <output message="s0:GetLocationHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="LocationCompleteHttpPost">
+    <operation name="GetLocation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a collection of locations that most closely match the given RegularExpression</wsdl:documentation>
+      <input message="s0:GetLocationHttpPostIn" />
+      <output message="s0:GetLocationHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="LocationCompleteSoap" type="s0:LocationCompleteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetLocation">
+      <soap:operation soapAction="http://amp.fm/service/GetLocation" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="LocationCompleteSoap12" type="s0:LocationCompleteSoap12">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetLocation">
+      <soap12:operation soapAction="http://amp.fm/service/GetLocation" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="LocationCompleteHttpGet" type="s0:LocationCompleteHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetLocation">
+      <http:operation location="/GetLocation" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="LocationCompleteHttpPost" type="s0:LocationCompleteHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetLocation">
+      <http:operation location="/GetLocation" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="LocationComplete">
+    <port name="LocationCompleteSoap" binding="s0:LocationCompleteSoap">
+      <soap:address location="http://dev.amp.fm/service/search/get-location-complete/default.asmx" />
+    </port>
+    <port name="LocationCompleteSoap12" binding="s0:LocationCompleteSoap12">
+      <soap12:address location="http://dev.amp.fm/service/search/get-location-complete/default.asmx" />
+    </port>
+    <port name="LocationCompleteHttpGet" binding="s0:LocationCompleteHttpGet">
+      <http:address location="http://dev.amp.fm/service/search/get-location-complete/default.asmx" />
+    </port>
+    <port name="LocationCompleteHttpPost" binding="s0:LocationCompleteHttpPost">
+      <http:address location="http://dev.amp.fm/service/search/get-location-complete/default.asmx" />
+    </port>
+  </service>
+</definitions>
