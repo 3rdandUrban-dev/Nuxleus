@@ -1,1 +1,0 @@
-﻿<%@ Application Inherits="Global" CodeBehind="App_Code\Global.cs" %>
