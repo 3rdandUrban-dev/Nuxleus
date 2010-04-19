@@ -127,7 +127,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core</Name>
+      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
       <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>

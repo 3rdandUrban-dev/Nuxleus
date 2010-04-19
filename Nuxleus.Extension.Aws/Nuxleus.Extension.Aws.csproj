@@ -156,11 +156,10 @@
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
       <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EC2\" />
-    <Folder Include="S3\" />
-    <Folder Include="SQS\" />
+    <ProjectReference Include="..\Vendor\Amazon\AWSSDKForNet.Src_1.0.6\AWSSDKSrc.csproj">
+      <Project>{40E91E2D-70F3-463D-9E3E-408AE2A70BA8}</Project>
+      <Name>AWSSDKSrc</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -178,6 +177,11 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EC2\" />
+    <Folder Include="S3\" />
+    <Folder Include="SQS\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
