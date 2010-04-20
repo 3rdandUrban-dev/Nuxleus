@@ -12,7 +12,7 @@
     <AssemblyName>Nuxleus.Web</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <FileUpgradeFlags>
@@ -144,6 +144,7 @@
     <Compile Include="HttpHandler\NuxleusHttpAsyncRequestValidationHandler.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncRedirectHandler.cs" />
     <Compile Include="HttpHandler\XPathServiceOperationManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\HttpHandlerHelpers.cs" />
     <Compile Include="XmlServiceOperation\Context.cs" />
     <Compile Include="HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs" />
@@ -223,7 +224,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AsyncResult\" />
-    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

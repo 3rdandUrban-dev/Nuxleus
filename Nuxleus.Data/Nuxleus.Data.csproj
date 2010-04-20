@@ -5,19 +5,19 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</ProjectGuid>
+    <ProjectGuid>{C9FAE033-6205-4F31-BEE9-028FB867F516}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuxleus.Messaging</RootNamespace>
-    <AssemblyName>Nuxleus.Messaging</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Nuxleus.Data</RootNamespace>
+    <AssemblyName>Nuxleus.Data</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -42,7 +42,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\docs\Nuxleus.Messaging.XML</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -55,15 +54,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ALAZ.SystemEx, Version=1.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
-    </Reference>
-    <Reference Include="ALAZ.SystemEx.NetEx, Version=1.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
-    </Reference>
-    <Reference Include="AWSSDK, Version=1.0.6.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK, Version=1.0.7.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\AWSSDK.dll</HintPath>
     </Reference>
@@ -75,10 +69,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Redis, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack.Redis.dll</HintPath>
-    </Reference>
     <Reference Include="ServiceStack.ServiceInterface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ServiceStack.ServiceInterface.dll</HintPath>
@@ -89,36 +79,6 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Core\*.cs" />
-    <Compile Include="Message\IMessage.cs" />
-    <Compile Include="LLUP\*.cs" />
-    <Compile Include="LLUP\Filters\*.cs" />
-    <Compile Include="LLUP\Subscribers\*.cs" />
-    <Compile Include="LoadBalancer\*.cs" />
-    <Compile Include="Message\Message.cs" />
-    <Compile Include="Message\MessageClient.cs" />
-    <Compile Include="Message\MessageServer.cs" />
-    <Compile Include="Message\MessageService.cs" />
-    <Compile Include="Notification\*.cs" />
-    <Compile Include="PostOffice\*.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QS\BlipMessageServerHander.cs" />
-    <Compile Include="QS\QSToLLUPHandler.cs" />
-    <Compile Include="Server\*.cs" />
-    <Compile Include="XMPP\*.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
-      <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
-      <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>
-      <Name>Nuxleus.PubSub</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

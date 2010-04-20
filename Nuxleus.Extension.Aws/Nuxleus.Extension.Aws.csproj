@@ -55,6 +55,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AWSSDK, Version=1.0.6.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\AWSSDK.dll</HintPath>
+    </Reference>
     <Reference Include="protobuf-net, Version=1.0.0.244, Culture=neutral, PublicKeyToken=257b51d87d2e4d67">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\protobuf-net.dll</HintPath>
@@ -155,10 +159,6 @@
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
       <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Vendor\Amazon\AWSSDKForNet.Src_1.0.6\AWSSDKSrc.csproj">
-      <Project>{40E91E2D-70F3-463D-9E3E-408AE2A70BA8}</Project>
-      <Name>AWSSDKSrc</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
