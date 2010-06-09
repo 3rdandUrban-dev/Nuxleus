@@ -204,7 +204,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Messaging" depends="init Nuxleus.Core Nuxleus.PubSub Nuxleus.Vendor">
+  <target name="Nuxleus.Messaging" depends="init Nuxleus.Core Nuxleus.PubSub">
     <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/Nuxleus.Messaging/**/*.cs"/>
@@ -214,7 +214,9 @@
         <include name="System.Xml.dll"/>
         <include name="${build.dir}/Nuxleus.Core.dll"/>
         <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
-        <include name="${build.dir}/Nuxleus.PubSub.dll"/>
+        <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
+	<include name="${dependencies.dir}/ALAZ.SystemEx.dll"/>
+	<include name="${build.dir}/Nuxleus.PubSub.dll"/>
         <include name="${build.dir}/Nuxleus.Vendor.dll"/>
         <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
       </references>
@@ -238,7 +240,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Service" depends="init Nuxleus.Core Nuxleus.Messaging Nuxleus.Vendor">
+  <target name="Nuxleus.Service" depends="init Nuxleus.Core Nuxleus.Messaging">
     <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/Nuxleus.Service/**/*.cs"/>
@@ -263,7 +265,7 @@
       </references>
     </csc>
   </target>
-  <target name="Nuxleus.Vendor" depends="init">
+  <!--<target name="Nuxleus.Vendor" depends="init">
     <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <exclude name="${vendor.dir}/ALAZ/Source/ALAZ.SystemEx/Properties/AssemblyInfo.cs"/>
@@ -278,7 +280,7 @@
         <include name="System.Windows.Forms.dll"/>
       </references>
     </csc>
-  </target>
+  </target>-->
   <target name="Nuxleus.Web" depends="init Nuxleus.Service Nuxleus.Geo Nuxleus.Extension.Aws Nuxleus.Messaging Nuxleus.PubSub Xameleon">
     <csc target="library" unsafe="True" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
@@ -407,7 +409,7 @@
       </references>
     </csc>
   </target>
-  <target name="LLUPRouterService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+  <target name="LLUPRouterService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/ServiceApps/LLUP/Router.cs"/>
@@ -415,7 +417,6 @@
       <references>
         <include name="${dependencies.dir}/log4net.dll"/>
         <include name="${build.dir}/Nuxleus.Service.dll"/>
-        <include name="${build.dir}/Nuxleus.Vendor.dll"/>
         <include name="${build.dir}/Nuxleus.Messaging.dll"/>
         <include name="System.dll"/>
         <include name="System.ServiceProcess.dll"/>
@@ -425,7 +426,7 @@
       </references>
     </csc>
   </target>
-  <target name="LLUPPublisherService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+  <target name="LLUPPublisherService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/ServiceApps/LLUP/Publisher.cs"/>
@@ -443,7 +444,7 @@
       </references>
     </csc>
   </target>
-  <target name="LLUPSubscriberService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+  <target name="LLUPSubscriberService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/ServiceApps/LLUP/Subscriber.cs"/>
@@ -461,7 +462,7 @@
       </references>
     </csc>
   </target>
-  <target name="ReplicationService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+  <target name="ReplicationService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/ServiceApps/ReplicationService/**/*.cs"/>
@@ -479,7 +480,7 @@
       </references>
     </csc>
   </target>
-  <target name="QSToLLUPService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+  <target name="QSToLLUPService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/ServiceApps/QueueServerService/*.cs"/>
@@ -498,7 +499,7 @@
       </references>
     </csc>
   </target>
-  <target name="QueueServerService" depends="init Nuxleus Nuxleus.Service Nuxleus.Vendor Nuxleus.Messaging">
+  <target name="QueueServerService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
     <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
       <sources>
         <include name="${source.dir}/ServiceApps/QueueServerService/Program.cs"/>
@@ -662,7 +663,7 @@
     <call target="Nuxleus.Messaging"/>
     <call target="Nuxleus.PubSub"/>
     <call target="Nuxleus.Service"/>
-    <call target="Nuxleus.Vendor"/>
+    <!--<call target="Nuxleus.Vendor"/>-->
     <call target="Nuxleus.Web"/>
         <!-- <call target="Nuxleus.Web.Services"/> -->
     <call target="MPAPI"/>
