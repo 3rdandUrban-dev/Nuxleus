@@ -1,0 +1,74 @@
+body {
+margin:0px;
+padding:0px;
+font-family: 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
+font-size:100%;
+text-align: center;
+text-transform:lowercase; 
+color:#588099;
+}
+ul  { 
+display:block;
+list-style-type: none;
+margin: 0px;
+padding: 0px;
+width:100%;
+}
+li  { 
+display:block;
+width:100%;
+padding:5px 0px 5px 0px;
+margin:0px;
+font-size:medium;
+}
+.border-bar {
+border-bottom:2px solid #588099; 
+border-top:2px solid #588099;
+}
+a {
+text-transform:uppercase;
+font-size:small;
+color:#CC6600;
+}
+a:hover {
+background-color:#588099;
+color:#FFF;
+}
+#top-bar {
+margin-top:10px;
+width:99%;
+margin-left:auto;
+margin-right:auto;
+}
+#bottom-date-bar {
+margin-bottom:10px;
+width:99%;
+margin-left:auto;
+margin-right:auto;
+}
+#atom-bar {
+font-size:small;
+}
+#main {
+margin-left:auto;
+margin-right:auto;
+}
+#nuxleus {
+border:0px;
+width:500px;
+height:500px;
+}
+#valid-atom {
+/* empty */
+}
+#valid-atom a {
+background-color:#FFF;
+}
+#valid-atom a:hover {
+background-color:#FFF;
+}
+#valid-atom-img {
+border:0px;
+}
+
+

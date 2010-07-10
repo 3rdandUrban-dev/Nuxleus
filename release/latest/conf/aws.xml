@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<aws>
+  <key id="you@yourcompany.com" friendly-name="primary">
+    <public>YOUR-PUBLIC-KEY</public>
+    <private>YOUR-PRIVATE-KEY</private>
+  </key>
+</aws>

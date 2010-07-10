@@ -1,0 +1,49 @@
+<Type Name="Patch" FullName="Algorithm.Diff.Patch">
+  <TypeSignature Language="C#" Value="public class Patch : System.Collections.IEnumerable" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.IEnumerable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Members>
+    
+    
+    
+    
+    
+    
+  
+  
+  
+  <Member MemberName="Apply">
+      <MemberSignature Language="C#" Value="public System.Collections.IList Apply (System.Collections.IList original);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.IList</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="original" Type="System.Collections.IList" />
+      </Parameters>
+      <Docs>
+        <param name="original">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>A compactly represented difference between an original document and a revision.</summary>
+    <remarks>
+      <para>A Patch contains just the information necessary to transform one side of a <see cref="T:Algorithm.Diff.Diff" /> into the other side.  It contains a list of the regions in the documents in which there are differences, and in the cases of changes and insertions it contains the changed and inserted data from the revision.  It contains no data from the original document.</para>
+
+<para>A Patch object may or may not be initialized with document data.  When it is created by a Diff object, is has a reference to the original and revision documents.  When it is deserialized from storage, it does not have document data.  (It only has the changed data from the revised document.)  Only when it has document data is it possible to output the entire revised document.</para></remarks>
+  </Docs>
+</Type>

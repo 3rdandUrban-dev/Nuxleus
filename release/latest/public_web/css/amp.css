@@ -1,0 +1,134 @@
+body {
+    margin:0px;
+    padding:0px;
+    font-family: 'Trebuchet MS', Verdana, Arial, Helvetica, sans-serif;
+    font-size:100%;
+    text-align: left;
+    color:#CCC;
+    background:#993300 url("/images/speaker-mesh_hi-res_60.jpg") 0 0 repeat;
+    background-attachment: fixed;
+}
+img {
+    border:0;
+}
+a {
+    margin:0px 1px;
+    padding:0px 3px;
+    color:#CC6600;
+    background-color:inherit;
+    text-decoration:none;
+}
+a:hover {
+    color:#CC6600;
+    background-color:inherit;
+    text-decoration:underline;
+}
+ul {
+    display:block;
+    list-style-type:none;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    background-color: Transparent;
+}
+li {
+    display:inline;
+    width:auto;
+    font-size:medium;
+background-color: Transparent;
+
+}
+ul.list li {
+    display: block;
+}
+ul.TtoB li {
+    display:block;
+}
+ul.LtoR li {
+    display:inline;
+    text-align: left;
+}
+ul.LtoR li:first-child {
+    margin-left:5px;
+}
+ul.RtoL li {
+    text-align: right;
+}
+.base {
+background-color: Transparent;
+
+}
+#copyright {
+    margin-top:20px;
+    margin-bottom:5px;
+}
+#copyright li {
+    font-size:small;
+}
+.meta {
+    text-align:center;
+    color:#CCC;
+    background-color: Transparent;
+    padding-top:5px;
+    padding-bottom:5px;
+    width:95%;
+    margin-right:auto;
+    margin-left:auto;
+}
+.meta-borders {
+    border-top: 1px dotted #CCC;
+    border-bottom: 1px dotted #CCC;
+}
+#header {
+    position:relative;
+    z-index:1;
+}
+#tag-line {
+  margin-top:0px;
+  text-align: right;
+  margin-right:10px;
+}
+#info {
+    padding:1px;
+    margin-right:auto;
+    margin-left:auto;
+    width:97%;
+    margin-bottom:2px;
+}
+#info li {
+    margin-top:0px;
+    margin-bottom:0px;
+}
+#center {
+    height:auto;
+    margin-top:3em;
+    padding-top:.25em;
+    position:relative;
+}
+
+#info {
+    color:#CCC;
+    background-color:inherit;
+    padding:5px 0px 5px 0px;
+    text-align:center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size:medium;
+}
+#info li > a {
+    margin:0px 5px 0px 5px;
+    padding:0px 5px 0px 5px;
+    color:#CCC;
+    background-color:#000;
+    text-decoration:none;
+    z-index:0;
+}
+ul #info li > a:hover {
+    color:#000;
+    background-color:#FFF;
+}
+  li.spacer{
+   width:25%;
+   border-bottom:1px dotted #FFF;
+   margin:20px auto 0;
+  }

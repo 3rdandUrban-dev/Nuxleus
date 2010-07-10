@@ -1,0 +1,124 @@
+<Type Name="Merge" FullName="Algorithm.Diff.Merge">
+  <TypeSignature Language="C#" Value="public class Merge : System.Collections.IEnumerable" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.IEnumerable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Merge (System.Collections.IList original, System.Collections.IList[] changed, System.Collections.IComparer comparer, System.Collections.IHashCodeProvider hashcoder);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="original" Type="System.Collections.IList" />
+        <Parameter Name="changed" Type="System.Collections.IList[]" />
+        <Parameter Name="comparer" Type="System.Collections.IComparer" />
+        <Parameter Name="hashcoder" Type="System.Collections.IHashCodeProvider" />
+      </Parameters>
+      <Docs>
+        <summary>Computes how to merge the changes between an original document and a collection of revised versions.</summary>
+        <param name="original">The original document.  For instance, an array of strings representing the lines of a file.</param>
+        <param name="changed">An array of revised documents.</param>
+        <param name="comparer">Null to use the objects' own <see cref="M:System.Object.Equals" /> method to determine equality among objects in the lists, or a <see cref="T:System.Collections.IComparer" /> object to use to perform equality tests.</param>
+        <param name="hashcoder">Null to use the objects' own <see cref="M:System.Object.GetHashCode" /> method to determine hash codes for the objects in the lists, or a <see cref="T:System.Collections.IHashCodeProvider" /> object to use to provide the hash codes.</param>
+        <remarks>This constructor first performs diffs between the original document and each of the revised versions.  For more information on how the diff is computed, and about how to use the <paramref name="comparer" /> and <paramref name="hashcoder" /> parameters, see <see cref="C:Algorithm.Diff.Diff(System.Collections.IList,System.Collections.IList,System.Collections.IComparer,System.Collections.IHashCodeProvider)" />.</remarks>
+      </Docs>
+    </Member>
+    
+    
+    <Member MemberName="MergeLists">
+      <MemberSignature Language="C#" Value="public static System.Collections.IList MergeLists (System.Collections.IList original, System.Collections.IList[] changed, System.Collections.IComparer comparer, System.Collections.IHashCodeProvider hashcoder);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.IList</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="original" Type="System.Collections.IList" />
+        <Parameter Name="changed" Type="System.Collections.IList[]" />
+        <Parameter Name="comparer" Type="System.Collections.IComparer" />
+        <Parameter Name="hashcoder" Type="System.Collections.IHashCodeProvider" />
+      </Parameters>
+      <Docs>
+        <summary>Returns a new document that is the merger of the changes from the set of revised documents over the original.</summary>
+        <param name="original">The original document.</param>
+        <param name="changed">The set of revised versions.</param>
+        <param name="comparer">An optional comparer.</param>
+        <param name="hashcoder">An optional hash code provider.</param>
+        <returns>The merged document.  Each element of the returned list is either an element from the original document, an element from one of the revised documents, or a <see cref="T:Algorithm.Diff.Merge+Conflict" /> object.</returns>
+        <remarks>For more information on how to use the <paramref name="comparer" /> and <paramref name="hashcoder" /> parameters, see <see cref="C:Algorithm.Diff.Diff(System.Collections.IList,System.Collections.IList,System.Collections.IComparer,System.Collections.IHashCodeProvider)" />.</remarks>
+      </Docs>
+    </Member>
+    
+  
+  <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Merge (string original, string[] changed, System.Collections.IComparer comparer);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="original" Type="System.String" />
+        <Parameter Name="changed" Type="System.String[]" />
+        <Parameter Name="comparer" Type="System.Collections.IComparer" />
+      </Parameters>
+      <Docs>
+        <param name="original">The original document.</param>
+        <param name="changed">An array of changed documents.</param>
+        <param name="comparer">A comparer to use to compare substrings of the documents, or <see langword="null" /> to have the default string comparer used.</param>
+        <summary>Computes how to merge the changes between an original document and a collection of revised versions using the <see cref="Algorithm.Diff.TextDiff" /> object.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Merge (Algorithm.Diff.IDiff[] diffs);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="diffs" Type="Algorithm.Diff.IDiff[]" />
+      </Parameters>
+      <Docs>
+        <param name="diffs">An array of <see cref="T:Algorithm.Diff.Diff" /> objects.</param>
+        <summary>Performs a merge of the provided diffs.  The base document must be the left list in each diff.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>A set of diffs all based on a common original document.</summary>
+    <remarks>
+      <para>Use this class to merge multiple <see cref="T:Algorithm.Diff.Diff" /> or <see cref="T:Algorithm.Diff.Patch" /> objects, all of which created based on the same base document.</para>
+
+<para>The result of the merger is a list of <see cref="T:Algorithm.Diff.Merge+Hunk" /> objects, each of which represents a segment of the original document.  A hunk can represent a range in the original document in which no changes were made in any of the revisions, or a range in which one or more of the revised documents had changes.</para>
+
+<para>The hunks are accessed through a for-each over the Merge object.</para>
+
+<example>
+  <code lang="C#">
+Merge m = new Merge("A few good men.", new string[] { "A few bad men.", "A few good women." }, null);
+		
+foreach (Merge.Hunk hunk in m) {
+    if (hunk.Same) {
+        // This region had no changes.
+    } else if (!hunk.Conflict) {
+        int idx = hunk.ChangedIndex();
+        if (hunk.Original().Count == 0) {
+            // Something was inserted in the idx'th document
+            WriteList(hunk.Range(idx));
+        } else if (hunk.Range(idx).Count == 0) {
+            // Something was deleted in the idx'th document
+            WriteList(hunk.Original());
+        } else {
+            // The hunk was a normal change
+            WriteList(hunk.Original());
+            WriteList(hunk.Range(idx));
+        }
+    } else {
+        // There was a conflict.
+    }
+  </code>
+</example></remarks>
+  </Docs>
+</Type>

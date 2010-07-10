@@ -1,0 +1,32 @@
+<Type Name="XmlOutputStructuredDiff" FullName="Algorithm.Diff.XmlOutputStructuredDiff">
+  <TypeSignature Language="C#" Value="public class XmlOutputStructuredDiff : Algorithm.Diff.StructuredDiff" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Algorithm.Diff.StructuredDiff</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Members>
+    
+  <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public XmlOutputStructuredDiff (System.Xml.XmlWriter output, string context);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="output" Type="System.Xml.XmlWriter" />
+        <Parameter Name="context" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="output">To be added.</param>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>This is a utility class for structured diffs and is not yet documented.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/transform/base.xslt"?>
+<service:operation xmlns:at="http://atomictalk.org" xmlns:service="http://xameleon.org/service" xmlns:operation="http://xameleon.org/service/operation" xmlns:param="http://xameleon.org/service/session/param">
+<param:uri>{query-string:uri}</param:uri> 
+<param:xpath>{query-string:xpath}</param:xpath>
+<operation:proxy xmlns:proxy="http://xameleon.org/service/proxy" >
+    <proxy:return-xml-from-html uri="{$uri}" xpath="{$xpath}"/>
+  </operation:proxy>
+</service:operation>

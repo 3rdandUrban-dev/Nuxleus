@@ -1,0 +1,203 @@
+<Type Name="StructuredDiff" FullName="Algorithm.Diff.StructuredDiff">
+  <TypeSignature Language="C#" Value="public abstract class StructuredDiff" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected StructuredDiff ();" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddInterface">
+      <MemberSignature Language="C#" Value="public virtual void AddInterface (Type type, Algorithm.Diff.NodeInterface nodeInterface);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="System.Type" />
+        <Parameter Name="nodeInterface" Type="Algorithm.Diff.NodeInterface" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <param name="nodeInterface">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CompareLists">
+      <MemberSignature Language="C#" Value="public float CompareLists (System.Collections.IList left, System.Collections.IList right);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="System.Collections.IList" />
+        <Parameter Name="right" Type="System.Collections.IList" />
+      </Parameters>
+      <Docs>
+        <param name="left">To be added.</param>
+        <param name="right">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Compare">
+      <MemberSignature Language="C#" Value="public void Compare (object left, object right);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="System.Object" />
+        <Parameter Name="right" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="left">To be added.</param>
+        <param name="right">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WritePushNode">
+      <MemberSignature Language="C#" Value="protected abstract void WritePushNode (Algorithm.Diff.NodeInterface nodeInterface, object left, object right);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nodeInterface" Type="Algorithm.Diff.NodeInterface" />
+        <Parameter Name="left" Type="System.Object" />
+        <Parameter Name="right" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="nodeInterface">To be added.</param>
+        <param name="left">To be added.</param>
+        <param name="right">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WritePushSame">
+      <MemberSignature Language="C#" Value="protected abstract void WritePushSame ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteNodeSame">
+      <MemberSignature Language="C#" Value="protected abstract void WriteNodeSame (Algorithm.Diff.NodeInterface nodeInterface, object left, object right);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="nodeInterface" Type="Algorithm.Diff.NodeInterface" />
+        <Parameter Name="left" Type="System.Object" />
+        <Parameter Name="right" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="nodeInterface">To be added.</param>
+        <param name="left">To be added.</param>
+        <param name="right">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WritePopSame">
+      <MemberSignature Language="C#" Value="protected abstract void WritePopSame ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteNodeChange">
+      <MemberSignature Language="C#" Value="protected abstract void WriteNodeChange (Algorithm.Diff.NodeInterface leftInterface, object left, Algorithm.Diff.NodeInterface rightInterface, object right);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="leftInterface" Type="Algorithm.Diff.NodeInterface" />
+        <Parameter Name="left" Type="System.Object" />
+        <Parameter Name="rightInterface" Type="Algorithm.Diff.NodeInterface" />
+        <Parameter Name="right" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="leftInterface">To be added.</param>
+        <param name="left">To be added.</param>
+        <param name="rightInterface">To be added.</param>
+        <param name="right">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteNodesRemoved">
+      <MemberSignature Language="C#" Value="protected abstract void WriteNodesRemoved (System.Collections.IList objects);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="objects" Type="System.Collections.IList" />
+      </Parameters>
+      <Docs>
+        <param name="objects">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteNodesAdded">
+      <MemberSignature Language="C#" Value="protected abstract void WriteNodesAdded (System.Collections.IList objects);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="objects" Type="System.Collections.IList" />
+      </Parameters>
+      <Docs>
+        <param name="objects">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WritePopNode">
+      <MemberSignature Language="C#" Value="protected abstract void WritePopNode ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>This class is not yet documented.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

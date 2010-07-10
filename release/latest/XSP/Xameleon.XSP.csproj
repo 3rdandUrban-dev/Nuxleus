@@ -1,0 +1,99 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+    ToolsVersion="3.5">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProductVersion>9.0.20404</ProductVersion>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{B5AB69BA-2B93-4850-9DA0-302D257B154B}</ProjectGuid>
+        <OutputType>Exe</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>Mono.WebServer</RootNamespace>
+        <AssemblyName>xsp2</AssemblyName>
+        <StartupObject> </StartupObject>
+        <FileUpgradeFlags> </FileUpgradeFlags>
+        <UpgradeBackupLocation> </UpgradeBackupLocation>
+        <OldToolsVersion>2.0</OldToolsVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>..\WebApp\bin\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference
+            Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+            <SpecificVersion>False</SpecificVersion>
+            <HintPath>..\Dependencies\Mono.Posix.dll</HintPath>
+        </Reference>
+        <Reference
+            Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+            <SpecificVersion>False</SpecificVersion>
+            <HintPath>..\Dependencies\Mono.Security.dll</HintPath>
+        </Reference>
+        <Reference Include="System" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Web" />
+        <Reference Include="System.Xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <!-- <Compile Include="..\vendorextensions\mono\FastCgi\Mono.WebServer.FastCgi\server.cs">
+            <Link>server.cs</Link>
+        </Compile>
+        <Compile Include="..\vendorextensions\mono\FastCgi\Mono.WebServer.FastCgi\ApplicationHost.cs">
+            <Link>ApplicationHost.cs</Link>
+        </Compile>
+        <Compile Include="..\vendorextensions\mono\FastCgi\Mono.WebServer.FastCgi\ConfigurationManager.cs">
+            <Link>ConfigurationManager.cs</Link>
+        </Compile>
+        <Compile Include="..\vendorextensions\mono\FastCgi\Mono.WebServer.FastCgi\ConfigurationManager.xml">
+            <Link>ConfigurationManager.xml</Link>
+        </Compile>
+        <Compile Include="..\vendorextensions\mono\FastCgi\Mono.WebServer.FastCgi\Responder.cs">
+            <Link>Responder.cs</Link>
+        </Compile>
+        <Compile Include="..\vendorextensions\mono\FastCgi\Mono.WebServer.FastCgi\WebSource.cs">
+            <Link>WebSource.cs</Link>
+        </Compile>
+        <Compile Include="..\vendorextensions\mono\FastCgi\Mono.WebServer.FastCgi\WorkerRequest.cs">
+            <Link>WorkerRequest.cs</Link>
+        </Compile>
+        <Compile Include="..\vendorextensions\mono\FastCgi\Mono.WebServer.FastCgi\AssemblyInfo.cs">
+            <Link>AssemblyInfo.cs</Link>
+        </Compile> -->
+        <Compile Include="ModMonoApplicationHost.cs" />
+        <Compile Include="ModMonoRequest.cs" />
+        <Compile Include="ModMonoTCPWebSource.cs" />
+        <Compile Include="ModMonoWorkerRequest.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="security.cs" />
+        <Compile Include="server.cs" />
+        <Compile Include="Tracing.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Xameleon\Xameleon.csproj">
+            <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
+            <Name>Xameleon</Name>
+        </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

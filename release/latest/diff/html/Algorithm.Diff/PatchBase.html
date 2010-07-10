@@ -1,0 +1,187 @@
+<html>
+  <head>
+    <title>Algorithm.Diff.PatchBase</title>
+    <style>
+					a { text-decoration: none }
+				
+					.CollectionTitle { font-weight: bold }
+					.PageTitle { font-size: 150%; font-weight: bold }
+
+					.Summary { }
+					.Signature { }					
+					.Remarks { }
+					.Members { }
+					.Copyright { }
+					
+					.Section { font-size: 125%; font-weight: bold }
+					.SectionBox { margin-left: 2em }
+					.NamespaceName { display: block; font-size: 105%; font-weight: bold; color: #000066; border-bottom: 1px solid black }
+					.NamespaceName:hover { font-style: italic }
+					.NamespaceSumary { }
+					.MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+					.MemberSignature { font-family: monospace; margin-top: 1em; }
+					.MemberBox { }
+					.Subsection { font-size: 105%; font-weight: bold }
+					.SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+					
+					.SignatureTable { background-color: #c0c0c0; }
+					.EnumerationsTable th { background-color: #f2f2f2; }
+					.CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+					
+					.MembersListing td { margin: 0px; border: 1px solid black; padding: .25em }
+					
+					.TypesListing td { margin: 0px;  padding: .25em }
+					
+					.titlebar {
+						color: #efefef;
+						font-size: 14pt;
+						font-family: Trebuchet MS;
+						border: 0;
+						margin: 0;
+						padding: 1em;
+						background: #666666;
+					}
+					.titlebar a {
+						color: #efefef;
+					}
+				</style>
+  </head>
+  <body style="margin: 0px;">
+    <div class="titlebar">
+      <div class="CollectionTitle">
+        <a href="../index.html">Diff</a>
+			:
+			<a href="index.html">Algorithm.Diff Namespace</a></div>
+      <div class="PageTitle">PatchBase</div>
+    </div>
+    <div style="padding: 1em">
+      <p class="Summary">The abstract parent class of the Diff and Patch objects.</p>
+      <div class="Signature">
+        <table class="SignatureTable" cellspacing="0" width="100%">
+          <tr>
+            <td>
+              <table class="InnerSignatureTable" cellpadding="10" cellspacing="0" width="100%">
+                <tr bgcolor="#f2f2f2">
+                  <td>public abstract class  <b>PatchBase</b> :
+		
+								<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IEnumerable">IEnumerable</a></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <br>
+        </br>
+      </div>
+      <div class="Remarks">
+        <div class="Subsection">Remarks</div>
+        <div class="SubsectionBox">None.</div>
+        <div class="Section">Members</div>
+        <div class="SectionBox">
+          <p>
+						See Also: Inherited members from
+						<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Object">object</a>.
+					</p>
+          <div class="Subsection" style="margin-bottom: .75em">Properties</div>
+          <div class="SubsectionBox">
+            <table Class="MembersListing">
+              <tr valign="top">
+                <td>
+                  <b>
+                    <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmmntmx002Fmpart2mx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmPatchBase.xmlElementm1m4m0m0m">Left</a>
+                  </b>
+					[read-only]
+					<div>abstract </div></td>
+                <td>
+                  <i>
+                    <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a>
+                  </i>. The left side of this Diff or Patch.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <b>
+                    <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmmntmx002Fmpart2mx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmPatchBase.xmlElementm2m4m0m0m">Right</a>
+                  </b>
+					[read-only]
+					<div>abstract </div></td>
+                <td>
+                  <i>
+                    <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a>
+                  </i>. The right side of this Diff or Patch.</td>
+              </tr>
+            </table>
+          </div>
+          <div class="Subsection" style="margin-bottom: .75em">Methods</div>
+          <div class="SubsectionBox">
+            <table Class="MembersListing">
+              <tr valign="top">
+                <td>abstract </td>
+                <td>
+                  <b>
+                    <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmmntmx002Fmpart2mx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmPatchBase.xmlElementm0m4m0m0m">GetEnumerator</a>
+                  </b>()<nobr>
+						:
+						<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IEnumerator">IEnumerator</a></nobr><div>Returns an enumerator over the Hunks of this Diff or Patch.</div></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="Members">
+        <div class="Section">Member Details</div>
+        <div class="SectionBox">
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmmntmx002Fmpart2mx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmPatchBase.xmlElementm0m4m0m0m">
+          </a>
+          <div class="MemberName">GetEnumerator</div>
+          <div class="MemberSignature">public abstract virtual <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IEnumerator">IEnumerator</a> <b>GetEnumerator</b> ()</div>
+          <div class="MemberBox">
+            <p>Returns an enumerator over the Hunks of this Diff or Patch.</p>
+            <div class="Subsection">Returns</div>
+            <div class="SubsectionBox">An enumerator over <a href="../Algorithm.Diff/Diff+Hunk.html">Algorithm.Diff.Diff+Hunk</a> objects.</div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">None.</div>
+            <hr size="1">
+            </hr>
+          </div>
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmmntmx002Fmpart2mx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmPatchBase.xmlElementm1m4m0m0m">
+          </a>
+          <div class="MemberName">Left</div>
+          <div class="MemberSignature">public abstract virtual <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a> <b>Left</b>  
+						{
+						 get; 
+						}
+					</div>
+          <div class="MemberBox">
+            <p>The left side of this Diff or Patch.</p>
+            <div class="Subsection">Value</div>
+            <div class="SubsectionBox">The left (original) document.</div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">If this is a Patch object, this property returns null when the document is not available, such as when the Patch was created through deserialization from storage.</div>
+            <hr size="1">
+            </hr>
+          </div>
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmmntmx002Fmpart2mx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmPatchBase.xmlElementm2m4m0m0m">
+          </a>
+          <div class="MemberName">Right</div>
+          <div class="MemberSignature">public abstract virtual <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a> <b>Right</b>  
+						{
+						 get; 
+						}
+					</div>
+          <div class="MemberBox">
+            <p>The right side of this Diff or Patch.</p>
+            <div class="Subsection">Value</div>
+            <div class="SubsectionBox">The right (revised) document.</div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">If this is a Patch object, this property returns null when the document is not available, such as when the Patch was created through deserialization from storage.</div>
+            <hr size="1">
+            </hr>
+          </div>
+        </div>
+      </div>
+      <hr size="1" />
+      <div class="Copyright">
+      </div>
+    </div>
+  </body>
+</html>

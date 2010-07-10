@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/transform/client-side/atomictalk-browser.xsl"?>
+<!--
+  COPYRIGHT: (c) 2006, M. David Peterson (mailto:m.david@xmlhacker.com; http://mdavid.name/)
+  LICENSE: The code contained in this file is licensed under The MIT License. Please see
+  http://www.opensource.org/licenses/mit-license.php for specific detail.
+-->
+<my:session xmlns:my="http://xameleon.org/my">
+  <my:page xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:page="http://atomictalk.org/page"
+      xmlns:service="http://atomictalk.org/page/service"
+      xmlns:output="http://atomictalk.org/page/output"
+      xmlns:head="http://atomictalk.org/page/head"
+      xmlns:body="http://atomictalk.org/page/body"
+      xmlns:advice="http://aspectxml.org/advice"
+      xmlns:view="http://atomictalk.org/page/view"
+      xmlns:form="http://atomictalk.org/page/view/form"
+      xmlns:menu="http://atomictalk.org/page/view/menu"
+      xmlns:resource="http://atomictalk.org/page/resource"
+      xmlns:property="http://atomictalk.org/page/property"
+      xmlns:variable="http://atomictalk.org/page/variable"
+      xmlns:model="http://atomictalk.org/page/model"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:app="http://purl.org/atom/app#"
+      xmlns:atom="http://www.w3.org/2005/Atom">
+    <page:config>
+      <page:output type="xhtml-strict" cdata-section-elements="script" indent="no">
+        <output:xhtml-strict>
+          <output:doctype-system>-//W3C//DTD XHTML 1.0 Strict//EN</output:doctype-system>
+          <output:doctype-public>http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</output:doctype-public>
+          <output:method>html</output:method>
+        </output:xhtml-strict>
+      </page:output>
+      <page:variable>
+        <variable:page>
+          <property:title>@@date@@ : @@$domain.label$@@</property:title>
+        </variable:page>
+        <variable:date>August 13th, 2007</variable:date>
+        <variable:protocol>http://</variable:protocol>
+        <variable:space>&#160;</variable:space>
+        <variable:dot>.</variable:dot>
+        <variable:colon>:</variable:colon>
+        <variable:domain>
+          <property:name>localhost</property:name>
+          <!-- <property:tld>com</property:tld> 
+          <property:sub>austin</property:sub>-->
+          <property:label>(son(ic()ra)dar)</property:label>
+        </variable:domain>
+        <variable:location>
+          <property:base>@@$base-uri$@@</property:base>
+          <property:path>frontpage</property:path>
+          <property:label>front page</property:label>
+        </variable:location>
+      </page:variable>
+      <page:advice>
+        <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
+        <advice:page-title>@@domain.label@@::@@date@@</advice:page-title>
+        <advice:date>August 15th, 2007</advice:date>
+        <advice:protocol>http://</advice:protocol>
+        <advice:space>&#160;</advice:space>
+        <advice:dot>.</advice:dot>
+        <advice:colon>:</advice:colon>
+        <!-- <advice:port>9998</advice:port> -->
+        <advice:domain-name>dev.amp</advice:domain-name>
+        <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
+        <!-- |$$test:@@sub-domain@@IfTrue:@@sub-domain@@@@dot@@IfFalse:@@empty@@$$| -->
+        <advice:domain.label>amp.fm</advice:domain.label>
+        <advice:root>fm</advice:root>
+        <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
+        <advice:service-gateway>@@base-uri@@/service</advice:service-gateway>
+        <advice:openid-gateway>/service/gatekeeper/login?</advice:openid-gateway>
+        <advice:search-summary>/summary?</advice:search-summary>
+        <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
+        <advice:location>frontpage</advice:location>
+        <advice:location.label>front page</advice:location.label>
+        <advice:current-location.label>Austin, TX</advice:current-location.label>
+        <advice:static>@@base-uri@@</advice:static>
+        <advice:static-css-browser>@@static@@/css/@@browser@@</advice:static-css-browser>
+        <advice:static-js-browser>@@static@@/js/@@browser@@</advice:static-js-browser>
+        <advice:empty></advice:empty>
+        <advice:lat>resource:ip-location/lat</advice:lat>
+        <advice:long>resource:ip-location/long</advice:long>
+        <advice:max-depth>8</advice:max-depth>
+        <advice:google-maps.key>ABQIAAAAEPQGOws5xNa--1d-oQQDjhTGATBBJj1ek54YiRFsu72FXrsCiBTXTbpwI990CeZRoqCkI4KdcuGiLQ</advice:google-maps.key>
+        <advice:search.box.label>Search @@domain.label@@ for...</advice:search.box.label>
+        <advice:openid.label>Authenticate w/ OpenID</advice:openid.label>
+        <advice:browser compare="xsl:vendor" compare-with="Microsoft">ie</advice:browser>
+        <advice:browser compare="xsl:vendor" compare-with="Transformiix">mozilla</advice:browser>
+        <advice:browser compare="xsl:vendor" compare-with="libxslt">safari</advice:browser>
+        <advice:browser compare="xsl:vendor" compare-with="Opera">opera</advice:browser>
+        <advice:search-form.text>@value@|default:'Search...'|</advice:search-form.text>
+        <advice:search-form.input>@value@|default:'Go!'|</advice:search-form.input>
+        <advice:search-form.maxlength>@@maxlength@@|default:'255'|</advice:search-form.maxlength>
+        <advice:search-form.method>@method@|default:@@generate@@|</advice:search-form.method>
+        <advice:search-form.action>@action@|default:@@generate@@|</advice:search-form.action>
+        <advice:search-summary>summary/default.omx?</advice:search-summary>
+        <advice:target.default>@target@|default:@@generate@@|</advice:target.default>
+        <advice:name.default>@id@|default:@@generate@@|</advice:name.default>
+        <advice:class.default>@class@|default:@@empty@@|</advice:class.default>
+        <advice:id.default>@id@|default:@@generate@@|</advice:id.default>
+        <advice:toggle.id>control-center</advice:toggle.id>
+        <advice:toggle.duration>500</advice:toggle.duration>
+        <advice:onload.mySlider>mySlider.toggle()</advice:onload.mySlider>
+        <advice:atom>application/atom+xml</advice:atom>
+        <advice:bungee.app>fc0e61d2-0dea-4e3e-bc5f-4a9a29d70d74</advice:bungee.app>
+        <advice:bungee.grid>http://grid-den.bungeegrid.com</advice:bungee.grid>
+      </page:advice>
+    </page:config>
+    <page:service>
+      <service:ip-location href="@@service-gateway@@/ipgeolocator/geocode" />
+      <service:language-selector href="@@TODO@@" />
+    </page:service>
+    <page:model>
+      <model:lang binding="@@atom@@">
+        @@TODO|$comment: Data that binds a language code with the proper URI to gain access to content in the specified language$|@@ 
+      </model:lang>
+      <model:menu binding="@@atom@@">
+        @@TODO|$comment: $|@@
+      </model:menu>
+    </page:model>
+    <page:view>
+      <view:search-form
+          xmlns:form="http://atomictalk.org/page/view/form">
+        <form:search-form type="html"
+            id="@@id.generate|default:@id@|@@"
+            method="@@search-form.method@@"
+            action="@@search-form.action@@"
+            target="@@target.default@@"
+            class="@@class.default@@">
+          <form:input type="text"
+              name="@name@|required|"
+              id="@@id.generate|default:@id@|@@"
+              maxlength="@@search-form.maxlength@@"
+              value="@@search-form.text@@"
+              onclick="if (this.value == '@@search-form.text@@') this.value = ''; return true;"
+              onblur="if (this.value == '') this.value = '@@search-form.text@@'; return true;"
+              class="@@class.default@@" />
+          <form:input type="hidden"
+              id="@@id.generate|default:@id@|@@"
+              name="@name@|required|"
+              value="@value@|required|"
+              class="@@class.default@@" />
+          <form:input type="submit"
+              id="@@id.generate|default:@id@|@@"
+              value="@@search-form.input@@"
+              class="@@class.default@@" />
+        </form:search-form>
+      </view:search-form>
+      <view:menu>
+        <menu:list type="html"
+            id="@@id.generate|default:@id@|@@">
+          <menu:item type="label">@label@</menu:item>
+          <menu:item type="link">
+            <html:a href="@href@">@label@</html:a>
+          </menu:item>
+        </menu:list>
+      </view:menu>
+    </page:view>
+    <page:resource>
+      <resource:ip-location type="string" src="@@service-gateway@@@@service:ip-location@@" />
+      <resource:help-support type="page" href="@@base-uri@@/support/" label="Help/Support" />
+      <resource:create-new-account type="page" href="@@base-uri@@/create-new-account/" label="Create New" />
+      <resource:login type="page" href="@@base-uri@@/login/" label="Login" />
+      <resource:lang type="string" src="@src@" label="model:lang/$@@language@@/@label" />
+    </page:resource>
+    <page:output>
+      <page:head>
+        <head:title>@@page-title@@</head:title>
+        <head:include fileType="css" href="@@static@@/css/base.css" />
+        <head:include fileType="css" href="@@static@@/css/transparency.css" />
+        <head:include fileType="css" href="@@static-css-browser@@.css" />
+        <head:include fileType="javascript" src="http://dev.amp.fm/blog/js/jquery.js" />
+        <head:include fileType="javascript" src="http://dev.amp.fm/blog/js/jquery.jsmaps.js" />
+        <head:include fileType="javascript" src="http://dev.amp.fm/blog/js/blog.js" />
+        <head:include fileType="javascript" src="http://dev.amp.fm/blog/js/geo.js" />
+      </page:head>
+      <page:body>
+        <!-- <body:onload action="document.getElementById('@@bungee.app@@').src='@@bungee.grid@@/v507.24/runtime?cmd=run&amp;deployId=26662C8D-61CD-4DEB-A1E9-1C18BD08BFB3&amp;w=800&amp;h=400&amp;z=fc0e61d2-0dea-4e3e-bc5f-4a9a29d70d74'"/> -->
+        <body:html>
+          <ul>
+            <li id="view">
+              <ul class="list RtoL menu">
+                <li>
+                  <a href="@@base-uri@@/fan">Fan</a>
+                </li>
+                <li>
+                  <a href="@@base-uri@@/musician/">Musician</a>
+                </li>
+                <li>
+                  <a href="@@base-uri@@/audio_production/">Audio Production</a>
+                </li>
+                <li>
+                  <a href="@@base-uri@@/venue/">Venue</a>
+                </li>
+                <li>
+                  <a href="@@base-uri@@/label/">Label</a>
+                </li>
+              </ul>
+            </li>
+            <li class="base" id="header">
+              <ul class="list bg-fade">
+                <li class="base" id="top-navigation">
+                  <ul id="d5e35" class="list LtoR">
+                    <li id="d5e38" class="current">
+                      <a href="http://dev.amp.fm/" id="d5e39">On The Air</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="base" id="location-search" style="z-index:10">
+                  <ul id="d5e42" class="list LtoR">
+                    <li id="d5e44" style="margin-left:5px;">
+                      <a href="http://dev.amp.fm/">
+                        <img alt="" height="84" src="/images/AmpFM-script.png" width="265"/>
+                      </a>
+                    </li>
+                    <li class="base width" id="openid">
+                      <label>
+                        <a style="border:0" class="no-bg-color" href="/what_is_openid">What is OpenID?</a>
+                      </label>
+                      <form id="openid-login" method="get" action="/gatekeeper/login?" target="_top">
+                        <input id="openid-text" type="text" name="uname" class="single-input" maxlength="255" value="Authenticate w/ OpenID" onclick="if (this.value == 'Authenticate w/ OpenID') this.value = ''; return true;" onblur="if (this.value == '') this.value = 'Authenticate w/ OpenID'; return true;"></input>
+                        <input type="hidden" name="return_location" value="http://dev.amp.fm/?"></input>
+                        <button class="Button submit">
+                          <span class="ButtonLabel">Submit</span>
+                        </button>
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="base" id="instance">
+              <!-- <script xmlns="http://www.w3.org/1999/xhtml" src="http://dev.amp.fm/blog/js/calendar.js" type="application/javascript" language="javascript"></script>
+              <link xmlns="http://www.w3.org/1999/xhtml" media="screen" href="http://dev.amp.fm/blog/css/calendar.css" type="text/css" rel="stylesheet"/>
+              <div xmlns="http://www.w3.org/1999/xhtml" id="eventform" class="form">
+                <h2>Add a new event</h2>
+                <form action="/blog/pub/event" method="post">
+                  <table>
+                    <tr>
+                      <td>Name:</td>
+
+                      <td>
+                        <input type="text" id="name" name="name"/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align:top;">Description:</td>
+                      <td>
+                        <textarea id="description" rows="5" cols="50" name="description"></textarea>
+
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="vertical-align:top;">Location:</td>
+                      <td>
+                        <input type="hidden" id="location" name="location"/>
+                        <div id="gmap"/>
+                      </td>
+
+                    </tr>
+                    <tr>
+                      <td>Start date:</td>
+                      <td>
+                        <input type="text" class="calendarSelectDate" name="startdate" id="startdate"/>
+                      </td>
+                    </tr>
+                    <tr>
+
+                      <td>End date:</td>
+                      <td>
+                        <input type="text" class="calendarSelectDate" name="enddate" id="enddate"/>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Genre:</td>
+                      <td>
+
+                        <select id="genre" name="genre">
+                          <option value="blues">Blues</option>
+                          <option value="jazz">jazz</option>
+                          <option value="electronica">Electronica</option>
+                          <option value="rock">Rock</option>
+                          <option value="funk">Funk</option>
+
+                          <option value="hiphop">Hip-Hop</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Tags:</td>
+                      <td>
+                        <input type="text" id="tags" name="tags"/>
+
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2">
+                        <input type="submit" value="Go"/>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+
+              </div> --></li>
+
+            <li class="base" id="footer">
+              <ul class="list">
+                <li id="search-box" class="border-top">
+                  <!-- <form id="search" method="get" action="@@search-summary@@" target="_top">
+                    <input id="search-text" class="single-input" type="text" name="search" maxlength="255"
+                        value="@@search.box.label@@"
+                        onclick="if (this.value == '@@search.box.label@@') this.value = ''; return true;"
+                        onblur="if (this.value == '') this.value = '@@search.box.label@@'; return true;" />
+                    <button class="Button submit">
+                      <span class="ButtonLabel">Submit</span>
+                    </button>
+                  </form> -->
+                  <form style="margin:0px;padding:0px;" method="get"
+                      action="http://www.google.com/custom"
+                      target="_top">
+                    <input type="hidden" name="domains" value="amp.fm" />
+                    <input id="query" type="text" name="q" size="32" maxlength="255"
+                        value="@@search.box.label@@"
+                        onclick="if (this.value == '@@search.box.label@@') this.value = ''; return true;"
+                        onblur="if (this.value == '') this.value = '@@search.box.label@@'; return true;" />
+                    <input id="go" type="submit" name="sa" value="Search" />
+                    <input type="hidden" name="client" value="pub-5176870901224890" />
+                    <input type="hidden" name="forid" value="1" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <input type="hidden" name="oe" value="UTF-8" />
+                    <input type="hidden" name="safe" value="active" />
+                    <input type="hidden" name="cof"
+                        value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1;" />
+                    <input type="hidden" name="hl" value="en" />
+                    <input type="hidden" name="sitesearch" value="amp.fm" checked="checked" />
+                  </form>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </body:html>
+      </page:body>
+    </page:output>
+  </my:page>
+</my:session>

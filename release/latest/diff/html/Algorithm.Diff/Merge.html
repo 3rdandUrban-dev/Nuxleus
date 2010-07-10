@@ -1,0 +1,294 @@
+<html>
+  <head>
+    <title>Algorithm.Diff.Merge</title>
+    <style>
+					a { text-decoration: none }
+				
+					.CollectionTitle { font-weight: bold }
+					.PageTitle { font-size: 150%; font-weight: bold }
+
+					.Summary { }
+					.Signature { }					
+					.Remarks { }
+					.Members { }
+					.Copyright { }
+					
+					.Section { font-size: 125%; font-weight: bold }
+					.SectionBox { margin-left: 2em }
+					.NamespaceName { display: block; font-size: 105%; font-weight: bold; color: #000066; border-bottom: 1px solid black }
+					.NamespaceName:hover { font-style: italic }
+					.NamespaceSumary { }
+					.MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+					.MemberSignature { font-family: monospace; margin-top: 1em; }
+					.MemberBox { }
+					.Subsection { font-size: 105%; font-weight: bold }
+					.SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+					
+					.SignatureTable { background-color: #c0c0c0; }
+					.EnumerationsTable th { background-color: #f2f2f2; }
+					.CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+					
+					.MembersListing td { margin: 0px; border: 1px solid black; padding: .25em }
+					
+					.TypesListing td { margin: 0px;  padding: .25em }
+					
+					.titlebar {
+						color: #efefef;
+						font-size: 14pt;
+						font-family: Trebuchet MS;
+						border: 0;
+						margin: 0;
+						padding: 1em;
+						background: #666666;
+					}
+					.titlebar a {
+						color: #efefef;
+					}
+				</style>
+  </head>
+  <body style="margin: 0px;">
+    <div class="titlebar">
+      <div class="CollectionTitle">
+        <a href="../index.html">Diff</a>
+			:
+			<a href="index.html">Algorithm.Diff Namespace</a></div>
+      <div class="PageTitle">Merge</div>
+    </div>
+    <div style="padding: 1em">
+      <p class="Summary">A set of diffs all based on a common original document.</p>
+      <div class="Signature">
+        <table class="SignatureTable" cellspacing="0" width="100%">
+          <tr>
+            <td>
+              <table class="InnerSignatureTable" cellpadding="10" cellspacing="0" width="100%">
+                <tr bgcolor="#f2f2f2">
+                  <td>public class  <b>Merge</b> :
+		
+								<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IEnumerable">IEnumerable</a></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <br>
+        </br>
+      </div>
+      <div class="Remarks">
+        <div class="Subsection">Remarks</div>
+        <div class="SubsectionBox">
+          <p>Use this class to merge multiple <a href="../Algorithm.Diff/Diff.html">Algorithm.Diff.Diff</a> or <a href="../Algorithm.Diff/Patch.html">Algorithm.Diff.Patch</a> objects, all of which created based on the same base document.</p>
+          <p>The result of the merger is a list of <a href="../Algorithm.Diff/Merge+Hunk.html">Algorithm.Diff.Merge+Hunk</a> objects, each of which represents a segment of the original document.  A hunk can represent a range in the original document in which no changes were made in any of the revisions, or a range in which one or more of the revised documents had changes.</p>
+          <p>The hunks are accessed through a for-each over the Merge object.</p>
+          <table class="CodeExampleTable">
+            <tr>
+              <td>
+                <b>
+                  <font size="-1">C# Example</font>
+                </b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre>
+Merge m = new Merge("A few good men.", new string[] { "A few bad men.", "A few good women." }, null);
+		
+foreach (Merge.Hunk hunk in m) {
+    if (hunk.Same) {
+        // This region had no changes.
+    } else if (!hunk.Conflict) {
+        int idx = hunk.ChangedIndex();
+        if (hunk.Original().Count == 0) {
+            // Something was inserted in the idx'th document
+            WriteList(hunk.Range(idx));
+        } else if (hunk.Range(idx).Count == 0) {
+            // Something was deleted in the idx'th document
+            WriteList(hunk.Original());
+        } else {
+            // The hunk was a normal change
+            WriteList(hunk.Original());
+            WriteList(hunk.Range(idx));
+        }
+    } else {
+        // There was a conflict.
+    }
+  </pre>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="Section">Members</div>
+        <div class="SectionBox">
+          <p>
+						See Also: Inherited members from
+						<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Object">object</a>.
+					</p>
+          <div class="Subsection" style="margin-bottom: .75em">Constructors</div>
+          <div class="SubsectionBox">
+            <table Class="MembersListing">
+              <tr valign="top">
+                <td>
+                  <div>
+                    <b>
+                      <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmMerge.xmlElementm3m4m0m0m">Merge</a>
+                    </b>(<a href="../Algorithm.Diff/IDiff.html">IDiff</a>[])</div>Performs a merge of the provided diffs.  The base document must be the left list in each diff.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                    <b>
+                      <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmMerge.xmlElementm2m4m0m0m">Merge</a>
+                    </b>(<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>[], <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IComparer">IComparer</a>)</div>Computes how to merge the changes between an original document and a collection of revised versions using the  object.</td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                    <b>
+                      <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmMerge.xmlElementm0m4m0m0m">Merge</a>
+                    </b>(<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a>[], <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IComparer">IComparer</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IHashCodeProvider">IHashCodeProvider</a>)</div>Computes how to merge the changes between an original document and a collection of revised versions.</td>
+              </tr>
+            </table>
+          </div>
+          <div class="Subsection" style="margin-bottom: .75em">Methods</div>
+          <div class="SubsectionBox">
+            <table Class="MembersListing">
+              <tr valign="top">
+                <td>static </td>
+                <td>
+                  <b>
+                    <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmMerge.xmlElementm1m4m0m0m">MergeLists</a>
+                  </b>(<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a>[], <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IComparer">IComparer</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IHashCodeProvider">IHashCodeProvider</a>)<nobr>
+						:
+						<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a></nobr><div>Returns a new document that is the merger of the changes from the set of revised documents over the original.</div></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="Members">
+        <div class="Section">Member Details</div>
+        <div class="SectionBox">
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmMerge.xmlElementm0m4m0m0m">
+          </a>
+          <div class="MemberName">Merge Constructor
+					</div>
+          <div class="MemberSignature">public  <b>Merge</b> (<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a> original, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a>[] changed, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IComparer">IComparer</a> comparer, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IHashCodeProvider">IHashCodeProvider</a> hashcoder)</div>
+          <div class="MemberBox">
+            <p>Computes how to merge the changes between an original document and a collection of revised versions.</p>
+            <div class="Subsection">Parameters</div>
+            <div class="SubsectionBox">
+              <dl>
+                <dt>
+                  <i>original</i>
+                </dt>
+                <dd>The original document.  For instance, an array of strings representing the lines of a file.</dd>
+                <dt>
+                  <i>changed</i>
+                </dt>
+                <dd>An array of revised documents.</dd>
+                <dt>
+                  <i>comparer</i>
+                </dt>
+                <dd>Null to use the objects' own System.Object.Equals method to determine equality among objects in the lists, or a <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IComparer">IComparer</a> object to use to perform equality tests.</dd>
+                <dt>
+                  <i>hashcoder</i>
+                </dt>
+                <dd>Null to use the objects' own System.Object.GetHashCode method to determine hash codes for the objects in the lists, or a <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IHashCodeProvider">IHashCodeProvider</a> object to use to provide the hash codes.</dd>
+              </dl>
+            </div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">This constructor first performs diffs between the original document and each of the revised versions.  For more information on how the diff is computed, and about how to use the <i>comparer</i> and <i>hashcoder</i> parameters, see Algorithm.Diff.Diff(System.Collections.IList,System.Collections.IList,System.Collections.IComparer,System.Collections.IHashCodeProvider).</div>
+            <hr size="1">
+            </hr>
+          </div>
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmMerge.xmlElementm1m4m0m0m">
+          </a>
+          <div class="MemberName">MergeLists</div>
+          <div class="MemberSignature">public static <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a> <b>MergeLists</b> (<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a> original, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IList">IList</a>[] changed, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IComparer">IComparer</a> comparer, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IHashCodeProvider">IHashCodeProvider</a> hashcoder)</div>
+          <div class="MemberBox">
+            <p>Returns a new document that is the merger of the changes from the set of revised documents over the original.</p>
+            <div class="Subsection">Parameters</div>
+            <div class="SubsectionBox">
+              <dl>
+                <dt>
+                  <i>original</i>
+                </dt>
+                <dd>The original document.</dd>
+                <dt>
+                  <i>changed</i>
+                </dt>
+                <dd>The set of revised versions.</dd>
+                <dt>
+                  <i>comparer</i>
+                </dt>
+                <dd>An optional comparer.</dd>
+                <dt>
+                  <i>hashcoder</i>
+                </dt>
+                <dd>An optional hash code provider.</dd>
+              </dl>
+            </div>
+            <div class="Subsection">Returns</div>
+            <div class="SubsectionBox">The merged document.  Each element of the returned list is either an element from the original document, an element from one of the revised documents, or a <a href="../Algorithm.Diff/Merge+Conflict.html">Algorithm.Diff.Merge+Conflict</a> object.</div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">For more information on how to use the <i>comparer</i> and <i>hashcoder</i> parameters, see Algorithm.Diff.Diff(System.Collections.IList,System.Collections.IList,System.Collections.IComparer,System.Collections.IHashCodeProvider).</div>
+            <hr size="1">
+            </hr>
+          </div>
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmMerge.xmlElementm2m4m0m0m">
+          </a>
+          <div class="MemberName">Merge Constructor
+					</div>
+          <div class="MemberSignature">public  <b>Merge</b> (<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a> original, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>[] changed, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Collections.IComparer">IComparer</a> comparer)</div>
+          <div class="MemberBox">
+            <p>Computes how to merge the changes between an original document and a collection of revised versions using the  object.</p>
+            <div class="Subsection">Parameters</div>
+            <div class="SubsectionBox">
+              <dl>
+                <dt>
+                  <i>original</i>
+                </dt>
+                <dd>The original document.</dd>
+                <dt>
+                  <i>changed</i>
+                </dt>
+                <dd>An array of changed documents.</dd>
+                <dt>
+                  <i>comparer</i>
+                </dt>
+                <dd>A comparer to use to compare substrings of the documents, or <tt>null</tt> to have the default string comparer used.</dd>
+              </dl>
+            </div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">None.</div>
+            <hr size="1">
+            </hr>
+          </div>
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmMerge.xmlElementm3m4m0m0m">
+          </a>
+          <div class="MemberName">Merge Constructor
+					</div>
+          <div class="MemberSignature">public  <b>Merge</b> (<a href="../Algorithm.Diff/IDiff.html">IDiff</a>[] diffs)</div>
+          <div class="MemberBox">
+            <p>Performs a merge of the provided diffs.  The base document must be the left list in each diff.</p>
+            <div class="Subsection">Parameters</div>
+            <div class="SubsectionBox">
+              <dl>
+                <dt>
+                  <i>diffs</i>
+                </dt>
+                <dd>An array of <a href="../Algorithm.Diff/Diff.html">Algorithm.Diff.Diff</a> objects.</dd>
+              </dl>
+            </div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">None.</div>
+            <hr size="1">
+            </hr>
+          </div>
+        </div>
+      </div>
+      <hr size="1" />
+      <div class="Copyright">
+      </div>
+    </div>
+  </body>
+</html>
