@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# Resource script for VTun
+#
+# Author: M. David Peterson <m.david@xmlhacker.com>
+#
+# Description: Ensures that all nfsd processes have been killed before restarting them.
+#
+# License:  GNU General Public License (GPL)
+#
+# Copyright:    (C) 2008 M. David Peterson
+
+# Source function library.
+. /etc/ha.d/resource.d//hto-mapfuncs
+
+usage() {
+  echo "Usage: $0 $LEGAL_ACTIONS"
+  exit 1
+}
+
+case "$#" in
+  *)  
+        cmd=$1
+        ;;
+esac
+
+OCF_TYPE=killnfsd
+OCF_RESOURCE_INSTANCE=${OCF_TYPE}
+export OCF_TYPE OCF_RESOURCE_INSTANCE
+
+ra_execocf $cmd
