@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="NotSupportedEncoding" type="System.String" mimetype="System.String">
+		<value>Not supported encoding '{0}'.</value>
+	</data>
+	<data name="OutOfMemoryWhileFetchingResource" type="System.String" mimetype="System.String">
+		<value>Out of memory error while reading resource '{0}'.</value>
+	</data>
+	<data name="IOErrorWhileFetchingResource" type="System.String" mimetype="System.String">
+		<value>I/O error while reading resource '{0}'.</value>
+	</data>
+	<data name="UnknownParseAttrValue" type="System.String" mimetype="System.String">
+		<value>Unknown 'parse' attribute value: '{0}'.</value>
+	</data>
+	<data name="UnknownParseAttrValueLong" type="System.String" mimetype="System.String">
+		<value>Unknown 'parse' attribute value: '{0}'. In {1}, Line {2}, Position {3}.</value>
+	</data>
+	<data name="NonXmlCharacter" type="System.String" mimetype="System.String">
+		<value>Included document contains a character not allowed in XML: 0x{0}.</value>
+	</data>
+	<data name="CircularInclusion" type="System.String" mimetype="System.String">
+		<value>Circular inclusion has been detected, inclusion location: {0}.</value>
+	</data>
+	<data name="CircularInclusionLong" type="System.String" mimetype="System.String">
+		<value>Circular inclusion has been detected, inclusion location: {0}. In {1}, Line {2}, Position {3}.</value>
+	</data>
+	<data name="FatalResourceException" type="System.String" mimetype="System.String">
+		<value>Resource error has occured and no fallback has been provided: {0}.</value>
+	</data>
+	<data name="AttributeOrNamespaceInIncludeLocationError" type="System.String" mimetype="System.String">
+		<value>Include location identifies an attribute or namespace node!</value>
+	</data>
+	<data name="FallbackNotChildOfInclude" type="System.String" mimetype="System.String">
+		<value>xi:fallback element must be direct child of xi:include element. Location: {0}.</value>
+	</data>
+	<data name="FallbackNotChildOfIncludeLong" type="System.String" mimetype="System.String">
+		<value>xi:fallback element must be direct child of xi:include element. Location: {0}, Line {1}, Position {2}.</value>
+	</data>
+	<data name="URISchemaNotSupported" type="System.String" mimetype="System.String">
+		<value>URI schema is not supported: '{0}'.</value>
+	</data>
+	<data name="SecurityException" type="System.String" mimetype="System.String">
+		<value>Security exception while fetching '{0}'.</value>
+	</data>
+	<data name="ResourceError" type="System.String" mimetype="System.String">
+		<value>Resource '{0}' cannot be fetched.</value>
+	</data>
+	<data name="MissingHrefAndXpointerException" type="System.String" mimetype="System.String">
+		<value>'href' or 'xpointer' attributes can't both be omitted on xi:include element. Location: {0}."</value>
+	</data>
+	<data name="MissingHrefAndXpointerExceptionLong" type="System.String" mimetype="System.String">
+		<value>'href' or 'xpointer' attributes can't both be omitted on xi:include element. Location: {0}, Line {1}, Position {2}.</value>
+	</data>
+	<data name="IntradocumentReferencesNotSupported" type="System.String" mimetype="System.String">
+		<value>XIncludingReader doesn't support intra-document references.</value>
+	</data>
+	<data name="CustomXmlResolverError" type="System.String" mimetype="System.String">
+		<value>An exception has occured during GetEntity call to custom XmlResolver.</value>
+	</data>
+	<data name="CustomXmlResolverReturnedNull" type="System.String" mimetype="System.String">
+		<value>Custom XmlResolver returned null.</value>
+	</data>
+	<data name="CustomXmlResolverReturnedUnsupportedType" type="System.String" mimetype="System.String">
+		<value>Custom XmlResolver returned object of an unsupported type '{0}'.</value>
+	</data>
+	<data name="InvalidURI" type="System.String" mimetype="System.String">
+		<value>Invalid URI '{0}'.</value>
+	</data>
+	<data name="UnresolvableURI" type="System.String" mimetype="System.String">
+		<value>Unable to resolve URI reference '{0}'.</value>
+	</data>
+	<data name="IncludeChildOfInclude" type="System.String" mimetype="System.String">
+		<value>xi:include element cannot be child of xi:include element. Location: {0}.</value>
+	</data>
+	<data name="IncludeChildOfIncludeLong" type="System.String" mimetype="System.String">
+		<value>xi:include element cannot be child of xi:include element. Location: {0}, Line {1}, Position {2}.</value>
+	</data>
+	<data name="TwoFallbacks" type="System.String" mimetype="System.String">
+		<value>xi:include element cannot contain more than one xi:fallback element. Location: {0}.</value>
+	</data>
+	<data name="TwoFallbacksLong" type="System.String" mimetype="System.String">
+		<value>xi:include element cannot contain more than one xi:fallback element. Location: {0}, Line {1}, Position {2}.</value>
+	</data>
+	<data name="MalformedXInclusionResult" type="System.String" mimetype="System.String">
+		<value>Malformed XInclusion result - xi:include element at the top level must include a single element and optional comments and PIs.</value>
+	</data>
+	<data name="InvalidCharForAccept" type="System.String" mimetype="System.String">
+		<value>'accept' attribute contains a character not allowed in HTTP header: 0x{0}.</value>
+	</data>
+	<data name="FragmentIDInHref" type="System.String" mimetype="System.String">
+		<value>Fragment identifiers must not be used in 'href' attribute.</value>
+	</data>
+	<data name="UnknownXIncludeElement" type="System.String" mimetype="System.String">
+		<value>Unknown element in the XInclude namespace has been detected: {0}.</value>
+	</data>
+</root>

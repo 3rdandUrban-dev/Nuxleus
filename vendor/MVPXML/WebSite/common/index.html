@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Mvp.Xml project: Common module</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1><a href="../index.html">Mvp.Xml Project</a>: Common module<br>
+</h1>
+The Common module includes a set of commonly useful classes in the <span
+ style="font-family: monospace;">Mvp.Xml.Common,</span>
+<span style="font-family: monospace;">Mvp.Xml.Common.Serialization<strong>, </strong>
+    Mvp.Xml.Common.XPath</span> and <span style="font-family: Courier New">
+    Mvp.Xml.Common.Xsl </span>
+namespaces, which extend the .NET functionality available through the <a
+ target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxml.asp">
+System.Xml</a> and related namespaces.<br>
+    <br />
+    The full Common module API documentation can found here: <a href="http://mvp-xml.sourceforge.net/api/index.html">
+        for .NET 1.1</a> and <a href="http://mvp-xml.sourceforge.net/api/2.0/index.html">for
+            .NET 2.0</a>.<br />
+<br>
+The following is a list of key features, a short explanation and a link to
+its corresponding full explanation:<br>
+<br>
+<span style="font-family: monospace; font-weight: bold;"></span>
+    <h2>
+        <span style="font-weight: bold; font-family: monospace">Mvp.Xml.Common</span>
+namespace:<br>
+    </h2>
+<ul>
+  <li><a href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_XmlBaseAwareXmlTextReader.html">XmlBaseAwareXmlTextReader</a>:
+      Extended
+      <nobr><A 
+  href="http://msdn2.microsoft.com/en-us/library/System.Xml.XmlTextReader.aspx" 
+  target="sdk">XmlTextReader</A></nobr>
+      supporting <a href="http://www.w3.org/TR/xmlbase/">XML Base</a>.</li><li><a target="_blank"
+ href="http://weblogs.asp.net/cazzu/archive/2004/05/10/129106.aspx">XmlFirstUpperReader
+and XmlFirstLowerWriter</a>: used in combination
+usually for configuration files. Allows automatic case conversion to
+match .NET and XML conventions, where the former uses PascalCasing and
+the later camelCasing. Together, they provide roundtriping and
+transparent processing while maintaining the natural casing of each
+domain.</li>
+  <li><a
+ href="http://weblogs.asp.net/cazzu/archive/2004/04/23/119263.aspx">XmlFragmentStream</a>:
+allows to read a file that contains only node fragments, by faking a
+root element at the stream level. This allows loading the XML into a
+document for querying, for example, something that is not possible with
+an <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxmlxmltextreaderclasstopic.asp">
+XmlTextReader</a> alone. Very useful for logging applications that
+write XML fragments and its corresponding log analyzer.</li>
+  <li><a target="_blank"
+ href="http://weblogs.asp.net/cazzu/archive/2004/05/31/144922.aspx">XmlNodeFactory</a>:
+allows returning well-formed XML from WebServices
+without loading XmlDocument at all, by providing a factory for custom <a
+ target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxmlxmlnodeclasstopic.asp">
+XmlNode</a> adapter objects for <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxmlxmlreaderclasstopic.asp">
+XmlReader</a> and <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfSystemXmlXPathXPathNavigatorClassTopic.asp">
+XPathNavigator</a>, avoiding all re-parsing costs.</li>
+  <li><a href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_XmlNodeListFactory.html">XmlNodeListFactory</a>:
+constructs <a
+ href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemXmlXmlNodeListClassTopic.asp">XmlNodeList</a>
+instances from <a
+ href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemXmlXPathXPathNodeIteratorClassTopic.asp">XPathNodeIterator</a>
+objects. </li>
+</ul>
+<h2><span style="font-family: monospace; font-weight: bold;">Mvp.Xml.Common.Serialization</span>
+namespace:<br>
+</h2>
+<ul>
+  <li><a
+ href="http://weblogs.asp.net/cschittko/archive/2005/01/14/353435.aspx">
+XmlSerializerCache</a>: <span style="color: black;">the
+XmlSerializerCache allows to work around the (</span><a
+ href="http://blogs.xmladvice.com/kaevans/archive/2004/02/11/507.aspx">assembly
+leak problem in the XmlSerializer</a><span style="color: black;">). The
+cache will inspect if it contains any previously cached instances that
+are compatible with the parameters passed to the various overloads to
+the GetSerializer method before constructing a new XmlSerializer
+instance. It canonicalizes the parameter list to minimize the number of
+serializer objects in the cache.</span></li>
+</ul>
+<span style="font-family: monospace; font-weight: bold;"></span>
+    <h2>
+        <span style="font-weight: bold; font-family: monospace">Mvp.Xml.Common.XPath</span>
+namespace:<br>
+    </h2>
+<ul>
+  <li> <a target="_blank"
+ href="http://weblogs.asp.net/cazzu/archive/2003/10/07/30888.aspx">DynamicContext</a>:
+allows precompilation of XPath expression involving
+dynamic values for a performance increase of 1.5 x - 4 x.&nbsp; </li>
+  <li> <a target="_blank"
+ href="http://weblogs.asp.net/cazzu/archive/2004/04/02/106667.aspx">XPathCache</a>:
+based on the previous class, exposes a cache of
+precompiled XPath expressions that can be executed with a single line
+of code. Replacing existing dynamic queryies with this involves minimal
+effort and yields even greater performance than the previous one alone
+for scenarios involving queries with sort expressions. </li>
+  <li> <a target="_blank"
+ href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_XPath_IndexingXPathNavigator.html">IndexingXPathNavigator</a>:
+      enables lazy or eager indexing of any XML store (<nobr><A 
+  href="http://msdn2.microsoft.com/en-us/library/System.Xml.XmlDocument.aspx" 
+  target="sdk">XmlDocument</A></nobr>,
+      <nobr><A 
+  href="http://msdn2.microsoft.com/en-us/library/System.Xml.XPath.XPathDocument.aspx" 
+  target="sdk">XPathDocument</A></nobr>
+      or any other
+      <nobr><A 
+  href="http://msdn2.microsoft.com/en-us/library/System.Xml.XPath.IXPathNavigable.aspx" 
+  target="sdk">IXPathNavigable</A></nobr>
+      XML store) thus providing an alternative way to select nodes directly from an index
+      table instead of searhing the XML tree. This allows drastically decrease selection
+      time on preindexed selections. </li>
+    <li><span style="color: #ff3366">(v1.X only)</span> <a target="_blank"
+ href="http://weblogs.asp.net/cazzu/archive/2004/04/19/115966.aspx">XPathNavigatorReader</a>:
+implements an <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxmlxmltextreaderclasstopic.asp">
+XmlTextReader</a> over any <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfSystemXmlXPathXPathNavigatorClassTopic.asp">
+XPathNavigator</a>, effectively offering&nbsp;<a target="_blank"
+ href="http://weblogs.asp.net/cazzu/archive/2004/06/25/165375.aspx">in-memory
+XML Schema validation without re-parsing</a>,&nbsp;<a target="_blank"
+ href="http://weblogs.asp.net/cazzu/archive/2004/05/10/129101.aspx">subset
+document loading</a> through <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxmlxmlreaderclassreadinnerxmltopic.asp">
+ReadInnerXml</a> and <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxmlxmlreaderclassreadouterxmltopic.asp">
+ReadOuterXml</a> methods, and automatic XML serialization by
+implementing the <a
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxmlserializationixmlserializableclasstopic.asp">
+IXmlSerializable</a> interface. Of course you can also use just to
+query for the XML string representation from an arbitrary navigator ;). </li>
+  <li> <span style="color: #ff3366">(v1.X only) </span><a target="_blank"
+ href="http://www.tkachenko.com/blog/archives/000117.html">XmlNodeNavigator</a>:
+the <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxmlxmlnodeclasstopic.asp">
+XmlNode</a> implementation of the <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxmlxpathixpathnavigableclasscreatenavigatortopic.asp">
+IXPathNavigable.CreateNavigator</a> will always return an <a
+ target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfSystemXmlXPathXPathNavigatorClassTopic.asp">
+XPathNavigator</a> starting at the root of the document, *not* the
+current node you're standing in. This class solves this issue by
+creating a navigator that can be used to navigate the subtree. </li>
+  <li> <a target="_blank"
+ href="http://weblogs.asp.net/cazzu/archive/2004/06/24/164243.aspx">SubtreeXPathNavigator</a>:
+allows to scope a navigator to the current
+node. This allows high-performance subtree XSLT transformations without
+re-parsing.</li>
+  <li><a href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_XPath_XPathNavigatorIterator.html">XPathNavigatorIterator</a>:
+an <a
+ href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemXmlXPathXPathNodeIteratorClassTopic.asp">XPathNodeIterator</a>
+that allows arbitrary addition of the <a
+ href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemXmlXPathXPathNavigatorClassTopic.asp">XPathNavigator</a>
+nodes that belong to the set. </li>
+  <li><!--StartFragment --> <a
+ href="http://weblogs.asp.net/cazzu/archive/2004/04/26/120684.aspx">XPathIteratorReader</a>:
+exposes an <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfsystemxmlxmltextreaderclasstopic.asp">
+XmlTextReader</a> over an <a target="_blank"
+ href="http://msdn.microsoft.com/library/en-us/cpref/html/frlrfSystemXmlXPathXPathNodeIteratorClassTopic.asp">
+XPathNodeIterator</a>, with special overloads to configure the new
+faked root elemetn. Very useful if you need to return the results of a
+query from a WebService. In this case you use it in combination with
+the <a target="_blank"
+ href="http://weblogs.asp.net/cazzu/archive/2004/05/31/144922.aspx">
+XmlNodeFactory</a>.</li>
+    <li><span style="color: #ff3366">(since v2.0) </span><a href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_XPath_EmptyXPathNodeIterator.html">
+        EmptyXPathNodeIterator</a>: Empty 
+        <nobr><A 
+  href="http://msdn2.microsoft.com/en-us/library/System.Xml.XPath.XPathNodeIterator.aspx" 
+  target="sdk">XPathNodeIterator</A></nobr>
+        ,
+        used to represent empty node sequence. Can be used to return empty nodeset out
+        of an XSLT or XPath extension function.&nbsp; </li>
+    <li><span style="color: #ff3366">(since v2.0) <span style="color: #000000"><a href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_XPath_SingletonXPathNodeIterator.html">
+        SingletonXPathNodeIterator</a>: <a href="http://msdn2.microsoft.com/en-us/library/System.Xml.XPath.XPathNodeIterator.aspx"
+            target="sdk">XPathNodeIterator</a> over a single node. Can be used to return
+        a single node out of an XSLT or XPath extension function.</span></span></li>
+</ul>
+    <h2>
+        <strong><span style="font-family: Courier New">Mvp.Xml.Common.Xsl</span></strong>
+        namespace:</h2>
+    <ul>
+        <li><span style="color: #ff3366"><span style="color: #000000"><span style="color: #ff3366">
+            (since v2.0) </span><a href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_Xsl_XslReader.html">
+                XslReader</a>: allows to obtain XSLT output as XmlReader in .NET
+            2.0. &nbsp;XslReader can work in either fully buffering or concurrent mode, is very
+            efficient and fast. Contributed by Sergey Dubinets from the <a href="http://blogs.msdn.com/xmlteam">
+                Microsoft XML Team</a>.</span></span></li>
+        <li><span style="color: #ff3366">(since v2.0)</span> <a href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_Xsl_MvpXslTransform.html">
+            MvpXslTransform</a>: MvpXslTransform class extends capabilities of the
+            <nobr><A 
+  href="http://msdn2.microsoft.com/en-us/library/System.Xml.Xsl.XslCompiledTransform.aspx" 
+  target="sdk">XslCompiledTransform</A></nobr>
+            class by adding support for transforming into
+            <nobr><A 
+  href="http://msdn2.microsoft.com/en-us/library/System.Xml.XmlReader.aspx" 
+  target="sdk">XmlReader</A></nobr>
+            , vast collection of EXSLT extention functions, multiple outputs and transforming
+            of
+            <nobr><A 
+  href="http://msdn2.microsoft.com/en-us/library/System.Xml.XPath.IXPathNavigable.aspx" 
+  target="sdk">IXPathNavigable</A></nobr>
+            along with
+            <nobr><A 
+  href="http://msdn2.microsoft.com/en-us/library/System.Xml.XmlResolver.aspx" 
+  target="sdk">XmlResolver</A></nobr>
+            .</li>
+        <li><span style="color: #ff3366">(since v2.0) </span><a href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_Xsl_IXmlTransform.html">
+            IXmlTransform</a>, <a href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_Xsl_XmlInput.html">XmlInput</a>, <a
+                href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_Xsl_XmlOutput.html">XmlOutput</a>: New experimental generic
+            XML transform interface. Defines an API for transforming
+            <nobr><A 
+  href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_Xsl_XmlInput.html">XmlInput</A></nobr>
+            into
+            <nobr><A 
+  href="http://mvp-xml.sourceforge.net/api/2.0/T_Mvp_Xml_Common_Xsl_XmlOutput.html">XmlOutput</A></nobr>
+            .</li>
+    </ul>
+<hr style="width: 100%; height: 2px;">
+<p> The project is hosted at <a target="_blank"
+ href="http://www.sourceforge.net">
+SourceForge</a>. Find more at the <a
+ href="http://sourceforge.net/projects/mvp-xml">Mvp.Xml project page at
+SourceForge</a>.<br>
+<a href="http://sourceforge.net/" title="Link to SourceForge home page"><img
+ src="http://sourceforge.net/sflogo.php?group_id=102352&amp;type=1"
+ alt="SourceForge logo" border="0"></a><br>
+<code>$Id: index.html,v 1.8 2005/11/27 21:23:46 helgy Exp $</code><br>
+</p>
+<p> </p>
+</body>
+</html>

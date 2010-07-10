@@ -1,0 +1,330 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AC8B9015-E508-4E40-8E6D-C4FCF52CE4B0}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>ExsltTest</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ExsltTest</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>.\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>.\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <Name>nunit.framework</Name>
+      <HintPath>..\..\..\Program Files\NUnit 2.2\bin\nunit.framework.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\nunit.framework</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExsltCommonTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExsltDatesAndTimesTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExsltMathTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExsltRandomTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExsltRegularExpressionsTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExsltSetsTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExsltStringsTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExsltTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExsltUnitTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GDNDatesAndTimesTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GDNDynamicTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GDNMathTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GDNRegularExpressionsTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GDNSetsTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GDNStringsTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="AvailabilityTest.cmd" />
+    <Content Include="results\EXSLT\Common\node-set.xml" />
+    <Content Include="results\EXSLT\Common\object-type.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\add.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\add-duration.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\date.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\date-time.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\day-abbreviation.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\day-in-month.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\day-in-week.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\day-in-year.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\day-name.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\day-of-week-in-month.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\difference.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\duration.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\format-date.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\hour-in-day.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\leap-year.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\minute-in-hour.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\month-abbreviation.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\month-in-year.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\month-name.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\parse-date.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\second-in-minute.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\seconds.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\sum.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\time.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\week-in-month.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\week-in-year.xml" />
+    <Content Include="results\EXSLT\DatesAndTimes\year.xml" />
+    <Content Include="results\EXSLT\Math\abs.xml" />
+    <Content Include="results\EXSLT\Math\acos.xml" />
+    <Content Include="results\EXSLT\Math\asin.xml" />
+    <Content Include="results\EXSLT\Math\atan.xml" />
+    <Content Include="results\EXSLT\Math\atan2.xml" />
+    <Content Include="results\EXSLT\Math\constant.xml" />
+    <Content Include="results\EXSLT\Math\cos.xml" />
+    <Content Include="results\EXSLT\Math\exp.xml" />
+    <Content Include="results\EXSLT\Math\highest.xml" />
+    <Content Include="results\EXSLT\Math\log.xml" />
+    <Content Include="results\EXSLT\Math\lowest.xml" />
+    <Content Include="results\EXSLT\Math\max.xml" />
+    <Content Include="results\EXSLT\Math\min.xml" />
+    <Content Include="results\EXSLT\Math\power.xml" />
+    <Content Include="results\EXSLT\Math\random.xml" />
+    <Content Include="results\EXSLT\Math\sin.xml" />
+    <Content Include="results\EXSLT\Math\sqrt.xml" />
+    <Content Include="results\EXSLT\Math\tan.xml" />
+    <Content Include="results\EXSLT\Random\random-sequence.xml" />
+    <Content Include="results\EXSLT\RegularExpressions\match.xml" />
+    <Content Include="results\EXSLT\RegularExpressions\replace.xml" />
+    <Content Include="results\EXSLT\RegularExpressions\test.xml" />
+    <Content Include="results\EXSLT\Sets\difference.xml" />
+    <Content Include="results\EXSLT\Sets\distinct.xml" />
+    <Content Include="results\EXSLT\Sets\has-same-node.xml" />
+    <Content Include="results\EXSLT\Sets\intersection.xml" />
+    <Content Include="results\EXSLT\Sets\leading.xml" />
+    <Content Include="results\EXSLT\Sets\trailing.xml" />
+    <Content Include="results\EXSLT\Strings\align.xml" />
+    <Content Include="results\EXSLT\Strings\concat.xml" />
+    <Content Include="results\EXSLT\Strings\decode-uri.xml" />
+    <Content Include="results\EXSLT\Strings\encode-uri.xml" />
+    <Content Include="results\EXSLT\Strings\padding.xml" />
+    <Content Include="results\EXSLT\Strings\replace.xml" />
+    <Content Include="results\EXSLT\Strings\split.xml" />
+    <Content Include="results\EXSLT\Strings\tokenize.xml" />
+    <Content Include="results\GotDotNet\DatesAndTimes\avg.xml" />
+    <Content Include="results\GotDotNet\DatesAndTimes\day-abbreviation.xml" />
+    <Content Include="results\GotDotNet\DatesAndTimes\day-name.xml" />
+    <Content Include="results\GotDotNet\DatesAndTimes\max.xml" />
+    <Content Include="results\GotDotNet\DatesAndTimes\min.xml" />
+    <Content Include="results\GotDotNet\DatesAndTimes\month-abbreviation.xml" />
+    <Content Include="results\GotDotNet\DatesAndTimes\month-name.xml" />
+    <Content Include="results\GotDotNet\Dynamic\evaluate.xml" />
+    <Content Include="results\GotDotNet\Math\avg.xml" />
+    <Content Include="results\GotDotNet\RegularExpressions\tokenize.xml" />
+    <Content Include="results\GotDotNet\Sets\subset.xml" />
+    <Content Include="results\GotDotNet\Strings\lowercase.xml" />
+    <Content Include="results\GotDotNet\Strings\uppercase.xml" />
+    <Content Include="tests\availability.xslt" />
+    <Content Include="tests\EXSLT\Common\node-set.xslt" />
+    <Content Include="tests\EXSLT\Common\object-type.xslt" />
+    <Content Include="tests\EXSLT\Common\source.xml" />
+    <Content Include="tests\EXSLT\DatesAndTimes\add.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\add-duration.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\date.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\date-time.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\day-abbreviation.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\day-in-month.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\day-in-week.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\day-in-year.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\day-name.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\day-of-week-in-month.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\difference.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\duration.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\format-date.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\hour-in-day.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\leap-year.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\minute-in-hour.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\month-abbreviation.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\month-in-year.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\month-name.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\parse-date.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\second-in-minute.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\seconds.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\source.xml" />
+    <Content Include="tests\EXSLT\DatesAndTimes\sum.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\time.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\week-in-month.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\week-in-year.xslt" />
+    <Content Include="tests\EXSLT\DatesAndTimes\year.xslt" />
+    <Content Include="tests\EXSLT\Math\abs.xslt" />
+    <Content Include="tests\EXSLT\Math\acos.xslt" />
+    <Content Include="tests\EXSLT\Math\asin.xslt" />
+    <Content Include="tests\EXSLT\Math\atan.xslt" />
+    <Content Include="tests\EXSLT\Math\atan2.xslt" />
+    <Content Include="tests\EXSLT\Math\constant.xslt" />
+    <Content Include="tests\EXSLT\Math\cos.xslt" />
+    <Content Include="tests\EXSLT\Math\exp.xslt" />
+    <Content Include="tests\EXSLT\Math\highest.xslt" />
+    <Content Include="tests\EXSLT\Math\log.xslt" />
+    <Content Include="tests\EXSLT\Math\lowest.xslt" />
+    <Content Include="tests\EXSLT\Math\max.xslt" />
+    <Content Include="tests\EXSLT\Math\min.xslt" />
+    <Content Include="tests\EXSLT\Math\power.xslt" />
+    <Content Include="tests\EXSLT\Math\random.xslt" />
+    <Content Include="tests\EXSLT\Math\sin.xslt" />
+    <Content Include="tests\EXSLT\Math\source.xml" />
+    <Content Include="tests\EXSLT\Math\sqrt.xslt" />
+    <Content Include="tests\EXSLT\Math\tan.xslt" />
+    <Content Include="tests\EXSLT\Random\random-sequence.xslt" />
+    <Content Include="tests\EXSLT\Random\source.xml" />
+    <Content Include="tests\EXSLT\RegularExpressions\match.xslt" />
+    <Content Include="tests\EXSLT\RegularExpressions\replace.xslt" />
+    <Content Include="tests\EXSLT\RegularExpressions\source.xml" />
+    <Content Include="tests\EXSLT\RegularExpressions\test.xslt" />
+    <Content Include="tests\EXSLT\Sets\difference.xslt" />
+    <Content Include="tests\EXSLT\Sets\distinct.xslt" />
+    <Content Include="tests\EXSLT\Sets\has-same-node.xslt" />
+    <Content Include="tests\EXSLT\Sets\intersection.xslt" />
+    <Content Include="tests\EXSLT\Sets\leading.xslt" />
+    <Content Include="tests\EXSLT\Sets\source.xml" />
+    <Content Include="tests\EXSLT\Sets\trailing.xslt" />
+    <Content Include="tests\EXSLT\Strings\align.xslt" />
+    <Content Include="tests\EXSLT\Strings\concat.xslt" />
+    <Content Include="tests\EXSLT\Strings\decode-uri.xslt" />
+    <Content Include="tests\EXSLT\Strings\encode-uri.xslt" />
+    <Content Include="tests\EXSLT\Strings\padding.xslt" />
+    <Content Include="tests\EXSLT\Strings\replace.xslt" />
+    <Content Include="tests\EXSLT\Strings\source.xml" />
+    <Content Include="tests\EXSLT\Strings\split.xslt" />
+    <Content Include="tests\EXSLT\Strings\tokenize.xslt" />
+    <Content Include="tests\GotDotNet\DatesAndTimes\avg.xslt" />
+    <Content Include="tests\GotDotNet\DatesAndTimes\day-abbreviation.xslt" />
+    <Content Include="tests\GotDotNet\DatesAndTimes\day-name.xslt" />
+    <Content Include="tests\GotDotNet\DatesAndTimes\max.xslt" />
+    <Content Include="tests\GotDotNet\DatesAndTimes\min.xslt" />
+    <Content Include="tests\GotDotNet\DatesAndTimes\month-abbreviation.xslt" />
+    <Content Include="tests\GotDotNet\DatesAndTimes\month-name.xslt" />
+    <Content Include="tests\GotDotNet\DatesAndTimes\source.xml" />
+    <Content Include="tests\GotDotNet\Dynamic\evaluate.xslt" />
+    <Content Include="tests\GotDotNet\Dynamic\source.xml" />
+    <Content Include="tests\GotDotNet\Math\avg.xslt" />
+    <Content Include="tests\GotDotNet\Math\source.xml" />
+    <Content Include="tests\GotDotNet\RegularExpressions\source.xml" />
+    <Content Include="tests\GotDotNet\RegularExpressions\tokenize.xslt" />
+    <Content Include="tests\GotDotNet\Sets\source.xml" />
+    <Content Include="tests\GotDotNet\Sets\subset.xslt" />
+    <Content Include="tests\GotDotNet\Strings\lowercase.xslt" />
+    <Content Include="tests\GotDotNet\Strings\source.xml" />
+    <Content Include="tests\GotDotNet\Strings\uppercase.xslt" />
+    <Content Include="tests\invoice.xml" />
+    <Content Include="tests\invoice-processor.xsl" />
+    <Content Include="tests\regexp-match-test.xslt" />
+    <Content Include="tests\test.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Global\v2\Global.csproj">
+      <Project>{2658B682-C08B-47C0-9FEC-A990876A3F7C}</Project>
+      <Name>Global</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

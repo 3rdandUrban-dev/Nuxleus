@@ -1,0 +1,121 @@
+<?xml-stylesheet type="text/xsl" href="GDNFunctions.xsl"?>
+<function name="evaluate" namespace="http://gotdotnet.com/exslt/dynamic" prefix="dyn2">
+    <syntax>
+        <return>object</return>
+        <params>
+            <param>node-set</param>
+            <param>string</param>
+            <param optional="yes">string</param>
+        </params>        
+    </syntax>
+    <description>
+        <p>The <tt>dyn2:evaluate</tt> function evaluates a string as an XPath 
+        expression and returns the resulting value, which might be a boolean, 
+        number, string, node set, result tree fragment or external object.</p>
+        <p>First node-set argument provides a context node (the first node 
+        in the passed node-set), such that 
+        selection paths are evaluated relative to it. Second string argument 
+        is the XPath expression to be evaluated. Third optional string argument
+        provides namespace bindings to be used to resolve namespace prefixes in 
+        the XPath expression. Namespaces are defined in the XML style, as a 
+        space separated list of namespace declaration attributes.</p>                
+        <p>All namespace prefixes that are in scope for the context node (or its 
+        parent node if the context node isn't element node) can be referenced in the 
+        evaluated XPath expression. Note though that relying on namespace prefixes 
+        defined in the source XML is very unreliable. We encourage users to define 
+        namespace bindings explicitly in the third argument instead.</p>
+        <p>If the node-set passed as first argument is empty (no context node) or 
+        the expression string passed as the second argument is an invalid 
+        XPath expression (including an empty string), this function returns an 
+        empty string. Malformed namespace declarations in the third argument are 
+        ignored.</p>
+        <p>Note that this function is more limited than EXSLT's 
+        <a href="http://exslt.org/dyn/functions/evaluate/index.html">dyn:evaluate()</a> 
+        function. More formally:
+        <ul>
+            <li>No context position and context size information is available.</li>
+            <li>No variable bindings - this function is unable to evaluate XPath 
+            expressions, which contain variable references!</li>
+            <li>No custom extension functions - only core XPath functions and
+            all extension functions, supported by EXSLT.NET are available.</li>
+            <li>No current node, so the expression cannot contain the 
+            <tt>current()</tt> function calls.</li>
+            <li>No key definition information available, so the expression cannot 
+            contain the <tt>key()</tt> function calls.</li>
+            <li>No custom decimal format definitions are avilable, so the expression 
+            cannot contain the <tt>fomat-number()</tt> function calls that refer to
+            a <tt>&lt;xsl:decimal-format></tt> definition.</li>
+        </ul>
+        </p>
+        <p> You should only use this function if the expression must be constructed 
+        dynamically - otherwise it is much more efficient to use the expression 
+        literally. For expressions that simply give an element or attribute's 
+        name (to select a child element or attribute), it is more efficient to 
+        use an expression in the style:<br/>
+        <code>*[name() = $expression]</code>
+        </p>        
+    </description>
+    <sample>
+        <source><![CDATA[<data xmlns:o="http://orders.com">
+  <orders>
+    <order id="o234">T-Shirt</order>
+    <order id="o12">Polo Shirt</order>
+    <order id="o332">Shoes</order>
+  </orders>
+  <orders xmlns="http://orders.com">
+    <order id="o11">Foo</order>
+    <order id="o22">Bar</order>
+    <order id="o44">Baz</order>
+  </orders>
+  <path>/data/orders/order[@id='o12']</path>
+  <path2>orders/order[@id='o12']</path2>  
+  <path7>foo:orders/foo:order[@id='o11']</path7>
+</data>]]></source>
+        <stylesheet><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+xmlns:dyn2="http://gotdotnet.com/exslt/dynamic" exclude-result-prefixes="dyn2">
+    <xsl:output indent="yes" omit-xml-declaration="yes"/>
+    <xsl:template match="data">
+        <out>
+            <test1>                
+                <xsl:value-of select="dyn2:evaluate(., concat('2', '+', '2'))"/>
+            </test1>
+            <test2>                
+                <xsl:copy-of select="dyn2:evaluate(., /data/path)"/>
+            </test2>
+            <test3>                
+                <xsl:value-of select="dyn2:evaluate(., /data/path)/@id"/>
+            </test3>
+            <test4>                
+                <xsl:copy-of select="dyn2:evaluate(., /data/path2)"/>
+            </test4>                                                 
+            <test5>                
+                <xsl:copy-of select="dyn2:evaluate(., 'o:orders/o:order')"/>
+            </test5>            
+            <test6>
+                <xsl:variable name="namespaces">xmlns:foo="http://orders.com" xmlns:bar='http://bar.com/'</xsl:variable>                                
+                <xsl:copy-of select="dyn2:evaluate(., /data/path7, $namespaces)"/>
+            </test6>                                            
+        </out>
+    </xsl:template>
+</xsl:stylesheet>]]></stylesheet>
+        <result><![CDATA[<out>
+  <test1>4</test1>
+  <test2>
+    <order id="o12" xmlns:o="http://orders.com">Polo Shirt</order>
+  </test2>
+  <test3>o12</test3>
+  <test4>
+    <order id="o12" xmlns:o="http://orders.com">Polo Shirt</order>
+  </test4>
+  <test5>
+    <order id="o11" xmlns:o="http://orders.com" xmlns="http://orders.com">Foo</order>
+    <order id="o22" xmlns:o="http://orders.com" xmlns="http://orders.com">Bar</order>
+    <order id="o44" xmlns:o="http://orders.com" xmlns="http://orders.com">Baz</order>
+  </test5>
+  <test6>
+    <order id="o11" xmlns:o="http://orders.com" xmlns="http://orders.com">Foo</order>
+  </test6>
+</out>]]></result>
+    </sample>
+</function>

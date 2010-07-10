@@ -1,0 +1,6 @@
+---------------------------------------------------------
+January 9, 2005
+
+- Fixed bug with no indentation when using -mo
+- Fixed bug with no base URI when passing XML or XSLT via stdin and XInclude enabled
+- Fixed bug with <?xml-stylesheet href="..." type="..."?>

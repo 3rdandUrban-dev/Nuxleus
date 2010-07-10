@@ -1,0 +1,14 @@
+@echo ########### nxslt Custom Build Event has started
+@echo ########### Setting environment variables
+call "$(DevEnvDir)..\Tools\vsvars32.bat"
+@echo ########### Disassembing...
+ildasm "$(TargetFileName)" /out=nxslt.il /nobar
+@echo ########### Renaming EXSLT methods... 
+"$(ProjectDir)MethodRenamer.exe" nxslt.il nxslt.fixed.il
+@echo ########### Assembling library back...
+ilasm nxslt.fixed.il /RESOURCE=nxslt.res /EXE /OUTPUT="$(TargetFileName)" /KEY="$(ProjectDir)nxslt.snk"
+@echo ########### Cleaning...
+del nxslt.res
+del *.il
+del *.resources
+@echo ########### nxslt Custom Build Event has finished

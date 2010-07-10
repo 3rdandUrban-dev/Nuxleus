@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="InvalidTokenInElementSchemeWhileNumberExpected" type="System.String" mimetype="System.String">
+		<value>Syntax error in element() scheme data: Invalid token in ChildSequence, a number was expected.</value>
+	</data>
+	<data name="ZeroIndexInElementSchemechildSequence" type="System.String" mimetype="System.String">
+		<value>Syntax error in element() scheme data: 0 index in ChildSequence.</value>
+	</data>
+	<data name="InvalidTokenInElementSchemeWhileClosingRoundBracketExpected" type="System.String" mimetype="System.String">
+		<value>Syntax error in element() scheme data: Invalid token in ChildSequence, a closing round bracket was expected.</value>
+	</data>
+	<data name="EmptyElementSchemeXPointer" type="System.String" mimetype="System.String">
+		<value>Syntax error in element() scheme data: empty XPointer.</value>
+	</data>
+	<data name="NoSubresourcesIdentifiedException" type="System.String" mimetype="System.String">
+		<value>XPointer '{0}' doesn't identify any subresources.</value>
+	</data>
+	<data name="InvalidTokenInXmlnsSchemeWhileNCNameExpected" type="System.String" mimetype="System.String">
+		<value>Syntax error in xmlns() scheme data: Invalid token in XmlnsSchemaData, NCName was expected.</value>
+	</data>
+	<data name="SyntaxErrorInXmlnsSchemeData" type="System.String" mimetype="System.String">
+		<value>Syntax error in xmlns() scheme data: {0}</value>
+	</data>
+	<data name="SyntaxErrorInXPath1SchemeData" type="System.String" mimetype="System.String">
+		<value>Syntax error in xpath1() scheme data: {0}</value>
+	</data>
+	<data name="NullXPointer" type="System.String" mimetype="System.String">
+		<value>XPointer pointer cannot be null.</value>
+	</data>
+	<data name="CircumflexCharMustBeEscaped" type="System.String" mimetype="System.String">
+		<value>Circumflex character must be escaped in XPointer.</value>
+	</data>
+	<data name="InvalidNameToken" type="System.String" mimetype="System.String">
+		<value>Invalid Name token: {0}:{1}.</value>
+	</data>
+	<data name="UnexpectedEndOfSchemeData" type="System.String" mimetype="System.String">
+		<value>Unexpected end of scheme data.</value>
+	</data>
+	<data name="UndeclaredPrefix" type="System.String" mimetype="System.String">
+		<value>Undeclared prefix '{0}'.</value>
+	</data>
+	<data name="InvalidTokenAfterShorthandPointer" type="System.String" mimetype="System.String">
+		<value>Invalid token after shorthand pointer.</value>
+	</data>
+	<data name="InvalidToken" type="System.String" mimetype="System.String">
+		<value>Invalid token.</value>
+	</data>
+	<data name="SyntaxErrorInXPointerSchemeData" type="System.String" mimetype="System.String">
+		<value>Syntax error in xpointer() scheme data: {0}</value>
+	</data>		
+</root>

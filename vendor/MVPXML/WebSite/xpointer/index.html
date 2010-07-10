@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Mvp.Xml project: XPointer.NET module</title>
+  <link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<h1><a href="../index.html">Mvp.Xml Project</a>: XPointer.NET module<br>
+</h1>
+The XPointer.NET module provides an implementation of the&nbsp;<a
+ href="http://www.w3.org/TR/xptr-framework/">XPointer Framework
+Recommendation</a>&nbsp;written in C# for the .NET platform.
+XPointer.NET supports <a href="http://www.w3.org/TR/xptr-element/">XPointer
+element()
+Scheme</a>, <a href="http://www.w3.org/TR/xptr-xmlns/">XPointer
+xmlns() Scheme</a>, <a
+ href="http://simonstl.com/ietf/draft-stlaurent-xpath-frag-00.html">
+XPointer xpath1() Scheme</a> and <a
+ href="http://www.w3.org/TR/xptr-xpointer/">
+XPointer xpointer() Scheme</a> (XPath subset only). XPointer.NET was
+designed and implemented for the <a href="../xinclude/">XInclude.NET
+module</a>, but it can be used on
+its own.<br>
+<h2>Requirements</h2>
+<p>
+    XInclude.NET module as well as a whole Mvp.Xml library is .NET
+Framework application and requires <a href="http://msdn.microsoft.com/netframework/" target="_top">.NET Framework</a>
+    version 1.X or 2.0 to be installed.</p>
+<h2>Download</h2>
+Go to the <a href="http://sourceforge.net/project/showfiles.php?group_id=102352">Downloads</a>
+page. XPointer.NET module is a part of the Mvp.Xml library release.<h2>Installation and Documentation</h2>
+<p>Find precompiled <span style="font-family: monospace">Mvp.Xml.dll</span> &nbsp;assembly
+    in the "<font face="Courier New" style="font-family: monospace">bin</font>"
+directiory.&nbsp;The "<font face="Courier New" style="font-family: monospace">src</font>" directory contains XPointer.NET sources
+in Visual Studio .NET 2003 (XPointer/src/v1) and Visual Studio
+    2005 (XPointer/src/v2) solution form. The documentation can be
+found in the "<span style="font-family: monospace;">doc</span>"
+directory (<a href="http://mvp-xml.sourceforge.net/xpointer/index.html">online
+version</a>). Samples and test
+cases can be
+found in the "<span style="font-family: monospace;">test</span>"
+directory.<br>
+In addition to the <a
+ href="http://mvp-xml.sourceforge.net/api/index.html">API documentation</a>,
+refer to the "<a
+ href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnxmlnet/html/xinclude.asp">Combining
+XML Documents with XInclude</a>" article at the MSDN, which introduces
+XPointer itself and provides details on usage and implementation of the
+XPointer.NET module<span style="font-family: monospace;"></span>.
+Additionally doen't forget the normative
+specs:<br>
+</p>
+<ul>
+  <li><a href="http://www.w3.org/TR/xptr-framework/">XPointer Framework
+Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/xptr-element/">XPointer
+element() Scheme</a></li>
+  <li><a href="http://www.w3.org/TR/xptr-xmlns/">XPointer xmlns() Scheme</a><span
+ style="text-decoration: underline;"></span></li>
+  <li><a href="http://www.w3.org/TR/xptr-xpointer/">XPointer
+xpointer() Scheme</a></li>
+</ul>
+<h2>History</h2>
+Done in 2.0 release:<br />
+    <ul>
+        <li>The codebase has been ported to .NET 2.0. </li>
+    </ul>
+    Done since 1.2 release:<br>
+<ul>
+  <li>The new home - <a href="http://mvp-xml.sf.net/">Mvp.Xml project</a>
+and so the new namespace - <a
+ href="file:///D:/projects/Mvp.Xml/WebSite/api/Mvp.Xml.XPointer.html">Mvp.Xml.XPointer</a>
+instead of GotDotNet.XPointer.</li>
+  <li>Performance improvements - documents processed are
+now cached, all XPath expressions used internally are compiled and
+cached via the <a href="../api/Mvp.Xml.Common.XPath.XPathCache.html">Mvp.Xml.Common.XPath.XPathCache</a>
+class.<br>
+  </li>
+  <li>Memory footprint is minimized.</li>
+  <li>XPointer Framework syntax erorrs are now throw exceptions.<br>
+  </li>
+</ul>
+<h2>Usage</h2>
+<a href="../api/Mvp.Xml.XPointer.XPointerReader.html">XPointerReader</a>
+class, found in the <a href="../api/Mvp.Xml.XPointer.html">Mvp.Xml.XPointer
+namespace</a>, is the
+key
+class. It's&nbsp;customized&nbsp; <a
+ href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfSystemXmlXmlReaderClassTopic.asp">
+XmlReader</a>, which implements <a
+ href="http://www.w3.org/TR/xptr-framework/">XPointer Framework</a><!--StartFragment -->,
+<a href="http://www.w3.org/TR/xptr-element/">XPointer element() Scheme</a>,
+<!--StartFragment --><a href="http://www.w3.org/TR/xptr-xmlns/">XPointer
+xmlns() Scheme</a><!--StartFragment -->, <a
+ href="http://www.simonstl.com/ietf/draft-stlaurent-xpath-frag-00.html">The
+XPointer xpath1() Scheme</a>&nbsp;and <a
+ href="http://www.w3.org/TR/xptr-xpointer/">
+XPointer xpointer() Scheme</a> (XPath subset only) in a caching
+forward-only fashion.<br>
+<br>
+Usage samples:<br>
+<br>
+1. Basic identifying of subresources using XPointer:
+<br>
+<span style="font-family: monospace;">XPointerReader r = </span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; new
+XPointerReader("books.xml",
+"xpointer(//book)");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">while (r.Read()) </span><span
+ style="font-family: monospace;"></span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+Console.WriteLine(r.ReadOuterXml());</span><span
+ style="font-family: monospace;"></span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">r.Close();</span><br>
+<br>
+2. Running <span style="font-family: monospace;">XPointerReader</span>
+on an in-memory XML store:<br>
+<br>
+<span style="font-family: monospace;">XPathDocument doc = new
+XPathDocument("books.xml");</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">XPointerReader r = </span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; new
+XPointerReader(doc,
+"xpointer(//book)");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">while (r.Read()) </span><span
+ style="font-family: monospace;"></span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+Console.WriteLine(r.ReadOuterXml());</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;"></span><span
+ style="font-family: monospace;">r.Close();</span><br>
+<br>
+or <br>
+<br>
+<span style="font-family: monospace;">XmlDocument doc = new
+XmlDocument();</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">doc.Load("books.xml");</span><br>
+<span style="font-family: monospace;">XPointerReader r = </span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; new
+XPointerReader(doc,
+"xpointer(//book)");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: monospace;">
+<span style="font-family: monospace;">while (r.Read()) </span><span
+ style="font-family: monospace;"></span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp;
+Console.WriteLine(r.ReadOuterXml());</span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;"></span><span
+ style="font-family: monospace;">r.Close();</span><br>
+<br>
+3. When running <span style="font-family: monospace;">XPointerReader</span>
+on <span style="font-family: monospace;">XPathDocument </span>or <span
+ style="font-family: monospace;">XmlDocument</span>, you can get
+underlying <span style="font-family: monospace;">XPathNavigator</span>
+via <span style="font-family: monospace;">IHasXPathNavigator</span>
+interface:<br>
+<span style="font-family: monospace;">XPathNavigator nav =
+((IHasXPathNavigator)reader).GetNavigator();</span><br>
+<br>
+4. Namespace-aware XPointers:<br>
+<span style="font-family: monospace;">XPointerReader r = </span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; new
+XPointerReader("books.xml",
+"xmlns(bk=http://books.com)xpointer(//bk:book)");</span><br>
+<br>
+5. Fallback-like XPointers. Recall that XPointer can consist of a
+several pointer parts, which are evaluated in turn until one identifies
+any subresource. That property can be used to create more reliable
+XPointers:<br>
+<span style="font-family: monospace;">XPointerReader r = </span><br
+ style="font-family: monospace;">
+<span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; new
+XPointerReader("books.xml",
+"element(bk101)xpointer(//book[@id='bk101'])");</span><br>
+<h2>Conformance Issues<br>
+</h2>
+<ol>
+  <li>Only XPath subset of the <a
+ href="http://www.w3.org/TR/xptr-xpointer/">
+XPointer xpointer() Scheme</a> is currently supported. </li>
+</ol>
+<h2>License</h2>
+<p>XPointer.NET as part of the <a href="http://mvp-xml.sf.net/">Mvp.Xml project</a>
+    is subject to the <a href="../license.html">GPL License</a> - <a href="http://www.opensource.org/licenses/index.php">
+        OSI approved</a>
+free open-source license.
+</p>
+<h2>
+    Support</h2>
+    <p>
+        You can get support on using XInclude.NET module using the following options:</p>
+    <ul>
+        <li><a href="http://www.xmllab.net/Forum/tabid/70/Default.aspx">XInclude.NET/XPointer.NET
+            Forum</a> at the <a href="http://www.xmllab.net/">XML Lab</a> </li>
+        <li>Mailing list: <a href="https://lists.sourceforge.net/mailman/listinfo/mvp-xml-help">
+            mvp-xml-help</a> (general discussion list for Mvp.Xml users), <a href="http://sourceforge.net/mailarchive/forum.php?forum=mvp-xml-help">
+                (online
+archive)</a>. </li>
+        <li>Please feel free to report any bugs&nbsp;to the Mvp.Xml project's <a href="http://sourceforge.net/tracker/?group_id=102352&atid=633328">
+Bug Tracker</a>. </li>
+        <li>Feature requests are also <a href="http://sourceforge.net/tracker/?group_id=102352&atid=633331">
+            welcome</a>.</li>
+    </ul>
+<hr style="width: 100%; height: 2px;">
+<p> The project is hosted at <a target="_blank"
+ href="http://www.sourceforge.net">
+SourceForge</a>. Find more at the <a
+ href="http://sourceforge.net/projects/mvp-xml">Mvp.Xml project page at
+SourceForge</a>.<br>
+<a href="http://sourceforge.net/" title="Link to SourceForge home page"><img
+ src="http://sourceforge.net/sflogo.php?group_id=102352&amp;type=1"
+ alt="SourceForge logo" border="0"></a><br>
+<code>$Id: index.html,v 1.6 2005/11/02 13:21:27 helgy Exp $</code><br>
+</p>
+<p> </p>
+</body>
+</html>

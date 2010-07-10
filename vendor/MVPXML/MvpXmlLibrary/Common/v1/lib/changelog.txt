@@ -1,0 +1,5 @@
+---------------------------------------------------------
+September 23, 2004
+
+Initial setup.
+Will contain external libraries referenced by the project.

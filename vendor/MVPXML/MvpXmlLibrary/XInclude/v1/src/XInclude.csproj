@@ -1,0 +1,303 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{3750FAB1-FD0E-425A-9DAA-87543A556319}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "Mvp.Xml.XInclude"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                PreBuildEvent = ""
+                PostBuildEvent = ""
+                RootNamespace = "Mvp.Xml.XInclude"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = "bin\Debug\Mvp.Xml.XInclude.xml"
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\Debug\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "bin\Release\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "SR.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "SR.resx"
+                    DependentUpon = "SR.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "TextIncludingReader.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "TextUtils.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XIncludeException.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XIncludeKeywords.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XIncludingReader.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XIncludingReaderState.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Common\SR.cs"
+                    Link = "..\..\..\Common\v1\src\SR.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Common\SR.resx"
+                    Link = "..\..\..\Common\v1\src\SR.resx"
+                    DependentUpon = "SR.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Common\XmlBaseAwareXmlTextReader.cs"
+                    Link = "..\..\..\Common\v1\src\XmlBaseAwareXmlTextReader.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Common\XmlNamespaces.cs"
+                    Link = "..\..\..\Common\v1\src\XmlNamespaces.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Common\XmlNodeListFactory.cs"
+                    Link = "..\..\..\Common\v1\src\XmlNodeListFactory.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Common\XmlPrefix.cs"
+                    Link = "..\..\..\Common\v1\src\XmlPrefix.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Common\XPath\DynamicContext.cs"
+                    Link = "..\..\..\Common\v1\src\XPath\DynamicContext.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Common\XPath\IHasXPathNavigator.cs"
+                    Link = "..\..\..\Common\v1\src\XPath\IHasXPathNavigator.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Common\XPath\XPathCache.cs"
+                    Link = "..\..\..\Common\v1\src\XPath\XPathCache.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Common\XPath\XPathNavigatorReader.cs"
+                    Link = "..\..\..\Common\v1\src\XPath\XPathNavigatorReader.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Common\XPath\XPathVariable.cs"
+                    Link = "..\..\..\Common\v1\src\XPath\XPathVariable.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\ElementSchemaPointerPart.cs"
+                    Link = "..\..\..\XPointer\v1\src\ElementSchemaPointerPart.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\IDAssuredValidatingReader.cs"
+                    Link = "..\..\..\XPointer\v1\src\IDAssuredValidatingReader.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\LexUtils.cs"
+                    Link = "..\..\..\XPointer\v1\src\LexUtils.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\Pointer.cs"
+                    Link = "..\..\..\XPointer\v1\src\Pointer.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\PointerPart.cs"
+                    Link = "..\..\..\XPointer\v1\src\PointerPart.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\SchemaBasedPointer.cs"
+                    Link = "..\..\..\XPointer\v1\src\SchemaBasedPointer.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\ShorthandPointer.cs"
+                    Link = "..\..\..\XPointer\v1\src\ShorthandPointer.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\SR.cs"
+                    Link = "..\..\..\XPointer\v1\src\SR.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\SR.resx"
+                    Link = "..\..\..\XPointer\v1\src\SR.resx"
+                    DependentUpon = "SR.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XPointer\XmlnsSchemaPointerPart.cs"
+                    Link = "..\..\..\XPointer\v1\src\XmlnsSchemaPointerPart.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\XPath1SchemaPointerPart.cs"
+                    Link = "..\..\..\XPointer\v1\src\XPath1SchemaPointerPart.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\XPointerException.cs"
+                    Link = "..\..\..\XPointer\v1\src\XPointerException.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\XPointerLexer.cs"
+                    Link = "..\..\..\XPointer\v1\src\XPointerLexer.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\XPointerParser.cs"
+                    Link = "..\..\..\XPointer\v1\src\XPointerParser.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\XPointerReader.cs"
+                    Link = "..\..\..\XPointer\v1\src\XPointerReader.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\XPointerSchema.cs"
+                    Link = "..\..\..\XPointer\v1\src\XPointerSchema.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPointer\XPointerSchemaPointerPart.cs"
+                    Link = "..\..\..\XPointer\v1\src\XPointerSchemaPointerPart.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

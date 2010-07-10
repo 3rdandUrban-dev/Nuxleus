@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="Functions.xslt"?>
+<modules version="1.3">
+    <module namespace="http://exslt.org/dates-and-times" prefix="date" name="Dates and Times" homepage="http://exslt.org/date/index.html" is-exslt-module="yes">
+        <function name="format-date" alias="formatDate" descriptionURL="http://exslt.org/date/functions/format-date/index.html" supported="yes"/>
+        <function name="parse-date" alias="parseDate" descriptionURL="http://exslt.org/date/functions/parse-date/index.html" supported="yes"/>
+        <function name="date-time" alias="dateTime" descriptionURL="http://exslt.org/date/functions/date-time/index.html" supported="yes"/>
+        <function name="date" descriptionURL="http://exslt.org/date/functions/date/index.html" supported="yes"/>
+        <function name="time" descriptionURL="http://exslt.org/date/functions/time/index.html" supported="yes"/>
+        <function name="year" descriptionURL="http://exslt.org/date/functions/year/index.html" supported="yes"/>
+        <function name="leap-year" alias="leapYear" descriptionURL="http://exslt.org/date/functions/leap-year/index.html" supported="yes"/>
+        <function name="month-in-year" alias="monthInYear" descriptionURL="http://exslt.org/date/functions/month-in-year/index.html" supported="yes"/>
+        <function name="month-name" alias="monthName" descriptionURL="http://exslt.org/date/functions/month-name/index.html" supported="yes"/>
+        <function name="month-abbreviation" alias="monthAbbreviation" descriptionURL="http://exslt.org/date/functions/month-abbreviation/index.html" supported="yes"/>
+        <function name="week-in-year" alias="weekInYear" descriptionURL="http://exslt.org/date/functions/week-in-year/index.html" supported="yes"/>
+        <function name="week-in-month" alias="weekInMonth" descriptionURL="http://exslt.org/date/functions/week-in-month/index.html" supported="yes"/>
+        <function name="day-in-year" alias="dayInYear" descriptionURL="http://exslt.org/date/functions/day-in-year/index.html" supported="yes"/>
+        <function name="day-in-month" alias="dayInMonth" descriptionURL="http://exslt.org/date/functions/day-in-month/index.html" supported="yes"/>
+        <function name="day-of-week-in-month" alias="dayOfWeekInMonth" descriptionURL="http://exslt.org/date/functions/day-of-week-in-month/index.html" supported="yes"/>
+        <function name="day-in-week" alias="dayInWeek" descriptionURL="http://exslt.org/date/functions/day-in-week/index.html" supported="yes"/>
+        <function name="day-name" alias="dayName" descriptionURL="http://exslt.org/date/functions/day-name/index.html" supported="yes"/>
+        <function name="day-abbreviation" alias="dayAbbreviation" descriptionURL="http://exslt.org/date/functions/day-abbreviation/index.html" supported="yes"/>
+        <function name="hour-in-day" alias="hourInDay" descriptionURL="http://exslt.org/date/functions/hour-in-day/index.html" supported="yes"/>
+        <function name="minute-in-hour" alias="minuteInHour" descriptionURL="http://exslt.org/date/functions/minute-in-hour/index.html" supported="yes"/>
+        <function name="second-in-minute" alias="secondInMinute" descriptionURL="http://exslt.org/date/functions/second-in-minute/index.html" supported="yes"/>
+        <function name="difference" descriptionURL="http://exslt.org/date/functions/difference/index.html" supported="yes"/>
+        <function name="add" descriptionURL="http://exslt.org/date/functions/add/index.html" supported="yes"/>
+        <function name="add-duration" alias="addDuration" descriptionURL="http://exslt.org/date/functions/add-duration/index.html" supported="yes"/>
+        <function name="sum" descriptionURL="http://exslt.org/date/functions/sum/index.html" supported="yes"/>
+        <function name="seconds" descriptionURL="http://exslt.org/date/functions/seconds/index.html" supported="yes"/>
+        <function name="duration" descriptionURL="http://exslt.org/date/functions/duration/index.html" supported="yes"/>
+    </module>
+    <module namespace="http://exslt.org/common" prefix="exsl" name="Common" homepage="http://exslt.org/exsl/index.html" is-exslt-module="yes">
+        <function name="node-set" alias="nodeSet" descriptionURL="http://exslt.org/exsl/functions/node-set/index.html" supported="yes"/>
+        <function name="object-type" alias="objectType" descriptionURL="http://exslt.org/exsl/functions/object-type/index.html" supported="yes"/>
+    </module>
+    <module namespace="http://exslt.org/math" prefix="math" name="Math" homepage="http://exslt.org/math/index.html" is-exslt-module="yes">
+        <function name="min" descriptionURL="http://exslt.org/math/functions/min/index.html" supported="yes"/>
+        <function name="max" descriptionURL="http://exslt.org/math/functions/max/index.html" supported="yes"/>
+        <function name="highest" descriptionURL="http://exslt.org/math/functions/highest/index.html" supported="yes"/>
+        <function name="lowest" descriptionURL="http://exslt.org/math/functions/lowest/index.html" supported="yes"/>
+        <function name="abs" descriptionURL="http://exslt.org/math/functions/abs/index.html" supported="yes"/>
+        <function name="sqrt" descriptionURL="http://exslt.org/math/functions/sqrt/index.html" supported="yes"/>
+        <function name="power" descriptionURL="http://exslt.org/math/functions/power/index.html" supported="yes"/>
+        <function name="constant" descriptionURL="http://exslt.org/math/functions/constant/index.html" supported="yes"/>
+        <function name="log" descriptionURL="http://exslt.org/math/functions/log/index.html" supported="yes"/>
+        <function name="random" descriptionURL="http://exslt.org/math/functions/random/index.html" supported="yes"/>
+        <function name="sin" descriptionURL="http://exslt.org/math/functions/sin/index.html" supported="yes"/>
+        <function name="cos" descriptionURL="http://exslt.org/math/functions/cos/index.html" supported="yes"/>
+        <function name="tan" descriptionURL="http://exslt.org/math/functions/tan/index.html" supported="yes"/>
+        <function name="asin" descriptionURL="http://exslt.org/math/functions/asin/index.html" supported="yes"/>
+        <function name="acos" descriptionURL="http://exslt.org/math/functions/acos/index.html" supported="yes"/>
+        <function name="atan" descriptionURL="http://exslt.org/math/functions/atan/index.html" supported="yes"/>
+        <function name="atan2" descriptionURL="http://exslt.org/math/functions/atan2/index.html" supported="yes"/>
+        <function name="exp" descriptionURL="http://exslt.org/math/functions/exp/index.html" supported="yes"/>
+    </module>
+    <module namespace="http://exslt.org/random" prefix="random" name="Random" homepage="http://exslt.org/random/index.html" is-exslt-module="yes">
+		<function name="random-sequence" alias="randomSequence" descriptionURL="http://exslt.org/random/functions/random-sequence/index.html" supported="yes"/>
+    </module>
+    <module namespace="http://exslt.org/regular-expressions" prefix="regexp" name="Regular Expressions" homepage="http://exslt.org/regexp/index.html" is-exslt-module="yes">
+        <function name="test" descriptionURL="http://exslt.org/regexp/functions/test/index.html" supported="yes"/>
+        <function name="match" descriptionURL="http://exslt.org/regexp/functions/match/index.html" supported="yes"/>
+        <function name="replace" descriptionURL="http://exslt.org/regexp/functions/replace/index.html" supported="yes"/>
+    </module>
+    <module namespace="http://exslt.org/sets" prefix="set" name="Sets" homepage="http://exslt.org/set/index.html" is-exslt-module="yes">
+        <function name="difference" descriptionURL="http://exslt.org/set/functions/difference/index.html" supported="yes"/>
+        <function name="intersection" descriptionURL="http://exslt.org/set/functions/intersection/index.html" supported="yes"/>
+        <function name="distinct" descriptionURL="http://exslt.org/set/functions/distinct/index.html" supported="yes"/>
+        <function name="has-same-node" descriptionURL="http://exslt.org/set/functions/has-same-node/index.html" supported="yes"/>
+        <function name="leading" descriptionURL="http://exslt.org/set/functions/leading/index.html" supported="yes"/>
+        <function name="trailing" descriptionURL="http://exslt.org/set/functions/trailing/index.html" supported="yes"/>
+    </module>
+    <module namespace="http://exslt.org/strings" prefix="str" name="Strings" homepage="http://exslt.org/str/index.html" is-exslt-module="yes">
+        <function name="tokenize" descriptionURL="http://exslt.org/str/functions/tokenize/index.html" supported="yes"/>
+        <function name="replace" descriptionURL="http://exslt.org/str/functions/replace/index.html" supported="yes"/>
+        <function name="padding" descriptionURL="http://exslt.org/str/functions/padding/index.html" supported="yes"/>
+        <function name="align" descriptionURL="http://exslt.org/str/functions/align/index.html" supported="yes"/>
+        <function name="encode-uri" descriptionURL="http://exslt.org/str/functions/encode-uri/index.html" supported="yes"/>
+        <function name="decode-uri" descriptionURL="http://exslt.org/str/functions/decode-uri/index.html" supported="yes"/>
+        <function name="concat" descriptionURL="http://exslt.org/str/functions/concat/index.html" supported="yes"/>
+        <function name="split" descriptionURL="http://exslt.org/str/functions/split/index.html" supported="yes"/>
+    </module>
+    <!-- Additional EXSLT.NET functions -->
+    <module namespace="http://gotdotnet.com/exslt/dates-and-times" prefix="date2" name="GotDotNet Dates and Times" is-exslt-module="no">
+        <function name="avg" descriptionURL="GDNDatesAndTimes-avg.xml" supported="yes"/>
+        <function name="min" descriptionURL="GDNDatesAndTimes-min.xml" supported="yes"/>
+        <function name="max" descriptionURL="GDNDatesAndTimes-max.xml" supported="yes"/>
+        <function name="day-name" alias="dayName" descriptionURL="GDNDatesAndTimes-day-name.xml" supported="yes"/>
+        <function name="day-abbreviation" alias="dayAbbreviation" descriptionURL="GDNDatesAndTimes-day-abbreviation.xml" supported="yes"/>        
+        <function name="month-name" alias="monthName" descriptionURL="GDNDatesAndTimes-month-name.xml" supported="yes"/>
+        <function name="month-abbreviation" alias="monthAbbreviation" descriptionURL="GDNDatesAndTimes-month-abbreviation.xml" supported="yes"/>
+    </module>
+    <module namespace="http://gotdotnet.com/exslt/math" prefix="math2" name="GotDotNet Math" is-exslt-module="no">
+        <function name="avg" descriptionURL="GDNMath-avg.xml" supported="yes"/>
+    </module>
+    <module namespace="http://gotdotnet.com/exslt/regular-expressions" prefix="regexp2" name="GotDotNet Regular Expressions" is-exslt-module="no">
+        <function name="tokenize" descriptionURL="GDNRegularExpressions-tokenize.xml" supported="yes"/>
+    </module>
+    <module namespace="http://gotdotnet.com/exslt/sets" prefix="set2" name="GotDotNet Sets" is-exslt-module="no">
+        <function name="subset" descriptionURL="GDNSets-subset.xml" supported="yes"/>
+    </module>
+     <module namespace="http://gotdotnet.com/exslt/strings" prefix="str2" name="GotDotNet Strings" is-exslt-module="no">
+        <function name="uppercase" descriptionURL="GDNStrings-uppercase.xml" supported="yes"/>
+        <function name="lowercase" descriptionURL="GDNStrings-lowercase.xml" supported="yes"/>
+    </module>
+    <module namespace="http://gotdotnet.com/exslt/dynamic" prefix="dyn2" name="GotDotNet Dynamic" is-exslt-module="no">
+        <function name="evaluate" descriptionURL="GDNDynamic-evaluate.xml" supported="yes"/>
+    </module>
+</modules>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="RootSchema" targetNamespace="imported-a" elementFormDefault="qualified" xmlns="imported-a"
+	xmlns:mstns="imported-a" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:attribute name="id" type="xs:string" />
+</xs:schema>

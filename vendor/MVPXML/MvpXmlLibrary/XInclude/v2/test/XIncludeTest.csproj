@@ -1,0 +1,571 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D766C1F9-D2DA-4088-9AE1-52EA369B555F}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Mvp.Xml.XInclude.Test</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Mvp.Xml.XInclude.Test</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <Name>nunit.framework</Name>
+      <HintPath>C:\Program Files\NUnit 2.2\bin\nunit.framework.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\nunit.framework</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\..\..\Common\v2\src\Common.csproj">
+      <Project>{12B8D3E3-4362-4E91-A3D2-37473083B47A}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\XInclude.csproj">
+      <Name>XInclude</Name>
+      <Project>{3750FAB1-FD0E-425A-9DAA-87543A556319}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Elliotte_Rusty_HaroldTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EntryPoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FourThoughtTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LTG_Edinburgh_UnivTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NISTTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RedhatTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XIncludeReaderTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XIncludeSyntaxTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="generate-tests.cmd" />
+    <None Include="tests\binary.bin" />
+    <None Include="XInclude-Test-Suite\Harold\test\red.dtd" />
+    <None Include="XInclude-Test-Suite\README.cvs" />
+    <Content Include="results\caching.xml" />
+    <Content Include="results\document.xml" />
+    <Content Include="results\fallback.xml" />
+    <Content Include="results\filenotfound.xml" />
+    <Content Include="results\includesitself-nohref-text.xml" />
+    <Content Include="results\includesitself.xml" />
+    <Content Include="results\langtest.xml" />
+    <Content Include="results\loop.xml" />
+    <Content Include="results\nonxmlchar.xml" />
+    <Content Include="results\resolver.xml" />
+    <Content Include="results\test-Martin.xml" />
+    <Content Include="results\working_example.xml" />
+    <Content Include="results\working_example2.xml" />
+    <Content Include="results\xpointer.xml" />
+    <Content Include="TestsGen.xslt" />
+    <Content Include="tests\caching.xml" />
+    <Content Include="tests\count.txt" />
+    <Content Include="tests\data.xml" />
+    <Content Include="tests\disclaimer.xml" />
+    <Content Include="tests\document.xml" />
+    <Content Include="tests\fallback.xml" />
+    <Content Include="tests\fallbacknotchildinclude.xml" />
+    <Content Include="tests\filenotfound.xml" />
+    <Content Include="tests\includechildofinclude.xml" />
+    <Content Include="tests\includesitself-nohref-text.xml" />
+    <Content Include="tests\includesitself.xml" />
+    <Content Include="tests\langtest.xml" />
+    <Content Include="tests\loop.xml" />
+    <Content Include="tests\nohref.xml" />
+    <Content Include="tests\nonxmlchar.xml" />
+    <Content Include="tests\resolver.xml" />
+    <Content Include="tests\russian.xml" />
+    <Content Include="tests\table.xml" />
+    <Content Include="tests\test-Martin.xml" />
+    <Content Include="tests\test2.xml" />
+    <Content Include="tests\twofallbacks.xml" />
+    <Content Include="tests\unknownparseattr.xml" />
+    <Content Include="tests\working_example.xml" />
+    <Content Include="tests\working_example2.xml" />
+    <Content Include="tests\xpointer.xml" />
+    <Content Include="XInclude-Test-Suite\EdUni\result\book.xml" />
+    <Content Include="XInclude-Test-Suite\EdUni\result\extract.xml" />
+    <Content Include="XInclude-Test-Suite\EdUni\result\lang.xml" />
+    <Content Include="XInclude-Test-Suite\EdUni\test\book.xml" />
+    <Content Include="XInclude-Test-Suite\EdUni\test\chap1.xml" />
+    <Content Include="XInclude-Test-Suite\EdUni\test\chap2.xml" />
+    <Content Include="XInclude-Test-Suite\EdUni\test\extract.xml" />
+    <Content Include="XInclude-Test-Suite\EdUni\test\lang-samples.xml" />
+    <Content Include="XInclude-Test-Suite\EdUni\test\lang.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\result\XInclude\include1.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\result\XInclude\include2.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\result\XInclude\include3.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\result\XInclude\include4.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\result\XInclude\include5.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\result\XInclude\include6.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\result\XInclude\include7.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include1.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include2.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include3.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include4.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include5.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include6.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include7.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\include1.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\include2.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\include3.xml" />
+    <Content Include="XInclude-Test-Suite\FourThought\test\XInclude\docs\include4.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\acceptascii.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\acceptenglish.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\acceptfrench.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\accepthtml.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\acceptjis.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\acceptplaintext.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\badelementschemedata.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\c1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\c1a.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\c1b.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\c2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\c2a.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\c2b.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\c2c.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\c2d.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\c3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\c5.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\d1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\disclaimer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\EBCDIC.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\emptyfallback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\encodingheuristicstest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\fallbacktest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\fallbacktest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\goodiri.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\ignoresfragmentid.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\includedocumentwithintradocumentreferences.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\includefromsamedocumentwithbase.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\langtest1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\langtest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\langtest3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\latin1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\legalcircle.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\lineends.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\marshtest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\marshtestwithxmlbase.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\metafallbacktest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\metafallbacktest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\metafallbacktest5.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\metafallbacktest6.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\metafallbacktestwithxpointer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\metafallbacktestwithxpointer2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\metafallbacktotexttest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\namespacetest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\onlyxpointer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\paralleltest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\recursewithinsamedocument.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\resolvethruxpointer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\roottest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\roottest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\simple.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\test.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\tobintop.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\triple.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\UnicodeBigUnmarked.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\UnicodeLittleUnmarked.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\unrecognizedschemewithfallback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\utf16.txt" />
+    <Content Include="XInclude-Test-Suite\Harold\result\utf16.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\UTF16BigEndianWithByteOrderMark.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\UTF16LittleEndianWithByteOrderMark.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\UTF32BE.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\UTF32LE.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\UTF8WithByteOrderMark.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\xmlbasetest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\xmlbasetest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\xmlbasetest3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\xpointeroverridesfragmentid.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\xptrdandtumblertest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\xptrfallback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\xptridandtumblertest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\xptridtest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\xptridtest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\result\xptrtumblertest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\acceptenglish.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\acceptfrench.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\accepthtml.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\acceptplaintext.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\a\a.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\badaccept1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\badaccept2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\badelementschemedata.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\badiri.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\badiri2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\badparseattribute.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\badxptr.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\badxptr2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\badxptr3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\badxptr4.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\basedata\red.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\baseinclude.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\bdisclaimer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\b\b.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\c1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\c2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\c3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\c5.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\circle1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\circle2a.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\circle2b.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\circleback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\circlepointer1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\circlepointer2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\circlepointer3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\colonizedschemename.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\count.txt" />
+    <Content Include="XInclude-Test-Suite\Harold\test\d1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\data.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\disclaimer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\docwithid.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\docwithidandtumbler.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\EBCDIC.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\emptyfallback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\encodingheuristicstest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\extraattributes.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\fallbackbadparseattribute.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\fallbackbadxpointer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\fallbackcontainsfallback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\fallbackinternalxpointer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\fallbacknohreforparse.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\fallbacktest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\fallbacktest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\fallbacktest3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\fallbacktotext.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\fallbackxpointerpointsnowhere.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\french.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\french2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\goodiri.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\ignoresfragmentid.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\includedocumentwithintradocumentreferences.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\includefromsamedocumentwithbase.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\internalcircular.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\internalcircularviaancestor.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\langtest1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\langtest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\langtest3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\laterfailure.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\laterfailure2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\latin1.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\legalcircle.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\lineends.txt" />
+    <Content Include="XInclude-Test-Suite\Harold\test\lineends.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\marshtest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\marshtestwithxmlbase.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\marshtestwithxmlbaseandemptyhref.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\meaninglessfragmentid.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbacktest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbacktest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbacktest3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbacktest4.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbacktest5.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbacktest6.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbacktestwithfragmentid.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbacktestwithxpointer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbacktestwithxpointer2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbacktotexttest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metafallbackwithbadxpointertest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\metamissingfallbacktestwithxpointer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\missingfile.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\missinghref.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\multiplefallbacks.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\multiplefallbacks2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\nakedfallback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\namespaceinner.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\namespacetest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\nestedxinclude.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\nestedxincludenamespace.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\nofallbacktest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\nolang.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\onedown.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\onlyxpointer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\paralleltest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\parseequalxml.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\recursewithinsamedocument.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\resolvethruxpointer.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\rootfailuretest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\roottest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\roottest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\simple.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\simple2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\test.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\test0.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\test2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\test3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\text\EBCDIC.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\text\UnicodeBigUnmarked.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\text\UnicodeLittleUnmarked.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\text\UTF32BE.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\text\UTF32LE.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\text\UTF8.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\tobinbottom.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\tobinmiddle.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\tobintop.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\toplevel.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\UCS4BE.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\ucs4bigendian.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\UCS4LE.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\ucs4littleendian.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\UnicodeBigUnmarked.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\UnicodeLittleUnmarked.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\unrecognizedscheme.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\unrecognizedschemewithfallback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\utf16.txt" />
+    <Content Include="XInclude-Test-Suite\Harold\test\utf16.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\utf16be.txt" />
+    <Content Include="XInclude-Test-Suite\Harold\test\utf16be.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\UTF16BigEndianWithByteOrderMark.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\utf16le.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\UTF16LittleEndianWithByteOrderMark.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\UTF32BE.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\UTF32LE.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\utf8.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\utf8bom.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\UTF8WithByteOrderMark.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xmlbasetest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xmlbasetest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xmlbasetest3.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xpointeroverridesfragmentid.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xpointerselectsnonelements.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xpointerwithpercentescape.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptr2tumblertest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptrdoubletumblertest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptrfallback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptridandtumblertest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptridtest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptridtest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptrsyntaxerrorbutfallback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptrtumblerfailsbutfallback.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptrtumblertest.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptrtumblertest2.xml" />
+    <Content Include="XInclude-Test-Suite\Harold\test\xptrtumblertest3.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\result\XInclude\docids.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\result\XInclude\fallback.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\result\XInclude\include.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\result\XInclude\nodes.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\result\XInclude\recursive.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\result\XInclude\txtinclude.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\docs\docids.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\docs\fallback.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\docs\include.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\docs\nodes.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\docs\recursive.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\docs\txtinclude.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\ents\ids.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\ents\inc.txt" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\ents\something.txt" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\ents\something.xml" />
+    <Content Include="XInclude-Test-Suite\Imaq\test\XInclude\ents\sub-inc.ent" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-01.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-02.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-04.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-06.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-07.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-09.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-10.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-13.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-14.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-16.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-17.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-18.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-19.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-20.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-21.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-22.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-26.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-27.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-28.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-29.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-30.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-31.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-34.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-35.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-36.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-37.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-38.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-39.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-40.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-49.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-50.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-51.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-52.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\result\nist-include-55.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-01.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-02.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-03.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-04.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-05.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-06.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-07.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-08.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-09.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-10.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-11.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-12.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-13.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-14.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-15.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-16.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-17.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-18.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-19.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-20.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-21.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-22.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-23.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-24.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-25.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-26.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-27.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-28.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-29.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-30.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-31.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-32.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-33.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-34.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-35.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-36.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-37.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-38.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-39.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-40.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-41.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-42.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-43.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-44.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-45.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-46.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-47.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-48.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-49.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-50.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-51.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-52.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-53.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-54.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-55.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\docs\nist-include-56.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\004.ent" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\books.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\chapter.txt" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\extref.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\getnodes.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\idtst.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\include.txt" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\include1.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\morebooks.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\nwf1.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\nwf2.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\nwfsomething.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\part1.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\prtids.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\ptrtst.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\reluriref.ent" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\something.txt" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\something.xml" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\spec.dtd" />
+    <Content Include="XInclude-Test-Suite\Nist\test\ents\unparent.xml" />
+    <Content Include="XInclude-Test-Suite\report.html" />
+    <Content Include="XInclude-Test-Suite\testcases.dtd" />
+    <Content Include="XInclude-Test-Suite\testdescr.xml" />
+    <Content Include="XInclude-Test-Suite\xinclude.xsl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

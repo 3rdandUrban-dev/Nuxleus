@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="RootSchema" targetNamespace="root" elementFormDefault="qualified" xmlns="root"
+	xmlns:mstns="root" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" />
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" />
+			<xs:anyAttribute namespace="imported-a imported-b" processContents="strict" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,112 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Global", "Global.csproj", "{2658B682-C08B-47C0-9FEC-A990876A3F7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exslt", "..\..\EXSLT\v2\src\Exslt\Exslt.csproj", "{BA694D9F-6B1E-4038-AC81-BF1640C07D90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodRenamer", "..\..\EXSLT\v2\src\MethodRenamer\MethodRenamer.csproj", "{A22418E5-DCE6-4D12-A016-151EA614A787}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPointer", "..\..\XPointer\v2\src\XPointer.csproj", "{E0E9C344-ABB5-4CE9-A055-DECB508298E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPointerTest", "..\..\XPointer\v2\test\XPointerTest.csproj", "{79267547-881D-45DA-90B7-17CAC2EE8814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExsltTest", "..\..\EXSLT\v2\test\ExsltTest\ExsltTest.csproj", "{AC8B9015-E508-4E40-8E6D-C4FCF52CE4B0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BA694D9F-6B1E-4038-AC81-BF1640C07D90} = {BA694D9F-6B1E-4038-AC81-BF1640C07D90}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\..\Common\v2\src\Common.csproj", "{12B8D3E3-4362-4E91-A3D2-37473083B47A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTest", "..\..\Common\v2\test\CommonTest.csproj", "{17955FFF-E5FC-43B8-B390-86E370658CB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XInclude", "..\..\XInclude\v2\src\XInclude.csproj", "{3750FAB1-FD0E-425A-9DAA-87543A556319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XIncludeTest", "..\..\XInclude\v2\test\XIncludeTest.csproj", "{D766C1F9-D2DA-4088-9AE1-52EA369B555F}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs01.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Global.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = ..\\..\\EXSLT\\v2\\src\\Exslt\\Exslt.csproj
+		SccProjectName2 = ../../EXSLT/v2/src/Exslt
+		SccLocalPath2 = ..\\..\\EXSLT\\v2\\src\\Exslt
+		SccProjectUniqueName3 = ..\\..\\EXSLT\\v2\\src\\MethodRenamer\\MethodRenamer.csproj
+		SccProjectName3 = ../../EXSLT/v2/src/MethodRenamer
+		SccLocalPath3 = ..\\..\\EXSLT\\v2\\src\\MethodRenamer
+		SccProjectUniqueName4 = ..\\..\\XPointer\\v2\\src\\XPointer.csproj
+		SccProjectName4 = ../../XPointer/v2/src
+		SccLocalPath4 = ..\\..\\XPointer\\v2\\src
+		SccProjectUniqueName5 = ..\\..\\XPointer\\v2\\test\\XPointerTest.csproj
+		SccProjectName5 = ../../XPointer/v2/test
+		SccLocalPath5 = ..\\..\\XPointer\\v2\\test
+		SccProjectUniqueName6 = ..\\..\\EXSLT\\v2\\test\\ExsltTest\\ExsltTest.csproj
+		SccProjectName6 = ../../EXSLT/v2/test/ExsltTest
+		SccLocalPath6 = ..\\..\\EXSLT\\v2\\test\\ExsltTest
+		SccProjectUniqueName7 = ..\\..\\Common\\v2\\src\\Common.csproj
+		SccProjectName7 = ../../Common/v2/src
+		SccLocalPath7 = ..\\..\\Common\\v2\\src
+		SccProjectUniqueName8 = ..\\..\\Common\\v2\\test\\CommonTest.csproj
+		SccProjectName8 = ../../Common/v2/test
+		SccLocalPath8 = ..\\..\\Common\\v2\\test
+		SccProjectUniqueName9 = ..\\..\\XInclude\\v2\\src\\XInclude.csproj
+		SccProjectName9 = ../../XInclude/v2/src
+		SccLocalPath9 = ..\\..\\XInclude\\v2\\src
+		SccProjectUniqueName10 = ..\\..\\XInclude\\v2\\test\\XIncludeTest.csproj
+		SccProjectName10 = ../../XInclude/v2/test
+		SccLocalPath10 = ..\\..\\XInclude\\v2\\test
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2658B682-C08B-47C0-9FEC-A990876A3F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2658B682-C08B-47C0-9FEC-A990876A3F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2658B682-C08B-47C0-9FEC-A990876A3F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2658B682-C08B-47C0-9FEC-A990876A3F7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA694D9F-6B1E-4038-AC81-BF1640C07D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA694D9F-6B1E-4038-AC81-BF1640C07D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA694D9F-6B1E-4038-AC81-BF1640C07D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA694D9F-6B1E-4038-AC81-BF1640C07D90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A22418E5-DCE6-4D12-A016-151EA614A787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A22418E5-DCE6-4D12-A016-151EA614A787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A22418E5-DCE6-4D12-A016-151EA614A787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A22418E5-DCE6-4D12-A016-151EA614A787}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0E9C344-ABB5-4CE9-A055-DECB508298E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0E9C344-ABB5-4CE9-A055-DECB508298E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0E9C344-ABB5-4CE9-A055-DECB508298E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0E9C344-ABB5-4CE9-A055-DECB508298E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79267547-881D-45DA-90B7-17CAC2EE8814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79267547-881D-45DA-90B7-17CAC2EE8814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79267547-881D-45DA-90B7-17CAC2EE8814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79267547-881D-45DA-90B7-17CAC2EE8814}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC8B9015-E508-4E40-8E6D-C4FCF52CE4B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC8B9015-E508-4E40-8E6D-C4FCF52CE4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC8B9015-E508-4E40-8E6D-C4FCF52CE4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC8B9015-E508-4E40-8E6D-C4FCF52CE4B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12B8D3E3-4362-4E91-A3D2-37473083B47A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12B8D3E3-4362-4E91-A3D2-37473083B47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12B8D3E3-4362-4E91-A3D2-37473083B47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12B8D3E3-4362-4E91-A3D2-37473083B47A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17955FFF-E5FC-43B8-B390-86E370658CB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17955FFF-E5FC-43B8-B390-86E370658CB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17955FFF-E5FC-43B8-B390-86E370658CB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17955FFF-E5FC-43B8-B390-86E370658CB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3750FAB1-FD0E-425A-9DAA-87543A556319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3750FAB1-FD0E-425A-9DAA-87543A556319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3750FAB1-FD0E-425A-9DAA-87543A556319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3750FAB1-FD0E-425A-9DAA-87543A556319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D766C1F9-D2DA-4088-9AE1-52EA369B555F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D766C1F9-D2DA-4088-9AE1-52EA369B555F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D766C1F9-D2DA-4088-9AE1-52EA369B555F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D766C1F9-D2DA-4088-9AE1-52EA369B555F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
