@@ -1,3 +1,45 @@
 [submodule "module/redis"]
 	path = module/redis
 	url = git://github.com/antirez/redis.git
+[submodule "module/zeromq"]
+	path = module/zeromq
+	url = git://github.com/zeromq/zeromq2.git
+[submodule "module/clrzmq"]
+	path = module/clrzmq
+	url = git://github.com/zeromq/clrzmq.git
+[submodule "module/manos"]
+	path = module/manos
+	url = git://github.com/jacksonh/manos.git
+[submodule "module/fu-sharp"]
+	path = module/fu-sharp
+	url = git://github.com/chakrit/fu-sharp.git
+[submodule "module/AWSSDKforNET-extended"]
+	path = module/AWSSDKforNET-extended
+	url = git://github.com/mdavid/AWSSDKForNet-extended.git
+[submodule "module/Rx.NET"]
+	path = module/Rx.NET
+	url = git://github.com/mdavid/Rx.NET.git
+[submodule "module/protobuf-net"]
+	path = module/protobuf-net
+	url = git@github.com:mdavid/protobuf-net.git
+[submodule "module/MCloud"]
+	path = module/MCloud
+	url = git://github.com/mdavid/MCloud.git
+[submodule "module/DarwinStreamingServer-Linux"]
+	path = module/DarwinStreamingServer-Linux
+	url = git://github.com/mdavid/DarwinStreamingServer-Linux.git
+[submodule "module/jquery"]
+	path = module/jquery
+	url = git://github.com/jquery/jquery.git
+[submodule "module/jquery-ui"]
+	path = module/jquery-ui
+	url = git://github.com/jquery/jquery-ui.git
+[submodule "module/jquery-mobile"]
+	path = module/jquery-mobile
+	url = git://github.com/jquery/jquery-mobile.git
+[submodule "module/wikidot"]
+	path = module/wikidot
+	url = git://github.com/gabrys/wikidot.git
+[submodule "module/ironruby"]
+	path = module/ironruby
+	url = git://github.com/ironruby/ironruby.git
