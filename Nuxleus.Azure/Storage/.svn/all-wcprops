@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/19872/trunk/Source/Nuxleus.Azure/Storage
+END
+Errors.cs
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/19872/trunk/Source/Nuxleus.Azure/Storage/Errors.cs
+END
+TableStorage.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/19872/trunk/Source/Nuxleus.Azure/Storage/TableStorage.cs
+END
+StorageAccountInfo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/19872/trunk/Source/Nuxleus.Azure/Storage/StorageAccountInfo.cs
+END
+Authentication.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/19872/trunk/Source/Nuxleus.Azure/Storage/Authentication.cs
+END
+RestHelpers.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/19872/trunk/Source/Nuxleus.Azure/Storage/RestHelpers.cs
+END
+RestBlobStorage.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/19872/trunk/Source/Nuxleus.Azure/Storage/RestBlobStorage.cs
+END
+RestQueue.cs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/19872/trunk/Source/Nuxleus.Azure/Storage/RestQueue.cs
+END
+BlobStorage.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/19872/trunk/Source/Nuxleus.Azure/Storage/BlobStorage.cs
+END
+Queue.cs
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/19872/trunk/Source/Nuxleus.Azure/Storage/Queue.cs
+END
