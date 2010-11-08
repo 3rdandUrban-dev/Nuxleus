@@ -46,3 +46,12 @@
 [submodule "module/dotnetopenid"]
 	path = module/dotnetopenid
 	url = git://github.com/AArnott/dotnetopenid.git
+[submodule "module/taglib-sharp"]
+	path = module/taglib-sharp
+	url = git://github.com/mono/taglib-sharp.git
+[submodule "module/servicestack"]
+	path = module/servicestack
+	url = git@github.com:mdavid/servicestack.git
+[submodule "module/monotorrent"]
+	path = module/monotorrent
+	url = git://github.com/mono/monotorrent.git
