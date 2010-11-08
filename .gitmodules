@@ -64,3 +64,9 @@
 [submodule "module/closure-library"]
 	path = module/closure-library
 	url = git@github.com:mdavid/closure-library.git
+[submodule "module/sharpssh"]
+	path = module/sharpssh
+	url = git@github.com:mdavid/sharpssh.git
+[submodule "module/DDay.iCal"]
+	path = module/DDay.iCal
+	url = git@github.com:mdavid/DDay.iCal.git
