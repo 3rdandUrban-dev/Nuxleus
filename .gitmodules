@@ -43,3 +43,6 @@
 [submodule "module/ironruby"]
 	path = module/ironruby
 	url = git://github.com/ironruby/ironruby.git
+[submodule "module/dotnetopenid"]
+	path = module/dotnetopenid
+	url = git://github.com/AArnott/dotnetopenid.git
