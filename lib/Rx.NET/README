@@ -1,0 +1,14 @@
+From "DevLabs: Reactive Extensions for .NET (Rx)" at http://msdn.microsoft.com/en-us/devlabs/ee794896.aspx
+
+About Rx
+Rx is a library for composing asynchronous and event-based programs using observable collections.
+
+The “A” in “AJAX” stands for asynchronous, and indeed modern Web-based and Cloud-based applications are fundamentally asynchronous. In fact, Silverlight bans all blocking networking and threading operations. Asynchronous programming is by no means restricted to Web and Cloud scenarios, however. Traditional desktop applications also have to maintain responsiveness in the face of long latency IO operations and other expensive background tasks.
+
+Another common attribute of interactive applications, whether Web/Cloud or client-based, is that they are event-driven. The user interacts with the application via a GUI that receives event streams asynchronously from the mouse, keyboard, and other inputs.
+
+Rx is a superset of the standard LINQ sequence operators that exposes asynchronous and event-based computations as push-based, observable collections via the new .NET 4.0 interfaces IObservable<T> and IObserver<T>.  These are the mathematical dual of the familiar IEnumerable<T> and IEnumerator<T> interfaces for pull-based, enumerable collections in the .NET Framework. 
+
+The IEnumerable<T> and IEnumerator<T> interfaces allow developers to create reusable abstractions to consume and transform values from a wide range of concrete enumerable collections such as arrays, lists, database tables, and XML documents. Similarly, Rx allows programmers to glue together complex event processing and asynchronous computations using LINQ queries over observable collections such as .NET events and APM-based computations, PFx concurrent Task<T>,  the Windows 7 Sensor and Location APIs, SQL StreamInsight temporal event streams, F# first-class events, and async workflows.
+
+Play with Rx, stress it, evaluate it, and tell us what you think.
