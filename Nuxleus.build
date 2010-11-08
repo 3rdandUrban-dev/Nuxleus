@@ -251,7 +251,7 @@
         <exclude name="${source.dir}/Nuxleus.Web/WebServer/WebServer.cs"/>
       </sources>
       <references>
-	<include name="${dependencies.dir}/Thought.Net.vCards.dll"/>  
+	<include name="${dependencies.dir}/Thought.vCards.dll"/>  
       <include name="${dependencies.dir}/protobuf-net.dll"/>
         <include name="System.dll"/>
         <include name="System.Data.dll"/>

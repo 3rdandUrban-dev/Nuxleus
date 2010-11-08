@@ -14,7 +14,7 @@ using System.Xml.Linq;
 using Nuxleus.Core;
 using Nuxleus.Geo;
 using Nuxleus.Geo.MaxMind;
-using Thought.Net.vCards;
+using Thought.vCards;
 
 namespace Nuxleus.Web.HttpHandler
 {
