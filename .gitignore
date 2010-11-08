@@ -2,4 +2,6 @@ obj
 build
 docs
 .svn
+bin
+*.suo
 

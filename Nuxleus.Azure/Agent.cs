@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Nuxleus.Azure
+namespace Nuxleus.Azure.Toolkit
 {
     public class Agent
     {

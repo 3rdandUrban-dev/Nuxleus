@@ -80,6 +80,7 @@
     <Compile Include="Facebook\Facebook.cs" />
     <Compile Include="Facebook\Friends.cs" />
     <Compile Include="Facebook\Session.cs" />
+    <Compile Include="Linq\Async.cs" />
     <Compile Include="Linq\Functional\Functional.cs" />
     <Compile Include="Linq\Functional\ImmutableList.cs" />
     <Compile Include="Linq\Functional\Lazy.cs" />
