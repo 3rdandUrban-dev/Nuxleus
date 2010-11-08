@@ -55,3 +55,12 @@
 [submodule "module/monotorrent"]
 	path = module/monotorrent
 	url = git://github.com/mono/monotorrent.git
+[submodule "module/node.js"]
+	path = module/node.js
+	url = git://github.com/ry/node.git
+[submodule "module/GitSharp"]
+	path = module/GitSharp
+	url = git://github.com/henon/GitSharp.git
+[submodule "module/closure-library"]
+	path = module/closure-library
+	url = git@github.com:mdavid/closure-library.git
