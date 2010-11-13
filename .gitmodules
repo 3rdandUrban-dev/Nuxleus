@@ -73,3 +73,6 @@
 [submodule "module/apachai"]
 	path = module/apachai
 	url = git://github.com/garuma/apachai.git
+[submodule "module/DDay.iCal"]
+	path = module/DDay.iCal
+	url = git://github.com/mdavid/DDay.iCal.git
