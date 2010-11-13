@@ -73,3 +73,6 @@
 [submodule "module/libev-sharp"]
 	path = module/libev-sharp
 	url = git://github.com/jacksonh/libev-sharp.git
+[submodule "module/apachai"]
+	path = module/apachai
+	url = git://github.com/garuma/apachai.git
