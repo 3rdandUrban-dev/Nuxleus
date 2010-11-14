@@ -21,7 +21,7 @@
 	url = git://github.com/mdavid/Rx.NET.git
 [submodule "module/protobuf-net"]
 	path = module/protobuf-net
-	url = git@github.com:mdavid/protobuf-net.git
+	url = git://github.com/mdavid/protobuf-net.git
 [submodule "module/MCloud"]
 	path = module/MCloud
 	url = git://github.com/mdavid/MCloud.git
@@ -51,7 +51,7 @@
 	url = git://github.com/mono/taglib-sharp.git
 [submodule "module/servicestack"]
 	path = module/servicestack
-	url = git@github.com:mdavid/servicestack.git
+	url = git://github.com/mdavid/servicestack.git
 [submodule "module/monotorrent"]
 	path = module/monotorrent
 	url = git://github.com/mono/monotorrent.git
@@ -63,16 +63,16 @@
 	url = git://github.com/henon/GitSharp.git
 [submodule "module/closure-library"]
 	path = module/closure-library
-	url = git@github.com:mdavid/closure-library.git
+	url = git://github.com/mdavid/closure-library.git
 [submodule "module/sharpssh"]
 	path = module/sharpssh
-	url = git@github.com:mdavid/sharpssh.git
-[submodule "module/DDay.iCal"]
-	path = module/DDay.iCal
-	url = git@github.com:mdavid/DDay.iCal.git
+	url = git://github.com/mdavid/sharpssh.git
 [submodule "module/libev-sharp"]
 	path = module/libev-sharp
 	url = git://github.com/jacksonh/libev-sharp.git
 [submodule "module/apachai"]
 	path = module/apachai
 	url = git://github.com/garuma/apachai.git
+[submodule "module/DDay.iCal"]
+	path = module/DDay.iCal
+	url = git://github.com/mdavid/DDay.iCal.git
