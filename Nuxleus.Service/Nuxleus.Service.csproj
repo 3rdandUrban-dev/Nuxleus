@@ -91,10 +91,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="FileSystem\RevisionControl\*.cs" />
-    <Compile Include="Filesystem\Watcher\FileSystemWatcherService.cs">
+    <Compile Include="FileSystem\Watcher\FileSystemWatcherService.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Filesystem\Watcher\Watcher.cs">
+    <Compile Include="FileSystem\Watcher\Watcher.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="LLUP\PublisherService.cs">

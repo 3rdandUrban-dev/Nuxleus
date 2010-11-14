@@ -91,6 +91,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Data\Nuxleus.Data.csproj">
+      <Project>{C9FAE033-6205-4F31-BEE9-028FB867F516}</Project>
+      <Name>Nuxleus.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
