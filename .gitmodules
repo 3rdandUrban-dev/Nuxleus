@@ -40,9 +40,6 @@
 [submodule "module/wikidot"]
 	path = module/wikidot
 	url = git://github.com/gabrys/wikidot.git
-[submodule "module/ironruby"]
-	path = module/ironruby
-	url = git://github.com/ironruby/ironruby.git
 [submodule "module/dotnetopenid"]
 	path = module/dotnetopenid
 	url = git://github.com/AArnott/dotnetopenid.git
@@ -76,3 +73,6 @@
 [submodule "module/DDay.iCal"]
 	path = module/DDay.iCal
 	url = git://github.com/mdavid/DDay.iCal.git
+[submodule "module/ironlanguages"]
+	path = module/ironlanguages
+	url = git://github.com/IronLanguages/main.git
