@@ -76,3 +76,33 @@
 [submodule "module/ironlanguages"]
 	path = module/ironlanguages
 	url = git://github.com/IronLanguages/main.git
+[submodule "module/servicestack/ServiceStack.Examples"]
+	path = module/servicestack/ServiceStack.Examples
+	url = https://github.com/mythz/ServiceStack.Examples.git
+[submodule "module/servicestack/ServiceStack.Extras"]
+	path = module/servicestack/ServiceStack.Extras
+	url = https://github.com/mythz/ServiceStack.Extras.git
+[submodule "module/servicestack/ServiceStack.Redis"]
+	path = module/servicestack/ServiceStack.Redis
+	url = https://github.com/mythz/ServiceStack.Redis.git
+[submodule "module/servicestack/ServiceStack.Text"]
+	path = module/servicestack/ServiceStack.Text
+	url = https://github.com/mythz/ServiceStack.Text.git
+[submodule "module/servicestack/ServiceStack.RedisWebServices"]
+	path = module/servicestack/ServiceStack.RedisWebServices
+	url = https://github.com/mythz/ServiceStack.RedisWebServices.git
+[submodule "module/servicestack/ServiceStack.Benchmarks"]
+	path = module/servicestack/ServiceStack.Benchmarks
+	url = https://github.com/mythz/ServiceStack.Benchmarks.git
+[submodule "module/servicestack/ServiceStack.Logging"]
+	path = module/servicestack/ServiceStack.Logging
+	url = https://github.com/mythz/ServiceStack.Logging.git
+[submodule "module/servicestack/ServiceStack.OrmLite"]
+	path = module/servicestack/ServiceStack.OrmLite
+	url = https://github.com/mythz/ServiceStack.OrmLite.git
+[submodule "module/servicestack/ServiceStack.Interfaces"]
+	path = module/servicestack/ServiceStack.Interfaces
+	url = https://github.com/mythz/ServiceStack.Interfaces.git
+[submodule "module/servicestack/MonoTouch.Examples"]
+	path = module/servicestack/MonoTouch.Examples
+	url = https://github.com/mythz/MonoTouch.Examples.git
