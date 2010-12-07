@@ -103,6 +103,9 @@
 [submodule "module/servicestack/ServiceStack.Interfaces"]
 	path = module/servicestack/ServiceStack.Interfaces
 	url = https://github.com/mythz/ServiceStack.Interfaces.git
-[submodule "module/servicestack/MonoTouch.Examples"]
-	path = module/servicestack/MonoTouch.Examples
-	url = https://github.com/mythz/MonoTouch.Examples.git
+[submodule "module/soundmanager2"]
+	path = module/soundmanager2
+	url = git://github.com/scottschiller/SoundManager2.git
+[submodule "module/jquery-soundmanager"]
+	path = module/jquery-soundmanager
+	url = git://github.com/adriengibrat/jQuery-SoundManager.git
