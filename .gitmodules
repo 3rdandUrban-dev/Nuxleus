@@ -46,9 +46,6 @@
 [submodule "module/taglib-sharp"]
 	path = module/taglib-sharp
 	url = git://github.com/mono/taglib-sharp.git
-[submodule "module/servicestack"]
-	path = module/servicestack/ServiceStack
-	url = git://github.com/mythz/ServiceStack.git
 [submodule "module/monotorrent"]
 	path = module/monotorrent
 	url = git://github.com/mono/monotorrent.git
@@ -109,3 +106,12 @@
 [submodule "module/jquery-soundmanager"]
 	path = module/jquery-soundmanager
 	url = git://github.com/adriengibrat/jQuery-SoundManager.git
+[submodule "module/servicestack/ServiceStack"]
+	path = module/servicestack/ServiceStack
+	url = git://github.com/mythz/ServiceStack.git
+[submodule "module/facebook/csharp-sdk"]
+	path = module/facebook/csharp-sdk
+	url = git://github.com/facebook/csharp-sdk.git
+[submodule "module/simplegeo-dotnet"]
+	path = module/simplegeo-dotnet
+	url = git://github.com/simplegeo/simplegeo-dotnet.git
