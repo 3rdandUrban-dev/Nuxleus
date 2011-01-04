@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>/Users/mdavid/Projects/3rdandUrban/Nuxleus/bin/Nuxleus.Extension</name>
+    </assembly>
+    <members>
+        <member name="T:Nuxleus.Extension.Amp.Fm.LocationComplete">
+            <summary>
+            Summary description for Search service
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Extension.Amp.Fm.Search">
+            <summary>
+            Summary description for Search service
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Functional.Lazy`1">
+            <summary>
+            Class representing a delayed computation, which calculates
+            some C# expression (given as a delegate) only when the result
+            is acutally accessed via the Value property
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Functional.Lazy`1.#ctor(System.Func{`0})">
+            <summary>
+            Creates a lazy value using a given delegate
+            </summary>
+        </member>
+        <member name="P:EeekSoft.Functional.Lazy`1.Value">
+            <summary>
+            Forces evaluation of the expression, calculates the result
+            if it wasn't calculated earlier and returns it.
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Functional.Lazy`1.Reset">
+            <summary>
+            Reset a value to a default. When reading 'Value'
+            the computation will be re-executed.
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Functional.Lazy">
+            <summary>
+            Utility class to allow using type inferrence
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Functional.Lazy.New``1(System.Func{``0})">
+            <summary>
+            Creates a lazy value using the given delegate
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Expressions.IMethodExpander">
+            <summary>
+            Interface for classes that can be used to convert calls to methods
+            in LINQ expression trees.
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Expressions.IMethodExpander.Expand(System.Linq.Expressions.Expression,System.Collections.Generic.IEnumerable{System.Linq.Expressions.Expression})">
+            <summary>
+            Converts calls to method. This method is called when converting
+            expression tree before it is converted to SQL/or other target.
+            </summary>
+            <param name="selfRef">Represents reference to object (on which the method is invoked)</param>
+            <param name="parameters">Represents other parameters</param>
+            <returns>Method should return converted string</returns>
+        </member>
+        <member name="T:EeekSoft.Expressions.MethodExpanderAttribute">
+            <summary>
+            Using this attribute you can define class that should be used for expanding
+            calls to the method befor converting Expression tree to SQL (or other target).
+            This attribute attaches implementation of <see cref="T:EeekSoft.Expressions.IMethodExpander" /> interface
+            to method.
+            </summary>
+        </member>
+        <member name="P:EeekSoft.Expressions.MethodExpanderAttribute.ExpanderType">
+            <summary>
+            Type that implements IMethodExpander interface
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Expressions.ExpressionExtensions">
+            <summary>
+            Contains extension methods for Expression class. These methods
+            can be used to 'call' expression tree and can be translated to IQueryable
+            </summary>
+        </member>
+        <!--FIXME: Invalid documentation markup was found for member M:EeekSoft.Expressions.ExpressionExtensions.Expand``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},``0)-->
+        <!--FIXME: Invalid documentation markup was found for member M:EeekSoft.Expressions.ExpressionExtensions.Expand``3(System.Linq.Expressions.Expression{System.Func{``0,``1,``2}},``0,``1)-->
+        <!--FIXME: Invalid documentation markup was found for member M:EeekSoft.Expressions.ExpressionExtensions.Expand``4(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}},``0,``1,``2)-->
+        <!--FIXME: Invalid documentation markup was found for member M:EeekSoft.Expressions.ExpressionExtensions.Expand``5(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4}},``0,``1,``2,``3)-->
+        <member name="M:EeekSoft.Expressions.ExpressionExtensions.ExpandExpr``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Takes expr and replaces all calls to Expand (extension) method by it's implementation
+            (modifies expression tree)
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Expressions.ExpressionExtensions.ExpandExpr``3(System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
+            <summary>
+            Takes expr and replaces all calls to Expand (extension) method by it's implementation
+            (modifies expression tree)
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Expressions.ExpressionExtensions.ExpandExprUntyped(System.Linq.Expressions.Expression)">
+            <summary>
+            Takes expr and replaces all calls to Expand (extension) method by it's implementation
+            (modifies expression tree)
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Expressions.ExpressionExpander">
+            <summary>
+            Implementation of ExpressionVisiter that does the replacement
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Query.QueryableExtensions">
+            <summary>
+            Extension methods for IQueryable
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Query.QueryableExtensions.ToExpandable``1(System.Linq.IQueryable{``0})">
+            <summary>
+            Returns wrapper that automatically expands expressions in LINQ queries
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Query.ExpandableWrapper`1">
+            <summary>
+            Wrapper for IQueryable that calls Expand
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Query.GeneralUtils.ContainsAny(System.String,System.String[])">
+            <summary>
+            Returns whether string contains any of the specified keywords as a substring.
+            </summary>
+            <param name="value">Value of the string</param>
+            <param name="keywords">Array with keywords</param>
+            <returns>True when value contains any of the specified keywords</returns>
+        </member>
+        <member name="M:EeekSoft.Query.GeneralUtils.ContainsAll(System.String,System.String[])">
+            <summary>
+            Returns whether string contains all of the specified keywords as a substring.
+            </summary>
+            <param name="value">Value of the string</param>
+            <param name="keywords">Array with keywords</param>
+            <returns>True when value contains all of the specified keywords</returns>
+        </member>
+        <member name="M:EeekSoft.Query.Linq.Expr``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Utility function for building expression trees for lambda functions
+            that return C# anonymous type as a result (because you can't declare
+            it using Expression&lt;Func&lt;...&gt;&gt; syntax)
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Query.Linq.Expr``3(System.Linq.Expressions.Expression{System.Func{``0,``1,``2}})">
+            <summary>
+            Utility function for building expression trees for lambda functions
+            that return C# anonymous type as a result (because you can't declare
+            it using Expression&lt;Func&lt;...&gt;&gt; syntax)
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Query.Linq.Expr``4(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3}})">
+            <summary>
+            Utility function for building expression trees for lambda functions
+            that return C# anonymous type as a result (because you can't declare
+            it using Expression&lt;Func&lt;...&gt;&gt; syntax)
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Query.Linq.Expr``5(System.Linq.Expressions.Expression{System.Func{``0,``1,``2,``3,``4}})">
+            <summary>
+            Utility function for building expression trees for lambda functions
+            that return C# anonymous type as a result (because you can't declare
+            it using Expression&lt;Func&lt;...&gt;&gt; syntax)
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Query.Linq.Func``2(System.Func{``0,``1})">
+            <summary>
+            Utility function for building delegates for lambda functions
+            that return C# anonymous type as a result (because you can't declare
+            it using delegates&lt;Func&lt;...&gt;&gt; syntax)
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Query.Linq.Func``3(System.Func{``0,``1,``2})">
+            <summary>
+            Utility function for building delegates for lambda functions
+            that return C# anonymous type as a result (because you can't declare
+            it using delegates&lt;Func&lt;...&gt;&gt; syntax)
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Query.Linq.Func``4(System.Func{``0,``1,``2,``3})">
+            <summary>
+            Utility function for building delegates for lambda functions
+            that return C# anonymous type as a result (because you can't declare
+            it using delegates&lt;Func&lt;...&gt;&gt; syntax)
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Query.Linq.Func``5(System.Func{``0,``1,``2,``3,``4})">
+            <summary>
+            Utility function for building delegates for lambda functions
+            that return C# anonymous type as a result (because you can't declare
+            it using delegates&lt;Func&lt;...&gt;&gt; syntax)
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Asynchronous.Unit">
+            <summary>
+            Represents a type with no value - alternative to C# void in
+            situations where void can't be used
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Asynchronous.Result`1">
+            <summary>
+            Use this cass to return a value from asynchronous method.
+            </summary>
+            <example>
+                <code>
+            // Returns hello world
+            IEnumerable&lt;IAsync&gt; Hello() {
+            yield return new Result&lt;String&gt;("Hello world");
+            }
+            </code>
+            </example>
+            <typeparam name="T">
+            </typeparam>
+        </member>
+        <member name="T:EeekSoft.Asynchronous.AsyncExtensions">
+            <summary>
+            Provides several extension methods to standard System classes
+            and for executing the asynchronous methods implemented using the library
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Asynchronous.AsyncExtensions.GetResponseAsync(System.Net.WebRequest)">
+            <summary>
+            Asynchronously gets response from the internet using BeginGetResponse method.
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Asynchronous.AsyncExtensions.ReadAsync(System.IO.Stream,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Asynchronously reads data from a stream using BeginRead.
+            </summary>
+            <param name="stream">The stream on which the method is called</param>
+            <param name="buffer">The buffer to read the data into</param>
+            <param name="offset">Byte offset in the buffer</param>
+            <param name="count">Maximum number of bytes to read</param>
+            <returns>Returns non-zero if there are still some data to read</returns>
+        </member>
+        <member name="M:EeekSoft.Asynchronous.AsyncExtensions.ReadToEndAsync(System.IO.Stream)">
+            <summary>
+            Reads asynchronously the entire content of the stream and returns it
+            as a string using StreamReader.
+            </summary>
+            <returns>Returns string using the 'Result' class.</returns>
+        </member>
+        <member name="M:EeekSoft.Asynchronous.AsyncExtensions.ExecuteAndWait(System.Collections.Generic.IEnumerable{EeekSoft.Asynchronous.IAsync})">
+            <summary>
+            Executes asynchronous method and blocks the calling thread until the operation completes.
+            </summary>
+            <param name="async">
+            </param>
+        </member>
+        <member name="M:EeekSoft.Asynchronous.AsyncExtensions.Execute(System.Collections.Generic.IEnumerable{EeekSoft.Asynchronous.IAsync})">
+            <summary>
+            Spawns the asynchronous method without waiting for the result.
+            </summary>
+            <param name="async">
+            </param>
+        </member>
+        <member name="M:EeekSoft.Asynchronous.AsyncExtensions.ExecuteAsync``1(System.Collections.Generic.IEnumerable{EeekSoft.Asynchronous.IAsync})">
+            <summary>
+            Executes the asynchronous method in another asynchronous method,
+            and assumes that the method returns result of type T.
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Asynchronous.AsyncExtensions.ExecuteAsync(System.Collections.Generic.IEnumerable{EeekSoft.Asynchronous.IAsync})">
+            <summary>
+            Executes the asynchronous method in another asynchronous method,
+            and assumes that the method doesn't return any result.
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Asynchronous.Async">
+            <summary>
+            Provides several helper methods for working with asynchronous computations.
+            </summary>
+        </member>
+        <member name="M:EeekSoft.Asynchronous.Async.Parallel(System.Collections.Generic.IEnumerable{EeekSoft.Asynchronous.IAsync}[])">
+            <summary>
+            Combines the given asynchronous methods and returns an asynchronous method that,
+            when executed - executes the methods in parallel.
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Asynchronous.IAsync">
+            <summary>
+            Represents a primitive untyped asynchronous operation.
+            This interface should be used only in asynchronous method declaration.
+            </summary>
+        </member>
+        <member name="T:EeekSoft.Asynchronous.Async`1">
+            <summary>
+            Represents an asynchronous computation that yields a result of type T.
+            </summary>
+        </member>
+    </members>
+</doc>

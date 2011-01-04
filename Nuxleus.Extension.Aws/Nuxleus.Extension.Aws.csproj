@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -33,6 +33,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ReleaseVersion>0.4.2.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,14 +57,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AWSSDK, Version=1.0.6.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\AWSSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="protobuf-net, Version=1.0.0.244, Culture=neutral, PublicKeyToken=257b51d87d2e4d67">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\protobuf-net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
@@ -84,6 +77,14 @@
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK, Version=1.2.0.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\AWSSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=1.0.0.261, Culture=neutral, PublicKeyToken=257b51d87d2e4d67">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\protobuf-net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -159,7 +160,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
+      <Name>Nuxleus.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

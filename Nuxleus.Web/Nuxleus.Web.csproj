@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -12,7 +12,6 @@
     <AssemblyName>Nuxleus.Web</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <FileUpgradeFlags>
@@ -33,6 +32,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ReleaseVersion>0.4.2.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,10 +56,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -72,10 +68,6 @@
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="DDay.iCal, Version=0.70.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DDay.iCal.dll</HintPath>
-    </Reference>
     <Reference Include="Enyim.Caching, Version=1.2.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Enyim.Caching.dll</HintPath>
@@ -87,10 +79,6 @@
     <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Mono.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="SgmlReaderDll, Version=1.7.2.12878, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0">
@@ -109,7 +97,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Mvp.Xml.dll</HintPath>
     </Reference>
-    <Reference Include="Thought.vCards">
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="DDay.iCal, Version=1.0.2.0, Culture=neutral, PublicKeyToken=b287ad3b61754bec">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DDay.iCal.dll</HintPath>
+    </Reference>
+    <Reference Include="SgmlReaderDll, Version=1.8.7.17911, Culture=neutral, PublicKeyToken=46b2db9ca481831b">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
+    </Reference>
+    <Reference Include="Thought.vCards, Version=0.4.0.0, Culture=neutral, PublicKeyToken=b34606f0aa925886">
       <HintPath>..\lib\Thought.vCards.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -167,7 +167,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
+      <Name>Nuxleus.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
       <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
@@ -191,7 +191,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Xameleon\Xameleon.csproj">
       <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
-      <Name>Xameleon %28Xameleon\Xameleon%29</Name>
+      <Name>Xameleon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

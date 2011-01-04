@@ -1,0 +1,455 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>obj/Debug/Nuxleus.Messaging</name>
+    </assembly>
+    <members>
+        <member name="P:Nuxleus.Messaging.IMessage.Id">
+            <summary>
+            This could be used to track the message within the application.
+            It is free form and non portable accross different
+            implementations of this interface.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.IMessage.InnerMessage">
+            <summary>
+            Actual message depending on the implementation of
+            this interface.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.MessageClient.Id">
+            <summary>
+            Gets or sets the identifier of the instance.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.MessageClient.ConnectionTimeout">
+            <summary>
+            Gets or sets the time span within which the connection
+            is expected to happen.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.MessageClient.Connected">
+            <summary> Gets the connection status of the client. </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.MessageClient.Service">
+            <summary>
+            Gets the underlying service handling the different event
+            on the connection.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.MessageClient.Send(Nuxleus.Messaging.IMessage)">
+            <summary>
+            Sends a message to the server.
+            </summary>
+        </member>
+        <!--FIXME: Invalid documentation markup was found for member M:Nuxleus.Messaging.MessageClient.Send(System.Byte[])-->
+        <member name="M:Nuxleus.Messaging.MessageClient.Open">
+            <summary>
+            Opens up the connection to the server.
+            </summary>
+            <remark>
+            If an error happens during the connection, it won't be raised but
+            you can trap it setting the Service.Failure handler.
+            The Close() method will be called automatically.
+            </remark>
+            <remark>
+            If the connection times out a SocketException will be thrown.
+            </remark>
+        </member>
+        <member name="M:Nuxleus.Messaging.MessageClient.Close">
+            <summary>
+            Closes the connection to the server.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.MessageServer.#ctor(System.Int32,System.String)">
+            <summary>
+            Use this constructeur to setup a server listening on a given port for
+            data delimited as specified by the delimiter argument.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.MessageServer.Server">
+            <summary>
+            Gets the actual server object handling the connections
+            and dispatching on socket events.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.MessageServer.Service">
+            <summary>
+            Gets the underlying service handling the different event
+            on the connection. Attach your handlers to that service.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.MessageServer.Start">
+            <summary>
+            Starts up the server and listen on the port defined.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.MessageServer.Stop">
+            <summary>
+            Stops the server and disposes of all its resources.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Messaging.MessageService">
+            <summary>
+            Each server or client instance has an instance of this class.
+            Your application simply binds event handlers to the events
+            declared in this class.
+            Your application can also wait on the thread events.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.MessageService.Connection">
+            <summary>
+            Gets the connection socket. This is only returns an
+            actual instance when used in client context.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.QS.QSToLLUPHandler.PollService">
+            <summary>
+            Gets or sets the service handling events with the queue server
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.QS.QSToLLUPHandler.DispatcherService">
+            <summary>
+            Gets or sets the service handling events on the connections
+            between the publisher and routers connected to it.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.QS.QSToLLUPHandler.PostOffice">
+            <summary>
+            PostOffice to synchronise receiver and dispatcher.
+            Set internally by the constructor but can be changed to
+            different instance.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.QS.PollHandler.#ctor">
+            <summary>
+            Extract a LLUP notification from the Payload of a queue message
+            and post it to the postoffice
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.QS.PollHandler.Service">
+            <summary>
+            MessageService instance used by the server to notify
+            of new events on the connections.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.QS.PollHandler.PostOffice">
+            <summary>
+            Sets the PostOffice instance used to notify about
+            new notifications to be dispatched.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.QS.DispatchHandler.#ctor">
+            <summary>
+            Routing side of a LLUP publisher. Its task is to accept connections
+            from notification routers and propagate to them published notification,
+            without any kind of processing.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.QS.DispatchHandler.Service">
+            <summary>
+            MessageService instance used by the server to notify
+            of new events on the connections.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.QS.DispatchHandler.PostOffice">
+            <summary>
+            Sets the PostOffice instance used for being notified of
+            new notification to process.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.Core.DispatchHandler.#ctor">
+            <summary>
+            Routing side of a LLUP publisher. Its task is to accept connections
+            from notification routers and propagate to them published notification,
+            without any kind of processing.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.Core.DispatchHandler.Service">
+            <summary>
+            MessageService instance used by the server to notify
+            of new events on the connections.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.Core.DispatchHandler.PostOffice">
+            <summary>
+            Sets the PostOffice instance used for being notified of
+            new notification to process.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.Core.NuxleusCoreHandler.ReceiverService">
+            <summary>
+            Gets or sets the service handling events on the connections
+            between clients to the publisher and the publisher handler.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.Core.NuxleusCoreHandler.DispatcherService">
+            <summary>
+            Gets or sets the service handling events on the connections
+            between the publisher and routers connected to it.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.Core.NuxleusCoreHandler.PostOffice">
+            <summary>
+            PostOffice to synchronise receiver and dispatcher.
+            Set internally by the constructor but can be changed to
+            different instance.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.Core.ReceiverHandler.#ctor">
+            <summary>
+            An instance of this class is in charge of recieving
+            new notifications and then inform the routing side that a new
+            notification is ready to be dispatched to routers.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.Core.ReceiverHandler.Service">
+            <summary>
+            MessageService instance used by the server to notify
+            of new events on the connections.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.Core.ReceiverHandler.PostOffice">
+            <summary>
+            Sets the PostOffice instance used to notify about
+            new notifications to be routed.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Messaging.LLUP.BlipPostOffice">
+            <summary>
+            Each component in the LLUP network acts as a client to another component
+            and server for other components to connect to.
+            The implementation in Nuxleus leads to the client and server to
+            be two different services that have no mean to communicate within
+            the process.
+            Therefore the BlipPostOffice. An instance of this class is shared
+            between the client and server sides. When the client received a
+            new blip, it posts it to the post-office. The server is then
+            notified of such event and can start processing the notification.
+            </summary>
+        </member>
+        <member name="E:Nuxleus.Messaging.LLUP.BlipPostOffice.Mailbox">
+            <summary>
+            Register delegates to be notified of a new notification
+            to process.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.LLUP.BlipPostOffice.Post(Nuxleus.Messaging.LLUP.Notification)">
+            <summary>
+            Notify that a notification is ready to be processed.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.LLUP.IRouterFilter.ProcessNotification(Nuxleus.Messaging.LLUP.Notification,Nuxleus.Messaging.LLUP.INotificationIndex)">
+            <summary>
+            Takes a notification and process in order to determine if it should
+            continue its route or not.
+            The index allows filters to query for meta-data and determine
+            from the already indexed notifications whether or not it's
+            appropriate to allow the given notification.
+            Note that the index object may be null if it has not been set
+            on the router handler.
+            </summary>
+            <return>
+            Returns null to stop the propagation and a notification
+            object otherwise.
+            </return>
+        </member>
+        <member name="M:Nuxleus.Messaging.LLUP.ReceiverHandler.#ctor">
+            <summary>
+            An instance of this class is in charge of recieving
+            new notifications and then inform the routing side that a new
+            notification is ready to be dispatched to routers.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.ReceiverHandler.Service">
+            <summary>
+            MessageService instance used by the server to notify
+            of new events on the connections.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.ReceiverHandler.PostOffice">
+            <summary>
+            Sets the PostOffice instance used to notify about
+            new notifications to be routed.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.PublisherHandler.ReceiverService">
+            <summary>
+            Gets or sets the service handling events on the connections
+            between clients to the publisher and the publisher handler.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.PublisherHandler.DispatcherService">
+            <summary>
+            Gets or sets the service handling events on the connections
+            between the publisher and routers connected to it.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.PublisherHandler.PostOffice">
+            <summary>
+            PostOffice to synchronise receiver and dispatcher.
+            Set internally by the constructor but can be changed to
+            different instance.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.LLUP.DispatchHandler.#ctor">
+            <summary>
+            Routing side of a LLUP publisher. Its task is to accept connections
+            from notification routers and propagate to them published notification,
+            without any kind of processing.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.DispatchHandler.Service">
+            <summary>
+            MessageService instance used by the server to notify
+            of new events on the connections.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.DispatchHandler.PostOffice">
+            <summary>
+            Sets the PostOffice instance used for being notified of
+            new notification to process.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.RouterHandler.ReceiverService">
+            <summary>
+            Gets or sets the service handling events on the connections
+            between clients to the publisher and the publisher handler.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.RouterHandler.FilterService">
+            <summary>
+            Gets or sets the service handling events on the connections
+            between the publisher and routers connected to it.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.RouterHandler.Filter">
+            <summary>
+            Sets the per-application specific notification filter.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.RouterHandler.Index">
+            <summary>
+            Sets the index instance that will index any incoming
+            notifications and de-index expired or discarded ones.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.RouterHandler.PostOffice">
+            <summary>
+            PostOffice to synchronise receiver and dispatcher.
+            It is set internally but you may change it to a different
+            instance.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.LLUP.FilterHandler.#ctor">
+            <summary>
+            The FilterHandler is in charge of deciding whether or not an
+            incoming notification can be propagated down the stream or not
+            based on the filter set.
+            By default all notifications are forwarded as-is. Your application
+            shoud implement IRouterFilter and set the Filter property
+            to an instance of your own filter class.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.FilterHandler.Filter">
+            <summary>
+            Sets the filter object that will be called to process the notification.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.FilterHandler.Index">
+            <summary>
+            Sets the index instance that will index any incoming
+            notifications and de-index expired or discarded ones.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.FilterHandler.Service">
+            <summary>
+            Sets the service instance used by the server to notify
+            of new events on the connections.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.FilterHandler.PostOffice">
+            <summary>
+            Sets the PostOffice instance used for being notified of
+            new notification to process.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.LLUP.FilterHandler.SendToAll(Nuxleus.Messaging.LLUP.Notification)">
+            <summary>
+            Sends the notification to all connected clients.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.LLUP.DefaultRouterFilter.ProcessNotification(Nuxleus.Messaging.LLUP.Notification,Nuxleus.Messaging.LLUP.INotificationIndex)">
+            <summary>
+            Simply returns the passed notification.
+            </summary>
+            <return>
+            Returns the notification as-is.
+            </return>
+        </member>
+        <member name="T:Nuxleus.Messaging.LLUP.SubscriberHandler">
+            <summary>
+            A subscriber is the a leaf node in a LLUP network in the sense
+            that it receives notifications from routers but don't forward them
+            to another component. Instead its purpose is to process the
+            notification, fetch the associated resource and process it
+            to offer a subscription service (say an Atom feed for instance).
+            This class offers two ways to handle an incoming a notification.
+            Either your application register an event handler to the
+            Received event, or you setup a thread that polls the Pending
+            queue for new notifications. The latter solutions offer a nice
+            way to buffer the input while your processing occur. The former
+            provides a more reactive solution but may not work well if the
+            processing is slower than the rate at which notifications arrive.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.SubscriberHandler.Pending">
+            <summary>
+            Gets the queue of pending notifications that are waiting to be processed.
+            </summary>
+        </member>
+        <!--FIXME: Invalid documentation markup was found for member P:Nuxleus.Messaging.LLUP.SubscriberHandler.Processed-->
+        <!--FIXME: Invalid documentation markup was found for member T:Nuxleus.Messaging.LLUP.FilterByExpireDate-->
+        <member name="P:Nuxleus.Messaging.LLUP.FilterByExpireDate.HoursToAdd">
+            <summary>
+            Gets or sets the number of hours to add each time the processing takes place
+            to determine the current expiry limit.
+            In other words, this is a moving expiry date that checks that the notification
+            is in the defined range.
+            If you do not set this value, this will not be used during the processing.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Messaging.LLUP.FilterByExpireDate.FixedLimit">
+            <summary>
+            Gets or sets the fixed expiry date. In this case, one the provided date
+            has passed, this filter will reject all notifications.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Messaging.PostOffice">
+            <summary>
+            </summary>
+        </member>
+        <member name="E:Nuxleus.Messaging.PostOffice.Mailbox">
+            <summary>
+            Register delegates to be notified of a new notification
+            to process.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.PostOffice.Post(Nuxleus.Messaging.Notification)">
+            <summary>
+            Notify that a notification is ready to be processed.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.Replication.ReplicationHandler.HandleCreateOrReplaceOperation(Nuxleus.Entity.IEntity)">
+            <summary>
+            This takes care of operations where a file has been stored for the first time
+            or if it has been replaced.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Messaging.Replication.ReplicationHandler.HandleRemoveOperation(Nuxleus.Entity.IEntity)">
+            <summary>
+            This takes care of operations where a file has been deleted.
+            </summary>
+        </member>
+    </members>
+</doc>

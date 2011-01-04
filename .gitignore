@@ -1,7 +1,8 @@
 obj
-build
-docs
 .svn
 bin
 *.suo
+.DS_Store
+*.pidb
+*.userprefs
 

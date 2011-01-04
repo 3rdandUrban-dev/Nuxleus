@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project name="Nuxleus" xmlns="http://nant.sf.net/release/0.90/nant.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nant.sf.net/release/0.90/nant.xsd http://nant.sf.net/release/0.90/nant.xsd" default="all">
+<property name="target.framework" value="3.5"/>
+  <property name="mono.target.framework" value="mono-${target.framework}"/>
+  <property name="msnet.target.framework" value="net-${target.framework}"/>
+    <property name="project.version" value="0.4.2.1"/>
+    <property name="signing.key" value="./resources/Nuxleus.snk"/>
+    <property name="source.dir" value="../"/>
+    <property name="dependencies.dir" value="../lib"/>
+    <property name="vendor.dir" value="../Vendor"/>
+    <property name="base.build.dir" value="../bin"/>
+<property name="debug.build.dir" value="${base.build.dir}/Debug"/>
+<property name="release.build.dir" value="${base.build.dir}/Release"/>
+<property name="build.dir" value="../bin"/>
+    <property name="doc.dir" value="../docs"/>
+    <property name="prod.web.install.dir" value="../Web/Production"/>
+    <property name="dev.web.install.dir" value="../Web/Development"/>
+    <property name="test.web.install.dir" value="../Web/Test"/>
+    <property name="build.release" value="false" unless="${property::exists('build.release')}"/>
+    <target name="init">
+	<if test="${platform::is-win32()}">
+	      <property name="pathsep" value=";"/>
+	      <if test="${framework::exists(msnet.target.framework)}">
+	        <property name="nant.settings.currentframework" value="${msnet.target.framework}"/>
+	        <property name="dotnet.runtime.cmd" value="${framework::get-runtime-engine(nant.settings.currentframework)}"/>
+	      </if>
+	    </if>
+	    <if test="${platform::is-unix()}">
+	      <property name="pathsep" value=":"/>
+	      <if test="${framework::exists(mono.target.framework)}">
+	        <property name="nant.settings.currentframework" value="${mono.target.framework}"/>
+	        <property name="dotnet.runtime.cmd" value="${framework::get-runtime-engine(nant.settings.currentframework)}"/>
+	      </if>
+	    </if>
+        <mkdir dir="${build.dir}" failonerror="false"/>	
+        <mkdir dir="${doc.dir}" failonerror="false"/>
+    </target>
+    <target name="Xameleon" depends="init Nuxleus.Core Nuxleus.Extension Nuxleus.Extension.Aws Nuxleus.Messaging Nuxleus.PubSub">
+        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" unsafe="True" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Xameleon/*.cs"/>
+                <include name="${source.dir}/Xameleon/Function/*.cs"/>
+                <include name="${source.dir}/Xameleon/Document/*.cs"/>
+                <include name="${source.dir}/Xameleon/ResultDocumentHandler/*.cs"/>
+                <include name="${source.dir}/Xameleon/SemWeb/*.cs"/>
+                <include name="${source.dir}/Xameleon/Service/*.cs"/>
+                <include name="${source.dir}/Xameleon/Transform/*.cs"/>
+                <include name="${source.dir}/Xameleon/UrlResolver/*.cs"/>
+            </sources>
+            <resources dynamicprefix="true">
+                <include name="${source.dir}/Xameleon/Properties/**/*.resx"/>
+            </resources>
+            <references>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${build.dir}/Nuxleus.Command.dll"/>
+                <include name="${build.dir}/Nuxleus.Extension.dll"/>
+                <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
+                <include name="${build.dir}/Nuxleus.PubSub.dll"/>
+                <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+                <include name="System.Drawing.dll"/>
+                <include name="System.Data.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Configuration.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+                <include name="${dependencies.dir}/IKVM.OpenJDK.XML.dll"/>
+                <include name="${dependencies.dir}/IKVM.Runtime.dll"/>
+                <!--<include name="${dependencies.dir}/Lucene.Net.dll" />-->
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="${dependencies.dir}/Mono.Posix.dll"/>
+                <include name="${dependencies.dir}/Mono.Security.dll"/>
+                <include name="${dependencies.dir}/Mvp.Xml.dll"/>
+                <include name="${dependencies.dir}/Saxon.NET/Saxon.Api.dll"/>
+                <include name="${dependencies.dir}/Saxon.NET/saxon9.dll"/>
+                <include name="${dependencies.dir}/SgmlReaderDll.dll"/>
+                <include name="${dependencies.dir}/agsXMPP.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus" depends="init Xameleon Nuxleus.Command Nuxleus.Web Nuxleus.Core Nuxleus.Messaging Nuxleus.Service">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Xameleon.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${build.dir}/Nuxleus.Command.dll"/>
+                <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+                <include name="${build.dir}/Nuxleus.Service.dll"/>
+                <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
+                <include name="${build.dir}/Nuxleus.Web.dll"/>
+                <include name="${dependencies.dir}/Tamir.SharpSSH.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Data.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Web.Services.dll"/>
+                <include name="System.EnterpriseServices.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Command" depends="init">
+        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Command/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="System.dll"/>
+                <include name="System.Data.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+                <include name="System.EnterpriseServices.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Core" depends="init">
+        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Core/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="${dependencies.dir}/Saxon.NET/Saxon.Api.dll"/>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Data.dll"/>
+                <include name="System.Drawing.dll"/>
+                <include name="System.Configuration.dll"/>
+                <include name="System.Xml.Linq.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+                <include name="System.Runtime.Serialization.dll"/>
+                <include name="System.Runtime.Serialization.Formatters.Soap.dll"/>
+                <include name="System.EnterpriseServices.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Extension.Aws" depends="init Nuxleus.Core ">
+        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Extension.Aws/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/protobuf-net.dll"/>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Configuration.dll"/>
+                <include name="System.Collections.dll"/>
+                <include name="System.Collections.Generic.dll"/>
+                <include name="System.Data.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Xml.Linq.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.ServiceModel.dll"/>
+                <include name="System.Web.Services.dll"/>
+                <include name="System.EnterpriseServices.dll"/>
+            </references>
+        </csc>
+        <copy file="Nuxleus.Extension.Aws/log4net.config" tofile="${build.dir}/log4net.config"/>
+    </target>
+    <target name="Nuxleus.Extension" depends="init Nuxleus.Core">
+        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Extension/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Data.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Xml.Linq.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+                <include name="System.EnterpriseServices.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Geo" depends="init Nuxleus.Core">
+        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Geo/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Messaging" depends="init Nuxleus.Core Nuxleus.PubSub">
+        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Messaging/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="System.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.dll"/>
+                <include name="${build.dir}/Nuxleus.PubSub.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.PubSub" depends="init Nuxleus.Core">
+        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus.PubSub/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/agsXMPP.dll"/>
+                <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Data.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Configuration.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Service" depends="init Nuxleus.Core Nuxleus.Messaging">
+        <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Service/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/Saxon.Api.dll"/>
+                <include name="${build.dir}/Nuxleus.Logging.dll"/>
+                <include name="${build.dir}/Nuxleus.Drawing.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Drawing.dll"/>
+                <include name="System.Configuration.dll"/>
+                <include name="System.Configuration.Install.dll"/>
+                <include name="System.Data.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Nuxleus.Web" depends="init Nuxleus.Service Nuxleus.Geo Nuxleus.Extension.Aws Nuxleus.Messaging Nuxleus.PubSub Xameleon">
+        <csc target="library" unsafe="True" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Nuxleus.Web/**/*.cs"/>
+                <exclude name="${source.dir}/Nuxleus.Web/HttpHandler/NuxleusHttpAsyncFormHandler.cs"/>
+                <exclude name="${source.dir}/Nuxleus.Web/HttpHandler/NuxleusHttpAsyncSuggestionFormHandler.cs"/>
+                <exclude name="${source.dir}/Nuxleus.Web/HttpHandler/NuxleusHttpAsyncQueryEntityHandler.cs"/>
+                <exclude name="${source.dir}/Nuxleus.Web/WebServer/WebServer.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/Thought.vCards.dll"/>
+                <include name="${dependencies.dir}/protobuf-net.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Data.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Xml.Linq.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Core.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Runtime.Serialization.dll"/>
+                <include name="System.Runtime.Serialization.Formatters.Soap.dll"/>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
+                <include name="${build.dir}/Nuxleus.Cryptography.dll"/>
+                <include name="${build.dir}/Nuxleus.Drawing.dll"/>
+                <include name="${build.dir}/Nuxleus.Geo.dll"/>
+                <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+                <include name="${build.dir}/Nuxleus.PubSub.dll"/>
+                <include name="${build.dir}/Nuxleus.Service.dll"/>
+                <include name="${build.dir}/Xameleon.dll"/>
+        <!-- <include name="${dependencies.dir}/IKVM.OpenJDK.ClassLibrary.dll"/> -->
+                <include name="${dependencies.dir}/Saxon.NET/IKVM.Runtime.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="${dependencies.dir}/Mono.Posix.dll"/>
+                <include name="${dependencies.dir}/Mono.Security.dll"/>
+                <include name="${dependencies.dir}/Mvp.Xml.dll"/>
+                <include name="${dependencies.dir}/Saxon.NET/Saxon.Api.dll"/>
+                <include name="${dependencies.dir}/Saxon.NET/saxon9.dll"/>
+                <include name="${dependencies.dir}/agsXMPP.dll"/>
+                <include name="${dependencies.dir}/SgmlReaderDll.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="FileSystemWatcher" depends="init Nuxleus Nuxleus.Service">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Console/FileSystemWatcher/Watcher.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Service.dll"/>
+                <include name="System.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="LLUPRouterService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Service/LLUP/Router.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.dll"/>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Service.dll"/>
+                <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+                <include name="System.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="LLUPPublisherService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Service/LLUP/Publisher.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.dll"/>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Service.dll"/>
+                <include name="${build.dir}/Nuxleus.Vendor.dll"/>
+                <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+                <include name="System.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="LLUPSubscriberService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Service/LLUP/Subscriber.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.dll"/>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Service.dll"/>
+                <include name="${build.dir}/Nuxleus.Vendor.dll"/>
+                <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+                <include name="System.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="ReplicationService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Service/ReplicationService/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.dll"/>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Service.dll"/>
+                <include name="${build.dir}/Nuxleus.Vendor.dll"/>
+                <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+                <include name="System.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="QSToLLUPService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Service/QueueServerService/*.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.dll"/>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="${build.dir}/Nuxleus.Service.dll"/>
+                <include name="${build.dir}/Nuxleus.Vendor.dll"/>
+                <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+                <include name="System.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="QueueServerService" depends="init Nuxleus Nuxleus.Service Nuxleus.Messaging">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Service/QueueServerService/Program.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.NetEx.dll"/>
+                <include name="${dependencies.dir}/ALAZ.SystemEx.dll"/>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Service.dll"/>
+                <include name="${build.dir}/Nuxleus.Vendor.dll"/>
+                <include name="${build.dir}/Nuxleus.Messaging.dll"/>
+                <include name="System.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="HttpGetAsyncResponse_Test" depends="init Nuxleus.Web Nuxleus.Core">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Samples/HttpGetAsyncResponse_Test/Program.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="${build.dir}/Nuxleus.Web.dll"/>
+                <include name="System.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="HttpGetRequestAsyncWorkflow_Test" depends="init Nuxleus.Web Nuxleus.Core">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Samples/HttpGetRequestAsyncWorkflow_Test/Program.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="${build.dir}/Nuxleus.Web.dll"/>
+                <include name="System.dll"/>
+                <include name="System.ServiceProcess.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="Zorba_Test" depends="init Nuxleus.Core">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Samples/Zorba_Test/Program.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="${dependencies.dir}/Memcached.ClientLibrary.dll"/>
+                <include name="${build.dir}/Nuxleus.Web.dll"/>
+                <include name="System.dll"/>
+                <include name="System.ServiceModel.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Web.Services.dll"/>
+            </references>
+        </csc>
+    </target>
+    <target name="SdbSOAP_Test" depends="init Nuxleus.Extension.Aws Nuxleus.Core">
+        <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${signing.key}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+            <sources>
+                <include name="${source.dir}/Apps/Samples/AwsSdbSOAP_Test/**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${dependencies.dir}/log4net.dll"/>
+                <include name="${build.dir}/Nuxleus.Extension.Aws.dll"/>
+                <include name="${build.dir}/Nuxleus.Asynchronous.dll"/>
+                <include name="${build.dir}/Nuxleus.Core.dll"/>
+                <include name="System.dll"/>
+                <include name="System.Configuration.dll"/>
+                <include name="System.Xml.Linq.dll"/>
+                <include name="System.Xml.dll"/>
+                <include name="System.Web.dll"/>
+                <include name="System.Runtime.Serialization.dll"/>
+                <include name="System.Runtime.Serialization.Formatters.Soap.dll"/>
+                <include name="System.Web.Services.dll"/>
+            </references>
+        </csc>
+        <copy file="Apps/Samples/AwsSdbSOAP_Test/App.config" tofile="${build.dir}/${target::get-current-target()}.exe.config"/>
+        <copy file="../Data/AD.txt" tofile="${build.dir}/AD.txt"/>
+    </target>
+
+    <target name="test-projects">
+        <call target="HttpGetAsyncResponse_Test"/>
+        <call target="HttpGetRequestAsyncWorkflow_Test"/>
+        <call target="SdbSOAP_Test"/>
+    </target>
+    <target name="all">
+        <call target="init"/>
+        <call target="Xameleon"/>
+        <call target="Nuxleus"/>
+        <call target="Nuxleus.Command"/>
+        <call target="Nuxleus.Extension.Aws"/>
+        <call target="Nuxleus.Geo"/>
+        <call target="Nuxleus.Messaging"/>
+        <call target="Nuxleus.PubSub"/>
+        <call target="Nuxleus.Service"/>
+        <call target="Nuxleus.Web"/>
+        <call target="FileSystemWatcher"/>
+        <call target="ReplicationService"/>
+        <call target="QueueServerService"/>
+        <call target="QSToLLUPService"/>
+        <call target="LLUPPublisherService"/>
+        <call target="LLUPRouterService"/>
+        <call target="LLUPSubscriberService"/>
+        <call target="dependencies"/>
+    </target>
+    <target name="production" depends="all">
+        <copy todir="${prod.web.install.dir}" overwrite="true">
+            <fileset basedir="${build.dir}">
+                <include name="**"/>
+                <exclude name="*.mdb"/>
+                <exclude name="*.pdb"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="development" depends="all">
+        <copy todir="${dev.web.install.dir}" overwrite="true">
+            <fileset basedir="${build.dir}">
+                <include name="**"/>
+                <exclude name="*.mdb"/>
+                <exclude name="*.pdb"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="test" depends="all">
+        <copy todir="${test.web.install.dir}" overwrite="true">
+            <fileset basedir="${build.dir}">
+                <include name="**"/>
+                <exclude name="*.mdb"/>
+                <exclude name="*.pdb"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="dependencies" depends="init">
+        <copy todir="${build.dir}" overwrite="true">
+            <fileset basedir="${dependencies.dir}">
+                <include name="*.dll"/>
+                <exclude name="*.mdb"/>
+                <exclude name="*.pdb"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="${build.dir}" failonerror="false"/>
+    </target>
+    <script language="C#" prefix="replace">
+        <code>
+    <![CDATA[
+      
+      /// <summary>
+      /// Replaces text in a file.
+      /// </summary>
+      /// <param name="filePath">Path of the text file.</param>
+      /// <param name="searchText">Text to search for.</param>
+      /// <param name="replaceText">Text to replace the search text.</param>
+      [Function("textinfile")]
+      static public string ReplaceInFile( string filePath, string searchText, string replaceText )
+      {
+        try {
+          string content;
+          using (System.IO.StreamReader reader = new StreamReader( filePath )) {
+            content = reader.ReadToEnd();
+          }
+          
+          content = System.Text.RegularExpressions.Regex.Replace( content, searchText, replaceText );
+          
+          using(System.IO.StreamWriter writer = new StreamWriter( filePath )){
+            writer.Write( content );
+          }
+          
+          return "Success!";
+          
+        } catch(Exception ex) {
+          return ex.Message;
+        }
+      }
+      
+    ]]>
+    </code>
+    </script>
+
+    <target name="Replace.TextInFile">
+        <echo message="*** ${replace::textinfile('test.txt', 'foobar', 'foobaz')} ***" />
+    </target>
+</project>
