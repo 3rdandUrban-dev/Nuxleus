@@ -33,6 +33,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ReleaseVersion>0.4.2.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,10 +55,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.Api.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -87,6 +84,10 @@
       <HintPath>..\lib\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AmazonWebServices\AWSAuthConnection.cs" />
@@ -122,27 +123,7 @@
     <Compile Include="Core\Entity\IEntity.cs" />
     <Compile Include="Core\Entity\IPerson.cs" />
     <Compile Include="Core\Entity\Person.cs" />
-    <Compile Include="Core\IO\Clipboard\Cache.cs" />
-    <Compile Include="Core\IO\Clipboard\Clipboard.cs" />
-    <Compile Include="Core\IO\Clipboard\ClipData.cs" />
-    <Compile Include="Core\IO\Clipboard\ClipItem.cs" />
-    <Compile Include="Core\IO\Clipboard\Copy.cs" />
-    <Compile Include="Core\IO\Clipboard\Credentials.cs" />
-    <Compile Include="Core\IO\Clipboard\GlobalClip.cs" />
-    <Compile Include="Core\IO\Clipboard\Init.cs" />
-    <Compile Include="Core\IO\Clipboard\Paste.cs" />
-    <Compile Include="Core\IO\Clipboard\Provider.cs" />
-    <Compile Include="Core\IO\Clipboard\Resources.cs" />
-    <Compile Include="Core\IO\Clipboard\Serializer.cs" />
-    <Compile Include="Core\IO\Clipboard\SessionVariables.cs" />
-    <Compile Include="Core\IO\FileSystem\Watcher.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Core\IO\Memcached\Memcached.cs" />
-    <Compile Include="Core\IO\Storage\FS.cs" />
-    <Compile Include="Core\IO\Storage\FSStorage.cs" />
     <Compile Include="Core\IO\Storage\IStorage.cs" />
-    <Compile Include="Core\IO\Storage\MemcachedStorage.cs" />
     <Compile Include="Core\IO\Storage\Storage.cs" />
     <Compile Include="Logging\Log.cs" />
     <Compile Include="MetaData\Attributes\Label.cs" />
@@ -204,6 +185,29 @@
     <Compile Include="Utility\Utility\StringMatching.cs" />
     <Compile Include="Extension\**\*.cs" />
     <Compile Include="Core\Agent\**\*.cs" />
+    <Compile Include="Core\IO\Pipe\PipeStream.cs" />
+    <Compile Include="Core\IO\Pipe\PipeStreamBlock.cs" />
+    <Compile Include="Core\IO\Helper\ProxyHelpers.cs" />
+    <Compile Include="Core\IO\Storage\FileSystem\Watcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\IO\Storage\Clipboard\Cache.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\Clipboard.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\ClipData.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\ClipItem.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\Copy.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\Credentials.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\GlobalClip.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\Init.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\Paste.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\Provider.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\Resources.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\Serializer.cs" />
+    <Compile Include="Core\IO\Storage\Clipboard\SessionVariables.cs" />
+    <Compile Include="Core\IO\Storage\Memory\Memcached\Memcached.cs" />
+    <Compile Include="Core\IO\Storage\FileSystem\FS.cs" />
+    <Compile Include="Core\IO\Storage\FileSystem\FSStorage.cs" />
+    <Compile Include="Core\IO\Storage\Memory\Memcached\MemcachedStorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Configuration\App.config" />
@@ -211,7 +215,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\OAuth\" />
-    <Folder Include="Command\" />
+    <Folder Include="Core\IO\Pipe\" />
+    <Folder Include="Core\IO\Helper\" />
+    <Folder Include="Core\IO\Storage\Cache\" />
+    <Folder Include="Core\IO\" />
+    <Folder Include="Core\IO\Storage\Memory\" />
+    <Folder Include="Core\IO\Storage\" />
+    <Folder Include="Core\IO\Storage\" />
+    <Folder Include="Core\Agent\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

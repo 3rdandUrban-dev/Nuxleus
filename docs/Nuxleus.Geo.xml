@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>/Users/mdavid/Projects/3rdandUrban/Nuxleus/bin/Nuxleus.Geo</name>
+    </assembly>
+    <members>
+        <member name="M:Nuxleus.Geo.MaxMind.Country.#ctor(System.String,System.String)">
+                 * Creates a new Country.
+                 *
+                 * @param code the country code.
+                 * @param name the country name.</member>
+        <member name="M:Nuxleus.Geo.MaxMind.Country.getCode">
+                 * Returns the ISO two-letter country code of this country.
+                 *
+                 * @return the country code.</member>
+        <member name="M:Nuxleus.Geo.MaxMind.Country.getName">
+                 * Returns the name of this country.
+                 *
+                 * @return the country name.</member>
+        <member name="M:Nuxleus.Geo.MaxMind.DatabaseInfo.#ctor(System.String)">
+                 * Creates a new DatabaseInfo object given the database info String.
+                 * @param info</member>
+        <member name="M:Nuxleus.Geo.MaxMind.DatabaseInfo.isPremium">
+                 * Returns true if the database is the premium version.
+                 *
+                 * @return true if the premium version of the database.</member>
+        <member name="M:Nuxleus.Geo.MaxMind.DatabaseInfo.getDate">
+                 * Returns the date of the database.
+                 *
+                 * @return the date of the database.</member>
+    </members>
+</doc>

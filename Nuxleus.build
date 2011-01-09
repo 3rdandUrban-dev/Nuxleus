@@ -1,17 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<project name="Xameleon" xmlns="http://nant.sf.net/release/0.85/nant.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nant.sf.net/release/0.85/nant.xsd http://nant.sourceforge.net/release/0.85/nant.xsd" default="all">
-    <property name="project.version" value="0.2.3.4"/>
-    <property name="signing.key" value="./resources/Extf.Net.snk"/>
+<project name="Nuxleus" xmlns="http://nant.sf.net/release/0.90/nant.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nant.sf.net/release/0.90/nant.xsd http://nant.sf.net/release/0.90/nant.xsd" default="all">
+
+<property name="target.framework" value="3.5"/>
+  <property name="mono.target.framework" value="mono-${target.framework}"/>
+  <property name="msnet.target.framework" value="net-${target.framework}"/>
+<property name="nant.settings.currentframework" value="${mono.target.framework}"/>
+    <property name="project.version" value="0.4.2.1"/>
+    <property name="signing.key" value="./resources/Nuxleus.snk"/>
     <property name="source.dir" value="."/>
     <property name="dependencies.dir" value="./lib"/>
     <property name="vendor.dir" value="./Vendor"/>
-    <property name="build.dir" value="./build/bin"/>
+    <property name="build.dir" value="./bin"/>
     <property name="doc.dir" value="./docs"/>
     <property name="prod.web.install.dir" value="../Web/Production"/>
     <property name="dev.web.install.dir" value="../Web/Development"/>
     <property name="test.web.install.dir" value="../Web/Test"/>
     <property name="build.release" value="false" unless="${property::exists('build.release')}"/>
     <target name="init">
+	<if test="${platform::is-windows()}">
+	      <property name="pathsep" value=";"/>
+	      <if test="${framework::exists(msnet.target.framework)}">
+	        <property name="nant.settings.currentframework" value="${msnet.target.framework}"/>
+	        <property name="dotnet.runtime.cmd" value="${framework::get-runtime-engine(nant.settings.currentframework)}"/>
+	      </if>
+	    </if>
+	    <if test="${platform::is-unix()}">
+	      <property name="pathsep" value=":"/>
+	      <if test="${framework::exists(mono.target.framework)}">
+	        <property name="nant.settings.currentframework" value="${mono.target.framework}"/>
+	        <property name="dotnet.runtime.cmd" value="${framework::get-runtime-engine(nant.settings.currentframework)}"/>
+	      </if>
+	    </if>
         <mkdir dir="${build.dir}" failonerror="false"/>
         <mkdir dir="${doc.dir}" failonerror="false"/>
     </target>

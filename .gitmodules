@@ -115,3 +115,18 @@
 [submodule "module/simplegeo-dotnet"]
 	path = module/simplegeo-dotnet
 	url = git://github.com/simplegeo/simplegeo-dotnet.git
+[submodule "module/mongodb/mongo-csharp-driver"]
+	path = module/mongodb/mongo-csharp-driver
+	url = git://github.com/mongodb/mongo-csharp-driver.git
+[submodule "module/mongodb/mongo"]
+	path = module/mongodb/mongo
+	url = git://github.com/mongodb/mongo.git
+[submodule "module/apache/log4net"]
+	path = module/apache/log4net
+	url = git://git.apache.org/log4net.git
+[submodule "module/apache/cassandra"]
+	path = module/apache/cassandra
+	url = git://git.apache.org/cassandra.git
+[submodule "module/fluentcassandra"]
+	path = module/fluentcassandra
+	url = git://github.com/managedfusion/fluentcassandra.git
