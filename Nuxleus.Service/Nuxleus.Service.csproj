@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -55,14 +55,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
-    </Reference>
-    <Reference Include="ALAZ.SystemEx.NetEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
-    </Reference>
     <Reference Include="Saxon.Api, Version=9.1.0.5, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Saxon.Api.dll</HintPath>
@@ -79,18 +71,17 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
+    <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
+    </Reference>
+    <Reference Include="ALAZ.SystemEx.NetEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\*.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Clipboard\*.cs" />
     <Compile Include="Drawing\NuxleusImageResizeProcessManager.cs" />
-    <Compile Include="FileSystem\*.cs" />
-    <Compile Include="FileSystem\Replication\*.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FileSystem\RevisionControl\*.cs" />
     <Compile Include="FileSystem\Watcher\FileSystemWatcherService.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -106,7 +97,6 @@
     <Compile Include="LLUP\SubscriberService.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="LoadBalancer\*.cs" />
     <Compile Include="NuxleusCoreService.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -123,11 +113,21 @@
     <Compile Include="Queue\QSToLLUP.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Authentication\%2A.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Clipboard\%2A.cs" />
+    <Compile Include="FileSystem\%2A.cs" />
+    <Compile Include="FileSystem\Replication\%2A.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FileSystem\RevisionControl\%2A.cs" />
+    <Compile Include="LoadBalancer\%2A.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
+      <Name>Nuxleus.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
       <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>

@@ -4,4 +4,6 @@ docs
 .svn
 bin
 *.suo
+*.pidb
+*.userprefs
 

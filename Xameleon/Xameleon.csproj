@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -58,62 +58,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IKVM.OpenJDK.Charsets, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Charsets.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Core, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Jdbc, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Jdbc.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Misc, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Misc.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Naming, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Naming.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Security, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Text, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Text.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Util, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Util.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.API, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.XML.API.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.Runtime, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.Runtime.JNI, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.Runtime.JNI.dll</HintPath>
-    </Reference>
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
-    </Reference>
-    <Reference Include="saxon9, Version=9.1.0.8, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\saxon9.dll</HintPath>
-    </Reference>
-    <Reference Include="SgmlReaderDll, Version=1.7.2.12878, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
-    </Reference>
     <Reference Include="System">
     </Reference>
     <Reference Include="System.Configuration">
@@ -146,6 +90,62 @@
       <HintPath>..\lib\Upnp.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="IKVM.OpenJDK.Charsets, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Charsets.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Jdbc, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Jdbc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Misc, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Misc.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Naming, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Naming.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.XML.API, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.XML.API.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime.JNI, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\IKVM.Runtime.JNI.dll</HintPath>
+    </Reference>
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="saxon9, Version=9.1.0.8, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\saxon9.dll</HintPath>
+    </Reference>
+    <Reference Include="SgmlReaderDll, Version=1.8.7.17911, Culture=neutral, PublicKeyToken=46b2db9ca481831b">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
@@ -196,7 +196,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
+      <Name>Nuxleus.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
       <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
