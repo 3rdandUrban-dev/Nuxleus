@@ -114,16 +114,15 @@
     <Compile Include="Queue\QSToLLUP.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Authentication\%2A.cs">
+    <Compile Include="Authentication\*.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Clipboard\%2A.cs" />
-    <Compile Include="FileSystem\%2A.cs" />
-    <Compile Include="FileSystem\Replication\%2A.cs">
+    <Compile Include="FileSystem\*.cs" />
+    <Compile Include="FileSystem\Replication\*.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FileSystem\RevisionControl\%2A.cs" />
-    <Compile Include="LoadBalancer\%2A.cs" />
+    <Compile Include="FileSystem\RevisionControl\*.cs" />
+    <Compile Include="LoadBalancer\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">

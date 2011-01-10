@@ -61,7 +61,6 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL" />
     <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
@@ -81,6 +80,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ServiceStack\ServiceStack.dll</HintPath>
     </Reference>
+    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Message\IMessage.cs" />
@@ -91,15 +94,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QS\BlipMessageServerHander.cs" />
     <Compile Include="QS\QSToLLUPHandler.cs" />
-    <Compile Include="Core\%2A.cs" />
-    <Compile Include="LLUP\%2A.cs" />
-    <Compile Include="LLUP\Filters\%2A.cs" />
-    <Compile Include="LLUP\Subscribers\%2A.cs" />
-    <Compile Include="LoadBalancer\%2A.cs" />
-    <Compile Include="Notification\%2A.cs" />
-    <Compile Include="PostOffice\%2A.cs" />
-    <Compile Include="Server\%2A.cs" />
-    <Compile Include="XMPP\%2A.cs" />
+    <Compile Include="Core\*.cs" />
+    <Compile Include="LLUP\*.cs" />
+    <Compile Include="LLUP\Filters\*.cs" />
+    <Compile Include="LLUP\Subscribers\*.cs" />
+    <Compile Include="LoadBalancer\*.cs" />
+    <Compile Include="Notification\*.cs" />
+    <Compile Include="PostOffice\*.cs" />
+    <Compile Include="Server\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">

@@ -72,8 +72,8 @@
     <Compile Include="LLUP\Relevance.cs" />
     <Compile Include="LLUP\Scope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Atom\%2A.cs" />
-    <Compile Include="Bucker\%2A.cs" />
+    <Compile Include="Atom\*.cs" />
+    <Compile Include="Bucker\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

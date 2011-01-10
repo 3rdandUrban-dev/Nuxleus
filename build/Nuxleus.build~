@@ -580,8 +580,7 @@
     <delete dir="${build.dir}" failonerror="false"/>
   </target>
   <script language="C#" prefix="replace">
-    <code>
-    <![CDATA[
+    <code><![CDATA[
       
       /// <summary>
       /// Replaces text in a file.
@@ -611,8 +610,7 @@
         }
       }
       
-    ]]>
-    </code>
+    ]]></code>
   </script>
   <target name="Replace.TextInFile">
     <echo message="*** ${replace::textinfile('test.txt', 'foobar', 'foobaz')} ***"/>

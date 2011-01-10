@@ -33,7 +33,6 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <ReleaseVersion>0.4.2.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -183,8 +182,6 @@
     <Compile Include="Utility\Utility\S3\S3Object.cs" />
     <Compile Include="Utility\Utility\S3\Utils.cs" />
     <Compile Include="Utility\Utility\StringMatching.cs" />
-    <Compile Include="Extension\**\*.cs" />
-    <Compile Include="Core\Agent\**\*.cs" />
     <Compile Include="Core\IO\Pipe\PipeStream.cs" />
     <Compile Include="Core\IO\Pipe\PipeStreamBlock.cs" />
     <Compile Include="Core\IO\Helper\ProxyHelpers.cs" />
@@ -208,13 +205,26 @@
     <Compile Include="Core\IO\Storage\FileSystem\FS.cs" />
     <Compile Include="Core\IO\Storage\FileSystem\FSStorage.cs" />
     <Compile Include="Core\IO\Storage\Memory\Memcached\MemcachedStorage.cs" />
-  </ItemGroup>
+	
+<Compile Include="Extension/ExtensionMethods.cs" />
+<Compile Include="Extension/Log/Log.cs" />
+<Compile Include="Extension/StringUtils/Substring.cs" />
+<Compile Include="Extension/StringUtils/Translate.cs" />
+<Compile Include="Core/Agent/IAgent.cs" />
+<Compile Include="Core/Agent/LoadBalancer/LoadBalancer.cs" />
+<Compile Include="Core/Agent/Notification/Notification.cs" />
+<Compile Include="Core/Agent/PostOffice/IPostOffice.cs" />
+<Compile Include="Core/Agent/PostOffice/PostOffice.cs" />
+<Compile Include="Core/Agent/Request/IRequest.cs" />
+<Compile Include="Core/Agent/Request/Request.cs" />
+<Compile Include="Core/Agent/Response/IResponse.cs" />
+<Compile Include="Core/Agent/Response/Response.cs" />  
+</ItemGroup>
   <ItemGroup>
     <None Include="Configuration\App.config" />
     <None Include="Utility\Utility\S3\README" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Authentication\OAuth\" />
     <Folder Include="Core\IO\Pipe\" />
     <Folder Include="Core\IO\Helper\" />
     <Folder Include="Core\IO\Storage\Cache\" />
@@ -222,7 +232,7 @@
     <Folder Include="Core\IO\Storage\Memory\" />
     <Folder Include="Core\IO\Storage\" />
     <Folder Include="Core\IO\Storage\" />
-    <Folder Include="Core\Agent\" />
+    <!--<Folder Include="Core\Agent\" />-->
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
