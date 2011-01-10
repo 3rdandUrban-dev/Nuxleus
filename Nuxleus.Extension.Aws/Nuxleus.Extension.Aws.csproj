@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="3.5">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,14 +10,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Nuxleus.Extension.Aws</RootNamespace>
     <AssemblyName>Nuxleus.Extension.Aws</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation/>
+    <UpgradeBackupLocation />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -57,22 +57,19 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    <Reference Include="System.Configuration"/>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data"/>
-    <Reference Include="System.EnterpriseServices"/>
-    <Reference Include="System.Management"/>
-    <Reference Include="System.Web"/>
+    <Reference Include="System.Data" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web.Services"/>
-    <Reference Include="System.Xml"/>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
       <SpecificVersion>False</SpecificVersion>
@@ -88,59 +85,59 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agent.cs"/>
-    <Compile Include="Model\AwsMetadata.cs"/>
-    <Compile Include="SimpleDb\Model\Attribute.cs"/>
-    <Compile Include="SimpleDb\Model\Domain.cs"/>
-    <Compile Include="SimpleDb\Model\Error.cs"/>
-    <Compile Include="SimpleDb\Model\Item.cs"/>
-    <Compile Include="SimpleDb\RequestType.cs"/>
-    <Compile Include="SimpleDb\Request\BatchPutAttributesRequest.cs"/>
-    <Compile Include="SimpleDb\Request\DomainMetadataRequest.cs"/>
-    <Compile Include="SimpleDb\Request\DeleteAttributesRequest.cs"/>
-    <Compile Include="SimpleDb\Request\CreateDomainRequest.cs"/>
-    <Compile Include="SimpleDb\Request\DeleteDomainRequest.cs"/>
-    <Compile Include="SimpleDb\Request\GetAttributesRequest.cs"/>
-    <Compile Include="SimpleDb\Request\ListDomainsRequest.cs"/>
-    <Compile Include="SimpleDb\Request\PutAttributesRequest.cs"/>
-    <Compile Include="SimpleDb\Request\SelectRequest.cs"/>
-    <Compile Include="SimpleDb\Response\BatchPutAttributesResponse.cs"/>
-    <Compile Include="SimpleDb\Response\DomainMetadataResponse.cs"/>
-    <Compile Include="SimpleDb\Response\DeleteAttributesResponse.cs"/>
-    <Compile Include="SimpleDb\Response\CreateDomainResponse.cs"/>
-    <Compile Include="SimpleDb\Response\DeleteDomainResponse.cs"/>
-    <Compile Include="SimpleDb\Response\GetAttributesResponse.cs"/>
-    <Compile Include="SimpleDb\Response\ListDomainsResponse.cs"/>
-    <Compile Include="SimpleDb\Response\PutAttributesResponse.cs"/>
-    <Compile Include="SimpleDb\Response\SelectResponse.cs"/>
-    <Compile Include="SimpleDb\Result\BatchPutAttributesResult.cs"/>
-    <Compile Include="SimpleDb\Result\CreateDomainResult.cs"/>
-    <Compile Include="SimpleDb\Result\DeleteAttributesResult.cs"/>
-    <Compile Include="SimpleDb\Result\DeleteDomainResult.cs"/>
-    <Compile Include="SimpleDb\Result\DomainMetadataResult.cs"/>
-    <Compile Include="SimpleDb\Result\GetAttributesResult.cs"/>
-    <Compile Include="SimpleDb\Result\ListDomainsResult.cs"/>
-    <Compile Include="SimpleDb\Result\PutAttributesResult.cs"/>
-    <Compile Include="SimpleDb\Model\SdbMetadata.cs"/>
-    <Compile Include="SimpleDb\Result\SelectResult.cs"/>
-    <Compile Include="SimpleDb\Task\BatchPutAttributes.cs"/>
-    <Compile Include="SimpleDb\Task\DomainMetadata.cs"/>
-    <Compile Include="SimpleDb\Task\DeleteAttributes.cs"/>
-    <Compile Include="SimpleDb\Task\CreateDomain.cs"/>
-    <Compile Include="SimpleDb\Task\DeleteDomain.cs"/>
-    <Compile Include="SimpleDb\Task\GetAttributes.cs"/>
-    <Compile Include="SimpleDb\Task\ListDomains.cs"/>
-    <Compile Include="SimpleDb\Task\PutAttributes.cs"/>
-    <Compile Include="SimpleDb\Task\Select.cs"/>
+    <Compile Include="Agent.cs" />
+    <Compile Include="Model\AwsMetadata.cs" />
+    <Compile Include="SimpleDb\Model\Attribute.cs" />
+    <Compile Include="SimpleDb\Model\Domain.cs" />
+    <Compile Include="SimpleDb\Model\Error.cs" />
+    <Compile Include="SimpleDb\Model\Item.cs" />
+    <Compile Include="SimpleDb\RequestType.cs" />
+    <Compile Include="SimpleDb\Request\BatchPutAttributesRequest.cs" />
+    <Compile Include="SimpleDb\Request\DomainMetadataRequest.cs" />
+    <Compile Include="SimpleDb\Request\DeleteAttributesRequest.cs" />
+    <Compile Include="SimpleDb\Request\CreateDomainRequest.cs" />
+    <Compile Include="SimpleDb\Request\DeleteDomainRequest.cs" />
+    <Compile Include="SimpleDb\Request\GetAttributesRequest.cs" />
+    <Compile Include="SimpleDb\Request\ListDomainsRequest.cs" />
+    <Compile Include="SimpleDb\Request\PutAttributesRequest.cs" />
+    <Compile Include="SimpleDb\Request\SelectRequest.cs" />
+    <Compile Include="SimpleDb\Response\BatchPutAttributesResponse.cs" />
+    <Compile Include="SimpleDb\Response\DomainMetadataResponse.cs" />
+    <Compile Include="SimpleDb\Response\DeleteAttributesResponse.cs" />
+    <Compile Include="SimpleDb\Response\CreateDomainResponse.cs" />
+    <Compile Include="SimpleDb\Response\DeleteDomainResponse.cs" />
+    <Compile Include="SimpleDb\Response\GetAttributesResponse.cs" />
+    <Compile Include="SimpleDb\Response\ListDomainsResponse.cs" />
+    <Compile Include="SimpleDb\Response\PutAttributesResponse.cs" />
+    <Compile Include="SimpleDb\Response\SelectResponse.cs" />
+    <Compile Include="SimpleDb\Result\BatchPutAttributesResult.cs" />
+    <Compile Include="SimpleDb\Result\CreateDomainResult.cs" />
+    <Compile Include="SimpleDb\Result\DeleteAttributesResult.cs" />
+    <Compile Include="SimpleDb\Result\DeleteDomainResult.cs" />
+    <Compile Include="SimpleDb\Result\DomainMetadataResult.cs" />
+    <Compile Include="SimpleDb\Result\GetAttributesResult.cs" />
+    <Compile Include="SimpleDb\Result\ListDomainsResult.cs" />
+    <Compile Include="SimpleDb\Result\PutAttributesResult.cs" />
+    <Compile Include="SimpleDb\Model\SdbMetadata.cs" />
+    <Compile Include="SimpleDb\Result\SelectResult.cs" />
+    <Compile Include="SimpleDb\Task\BatchPutAttributes.cs" />
+    <Compile Include="SimpleDb\Task\DomainMetadata.cs" />
+    <Compile Include="SimpleDb\Task\DeleteAttributes.cs" />
+    <Compile Include="SimpleDb\Task\CreateDomain.cs" />
+    <Compile Include="SimpleDb\Task\DeleteDomain.cs" />
+    <Compile Include="SimpleDb\Task\GetAttributes.cs" />
+    <Compile Include="SimpleDb\Task\ListDomains.cs" />
+    <Compile Include="SimpleDb\Task\PutAttributes.cs" />
+    <Compile Include="SimpleDb\Task\Select.cs" />
     <Compile Include="SimpleDb\Transaction\Transaction.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SimpleDb\Utility\StaticUtilities.cs"/>
-    <Compile Include="Properties\AssemblyInfo.cs"/>
+    <Compile Include="SimpleDb\Utility\StaticUtilities.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Utils\SigningUtils.cs"/>
+    <Compile Include="Utils\SigningUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -155,7 +152,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References"/>
+    <WCFMetadata Include="Service References" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
@@ -181,11 +178,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EC2\"/>
-    <Folder Include="S3\"/>
-    <Folder Include="SQS\"/>
+    <Folder Include="EC2\" />
+    <Folder Include="S3\" />
+    <Folder Include="SQS\" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
