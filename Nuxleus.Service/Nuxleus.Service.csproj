@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -18,7 +18,7 @@
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
+    <UpgradeBackupLocation/>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -60,18 +60,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Saxon.Api.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System"/>
+    <Reference Include="System.Configuration"/>
+    <Reference Include="System.Configuration.Install"/>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Data"/>
+    <Reference Include="System.Drawing"/>
+    <Reference Include="System.ServiceProcess"/>
+    <Reference Include="System.Web"/>
+    <Reference Include="System.Web.Services"/>
+    <Reference Include="System.Xml"/>
     <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
@@ -82,7 +82,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drawing\NuxleusImageResizeProcessManager.cs" />
+    <Compile Include="Drawing\NuxleusImageResizeProcessManager.cs"/>
     <Compile Include="FileSystem\Watcher\FileSystemWatcherService.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -101,7 +101,7 @@
     <Compile Include="NuxleusCoreService.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs"/>
     <Compile Include="Queue\FileMessageQueue.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -117,12 +117,12 @@
     <Compile Include="Authentication\*.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FileSystem\*.cs" />
+    <Compile Include="FileSystem\*.cs"/>
     <Compile Include="FileSystem\Replication\*.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FileSystem\RevisionControl\*.cs" />
-    <Compile Include="LoadBalancer\*.cs" />
+    <Compile Include="FileSystem\RevisionControl\*.cs"/>
+    <Compile Include="LoadBalancer\*.cs"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
@@ -165,9 +165,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Clipboard\" />
+    <Folder Include="Clipboard\"/>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

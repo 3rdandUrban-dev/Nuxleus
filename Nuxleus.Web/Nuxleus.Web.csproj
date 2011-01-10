@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -17,7 +17,7 @@
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
+    <UpgradeBackupLocation/>
     <PublishUrl>http://localhost/Nuxleus.Web/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -56,15 +56,15 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System"/>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
-    <Reference Include="System.ServiceProcess" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Data"/>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap"/>
+    <Reference Include="System.ServiceProcess"/>
+    <Reference Include="System.Web"/>
+    <Reference Include="System.Xml"/>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -80,7 +80,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Mono.Security.dll</HintPath>
     </Reference>
-    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration"/>
     <Reference Include="taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\taglib-sharp.dll</HintPath>
@@ -114,55 +114,55 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agent.cs" />
-    <Compile Include="HttpApplication\FileMessageQueue_Global.cs" />
-    <Compile Include="HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpCollectionListingServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpMediaCollectionCreationServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpDeleteEventServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpMediaListingServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpMediaCreationServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpEventListingServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpEventCreationServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAccountLoginServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAccountCreationServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpSessionManagementServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAccountManagementServiceOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncAtomEntryRatingServiceHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncCreateNewAtomEntryHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncGenerateAtomServiceDocHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationStatusHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncJobStatusRequestHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncStaticFileHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncSuggestionFormHandler.cs" />
-    <Compile Include="HttpModule\NuxleusAsyncRequestOpenIDAuthenticationHttpModule.cs" />
-    <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerReaderHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncFormHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncRequestValidationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncRedirectHandler.cs" />
-    <Compile Include="HttpHandler\XPathServiceOperationManager.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\HttpHandlerHelpers.cs" />
-    <Compile Include="XmlServiceOperation\Context.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncFileNotFoundHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusEventHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpValidateRequestHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpNotFoundHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpSessionRequestHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpGeoLocationHandler.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpSessionLogoutHandler.cs" />
-    <Compile Include="Message\Message.cs" />
-    <Compile Include="HttpHandler\NuxleusHttpAsyncXmlServiceOperationHandler.cs" />
-    <Compile Include="HttpApplication\Global.cs" />
-    <Compile Include="XmlServiceOperation\XmlServiceOperationManager.cs" />
-    <Compile Include="XmlServiceOperation\XmlServiceOperationReader.cs" />
-    <Compile Include="XPathServiceOperationNavigator\XPathServiceOperationNavigator.cs" />
+    <Compile Include="Agent.cs"/>
+    <Compile Include="HttpApplication\FileMessageQueue_Global.cs"/>
+    <Compile Include="HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpCollectionListingServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpMediaCollectionCreationServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpDeleteEventServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpMediaListingServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpMediaCreationServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpEventListingServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpEventCreationServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAccountLoginServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAccountCreationServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpSessionManagementServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAccountManagementServiceOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncAtomEntryRatingServiceHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncCreateNewAtomEntryHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncGenerateAtomServiceDocHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationStatusHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncJobStatusRequestHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncStaticFileHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncSuggestionFormHandler.cs"/>
+    <Compile Include="HttpModule\NuxleusAsyncRequestOpenIDAuthenticationHttpModule.cs"/>
+    <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerReaderHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncFormHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncRequestValidationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncRedirectHandler.cs"/>
+    <Compile Include="HttpHandler\XPathServiceOperationManager.cs"/>
+    <Compile Include="Properties\AssemblyInfo.cs"/>
+    <Compile Include="Utils\HttpHandlerHelpers.cs"/>
+    <Compile Include="XmlServiceOperation\Context.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncFileNotFoundHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusEventHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpValidateRequestHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpNotFoundHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpSessionRequestHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpGeoLocationHandler.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpSessionLogoutHandler.cs"/>
+    <Compile Include="Message\Message.cs"/>
+    <Compile Include="HttpHandler\NuxleusHttpAsyncXmlServiceOperationHandler.cs"/>
+    <Compile Include="HttpApplication\Global.cs"/>
+    <Compile Include="XmlServiceOperation\XmlServiceOperationManager.cs"/>
+    <Compile Include="XmlServiceOperation\XmlServiceOperationReader.cs"/>
+    <Compile Include="XPathServiceOperationNavigator\XPathServiceOperationNavigator.cs"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
@@ -222,9 +222,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AsyncResult\" />
+    <Folder Include="AsyncResult\"/>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

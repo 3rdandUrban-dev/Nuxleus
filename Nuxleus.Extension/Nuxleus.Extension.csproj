@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -17,7 +17,7 @@
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
+    <UpgradeBackupLocation/>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -55,20 +55,20 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System"/>
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web"/>
+    <Reference Include="System.Web.Services"/>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Data"/>
+    <Reference Include="System.Xml"/>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Amp.Fm\Service\LocationComplete.cs">
@@ -77,20 +77,20 @@
     <Compile Include="Amp.Fm\Service\Search.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Facebook\AuthToken.cs" />
-    <Compile Include="Facebook\Facebook.cs" />
-    <Compile Include="Facebook\Friends.cs" />
-    <Compile Include="Facebook\Session.cs" />
-    <Compile Include="Linq\Async.cs" />
-    <Compile Include="Linq\Functional\Functional.cs" />
-    <Compile Include="Linq\Functional\ImmutableList.cs" />
-    <Compile Include="Linq\Functional\Lazy.cs" />
-    <Compile Include="Linq\Functional\Tuple.cs" />
-    <Compile Include="Linq\Query\ExpressionExtensions.cs" />
-    <Compile Include="Linq\Query\ExpressionVisitor.cs" />
-    <Compile Include="Linq\Query\QueryableExtensions.cs" />
-    <Compile Include="Linq\Query\Utils.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Facebook\AuthToken.cs"/>
+    <Compile Include="Facebook\Facebook.cs"/>
+    <Compile Include="Facebook\Friends.cs"/>
+    <Compile Include="Facebook\Session.cs"/>
+    <Compile Include="Linq\Async.cs"/>
+    <Compile Include="Linq\Functional\Functional.cs"/>
+    <Compile Include="Linq\Functional\ImmutableList.cs"/>
+    <Compile Include="Linq\Functional\Lazy.cs"/>
+    <Compile Include="Linq\Functional\Tuple.cs"/>
+    <Compile Include="Linq\Query\ExpressionExtensions.cs"/>
+    <Compile Include="Linq\Query\ExpressionVisitor.cs"/>
+    <Compile Include="Linq\Query\QueryableExtensions.cs"/>
+    <Compile Include="Linq\Query\Utils.cs"/>
+    <Compile Include="Properties\AssemblyInfo.cs"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
@@ -115,8 +115,8 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
