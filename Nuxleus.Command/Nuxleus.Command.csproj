@@ -85,7 +85,7 @@
     <WebReferences Include="Web References" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http:\dev.amp.fm:8080\service\search\%3fwsdl">
+    <WebReferenceUrl Include="http:\dev.amp.fm:8080\service\search\?wsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
     </WebReferenceUrl>
   </ItemGroup>

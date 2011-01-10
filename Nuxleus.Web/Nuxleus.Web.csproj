@@ -160,6 +160,7 @@
     <Compile Include="XmlServiceOperation\XmlServiceOperationManager.cs" />
     <Compile Include="XmlServiceOperation\XmlServiceOperationReader.cs" />
     <Compile Include="XPathServiceOperationNavigator\XPathServiceOperationNavigator.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpUpcomingDotOrgEventListingServiceOperationHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
@@ -217,9 +218,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AsyncResult\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

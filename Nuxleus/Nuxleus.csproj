@@ -97,6 +97,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\SshUtil\SshRemoteExecution.cs" />
     <Compile Include="Utility\SshUtil\Util.cs" />
+    <Compile Include="ICommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Settings.settings">
@@ -105,10 +106,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.Command\Nuxleus.Command.csproj">
-      <Project>{091EC796-27A0-4EDF-9286-B7ABF7981769}</Project>
-      <Name>Nuxleus.Command</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
       <Name>Nuxleus.Core</Name>
