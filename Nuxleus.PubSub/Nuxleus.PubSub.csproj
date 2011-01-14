@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\resources\Nuxleus.snk</AssemblyOriginatorKeyFile>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -29,7 +29,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -71,8 +71,28 @@
     <Compile Include="LLUP\Relevance.cs" />
     <Compile Include="LLUP\Scope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Atom\%2A.cs" />
-    <Compile Include="Bucker\%2A.cs" />
+    <Compile Include="Bucker\ClientPool.cs" />
+	<Compile Include="Bucker\queueclient.cs" />
+	<Compile Include="Bucker\message.cs" />
+    <Compile Include="Atom\Accept.cs" />
+    <Compile Include="Atom\Author.cs" />
+    <Compile Include="Atom\Categories.cs" />
+    <Compile Include="Atom\Category.cs" />
+    <Compile Include="Atom\Collection.cs" />
+    <Compile Include="Atom\Content.cs" />
+    <Compile Include="Atom\Contributor.cs" />
+    <Compile Include="Atom\Entry.cs" />
+    <Compile Include="Atom\Feed.cs" />
+    <Compile Include="Atom\ForeignElement.cs" />
+    <Compile Include="Atom\Generator.cs" />
+    <Compile Include="Atom\Inreplyto.cs" />
+    <Compile Include="Atom\Link.cs" />
+    <Compile Include="Atom\PersonConstruct.cs" />
+    <Compile Include="Atom\Rights.cs" />
+    <Compile Include="Atom\Service.cs" />
+    <Compile Include="Atom\Summary.cs" />
+    <Compile Include="Atom\TextConstruct.cs" />
+    <Compile Include="Atom\Workspace.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

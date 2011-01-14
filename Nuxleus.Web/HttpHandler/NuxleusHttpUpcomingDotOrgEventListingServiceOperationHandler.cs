@@ -9,28 +9,27 @@ using System.Text;
 using System.Web;
 using System.Xml.Linq;
 using Nuxleus.Core;
-using Nuxleus.Extension.Aws.SimpleDb;
-using AwsSdbModel = Nuxleus.Extension.Aws.SimpleDb;
 using System.IO;
 using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Serialization;
 using System.Net;
+using System.Xml.Xsl;
 
 namespace Nuxleus.Web.HttpHandler
 {
 
-    public class NuxleusHttpEventListingServiceOperationHandler : IHttpAsyncHandler
+    public class NuxleusHttpUpcomingDotOrgEventListingServiceOperationHandler : IHttpAsyncHandler
     {
         HttpRequest m_request;
         HttpResponse m_response;
         static Encoding m_encoding = new UTF8Encoding();
-        HttpCookieCollection m_cookieCollection;
+        static XslCompiledTransform xslt = new XslCompiledTransform();
+        static string m_yahooApiKey = "0f24246faa";
+        XsltArgumentList m_argList = new XsltArgumentList();
+        NameValueCollection m_queryStringCollection;
         NuxleusAsyncResult m_asyncResult;
-        static XNamespace r = "http://nuxleus.com/message/response";
-        static List<string> sessionCookies = new List<string>();
-        SelectTask m_task;
-        NuxleusAsyncResult m_iTaskResult;
+        Stream webStream;
 
         public void ProcessRequest(HttpContext context)
         {
@@ -42,91 +41,46 @@ namespace Nuxleus.Web.HttpHandler
             get { return false; }
         }
 
-        static NuxleusHttpEventListingServiceOperationHandler()
+        static NuxleusHttpUpcomingDotOrgEventListingServiceOperationHandler()
         {
-            sessionCookies.Add("sessionid");
-            sessionCookies.Add("userid");
-            sessionCookies.Add("username");
-            sessionCookies.Add("name");
-            sessionCookies.Add("uservalidated");
+            xslt.Load(HttpContext.Current.Server.MapPath("/service/transform/xslt10/upcoming-org.xsl"));
         }
 
         public IAsyncResult BeginProcessRequest(HttpContext context, AsyncCallback cb, object extraData)
         {
             m_request = context.Request;
             m_response = context.Response;
-            m_cookieCollection = context.Request.Cookies;
+            m_queryStringCollection = m_request.QueryString;
+            string location = m_queryStringCollection.Get("location");
+            string quickDate = m_queryStringCollection.Get("time_scope");
+            int categoryId = 1;
+            string flags = "PT";
+            string sort = "distance-asc";
+            string backfill = "further";
+            string upcomingEventQueryUri = Uri.EscapeUriString(String.Format("http://upcoming.yahooapis.com/services/rest/?method=event.search&api_key={0}&location={1}&quick_date={2}&category_id={3}&flags={4}&sort={5}&backfill={6}", m_yahooApiKey, location, quickDate, categoryId, flags, sort, backfill));
+
+            XElement upcomingEventsXmlResult = XElement.Load(upcomingEventQueryUri);
+
+            m_argList.AddParam("location", String.Empty, m_queryStringCollection.Get("location"));
+            m_argList.AddParam("format", String.Empty, m_queryStringCollection.Get("format"));
+            m_argList.AddParam("current-dateTime", String.Empty, DateTime.UtcNow);
+            xslt.Transform(upcomingEventQueryUri, m_argList, m_response.Output);
             m_asyncResult = new NuxleusAsyncResult(cb, extraData);
-            bool success = true;
-
-            Dictionary<string, string> cookieDictionary = Nuxleus.Web.Utility.GetCookieValues(m_cookieCollection, out success, sessionCookies.ToArray());
-
-            string ip = m_request.UserHostAddress.ToString();
-
-            string currentUserId = String.Empty;
-            if (cookieDictionary.TryGetValue("userid", out currentUserId))
-            {
-                m_task = new SelectTask { DomainName = new Domain { Name = "event" }, SelectExpression = String.Format("select * from event where eventcreator = '{0}'", currentUserId) };
-                m_iTaskResult = new NuxleusAsyncResult(cb, extraData);
+            m_asyncResult.CompleteCall();
+            return m_asyncResult;
             
-            m_task.Transaction.OnSuccessfulTransaction += new OnSuccessfulTransaction(Transaction_OnSuccessfulTransaction);
-            m_task.Transaction.OnFailedTransaction += new OnFailedTransaction(Transaction_OnFailedTransaction);
-
-            }
-                        return m_task.BeginInvoke(m_iTaskResult);
         }
-
-        public void Transaction_OnSuccessfulTransaction()
-        {
-            WriteDebugXmlToOutputStream(((SelectResult)m_task.Transaction.Response.Result).Item);
-            m_iTaskResult.CompleteCall();
-        }
-
-        public void Transaction_OnFailedTransaction()
-        {
-            WriteDebugXmlToOutputStream(((SelectResult)m_task.Transaction.Response.Result).Item);
-            m_iTaskResult.CompleteCall();
-        }
-
 
         public void EndProcessRequest(IAsyncResult result)
         {
-            //m_response.Redirect(m_returnLocation);
+            
+            
         }
 
-        void WriteDebugXmlToOutputStream(List<Item> items)
+        public void EndGetResponse(IAsyncResult result)
         {
-            XDocument doc = new XDocument(
-                new XElement(r + "message",
-                         GenerateXElementItems(items)
-                )
-            );
-            m_response.ContentType = "text/xml";
-            string xmlOutput = null;
-            using (TextWriter writer = new StringWriter())
-            {
-                doc.Save(writer);
-                xmlOutput = writer.ToString();
-                m_response.Write(xmlOutput);
-            }
-        }
-
-        IEnumerable<XElement> GenerateXElementItems(List<Item> items)
-        {
-            foreach (Item item in items)
-            {
-                yield return new XElement(r + "event",
-                         GenerateXElementArray(item.Attribute)
-                    );
-            }
-        }
-
-        IEnumerable<XElement> GenerateXElementArray(List<AwsSdbModel.Attribute> attributes)
-        {
-            foreach (AwsSdbModel.Attribute attribute in attributes)
-            {
-                yield return new XElement(r + attribute.Name, attribute.Value);
-            }
+            
+            
         }
     }
 }

@@ -1,8 +1,593 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>obj/Debug/Nuxleus.Web</name>
+        <name>Nuxleus.Web</name>
     </assembly>
     <members>
+        <member name="M:Nuxleus.Web.Utils.HeadAdapter.LastUpdateTimeImageControl(System.String,System.Web.UI.Control,System.Boolean)">
+            <summary>
+            User controls can live in their own folder. 
+            They can contain Image and Hyperlink controls that have image paths
+            that are relative to the location of the user control itself.
+            
+            In order to get the last update time of these images, you need to
+            get their absolute image paths, which take account of both the image path
+            and the user control path. You can do this by letting the Image or Hyperlink
+            control resolve the image path.
+            
+            After you've found the resolved path, you can pass that to CombinedFile.LastUpdateTime
+            to safely get the last update time.
+            </summary>
+            <param name="path">
+            Image path as exposed by the image control.
+            </param>
+            <param name="resolver">
+            The control that will be used to resolve the image path. This would be the 
+            Image or Hyperlink control itself.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.HeadAdapter.InsertedAfterFirstTag(System.String,System.String)">
+            <summary>
+            Inserts a string right after the very first tag in a string with html.
+            For example, if the html contains a head section, the string is inserted
+            right after the initial head tag.
+            </summary>
+            <param name="html">
+            Contains the html into which the string will be inserted.
+            </param>
+            <param name="toInsert">
+            String to be inserted.
+            </param>
+            <returns>
+            Resulting html after the insertion.
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.HeadAdapter.PreloadJS(System.Boolean,System.Collections.Generic.List{System.String},System.Collections.Generic.List{System.String})">
+            <summary>
+            Generates a string with the JavaScript block that preloads images.
+            </summary>
+            <param name="preloadAllImages">
+            True if the urls in ProcessedImageUrls all need to be preloaded.
+            </param>
+            <param name="PrioritizedImages">
+            Urls that need to be preloaded in any case.
+            </param>
+            <param name="ProcessedImageUrls"></param>
+            <returns>
+            The JavaScript block. Null or empty if there are no images to preload.
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.HeadAdapter.PreloadJS(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Takes a list of image urls, and turns it into JavaScript that loads those images.
+            </summary>
+            <param name="preloadedUrls"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.HeadAdapter.CollapsedWhitespace(System.String)">
+            <summary>
+            Collapses the white space and html comments in a string with HTML.
+            
+            All HTML comments are removed.
+            Then all runs of white space are replaced with a single space.
+            If the run of white space contains a newline, it is replaced with a newline instead (so as not to break JavaScript).
+            </summary>
+            <param name="html"></param>
+            <returns>
+            HTML with white space collapsed and html comments removed.
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.HeadAdapter.AddPageFilePaths(System.Collections.Generic.List{System.String})">
+            <summary>
+            Adds the paths of the files making up the current page to a string list.
+            The current page consists of the .aspx file, and maybe the .master file.
+            </summary>
+            <param name="filePaths"></param>
+        </member>
+        <member name="T:Nuxleus.Web.Utils.ConfigUrlElement">
+            <summary>
+            Needed to create the array of urls in web.config
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Web.Utils.ImageOptimizations">
+            <summary>
+            Automates the creation of sprites and base64 inlining for CSS
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.ImageOptimizations.AddCacheDependencies(System.String,System.Boolean)">
+            <summary>
+            Rebuilds the cache / dependancies for all subfolders below the specified directory
+            </summary>
+            <param name="path">The root directory for the cache rebuild (usually app_sprites)</param>
+            <param name="rebuildImages">Indicate whether the directories should be rebuilt as well</param>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.ImageOptimizations.RebuildFromCacheHit(System.String,System.Object,System.Web.Caching.CacheItemRemovedReason)">
+            <summary>
+            Called when the cache dependancy of a subdirectory of the root image folder is modified, created, or removed
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.ImageOptimizations.ProcessDirectory(System.String,System.String,System.Boolean)">
+            <summary>
+            Executes the image optimizer on a specific subdirectory of the root image folder (non-recursive)
+            </summary>
+            <param name="path">The path to the directory to be rebuilt</param>
+            <returns>False if the directory does not exist</returns>
+            <param name="checkIfFilesWereModified">Indicate whether the directory should only be rebuilt if files were modified</param>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.ImageOptimizations.GetCurrentTimeStampInfo(System.String)">
+            <summary>
+            Reads the timestamps of all of the files within a directory, and outputs them in a single sorted string. Used to determine if changes have occured to a directory upon application start.
+            </summary>
+            <param name="path">The path to the directory</param>
+            <returns>A sorted string containing all filenames and last modified timestamps</returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.ImageOptimizations.IsOutputSprite(System.String)">
+            <summary>
+            Checks if an image (passed by path or image name) is a sprite image or CSS file created by the framework
+            </summary>
+            <param name="path">The path or filename of the image in question</param>
+            <returns>True if the image is a sprite, false if it is not</returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.ImageOptimizations.DeleteSpriteFile(System.String)">
+            <summary>
+            Checks if the image at the path is a sprite generated by the framework, and deletes it if it was
+            </summary>
+            <param name="path">The file path to the image in question</param>
+            <returns>True if the image was a sprite (and was by extension, deleted)</returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.ImageOptimizations.MakeCssClassName(System.String,System.String)">
+            <summary>
+            Make the appropriate CSS ID name for the sprite to be used
+            </summary>
+            <param name="pathToImage">The path to the image</param>
+            <param name="pathToSpriteFolder">The path to the folder used to store sprites, used if the path to the image was not relative to the sprites folder</param>
+            <returns>The CSS class used to reference the optimized image</returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.ImageOptimizations.LinkCompatibleCssFile(System.Web.HttpBrowserCapabilitiesBase)">
+            <summary>
+            Returns the name of the CSS file containing the best compatibility settings for the user's browser. Returns null if the browser does not support any optimizations. 
+            </summary>
+            <param name="browser">The HttpBrowserCapabilities object for the user's browser</param>
+            <returns>The name of the correct CSS file, or Null if not supported</returns>
+        </member>
+        <member name="P:Nuxleus.Web.Utils.ImageSprite.EnableSprites">
+            <summary>
+            The "EnableSprites" property (enabled by default) instructs the application to use an optimized sprite or inlined image in place of
+            a normal image tag (from which this inherits).
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Web.Utils.ImageSettings">
+            <summary>
+            ImageSettings is a class used to store the settings retrieved from the sprite settings file
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Web.Utils.ImageSettings.Format">
+            <summary>
+            The output image file format
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Web.Utils.ImageSettings.Quality">
+            <summary>
+            The quality level of the format, if the format supports quality settings (such as jpg)
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Web.Utils.ImageSettings.MaxSize">
+            <summary>
+            The maximum size of a sprite before it will be split into multiple images
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Web.Utils.ImageSettings.BackgroundColor">
+            <summary>
+            The background color of the output sprite
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Web.Utils.ImageSettings.Base64">
+            <summary>
+            Controls whether base64 inlining should be used for high-compatibility browsers
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Web.Utils.ImageSettings.TileInYAxis">
+            <summary>
+            Controls whether the application will tile images along the X or Y axis
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Web.Utils.HeadAnalysis">
+            <summary>
+            Contains the results of an analysis of the head of a page.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.HeadAnalysis.#ctor(System.String,System.Collections.Generic.List{System.String},Nuxleus.Web.Utils.ConfigSection.CombineOption,Nuxleus.Web.Utils.ConfigSection.CombineOption,System.Boolean,System.Boolean,Nuxleus.Web.Utils.UrlProcessor)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="headHtml">
+            the current contents of the head
+            </param>
+            <param name="totalFileNames">
+            totalFileNames will be filled with a list of the names of all
+            CSS and JavaScript files loaded in the head (that is, those
+            that get combined and/or minified).
+            </param>
+            <param name="combineCSSFiles">
+            If true, the CSS files in the group are combined into a single file.
+            </param>
+            <param name="combineJavaScriptFiles">
+            If true, the JavaScript files in the group are combined into a single file.
+            </param>
+            <param name="urlProcessor">
+            Use this UrlProcessor to for example insert version ids.
+            The ProcessedImageUrls property of this UrlProcessor has already been loaded with the 
+            urls of the images on the page.
+            </param>
+            <returns>
+            New content of the head
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.HeadAnalysis.ProcessFileType(System.String,System.String,Nuxleus.Web.Utils.FileTypeUtilities.FileType,System.String,System.Collections.Generic.List{System.String},Nuxleus.Web.Utils.ConfigSection.CombineOption,System.Boolean,System.Boolean,System.Boolean,Nuxleus.Web.Utils.UrlProcessor)">
+            <summary>
+            
+            </summary>
+            <param name="headHtmlSb"></param>
+            <param name="groupRegexp"></param>
+            <param name="fileType"></param>
+            <param name="tagTemplate"></param>
+            <param name="totalFileNames"></param>
+            <param name="combineFiles"></param>
+            <param name="placeCombinedFilesAtEnd">
+            This is only relevant if combineFiles equals All.
+            If placeCombinedFilesAtEnd is true, the tag loading the combined file
+            replaces the very last file group (important if you're loading js, because it means that if any
+            js is dependent on a library loaded from a CDN, all the js will load after that library.
+            
+            If placeCombinedFilesAtEnd is false, the tag replaces the very first file group.
+            You'd use this with CSS, to get it load possibly sooner than the js.
+            </param>
+            <param name="urlProcessor"></param>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.Content(System.Web.HttpContext,System.String,System.Boolean,System.Boolean,Nuxleus.Web.Utils.UrlProcessor,Nuxleus.Web.Utils.FileTypeUtilities.FileType@)">
+            <summary>
+            Takes the url of a combined file, and returns its content,
+            ready to be sent to the browser.
+            The url does not relate to an actual file. The combined content
+            only lives in cache. If it is not in cache, this method
+            finds out which files are associated with the fileUrl,
+            reads them, compresses the content and stores that in cache
+            (as well as returning it).
+            </summary>
+            <param name="context"></param>
+            <param name="combinedFileUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.Url(System.Web.HttpContext,System.Collections.Generic.List{System.Uri},Nuxleus.Web.Utils.FileTypeUtilities.FileType,System.Boolean,System.Boolean,Nuxleus.Web.Utils.UrlProcessor,System.Collections.Generic.List{System.String})">
+             <summary>
+             Takes the urls of a series of files (taken from the src or href
+             attribute of their script or link tags), and returns the url
+             of the combined file. That url will be placed in 
+             single script or link tag that replaces the individual script or link tags.
+            
+             When the browser sends a request for this url, get the content
+             to return by calling CombinedFileContent.
+             </summary>
+             <param name="context"></param>
+             <param name="fileUrls"></param>
+             <param name="totalFileNames">
+             The method adds the physical file names of the files making up the combined
+             file to this parameter. If this is null, nothing is done.
+             </param>
+             <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.StoreFileUrls(System.Web.HttpContext,System.String,System.Collections.Generic.List{System.Uri},Nuxleus.Web.Utils.FileTypeUtilities.FileType)">
+            <summary>
+            Stores the file urls list in Application state under the given hash.
+            </summary>
+            <param name="context"></param>
+            <param name="urlsHash"></param>
+            <param name="fileUrls"></param>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.RetrieveFileUrls(System.Web.HttpContext,System.String,System.Collections.Generic.List{System.Uri}@,Nuxleus.Web.Utils.FileTypeUtilities.FileType@)">
+            <summary>
+            Retrieves the file urls list in Application state under the given hash.
+            </summary>
+            <param name="context"></param>
+            <param name="urlsHash"></param>
+            <returns>
+            List of file urls. Null if the hash was not found.
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.UrlsHash(System.Collections.Generic.List{System.Uri})">
+            <summary>
+            Takes a list of urls, and returns a hash that should be unique
+            for each combination of urls. The resulting hash will be valid for
+            use in a url.
+            </summary>
+            <param name="fileUrls"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.CombinedFileUrl(System.String,System.String,Nuxleus.Web.Utils.FileTypeUtilities.FileType,Nuxleus.Web.Utils.UrlProcessor)">
+            <summary>
+            Returns a combined file url.
+            </summary>
+            <param name="urlsHash">
+            Hash based on the urls of the files that make up the combined file.
+            </param>
+            <param name="versionId">
+            A string that is different for each version of the files that make up 
+            the combined file. This is used to make sure that a browser doesn't
+            pick up an outdated version from its internal browser cache.
+            </param>
+            <param name="fileType">
+            </param>
+            <param name="urlDomain">
+            Domain to be used for the url.
+            Make null or empty if you don't want a domain used in the url.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.GetContentVersion(System.Web.HttpContext,System.String,Nuxleus.Web.Utils.UrlProcessor,System.Collections.Generic.List{System.String},System.Boolean,System.Boolean,System.String@,System.String@,Nuxleus.Web.Utils.FileTypeUtilities.FileType@)">
+            <summary>
+            Takes the hash identifying the urls of the files that make up a combined file.
+            Returns the compressed content of the combined files, and the version ID
+            of the combined files. The version ID is based on the last modified time of the last
+            modified file file that goes into the combined file.
+            </summary>
+            <param name="context"></param>
+            <param name="urlsHash"></param>
+            <param name="totalFileNames">
+            The file names of the files read by this method get added to this list.
+            If this is null, nothing is done with this parameter.
+            </param>
+            <param name="combinedFileContent">
+            Content to be sent back to the browser. 
+            Will be null if the content could not be retrieved, because the hash was not found in
+            the Application object. This means that the file tag that caused the browser to 
+            request this file was generated in JavaScript or appeared outside the head tag
+            on the page. This will also happen in debug mode. 
+            In this case, the name of the requested file matches an actual
+            file on the server.
+            </param>
+            <param name="versionId"></param>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.FixUrlProperties(System.String@,System.Uri,Nuxleus.Web.Utils.UrlProcessor)">
+            <summary>
+            Takes the content of a CSS file and the original absolute url of that
+            file, and changes all url() properties to absolute urls.
+            This way, if the CSS file has been combined with other files, the 
+            images specified in the url() properties will still show.
+            </summary>
+            <param name="fileContent"></param>
+            <param name="fileUrl"></param>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.LastUpdateTime(System.String,System.Boolean)">
+            <summary>
+            Returns the last update time of an image.
+            </summary>
+            <param name="path">
+            Relative url of the image.
+            </param>
+            <returns>
+            Number of seconds since the start of the epoch
+            modulo 40,000,000 that the file was last updated.
+            40,000,000 seconds is more than a year. By using modulo,
+            the size of the long is reduced, while it is still 
+            extremely unlikely that 2 different update times for the
+            same file result in the same return value.
+            
+            The long is returned as a string, with hexadecimal characters.
+            It isn't returned as a base64 string, because base64 is case sensitive,
+            and a browser cache may do case insensitive compares to urls.
+            
+            If the file doesn't exist, or if the image is inlined, "" (empty string) is returned.
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.MapPath(System.String,System.Boolean)">
+            <summary>
+            Maps a url on a file path on the file system.
+            Handles absolute urls while running under Cassini.
+            
+            If the file has a domain, disregards the domain.
+            That way, if you use a cookieless domain outside this library,
+            you still get the file path.
+            If the file is actually on another domain, it won't find it on
+            your server.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+            In debug mode, throws an exception if the path could not be generated, or if it doesn't exist.
+            </exception>
+            <param name="url"></param>
+            <returns>
+            The file path. Null if the file path somehow couldn't be generated, or if the file doesn't exist.
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.ResolveUrl(System.String)">
+            <summary>
+            Takes a virtual path (starts with ~) and converts it into an
+            absolute path (starts with / ).
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.SafeSubstring(System.String,System.Int32,System.Int32)">
+            <summary>
+            Safe version of Substring. 
+            If startIndex is outside the string, returns empty string.
+            If length is too long, returns whatever characters are available from startIndex.
+            </summary>
+            <param name="s"></param>
+            <param name="startIndex"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.CombinedFile.IsInlined(System.String)">
+            <summary>
+            Determines whether an image is inlined (so its contents is not in an external file, but sits in
+            the CSS or HTML itself).
+            </summary>
+            <param name="path">
+            Path of the image. This would be the src of an img tag, or a url(..) in CSS.
+            </param>
+            <returns>
+            true: image is inlined
+            false: image is not inlined
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.UrlProcessor.#ctor(System.Collections.Generic.List{System.String},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="cookielessDomains"></param>
+            <param name="makeImageUrlsLowercase"></param>
+            <param name="insertVersionIdInImageUrls">
+            </param>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.UrlProcessor.ProcessedUrl(System.String,System.Boolean,System.Boolean,System.Uri,System.String)">
+             <summary>
+             Processes a url and returns the result.
+             Adds a cookieless domain (if any specified in _cookielessDomains).
+             
+             Inserts version id. For images, this only happens if _insertVersionIdInImageUrls is true.
+            
+             Makes the url lowercase, if the url is an image and _makeImageUrlsLowercase is true.
+             Note that non-images (css and js files) are never made lowercase, because their filenames are hashes.
+             
+             The resulting url is not only returned, but also added to property ProcessedImageUrls (provided it is 
+             an image url).
+             </summary>
+             <param name="url">
+             Url to process.
+             </param>
+             <param name="isImageUrl">
+             Set true if this is an image url.
+             </param>
+             <param name="alwaysMakeAbsolute">
+             Set true if the url should be made absolute, even if there are no cookieless domains
+             specified.
+             </param>
+             <param name="alwaysMakeAbsolute">
+             Set true if the url should be made absolute, even if there are no cookieless domains
+             specified.
+             </param>
+             <param name="baseUri">
+             Base Url to be used when making the url absolute, and when adding a cookieless domain (which also
+             involves making the url absolute).
+             
+             If this is null, the Url of the current request is used.
+             </param>
+             <param name="versionId">
+             Version id to be inserted into the url.
+             If this is null or empty, the method gets the version id itself via the url.
+             </param>
+             <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.UrlProcessor.ImagesNeedProcessing">
+            <summary>
+            Returns true if images need to be processed by the UrlProcessor.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.UrlProcessor.AbsoluteUrl(System.String,System.Uri)">
+            <summary>
+            Makes sure that a url is absolute.
+            </summary>
+            <param name="url"></param>
+            <param name="baseUri">
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.UrlProcessor.ReplaceDomain(System.String,System.Uri,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Turns a url into an absolute url, and then changes its domain.
+            If the url starts with http or https, the domain doesn't get changed.
+            </summary>
+            <param name="url">
+            The cookieless domain will be added to this url
+            </param>
+            <param name="baseUri">
+            Uri of the page where this url is used. Used to make the url into an abslute url.
+            </param>
+            <param name="urlScheme">
+            Scheme of the url
+            </param>
+            <param name="cookielessDomains">
+            The list of cookieless domains that is available. One of these domains will be chosen, based on
+            the hash of the absolute version of the url.
+            By basing it on the absolute version, urls that point to the same actual resource but that have 
+            different paths will still get the same cookieless domain.
+            </param>
+            <param name="newDomain">
+            New domain of the url.
+            </param>
+            <returns>
+            The resulting url.
+            </returns>
+        </member>
+        <member name="P:Nuxleus.Web.Utils.ImageSpriteCssLink.ImageUrl">
+            <summary>
+            The relative path to the folder in which the CSS files are to be linked from
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.FileTypeUtilities.FileTypeToExtension(Nuxleus.Web.Utils.FileTypeUtilities.FileType)">
+            <summary>
+            Returns an extension based on the given file type.
+            </summary>
+            <param name="fileType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.FileTypeUtilities.FileTypeOfUrl(System.String)">
+            <summary>
+            Returns the file type of a url.
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.FileTypeUtilities.FileTypeToContentType(Nuxleus.Web.Utils.FileTypeUtilities.FileType)">
+            <summary>
+            Converts a file type to a mime.
+            </summary>
+            <param name="fileType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Nuxleus.Web.Utils.ConfigDomainElement">
+            <summary>
+            Needed to create the array of cookieless domain names in web.config
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Web.Utils.UrlVersioner">
+            <summary>
+            Deals with inserting a version id into a url, and removing a version id from a url.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.UrlVersioner.InsertVersionId(System.String,System.String)">
+            <summary>
+            Inserts a version id into a url and returns the result.
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.UrlVersioner.UnversionedFilename(System.String)">
+            <summary>
+            Takes a url, and returns the name of the file without the version id and without the extension.
+            
+            This method assumes that the url has at least a version id, or an extension, or both.
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Nuxleus.Web.Utils.UrlVersioner.DeversionedImageUrl(System.String,System.Boolean@)">
+            <summary>
+            Takes an image url (ends in .png, .gif or .jpg) and removes the version id from it.
+            </summary>
+            <param name="imageUrl">
+            The image url.
+            </param>
+            <param name="deversioned">
+            Returns true if the url was an image url, and it contained a version.
+            False otherwise.
+            </param>
+            <returns>
+            The image url with the version id removed. If the url was not an image url, or if it didn't have 
+            a version id, the original url is returned.
+            </returns>
+        </member>
     </members>
 </doc>

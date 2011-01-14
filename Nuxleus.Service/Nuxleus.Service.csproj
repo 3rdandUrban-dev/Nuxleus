@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Nuxleus.snk</AssemblyOriginatorKeyFile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -30,7 +30,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <ReleaseVersion>0.4.2.1</ReleaseVersion>
@@ -113,15 +113,15 @@
     <Compile Include="Queue\QSToLLUP.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Authentication\%2A.cs">
+    <Compile Include="Authentication\*.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FileSystem\%2A.cs" />
-    <Compile Include="FileSystem\Replication\%2A.cs">
+    <Compile Include="FileSystem\*.cs" />
+    <Compile Include="FileSystem\Replication\*.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FileSystem\RevisionControl\%2A.cs" />
-    <Compile Include="LoadBalancer\%2A.cs" />
+    <Compile Include="FileSystem\RevisionControl\*.cs" />
+    <Compile Include="LoadBalancer\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
@@ -165,6 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Clipboard\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nuxleus.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,7 +12,7 @@
     <AssemblyName>Nuxleus.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Nuxleus.snk</AssemblyOriginatorKeyFile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -29,7 +29,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <ReleaseVersion>0.4.2.1</ReleaseVersion>
@@ -54,6 +54,9 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -68,14 +71,6 @@
     <Reference Include="Enyim.Caching, Version=1.2.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Enyim.Caching.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Mono.Posix.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0">
@@ -109,6 +104,15 @@
     <Reference Include="Thought.vCards, Version=0.4.0.0, Culture=neutral, PublicKeyToken=b34606f0aa925886">
       <HintPath>..\lib\Thought.vCards.dll</HintPath>
     </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.4.1.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
@@ -161,6 +165,24 @@
     <Compile Include="XmlServiceOperation\XmlServiceOperationReader.cs" />
     <Compile Include="XPathServiceOperationNavigator\XPathServiceOperationNavigator.cs" />
     <Compile Include="HttpHandler\NuxleusHttpUpcomingDotOrgEventListingServiceOperationHandler.cs" />
+    <Compile Include="Utils\CombineAndMinify\CombinedFile.cs" />
+    <Compile Include="Utils\CombineAndMinify\ConfigDomainElement.cs" />
+    <Compile Include="Utils\CombineAndMinify\ConfigDomainElementCollection.cs" />
+    <Compile Include="Utils\CombineAndMinify\ConfigSection.cs" />
+    <Compile Include="Utils\CombineAndMinify\ConfigUrlElement.cs" />
+    <Compile Include="Utils\CombineAndMinify\ConfigUrlElementCollection.cs" />
+    <Compile Include="Utils\CombineAndMinify\FileTypeUtilities.cs" />
+    <Compile Include="Utils\CombineAndMinify\HeadAdapter.cs" />
+    <Compile Include="Utils\CombineAndMinify\HeadAnalysis.cs" />
+    <Compile Include="Utils\CombineAndMinify\HttpHandler.cs" />
+    <Compile Include="Utils\CombineAndMinify\UrlProcessor.cs" />
+    <Compile Include="Utils\CombineAndMinify\UrlVersioner.cs" />
+    <Compile Include="Utils\ImageOptimizationFramework\ImageOptimizationModule.cs" />
+    <Compile Include="Utils\ImageOptimizationFramework\ImageOptimizations.cs" />
+    <Compile Include="Utils\ImageOptimizationFramework\ImageSettings.cs" />
+    <Compile Include="Utils\ImageExControl\ImageSprite.cs" />
+    <Compile Include="Utils\ImageExControl\LinkCss.cs" />
+    <Compile Include="Utils\ImageExControl\StringWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
@@ -227,4 +249,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Nuxleus.snk" />
+  </ItemGroup>
 </Project>
