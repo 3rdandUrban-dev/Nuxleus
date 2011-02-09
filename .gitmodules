@@ -75,31 +75,31 @@
 	url = git://github.com/IronLanguages/main.git
 [submodule "module/servicestack/ServiceStack.Examples"]
 	path = module/servicestack/ServiceStack.Examples
-	url = https://github.com/mythz/ServiceStack.Examples.git
+	url = https://github.com/ServiceStack/ServiceStack.Examples.git
 [submodule "module/servicestack/ServiceStack.Extras"]
 	path = module/servicestack/ServiceStack.Extras
-	url = https://github.com/mythz/ServiceStack.Extras.git
+	url = https://github.com/ServiceStack/ServiceStack.Extras.git
 [submodule "module/servicestack/ServiceStack.Redis"]
 	path = module/servicestack/ServiceStack.Redis
-	url = https://github.com/mythz/ServiceStack.Redis.git
+	url = https://github.com/ServiceStack/ServiceStack.Redis.git
 [submodule "module/servicestack/ServiceStack.Text"]
 	path = module/servicestack/ServiceStack.Text
-	url = https://github.com/mythz/ServiceStack.Text.git
+	url = https://github.com/ServiceStack/ServiceStack.Text.git
 [submodule "module/servicestack/ServiceStack.RedisWebServices"]
 	path = module/servicestack/ServiceStack.RedisWebServices
-	url = https://github.com/mythz/ServiceStack.RedisWebServices.git
+	url = https://github.com/ServiceStack/ServiceStack.RedisWebServices.git
 [submodule "module/servicestack/ServiceStack.Benchmarks"]
 	path = module/servicestack/ServiceStack.Benchmarks
-	url = https://github.com/mythz/ServiceStack.Benchmarks.git
+	url = https://github.com/ServiceStack/ServiceStack.Benchmarks.git
 [submodule "module/servicestack/ServiceStack.Logging"]
 	path = module/servicestack/ServiceStack.Logging
-	url = https://github.com/mythz/ServiceStack.Logging.git
+	url = https://github.com/ServiceStack/ServiceStack.Logging.git
 [submodule "module/servicestack/ServiceStack.OrmLite"]
 	path = module/servicestack/ServiceStack.OrmLite
-	url = https://github.com/mythz/ServiceStack.OrmLite.git
+	url = https://github.com/ServiceStack/ServiceStack.OrmLite.git
 [submodule "module/servicestack/ServiceStack.Interfaces"]
 	path = module/servicestack/ServiceStack.Interfaces
-	url = https://github.com/mythz/ServiceStack.Interfaces.git
+	url = https://github.com/ServiceStack/ServiceStack.Interfaces.git
 [submodule "module/soundmanager2"]
 	path = module/soundmanager2
 	url = git://github.com/scottschiller/SoundManager2.git
@@ -108,7 +108,7 @@
 	url = git://github.com/adriengibrat/jQuery-SoundManager.git
 [submodule "module/servicestack/ServiceStack"]
 	path = module/servicestack/ServiceStack
-	url = git://github.com/mythz/ServiceStack.git
+	url = git://github.com/ServiceStack/ServiceStack.git
 [submodule "module/facebook/csharp-sdk"]
 	path = module/facebook/csharp-sdk
 	url = git://github.com/facebook/csharp-sdk.git
