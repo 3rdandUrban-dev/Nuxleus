@@ -130,3 +130,6 @@
 [submodule "module/fluentcassandra"]
 	path = module/fluentcassandra
 	url = git://github.com/managedfusion/fluentcassandra.git
+[submodule "module/cassandra"]
+	path = module/cassandra
+	url = git://git.apache.org/cassandra.git
