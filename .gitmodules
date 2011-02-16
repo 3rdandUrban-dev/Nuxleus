@@ -133,3 +133,6 @@
 [submodule "module/cassandra"]
 	path = module/cassandra
 	url = git://git.apache.org/cassandra.git
+[submodule "module/node-uuid"]
+	path = module/node-uuid
+	url = https://github.com/broofa/node-uuid.git

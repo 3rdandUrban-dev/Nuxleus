@@ -14,6 +14,7 @@ using Nuxleus.Geo;
 using Nuxleus.Memcached;
 using Nuxleus.Transform;
 using Saxon.Api;
+using Nuxleus.Extension;
 
 namespace Nuxleus.Web.HttpApplication
 {
@@ -88,14 +89,14 @@ namespace Nuxleus.Web.HttpApplication
                                 {
                                     sdbAccessKey = configReader.ReadString();
                                     Environment.SetEnvironmentVariable("AWS_PUBLIC_KEY", sdbAccessKey);
-                                    Console.WriteLine("SDB_ACCESS_KEY: {0}", sdbAccessKey);
+                                    this.LogInfo("SDB_ACCESS_KEY: {0}", sdbAccessKey);
                                     break;
                                 }
                             case "sdb-secret-key":
                                 {
                                     sdbSecretKey = configReader.ReadString();
                                     Environment.SetEnvironmentVariable("AWS_PRIVATE_KEY", sdbSecretKey);
-                                    Console.WriteLine("SDB_PRIVATE_KEY: {0}", sdbSecretKey);
+                                    this.LogInfo("SDB_PRIVATE_KEY: {0}", sdbSecretKey);
                                     break;
                                 }
                             default:
