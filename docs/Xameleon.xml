@@ -1,30 +1,9 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Xameleon</name>
+        <name>obj/Debug/Xameleon</name>
     </assembly>
     <members>
-        <member name="T:Nuxleus.Transform.Transform">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Transform.Transform.#ctor">
-            <summary>
-            </summary>
-        </member>
-        <member name="T:Nuxleus.ResultDocumentHandler.S3ResultDocumentHandler">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Nuxleus.ResultDocumentHandler.S3ResultDocumentHandler.#ctor">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Nuxleus.ResultDocumentHandler.S3ResultDocumentHandler.#ctor(System.Collections.Hashtable)">
-            <summary>
-            </summary>
-            <param name="table"></param>
-        </member>
         <member name="M:Xameleon.Function.Facebook.GetAuthenticationToken(System.Web.HttpContext)">
             <summary>
             First function to call in order to get the authentication token used to
@@ -37,7 +16,33 @@
             This must be called before OpenUserSession.
             </summary>
         </member>
-        <member name="T:Nuxleus.UrlResolver.S3XmlResolver">
+        <member name="M:Xameleon.Function.HttpWebResponseStream.GetResponseString(System.IO.Stream)">
+            <summary>
+            </summary>
+            <param name="stream">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="T:Nuxleus.ResultDocumentHandler.S3ResultDocumentHandler">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Nuxleus.ResultDocumentHandler.S3ResultDocumentHandler.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Nuxleus.ResultDocumentHandler.S3ResultDocumentHandler.#ctor(System.Collections.Hashtable)">
+            <summary>
+            </summary>
+            <param name="table">
+            </param>
+        </member>
+        <member name="T:Nuxleus.Transform.Transform">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Transform.Transform.#ctor">
             <summary>
             </summary>
         </member>
@@ -45,11 +50,9 @@
             <summary>
             </summary>
         </member>
-        <member name="M:Xameleon.Function.HttpWebResponseStream.GetResponseString(System.IO.Stream)">
+        <member name="T:Nuxleus.UrlResolver.S3XmlResolver">
             <summary>
             </summary>
-            <param name="stream"></param>
-            <returns></returns>
         </member>
     </members>
 </doc>
