@@ -179,6 +179,7 @@ namespace Nuxleus.Web.HttpApplication
             Application["encoding"] = Application["as_encoding"];
             Application["pledgeCount"] = Application["as_pledgeCount"];
             Application["pledgeQueue"] = Application["as_pledgeQueue"];
+            Application["yahooApiKey"] = "0f24246faa";
 
             Environment.SetEnvironmentVariable("APPLICATION_ROOT_PATH", application.Request.PhysicalApplicationPath);
         }

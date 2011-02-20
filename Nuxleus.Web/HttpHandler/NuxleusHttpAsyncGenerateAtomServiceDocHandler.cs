@@ -1,6 +1,6 @@
 // Copyright (c) 2006 by M. David Peterson
-// The code contained in this file is licensed under a Creative Commons (Attribution 3.0) license
-// Please see http://creativecommons.org/licenses/by/3.0/us/ for specific detail.
+// The code contained in this file is licensed under The MIT License
+// Please see http://www.opensource.org/licenses/mit-license.php for specific detail.
 
 using System;
 using System.Collections.Specialized;
@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
 using Nuxleus.Atom;
+using Nuxleus.Core;
 
 namespace Nuxleus.Web.HttpHandler {
 
@@ -72,7 +73,7 @@ namespace Nuxleus.Web.HttpHandler {
 
                 lock (m_lock) {
                     string basePath = request.MapPath(String.Format("~{0}", base_path));
-                    Console.WriteLine(basePath);
+                    this.LogInfo(basePath);
                     if (!Directory.Exists(basePath)) {
                         Directory.CreateDirectory(basePath);
                     }

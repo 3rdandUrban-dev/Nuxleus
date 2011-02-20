@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -72,8 +72,8 @@
     <Compile Include="LLUP\Scope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Bucker\ClientPool.cs" />
-	<Compile Include="Bucker\queueclient.cs" />
-	<Compile Include="Bucker\message.cs" />
+    <Compile Include="Bucker\QueueClient.cs" />
+    <Compile Include="Bucker\Message.cs" />
     <Compile Include="Atom\Accept.cs" />
     <Compile Include="Atom\Author.cs" />
     <Compile Include="Atom\Categories.cs" />

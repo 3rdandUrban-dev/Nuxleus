@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("3rd&Urban")]
 [assembly: AssemblyProduct("Nuxleus.Web")]
-[assembly: AssemblyCopyright("Copyright © 3rd&Urban 2010")]
+[assembly: AssemblyCopyright("Copyright © 2011 3rd&Urban, LLC")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

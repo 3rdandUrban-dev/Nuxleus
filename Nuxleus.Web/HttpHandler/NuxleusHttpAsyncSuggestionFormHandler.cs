@@ -70,7 +70,7 @@
 //            string title = form.Get("title");
 //            string ip = context.Request.UserHostAddress.ToString();
 
-//            Console.WriteLine("Slug: {0}", slug);
+//            this.LogInfo("Slug: {0}", slug);
 
 //            var paragraphs = from line in ReadParagraphsFromContent(HttpUtility.HtmlDecode(form.Get("suggestion")))
 //                             select GetXmlFromHtmlString(line);
@@ -83,7 +83,7 @@
 
 //            using (XmlReader reader = doc.CreateReader()) {
 //                while (reader.Read()) {
-//                    Console.WriteLine(reader.ReadOuterXml());
+//                    this.LogInfo(reader.ReadOuterXml());
 //                }
 //            }
 
@@ -152,7 +152,7 @@
 
 //                lock (m_lock) {
 //                    string basePath = request.MapPath(String.Format("~{0}", base_path));
-//                    Console.WriteLine(basePath);
+//                    this.LogInfo(basePath);
 //                    if (!Directory.Exists(basePath)) {
 //                        Directory.CreateDirectory(basePath);
 //                    }

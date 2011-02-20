@@ -66,7 +66,7 @@ namespace Nuxleus.Web.HttpHandler {
                         guid = cookieCollection.Get("guid").Value;
                         openid = cookieCollection.Get("openid").Value;
                     } catch (Exception e) {
-                        Console.WriteLine(e.Message);
+                        this.LogError(e.Message);
                     }
                 }
 

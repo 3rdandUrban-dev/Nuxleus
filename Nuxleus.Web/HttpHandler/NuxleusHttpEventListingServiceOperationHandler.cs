@@ -1,6 +1,6 @@
 // Copyright (c) 2006 by M. David Peterson
-// The code contained in this file is licensed under a Creative Commons (Attribution 3.0) license
-// Please see http://creativecommons.org/licenses/by/3.0/us/ for specific detail.
+// The code contained in this file is licensed under The MIT License
+// Please see http://www.opensource.org/licenses/mit-license.php for specific detail.
 
 using System;
 using System.Collections.Generic;
@@ -68,12 +68,12 @@ namespace Nuxleus.Web.HttpHandler
             {
                 m_task = new SelectTask { DomainName = new Domain { Name = "event" }, SelectExpression = String.Format("select * from event where eventcreator = '{0}'", currentUserId) };
                 m_iTaskResult = new NuxleusAsyncResult(cb, extraData);
-            
-            m_task.Transaction.OnSuccessfulTransaction += new OnSuccessfulTransaction(Transaction_OnSuccessfulTransaction);
-            m_task.Transaction.OnFailedTransaction += new OnFailedTransaction(Transaction_OnFailedTransaction);
+
+                m_task.Transaction.OnSuccessfulTransaction += new OnSuccessfulTransaction(Transaction_OnSuccessfulTransaction);
+                m_task.Transaction.OnFailedTransaction += new OnFailedTransaction(Transaction_OnFailedTransaction);
 
             }
-                        return m_task.BeginInvoke(m_iTaskResult);
+            return m_task.BeginInvoke(m_iTaskResult);
         }
 
         public void Transaction_OnSuccessfulTransaction()

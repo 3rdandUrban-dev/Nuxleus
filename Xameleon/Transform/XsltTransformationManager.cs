@@ -33,7 +33,7 @@ namespace Nuxleus.Transform {
         Uri m_baseXsltUri;
         String m_baseXsltUriHash;
         String m_baseXsltName;
-        static HashAlgorithm _hashAlgorithm;
+        static HashAlgorithm m_hashAlgorithm;
         //NOTE: TransformEngine enum PLACEHOLDER FOR FUTURE USE
         static TransformEngine m_transformEngine;
         static string m_hashkey = (string)HttpContext.Current.Application["hashkey"];
@@ -82,7 +82,7 @@ namespace Nuxleus.Transform {
             m_xdmNodeETagIndex = xdmNodeETagIndex;
             m_namedXsltHashtable = namedXsltHashtable;
             m_namedXsltETagIndex = namedXsltETagIndex;
-            _hashAlgorithm = HashAlgorithm.MD5;
+            m_hashAlgorithm = HashAlgorithm.MD5;
             //NOTE: TransformEngine enum PLACEHOLDER FOR FUTURE USE
             m_transformEngine = TransformEngine.SAXON;
         }
@@ -231,7 +231,7 @@ namespace Nuxleus.Transform {
 
         public static String GenerateNamedETagKey (String name, Uri sourceUri, params object[] objectParams) {
             FileInfo fileInfo = new FileInfo(sourceUri.LocalPath);
-            return String.Format("{0}:{1}", name, HashcodeGenerator.GetHMACHashBase64String(m_hashkey, _hashAlgorithm, fileInfo.LastWriteTimeUtc, fileInfo.Length, sourceUri, objectParams));
+            return String.Format("{0}:{1}", name, HashcodeGenerator.GetHMACHashBase64String(m_hashkey, m_hashAlgorithm, fileInfo.LastWriteTimeUtc, fileInfo.Length, sourceUri, objectParams));
         }
 
         private XsltTransformer createNewTransformer (Uri xsltUri) {
@@ -253,8 +253,8 @@ namespace Nuxleus.Transform {
             set { m_namedXsltHashtable = value; }
         }
         public HashAlgorithm HashAlgorithm {
-            get { return _hashAlgorithm; }
-            set { _hashAlgorithm = value; }
+            get { return m_hashAlgorithm; }
+            set { m_hashAlgorithm = value; }
         }
         public Processor Processor {
             get { return m_processor; }

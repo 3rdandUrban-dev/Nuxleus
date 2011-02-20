@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using Nuxleus.Core;
 
 namespace Nuxleus.Web.HttpModule {
 
@@ -18,18 +19,18 @@ namespace Nuxleus.Web.HttpModule {
         IAsyncResult BeginOpenIDAuthenticationHandlerExecute ( Object source, EventArgs e, AsyncCallback cb, Object state ) {
             System.Web.HttpApplication app = (System.Web.HttpApplication)source;
             OpenIDAuthenticationDelegate doAuthentication = new OpenIDAuthenticationDelegate(DoAuthentication);
-            Console.WriteLine("Begin Authentication");
+            this.LogInfo("Begin Authentication");
             return doAuthentication.BeginInvoke(cb, doAuthentication);
         }
 
         void EndOpenIDAuthenticationHandlerExecute ( IAsyncResult ar ) {
             OpenIDAuthenticationDelegate del = (OpenIDAuthenticationDelegate)ar.AsyncState;
             del.EndInvoke(ar);
-            Console.WriteLine("End Authentication");
+            this.LogInfo("End Authentication");
         }
 
         void DoAuthentication () {
-            Console.WriteLine("Doing Authentication...");
+            this.LogInfo("Doing Authentication...");
         }
 
         public void Dispose () { }

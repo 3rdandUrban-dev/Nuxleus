@@ -1,11 +1,14 @@
+/*
+// File: Feed.cs:
+// Author(s):
+//  Sylvain Hellegouarch <sh@defuze.org>
+//  M. David Peterson <m.david@3rdandUrban.com>
 //
-// feed.cs: 
+// Copyright © 2011 3rd&Urban, LLC
 //
-// Author:
-//   Sylvain Hellegouarch (sh@defuze.org)
-//
-// Copyright (C) 2007, 3rd&Urban, LLC
-// 
+// The code contained in this file is licensed under The MIT License
+// Please see http://www.opensource.org/licenses/mit-license.php for specific detail.
+*/
 
 using System;
 using System.IO;
@@ -17,6 +20,7 @@ namespace Nuxleus.Atom {
     [XmlRootAttribute("feed", Namespace="http://www.w3.org/2005/Atom", IsNullable=false)]
     public class Feed {
         private static XmlSerializerNamespaces xmlns = null;
+        private static XmlSerializer m_serializer = new XmlSerializer(typeof(Feed));
 
         [XmlAttribute("lang", Form=System.Xml.Schema.XmlSchemaForm.Qualified,
               Namespace="http://www.w3.org/XML/1998/namespace")]
@@ -71,13 +75,13 @@ namespace Nuxleus.Atom {
 
         public static Feed Parse ( string xml ) {
             XmlReader reader = XmlReader.Create(new StringReader(xml));
-            XmlSerializer serializer = new XmlSerializer(typeof(Feed));
-            return (Feed)serializer.Deserialize(reader);
+            //XmlSerializer serializer = new XmlSerializer(typeof(Feed));
+            return (Feed)m_serializer.Deserialize(reader);
         }
 
         public static Feed Parse ( Stream stream ) {
-            XmlSerializer serializer = new XmlSerializer(typeof(Feed));
-            return (Feed)serializer.Deserialize(stream);
+            //XmlSerializer serializer = new XmlSerializer(typeof(Feed));
+            return (Feed)m_serializer.Deserialize(stream);
         }
 
         public override string ToString () {
@@ -89,8 +93,8 @@ namespace Nuxleus.Atom {
             }
             StringBuilder sb = new StringBuilder();
             StringWriter writer = new StringWriter(sb);
-            XmlSerializer serializer = new XmlSerializer(typeof(Feed));
-            serializer.Serialize(writer, this);
+            //XmlSerializer serializer = new XmlSerializer(typeof(Feed));
+            m_serializer.Serialize(writer, this);
             return sb.ToString();
         }
     }

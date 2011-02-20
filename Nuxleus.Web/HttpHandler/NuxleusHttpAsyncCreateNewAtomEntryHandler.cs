@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
 using Nuxleus.Atom;
+using Nuxleus.Core;
 
 namespace Nuxleus.Web.HttpHandler {
 
@@ -35,7 +36,7 @@ namespace Nuxleus.Web.HttpHandler {
         }
 
         static NuxleusHttpAsyncCreateNewAtomEntryHandler() {
-
+            
         }
 
         public IAsyncResult BeginProcessRequest(HttpContext context, AsyncCallback cb, object extraData) {
@@ -73,7 +74,7 @@ namespace Nuxleus.Web.HttpHandler {
 
                 lock (m_lock) {
                     string basePath = request.MapPath(String.Format("~{0}", base_path));
-                    Console.WriteLine(basePath);
+                    this.LogInfo(basePath);
                     if (!Directory.Exists(basePath)) {
                         Directory.CreateDirectory(basePath);
                     }

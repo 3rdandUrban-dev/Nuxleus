@@ -53,10 +53,10 @@ namespace Nuxleus.Web.HttpHandler {
 
             try {
                 for (int i = 0; i <= form.Count; i++) {
-                    Console.WriteLine("Form value: {0}", form[i]);
+                    this.LogInfo("Form value: {0}", form[i]);
                 }
             } catch (Exception e) {
-                Console.WriteLine(e.Message);
+                this.LogInfo(e.Message);
             }
 
             using (MemoryStream stream = new MemoryStream()) {

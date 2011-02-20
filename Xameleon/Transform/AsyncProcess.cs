@@ -18,9 +18,12 @@ namespace Nuxleus.Transform
     ///</summary>
     public partial class Transform
     {
-        public TransformResponse BeginTransformProcess (TransformRequest request)
+        static object m_lock = new object();
+
+        public TransformResponse BeginTransformProcess(TransformRequest request)
         {
-            Console.WriteLine("BeginTransformProcess reached");
+            this.LogInfo("BeginTransformProcess reached");
+
             TransformContext transformContext = (TransformContext)request.TransformContext;
             XsltTransformationManager transformationManager = transformContext.XsltTransformationManager;
             TransformResponse response = transformContext.Response;
@@ -43,7 +46,7 @@ namespace Nuxleus.Transform
             transformer.InputXmlResolver = transformationManager.Resolver;
             transformer.InitialContextNode = transformationManager.GetXdmNode(transformContext.Context.RequestXmlETag, transformContext.Context.RequestUri);
 
-            Console.WriteLine(transformer.InitialContextNode.OuterXml);
+            this.LogDebug(transformer.InitialContextNode.OuterXml);
 
             Serializer destination = transformationManager.Serializer;
 
@@ -51,12 +54,13 @@ namespace Nuxleus.Transform
 
             destination.SetOutputWriter(new StringWriter(builder));
 
-            lock (transformer)
+            lock (m_lock)
             {
                 transformer.Run(destination);
             }
+
             response.TransformResult = builder.ToString();
-            //Console.WriteLine("Output of transform: {0}", response.TransformResult);
+            this.LogDebug("Output of transform: {0}", response.TransformResult);
             return response;
 
         }

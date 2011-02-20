@@ -53,7 +53,7 @@ namespace Nuxleus.Web.HttpHandler {
 
             try {
                 m_reader = XmlReader.Create(new StringReader((string)m_statusQueue[m_id]));
-                Console.WriteLine("Content of status queue: {0}", (string)m_statusQueue[m_id]);
+                this.LogInfo("Content of status queue: {0}", (string)m_statusQueue[m_id]);
                 nuxleusAsyncResult.CompleteCall();
                 return nuxleusAsyncResult;
             } catch (Exception e) {

@@ -100,7 +100,7 @@ namespace Nuxleus.Web {
                                         m_responseStreamDictionary.Add(requestString.GetHashCode(), new MemoryStream(encoding.GetBytes(reader.ReadToEnd())));
                                     }
                                 } catch (Exception e) {
-                                    Console.WriteLine("Exception: {0}", e.Message);
+                                    this.LogInfo("Exception: {0}", e.Message);
                                 }
 
                                 if (m_responseStreamDictionary.Count == queryArrayLength) {

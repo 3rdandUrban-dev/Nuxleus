@@ -66,7 +66,7 @@ namespace Nuxleus.Web.HttpHandler
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                this.LogError(e.Message);
             }
 
 

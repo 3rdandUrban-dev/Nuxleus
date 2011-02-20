@@ -1,6 +1,6 @@
 // Copyright (c) 2006 by M. David Peterson
-// The code contained in this file is licensed under a Creative Commons (Attribution 3.0) license
-// Please see http://creativecommons.org/licenses/by/3.0/us/ for specific detail.
+// The code contained in this file is licensed under The MIT License
+// Please see http://www.opensource.org/licenses/mit-license.php for specific detail.
 
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace Nuxleus.Web.HttpHandler
         HttpResponse m_response;
         static Encoding m_encoding = new UTF8Encoding();
         static XslCompiledTransform xslt = new XslCompiledTransform();
-        static string m_yahooApiKey = "0f24246faa";
+        static string m_yahooApiKey = (string)HttpContext.Current.Application["yahooApiKey"];
         XsltArgumentList m_argList = new XsltArgumentList();
         NameValueCollection m_queryStringCollection;
         NuxleusAsyncResult m_asyncResult;

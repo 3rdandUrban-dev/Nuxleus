@@ -10,6 +10,7 @@ using System.IO;
 using System.Web;
 using Nuxleus.Cryptography;
 using System.Xml.XPath;
+using Nuxleus.Core;
 
 namespace Nuxleus.Web {
 
@@ -36,14 +37,14 @@ namespace Nuxleus.Web {
 
             if (m_xmlSourceETagDictionary.ContainsKey(uriHashcode)) {
                 if (m_xmlSourceETagDictionary[uriHashcode] == eTag) {
-                    Console.WriteLine("Source has not changed. {0}.  Count: {1}", eTag, m_xmlSourceETagDictionary.Count);
+                    this.LogInfo("Source has not changed. {0}.  Count: {1}", eTag, m_xmlSourceETagDictionary.Count);
                     return false;
                 } else {
-                    Console.WriteLine("Source has changed. {0}.  Count: {1}", eTag, m_xmlSourceETagDictionary.Count);
+                    this.LogInfo("Source has changed. {0}.  Count: {1}", eTag, m_xmlSourceETagDictionary.Count);
                     return true;
                 }
             } else {
-                Console.WriteLine("Source has changed. {0}.  Count: {1}", eTag, m_xmlSourceETagDictionary.Count);
+                this.LogInfo("Source has changed. {0}.  Count: {1}", eTag, m_xmlSourceETagDictionary.Count);
                 return true;
             }
         }
@@ -70,17 +71,17 @@ namespace Nuxleus.Web {
         private XPathNavigator getXPathNavigator ( int key, Uri xmlUri ) {
             int uriHashcode = xmlUri.GetHashCode();
             if (m_xmlSourceETagDictionary.ContainsKey(uriHashcode)) {
-                Console.WriteLine("Dictionary contains key: {0}", uriHashcode);
+                this.LogInfo("Dictionary contains key: {0}", uriHashcode);
                 if (m_xmlSourceETagDictionary[uriHashcode] == key) {
-                    Console.WriteLine("{0} matches {1}", m_xmlSourceETagDictionary[uriHashcode], key);
+                    this.LogInfo("{0} matches {1}", m_xmlSourceETagDictionary[uriHashcode], key);
                     return getXPathNavigator(uriHashcode, xmlUri, false);
                 } else {
-                    Console.WriteLine("{0} does not match {1}", m_xmlSourceETagDictionary[uriHashcode], key);
+                    this.LogInfo("{0} does not match {1}", m_xmlSourceETagDictionary[uriHashcode], key);
                     m_xmlSourceETagDictionary[uriHashcode] = key;
                     return getXPathNavigator(uriHashcode, xmlUri, true);
                 }
             } else {
-                Console.WriteLine("Dictionary does not contain key: {0}", uriHashcode);
+                this.LogInfo("Dictionary does not contain key: {0}", uriHashcode);
                 m_xmlSourceETagDictionary[uriHashcode] = key;
                 return getXPathNavigator(uriHashcode, xmlUri, true);
             }
@@ -89,17 +90,17 @@ namespace Nuxleus.Web {
         private XPathNavigator getXPathNavigator ( int key, Uri xmlUri, bool replaceExistingXmlReader ) {
 
             if (m_XPathNavigatorDictionary.ContainsKey(key) && !replaceExistingXmlReader) {
-                Console.WriteLine("Dictionary contains key: {0} and is not being replaced.", key);
+                this.LogInfo("Dictionary contains key: {0} and is not being replaced.", key);
                 return m_XPathNavigatorDictionary[key];
             } else {
                 if (m_XPathNavigatorDictionary.ContainsKey(key)) {
-                    Console.WriteLine("Dictionary contains key: {0} but is being replaced because the source file has changed.", key);
+                    this.LogInfo("Dictionary contains key: {0} but is being replaced because the source file has changed.", key);
                 } else {
-                    Console.WriteLine("Dictionary does not contain key: {0}, so a new XmlReader is being created.", key);
+                    this.LogInfo("Dictionary does not contain key: {0}, so a new XmlReader is being created.", key);
                 }
                 XPathNavigator reader = createNewXPathNavigator(xmlUri.OriginalString);
                 m_XPathNavigatorDictionary[key] = reader;
-                Console.WriteLine("XmlReaderDictionary currently contains: {0} entries.", m_XPathNavigatorDictionary.Count);
+                this.LogInfo("XmlReaderDictionary currently contains: {0} entries.", m_XPathNavigatorDictionary.Count);
                 return reader;
             }
         }
