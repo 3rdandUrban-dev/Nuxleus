@@ -75,10 +75,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack\ServiceStack.dll</HintPath>
-    </Reference>
     <Reference Include="SgmlReaderDll, Version=1.8.7.17911, Culture=neutral, PublicKeyToken=46b2db9ca481831b">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\SgmlReaderDll.dll</HintPath>

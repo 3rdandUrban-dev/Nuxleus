@@ -85,14 +85,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack\ServiceStack.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AmazonWebServices\AWSAuthConnection.cs" />
