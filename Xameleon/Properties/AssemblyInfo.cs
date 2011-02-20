@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("3rd&Urban")]
 [assembly: AssemblyProduct("Xameleon")]
-[assembly: AssemblyCopyright("Copyright © 3rd&Urban 2010")]
+[assembly: AssemblyCopyright("Copyright © 3rd&Urban 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.4.*")]
-[assembly: AssemblyFileVersion("0.4.*")]
+[assembly: AssemblyVersion("0.5.1.*")]
+[assembly: AssemblyFileVersion("0.5.1.0")]

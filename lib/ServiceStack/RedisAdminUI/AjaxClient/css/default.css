@@ -248,11 +248,11 @@ BUTTON
 
 #keydetails-body
 {
-    width: 700px;
+    width: 800px;
 }
 TEXTAREA#txtEntryValue
 {
-    width: 694px;
+    width: 794px;
     height: 350px;
     border: solid 1px #666;
 }
@@ -380,7 +380,7 @@ DD
 #developers
 {
     border: solid 1px #666;
-    padding: 5px;
+    padding: 10px;
     width: 32%;
     float: right;
     background: #f1f1f1;

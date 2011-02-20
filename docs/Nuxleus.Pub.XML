@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>obj/Debug/Nuxleus.PubSub</name>
+        <name>Nuxleus.PubSub</name>
     </assembly>
     <members>
         <member name="P:Nuxleus.Bucker.MessageStateEventArgs.Message">
@@ -40,53 +40,53 @@
             </summary>
         </member>
         <member name="T:Nuxleus.Bucker.QueueClient">
-            <summary>
+            <summary> 
             Manages a connection to a bucker queue.
             Allows to perform actions on a queue and its messages
             </summary>
         </member>
         <member name="M:Nuxleus.Bucker.QueueClient.Connect">
-            <summary>
+            <summary> 
             Connect to the queue server.
-            </summary>
+            </summary>    
         </member>
         <member name="M:Nuxleus.Bucker.QueueClient.Disconnect">
-            <summary>
+            <summary> 
             Gracefully disconnect from the queue server.
-            </summary>
+            </summary>   
         </member>
         <member name="M:Nuxleus.Bucker.QueueClient.Send(System.String)">
-            <summary>
+            <summary> 
             Send a message as an XML string.
-            </summary>
+            </summary>   
             <param name="xml">Message representation as an XML string.</param>
         </member>
         <member name="M:Nuxleus.Bucker.QueueClient.Send(Nuxleus.Bucker.Message)">
-            <summary>
+            <summary> 
             Send a message instance.
-            </summary>
+            </summary>   
             <param name="m">Message instance.</param>
         </member>
         <member name="M:Nuxleus.Bucker.QueueClient.Recv">
-            <summary>
+            <summary> 
             Read up to 1024 bytes from the queue.
-            </summary>
+            </summary>   
             <remarks>Block the caller execution.</remarks>
             <returns>Whatever could be read from the queue connection.</returns>
         </member>
         <member name="M:Nuxleus.Bucker.QueueClient.Recv(System.Int32)">
-            <summary>
+            <summary> 
             Read up to the specified number of bytes from the queue.
-            </summary>
+            </summary>   
             <remarks>Block the caller execution.</remarks>
-            <param name="size">Maximum to be read from the queue.</param>
+            <param name="size">Maximum to be read from the queue.</param>  
             <returns>Whatever could be read from the queue connection.</returns>
         </member>
         <member name="M:Nuxleus.Bucker.QueueClient.AsyncRecv(Nuxleus.Bucker.MessageEvent)">
-            <summary>
-            Asynchronously read from the queue and put the content into
+            <summary> 
+            Asynchronously read from the queue and put the content into 
             the provided MessageState.
-            </summary>
+            </summary>   
         </member>
     </members>
 </doc>

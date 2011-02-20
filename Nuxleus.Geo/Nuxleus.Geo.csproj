@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Nuxleus.Geo</RootNamespace>
     <AssemblyName>Nuxleus.Geo</AssemblyName>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Nuxleus.snk</AssemblyOriginatorKeyFile>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -93,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Nuxleus.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
+      <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
+      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

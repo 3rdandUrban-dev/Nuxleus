@@ -23,6 +23,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
+using Nuxleus.Core;
 
 namespace Nuxleus.Geo.MaxMind
 {
@@ -143,7 +144,7 @@ public class LookupService{
 	   dboptions = options;
            init();
         } catch(System.SystemException) {
-           Console.Write("cannot open file " + databaseFile + "\n");
+           this.LogError("cannot open file " + databaseFile + "\n");
         }
     }
 
@@ -234,7 +235,7 @@ public class LookupService{
             }
             //catch (UnknownHostException e) {
             catch (Exception e) {
-                Console.Write(e.Message);
+                this.LogError(e.Message);
                 return UNKNOWN_COUNTRY;
             }
           //  return getCountry(bytestoLong(addr.GetAddressBytes()));
@@ -272,7 +273,7 @@ public class LookupService{
                 addr = IPAddress.Parse(ipAddress);
             }
             catch (Exception e) {
-                Console.Write(e.Message);
+                this.LogError(e.Message);
                 return 0;
             }
             return getID(bytestoLong(addr.GetAddressBytes()));
@@ -334,7 +335,7 @@ public class LookupService{
             }
         }
         catch (Exception e) {
-            Console.Write(e.Message);
+            this.LogError(e.Message);
 	    //e.printStackTrace();
         }
         return new DatabaseInfo("");
@@ -348,7 +349,7 @@ public class LookupService{
                 addr = IPAddress.Parse(str);
             }
             catch (Exception e) {
-                Console.Write(e.Message);
+                this.LogError(e.Message);
 		return null;
             }
 
@@ -409,7 +410,7 @@ public class LookupService{
                 addr = IPAddress.Parse(str);
             }
             catch (Exception e) {
-                Console.Write(e.Message);
+                this.LogError(e.Message);
 		return null;
             }
 
@@ -502,7 +503,7 @@ public class LookupService{
             }
         }
         catch (IOException) {
-            Console.Write("IO Exception while seting up segments");
+            this.LogError("IO Exception while seting up segments");
         }
         return record;
     }
@@ -516,7 +517,7 @@ public class LookupService{
             }
             //catch (UnknownHostException e) {
             catch (Exception e){
-	    Console.Write(e.Message);
+	    this.LogError(e.Message);
 	    return null;
             }
             return getOrg(bytestoLong(addr.GetAddressBytes()));
@@ -553,7 +554,7 @@ public class LookupService{
             return org_buf;
         }
         catch (IOException) {
-            Console.Write("IO Exception");
+            this.LogError("IO Exception");
             return null;
         }
     }
@@ -575,7 +576,7 @@ public class LookupService{
 		}
 	    }
             catch (IOException) {
-                Console.Write("IO Exception");
+                this.LogError("IO Exception");
             }
             for (int i = 0; i<2; i++) {
                 x[i] = 0;
@@ -603,7 +604,7 @@ public class LookupService{
         }
 
         // shouldn't reach here
-        Console.Write("Error Seeking country while Seeking " + ipAddress);
+        this.LogError("Error Seeking country while Seeking " + ipAddress);
 	return 0;
 
     }
