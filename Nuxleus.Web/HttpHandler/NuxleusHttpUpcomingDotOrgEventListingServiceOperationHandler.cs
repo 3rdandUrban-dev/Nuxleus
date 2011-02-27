@@ -3,18 +3,12 @@
 // Please see http://www.opensource.org/licenses/mit-license.php for specific detail.
 
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
 using System.Web;
 using System.Xml.Linq;
-using Nuxleus.Core;
-using System.IO;
-using System.Xml;
-using System.Xml.XPath;
-using System.Xml.Serialization;
-using System.Net;
 using System.Xml.Xsl;
+using Nuxleus.Core;
 
 namespace Nuxleus.Web.HttpHandler
 {
@@ -29,7 +23,6 @@ namespace Nuxleus.Web.HttpHandler
         XsltArgumentList m_argList = new XsltArgumentList();
         NameValueCollection m_queryStringCollection;
         NuxleusAsyncResult m_asyncResult;
-        Stream webStream;
 
         public void ProcessRequest(HttpContext context)
         {
@@ -57,30 +50,40 @@ namespace Nuxleus.Web.HttpHandler
             string flags = "PT";
             string sort = "distance-asc";
             string backfill = "further";
-            string upcomingEventQueryUri = Uri.EscapeUriString(String.Format("http://upcoming.yahooapis.com/services/rest/?method=event.search&api_key={0}&location={1}&quick_date={2}&category_id={3}&flags={4}&sort={5}&backfill={6}", m_yahooApiKey, location, quickDate, categoryId, flags, sort, backfill));
+            string upcomingEventQueryUri =
+                Uri.EscapeUriString(
+                    String.Format("http://upcoming.yahooapis.com/services/rest/?method=event.search&api_key={0}&location={1}&quick_date={2}&category_id={3}&flags={4}&sort={5}&backfill={6}",
+                    m_yahooApiKey,
+                    location,
+                    quickDate,
+                    categoryId,
+                    flags,
+                    sort,
+                    backfill)
+                );
 
-            XElement upcomingEventsXmlResult = XElement.Load(upcomingEventQueryUri);
+            //XElement upcomingEventsXmlResult = XElement.Load(upcomingEventQueryUri);
 
-            m_argList.AddParam("location", String.Empty, m_queryStringCollection.Get("location"));
+            m_argList.AddParam("location", String.Empty, location);
             m_argList.AddParam("format", String.Empty, m_queryStringCollection.Get("format"));
             m_argList.AddParam("current-dateTime", String.Empty, DateTime.UtcNow);
             xslt.Transform(upcomingEventQueryUri, m_argList, m_response.Output);
             m_asyncResult = new NuxleusAsyncResult(cb, extraData);
             m_asyncResult.CompleteCall();
             return m_asyncResult;
-            
+
         }
 
         public void EndProcessRequest(IAsyncResult result)
         {
-            
-            
+
+
         }
 
         public void EndGetResponse(IAsyncResult result)
         {
-            
-            
+
+
         }
     }
 }

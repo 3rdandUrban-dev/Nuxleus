@@ -97,9 +97,6 @@
 [submodule "module/servicestack/ServiceStack.OrmLite"]
 	path = module/servicestack/ServiceStack.OrmLite
 	url = https://github.com/ServiceStack/ServiceStack.OrmLite.git
-[submodule "module/servicestack/ServiceStack.Interfaces"]
-	path = module/servicestack/ServiceStack.Interfaces
-	url = https://github.com/ServiceStack/ServiceStack.Interfaces.git
 [submodule "module/soundmanager2"]
 	path = module/soundmanager2
 	url = git://github.com/scottschiller/SoundManager2.git

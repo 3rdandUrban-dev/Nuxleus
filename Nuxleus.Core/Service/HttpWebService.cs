@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Xml;
@@ -9,8 +11,6 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using Nuxleus.Asynchronous;
 using Nuxleus.MetaData;
-using System.Security.Cryptography.X509Certificates;
-using System.Net.Security;
 
 namespace Nuxleus.Core
 {
@@ -306,12 +306,12 @@ namespace Nuxleus.Core
                 task.Transaction.Successful = false;
                 Log.LogDebug<HttpWebService<TRequestType, TResponseType>>(e.Message);
             }
-            
+
             try
             {
                 task.Transaction.Commit();
             }
-            catch 
+            catch
             {
 
             }

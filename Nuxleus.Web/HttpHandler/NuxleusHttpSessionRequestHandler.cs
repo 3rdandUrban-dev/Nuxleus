@@ -1,14 +1,10 @@
 using System;
-using System.Net;
 using System.Web;
 using System.Xml;
-using Nuxleus.Geo;
-using System.Collections.Generic;
 using Memcached.ClientLibrary;
-using System.IO;
-using Nuxleus.Geo.MaxMind;
 using Nuxleus.Core;
-using System.Collections;
+using Nuxleus.Geo;
+using Nuxleus.Geo.MaxMind;
 
 
 namespace Nuxleus.Web.HttpHandler {
@@ -151,8 +147,8 @@ namespace Nuxleus.Web.HttpHandler {
                     "Unknown City",
                     "US",
                     "1",
-                    "0",
-                    "0"
+                    "38",
+                    "-97"
               };
             }
 

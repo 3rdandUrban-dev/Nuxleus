@@ -10,11 +10,11 @@ using Memcached.ClientLibrary;
 using Nuxleus.Bucker;
 using Nuxleus.Configuration;
 using Nuxleus.Cryptography;
+using Nuxleus.Extension;
 using Nuxleus.Geo;
 using Nuxleus.Memcached;
 using Nuxleus.Transform;
 using Saxon.Api;
-using Nuxleus.Extension;
 
 namespace Nuxleus.Web.HttpApplication
 {
