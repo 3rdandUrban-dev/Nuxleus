@@ -16,7 +16,6 @@ using System.Collections.Generic;
 
 namespace Nuxleus.Atom
 {
-
     [XmlRootAttribute("entry", Namespace = "http://www.w3.org/2005/Atom", IsNullable = false)]
     public class Entry
     {

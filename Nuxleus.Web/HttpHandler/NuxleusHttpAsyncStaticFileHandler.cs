@@ -104,7 +104,7 @@ namespace Nuxleus.Web.HttpHandler
 
     }
 
-    public struct MimeType
+    public class MimeType
     {
         Dictionary<string, string> m_mimeType;
         public bool IsInitialized { get; set; }

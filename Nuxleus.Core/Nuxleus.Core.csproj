@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,7 +12,6 @@
     <AssemblyName>Nuxleus.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Nuxleus.snk</AssemblyOriginatorKeyFile>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -68,10 +67,6 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
@@ -85,12 +80,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AmazonWebServices\AWSAuthConnection.cs" />
     <Compile Include="Authentication\Facebook\Facebook.cs" />
     <Compile Include="Core\Cryptography\Hash.cs" />
     <Compile Include="Core\Cryptography\HashcodeGenerator.cs" />
+    <Compile Include="Core\Performance\PerformanceLog.cs" />
+    <Compile Include="Core\Performance\PerformanceTimer.cs" />
     <Compile Include="Drawing\CropImage.cs" />
     <Compile Include="Drawing\ImageResize.cs" />
     <Compile Include="Configuration\AspNetAwsConfiguration.cs" />
@@ -122,7 +123,7 @@
     <Compile Include="Core\Entity\Person.cs" />
     <Compile Include="Core\IO\Storage\IStorage.cs" />
     <Compile Include="Core\IO\Storage\Storage.cs" />
-    <Compile Include="Logging\Log.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="MetaData\Attributes\Label.cs" />
     <Compile Include="MetaData\Attributes\Message.cs" />
     <Compile Include="Core\Handler\ExceptionHandler.cs" />

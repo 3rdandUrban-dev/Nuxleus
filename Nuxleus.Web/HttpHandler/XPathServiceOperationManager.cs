@@ -3,14 +3,12 @@
 // Please see http://www.opensource.org/licenses/mit-license.php for specific detail.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using System.IO;
 using System.Web;
-using Nuxleus.Cryptography;
 using System.Xml.XPath;
 using Nuxleus.Core;
+using Nuxleus.Cryptography;
 
 namespace Nuxleus.Web {
 

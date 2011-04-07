@@ -2,6 +2,7 @@
 using System.Security.Permissions;
 using log4net;
 using log4net.Config;
+using System.IO;
 
 namespace Nuxleus.Core
 {
@@ -14,7 +15,7 @@ namespace Nuxleus.Core
         }
     }
 
-    [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.AllFlags)]
+    //[SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.AllFlags)]
     public static class Log
     {
 
@@ -53,15 +54,23 @@ namespace Nuxleus.Core
             return LogManager.GetLogger(typeof(T));
         }
 
-        public static void Config(string logFile)
+        public static void Config(string configFile)
         {
-            XmlConfigurator.Configure(new System.IO.FileInfo((logFile)));
+            
+            XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo(configFile));
+            IsConfigured = true;
+        }
+
+        public static void Config(FileInfo configFileInfo)
+        {
+
+            XmlConfigurator.ConfigureAndWatch(configFileInfo);
             IsConfigured = true;
         }
 
         private static void Config()
         {
-            XmlConfigurator.Configure(new System.IO.FileInfo(("log4net.config")));
+            XmlConfigurator.Configure();
             IsConfigured = true;
         }
 

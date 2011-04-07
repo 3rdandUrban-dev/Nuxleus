@@ -12,7 +12,6 @@
     <AssemblyName>Nuxleus.Messaging</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Nuxleus.snk</AssemblyOriginatorKeyFile>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -69,18 +68,45 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
     </Reference>
-    <Reference Include="AWSSDK, Version=1.2.0.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\AWSSDK.dll</HintPath>
-    </Reference>
     <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="AWSSDK, Version=1.3.1.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\AWSSDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Message\*.cs" />
+    <!--<Compile Include="Core\DispatchHandler.cs" />
+    <Compile Include="Core\NuxleusCoreHandler.cs" />
+    <Compile Include="Core\ReceiverHandler.cs" />
+    <Compile Include="LLUP\BlipPostOffice.cs" />
+    <Compile Include="LLUP\Filters\Expiry.cs" />
+    <Compile Include="LLUP\INotificationIndex.cs" />
+    <Compile Include="LLUP\InternalReceiverHandler.cs" />
+    <Compile Include="LLUP\IRouterFilter.cs" />
+    <Compile Include="LLUP\ISubscriber.cs" />
+    <Compile Include="LLUP\Notification.cs" />
+    <Compile Include="LLUP\PublisherHandler.cs" />
+    <Compile Include="LLUP\RouterHandler.cs" />
+    <Compile Include="LLUP\SubscriberHandler.cs" />
+    <Compile Include="LLUP\Subscribers\AtomFeed.cs" />
+    <Compile Include="LoadBalancer\LoadBalancer.cs" />
+    <Compile Include="Message\IMessage.cs" />
+    <Compile Include="Message\Message.cs" />
+    <Compile Include="Message\MessageClient.cs" />
+    <Compile Include="Message\MessageServer.cs" />
+    <Compile Include="Message\MessageService.cs" />
+    <Compile Include="Notification\Notification.cs" />
+    <Compile Include="PostOffice\IPostOffice.cs" />
+    <Compile Include="PostOffice\PostOffice.cs" />
+    <Compile Include="QS\BlipMessageServerHander.cs" />
+    <Compile Include="QS\QSToLLUPHandler.cs" />
+    <Compile Include="Server\ReplicationHandler.cs" />
+    <Compile Include="Server\ReplicationMessage.cs" />-->
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Message\*.cs" />
     <Compile Include="QS\*.cs" />
     <Compile Include="Core\*.cs" />
     <Compile Include="LLUP\*.cs" />

@@ -11,10 +11,6 @@ using System.Xml.Linq;
 using Nuxleus.Core;
 using Nuxleus.Extension.Aws.SimpleDb;
 using AwsSdbModel = Nuxleus.Extension.Aws.SimpleDb;
-using System.Xml;
-using System.IO;
-using System.Xml.XPath;
-using System.Xml.Serialization;
 
 namespace Nuxleus.Web.HttpHandler
 {

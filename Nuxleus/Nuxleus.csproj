@@ -109,7 +109,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core</Name>
+      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
       <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
@@ -133,7 +133,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Xameleon\Xameleon.csproj">
       <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
-      <Name>Xameleon</Name>
+      <Name>Xameleon %28Xameleon\Xameleon%29</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

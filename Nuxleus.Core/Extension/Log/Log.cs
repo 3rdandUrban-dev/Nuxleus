@@ -5,7 +5,7 @@ using log4net.Config;
 
 namespace Nuxleus.Extension {
 
-    [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.AllFlags)]
+    //[SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.AllFlags)]
     public static class Log {
 
         static bool IsConfigured;

@@ -1,0 +1,48 @@
+﻿<Window x:Class="XQueryConsole.AboutBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:w="clr-namespace:XQueryConsole"
+        Title="About" Height="290" Width="334"
+        TextOptions.TextFormattingMode="Display"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize" ShowInTaskbar="False">
+    <Grid Margin="5,5,8,8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <FlowDocumentScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <FlowDocument FontFamily="Segoe UI" FontSize="12" IsOptimalParagraphEnabled="True">
+                <Paragraph TextAlignment="Center">
+                    <Bold>CoreServices</Bold>
+                    <Run Text="{x:Static w:AboutBox.VersionCoreServices}"></Run>
+                    <LineBreak/>
+                    <Bold>QueryMachine</Bold>
+                    <Run Text="{x:Static w:AboutBox.VersionSQLX}"></Run>
+                    <LineBreak/>
+                    <Bold>QueryMachine.XQuery</Bold>
+                    <Run Text="{x:Static w:AboutBox.VersionXQuery}"></Run>
+                    <LineBreak/>
+                    Copyright © Semyon A. Chertkov, 2008-2010.
+                    <LineBreak/>
+                    <Hyperlink NavigateUri="http://www.wmhelp.com" Click="Hyperlink_Click">http://www.wmhelp.com</Hyperlink>
+                    <LineBreak/>
+                    <Hyperlink NavigateUri="mailto:semyonc@gmail.com" Click="Hyperlink_Click">mailto:semyonc@gmail.com</Hyperlink>
+                </Paragraph>
+                <Paragraph FontSize="10">
+                    This program is free software: you can redistribute it and/or modify
+                    it under the terms of the GNU General Public License as published by
+                    the Free Software Foundation, either version 3 of the License, or
+                    any later version.
+                </Paragraph>
+                <Paragraph FontSize="10">
+                    XML, XQuery Copyright © 2007  W3C© (MIT, ERCIM, Keio).
+                        Unicode is a trademark of Unicode Consortium.                    
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+        <Button Grid.Row="1" Width="70" IsCancel="True" IsDefault="True">OK</Button>
+    </Grid>
+</Window>

@@ -1,28 +1,8 @@
 using System;
-using System.IO;
-using System.Data;
-using System.Configuration;
-using System.Threading;
-using System.Security.Principal;
 using System.Web;
-using System.Web.Caching;
-using System.Web.Security;
-using System.Web.SessionState;
-using System.Collections;
-using Memcached.ClientLibrary;
-using System.Text;
-using Saxon.Api;
 using System.Xml;
-using Nuxleus.Configuration;
-using Nuxleus.Transform;
-using System.Collections.Generic;
-using Nuxleus.Memcached;
-using Nuxleus.Cryptography;
-using Nuxleus.Atom;
-using Nuxleus.Storage;
-using Nuxleus.Geo;
 using Nuxleus.Core;
-using System.Net;
+using Nuxleus.Geo;
 
 namespace Nuxleus.Web.HttpHandler
 {

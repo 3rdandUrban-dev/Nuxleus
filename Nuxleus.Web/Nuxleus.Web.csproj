@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -54,14 +54,7 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ServiceStack, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack\ServiceStack.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
     </Reference>
@@ -80,10 +73,6 @@
     <Reference Include="taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\taglib-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
       <SpecificVersion>False</SpecificVersion>
@@ -117,6 +106,14 @@
       <HintPath>..\lib\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="ServiceStack, Version=2.0.5.5102, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
@@ -195,36 +192,6 @@
     <Compile Include="Utils\ImageExControl\StringWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
-      <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
-      <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
-      <Name>Nuxleus.Extension.Aws</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Geo\Nuxleus.Geo.csproj">
-      <Project>{9054928F-69AF-4448-BEC0-591BC9393AE8}</Project>
-      <Name>Nuxleus.Geo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
-      <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
-      <Name>Nuxleus.Messaging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
-      <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>
-      <Name>Nuxleus.PubSub</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Service\Nuxleus.Service.csproj">
-      <Project>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</Project>
-      <Name>Nuxleus.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Xameleon\Xameleon.csproj">
-      <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
-      <Name>Xameleon</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -267,5 +234,35 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
+      <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
+      <Name>Nuxleus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
+      <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
+      <Name>Nuxleus.Extension.Aws</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Geo\Nuxleus.Geo.csproj">
+      <Project>{9054928F-69AF-4448-BEC0-591BC9393AE8}</Project>
+      <Name>Nuxleus.Geo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
+      <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
+      <Name>Nuxleus.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
+      <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>
+      <Name>Nuxleus.PubSub</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Service\Nuxleus.Service.csproj">
+      <Project>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</Project>
+      <Name>Nuxleus.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xameleon\Xameleon.csproj">
+      <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
+      <Name>Xameleon</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

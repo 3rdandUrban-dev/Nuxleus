@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.IO;
 using System.Net;
 using System.Text;
 using System.Web;
@@ -14,7 +13,6 @@ using System.Xml.Linq;
 using Nuxleus.Core;
 using Nuxleus.Geo;
 using Nuxleus.Geo.MaxMind;
-using Thought.vCards;
 
 namespace Nuxleus.Web.HttpHandler
 {
@@ -30,7 +28,7 @@ namespace Nuxleus.Web.HttpHandler
         static object m_lock = new object();
         static Encoding m_encoding = new UTF8Encoding();
         static XNamespace r = "http://nuxleus.com/message/response";
-        static LookupService m_lookupService = new LookupService(HttpContext.Current.Request.MapPath("~/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_MEMORY_CACHE);
+        static LookupService m_lookupService = new LookupService(HttpContext.Current.Request.MapPath("~/App_Data/GeoLiteCity.dat"), LookupService.GEOIP_STANDARD);
 
 
         public void ProcessRequest(HttpContext context)
@@ -79,7 +77,7 @@ namespace Nuxleus.Web.HttpHandler
 
             if (ip == "::1" || ip == "127.0.0.1")
                 //ip = GetLocalIPAddress();
-                ip = "75.169.248.106";
+                ip = "99.89.54.217";
 
             LatLongLocation location = new LatLongLocation(GetIPLocation(ip));
 
@@ -119,7 +117,7 @@ namespace Nuxleus.Web.HttpHandler
                                 new XElement(r + "street", (cookies["address:street"] == "not-set") ? location.Country : cookies["address:street"]),
                                 new XElement(r + "region", (cookies["address:region"] == "not-set") ? location.Region : cookies["address:region"]),
                                 new XElement(r + "city", (cookies["address:city"] == "not-set") ? location.City : cookies["address:city"]),
-                                new XElement(r + "postalCode", (cookies["address:postalCode"] == "not-set") ? location.City : cookies["address:postalCode"])
+                                new XElement(r + "postalCode", (cookies["address:postalCode"] == "not-set") ? location.PostalCode : cookies["address:postalCode"])
                             )
                         )
                     ),

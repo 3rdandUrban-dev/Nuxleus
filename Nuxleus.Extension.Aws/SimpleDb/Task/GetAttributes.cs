@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml.Linq;
+using System.Net;
 using System.Xml.Serialization;
 using Nuxleus.Asynchronous;
 using Nuxleus.Core;
-using System.Net;
 
 namespace Nuxleus.Extension.Aws.SimpleDb
 {

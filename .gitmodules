@@ -133,3 +133,9 @@
 [submodule "module/node-uuid"]
 	path = module/node-uuid
 	url = https://github.com/broofa/node-uuid.git
+[submodule "module/servicestack/ServiceStack.Contrib"]
+	path = module/servicestack/ServiceStack.Contrib
+	url = git://github.com/ServiceStack/ServiceStack.Contrib.git
+[submodule "module/servicestack/ServiceStack.Owin"]
+	path = module/servicestack/ServiceStack.Owin
+	url = git://github.com/ServiceStack/ServiceStack.Owin.git

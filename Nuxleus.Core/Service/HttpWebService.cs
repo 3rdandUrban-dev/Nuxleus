@@ -30,7 +30,7 @@ namespace Nuxleus.Core
         PROTOBUF
     }
 
-    public struct HttpRequestSettings
+    public class HttpRequestSettings
     {
         public WebServiceType WebServiceType
         {
@@ -83,6 +83,8 @@ namespace Nuxleus.Core
         static XmlSerializer m_responseTypeXmlSerializer = new XmlSerializer(typeof(TResponseType));
         static Encoding m_encoding = new UTF8Encoding();
         static XmlWriterSettings xSettings = new XmlWriterSettings();
+        static Type @this = typeof(HttpWebService<TRequestType, TResponseType>);
+        static Log<HttpWebService<TRequestType, TResponseType>> @log = (Log<HttpWebService<TRequestType, TResponseType>>)Log.GetLogger<HttpWebService<TRequestType, TResponseType>>();
 
         static HttpWebService()
         {
@@ -94,9 +96,9 @@ namespace Nuxleus.Core
             ServicePointManager.MaxServicePointIdleTime = 10000;
             ServicePointManager.DefaultConnectionLimit = 100;
             //Not implemented on Mono
-            //ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback (ValidateServerCertificate); 
+            ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback (ValidateServerCertificate); 
             //We need to use the deprecated CertificatePolicy ICertificatePolicy implementation instead.
-            ServicePointManager.CertificatePolicy = new CustomPolicyHack();
+            //ServicePointManager.CertificatePolicy = new CustomPolicyHack();
 
         }
 
@@ -154,7 +156,7 @@ namespace Nuxleus.Core
                 request = (HttpWebRequest)WebRequest.CreateDefault(m_AwsUri);
                 ServicePoint n_servicePoint = request.ServicePoint;
                 n_servicePoint.ConnectionLimit = 100;
-                Log.LogInfo<HttpWebService<TRequestType, TResponseType>>("Maximum # of ServicePoint Connections: {0}", servicePoint.ConnectionLimit);
+                @log.LogInfo("Maximum # of ServicePoint Connections: {0}", servicePoint.ConnectionLimit);
                 request.Timeout = settings.Timeout;
                 request.KeepAlive = settings.KeepAlive;
                 request.Pipelined = settings.Pipelined;
@@ -164,7 +166,7 @@ namespace Nuxleus.Core
             }
             catch (UriFormatException ufe)
             {
-                Log.LogInfo<HttpWebService<TRequestType, TResponseType>>("Caught UriFormatException on WebRequest.Create: {0}", ufe.Message);
+                @log.LogInfo("Caught UriFormatException on WebRequest.Create: {0}", ufe.Message);
             }
 
             foreach (KeyValuePair<string, string> header in webServiceRequest.Headers)
@@ -183,7 +185,7 @@ namespace Nuxleus.Core
             }
             catch (WebException we)
             {
-                Log.LogInfo<HttpWebService<TRequestType, TResponseType>>("Caught WebException on GetResponseAsync: {0}", we.Message);
+                @log.LogInfo("Caught WebException on GetResponseAsync: {0}", we.Message);
                 task.Transaction.Successful = false;
             }
             if (webStream != null)
@@ -191,7 +193,7 @@ namespace Nuxleus.Core
                 using (webStream)
                 {
                     webStream.Write(buffer, 0, contentLength);
-                    Log.LogInfo<HttpWebService<TRequestType, TResponseType>>("Sending request for task {0} on {1} thread: {2}",
+                    @log.LogInfo("Sending request for task {0} on {1} thread: {2}",
                         task.TaskID,
                         Thread.CurrentThread.IsThreadPoolThread ? "threadpool" : "calling",
                         Thread.CurrentThread.ManagedThreadId);
@@ -236,12 +238,12 @@ namespace Nuxleus.Core
             catch (InvalidCastException e)
             {
                 transaction.Successful = false;
-                Log.LogDebug<HttpWebService<TRequestType, TResponseType>>(e.Message);
+                @log.LogDebug(e.Message);
             }
             catch (Exception e)
             {
                 transaction.Successful = false;
-                Log.LogDebug<HttpWebService<TRequestType, TResponseType>>(e.Message);
+                @log.LogDebug(e.Message);
             }
             task.StatusCode = response.StatusCode;
             task.Transaction.Commit();
@@ -258,14 +260,14 @@ namespace Nuxleus.Core
 
             HttpWebRequest request = GetHttpWebRequest(task, settings);
             Stream responseStream;
-            Log.LogInfo<HttpWebService<TRequestType, TResponseType>>("Sending request for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
+            @log.LogInfo("Sending request for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
             try
             {
                 WebResponse response = request.GetResponse();
                 responseStream = response.GetResponseStream();
                 task.Transaction.Response = (IResponse)SerializeToObject(responseStream);
                 task.Transaction.Response.Headers = response.Headers;
-                Log.LogInfo<HttpWebService<TRequestType, TResponseType>>("Received response for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
+                @log.LogInfo("Received response for task {0} on thread: {1}", task.TaskID, Thread.CurrentThread.ManagedThreadId);
             }
             catch (WebException exception)
             {
@@ -287,7 +289,7 @@ namespace Nuxleus.Core
             HttpWebRequest request = GetHttpWebRequest(task, settings);
             Async<WebResponse> response = request.GetResponseAsync();
             yield return response;
-            Log.LogInfo<HttpWebService<TRequestType, TResponseType>>("Receiving response for task {0} on {1} thread: {2}",
+            @log.LogInfo("Receiving response for task {0} on {1} thread: {2}",
                 task.TaskID,
                 Thread.CurrentThread.IsThreadPoolThread ? "threadpool" : "calling",
                 Thread.CurrentThread.ManagedThreadId);
@@ -304,7 +306,7 @@ namespace Nuxleus.Core
             catch (InvalidCastException e)
             {
                 task.Transaction.Successful = false;
-                Log.LogDebug<HttpWebService<TRequestType, TResponseType>>(e.Message);
+                @log.LogDebug(e.Message);
             }
 
             try
@@ -339,11 +341,11 @@ namespace Nuxleus.Core
                 }
                 catch (InvalidCastException ex)
                 {
-                    Log.LogDebug<HttpWebService<TRequestType, TResponseType>>(ex.Message);
+                    @log.LogDebug(ex.Message);
                 }
                 catch (Exception e)
                 {
-                    Log.LogDebug<HttpWebService<TRequestType, TResponseType>>(e.Message);
+                    @log.LogDebug(e.Message);
                 }
                 return response;
             }
