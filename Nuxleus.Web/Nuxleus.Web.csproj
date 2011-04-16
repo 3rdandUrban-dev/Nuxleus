@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -55,6 +55,30 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ServiceStack, Version=2.0.9.3280, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=1.0.4114.3279, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=1.0.4114.3279, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=2.0.9.195, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4107.42502, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=2.0.9.42099, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
     </Reference>
@@ -97,6 +121,9 @@
     <Reference Include="Thought.vCards, Version=0.4.0.0, Culture=neutral, PublicKeyToken=b34606f0aa925886">
       <HintPath>..\lib\Thought.vCards.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\..\..\packages\WebActivator.1.4.1\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="Yahoo.Yui.Compressor, Version=1.4.1.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
@@ -106,10 +133,6 @@
       <HintPath>..\lib\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="ServiceStack, Version=2.0.5.5102, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack\ServiceStack.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\log4net.dll</HintPath>
@@ -117,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
+    <Compile Include="App_Start\ServiceStackFramework.cs" />
     <Compile Include="HttpApplication\FileMessageQueue_Global.cs" />
     <Compile Include="HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs" />
     <Compile Include="HttpHandler\NuxleusHttpCollectionListingServiceOperationHandler.cs" />
@@ -226,10 +250,14 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="default.htm" />
+    <Content Include="jqunback-1.51.min.js" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Nuxleus.snk" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
