@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0FDD0A6C-E9FA-4CE2-B2A7-461C7444EEFF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataEngine.XQuery</RootNamespace>
+    <AssemblyName>QueryMachine.XQuery</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Qm.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;_NET_4_0;PF</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>_NET_4_0</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug Threaded|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Parallel\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PARALLEL</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Threaded|AnyCPU' ">
+    <OutputPath>bin\Release Threaded\</OutputPath>
+    <DefineConstants>TRACE;PARALLEL</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Concurrent|AnyCPU' ">
+    <OutputPath>bin\Concurrent\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <DefineConstants>CONCURRENT</DefineConstants>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-1|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Release-1\</OutputPath>
+    <DefineConstants>TRACE;_NET_4_0;PF</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\QueryMachine.XQuery.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BufferedNodeIterator.cs" />
+    <Compile Include="Collections\ItemList.cs" />
+    <Compile Include="DbXmlReader.cs" />
+    <Compile Include="DocumentModel\DmAttribute.cs" />
+    <Compile Include="DocumentModel\DmComment.cs" />
+    <Compile Include="DocumentModel\DmContainer.cs" />
+    <Compile Include="DocumentModel\DmElement.cs" />
+    <Compile Include="DocumentModel\DmNamespace.cs" />
+    <Compile Include="DocumentModel\DmNode.cs" />
+    <Compile Include="DocumentModel\DmNodeList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DocumentModel\DmPI.cs" />
+    <Compile Include="DocumentModel\DmRoot.cs" />
+    <Compile Include="DocumentModel\DmText.cs" />
+    <Compile Include="DOMConverter.cs" />
+    <Compile Include="DTD\DTD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DTD.y</DependentUpon>
+    </Compile>
+    <Compile Include="DTD\Tokenizer.cs" />
+    <Compile Include="Collections\ItemSet.cs" />
+    <Compile Include="Parser\XQuery.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XQuery.y</DependentUpon>
+    </Compile>
+    <Compile Include="QNameValue.cs" />
+    <Compile Include="RangeIterator.cs" />
+    <Compile Include="Util\AnyUriValue.cs" />
+    <Compile Include="Util\ENTITIESValue.cs" />
+    <Compile Include="Util\IDREFSValue.cs" />
+    <Compile Include="Util\NMTOKENSValue.cs" />
+    <Compile Include="Util\NotationValue.cs" />
+    <Compile Include="Collections\SimpleLinkedList.cs" />
+    <Compile Include="Util\ShadowProxy.cs" />
+    <Compile Include="Util\StringTokenizer.cs" />
+    <Compile Include="DirectAccessPathExpr.cs" />
+    <Compile Include="XmlNodeListIterator.cs" />
+    <Compile Include="XQueryCachedExpr.cs" />
+    <Compile Include="XQueryFuncs.cs" />
+    <Compile Include="Util\Base64BinaryValue.cs" />
+    <Compile Include="Util\DateTimeValue.cs" />
+    <Compile Include="Util\DateTimeValueBase.cs" />
+    <Compile Include="Util\DayTimeDurationValue.cs" />
+    <Compile Include="Util\DurationValue.cs" />
+    <Compile Include="UntypedAtomic.cs" />
+    <Compile Include="Util\DateValue.cs" />
+    <Compile Include="Util\GDayValue.cs" />
+    <Compile Include="Util\GMonthValue.cs" />
+    <Compile Include="Util\GMonthDayValue.cs" />
+    <Compile Include="Util\GYearMonthValue.cs" />
+    <Compile Include="Util\GYearValue.cs" />
+    <Compile Include="Util\HexBinaryValue.cs" />
+    <Compile Include="Util\IXmlConvertable.cs" />
+    <Compile Include="Util\TimeValue.cs" />
+    <Compile Include="Util\YearMonthDurationValue.cs" />
+    <Compile Include="XPathNavigableWrapper.cs" />
+    <Compile Include="XQueryConvert.cs" />
+    <Compile Include="EmptyIterator.cs" />
+    <Compile Include="Parser\Tokenizer.cs" />
+    <Compile Include="TreeComparer.cs" />
+    <Compile Include="VarTable.cs" />
+    <Compile Include="XQueryItemBase.cs" />
+    <Compile Include="XQueryLimits.cs" />
+    <Compile Include="XQueryMapping.cs" />
+    <Compile Include="XQueryNavigatorWrapper.cs" />
+    <Compile Include="XQueryParameter.cs" />
+    <Compile Include="XQueryParameterCollection.cs" />
+    <Compile Include="XQueryPathExpr.cs" />
+    <Compile Include="XQueryStepExpr.cs" />
+    <Compile Include="XQueryValueExpr.cs" />
+    <Compile Include="XQueryAbstractWriter.cs" />
+    <Compile Include="XQueryWrappedValue.cs" />
+    <Compile Include="XQueryCommand.cs" />
+    <Compile Include="XQueryFunctionTable.cs" />
+    <Compile Include="NodeIterator.cs" />
+    <Compile Include="Descriptor.cs" />
+    <Compile Include="QNameParser.cs" />
+    <Compile Include="Core.cs" />
+    <Compile Include="XPathFactory.cs" />
+    <Compile Include="Translator.cs" />
+    <Compile Include="XQueryLET.cs" />
+    <Compile Include="XmlReservedNs.cs" />
+    <Compile Include="XQueryContext.cs" />
+    <Compile Include="XQueryExpr.cs" />
+    <Compile Include="XQueryExprBase.cs" />
+    <Compile Include="XQueryFilterExpr.cs" />
+    <Compile Include="XQueryFLWOR.cs" />
+    <Compile Include="XQueryItem.cs" />
+    <Compile Include="Notation.cs" />
+    <Compile Include="PageFile.cs" />
+    <Compile Include="Parser\TokenizerBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="XQueryDocument.cs" />
+    <Compile Include="XQueryDocumentBuilder.cs" />
+    <Compile Include="XQueryNavigator.cs" />
+    <Compile Include="Symbol.cs" />
+    <Compile Include="XmlCharType.cs" />
+    <Compile Include="XQueryException.cs" />
+    <Compile Include="Xdm.cs" />
+    <Compile Include="XQueryNodeIterator.cs" />
+    <Compile Include="XmlQualifiedNameTest.cs" />
+    <Compile Include="XQueryResolver.cs" />
+    <Compile Include="XQuerySequenceType.cs" />
+    <Compile Include="XQuerySorter.cs" />
+    <Compile Include="XQueryWriter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DTD\DTD.y">
+      <Generator>JaySourceGenerator</Generator>
+      <LastGenOutput>DTD.cs</LastGenOutput>
+    </None>
+    <None Include="Parser\XQuery.y">
+      <Generator>JaySourceGenerator</Generator>
+      <LastGenOutput>XQuery.cs</LastGenOutput>
+    </None>
+    <None Include="Qm.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoreServices\CoreServices.csproj">
+      <Project>{454016BE-0E1C-4DFB-A22F-2E642A1AE9A6}</Project>
+      <Name>CoreServices</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

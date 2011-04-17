@@ -1,0 +1,742 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>/Users/mdavid/Projects/3rdandUrban/Nuxleus/bin/Nuxleus.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Nuxleus.Authentication.Aws.AWSAuthConnection">
+            An interface into the S3 system.  It is initially configured with
+            authentication and connection parameters and exposes methods to access and
+            manipulate S3 data.</member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.createBucket(System.String)">
+            <summary>
+            Creates a new bucket.
+            </summary>
+            <param name="bucket">The name of the bucket to create</param>
+            <param name="headers">A Map of string to string representing the headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.listBucket(System.String,System.String,System.String,System.Int32,System.Collections.SortedList)">
+            <summary>
+            Lists the contents of a bucket.
+            </summary>
+            <param name="bucket">The name of the bucket to list</param>
+            <param name="prefix">All returned keys will start with this string (can be null)</param>
+            <param name="marker">All returned keys will be lexographically greater than this string (can be null)</param>
+            <param name="maxKeys">The maximum number of keys to return (can be 0)</param>
+            <param name="headers">A Map of string to string representing HTTP headers to pass.</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.listBucket(System.String,System.String,System.String,System.Int32,System.String,System.Collections.SortedList)">
+            <summary>
+            Lists the contents of a bucket.
+            </summary>
+            <param name="bucket">The name of the bucket to list</param>
+            <param name="prefix">All returned keys will start with this string (can be null)</param>
+            <param name="marker">All returned keys will be lexographically greater than this string (can be null)</param>
+            <param name="maxKeys">The maximum number of keys to return (can be 0)</param>
+            <param name="headers">A Map of string to string representing HTTP headers to pass.</param>
+            <param name="delimiter">Keys that contain a string between the prefix and the first
+            occurrence of the delimiter will be rolled up into a single element.</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.deleteBucket(System.String,System.Collections.SortedList)">
+            <summary>
+            Deletes an empty Bucket.
+            </summary>
+            <param name="bucket">The name of the bucket to delete</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.put(System.String,System.String,Nuxleus.Utility.S3.S3Object)">
+            <summary>
+            Writes an object to S3.
+            </summary>
+            <param name="bucket">The name of the bucket to which the object will be added.</param>
+            <param name="key">The name of the key to use</param>
+            <param name="obj">An S3Object containing the data to write.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.put(System.String,System.String,Nuxleus.Utility.S3.S3Object,System.Collections.SortedList)">
+            <summary>
+            Writes an object to S3.
+            </summary>
+            <param name="bucket">The name of the bucket to which the object will be added.</param>
+            <param name="key">The name of the key to use</param>
+            <param name="obj">An S3Object containing the data to write.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.get(System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Reads an object from S3
+            </summary>
+            <param name="bucket">The name of the bucket where the object lives</param>
+            <param name="key">The name of the key to use</param>
+            <param name="headers">A Map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.delete(System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Delete an object from S3.
+            </summary>
+            <param name="bucket">The name of the bucket where the object lives.</param>
+            <param name="key">The name of the key to use.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.getBucketLogging(System.String,System.Collections.SortedList)">
+            <summary>
+            Get the logging xml document for a given bucket
+            </summary>
+            <param name="bucket">The name of the bucket</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.putBucketLogging(System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Write a new logging xml document for a given bucket
+            </summary>
+            <param name="bucket">The name of the bucket to enable/disable logging on</param>
+            <param name="loggingXMLDoc">The xml representation of the logging configuration as a String.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.getBucketACL(System.String,System.Collections.SortedList)">
+            <summary>
+            Get the ACL for a given bucket.
+            </summary>
+            <param name="bucket">The the bucket to get the ACL from.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.getACL(System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Get the ACL for a given object
+            </summary>
+            <param name="bucket">The name of the bucket where the object lives</param>
+            <param name="key">The name of the key to use.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.putBucketACL(System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Write a new ACL for a given bucket
+            </summary>
+            <param name="bucket">The name of the bucket to change the ACL.</param>
+            <param name="aclXMLDoc">An XML representation of the ACL as a string.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.putACL(System.String,System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Write a new ACL for a given object
+            </summary>
+            <param name="bucket">The name of the bucket where the object lives or the
+            name of the bucket to change the ACL if key is null.</param>
+            <param name="key">The name of the key to use; can be null.</param>
+            <param name="aclXMLDoc">An XML representation of the ACL as a string.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.listAllMyBuckets(System.Collections.SortedList)">
+            <summary>
+            List all the buckets created by this account.
+            </summary>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.makeRequest(System.String,System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Make a new WebRequest without an S3Object.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.makeRequest(System.String,System.String,System.String,System.Collections.SortedList,Nuxleus.Utility.S3.S3Object)">
+            <summary>
+            Make a new WebRequest with an S3Object.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.makeRequest(System.String,System.String,System.String,System.Collections.SortedList,System.Collections.SortedList,Nuxleus.Utility.S3.S3Object)">
+            <summary>
+            Make a new WebRequest
+            </summary>
+            <param name="method">The HTTP method to use (GET, PUT, DELETE)</param>
+            <param name="bucket">The bucket name for this request</param>
+            <param name="key">The key this request is for</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+            <param name="obj">S3Object that is to be written (can be null).</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.addHeaders(System.Net.WebRequest,System.Collections.SortedList)">
+            <summary>
+            Add the given headers to the WebRequest
+            </summary>
+            <param name="req">Web request to add the headers to.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.addMetadataHeaders(System.Net.WebRequest,System.Collections.SortedList)">
+            <summary>
+            Add the given metadata fields to the WebRequest.
+            </summary>
+            <param name="req">Web request to add the headers to.</param>
+            <param name="metadata">A map of string to string representing the S3 metadata for this resource.</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.addHeaders(System.Net.WebRequest,System.Collections.SortedList,System.String)">
+            <summary>
+            Add the given headers to the WebRequest with a prefix before the keys.
+            </summary>
+            <param name="req">WebRequest to add the headers to.</param>
+            <param name="headers">Headers to add.</param>
+            <param name="prefix">String to prepend to each before ebfore adding it to the WebRequest</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Aws.AWSAuthConnection.addAuthHeader(System.Net.WebRequest,System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Add the appropriate Authorization header to the WebRequest
+            </summary>
+            <param name="request">Request to add the header to</param>
+            <param name="resource">The resource name (bucketName + "/" + key)</param>
+        </member>
+        <member name="M:Nuxleus.Authentication.Facebook.Authenticate(System.String,System.String,System.String,System.String)">
+            <summary>
+            Authenticate a user to Facebook allowing for  usage of the Facebook API.
+            </summary>
+            <remarks>
+                <para>
+            The authentication uses SSL to encrypt the communication with the
+            Facebook servers.
+            </para>
+            </remarks>
+            <param name="email">User email address registered on Facebook</param>
+            <param name="password">Clear text password for the user.</param>
+            <param name="authToken">Token returned by the call at auth.createToken </param>
+            <param name="apiKey">Public key to the application the user wishes to access</param>
+            <returns>Returns nothing.</returns>
+        </member>
+        <member name="T:Nuxleus.Agent.PostOffice">
+            <summary>
+            </summary>
+        </member>
+        <member name="E:Nuxleus.Agent.PostOffice.Mailbox">
+            <summary>
+            Register delegates to be notified of a new notification
+            to process.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Agent.PostOffice.Post(Nuxleus.Agent.Notification)">
+            <summary>
+            Notify that a notification is ready to be processed.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Asynchronous.Unit">
+            <summary>
+            Represents a type with no value - alternative to C# void in
+            situations where void can't be used
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Asynchronous.Result`1">
+            <summary>
+            Use this cass to return a value from asynchronous method.
+            </summary>
+            <example>
+                <code>
+            // Returns hello world
+            IEnumerable&lt;IAsync&gt; Hello() {
+            yield return new Result&lt;String&gt;("Hello world");
+            }
+            </code>
+            </example>
+            <typeparam name="T">
+            </typeparam>
+        </member>
+        <member name="T:Nuxleus.Asynchronous.AsyncExtensions">
+            <summary>
+            Provides several extension methods to standard System classes
+            and for executing the asynchronous methods implemented using the library
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Asynchronous.AsyncExtensions.GetResponseAsync(System.Net.WebRequest)">
+            <summary>
+            Asynchronously gets response from the internet using BeginGetResponse method.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Asynchronous.AsyncExtensions.GetResponseAsyncFailover(System.Net.WebRequest)">
+            <summary>
+            Asynchronously gets response from the internet using BeginGetResponse method.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Asynchronous.AsyncExtensions.ReadAsync(System.IO.Stream,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Asynchronously reads data from a stream using BeginRead.
+            </summary>
+            <param name="stream">The stream on which the method is called</param>
+            <param name="buffer">The buffer to read the data into</param>
+            <param name="offset">Byte offset in the buffer</param>
+            <param name="count">Maximum number of bytes to read</param>
+            <returns>Returns non-zero if there are still some data to read</returns>
+        </member>
+        <member name="M:Nuxleus.Asynchronous.AsyncExtensions.ReadToEndAsync(System.IO.Stream)">
+            <summary>
+            Reads asynchronously the entire content of the stream and returns it
+            as a string using StreamReader.
+            </summary>
+            <returns>Returns string using the 'Result' class.</returns>
+        </member>
+        <member name="M:Nuxleus.Asynchronous.AsyncExtensions.ReadToEndAsync``1(System.IO.Stream)">
+            <summary>
+            Reads asynchronously the entire content of the stream and returns it
+            as a string using StreamReader.
+            </summary>
+            <param name="returnType">Specifies the desired return type.  The default is System.String.</param>
+        </member>
+        <member name="M:Nuxleus.Asynchronous.AsyncExtensions.ExecuteAndWait(System.Collections.Generic.IEnumerable{Nuxleus.Asynchronous.IAsync})">
+            <summary>
+            Executes asynchronous method and blocks the calling thread until the operation completes.
+            </summary>
+            <param name="async">
+            </param>
+        </member>
+        <member name="M:Nuxleus.Asynchronous.AsyncExtensions.Execute(System.Collections.Generic.IEnumerable{Nuxleus.Asynchronous.IAsync})">
+            <summary>
+            Spawns the asynchronous method without waiting for the result.
+            </summary>
+            <param name="async">
+            </param>
+        </member>
+        <member name="M:Nuxleus.Asynchronous.AsyncExtensions.ExecuteAsync``1(System.Collections.Generic.IEnumerable{Nuxleus.Asynchronous.IAsync})">
+            <summary>
+            Executes the asynchronous method in another asynchronous method,
+            and assumes that the method returns result of type T.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Asynchronous.AsyncExtensions.ExecuteAsync(System.Collections.Generic.IEnumerable{Nuxleus.Asynchronous.IAsync})">
+            <summary>
+            Executes the asynchronous method in another asynchronous method,
+            and assumes that the method doesn't return any result.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Asynchronous.Async">
+            <summary>
+            Provides several helper methods for working with asynchronous computations.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Asynchronous.Async.Parallel(System.Collections.Generic.IEnumerable{Nuxleus.Asynchronous.IAsync}[])">
+            <summary>
+            Combines the given asynchronous methods and returns an asynchronous method that,
+            when executed - executes the methods in parallel.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Asynchronous.IAsync">
+            <summary>
+            Represents a primitive untyped asynchronous operation.
+            This interface should be used only in asynchronous method declaration.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Asynchronous.Async`1">
+            <summary>
+            Represents an asynchronous computation that yields a result of type T.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.IO.GlobalClip.AspNetMode">
+            <summary>
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.IO.GlobalClip.ConsoleMode">
+            <summary>
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.IO.GlobalClip.DynamicMode">
+            <summary>
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.IO.GlobalClip.WinAppMode">
+            <summary>
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.IO.ClipData`1.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Nuxleus.IO.ClipData`1.myClip">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Nuxleus.IO.ClipItem.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Nuxleus.IO.ClipItem._Data">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:Nuxleus.IO.ClipItem._MetaData">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Storage.FileSystemStorageResourceInfo.Target">
+            <summary>
+            Get or sets FileInfo to be used when the data has to be stored on the filesystem
+            </summary>
+            <value>FileInfo instance.</value>
+        </member>
+        <!--FIXME: Invalid documentation markup was found for member P:Nuxleus.Storage.MemcachedStorageResourceInfo.Client-->
+        <member name="P:Nuxleus.Storage.MemcachedStorageResourceInfo.Key">
+            <summary>
+            Gets or sets the key to be used when storing into memcached
+            </summary>
+            <value>An identifier for the memcached servers.</value>
+        </member>
+        <member name="P:Nuxleus.Storage.StorageResourceInfo.Data">
+            <summary>
+            Gets or sets the actual data to be stored
+            </summary>
+            <value>bytes representing the content.</value>
+        </member>
+        <member name="M:Nuxleus.Core.Transaction.Transactional.Do``2(System.Func{``0},System.Action{``0},System.Func{``0,``1})">
+            Run 'stepWithEffect' followed by continuation 'k', but if the continuation later fails with
+            an exception, undo the original effect by running 'compensatingEffect'.
+            Note: if 'compensatingEffect' throws, it masks the original exception.</member>
+        <member name="M:Nuxleus.Extension.StringUtils.SubstringAfter(System.String,System.String)">
+            <summary>
+            Modified from Oleg Tkachenko's SubstringBefore and SubstringAfter extension functions
+            @ http://www.tkachenko.com/blog/archives/000684.html
+            This will be moved into an appropriate class once I have the time.
+            </summary>
+            <param name="source">
+            </param>
+            <param name="value">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Extension.StringUtils.Translate(System.String,System.String,System.String)">
+            <summary>
+            Courtest of Dimitre Novatchev @ http://dnovatchev.spaces.live.com/blog/cns!44B0A32C2CCF7488!353.entry the Translate function
+            mimics the same functionality provided by the XSLT translate function.
+            </summary>
+            <param name="source">
+            Represents the string currently being operated upon.  This is not part of the extension signature.
+            </param>
+            <param name="replace">
+            The string of characters to be replaced in the source string.
+            </param>
+            <param name="replaceWith">
+            The string of characters to replace, based on character position as it relates to the replace string,
+            inside of the source string.
+            </param>
+            <returns>The translated string.</returns>
+        </member>
+        <member name="T:Nuxleus.Utility.S3.AWSAuthConnection">
+            An interface into the S3 system.  It is initially configured with
+            authentication and connection parameters and exposes methods to access and
+            manipulate S3 data.</member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.createBucket(System.String)">
+            <summary>
+            Creates a new bucket.
+            </summary>
+            <param name="bucket">The name of the bucket to create</param>
+            <param name="headers">A Map of string to string representing the headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.listBucket(System.String,System.String,System.String,System.Int32,System.Collections.SortedList)">
+            <summary>
+            Lists the contents of a bucket.
+            </summary>
+            <param name="bucket">The name of the bucket to list</param>
+            <param name="prefix">All returned keys will start with this string (can be null)</param>
+            <param name="marker">All returned keys will be lexographically greater than this string (can be null)</param>
+            <param name="maxKeys">The maximum number of keys to return (can be 0)</param>
+            <param name="headers">A Map of string to string representing HTTP headers to pass.</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.listBucket(System.String,System.String,System.String,System.Int32,System.String,System.Collections.SortedList)">
+            <summary>
+            Lists the contents of a bucket.
+            </summary>
+            <param name="bucket">The name of the bucket to list</param>
+            <param name="prefix">All returned keys will start with this string (can be null)</param>
+            <param name="marker">All returned keys will be lexographically greater than this string (can be null)</param>
+            <param name="maxKeys">The maximum number of keys to return (can be 0)</param>
+            <param name="headers">A Map of string to string representing HTTP headers to pass.</param>
+            <param name="delimiter">Keys that contain a string between the prefix and the first
+            occurrence of the delimiter will be rolled up into a single element.</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.deleteBucket(System.String,System.Collections.SortedList)">
+            <summary>
+            Deletes an empty Bucket.
+            </summary>
+            <param name="bucket">The name of the bucket to delete</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.put(System.String,System.String,Nuxleus.Utility.S3.S3Object)">
+            <summary>
+            Writes an object to S3.
+            </summary>
+            <param name="bucket">The name of the bucket to which the object will be added.</param>
+            <param name="key">The name of the key to use</param>
+            <param name="obj">An S3Object containing the data to write.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.put(System.String,System.String,Nuxleus.Utility.S3.S3Object,System.Collections.SortedList)">
+            <summary>
+            Writes an object to S3.
+            </summary>
+            <param name="bucket">The name of the bucket to which the object will be added.</param>
+            <param name="key">The name of the key to use</param>
+            <param name="obj">An S3Object containing the data to write.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.get(System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Reads an object from S3
+            </summary>
+            <param name="bucket">The name of the bucket where the object lives</param>
+            <param name="key">The name of the key to use</param>
+            <param name="headers">A Map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.delete(System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Delete an object from S3.
+            </summary>
+            <param name="bucket">The name of the bucket where the object lives.</param>
+            <param name="key">The name of the key to use.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.getBucketLogging(System.String,System.Collections.SortedList)">
+            <summary>
+            Get the logging xml document for a given bucket
+            </summary>
+            <param name="bucket">The name of the bucket</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.putBucketLogging(System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Write a new logging xml document for a given bucket
+            </summary>
+            <param name="bucket">The name of the bucket to enable/disable logging on</param>
+            <param name="loggingXMLDoc">The xml representation of the logging configuration as a String.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.getBucketACL(System.String,System.Collections.SortedList)">
+            <summary>
+            Get the ACL for a given bucket.
+            </summary>
+            <param name="bucket">The the bucket to get the ACL from.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.getACL(System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Get the ACL for a given object
+            </summary>
+            <param name="bucket">The name of the bucket where the object lives</param>
+            <param name="key">The name of the key to use.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.putBucketACL(System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Write a new ACL for a given bucket
+            </summary>
+            <param name="bucket">The name of the bucket to change the ACL.</param>
+            <param name="aclXMLDoc">An XML representation of the ACL as a string.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.putACL(System.String,System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Write a new ACL for a given object
+            </summary>
+            <param name="bucket">The name of the bucket where the object lives or the
+            name of the bucket to change the ACL if key is null.</param>
+            <param name="key">The name of the key to use; can be null.</param>
+            <param name="aclXMLDoc">An XML representation of the ACL as a string.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.listAllMyBuckets(System.Collections.SortedList)">
+            <summary>
+            List all the buckets created by this account.
+            </summary>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.makeRequest(System.String,System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Make a new WebRequest without an S3Object.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.makeRequest(System.String,System.String,System.String,System.Collections.SortedList,Nuxleus.Utility.S3.S3Object)">
+            <summary>
+            Make a new WebRequest with an S3Object.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.makeRequest(System.String,System.String,System.String,System.Collections.SortedList,System.Collections.SortedList,Nuxleus.Utility.S3.S3Object)">
+            <summary>
+            Make a new WebRequest
+            </summary>
+            <param name="method">The HTTP method to use (GET, PUT, DELETE)</param>
+            <param name="bucket">The bucket name for this request</param>
+            <param name="key">The key this request is for</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+            <param name="obj">S3Object that is to be written (can be null).</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.addHeaders(System.Net.WebRequest,System.Collections.SortedList)">
+            <summary>
+            Add the given headers to the WebRequest
+            </summary>
+            <param name="req">Web request to add the headers to.</param>
+            <param name="headers">A map of string to string representing the HTTP headers to pass (can be null)</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.addMetadataHeaders(System.Net.WebRequest,System.Collections.SortedList)">
+            <summary>
+            Add the given metadata fields to the WebRequest.
+            </summary>
+            <param name="req">Web request to add the headers to.</param>
+            <param name="metadata">A map of string to string representing the S3 metadata for this resource.</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.addHeaders(System.Net.WebRequest,System.Collections.SortedList,System.String)">
+            <summary>
+            Add the given headers to the WebRequest with a prefix before the keys.
+            </summary>
+            <param name="req">WebRequest to add the headers to.</param>
+            <param name="headers">Headers to add.</param>
+            <param name="prefix">String to prepend to each before ebfore adding it to the WebRequest</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.AWSAuthConnection.addAuthHeader(System.Net.WebRequest,System.String,System.String,System.Collections.SortedList)">
+            <summary>
+            Add the appropriate Authorization header to the WebRequest
+            </summary>
+            <param name="request">Request to add the header to</param>
+            <param name="resource">The resource name (bucketName + "/" + key)</param>
+        </member>
+        <member name="F:Nuxleus.Utility.S3.CommonPrefixEntry.prefix">
+            <summary>
+            The prefix common to the delimited keys it represents.
+            </summary>
+        </member>
+        <member name="F:Nuxleus.Utility.S3.ListBucketResponse.name">
+            <summary>
+            The name of the bucket being listed.  Null if the request fails.
+            </summary>
+        </member>
+        <member name="F:Nuxleus.Utility.S3.ListBucketResponse.prefix">
+            <summary>
+            The prefix echoed back from the request.  Null if the request fails.
+            </summary>
+        </member>
+        <member name="F:Nuxleus.Utility.S3.ListBucketResponse.marker">
+            <summary>
+            The marker echoed back from the request.  Null if the request fails.
+            </summary>
+        </member>
+        <member name="F:Nuxleus.Utility.S3.ListBucketResponse.delimiter">
+            <summary>
+            The delimiter echoed back from the request.  Null if not specified in
+            the request or it fails.
+            </summary>
+        </member>
+        <member name="F:Nuxleus.Utility.S3.ListBucketResponse.maxKeys">
+            <summary>
+            The maxKeys echoed back from the request if specified.  0 if the request fails.
+            </summary>
+        </member>
+        <member name="F:Nuxleus.Utility.S3.ListBucketResponse.isTruncated">
+            <summary>
+            Indicates if there are more results to the list.  True if the current
+            list results have been truncated.  The value will be false if the request
+            fails.
+            </summary>
+        </member>
+        <member name="F:Nuxleus.Utility.S3.ListBucketResponse.nextMarker">
+            <summary>
+            Indicates what to use as a marker for subsequent list requests in the event
+            that the results are truncated.  Present only when a delimiter is specified.
+            Null if the requests fails.
+            </summary>
+        </member>
+        <member name="F:Nuxleus.Utility.S3.ListBucketResponse.entries">
+            <summary>
+            A list of ListEntry objects representing the objects in the given bucket.
+            Null if the request fails.
+            </summary>
+        </member>
+        <member name="F:Nuxleus.Utility.S3.ListBucketResponse.commonPrefixEntries">
+            <summary>
+            A list of CommonPrefixEntry objects representing the common prefixes of the
+            keys that matched up to the delimiter.  Null if the request fails.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Utility.S3.QueryStringAuthGenerator">
+            This class mimics the behavior of AWSAuthConnection, except instead of actually performing
+            the operation, QueryStringAuthGenerator will return URLs with query string parameters that
+            can be used to do the same thing.  These parameters include an expiration date, so that
+            if you hand them off to someone else, they will only work for a limited amount of time.</member>
+        <member name="P:Nuxleus.Utility.S3.QueryStringAuthGenerator.Expires">
+            <summary>
+            Sets/Gets the milliseconds since the Epoch that this
+            expires at
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.S3Object.#ctor(System.Byte[],System.Collections.SortedList)">
+            <summary>
+            Constructs an S3Object.
+            </summary>
+            <param name="bytes">Byte array representing the object</param>
+            <param name="metadata">Metadata associated with the object</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.S3Object.#ctor(System.String,System.Collections.SortedList)">
+            <summary>
+            Constructs an S3Object.
+            </summary>
+            <param name="data">String representation of the data; this will be decoded via ASCII</param>
+            <param name="metadata">Metadata associated with the object</param>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.S3Object.#ctor(System.String)">
+            <summary>
+            Constructs an S3Object.
+            </summary>
+            <param name="data">String representation of the data; this will be decoded via ASCII</param>
+            <param name="metadata">Metadata associated with the object</param>
+        </member>
+        <member name="P:Nuxleus.Utility.S3.S3Object.Bytes">
+            <summary>
+            Acquires the binary representation of an object.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Utility.S3.S3Object.Data">
+            <summary>
+            Acquires the ASCII Encoding representation of an object.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Utility.S3.S3Object.Metadata">
+            <summary>
+            Acquires the metadata.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.Utility.FormatTimeStamp(System.DateTime)">
+            <summary>
+            Formats the provided time as a string limited to millisecond precision
+            </summary>
+            <param name="myTime">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.Utility.GetTimeStamp(System.DateTime)">
+            <summary>
+            Returns a new DateTime object set to the provided time
+            but with precision limited to milliseconds.
+            </summary>
+            <param name="myTime">
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:Nuxleus.Utility.S3.Utils.buildUrlBase(System.String,System.Int32,System.String,Nuxleus.Utility.S3.CallingFormat)">
+            <summary>
+            Calculates the endpoint based on the calling format.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Utility.StringMatching.AreNeighbors(System.String,System.String,System.Int32)">
+            <summary>Returns true if both strings are close, the threshold is the token determining at which point both strings are considered too far away to be similar. This uses the Levenshtein distance algorithm to compute the distance between the two strings.</summary>
+            <param name="x">First word.</param>
+            <param name="y">Second word</param>
+            <param name="threshold">Level above which two words should be considered not similar enough. The bigger that number is the greater chance you take to get quite unsimilar words.</param>
+            <return>true if both words' distance is below or equals the threshold, false otherwise.</return>
+        </member>
+    </members>
+</doc>

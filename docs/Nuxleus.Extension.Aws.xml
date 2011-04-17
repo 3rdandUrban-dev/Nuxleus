@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nuxleus.Extension.Aws</name>
+    </assembly>
+    <members>
+        <member name="P:Nuxleus.Extension.Aws.SimpleDb.SelectTask.DomainName">
+            <summary>
+            gets or sets the domain name to query
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Extension.Aws.SimpleDb.SelectTask.SelectExpression">
+            <summary>
+            gets or sets the query expression
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Extension.Aws.SimpleDb.SelectTask.MaxNumberOfItems">
+            <summary>
+            gets or sets the maximum number of items to return in the result
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Extension.Aws.SimpleDb.SelectTask.NextToken">
+            <summary>
+            gets or sets the token that should be used if more results exist
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Extension.Aws.SimpleDb.PutAttributesTask.InvokeAsync">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="responseList"></param>
+            <returns>IEnumerable&lt;IAsync&gt;</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page:view xmlns:view="http://atomictalk.org/page/view" xmlns:page="http://atomictalk.org/page">
+  <view:search-form xmlns:form="http://atomictalk.org/page/view/form">
+    <form:search-form type="html" id="@@id.generate|default:@id@|@@" method="@@search-form.method@@" action="@@search-form.action@@" target="@@target.default@@" class="@@class.default@@">
+      <form:input type="text" name="@name@|required|" id="@@id.generate|default:@id@|@@" maxlength="@@search-form.maxlength@@" value="@@search-form.text@@" onclick="if (this.value == '@@search-form.text@@') this.value = ''; return true;" onblur="if (this.value == '') this.value = '@@search-form.text@@'; return true;" class="@@class.default@@" />
+      <form:input type="hidden" id="@@id.generate|default:@id@|@@" name="@name@|required|" value="@value@|required|" class="@@class.default@@" />
+      <form:input type="submit" id="@@id.generate|default:@id@|@@" value="@@search-form.input@@" class="@@class.default@@" />
+    </form:search-form>
+  </view:search-form>
+  <view:menu>
+    <menu:list type="html" id="@@id.generate|default:@id@|@@">
+      <menu:item type="label">@label@</menu:item>
+      <menu:item type="link">
+        <html:a href="@href@">@label@</html:a>
+      </menu:item>
+    </menu:list>
+  </view:menu>
+</page:view>

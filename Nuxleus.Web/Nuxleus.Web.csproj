@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuxleus.Web</RootNamespace>
+    <AssemblyName>Nuxleus.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AssemblyOriginatorKeyFile>Nuxleus.snk</AssemblyOriginatorKeyFile>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/Nuxleus.Web/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ReleaseVersion>0.4.2.1</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\docs\Nuxleus.Web.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ServiceStack, Version=2.0.9.3280, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=1.0.4114.3279, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=1.0.4114.3279, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=2.0.9.195, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4107.42502, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=2.0.9.42099, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\ServiceStack.2.9\lib\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+    </Reference>
+    <Reference Include="Enyim.Caching, Version=1.2.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Enyim.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\taglib-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Mvp.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="DDay.iCal, Version=1.0.2.0, Culture=neutral, PublicKeyToken=b287ad3b61754bec">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DDay.iCal.dll</HintPath>
+    </Reference>
+    <Reference Include="SgmlReaderDll, Version=1.8.7.17911, Culture=neutral, PublicKeyToken=46b2db9ca481831b">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
+    </Reference>
+    <Reference Include="Thought.vCards, Version=0.4.0.0, Culture=neutral, PublicKeyToken=b34606f0aa925886">
+      <HintPath>..\lib\Thought.vCards.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\..\..\packages\WebActivator.1.4.1\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.4.1.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent.cs" />
+    <Compile Include="App_Start\ServiceStackFramework.cs" />
+    <Compile Include="HttpApplication\FileMessageQueue_Global.cs" />
+    <Compile Include="HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpCollectionListingServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpMediaCollectionCreationServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpDeleteEventServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpMediaListingServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpMediaCreationServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpEventListingServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpEventCreationServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAccountLoginServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAccountCreationServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpSessionManagementServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAccountManagementServiceOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncAtomEntryRatingServiceHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncCreateNewAtomEntryHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncGenerateAtomServiceDocHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncImageResizeOperationStatusHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncJobStatusRequestHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncStaticFileHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncSuggestionFormHandler.cs" />
+    <Compile Include="HttpModule\NuxleusAsyncRequestOpenIDAuthenticationHttpModule.cs" />
+    <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerReaderHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncFormHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncRequestValidationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncRedirectHandler.cs" />
+    <Compile Include="HttpHandler\XPathServiceOperationManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="Utils\HttpHandlerHelpers.cs" />
+    <Compile Include="XmlServiceOperation\Context.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncFileNotFoundHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusEventHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpValidateRequestHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpNotFoundHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpSessionRequestHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpGeoLocationHandler.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpSessionLogoutHandler.cs" />
+    <Compile Include="Message\Message.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpAsyncXmlServiceOperationHandler.cs" />
+    <Compile Include="HttpApplication\Global.cs" />
+    <Compile Include="XmlServiceOperation\XmlServiceOperationManager.cs" />
+    <Compile Include="XmlServiceOperation\XmlServiceOperationReader.cs" />
+    <Compile Include="XPathServiceOperationNavigator\XPathServiceOperationNavigator.cs" />
+    <Compile Include="HttpHandler\NuxleusHttpUpcomingDotOrgEventListingServiceOperationHandler.cs" />
+    <Compile Include="Utils\CombineAndMinify\CombinedFile.cs" />
+    <Compile Include="Utils\CombineAndMinify\ConfigDomainElement.cs" />
+    <Compile Include="Utils\CombineAndMinify\ConfigDomainElementCollection.cs" />
+    <Compile Include="Utils\CombineAndMinify\ConfigSection.cs" />
+    <Compile Include="Utils\CombineAndMinify\ConfigUrlElement.cs" />
+    <Compile Include="Utils\CombineAndMinify\ConfigUrlElementCollection.cs" />
+    <Compile Include="Utils\CombineAndMinify\FileTypeUtilities.cs" />
+    <Compile Include="Utils\CombineAndMinify\HeadAdapter.cs" />
+    <Compile Include="Utils\CombineAndMinify\HeadAnalysis.cs" />
+    <Compile Include="Utils\CombineAndMinify\HttpHandler.cs" />
+    <Compile Include="Utils\CombineAndMinify\UrlProcessor.cs" />
+    <Compile Include="Utils\CombineAndMinify\UrlVersioner.cs" />
+    <Compile Include="Utils\ImageOptimizationFramework\ImageOptimizationModule.cs" />
+    <Compile Include="Utils\ImageOptimizationFramework\ImageOptimizations.cs" />
+    <Compile Include="Utils\ImageOptimizationFramework\ImageSettings.cs" />
+    <Compile Include="Utils\ImageExControl\ImageSprite.cs" />
+    <Compile Include="Utils\ImageExControl\LinkCss.cs" />
+    <Compile Include="Utils\ImageExControl\StringWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Content Include="default.htm" />
+    <Content Include="jqunback-1.51.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Nuxleus.snk" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
+      <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
+      <Name>Nuxleus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
+      <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
+      <Name>Nuxleus.Extension.Aws</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Geo\Nuxleus.Geo.csproj">
+      <Project>{9054928F-69AF-4448-BEC0-591BC9393AE8}</Project>
+      <Name>Nuxleus.Geo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
+      <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
+      <Name>Nuxleus.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
+      <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>
+      <Name>Nuxleus.PubSub</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Service\Nuxleus.Service.csproj">
+      <Project>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</Project>
+      <Name>Nuxleus.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xameleon\Xameleon.csproj">
+      <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
+      <Name>Xameleon</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

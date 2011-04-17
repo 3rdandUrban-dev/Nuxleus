@@ -1,0 +1,10 @@
+bin
+obj
+.svn
+*.suo
+*.suo
+.DS_Store
+*.pidb
+*.pdb
+*.userprefs
+update-modules

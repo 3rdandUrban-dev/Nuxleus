@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <div class="form" id="eventform">
+    <h2>Add a new event</h2>
+    <form method="post" action="/service/atompub/event/comment/add/">
+      <table id="events">
+        <tr>
+          <td>Name:</td>
+          <td>
+            <input type="text" name="name" id="name" />
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;">Description:</td>
+          <td>
+            <textarea name="description" cols="50" rows="5" id="description">
+            </textarea>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;">Location:</td>
+          <td>
+            <input type="hidden" name="location" id="location" />
+            <div id="gmap" />
+            <h3>TODO: Create list of venues of Salt Lake City &amp; propagate on map for selection.</h3>
+            <h3>TODO: For now we will use a dummy selector.</h3>
+          </td>
+        </tr>
+        <tr>
+          <td>Venue:</td>
+          <td>
+            <select name="venue" id="venue">
+              <option value="blues">House of Blues</option>
+              <option value="jazz">Monks</option>
+              <option value="electronica">Dan's Place</option>
+              <option value="rock">Boom Boom Room</option>
+              <option value="funk">Joe's Bar &amp; Grill</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Genre:</td>
+          <td>
+            <select name="genre" id="genre">
+              <option value="blues">Blues</option>
+              <option value="jazz">jazz</option>
+              <option value="electronica">Electronica</option>
+              <option value="rock">Rock</option>
+              <option value="funk">Funk</option>
+              <option value="hiphop">Hip-Hop</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Start date:</td>
+          <td>
+            <input type="text" name="startdate" class="calendarSelectDate" id="startdate" />
+          </td>
+        </tr>
+        <tr>
+          <td>End date:</td>
+          <td>
+            <input type="text" name="enddate" class="calendarSelectDate" id="enddate" />
+          </td>
+        </tr>
+        <tr>
+          <td>Genre:</td>
+          <td>
+            <select name="genre" id="genre">
+              <option value="blues">Blues</option>
+              <option value="jazz">jazz</option>
+              <option value="electronica">Electronica</option>
+              <option value="rock">Rock</option>
+              <option value="funk">Funk</option>
+              <option value="hiphop">Hip-Hop</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Tags:</td>
+          <td>
+            <input type="text" name="tags" id="tags" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="submit" value="Go" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div id="calendarDiv" />
+</view:module>

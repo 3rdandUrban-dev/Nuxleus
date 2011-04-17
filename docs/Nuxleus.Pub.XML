@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nuxleus.PubSub</name>
+    </assembly>
+    <members>
+        <member name="P:Nuxleus.Bucker.MessageStateEventArgs.Message">
+            <summary>Represents the message received</summary>
+        </member>
+        <member name="T:Nuxleus.Bucker.MessageEvent">
+            <summary>
+            Wrapper carrying necessary information when using the asynchronous methods
+            of the QueueClient class.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Bucker.MessageEvent.Message">
+            <summary>Represents the message sent</summary>
+        </member>
+        <member name="P:Nuxleus.Bucker.MessageEvent.Client">
+            <summary>
+            Gets or sets the connected client handling this message event.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Bucker.MessageEvent.Data">
+            <summary>
+            Gets or sets the content read from the socket so far.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Bucker.MessageEvent.Buffer">
+            <summary>
+            Gets the buffer where the data was read into.
+            </summary>
+        </member>
+        <member name="P:Nuxleus.Bucker.MessageEvent.Dismiss">
+            <summary>
+            Allows for the response to be read from the socket but dismissed immediatly
+            which is useful when you do not need to look at the response.
+            Note that this means that the data read won't be stored into the Buffer
+            and the OnResponseReceived handler will not be called either.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Bucker.QueueClient">
+            <summary> 
+            Manages a connection to a bucker queue.
+            Allows to perform actions on a queue and its messages
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Bucker.QueueClient.Connect">
+            <summary> 
+            Connect to the queue server.
+            </summary>    
+        </member>
+        <member name="M:Nuxleus.Bucker.QueueClient.Disconnect">
+            <summary> 
+            Gracefully disconnect from the queue server.
+            </summary>   
+        </member>
+        <member name="M:Nuxleus.Bucker.QueueClient.Send(System.String)">
+            <summary> 
+            Send a message as an XML string.
+            </summary>   
+            <param name="xml">Message representation as an XML string.</param>
+        </member>
+        <member name="M:Nuxleus.Bucker.QueueClient.Send(Nuxleus.Bucker.Message)">
+            <summary> 
+            Send a message instance.
+            </summary>   
+            <param name="m">Message instance.</param>
+        </member>
+        <member name="M:Nuxleus.Bucker.QueueClient.Recv">
+            <summary> 
+            Read up to 1024 bytes from the queue.
+            </summary>   
+            <remarks>Block the caller execution.</remarks>
+            <returns>Whatever could be read from the queue connection.</returns>
+        </member>
+        <member name="M:Nuxleus.Bucker.QueueClient.Recv(System.Int32)">
+            <summary> 
+            Read up to the specified number of bytes from the queue.
+            </summary>   
+            <remarks>Block the caller execution.</remarks>
+            <param name="size">Maximum to be read from the queue.</param>  
+            <returns>Whatever could be read from the queue connection.</returns>
+        </member>
+        <member name="M:Nuxleus.Bucker.QueueClient.AsyncRecv(Nuxleus.Bucker.MessageEvent)">
+            <summary> 
+            Asynchronously read from the queue and put the content into 
+            the provided MessageState.
+            </summary>   
+        </member>
+    </members>
+</doc>
