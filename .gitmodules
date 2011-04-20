@@ -1,141 +1,120 @@
-[submodule "src/module/redis"]
-	path = src/module/redis
-	url = git://github.com/antirez/redis.git
-[submodule "src/module/zeromq"]
-	path = src/module/zeromq
-	url = git://github.com/zeromq/zeromq2.git
-[submodule "src/module/clrzmq"]
-	path = src/module/clrzmq
-	url = git://github.com/zeromq/clrzmq.git
-[submodule "src/module/manos"]
-	path = src/module/manos
-	url = git://github.com/jacksonh/manos.git
-[submodule "src/module/fu-sharp"]
-	path = src/module/fu-sharp
-	url = git://github.com/chakrit/fu-sharp.git
-[submodule "src/module/AWSSDKforNET-extended"]
-	path = src/module/AWSSDKforNET-extended
-	url = git://github.com/mdavid/AWSSDKForNet-extended.git
-[submodule "src/module/Rx.NET"]
-	path = src/module/Rx.NET
-	url = git://github.com/mdavid/Rx.NET.git
-[submodule "src/module/protobuf-net"]
-	path = src/module/protobuf-net
-	url = git://github.com/mdavid/protobuf-net.git
-[submodule "src/module/MCloud"]
-	path = src/module/MCloud
-	url = git://github.com/mdavid/MCloud.git
-[submodule "src/module/DarwinStreamingServer-Linux"]
-	path = src/module/DarwinStreamingServer-Linux
-	url = git://github.com/mdavid/DarwinStreamingServer-Linux.git
-[submodule "src/module/jquery"]
-	path = src/module/jquery
-	url = git://github.com/jquery/jquery.git
-[submodule "src/module/jquery-ui"]
-	path = src/module/jquery-ui
-	url = git://github.com/jquery/jquery-ui.git
-[submodule "src/module/jquery-mobile"]
-	path = src/module/jquery-mobile
-	url = git://github.com/jquery/jquery-mobile.git
-[submodule "src/module/wikidot"]
-	path = src/module/wikidot
-	url = git://github.com/gabrys/wikidot.git
-[submodule "src/module/dotnetopenid"]
-	path = src/module/dotnetopenid
-	url = git://github.com/AArnott/dotnetopenid.git
-[submodule "src/module/taglib-sharp"]
-	path = src/module/taglib-sharp
-	url = git://github.com/mono/taglib-sharp.git
-[submodule "src/module/monotorrent"]
-	path = src/module/monotorrent
-	url = git://github.com/mono/monotorrent.git
-[submodule "src/module/node.js"]
-	path = src/module/node.js
-	url = git://github.com/ry/node.git
-[submodule "src/module/GitSharp"]
-	path = src/module/GitSharp
-	url = git://github.com/henon/GitSharp.git
-[submodule "src/module/closure-library"]
-	path = src/module/closure-library
-	url = git://github.com/mdavid/closure-library.git
-[submodule "src/module/sharpssh"]
-	path = src/module/sharpssh
-	url = git://github.com/mdavid/sharpssh.git
-[submodule "src/module/libev-sharp"]
-	path = src/module/libev-sharp
-	url = git://github.com/jacksonh/libev-sharp.git
-[submodule "src/module/apachai"]
-	path = src/module/apachai
-	url = git://github.com/garuma/apachai.git
-[submodule "src/module/DDay.iCal"]
-	path = src/module/DDay.iCal
-	url = git://github.com/mdavid/DDay.iCal.git
-[submodule "src/module/ironlanguages"]
-	path = src/module/ironlanguages
-	url = git://github.com/IronLanguages/main.git
-[submodule "src/module/servicestack/ServiceStack.Examples"]
-	path = src/module/servicestack/ServiceStack.Examples
-	url = https://github.com/ServiceStack/ServiceStack.Examples.git
-[submodule "src/module/servicestack/ServiceStack.Extras"]
-	path = src/module/servicestack/ServiceStack.Extras
-	url = https://github.com/ServiceStack/ServiceStack.Extras.git
-[submodule "src/module/servicestack/ServiceStack.Redis"]
-	path = src/module/servicestack/ServiceStack.Redis
-	url = https://github.com/ServiceStack/ServiceStack.Redis.git
-[submodule "src/module/servicestack/ServiceStack.Text"]
-	path = src/module/servicestack/ServiceStack.Text
-	url = https://github.com/ServiceStack/ServiceStack.Text.git
-[submodule "src/module/servicestack/ServiceStack.RedisWebServices"]
-	path = src/module/servicestack/ServiceStack.RedisWebServices
-	url = https://github.com/ServiceStack/ServiceStack.RedisWebServices.git
-[submodule "src/module/servicestack/ServiceStack.Benchmarks"]
-	path = src/module/servicestack/ServiceStack.Benchmarks
-	url = https://github.com/ServiceStack/ServiceStack.Benchmarks.git
-[submodule "src/module/servicestack/ServiceStack.Logging"]
-	path = src/module/servicestack/ServiceStack.Logging
-	url = https://github.com/ServiceStack/ServiceStack.Logging.git
-[submodule "src/module/servicestack/ServiceStack.OrmLite"]
-	path = src/module/servicestack/ServiceStack.OrmLite
-	url = https://github.com/ServiceStack/ServiceStack.OrmLite.git
-[submodule "src/module/soundmanager2"]
-	path = src/module/soundmanager2
-	url = git://github.com/scottschiller/SoundManager2.git
-[submodule "src/module/jquery-soundmanager"]
-	path = src/module/jquery-soundmanager
-	url = git://github.com/adriengibrat/jQuery-SoundManager.git
-[submodule "src/module/servicestack/ServiceStack"]
-	path = src/module/servicestack/ServiceStack
-	url = git://github.com/ServiceStack/ServiceStack.git
-[submodule "src/module/facebook/csharp-sdk"]
-	path = src/module/facebook/csharp-sdk
-	url = git://github.com/facebook/csharp-sdk.git
-[submodule "src/module/simplegeo-dotnet"]
-	path = src/module/simplegeo-dotnet
-	url = git://github.com/simplegeo/simplegeo-dotnet.git
-[submodule "src/module/mongodb/mongo-csharp-driver"]
-	path = src/module/mongodb/mongo-csharp-driver
-	url = git://github.com/mongodb/mongo-csharp-driver.git
-[submodule "src/module/mongodb/mongo"]
-	path = src/module/mongodb/mongo
-	url = git://github.com/mongodb/mongo.git
-[submodule "src/module/apache/log4net"]
-	path = src/module/apache/log4net
+[submodule "lib/module/log4net"]
+	path = lib/module/log4net
 	url = git://git.apache.org/log4net.git
-[submodule "src/module/apache/cassandra"]
-	path = src/module/apache/cassandra
-	url = git://git.apache.org/cassandra.git
-[submodule "src/module/fluentcassandra"]
-	path = src/module/fluentcassandra
-	url = git://github.com/managedfusion/fluentcassandra.git
-[submodule "src/module/cassandra"]
-	path = src/module/cassandra
-	url = git://git.apache.org/cassandra.git
-[submodule "src/module/node-uuid"]
-	path = src/module/node-uuid
-	url = https://github.com/broofa/node-uuid.git
-[submodule "src/module/servicestack/ServiceStack.Contrib"]
-	path = src/module/servicestack/ServiceStack.Contrib
+[submodule "lib/module/dotnetopenid"]
+	path = lib/module/dotnetopenid
+	url = git://github.com/AArnott/dotnetopenid.git
+[submodule "lib/module/jQuery-SoundManager"]
+	path = lib/module/jQuery-SoundManager
+	url = git://github.com/adriengibrat/jQuery-SoundManager.git
+[submodule "lib/module/node-uuid"]
+	path = lib/module/node-uuid
+	url = git://github.com/broofa/node-uuid.git
+[submodule "lib/module/fu-sharp"]
+	path = lib/module/fu-sharp
+	url = git://github.com/chakrit/fu-sharp.git
+[submodule "lib/module/wikidot"]
+	path = lib/module/wikidot
+	url = git://github.com/gabrys/wikidot.git
+[submodule "lib/module/apachai"]
+	path = lib/module/apachai
+	url = git://github.com/garuma/apachai.git
+[submodule "lib/module/GitSharp"]
+	path = lib/module/GitSharp
+	url = git://github.com/henon/GitSharp.git
+[submodule "lib/module/main"]
+	path = lib/module/main
+	url = git://github.com/IronLanguages/main.git
+[submodule "lib/module/libev-sharp"]
+	path = lib/module/libev-sharp
+	url = git://github.com/jacksonh/libev-sharp.git
+[submodule "lib/module/manos"]
+	path = lib/module/manos
+	url = git://github.com/jacksonh/manos.git
+[submodule "lib/module/jquery"]
+	path = lib/module/jquery
+	url = git://github.com/jquery/jquery.git
+[submodule "lib/module/jquery-mobile"]
+	path = lib/module/jquery-mobile
+	url = git://github.com/jquery/jquery-mobile.git
+[submodule "lib/module/jquery-ui"]
+	path = lib/module/jquery-ui
+	url = git://github.com/jquery/jquery-ui.git
+[submodule "lib/module/AWSSDKForNet-extended"]
+	path = lib/module/AWSSDKForNet-extended
+	url = git://github.com/mdavid/AWSSDKForNet-extended.git
+[submodule "lib/module/closure-library"]
+	path = lib/module/closure-library
+	url = git://github.com/mdavid/closure-library.git
+[submodule "lib/module/DarwinStreamingServer-Linux"]
+	path = lib/module/DarwinStreamingServer-Linux
+	url = git://github.com/mdavid/DarwinStreamingServer-Linux.git
+[submodule "lib/module/DDay.iCal"]
+	path = lib/module/DDay.iCal
+	url = git://github.com/mdavid/DDay.iCal.git
+[submodule "lib/module/MCloud"]
+	path = lib/module/MCloud
+	url = git://github.com/mdavid/MCloud.git
+[submodule "lib/module/protobuf-net"]
+	path = lib/module/protobuf-net
+	url = git://github.com/mdavid/protobuf-net.git
+[submodule "lib/module/Rx.NET"]
+	path = lib/module/Rx.NET
+	url = git://github.com/mdavid/Rx.NET.git
+[submodule "lib/module/sharpssh"]
+	path = lib/module/sharpssh
+	url = git://github.com/mdavid/sharpssh.git
+[submodule "lib/module/monotorrent"]
+	path = lib/module/monotorrent
+	url = git://github.com/mono/monotorrent.git
+[submodule "lib/module/taglib-sharp"]
+	path = lib/module/taglib-sharp
+	url = git://github.com/mono/taglib-sharp.git
+[submodule "lib/module/SoundManager2"]
+	path = lib/module/SoundManager2
+	url = git://github.com/scottschiller/SoundManager2.git
+[submodule "lib/module/ServiceStack.Benchmarks"]
+	path = lib/module/ServiceStack.Benchmarks
+	url = git://github.com/ServiceStack/ServiceStack.Benchmarks.git
+[submodule "lib/module/ServiceStack.Contrib"]
+	path = lib/module/ServiceStack.Contrib
 	url = git://github.com/ServiceStack/ServiceStack.Contrib.git
-[submodule "src/module/servicestack/ServiceStack.Owin"]
-	path = src/module/servicestack/ServiceStack.Owin
+[submodule "lib/module/ServiceStack.Examples"]
+	path = lib/module/ServiceStack.Examples
+	url = git://github.com/ServiceStack/ServiceStack.Examples.git
+[submodule "lib/module/ServiceStack.Extras"]
+	path = lib/module/ServiceStack.Extras
+	url = git://github.com/ServiceStack/ServiceStack.Extras.git
+[submodule "lib/module/ServiceStack"]
+	path = lib/module/ServiceStack
+	url = git://github.com/ServiceStack/ServiceStack.git
+[submodule "lib/module/ServiceStack.Logging"]
+	path = lib/module/ServiceStack.Logging
+	url = git://github.com/ServiceStack/ServiceStack.Logging.git
+[submodule "lib/module/ServiceStack.OrmLite"]
+	path = lib/module/ServiceStack.OrmLite
+	url = git://github.com/ServiceStack/ServiceStack.OrmLite.git
+[submodule "lib/module/ServiceStack.Owin"]
+	path = lib/module/ServiceStack.Owin
 	url = git://github.com/ServiceStack/ServiceStack.Owin.git
+[submodule "lib/module/ServiceStack.Redis"]
+	path = lib/module/ServiceStack.Redis
+	url = git://github.com/ServiceStack/ServiceStack.Redis.git
+[submodule "lib/module/ServiceStack.RedisWebServices"]
+	path = lib/module/ServiceStack.RedisWebServices
+	url = git://github.com/ServiceStack/ServiceStack.RedisWebServices.git
+[submodule "lib/module/ServiceStack.Text"]
+	path = lib/module/ServiceStack.Text
+	url = git://github.com/ServiceStack/ServiceStack.Text.git
+[submodule "lib/module/simplegeo-dotnet"]
+	path = lib/module/simplegeo-dotnet
+	url = git://github.com/simplegeo/simplegeo-dotnet.git
+[submodule "lib/module/clrzmq"]
+	path = lib/module/clrzmq
+	url = git://github.com/zeromq/clrzmq.git
+[submodule "lib/module/zeromq2"]
+	path = lib/module/zeromq2
+	url = git://github.com/zeromq/zeromq2.git
+[submodule "lib/module/redis"]
+	path = lib/module/redis
+	url = git://github.com/antirez/redis.git
