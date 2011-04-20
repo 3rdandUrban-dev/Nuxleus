@@ -118,3 +118,30 @@
 [submodule "lib/module/redis"]
 	path = lib/module/redis
 	url = git://github.com/antirez/redis.git
+[submodule "lib/module/DataTables-AutoFill"]
+	path = lib/module/DataTables-AutoFill
+	url = git://github.com/DataTables/AutoFill.git
+[submodule "lib/module/DataTables-ColReorder"]
+	path = lib/module/DataTables-ColReorder
+	url = git://github.com/DataTables/ColReorder.git
+[submodule "lib/module/DataTables-ColVis"]
+	path = lib/module/DataTables-ColVis
+	url = git://github.com/DataTables/ColVis.git
+[submodule "lib/module/DataTables-DataTables"]
+	path = lib/module/DataTables-DataTables
+	url = git://github.com/DataTables/DataTables.git
+[submodule "lib/module/DataTables-FixedColumns"]
+	path = lib/module/DataTables-FixedColumns
+	url = git://github.com/DataTables/FixedColumns.git
+[submodule "lib/module/DataTables-FixedHeader"]
+	path = lib/module/DataTables-FixedHeader
+	url = git://github.com/DataTables/FixedHeader.git
+[submodule "lib/module/DataTables-JSDoc-DataTables"]
+	path = lib/module/DataTables-JSDoc-DataTables
+	url = git://github.com/DataTables/JSDoc-DataTables.git
+[submodule "lib/module/DataTables-KeyTable"]
+	path = lib/module/DataTables-KeyTable
+	url = git://github.com/DataTables/KeyTable.git
+[submodule "lib/module/DataTables-TableTools"]
+	path = lib/module/DataTables-TableTools
+	url = git://github.com/DataTables/TableTools.git
