@@ -68,15 +68,15 @@
     <Reference Include="System.Xml" />
     <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
+      <HintPath>..\..\lib\ALAZ.SystemEx.dll</HintPath>
     </Reference>
     <Reference Include="ALAZ.SystemEx.NetEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
+      <HintPath>..\..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
     </Reference>
     <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

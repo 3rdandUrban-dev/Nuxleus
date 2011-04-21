@@ -69,20 +69,20 @@
     <Reference Include="System.Xml" />
     <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
+      <HintPath>..\..\lib\Memcached.ClientLibrary.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net, Version=1.0.0.261, Culture=neutral, PublicKeyToken=257b51d87d2e4d67">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\protobuf-net.dll</HintPath>
+      <HintPath>..\..\lib\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\log4net.dll</HintPath>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

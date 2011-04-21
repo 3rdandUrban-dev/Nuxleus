@@ -74,78 +74,72 @@
     </Reference>
     <Reference Include="System.Xml">
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Mvp.Xml.dll</HintPath>
+      <HintPath>..\..\lib\Mvp.Xml.dll</HintPath>
     </Reference>
     <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
-      <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Upnp, Version=0.5.0.0, Culture=neutral, PublicKeyToken=667b6f9c0b93f26b">
+      <HintPath>..\..\lib\Memcached.ClientLibrary.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Upnp.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="IKVM.OpenJDK.Charsets, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Charsets.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.OpenJDK.Charsets.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Core, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Core.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Jdbc, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Jdbc.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.OpenJDK.Jdbc.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Misc, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Misc.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.OpenJDK.Misc.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Naming, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Naming.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.OpenJDK.Naming.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Security, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Security.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.OpenJDK.Security.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Text, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Text.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.OpenJDK.Text.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Util, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.Util.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.OpenJDK.Util.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.XML.API, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.OpenJDK.XML.API.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.OpenJDK.XML.API.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.Runtime, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.Runtime.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.Runtime.JNI, Version=0.42.0.4, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\IKVM.Runtime.JNI.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\IKVM.Runtime.JNI.dll</HintPath>
     </Reference>
     <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
     </Reference>
     <Reference Include="saxon9, Version=9.1.0.8, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.NET\saxon9.dll</HintPath>
+      <HintPath>..\..\lib\Saxon.NET\saxon9.dll</HintPath>
     </Reference>
     <Reference Include="SgmlReaderDll, Version=1.8.7.17911, Culture=neutral, PublicKeyToken=46b2db9ca481831b">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
+      <HintPath>..\..\lib\SgmlReaderDll.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />

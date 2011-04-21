@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,7 +12,6 @@
     <AssemblyName>Nuxleus</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>..\resources\Nuxleus.snk</AssemblyOriginatorKeyFile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <ManifestCertificateThumbprint>1E6EFA42CE49681FC8D0DC38C3B8E1476A6D5940</ManifestCertificateThumbprint>
@@ -74,17 +73,17 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
     </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Upnp, Version=0.5.0.0, Culture=neutral, PublicKeyToken=667b6f9c0b93f26b">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Upnp.dll</HintPath>
+      <HintPath>..\..\lib\Upnp.dll</HintPath>
     </Reference>
     <Reference Include="Tamir.SharpSSH, Version=1.1.1.14, Culture=neutral, PublicKeyToken=d220d21a741825be">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Tamir.SharpSSH.dll</HintPath>
+      <HintPath>..\..\lib\Tamir.SharpSSH.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -109,7 +108,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
       <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
-      <Name>Nuxleus.Core %28Nuxleus.Core\Nuxleus.Core%29</Name>
+      <Name>Nuxleus.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
       <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
@@ -133,7 +132,7 @@
     </ProjectReference>
     <ProjectReference Include="..\Xameleon\Xameleon.csproj">
       <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
-      <Name>Xameleon %28Xameleon\Xameleon%29</Name>
+      <Name>Xameleon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

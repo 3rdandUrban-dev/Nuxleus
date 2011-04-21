@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -62,19 +62,19 @@
     <Reference Include="System.Xml" />
     <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
+      <HintPath>..\..\lib\ALAZ.SystemEx.dll</HintPath>
     </Reference>
     <Reference Include="ALAZ.SystemEx.NetEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
+      <HintPath>..\..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
     </Reference>
     <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
+      <HintPath>..\..\lib\Memcached.ClientLibrary.dll</HintPath>
     </Reference>
     <Reference Include="AWSSDK, Version=1.3.1.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\AWSSDK.dll</HintPath>
+      <HintPath>..\..\lib\AWSSDK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
