@@ -224,6 +224,8 @@
     <Compile Include="Core\IO\Storage\FileSystem\RevisionControl\Git\Clone.cs" />
     <Compile Include="Core\IO\Storage\FileSystem\RevisionControl\Git\Tag.cs" />
     <Compile Include="Core\IO\Storage\FileSystem\RevisionControl\Git\Commit.cs" />
+    <Compile Include="Authentication\OAuth\OAuth.cs" />
+    <Compile Include="Core\Singleton\SingletonProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Configuration\App.config" />
@@ -234,6 +236,8 @@
     <!--<Folder Include="Core\Agent\" />-->
     <Folder Include="Core\IO\Storage\Cache\Memcached\" />
     <Folder Include="Core\IO\Storage\Cache\Redis\" />
+    <Folder Include="Authentication\OAuth\" />
+    <Folder Include="Core\Singleton\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
