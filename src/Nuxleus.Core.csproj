@@ -33,35 +33,35 @@
     <Reference Include="System" />
     <Reference Include="ServiceStack.Common, Version=1.0.4114.3279, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.Common.dll</HintPath>
+      <HintPath>..\lib\ServiceStack.Common.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack, Version=2.0.9.3280, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.dll</HintPath>
+      <HintPath>..\lib\ServiceStack.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Interfaces, Version=1.0.4114.3279, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.Interfaces.dll</HintPath>
+      <HintPath>..\lib\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.OrmLite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.OrmLite.dll</HintPath>
+      <HintPath>..\lib\ServiceStack.OrmLite.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.OrmLite.SqlServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+      <HintPath>..\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Redis, Version=2.0.9.195, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.Redis.dll</HintPath>
+      <HintPath>..\lib\ServiceStack.Redis.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4107.42502, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.ServiceInterface.dll</HintPath>
+      <HintPath>..\lib\ServiceStack.ServiceInterface.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text, Version=2.0.9.42099, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.Text.dll</HintPath>
+      <HintPath>..\lib\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Core" />

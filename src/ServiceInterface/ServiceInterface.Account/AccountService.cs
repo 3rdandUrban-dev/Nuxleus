@@ -2,7 +2,7 @@ using Nuxleus.Data;
 using Nuxleus.ServiceModel.Operations;
 using Nuxleus.ServiceModel.Types;
 using ServiceStack.ServiceInterface;
-using Nuxleus.ServiceModel.Types.Location;
+using Nuxleus.ServiceModel.Types.Account;
 
 namespace Nuxleus.ServiceInterface
 {
