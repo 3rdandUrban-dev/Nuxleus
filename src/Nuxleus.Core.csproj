@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9A91AA26-7396-4524-9ACB-5FA2D3B5D128}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Nuxleus.Core</RootNamespace>
+    <AssemblyName>Nuxleus.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="ServiceStack.Common, Version=1.0.4114.3279, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack, Version=2.0.9.3280, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=1.0.4114.3279, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=2.0.9.195, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4107.42502, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=2.0.9.42099, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Nuxleus\lib\ServiceStack\ServiceStack-v2.09\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ServiceModel.Operation\ServiceModel.Operations.Account\Account.cs" />
+    <Compile Include="ServiceModel.Operation\ServiceModel.Operations.Account\AccountProfileNameStatus.cs" />
+    <Compile Include="ServiceModel.Operation\ServiceModel.Operations.Entity\Artist.cs" />
+    <Compile Include="ServiceModel.Operation\ServiceModel.Operations.Media\AudioTrack.cs" />
+    <Compile Include="ServiceModel.Operation\ServiceModel.Operations.Media\Photo.cs" />
+    <Compile Include="ServiceModel.Operation\ServiceModel.Operations.Media\GraphicImage.cs" />
+    <Compile Include="ServiceModel.Operation\ServiceModel.Operations.MediaCollection\PhotoAlbum.cs" />
+    <Compile Include="ServiceModel.Operation\ServiceModel.Operations.MediaCollection\AudioAlbum.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.Account\AccountProfileNameStatusService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.Account\AccountService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.Account\AccountStatsService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.Admin\RepositoryResetService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.Entity\ArtistService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.Entity\ArtistStatsService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.Entity\ArtistVotesService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.Media\AudioTrackService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.Media\AudioTrackVotesService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.Media\AudioTrackStatsService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.MediaCollection\AudioAlbumService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.MediaCollection\AudioAlbumStatsService.cs" />
+    <Compile Include="ServiceInterface\ServiceInterface.MediaCollection\AudioAlbumVotesService.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Content\Content.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Event\Event.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Location\Location.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Member\Member.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Message\Message.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Message\ServiceModel.Types.Message.LLUP\BlipMessage.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Message\ServiceModel.Types.Message.LLUP\Relevance.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Message\ServiceModel.Types.Message.LLUP\Scope.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Session\Session.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Session\_SessionDataReference.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Accept.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Categories.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Collection.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Service.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Workspace.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Author.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Category.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Content.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Contributor.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Entry.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Feed.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\ForeignElement.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Generator.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\InReplyTo.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Link.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\PersonConstruct.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Rights.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Summary.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\TextConstruct.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="ServiceData\HybridDataRepository.cs" />
+    <Compile Include="ServiceData\IDataRepository.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Account\AccountInfo.cs" />
+    <Compile Include="ServiceModel.Types\ServiceModel.Types.Account\AccountProfileNameInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="ServiceModel.Types\ServiceModel.Types.Member\" />
+    <Folder Include="ServiceModel.Types\ServiceModel.Types.Content\" />
+  </ItemGroup>
+</Project>
