@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9A91AA26-7396-4524-9ACB-5FA2D3B5D128}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Nuxleus.Core</RootNamespace>
+    <AssemblyName>Nuxleus.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="ServiceStack.Common, Version=1.0.4114.3279, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack, Version=2.0.9.3280, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=1.0.4114.3279, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=2.0.9.195, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4107.42502, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=2.0.9.42099, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
+    </Reference>
+    <Reference Include="ALAZ.SystemEx.NetEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Data" />
+    <Reference Include="DDay.iCal, Version=1.0.2.0, Culture=neutral, PublicKeyToken=b287ad3b61754bec">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DDay.iCal.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Mvp.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="SgmlReaderDll, Version=1.8.7.17911, Culture=neutral, PublicKeyToken=46b2db9ca481831b">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
+    </Reference>
+    <Reference Include="taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\taglib-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Thought.vCards, Version=0.4.0.0, Culture=neutral, PublicKeyToken=b34606f0aa925886">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Thought.vCards.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=1.4.1.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="protobuf-net, Version=2.0.0.404, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="saxon9, Version=9.1.0.8, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\saxon9.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Dynamic" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Nuxleus.Core\Authentication\AmazonWebServices\AWSAuthConnection.cs" />
+    <Compile Include="Nuxleus.Core\Authentication\Facebook\Facebook.cs" />
+    <Compile Include="Nuxleus.Core\Authentication\OAuth\OAuth.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\AspNetAwsConfiguration.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\AspNetBungeeConfiguration.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\AspNetMemcachedConfiguration.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\AspNetQueueServerConfiguration.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\AspNetXameleonTransform.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\AwsKey.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\AwsKeyCollection.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\AwsS3.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\AwsS3Collection.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\BaseSetting.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\BaseSettingCollection.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\BungeeApp.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\BungeeAppCollection.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\Configuration.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\MemcachedPoolConfig.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\MemcachedPoolConfigCollection.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\MemcachedServer.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\MemcachedServerCollection.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\PreCompiledXslt.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\PreCompiledXsltCollection.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\XsltParamCollection.cs" />
+    <Compile Include="Nuxleus.Core\Configuration\XsltParams.cs" />
+    <Compile Include="Nuxleus.Core\Core\Cryptography\Hash.cs" />
+    <Compile Include="Nuxleus.Core\Core\Cryptography\HashcodeGenerator.cs" />
+    <Compile Include="Nuxleus.Core\Core\Performance\PerformanceLog.cs" />
+    <Compile Include="Nuxleus.Core\Core\Performance\PerformanceTimer.cs" />
+    <Compile Include="Nuxleus.Core\Core\Async\Async.cs" />
+    <Compile Include="Nuxleus.Core\Core\Entity\Entity.cs" />
+    <Compile Include="Nuxleus.Core\Core\Entity\IEntity.cs" />
+    <Compile Include="Nuxleus.Core\Core\Entity\IPerson.cs" />
+    <Compile Include="Nuxleus.Core\Core\Entity\Person.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\IStorage.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Storage.cs" />
+    <Compile Include="Nuxleus.Core\Core\Handler\ExceptionHandler.cs" />
+    <Compile Include="Nuxleus.Core\Core\LoadBalancer\IEnumerableIAsyncWorkerQueue.cs" />
+    <Compile Include="Nuxleus.Core\Core\LoadBalancer\TaskWorkerQueue.cs" />
+    <Compile Include="Nuxleus.Core\Core\LoadBalancer\WorkerQueue.cs" />
+    <Compile Include="Nuxleus.Core\Core\Log\Log.cs" />
+    <Compile Include="Nuxleus.Core\Core\Net\AwsBaseConnection\HttpQueryConnection.cs" />
+    <Compile Include="Nuxleus.Core\Core\Net\AwsBaseConnection\IAwsConnection.cs" />
+    <Compile Include="Nuxleus.Core\Core\Async\NuxleusAsyncResult.cs" />
+    <Compile Include="Nuxleus.Core\Core\Operation\IOperation.cs" />
+    <Compile Include="Nuxleus.Core\Core\LoadBalancer\ProcessQueue.cs" />
+    <Compile Include="Nuxleus.Core\Core\Request\IRequest.cs" />
+    <Compile Include="Nuxleus.Core\Core\Response\IResponse.cs" />
+    <Compile Include="Nuxleus.Core\Core\Result\IResult.cs" />
+    <Compile Include="Nuxleus.Core\Core\Scope\HandlerBase.cs" />
+    <Compile Include="Nuxleus.Core\Core\Scope\LoggerScope.cs" />
+    <Compile Include="Nuxleus.Core\Core\Scope\ProfilerScope.cs" />
+    <Compile Include="Nuxleus.Core\Core\Scope\Scope.cs" />
+    <Compile Include="Nuxleus.Core\Core\Task\ITask.cs" />
+    <Compile Include="Nuxleus.Core\Core\Transaction\ITransaction.cs" />
+    <Compile Include="Nuxleus.Core\Core\Transaction\Transactional.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Pipe\PipeStream.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Pipe\PipeStreamBlock.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Helper\ProxyHelpers.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\Watcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\Cache.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\Clipboard.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\ClipData.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\ClipItem.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\Copy.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\Credentials.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\GlobalClip.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\Init.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\Paste.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\Provider.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\Resources.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\Serializer.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Clipboard\SessionVariables.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Memory\Memcached\Memcached.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\FS.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\FSStorage.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\Memory\Memcached\MemcachedStorage.cs" />
+    <Compile Include="Nuxleus.Core\Core\Agent\IAgent.cs" />
+    <Compile Include="Nuxleus.Core\Core\Agent\LoadBalancer\LoadBalancer.cs" />
+    <Compile Include="Nuxleus.Core\Core\Agent\Notification\Notification.cs" />
+    <Compile Include="Nuxleus.Core\Core\Agent\PostOffice\IPostOffice.cs" />
+    <Compile Include="Nuxleus.Core\Core\Agent\PostOffice\PostOffice.cs" />
+    <Compile Include="Nuxleus.Core\Core\Agent\Request\IRequest.cs" />
+    <Compile Include="Nuxleus.Core\Core\Agent\Request\Request.cs" />
+    <Compile Include="Nuxleus.Core\Core\Agent\Response\IResponse.cs" />
+    <Compile Include="Nuxleus.Core\Core\Agent\Response\Response.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Add.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Rm.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Branch.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Push.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Clone.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Tag.cs" />
+    <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Commit.cs" />
+    <Compile Include="Nuxleus.Core\Core\Singleton\SingletonProvider.cs" />
+    <Compile Include="Nuxleus.Core\Drawing\CropImage.cs" />
+    <Compile Include="Nuxleus.Core\Drawing\ImageResize.cs" />
+    <Compile Include="Nuxleus.Core\Extension\ExtensionMethods.cs" />
+    <Compile Include="Nuxleus.Core\Extension\Log\Log.cs" />
+    <Compile Include="Nuxleus.Core\Extension\StringUtils\Substring.cs" />
+    <Compile Include="Nuxleus.Core\Extension\StringUtils\Translate.cs" />
+    <Compile Include="Nuxleus.Core\MetaData\Attributes\Label.cs" />
+    <Compile Include="Nuxleus.Core\MetaData\Attributes\Message.cs" />
+    <Compile Include="Nuxleus.Core\Process\DarcsProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Core\Process\SVNProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Core\Process\ZorbaProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Core\Process\NuxleusProcess.cs" />
+    <Compile Include="Nuxleus.Core\Service\Core.cs" />
+    <Compile Include="Nuxleus.Core\Service\HttpWebService.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Diff\Diff.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Diff\Merge.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Diff\Patch.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Diff\StructuredDiff.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Diff\TextDiff.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Diff\UnifiedDiff.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Format\Base64FormatProvider.cs" />
+    <Compile Include="Nuxleus.Core\Utility\RevisionControl\RevisionControlManager.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\JSMin.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\AWSAuthConnection.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\Bucket.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\CommonPrefixEntry.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\GetResponse.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\GetTimeStamp.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\ListAllMyBucketsResponse.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\ListBucketResponse.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\ListEntry.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\Owner.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\QueryStringAuthGenerator.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\Response.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\S3Object.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\Utils.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\StringMatching.cs" />
+    <Compile Include="Nuxleus.Core\Utility\Utility\S3\Utility.cs" />
+    <Compile Include="Nuxleus.Core\ServiceData\HybridDataRepository.cs" />
+    <Compile Include="Nuxleus.Core\ServiceData\IDataRepository.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Account\AccountProfileNameStatusService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Account\AccountService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Account\AccountStatsService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Admin\RepositoryResetService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Entity\ArtistService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Entity\ArtistStatsService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Entity\ArtistVotesService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Media\AudioTrackService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Media\AudioTrackVotesService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Media\AudioTrackStatsService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.MediaCollection\AudioAlbumService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.MediaCollection\AudioAlbumStatsService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.MediaCollection\AudioAlbumVotesService.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Account\Account.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Account\AccountProfileNameStatus.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Entity\Artist.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Media\AudioTrack.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Media\Photo.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Media\GraphicImage.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.MediaCollection\PhotoAlbum.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.MediaCollection\AudioAlbum.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Content\Content.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Event\Event.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Location\Location.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Member\Member.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Message\Message.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Message\ServiceModel.Types.Message.LLUP\BlipMessage.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Message\ServiceModel.Types.Message.LLUP\Relevance.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Message\ServiceModel.Types.Message.LLUP\Scope.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Session\Session.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Session\_SessionDataReference.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Accept.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Categories.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Collection.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Service.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Workspace.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Author.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Category.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Content.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Contributor.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Entry.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Feed.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\ForeignElement.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Generator.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\InReplyTo.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Link.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\PersonConstruct.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Rights.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Summary.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\TextConstruct.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Account\AccountInfo.cs" />
+    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Account\AccountProfileNameInfo.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\Model\AwsMetadata.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Model\Attribute.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Model\Domain.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Model\Error.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Model\Item.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\RequestType.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\BatchPutAttributesRequest.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\DomainMetadataRequest.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\DeleteAttributesRequest.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\CreateDomainRequest.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\DeleteDomainRequest.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\GetAttributesRequest.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\ListDomainsRequest.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\PutAttributesRequest.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\SelectRequest.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\BatchPutAttributesResponse.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\DomainMetadataResponse.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\DeleteAttributesResponse.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\CreateDomainResponse.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\DeleteDomainResponse.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\GetAttributesResponse.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\ListDomainsResponse.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\PutAttributesResponse.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\SelectResponse.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\BatchPutAttributesResult.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\CreateDomainResult.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\DeleteAttributesResult.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\DeleteDomainResult.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\DomainMetadataResult.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\GetAttributesResult.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\ListDomainsResult.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\PutAttributesResult.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Model\SdbMetadata.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\SelectResult.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\BatchPutAttributes.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\DomainMetadata.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\DeleteAttributes.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\CreateDomain.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\DeleteDomain.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\GetAttributes.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\ListDomains.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\PutAttributes.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\Select.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Transaction\Transaction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Utility\StaticUtilities.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\Utils\SigningUtils.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\Agent.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Async.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Functional\Functional.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Functional\ImmutableList.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Functional\Lazy.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Functional\Tuple.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Query\ExpressionExtensions.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Query\ExpressionVisitor.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Query\QueryableExtensions.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Query\Utils.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Facebook\AuthToken.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Facebook\Facebook.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Facebook\Friends.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Facebook\Session.cs" />
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Amp.Fm\Service\LocationComplete.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Amp.Fm\Service\Search.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Geo\IPLocation\IPLocation.cs" />
+    <Compile Include="Nuxleus.Geo\LatLongByName\City.cs" />
+    <Compile Include="Nuxleus.Geo\LatLongLocation\ILatLongLocation.cs" />
+    <Compile Include="Nuxleus.Geo\LatLongLocation\LatLongLocation.cs" />
+    <Compile Include="Nuxleus.Geo\MaxMind\Country.cs" />
+    <Compile Include="Nuxleus.Geo\MaxMind\DatabaseInfo.cs" />
+    <Compile Include="Nuxleus.Geo\MaxMind\Location.cs" />
+    <Compile Include="Nuxleus.Geo\MaxMind\LookupService.cs" />
+    <Compile Include="Nuxleus.Geo\MaxMind\Region.cs" />
+    <Compile Include="Nuxleus.Geo\MaxMind\RegionName.cs" />
+    <Compile Include="Nuxleus.Messaging\Core\DispatchHandler.cs" />
+    <Compile Include="Nuxleus.Messaging\Core\NuxleusCoreHandler.cs" />
+    <Compile Include="Nuxleus.Messaging\Core\ReceiverHandler.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\BlipPostOffice.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\INotificationIndex.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\IRouterFilter.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\ISubscriber.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\InternalReceiverHandler.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\Notification.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\PublisherHandler.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\RouterHandler.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\SubscriberHandler.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\Filters\Expiry.cs" />
+    <Compile Include="Nuxleus.Messaging\LLUP\Subscribers\AtomFeed.cs" />
+    <Compile Include="Nuxleus.Messaging\LoadBalancer\LoadBalancer.cs" />
+    <Compile Include="Nuxleus.Messaging\PostOffice\IPostOffice.cs" />
+    <Compile Include="Nuxleus.Messaging\PostOffice\PostOffice.cs" />
+    <Compile Include="Nuxleus.Messaging\QS\BlipMessageServerHander.cs" />
+    <Compile Include="Nuxleus.Messaging\QS\QSToLLUPHandler.cs" />
+    <Compile Include="Nuxleus.Messaging\Server\ReplicationHandler.cs" />
+    <Compile Include="Nuxleus.Messaging\Server\ReplicationMessage.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Accept.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Author.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Categories.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Category.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Collection.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Content.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Contributor.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Entry.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Feed.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\ForeignElement.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Generator.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Inreplyto.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Link.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\PersonConstruct.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Rights.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Service.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Summary.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\TextConstruct.cs" />
+    <Compile Include="Nuxleus.PubSub\Atom\Workspace.cs" />
+    <Compile Include="Nuxleus.PubSub\Bucker\ClientPool.cs" />
+    <Compile Include="Nuxleus.PubSub\Bucker\QueueClient.cs" />
+    <Compile Include="Nuxleus.PubSub\Bucker\Message.cs" />
+    <Compile Include="Nuxleus.PubSub\LLUP\BlipMessage.cs" />
+    <Compile Include="Nuxleus.PubSub\LLUP\Relevance.cs" />
+    <Compile Include="Nuxleus.PubSub\LLUP\Scope.cs" />
+    <Compile Include="Nuxleus.Web\HttpApplication\FileMessageQueue_Global.cs" />
+    <Compile Include="Nuxleus.Web\HttpApplication\Global.cs" />
+    <Compile Include="Nuxleus.Web\HttpAsyncRequestProcessing\HttpGetAsyncResponse.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpCollectionListingServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpMediaCollectionCreationServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpDeleteEventServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpMediaListingServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpMediaCreationServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpEventListingServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpEventCreationServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAccountLoginServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAccountCreationServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpSessionManagementServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAccountManagementServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncAtomEntryRatingServiceHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncCreateNewAtomEntryHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncGenerateAtomServiceDocHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncImageResizeOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncImageResizeOperationStatusHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncJobStatusRequestHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncStaticFileHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncSuggestionFormHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncTrackerReaderHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncFormHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncRequestValidationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncRedirectHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\XPathServiceOperationManager.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncQueryEntityHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncTrackerAndRedirectHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncFileNotFoundHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusEventHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpValidateRequestHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpNotFoundHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpSessionRequestHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpGeoLocationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpSessionLogoutHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpAsyncXmlServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\NuxleusHttpUpcomingDotOrgEventListingServiceOperationHandler.cs" />
+    <Compile Include="Nuxleus.Web\HttpHandler\temp.cs" />
+    <Compile Include="Nuxleus.Web\HttpModule\NuxleusAsyncRequestOpenIDAuthenticationHttpModule.cs" />
+    <Compile Include="Nuxleus.Web\HttpModule\AsyncRequestLogHttpModule.cs" />
+    <Compile Include="Nuxleus.Web\Message\Message.cs" />
+    <Compile Include="Nuxleus.Web\Utils\HttpHandlerHelpers.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\CombinedFile.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\ConfigDomainElement.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\ConfigDomainElementCollection.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\ConfigSection.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\ConfigUrlElement.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\ConfigUrlElementCollection.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\FileTypeUtilities.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\HeadAdapter.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\HeadAnalysis.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\HttpHandler.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\UrlProcessor.cs" />
+    <Compile Include="Nuxleus.Web\Utils\CombineAndMinify\UrlVersioner.cs" />
+    <Compile Include="Nuxleus.Web\Utils\ImageOptimizationFramework\ImageOptimizationModule.cs" />
+    <Compile Include="Nuxleus.Web\Utils\ImageOptimizationFramework\ImageOptimizations.cs" />
+    <Compile Include="Nuxleus.Web\Utils\ImageOptimizationFramework\ImageSettings.cs" />
+    <Compile Include="Nuxleus.Web\Utils\ImageExControl\ImageSprite.cs" />
+    <Compile Include="Nuxleus.Web\Utils\ImageExControl\LinkCss.cs" />
+    <Compile Include="Nuxleus.Web\Utils\ImageExControl\StringWrapper.cs" />
+    <Compile Include="Nuxleus.Web\XmlServiceOperation\Context.cs" />
+    <Compile Include="Nuxleus.Web\XmlServiceOperation\XmlServiceOperationManager.cs" />
+    <Compile Include="Nuxleus.Web\XmlServiceOperation\XmlServiceOperationReader.cs" />
+    <Compile Include="Nuxleus.Web\XPathServiceOperationNavigator\XPathServiceOperationNavigator.cs" />
+    <Compile Include="Nuxleus.Web\Agent.cs" />
+    <Compile Include="Nuxleus.Service\Authentication\Authenticate.cs" />
+    <Compile Include="Nuxleus.Service\Drawing\NuxleusImageResizeProcessManager.cs" />
+    <Compile Include="Nuxleus.Service\FileSystem\Watcher\FileSystemWatcherService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Service\FileSystem\Watcher\Watcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Service\FileSystem\Replication\Replication.cs" />
+    <Compile Include="Nuxleus.Service\FileSystem\RevisionControl\RevisionControlManager.cs" />
+    <Compile Include="Nuxleus.Service\LLUP\PublisherService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Service\LLUP\RouterService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Service\LLUP\SubscriberService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Service\LoadBalancer\LoadBalancer.cs" />
+    <Compile Include="Nuxleus.Service\Queue\FileMessageQueue.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Service\Queue\FileQueueWatcherService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Service\Queue\Qs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Service\Queue\QSToLLUP.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Service\NuxleusCoreService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Xameleon\AsyncResult\NuxleusTransformAsyncResult.cs" />
+    <Compile Include="Nuxleus.Xameleon\Document\DocumentResult.cs" />
+    <Compile Include="Nuxleus.Xameleon\Document\S3Document.cs" />
+    <Compile Include="Nuxleus.Xameleon\SemWeb\Select.cs" />
+    <Compile Include="Nuxleus.Xameleon\Transform\AsyncProcess.cs" />
+    <Compile Include="Nuxleus.Xameleon\Transform\BaseXsltContext.cs" />
+    <Compile Include="Nuxleus.Xameleon\Transform\Context.cs" />
+    <Compile Include="Nuxleus.Xameleon\Transform\Transform.cs" />
+    <Compile Include="Nuxleus.Xameleon\Transform\TransformServiceAsyncResult.cs" />
+    <Compile Include="Nuxleus.Xameleon\Transform\XsltTransformationManager.cs" />
+    <Compile Include="Nuxleus.Xameleon\ResultDocumentHandler\S3ResultDocumentHandler.cs" />
+    <Compile Include="Nuxleus.Xameleon\UrlResolver\NuxleusXmlUrlResolver.cs" />
+    <Compile Include="Nuxleus.Xameleon\UrlResolver\S3XmlUrlResolver.cs" />
+    <Compile Include="Nuxleus.Xameleon\Agent.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\AWSSimpleDBFunctions.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\Facebook.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\FileStream.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\HashcodeGenerator.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\HttpRequestCollection.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\HttpResponseCollection.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\HttpSgmlToXml.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\HttpWebRequest.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\HttpWebResponseStream.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\QueueManager.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\S3ObjectCompare.cs" />
+    <Compile Include="Nuxleus.Xameleon\Function\Utils.cs" />
+    <Compile Include="Nuxleus.Xameleon\Request.cs" />
+    <Compile Include="Nuxleus.Xameleon\TransformContext.cs" />
+    <Compile Include="Nuxleus.Xameleon\TransformResponse.cs" />
+    <Compile Include="Nuxleus.Messaging\Message\IMessage.cs" />
+    <Compile Include="Nuxleus.Messaging\Message\Message.cs" />
+    <Compile Include="Nuxleus.Messaging\Message\MessageClient.cs" />
+    <Compile Include="Nuxleus.Messaging\Message\MessageServer.cs" />
+    <Compile Include="Nuxleus.Messaging\Message\MessageService.cs" />
+    <Compile Include="Nuxleus.Messaging\Notification\Notification.cs" />
+    <Compile Include="Nuxleus.Core\IEntity.cs" />
+    <Compile Include="Nuxleus.Core\Log.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Nuxleus.Core\" />
+    <Folder Include="Nuxleus.Core\" />
+    <Folder Include="Nuxleus.Core\Authentication\OAuth\" />
+    <Folder Include="Nuxleus.Core\Core\IO\Storage\Cache\Memcached\" />
+    <Folder Include="Nuxleus.Core\Core\IO\Storage\Cache\Redis\" />
+    <Folder Include="Nuxleus.Core\Core\Singleton\" />
+    <Folder Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Member\" />
+    <Folder Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Content\" />
+    <Folder Include="..\" />
+    <Folder Include="Nuxleus.Extension\" />
+    <Folder Include="Nuxleus.Extension\Nuxleus.Extension.Aws\" />
+    <Folder Include="Nuxleus.Geo\" />
+    <Folder Include="Nuxleus.Messaging\" />
+    <Folder Include="Nuxleus.PubSub\" />
+    <Folder Include="Nuxleus.Web\" />
+    <Folder Include="Nuxleus.Service\" />
+    <Folder Include="Nuxleus.Xameleon\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nuxleus.Core\Configuration\App.config" />
+    <None Include="Nuxleus.Core\Utility\Utility\S3\README" />
+    <None Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
