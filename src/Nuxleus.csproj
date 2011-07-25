@@ -31,37 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="ServiceStack.Common, Version=1.0.4114.3279, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack, Version=2.0.9.3280, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=1.0.4114.3279, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.OrmLite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack.OrmLite.dll</HintPath>
-    </Reference>
     <Reference Include="ServiceStack.OrmLite.SqlServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Redis, Version=2.0.9.195, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4107.42502, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack.ServiceInterface.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Text, Version=2.0.9.42099, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Core" />
@@ -119,10 +91,6 @@
     </Reference>
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
-    <Reference Include="protobuf-net, Version=2.0.0.404, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\protobuf-net.dll</HintPath>
-    </Reference>
     <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Saxon.Api.dll</HintPath>
@@ -134,6 +102,38 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Dynamic" />
+    <Reference Include="ServiceStack.Common, Version=1.0.4189.30552, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack, Version=2.2.6.30553, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=1.0.4189.30552, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=2.2.0.9049, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=2.2.0.8979, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4189.30554, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=2.2.4.38332, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.0.0.423, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\protobuf-net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Nuxleus.Core\Authentication\AmazonWebServices\AWSAuthConnection.cs" />
@@ -232,8 +232,6 @@
     <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Tag.cs" />
     <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Commit.cs" />
     <Compile Include="Nuxleus.Core\Core\Singleton\SingletonProvider.cs" />
-    <Compile Include="Nuxleus.Core\Drawing\CropImage.cs" />
-    <Compile Include="Nuxleus.Core\Drawing\ImageResize.cs" />
     <Compile Include="Nuxleus.Core\Extension\ExtensionMethods.cs" />
     <Compile Include="Nuxleus.Core\Extension\Log\Log.cs" />
     <Compile Include="Nuxleus.Core\Extension\StringUtils\Substring.cs" />
@@ -330,74 +328,6 @@
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\TextConstruct.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Account\AccountInfo.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Account\AccountProfileNameInfo.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\Model\AwsMetadata.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Model\Attribute.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Model\Domain.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Model\Error.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Model\Item.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\RequestType.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\BatchPutAttributesRequest.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\DomainMetadataRequest.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\DeleteAttributesRequest.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\CreateDomainRequest.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\DeleteDomainRequest.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\GetAttributesRequest.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\ListDomainsRequest.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\PutAttributesRequest.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Request\SelectRequest.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\BatchPutAttributesResponse.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\DomainMetadataResponse.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\DeleteAttributesResponse.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\CreateDomainResponse.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\DeleteDomainResponse.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\GetAttributesResponse.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\ListDomainsResponse.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\PutAttributesResponse.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Response\SelectResponse.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\BatchPutAttributesResult.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\CreateDomainResult.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\DeleteAttributesResult.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\DeleteDomainResult.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\DomainMetadataResult.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\GetAttributesResult.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\ListDomainsResult.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\PutAttributesResult.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Model\SdbMetadata.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Result\SelectResult.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\BatchPutAttributes.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\DomainMetadata.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\DeleteAttributes.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\CreateDomain.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\DeleteDomain.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\GetAttributes.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\ListDomains.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\PutAttributes.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Task\Select.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Transaction\Transaction.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\SimpleDb\Utility\StaticUtilities.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\Utils\SigningUtils.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Aws\Agent.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Async.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Functional\Functional.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Functional\ImmutableList.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Functional\Lazy.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Functional\Tuple.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Query\ExpressionExtensions.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Query\ExpressionVisitor.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Query\QueryableExtensions.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Linq\Query\Utils.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Facebook\AuthToken.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Facebook\Facebook.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Facebook\Friends.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Facebook\Session.cs" />
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Amp.Fm\Service\LocationComplete.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Nuxleus.Extension\Nuxleus.Extension.Amp.Fm\Service\Search.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Nuxleus.Geo\IPLocation\IPLocation.cs" />
     <Compile Include="Nuxleus.Geo\LatLongByName\City.cs" />
     <Compile Include="Nuxleus.Geo\LatLongLocation\ILatLongLocation.cs" />
@@ -595,6 +525,79 @@
     <Compile Include="Nuxleus.Core\IEntity.cs" />
     <Compile Include="Nuxleus.Core\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Nuxleus.Core\Drawing\ConvertImage.cs" />
+    <Compile Include="Nuxleus.Core\Drawing\ConvertImage_Resize.cs" />
+    <Compile Include="Nuxleus.Core\Drawing\ConvertImage_Crop.cs" />
+    <Compile Include="Nuxleus.Core\Drawing\ConvertImage_ToFromBase64.cs" />
+    <Compile Include="Nuxleus.Extension.Amp.Fm\Service\LocationComplete.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Extension.Amp.Fm\Service\Search.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Extension.Aws\Model\AwsMetadata.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Model\Attribute.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Model\Domain.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Model\Error.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Model\Item.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\RequestType.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Request\BatchPutAttributesRequest.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Request\DomainMetadataRequest.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Request\DeleteAttributesRequest.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Request\CreateDomainRequest.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Request\DeleteDomainRequest.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Request\GetAttributesRequest.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Request\ListDomainsRequest.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Request\PutAttributesRequest.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Request\SelectRequest.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Response\BatchPutAttributesResponse.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Response\DomainMetadataResponse.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Response\DeleteAttributesResponse.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Response\CreateDomainResponse.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Response\DeleteDomainResponse.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Response\GetAttributesResponse.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Response\ListDomainsResponse.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Response\PutAttributesResponse.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Response\SelectResponse.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Result\BatchPutAttributesResult.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Result\CreateDomainResult.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Result\DeleteAttributesResult.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Result\DeleteDomainResult.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Result\DomainMetadataResult.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Result\GetAttributesResult.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Result\ListDomainsResult.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Result\PutAttributesResult.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Model\SdbMetadata.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Result\SelectResult.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Task\BatchPutAttributes.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Task\DomainMetadata.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Task\DeleteAttributes.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Task\CreateDomain.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Task\DeleteDomain.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Task\GetAttributes.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Task\ListDomains.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Task\PutAttributes.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Task\Select.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Transaction\Transaction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Nuxleus.Extension.Aws\SimpleDb\Utility\StaticUtilities.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\Utils\SigningUtils.cs" />
+    <Compile Include="Nuxleus.Extension.Aws\Agent.cs" />
+    <Compile Include="Nuxleus.Extension.Facebook\AuthToken.cs" />
+    <Compile Include="Nuxleus.Extension.Facebook\Facebook.cs" />
+    <Compile Include="Nuxleus.Extension.Facebook\Friends.cs" />
+    <Compile Include="Nuxleus.Extension.Facebook\Session.cs" />
+    <Compile Include="Nuxleus.Extension.Linq\Async.cs" />
+    <Compile Include="Nuxleus.Extension.Linq\Functional\Functional.cs" />
+    <Compile Include="Nuxleus.Extension.Linq\Functional\ImmutableList.cs" />
+    <Compile Include="Nuxleus.Extension.Linq\Functional\Lazy.cs" />
+    <Compile Include="Nuxleus.Extension.Linq\Functional\Tuple.cs" />
+    <Compile Include="Nuxleus.Extension.Linq\Query\ExpressionExtensions.cs" />
+    <Compile Include="Nuxleus.Extension.Linq\Query\ExpressionVisitor.cs" />
+    <Compile Include="Nuxleus.Extension.Linq\Query\QueryableExtensions.cs" />
+    <Compile Include="Nuxleus.Extension.Linq\Query\Utils.cs" />
+    <Compile Include="Nuxleus.Extension.Xml\Nuxleus.Extension.Xml.XPath\GetAttribute.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -608,7 +611,6 @@
     <Folder Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Content\" />
     <Folder Include="..\" />
     <Folder Include="Nuxleus.Extension\" />
-    <Folder Include="Nuxleus.Extension\Nuxleus.Extension.Aws\" />
     <Folder Include="Nuxleus.Geo\" />
     <Folder Include="Nuxleus.Messaging\" />
     <Folder Include="Nuxleus.PubSub\" />
@@ -616,6 +618,7 @@
     <Folder Include="Nuxleus.Service\" />
     <Folder Include="Nuxleus.Xameleon\" />
     <Folder Include="Properties\" />
+    <Folder Include="Nuxleus.Extension.Xml\Nuxleus.Extension.Xml.XPath\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nuxleus.Core\Configuration\App.config" />
