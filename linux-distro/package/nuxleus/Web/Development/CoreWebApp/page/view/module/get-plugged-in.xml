@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<view:module class="base" id="get-plugged-in" xmlns:geo="http://nuxleus.com/geo" xmlns:view="http://atomictalk.org/page/view">
+  <view:container type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+    <view:item id="icon">
+      <img style="margin-bottom:-7px" src="/images/amplogo5.png" height="110" width="450"/>
+      <span style="font-size:14pt; color:#999;margin-left:.2em;">to <span style="font-size:28pt; color:#CC0000;"><geo:location id="current-region" value="|$$test:@@search.location@@IfTrue:@@search.location@@IfFalse:@@current-location.label@@$$|"/>
+        </span>
+      </span>
+    </view:item>
+    <!-- <view:item id="location-module">
+      <view:container id="location-container" style="LtoR">
+        <view:item>
+          <span style="font-size:18pt; color:#999;">to</span>
+        </view:item>
+        <view:item id="current-region">
+          <geo:location value="|$$test:@@search.location@@IfTrue:@@search.location@@IfFalse:@@current-location.label@@$$|"/>
+        </view:item>
+      </view:container>
+    </view:item> -->
+  </view:container>
+</view:module>

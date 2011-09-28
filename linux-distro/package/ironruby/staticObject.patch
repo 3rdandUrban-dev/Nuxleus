@@ -1,0 +1,26 @@
+Index: IronRuby/src/ironruby/Builtins/FalseClass.cs
+===================================================================
+--- IronRuby/src/ironruby/Builtins/FalseClass.cs	(revision 24)
++++ IronRuby/src/ironruby/Builtins/FalseClass.cs	(working copy)
+@@ -21,7 +21,7 @@
+ namespace Ruby.Builtins {
+ 
+     [RubyClass]
+-    public static class FalseClass : Object {
++    public static class FalseClass {
+         internal const int ObjectId = 0;
+ 
+         #region Public Instance Methods
+Index: IronRuby/src/ironruby/Builtins/TrueClass.cs
+===================================================================
+--- IronRuby/src/ironruby/Builtins/TrueClass.cs	(revision 24)
++++ IronRuby/src/ironruby/Builtins/TrueClass.cs	(working copy)
+@@ -21,7 +21,7 @@
+ namespace Ruby.Builtins {
+     
+     [RubyClass]
+-    public static class TrueClass : Object {
++    public static class TrueClass  {
+         internal const int ObjectId = 2;
+ 
+         #region Public Instance Methods

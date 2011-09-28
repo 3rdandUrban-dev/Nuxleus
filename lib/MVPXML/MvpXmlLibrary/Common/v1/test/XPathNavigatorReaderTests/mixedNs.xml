@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<root xmlns="root" id="123" a:id="456" b:id="789"	
+	xmlns:a="imported-a" xmlns:b="imported-b">
+	<name>Daniel Cazzulino</name>
+</root>

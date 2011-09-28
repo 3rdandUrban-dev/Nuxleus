@@ -1,0 +1,8 @@
+stateversion 2
+name BrightContent:source
+version /nuxleus.rpath.org@nux:devel/1169315795.111:svn.r133-1
+branch /nuxleus.rpath.org@nux:devel
+3
+1420d8536cfb2969225b4239b09009c2 build.sh f0283219bbf7700ace8cdac41a82cade8a6aaf84 config /nuxleus.rpath.org@nux:devel/svn.r133-1
+3ff2725e79cc11b7b2f3a12137e4c7c7 BrightContent.recipe 90bbe6ae8f0eaf5c6748a270cbac3d0ab428ef53 config /nuxleus.rpath.org@nux:devel/svn.r133-1
+f8fe6f168cbf3cf3dcb4ca3a9310097d BrightContent-svn.r133.tar.gz 98ed35e0f4cefe3400b6bdaf7a15e67cfafbfee5 _ /nuxleus.rpath.org@nux:devel/svn.r133-1

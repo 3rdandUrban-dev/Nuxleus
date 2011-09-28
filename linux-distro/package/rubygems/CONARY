@@ -1,0 +1,9 @@
+stateversion 2
+name rubygems:source
+version /foresight.rpath.org@fl:devel//2-devel//nuxleus.rpath.org@nux:devel/1188845934.345:0.9.4-0.3
+branch /foresight.rpath.org@fl:devel//2-devel//nuxleus.rpath.org@nux:devel
+4
+baaea30e590a77396610085071930a42 rubygems.recipe 464d6ce0cf2d4ecb53682e0dce7a754e95ecd70d config /foresight.rpath.org@fl:devel//2-devel/0.9.4-0.3
+7edc4ce50f2714131c3bc87ea05b7a31 rubygems-0.9.4.tgz c9411c76692264a99ff76f0abaf5b5d5f4feecbd autosource /foresight.rpath.org@fl:devel//2-devel/0.9.4-0.2
+5ad95dfd0048b0a13d4b389b301e7bda rubygems.csh 975b4ba8e9c8db8d5c70a9323b859795dbdbdb4f config /foresight.rpath.org@fl:devel/0.9.2-1
+1578b858aaf1d97c2095e290651a93e3 rubygems.sh d36b1d21c9120315eb35b07fa031dc899a9c29ac config /foresight.rpath.org@fl:devel/0.9.2-1

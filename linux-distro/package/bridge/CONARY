@@ -1,0 +1,8 @@
+stateversion 2
+name bridge:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1188521059.228:svnr541-0.1
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+3
+d6e4750e904ea20ec4aaf4b73d804e27 bridge-svnr541.tar.gz 1cd75e23fa0c61607f562cc7bbdc43ea74e67203 _ /nuxleus.rpath.org@rpl:devel//nux:devel/svnr541-0.1
+2cdc0d766c9705c64bbe4db742d0de9b bridge.recipe 2f19c4a9f0b2dc5eebd23934b31a55c8298baa8e config /nuxleus.rpath.org@rpl:devel//nux:devel/svnr541-0.1
+5d6d36aa7a526c8ae66cc630cc579f4b build.sh 6cd093e41f4021e0212245375bd61c7a5512e54b config /nuxleus.rpath.org@rpl:devel//nux:devel/svnr541-0.1

@@ -1,0 +1,21 @@
+#
+# Copyright (c) 2005-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class CherryPy(PackageRecipe):
+    name = 'CherryPy'
+    version = '3.0.0'
+
+    # For some reason we cannot deploy the package when elementtree is not
+    # explicitely stated here. But CherryPy does not require ElementTree
+    # in any way.
+    buildRequires = [ 
+            'python-setuptools:python', 
+            'elementtree:python', 
+    ]
+
+    def setup(r):
+        r.addArchive('http://download.cherrypy.org/cherrypy/%(version)s/%(name)s-%(version)s.tar.gz')
+        r.PythonSetup()

@@ -1,0 +1,7 @@
+stateversion 2
+name http_ping:source
+version /nuxleus.rpath.org@nux:devel/1189083390.390:29jun2005-1
+branch /nuxleus.rpath.org@nux:devel
+2
+7117ff1bdcb8a18e6cb1f7a769e9bfc7 http_ping_29jun2005.tar.gz bab2e487e97c34dea1bfe77b3f633f165cde7e05 autosource /nuxleus.rpath.org@nux:devel/29jun2005-1
+d896431186fdc68eb221abc279056a3d http_ping.recipe 0444ae46ac01b5ec35c1e21885443f44f67ab7c8 config /nuxleus.rpath.org@nux:devel/29jun2005-1

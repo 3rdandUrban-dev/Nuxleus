@@ -1,0 +1,19 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class CliGacTag(PackageRecipe):
+    name = 'cli-gac-tag'
+    version = '0.0.1'
+    buildRequires = [ 'fileset-mono-minimal' ]
+
+    def setup(r):
+        r.addSource('cli-gac', macros=True,
+                    dest='%(tagdescriptiondir)s/cli-gac')
+        r.addSource('cli-gac-handler', macros=True,
+                    dest='%(taghandlerdir)s/cli-gac', mode=0755)
+        
+        r.Requires('%(taghandlerdir)s/cli-gac', 'fileset-mono-minimal')
+

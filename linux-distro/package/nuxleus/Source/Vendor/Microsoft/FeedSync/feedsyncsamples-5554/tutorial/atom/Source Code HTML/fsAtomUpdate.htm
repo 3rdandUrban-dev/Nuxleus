@@ -1,0 +1,1764 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>fsAtomUpdate.js</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:115%;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+
+</head>
+
+<body lang=EN-US>
+
+<div class=Section1>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>// 
+*********************************************************************************</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  File:   fsAtomUpdate.js</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Notes:  You must run this file with cscript.exe (i.e. not
+wscript.exe)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Copyright (c) Microsoft Corporation.  All Rights Reserved.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>// 
+*********************************************************************************</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  -------------------------- MAIN (BEGIN)
+--------------------------</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Validate arguments</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_Arguments = WScript.Arguments;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_Arguments.length &lt; 4)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      DisplayUsage();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Quit();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get required parameters</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_SourcePath = g_Arguments(0);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_GUID = g_Arguments(1);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_Title = g_Arguments(2);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_Description = g_Arguments(3);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get optional parameters if specified, otherwise use defaults</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>// 
+*********************************************************************************</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  BIG HONKING NOTE:  The &quot;by&quot; value should be a unique
+value per user/endpoint -</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//                     this sample uses a random number to
+generate uniqueness.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//                     Other applications should considering using
+a more robust</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//                     and persistant value.</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:blue'>var</span> g_By = <span style='color:#A31515'>&quot;fsAtomUpdate.js&quot;</span>
++ Math.random();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:blue'>if</span> (g_Arguments.length &gt; 4)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>            g_By
+= g_Arguments(4);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>// 
+*********************************************************************************</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_ResolveConflicts = <span style='color:blue'>false</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_Arguments.length &gt; 5)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+g_ResolveConflicts = (g_Arguments(5) == <span style='color:#A31515'>&quot;true&quot;</span>)
+? <span style='color:blue'>true</span> : <span style='color:blue'>false</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_pISourceAtomXmlDOMDocument = <span style='color:blue'>null</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>try</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Create instance of XML DOM</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pISourceAtomXmlDOMDocument
+= <span style='color:blue'>new</span> ActiveXObject(<span style='color:#A31515'>&quot;Microsoft.XMLDOM&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pISourceAtomXmlDOMDocument.async
+= <span style='color:blue'>false</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Load source document      </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:blue'>var</span> Success =
+g_pISourceAtomXmlDOMDocument.load(g_SourcePath);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:blue'>if</span> (!Success)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>            <span
+style='color:blue'>throw</span> <span style='color:blue'>new</span> Error(0, <span
+style='color:#A31515'>&quot;IXmlDocument::load failed&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>catch</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(e)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Echo(<span
+style='color:#A31515'>&quot;Exception while loading '&quot;</span> +
+g_SourcePath +<span style='color:#A31515'>&quot;': &quot;</span> + e.message);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Quit();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get &quot;feed&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_pIFeedXmlDOMElement = g_pISourceAtomXmlDOMDocument.documentElement;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Check if FeedSync namespace exists</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_pIFeedXmlDOMElement.getAttribute(<span style='color:#A31515'>&quot;xmlns:sx&quot;</span>)
+== <span style='color:blue'>null</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Echo(<span
+style='color:#A31515'>&quot;Not a valid FeedSync file!&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Quit();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get &quot;sx:sync&quot; element with matching id</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_pISyncXmlDOMElement = g_pIFeedXmlDOMElement.selectSingleNode(<span
+style='color:#A31515'>&quot;//entry/sx:sync[@id='&quot;</span> + g_GUID + <span
+style='color:#A31515'>&quot;']&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Validate that &quot;sx:sync&quot; element exists</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_pISyncXmlDOMElement == <span style='color:blue'>null</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Echo(<span
+style='color:#A31515'>&quot;Unable to find 'sx:sync' element with id='&quot;</span>
++ g_GUID + <span style='color:#A31515'>&quot;'&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Quit(0);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get &quot;updates&quot; attribute from &quot;sx:sync&quot;
+element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_Updates = g_pISyncXmlDOMElement.getAttribute(<span style='color:#A31515'>&quot;updates&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Validate &quot;updates&quot; attribute</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_Updates == <span style='color:blue'>null</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Echo(<span
+style='color:#A31515'>&quot;Unable to get 'updates' attribute from 'sx:sync'
+element with id='&quot;</span> + g_GUID + <span style='color:#A31515'>&quot;'&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Quit(0);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get corresponding &quot;entry&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_pIEntryXmlDOMElement = g_pISyncXmlDOMElement.parentNode;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Validate that &quot;entry&quot; element exists</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'> (g_pIEntryXmlDOMElement
+== <span style='color:blue'>null</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Echo(<span
+style='color:#A31515'>&quot;Unable to get 'entry' element for 'sx:sync' element
+with id='&quot;</span> + g_GUID + <span style='color:#A31515'>&quot;'&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Quit(0);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get &quot;title&quot; element from &quot;entry&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_pITitleXmlDOMElement = g_pIEntryXmlDOMElement.selectSingleNode(<span
+style='color:#A31515'>&quot;title&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Validate that &quot;title&quot; element exists</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_pITitleXmlDOMElement == <span style='color:blue'>null</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Create &quot;title&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pITitleXmlDOMElement
+= g_pISourceAtomXmlDOMDocument.createElement(<span style='color:#A31515'>&quot;title&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Append &quot;title&quot; element to &quot;entry&quot;
+element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pIEntryXmlDOMElement.appendChild(g_pITitleXmlDOMElement);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Set title for &quot;title&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>g_pITitleXmlDOMElement.text
+= g_Title;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get &quot;content&quot; element from &quot;entry&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_pIContentXmlDOMElement = g_pIEntryXmlDOMElement.selectSingleNode(<span
+style='color:#A31515'>&quot;content&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Validate that &quot;content&quot; element exists</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_pIContentXmlDOMElement == <span style='color:blue'>null</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Create &amp; populate &quot;content&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pIContentXmlDOMElement
+= g_pISourceAtomXmlDOMDocument.createElement(<span style='color:#A31515'>&quot;content&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Append &quot;content&quot; element to &quot;entry&quot;
+element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pIEntryXmlDOMElement.appendChild(g_pIContentXmlDOMElement);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Set description for &quot;content&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>g_pIContentXmlDOMElement.text
+= g_Description;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get &quot;author&quot; element from &quot;entry&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_pIAuthorXmlDOMElement = g_pIEntryXmlDOMElement.selectSingleNode(<span
+style='color:#A31515'>&quot;author&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Validate that &quot;author&quot; element exists</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_pIAuthorXmlDOMElement == <span style='color:blue'>null</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Create &amp; populate &quot;author&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pIAuthorXmlDOMElement
+= g_pISourceAtomXmlDOMDocument.createElement(<span style='color:#A31515'>&quot;author&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Append &quot;author&quot; element to &quot;entry&quot;
+element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pIEntryXmlDOMElement.appendChild(g_pIAuthorXmlDOMElement);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get &quot;name&quot; element from &quot;author&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_pINameXmlDOMElement = g_pIAuthorXmlDOMElement.selectSingleNode(<span
+style='color:#A31515'>&quot;name&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Validate that &quot;name&quot; element exists</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_pINameXmlDOMElement == <span style='color:blue'>null</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Create &amp; populate &quot;name&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pINameXmlDOMElement
+= g_pISourceAtomXmlDOMDocument.createElement(<span style='color:#A31515'>&quot;name&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Append &quot;name&quot; element to &quot;author&quot;
+element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pIAuthorXmlDOMElement.appendChild(g_pINameXmlDOMElement);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Set by for &quot;name&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>g_pINameXmlDOMElement.text
+= g_By;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get the current timedate and format it as RFC 3339</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_CurrentDateTime = <span style='color:blue'>new</span> Date();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_Year = g_CurrentDateTime.getYear();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_Year &lt; 70)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+g_Year += 2000;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>else</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+<span style='color:blue'>if</span> (g_Year &lt; 1900)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+g_Year += 1900;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_Month = g_CurrentDateTime.getMonth() + 1;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_Month &lt;= 9)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+g_Month = <span style='color:#A31515'>&quot;0&quot;</span> + g_Month;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_Day = g_CurrentDateTime.getDate();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_Day &lt;= 9)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+g_Day = <span style='color:#A31515'>&quot;0&quot;</span> + g_Day;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_HourUTC = g_CurrentDateTime.getUTCHours();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_HourUTC &lt;= 9)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+g_HourUTC = <span style='color:#A31515'>&quot;0&quot;</span> + g_HourUTC;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_MinuteUTC = g_CurrentDateTime.getUTCMinutes();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_MinuteUTC &lt;= 9)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+g_MinuteUTC = <span style='color:#A31515'>&quot;0&quot;</span> + g_MinuteUTC;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_Second = g_CurrentDateTime.getSeconds();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_Second &lt;= 9)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+g_Second = <span style='color:#A31515'>&quot;0&quot;</span> + g_Second;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_RFC3339DateTime = g_Year + <span style='color:#A31515'>&quot;-&quot;</span> +
+g_Month + <span style='color:#A31515'>&quot;-&quot;</span> + g_Day + <span
+style='color:#A31515'>&quot;T&quot;</span> + g_HourUTC + <span
+style='color:#A31515'>&quot;:&quot;</span> + g_MinuteUTC + <span
+style='color:#A31515'>&quot;:&quot;</span> + g_Second + <span style='color:
+#A31515'>&quot;Z&quot;</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get &quot;updated&quot; element from &quot;updated&quot;
+element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_pIUpdatedXmlDOMElement = g_pIEntryXmlDOMElement.selectSingleNode(<span
+style='color:#A31515'>&quot;updated&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Validate that &quot;updated&quot; element exists</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_pIUpdatedXmlDOMElement == <span style='color:blue'>null</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Create &quot;updated&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pIUpdatedXmlDOMElement
+= g_pISourceAtomXmlDOMDocument.createElement(<span style='color:#A31515'>&quot;updated&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  Append &quot;updated&quot; element to &quot;entry&quot;
+element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      g_pIEntryXmlDOMElement.appendChild(g_pIUpdatedXmlDOMElement);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      }</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Set updated for &quot;updated&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>g_pIUpdatedXmlDOMElement.text
+= g_RFC3339DateTime;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Increment &quot;updates&quot; attribute</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>++g_Updates;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Create &quot;sx:history&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_pIHistoryXmlDOMElement = g_pISourceAtomXmlDOMDocument.createElement(<span
+style='color:#A31515'>&quot;sx:history&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Set &quot;sequence&quot; attribute for &quot;sx:history&quot;
+element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_Sequence = g_Updates;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(g_By != <span style='color:#A31515'>&quot;&quot;</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:green'>//  Get &quot;sx:history&quot; sub-elements of
+&quot;sx:sync&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:blue'>var</span> pIHistoryXmlDOMElements =
+g_pISyncXmlDOMElement.selectNodes(<span style='color:#A31515'>&quot;sx:history&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:green'>//  Iterate &quot;sx:history&quot; sub-elements of
+main item's &quot;sx:sync&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:blue'>for</span> (<span style='color:blue'>var</span>
+HistoryIndex = 0; HistoryIndex &lt; pIHistoryXmlDOMElements.length;
+++HistoryIndex)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:green'>//  Get reference to next &quot;sx:history&quot;
+sub-element of main item</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:blue'>var</span> pIHistoryXmlDOMElement =
+pIHistoryXmlDOMElements(HistoryIndex);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:green'>//  Get &quot;by&quot; attribute from main item's
+&quot;sx:history&quot; </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:green'>//  sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:blue'>var</span> By = pIHistoryXmlDOMElement.getAttribute(<span
+style='color:#A31515'>&quot;by&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:green'>//  Get &quot;sequence&quot; attribute from main
+item's </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:green'>//  &quot;sx:history&quot; sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:blue'>var</span> Sequence =
+pIHistoryXmlDOMElement.getAttribute(<span style='color:#A31515'>&quot;sequence&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:green'>//  If &quot;by&quot; attributes don't match,
+continue loop</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:blue'>if</span> ((By == g_By) &amp;&amp; (Sequence &gt;=
+g_Sequence))</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>           
+g_Sequence = Sequence + 1;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>g_pIHistoryXmlDOMElement.setAttribute(<span
+style='color:#A31515'>&quot;sequence&quot;</span>, g_Sequence);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Set &quot;when&quot; attribute for &quot;sx:history&quot;
+element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>g_pIHistoryXmlDOMElement.setAttribute(<span
+style='color:#A31515'>&quot;when&quot;</span>, g_RFC3339DateTime);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Set &quot;by&quot; attribute for &quot;sx:history&quot;
+element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>g_pIHistoryXmlDOMElement.setAttribute(<span
+style='color:#A31515'>&quot;by&quot;</span>, g_By);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Insert &quot;sx:history&quot; element as topmost sub-element
+of &quot;sx:sync&quot; element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>g_pISyncXmlDOMElement.insertBefore(g_pIHistoryXmlDOMElement,
+g_pISyncXmlDOMElement.childNodes[0]);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Set &quot;updates&quot; attribute for &quot;sx:sync&quot;
+element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>g_pISyncXmlDOMElement.setAttribute(<span
+style='color:#A31515'>&quot;updates&quot;</span>, g_Updates);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Get &quot;noconflicts&quot; attribute for &quot;sx:sync&quot;
+element</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>var</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+g_NoConflicts = (g_pISyncXmlDOMElement.getAttribute(<span style='color:#A31515'>&quot;noconflicts&quot;</span>)
+== <span style='color:#A31515'>&quot;true&quot;</span>) ? <span
+style='color:blue'>true</span> : <span style='color:blue'>false</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  See if conflict resolution should be performed</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>if</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+(!g_NoConflicts &amp;&amp; g_ResolveConflicts)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:green'>// 
+*********************************************************************************</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:green'>//  BIG HONKING NOTE:  This sample resolves all
+conflicts and does not accomodate for</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:green'>//                     selective conflict resolution</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:green'>// 
+*********************************************************************************</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:green'>//  Get the &quot;sx:conflicts&quot; sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:blue'>var</span> pIConflictsXmlDOMElement =
+g_pISyncXmlDOMElement.selectSingleNode(<span style='color:#A31515'>&quot;sx:conflicts&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:green'>//  Validate that &quot;sx:conflicts&quot;
+sub-element exists</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+<span style='color:blue'>if</span> (pIConflictsXmlDOMElement != <span
+style='color:blue'>null</span>)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:green'>//  Construct hashtable for item history</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:blue'>var</span> ItemHistoryHashtable = <span
+style='color:blue'>new</span> Object();</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:green'>//  Get &quot;sx:history&quot; sub-elements of
+&quot;sx:sync&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:blue'>var</span> pIHistoryXmlDOMElements =
+g_pISyncXmlDOMElement.selectNodes(<span style='color:#A31515'>&quot;sx:history&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:green'>//  Get &quot;entry&quot; sub-elements of
+&quot;sx:conflicts&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>  
+     <span style='color:blue'>var</span> pIConflictItemXmlDOMElements =
+pIConflictsXmlDOMElement.selectNodes(<span style='color:#A31515'>&quot;entry&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:green'>//  Iterate &quot;entry&quot; sub-elements of
+&quot;sx:conflicts&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>       
+<span style='color:blue'>for</span> (<span style='color:blue'>var</span>
+ConflictItemIndex = 0; ConflictItemIndex &lt;
+pIConflictItemXmlDOMElements.length; ++ConflictItemIndex)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>           
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>           
+<span style='color:green'>//  Get next conflict &quot;entry&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+        <span style='color:blue'>var</span> pIConflictItemXmlDOMElement =
+pIConflictItemXmlDOMElements(ConflictItemIndex);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>           
+<span style='color:green'>//  Get the conflict item's &quot;sx:sync&quot;
+sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>           
+<span style='color:blue'>var</span> pIConflictSyncXmlDOMElement =
+pIConflictItemXmlDOMElement.selectSingleNode(<span style='color:#A31515'>&quot;sx:sync&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>           
+<span style='color:green'>//  Get &quot;sx:history&quot; sub-elements of
+conflict item's &quot;sx:sync&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      
+     <span style='color:blue'>var</span> pIConflictHistoryXmlDOMElements =
+pIConflictSyncXmlDOMElement.selectNodes(<span style='color:#A31515'>&quot;sx:history&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>           
+<span style='color:green'>//  Iterate &quot;sx:history&quot; sub-elements of
+conflict item's &quot;sx:sync&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>           
+<span style='color:blue'>for</span> (<span style='color:blue'>var</span>
+ConflictHistoryIndex = 0; ConflictHistoryIndex &lt; pIConflictHistoryXmlDOMElements.length;
+++ConflictHistoryIndex)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:green'>//  Get next conflict &quot;sx:history&quot;
+sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:blue'>var</span> pIConflictHistoryXmlDOMElement =
+pIConflictHistoryXmlDOMElements(ConflictHistoryIndex);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'> 
+              <span style='color:green'>//  Get &quot;sequence&quot; attribute
+from conflict item's topmost </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:green'>//  &quot;sx:history&quot; sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:blue'>var</span> ConflictSequence =
+pIConflictHistoryXmlDOMElement.getAttribute(<span style='color:#A31515'>&quot;sequence&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:green'>//  Get &quot;by&quot; attribute from conflict item's
+topmost &quot;sx:history&quot; </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:green'>//  sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:blue'>var</span> ConflictBy =
+pIConflictHistoryXmlDOMElement.getAttribute(<span style='color:#A31515'>&quot;by&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:green'>//  Get &quot;when&quot; attribute from conflict
+item's topmost &quot;sx:history&quot; </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:green'>//  sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:blue'>var</span> ConflictWhen =
+pIConflictHistoryXmlDOMElement.getAttribute(<span style='color:#A31515'>&quot;when&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:blue'>var</span> ConflictHistoryRepresented = <span
+style='color:blue'>false</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:green'>//  Iterate &quot;sx:history&quot; sub-elements of
+main item's &quot;sx:sync&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:blue'>for</span> (<span style='color:blue'>var</span>
+HistoryIndex = 0; HistoryIndex &lt; pIHistoryXmlDOMElements.length;
+++HistoryIndex)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  Get reference to next &quot;sx:history&quot;
+sub-element of main item</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:blue'>var</span> pIHistoryXmlDOMElement =
+pIHistoryXmlDOMElements(HistoryIndex);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  Get &quot;sequence&quot; attribute from main
+item's </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  &quot;sx:history&quot; sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:blue'>var</span> Sequence =
+pIHistoryXmlDOMElement.getAttribute(<span style='color:#A31515'>&quot;sequence&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  Get &quot;by&quot; attribute from main item's
+&quot;sx:history&quot; </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:blue'>var</span> By = pIHistoryXmlDOMElement.getAttribute(<span
+style='color:#A31515'>&quot;by&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  Get &quot;when&quot; attribute from main item's
+&quot;sx:history&quot; </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:blue'>var</span> When = pIHistoryXmlDOMElement.getAttribute(<span
+style='color:#A31515'>&quot;when&quot;</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>  
+                 </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  See if &quot;by&quot; attribute exists for main
+item's &quot;sx:history&quot; </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  element and if it does, see if it's value matches
+&quot;by&quot; </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  attribute value for conflict's
+&quot;sx:history&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:blue'>if</span> ((By != <span style='color:blue'>null</span>)
+&amp;&amp; (By == ConflictBy))</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:green'>//  See if &quot;sequence&quot; attribute for the
+main item's </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:green'>//  &quot;sx:history&quot; element is greater than or
+equal to the </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:green'>//  &quot;sequence&quot; attribute for the conflict's
+&quot;sx:history&quot;</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:green'>//  element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:blue'>if</span> (Sequence &gt;= ConflictSequence)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                           
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                           
+<span style='color:green'>//  Indicate conflict history represented</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                           
+ConflictHistoryRepresented = <span style='color:blue'>true</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                           
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:green'>//  Stop iterating main item's &quot;sx:history&quot;
+elements</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:blue'>break</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>        
+                   </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  See if &quot;by&quot; attribute does not exist
+for both main item's</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  &quot;sx:history&quot; element and conflict's
+&quot;sx:history&quot; element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:blue'>else</span> <span style='color:blue'>if</span> ((By ==
+<span style='color:blue'>null</span>) &amp;&amp; (ConflictBy == <span
+style='color:blue'>null</span>))</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:green'>//  See if &quot;when&quot; attribute exists for both
+main item's</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:green'>//  &quot;sx:history&quot; element and conflict's
+&quot;sx:history&quot; </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:green'>//  element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+<span style='color:blue'>if</span> ((When != <span style='color:blue'>null</span>)
+&amp;&amp; (ConflictWhen != <span style='color:blue'>null</span>))</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                           
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                           
+<span style='color:green'>//  Compare date values - since we use RFC3339
+values, we can use </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                           
+<span style='color:green'>//  string comparison when comparing datetimes</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                     
+      <span style='color:blue'>if</span> (When == ConflictWhen)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                               
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                               
+<span style='color:green'>//  Indicate conflict history represented</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                               
+ConflictHistoryRepresented = <span style='color:blue'>true</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>           
+                            </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                               
+<span style='color:green'>//  Stop iterating &quot;sx:history&quot; elements</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                               
+<span style='color:blue'>break</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                               
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                           
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                       
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>          
+     <span style='color:blue'>if</span> (ConflictHistoryRepresented)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+{</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:green'>//  Continue iterating conflict's
+&quot;sx:history&quot; elements</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+<span style='color:blue'>continue</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                   
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:green'>//  Create clone of conflict item's &quot;sx:history&quot;
+sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:blue'>var</span> pIClonedConflictHistoryXmlDOMElement =
+pIConflictHistoryXmlDOMElement.cloneNode(<span style='color:blue'>true</span>);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:green'>//  Insert cloned conflict item's
+&quot;sx:history&quot; sub-element after </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+<span style='color:green'>//  main item's topmost &quot;sx:history&quot;
+sub-element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+g_pISyncXmlDOMElement.insertBefore(pIClonedConflictHistoryXmlDOMElement,
+g_pIHistoryXmlDOMElement.nextSibling);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>               
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>           
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>                  
+</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>         
+<span style='color:green'>//  Since we have resolved all conflicts, we remove
+the &quot;sx:conflicts&quot; </span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>         
+<span style='color:green'>//  sub-element from current parent element</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>         
+pIConflictsXmlDOMElement.parentNode.removeChild(pIConflictsXmlDOMElement);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>         
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>   
+}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  Save modified contents to standand output stream</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>WScript.StdOut.Write(g_pISourceAtomXmlDOMDocument.xml);</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>//  -------------------------- MAIN (END)
+--------------------------</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:green'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New";
+color:blue'>function</span><span style='font-size:10.0pt;font-family:"Courier New"'>
+DisplayUsage(i_Text)</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      {</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:blue'>var</span> Text = <span style='color:#A31515'>&quot;Usage:\r\nfsAtomUpdate.js
+[SourcePath] [GUID] [Title] [Description] [By] [ResolveConflicts]\r\n\r\nParameters:\r\n 
+SourcePath=fully qualified filename of original Atom document\r\n  GUID=unique
+value of existing item\r\n  Title=value of the title attribute of the new item
+element (use quotes to enter multiple words)\r\n  Description=value of the
+title attribute of the new item element (use quotes to enter multiple
+words)\r\n  By=unique entity making the change (optional - default is
+\&quot;\&quot;)\r\n  ResolveConflicts=true or false (optional - default is
+false)\r\n&quot;</span>;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:green'>//  If text was provided, prepend it to default usage text</span></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      <span
+style='color:blue'>if</span> ((i_Text != <span style='color:blue'>null</span>)
+&amp;&amp; (i_Text != <span style='color:#A31515'>&quot;&quot;</span>))</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>            Text
+= i_Text + <span style='color:#A31515'>&quot;\r\n\r\n&quot;</span> + Text;</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      </span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal;text-autospace:none'><span style='font-size:10.0pt;font-family:"Courier New"'>      WScript.Echo(Text);</span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;line-height:115%;font-family:
+"Courier New"'>      }     </span></p>
+
+</div>
+
+</body>
+
+</html>

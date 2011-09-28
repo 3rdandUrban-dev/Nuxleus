@@ -1,0 +1,7 @@
+stateversion 2
+name Amara:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1188518083.706:1.2.0.2-0.6
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+2
+450ce206a6f3f72865e270ccffc2867d Amara-1.2.0.2.tar.bz2 9c08050262a638b26c3e3a3dfd9f35a2b6a1dae0 autosource /nuxleus.rpath.org@rpl:devel//nux:devel/1.2.0.2-0.1
+14d0cd31440a2c97149a578a0a7a8344 Amara.recipe 2220e7851c22f742f851a3a21af8da831ece410f config /nuxleus.rpath.org@rpl:devel//nux:devel/1.2.0.2-0.6

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<view:menu id="image-nav" style="TtoB" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view" xmlns:geo="http://nuxleus.com/geo" >
+  <!-- <div id="gmap" />
+  <script type="text/javascript"> 
+    <![CDATA[
+    $('document').ready(function(){ 
+        geo.init();
+       geo.show_points('@@map.feed@@'); 
+    }); 
+    ]]>
+  </script> -->
+  <geo:map width="100%" height="300px" location="@@search.location@@"/>
+</view:menu>

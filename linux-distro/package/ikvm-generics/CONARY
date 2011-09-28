@@ -1,0 +1,12 @@
+stateversion 2
+name ikvm-generics:source
+version /nuxleus.rpath.org@nux:devel/1165991589.354:0.32.0.0-1
+branch /nuxleus.rpath.org@nux:devel
+7
+57b8dc6f452601a0439cf085dc831bb2 ikvm-generics.pc ff95f0e2814c63dc7fbad8a549982a97cc910440 config /nuxleus.rpath.org@nux:devel/0.32.0.0-1
+138c7d075671065e9f8134eafbd1e510 ikvm-generics ba81721423b81d74c04cfe1e18b45dbc2f1dac0f config /nuxleus.rpath.org@nux:devel/0.32.0.0-1
+eab65b163424c0591a040f1475b7c396 ikvmc-generics fba49099decdd3a8246fe65521d7b269ab08aae1 config /nuxleus.rpath.org@nux:devel/0.32.0.0-1
+17078a4bd2b6b6ffc330c38165cd5d54 ikvmstub-generics f7395179ba6bbc443bd7aa13277d1eb46b0ee4e8 config /nuxleus.rpath.org@nux:devel/0.32.0.0-1
+7aa8a7c0807a5fc4cd85fe0cd45d712e makefile 8e29e8e41a97f5b6f268b266c9686c018acd15d2 config /nuxleus.rpath.org@nux:devel/0.32.0.0-1
+e1026baae278269cff5ede64a1f246f9 ikvmbin-generics-0.32.0.0.zip 764040aa969c46adf13fc4adb28f4cef0270f149 autosource /nuxleus.rpath.org@nux:devel/0.32.0.0-1
+c465578d522db67ff05bb4c93f6a14ea ikvm-generics.recipe 8e730b3a0d4df9aadd97f35bbd67188245c10f73 config /nuxleus.rpath.org@nux:devel/0.32.0.0-1

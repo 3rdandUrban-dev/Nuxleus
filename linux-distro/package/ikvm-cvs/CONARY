@@ -1,0 +1,29 @@
+stateversion 2
+name ikvmbin:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1247132312.238:0.40.0.1-0.1
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+24
+00884f5f325fb816aef79aa392e334f5 ikvmstub 7c660d4d60eebab9eeb9ef50c55c9825d28787b7 config /nuxleus.rpath.org@rpl:devel//nux:devel/0.36.0.2-0.2
+10c0442de77e17d160fbd543742ff51a gac-install-list 0151eeb19644587addc1a79abb849ba89ab18260 config /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+16fcba0ea92c6257af69531af7d35af2 IKVM.OpenJDK.Charsets.jar 5e5833eafe4e13928c0bb0e80c405f8e2da44a60 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+255efa2ea36c9ec5c3fc88c8e4d3509d IKVM.AWT.WinForms.jar 89818bfb66a2739e349229d367d225a987eac344 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+26e7ce496bc86de532528217896fffd5 IKVM.OpenJDK.Jdbc.jar 0567d8f51e8a9a656c541206edab6e18da7737ab _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+289dfffc56970b99a64ec1c228a47f0d ikvm.pc a879fd35534616fc2fdcab26ec2df7994278a176 config /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+42a2971c4bb5e6ac9ecfa78f4323d1a3 IKVM.OpenJDK.SwingAWT.jar 7951508573d98d9467aba11047d94e80b3718631 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+5247649dc6a87d8f24adf781333edd7d ikvm 78e6ab0324a9fab463c4ad225bcaaa8869b52a0f config /nuxleus.rpath.org@rpl:devel//nux:devel/0.36.0.2-0.2
+5f3f4638c44bf22b43b897ec8a71c232 makefile a343b0797e4d559e783dec35fbe69c30797bb8ba config /nuxleus.rpath.org@rpl:devel//nux:devel/0.36.0.11-0.1
+6142a738d4cde8195e17d3106f7fa50f IKVM.OpenJDK.Text.jar 57cb464ad4d63abd0483cd66085edd527275348a _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+6fa1be76dba5054998d15b62889128b2 ikvmc 73ad88a3be1c7d3bfd7010d3010a80222e067ec6 config /nuxleus.rpath.org@rpl:devel//nux:devel/0.36.0.2-0.2
+705debb532a6a044fed10f001bbed78e IKVM.OpenJDK.Security.jar 837f64252655892024a109229e3918565b4d7647 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+7a73b8277bf4ac9d2128db59c392bed6 System.Xml.jar 5b0778332da7fd2368c19357009da53a8cb9cfc1 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.36.0.4-0.1
+7e4a70787076540f18d0be5e1a7e0aa3 ikvmbin.recipe 78ee502f835fda186ff4fb044e5bde606563684b config /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+9cf70b3a32d6a6322e9c4e45978590f9 ikvmbin-0.40.0.1.zip 2af25a6aebce3c32097683cd039a5e396d72aa5b autosource /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+a06130080b064b7ccac557287c730e65 mscorlib.jar c9e590c54e179b7032682716f6d3890b0ede6602 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.36.0.4-0.1
+ad0d37f5a9b826f3799b162e226a9d4e IKVM.OpenJDK.XML.jar 789fc96b2c386c393ba0954223406d6734b85e4c _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+b27bf2e084c61d2f5a946eaa986526a2 IKVM.OpenJDK.Management.jar 970ec876833437244e5be7d3ce60e52b09ca98d6 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+c09fdddb11cc7271c4036bbb5a5b70dd IKVM.Runtime.jar bc89f7053ae803745234659837e02163aeada076 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+d40dde9716645892894021486b064407 IKVM.OpenJDK.Corba.jar d5974599408543efc60fc4a788e8686441275247 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+d92936739519c31e39a9b188bbdc1757 IKVM.OpenJDK.Core.jar 62ec78024f16e6086c42ab5eff1d22bba0b94f3f _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+e1bf1ffcd1c7323300a8e1424ad05b95 System.jar b2ffa8d2edac44262655664039f6e7dad6b90493 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.36.0.4-0.1
+e460a6ae4389238ec1a195d282d6bcf6 IKVM.OpenJDK.Util.jar 495d9e1034957e16bdf68a50353e26008c83d7e0 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1
+ec26809db3394ec134db6694c6cd39ab IKVM.OpenJDK.Misc.jar aa6596939cd3ac3946ac6e5c9bf673fb81c3fdb3 _ /nuxleus.rpath.org@rpl:devel//nux:devel/0.40.0.1-0.1

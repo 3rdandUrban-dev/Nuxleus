@@ -1,0 +1,204 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<title>IronPython Architecture</title>
+<link rel="stylesheet" href="IronPython.css" type="text/css" />
+</head>
+
+<body lang="EN-US" link="blue" vlink="purple">
+
+<p class="Normal" align="center"></p>
+<p class="Title2">IronPython Architecture</p>
+<p class="Normal">&nbsp;</p>
+<p class="ContentsHeading">Contents</p>
+<p class="Toc1">1.&nbsp;&nbsp;<a href="#Introduction">Introduction</a></p>
+<p class="Toc1">2.&nbsp;&nbsp;<a href="#Compiler">Compiler</a></p>
+<p class="Toc2">2.1.&nbsp;&nbsp;<a href="#Units">Units of compilation</a></p>
+<p class="Toc3">2.1.1.&nbsp;&nbsp;<a href="#Snippets">Snippets 
+of code</a></p>
+<p class="Toc3">2.1.2.&nbsp;&nbsp;<a href="#Modules">Python 
+modules</a></p>
+<p class="Toc2">2.2.&nbsp;&nbsp;<a href="#Phases">Phases</a></p>
+<p class="Toc3">2.2.1.&nbsp;&nbsp;<a href="#Parser">Parser</a></p>
+<p class="Toc3">2.2.2.&nbsp;&nbsp;<a href="#AST">AST trees</a></p>
+<p class="Toc3">2.2.3.&nbsp;&nbsp;<a href="#Binding">Name 
+binding</a></p>
+<p class="Toc3">2.2.4.&nbsp;&nbsp;<a href="#CodeGen">Code 
+generation</a></p>
+<p class="Toc3">2.2.5.&nbsp;&nbsp;<a href="#Assemblies">Caching of generated assemblies</a></p>
+<p class="Toc1">3.&nbsp;&nbsp;<a href="#Operations">Basic operations</a></p>
+<p class="Toc2">3.1.&nbsp;&nbsp;<a href="#Del">del &lt;name&gt;</a></p>
+<p class="Toc1">4.&nbsp;&nbsp;<a href="#Functions">Functions</a></p>
+<p class="Toc2">4.1.&nbsp;&nbsp;<a href="#FuncDecl">Function 
+declaration</a></p>
+<p class="Toc2">4.2.&nbsp;&nbsp;<a href="#FuncCalls">Function 
+calls</a></p>
+<p class="Toc2">4.3.&nbsp;&nbsp;<a href="#NestedFunc">Nested 
+functions</a></p>
+<p class="Toc1">5.&nbsp;&nbsp;<a href="#TypeSystem">Type system</a></p>
+<p class="Toc2">5.1.&nbsp;&nbsp;<a href="#BuiltinTypes">Python 
+built-in types</a></p>
+<p class="Toc2">5.2.&nbsp;&nbsp;<a href="#UserTypes">Python user 
+types</a></p>
+<p class="Toc3">5.2.1.&nbsp;&nbsp;<a href="#ClassDecl">Class declaration</a></p>
+<p class="Toc3">5.2.2.&nbsp;&nbsp;
+<a href="#UserTypeInst">Instance objects of Python user types</a></p>
+<p class="Toc3">5.2.3.&nbsp;&nbsp;
+<a href="#NestedClass">Nested class declarations</a></p>
+<p class="Toc2">5.3.&nbsp;&nbsp;<a href="#CLI">CLI types</a></p>
+<p class="Toc1">6.&nbsp;&nbsp;<a href="#Exceptions">Built-in exceptions</a></p>
+<p class="Normal">&nbsp;</p>
+<h1><a name="Introduction">1.&nbsp;Introduction</a></h1>
+<p class="Normal">IronPython is the implementation of the
+<a href="http://www.python.org/">Python</a> language targeting the
+<a href="http://msdn.microsoft.com/netframework/ecma/">CLI</a>. This document describes 
+the basic details of the implementation, and the corresponding class names in the source code. </p>
+<p class="Normal">&nbsp;</p>
+<p class="Normal">The engine is implemented in C# and is in IronPython.dll. It mainly 
+consists of a compiler, and the runtime implementation of operations.</p>
+<h1><a name="Compiler">2.&nbsp;Compiler</a></h1>
+<p class="Normal">The compiler (IronPython.Compiler.*) compiles Python source code into 
+CLI assemblies using
+<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemreflectionemit.asp">
+Reflection.Emit</a> and
+<a href="http://msdn2.microsoft.com/en-us/library/80h6baz2(en-us,VS.80).aspx">dynamic 
+methods</a>. The compiler generates fully verifiable CIL code.</p>
+<h2><a name="Units">2.1.&nbsp;&nbsp;Units of compilation</a></h2>
+<p class="Normal">The unit of compilation in IronPython can be one of the following.&nbsp;
+Compilation entry points are all in IronPython.Compiler.Generation.OutputGenerator.</p>
+<h3><a name="Snippets">2.1.1.&nbsp;Snippets of code</a></h3>
+<p class="Normal">Snippets (IronPython.Hosting.CompiledCode) are small pieces of code. They are used for the following 
+scenarios:</p>
+<ul type="disc">
+	<li class="Normal">Dynamic user code is compiled in into DynamicMethods.&nbsp;
+	This code typically comes from the console, exec, eval, compile, hosting APIs, etc.</li>
+	<li class="Normal">Helper code required by the engine runtime. This includes 
+	wrappers for delegate types, optimized wrappers for calling CLI methods and 
+	types representing Python subtypes of CLI classes.</li>
+</ul>
+<p class="Normal">&nbsp;</p>
+<h3><a name="Modules">2.1.2.&nbsp;&nbsp;Python modules</a></h3>
+<p class="Normal">When a Python module is imported, it is compiled into a single 
+assembly with a class (inheriting from IronPython.Compiler.CompiledModule) corresponding to the module&apos;s name. 
+The class will have a method Initialize() contains the IL for all the 
+top-level code of the module.</p>
+<h2><a name="Phases">2.2.&nbsp;&nbsp;Phases</a></h2>
+<p class="Normal">The compiler consists of the following phases.</p>
+<h3><a name="Parser">2.2.1.&nbsp;&nbsp;Parser</a></h3>
+<p class="Normal">The hand-written parser IronPython.Compiler.Parser generates abstract-syntax 
+trees (ASTs).</p>
+<h3><a name="AST">2.2.2.&nbsp;&nbsp;AST trees</a></h3>
+<p class="Normal">The parser generates abstract-syntax trees (ASTs). The top level 
+object when parsing a module is a ModuleDef.&nbsp;This contains statements (IronPython.Compiler.Ast.Statement) 
+with expressions (IronPython.Compiler.Ast.Expression) underneath them. Names (IronPython.Runtime.SymbolId) 
+are symbols used in the Python code.</p>
+<h3><a name="Binding">2.2.3.&nbsp;&nbsp;Name binding</a></h3>
+<p class="Normal">Names (IronPython.Runtime.SymbolId) are unqualified symbols used in the 
+source. For example, in the Python code:</p>
+<p class="Normal">&nbsp;</p>
+<p class="Code-Background">def foo(a, b):</p>
+<p class="Code-Background">&nbsp;&nbsp;&nbsp; result = a + b.attr + bar()</p>
+<p class="Code-Background">&nbsp;&nbsp;&nbsp;
+    return result</p>
+<p class="Normal">&nbsp;</p>
+<p class="Normal">foo, a, b, bar, and result are unqualified symbols. These need to 
+be bound to specific entities (IronPython.Compiler.Generation.Slot) using the Python lookup rules. This is done using
+namespaces (IronPython.Compiler.Generation.Namespace). Namespaces can be nested to get lexical scoping. 
+<h3><a name="CodeGen">2.2.4.&nbsp;&nbsp;Code generation</a></h3>
+<p class="Normal">After all the names in the ASTs are bound, every statement recursively 
+generates code for itself.&nbsp;The entry points here are in the AST classes themselves.</p>
+<h3><a name="Assemblies">2.2.5.&nbsp;Caching of generated assemblies</a></h3>
+<p class="Normal">Assemblies generated for Python script modules can be saved to 
+disk next to the script as an EXE with the same name as the Python script. This is enabled using &quot;ipy.exe -X:SaveAssemblies&quot;. The easiest 
+way to understand how the generated code works is by disassembling the cached assemblies 
+using ildasm.exe.</p>
+<h1><a name="Operations">3.&nbsp;&nbsp;Basic operations</a></h1>
+<p class="Normal">Most basic operations are compiled into calls to functions in 
+the IronPython.Runtime.Operations.Ops class. For example, the Python source code &quot;a + b&quot; results 
+in IL to push a and b on the IL stack and call Ops.Add(object x, object y).</p>
+<h2><a name="Del">3.1.&nbsp;&nbsp;</a>del &lt;name&gt;</h2>
+<p class="Normal">All names are to be implemented as dictionaries in Python. However, 
+for performance and better integration with the CLI, IronPython implements many 
+names as CLI entities, which cannot be deleted once they are created. For eg. module 
+global variables are implemented as CLI static variables of the __main__ class in 
+the assembly representing the Python module. </p>
+<p class="Normal">&nbsp;</p>
+<p class="Normal">Hence, to implement &quot;del&quot;, an alternate scheme is used. We just 
+assign an instance of the type IronPython.Runtime.Uninitialized to represent that 
+the Slot has been deleted. Any access to the name first checks if it is holding 
+an Uninitialized, which means that it should virtually not exist.</p>
+<h1><a name="Functions">4.&nbsp;&nbsp;Functions</a></h1>
+<h2><a name="FuncDecl">4.1.&nbsp;&nbsp;Function declaration</a></h2>
+<p class="Normal">Function declarations are statements in Python, and may be nested 
+in other statement blocks just like any other statement. They are represented by 
+IronPython.Compiler.Ast.FuncDef.&nbsp;When IronPython sees a function declaration, it generates 
+a CLI function to represent the function body. The function declaration statement, 
+FuncDef.Emit generates code to create a Function object that refers to the CLI function 
+containing the code for the body.</p>
+<h2><a name="FuncCalls">4.2.&nbsp;&nbsp;Function 
+calls</a></h2>
+<p class="Normal">Function calls are implemented by calling one of the Ops.Call 
+overload methods, and passing in an instance of IronPython.Runtime.Calls.FastCallable as the 
+first argument. Ops.Call then handles argument passing, and dispatces to the delegate 
+contained in the Function object.</p>
+<h2><a name="NestedFunc">4.3.&nbsp;&nbsp;Nested functions</a></h2>
+<p class="Normal">Nested functions or closures are implemented by generating a CLI 
+class which stores the environment of the enclosing method. The enclosing function 
+initializes a local variable of the environment type, and creates a delegate that 
+binds to the environment local variable, and the function body of the nested function.</p>
+<h1><a name="TypeSystem">5.&nbsp;&nbsp;Type system</a></h1>
+<p class="Normal">IronPython builds on top of the CLI type system to provide seamless 
+integration with the CLI. Python &quot;object&quot; is represented by System.Object, and System.Object 
+is the base of the type hierarchy.</p>
+<h2><a name="BuiltinTypes">5.1.&nbsp;&nbsp;Python 
+builtin types</a></h2>
+<p class="Normal">These are implemented as CLI types in the engine. For eg, &quot;list&quot; 
+is implemented by IronPython.Runtime.List.&nbsp;These types are handled the same 
+as other CLI types, see below.</p>
+<h2><a name="UserTypes">5.2.&nbsp;&nbsp;Python user 
+types</a></h2>
+<p class="Normal">Every Python user type is represented by an instance of IronPython.Runtime.Types.UserType. 
+The instance maintains information about the base types, the class attributes, etc.</p>
+<h3><a name="ClassDecl">5.2.1.&nbsp;Class declaration</a></h3>
+<p class="Normal">Class declaration is a statement in Python, just like any other 
+statement. IronPython converts it into a call to UserType.MakeClass passing in the 
+list of base types. UserType.MakeClass creates an instance of UserType and initializes 
+it with the information about the type. It also looks for an existing instance type 
+that can be used for instances of the new type as described below, and creates a 
+new one if necessary</p>
+<h3><a name="UserTypeInst">5.2.2.&nbsp;&nbsp;Instance objects of Python user types</a></h3>
+<p class="Normal">Instance objects of Python user types are represented by instances of 
+a generated CLI type (created by IronPython.Compiler.Generation.NewTypeMaker) whose __class__ 
+member field points to the UserType. The same generated instance type can be used for instances 
+of multiple Python types, with the __class__ member field used to distinguish between 
+them.</p>
+<p class="Normal">&nbsp;</p>
+<p class="Normal">Different types need to be generated only if the CLI-specific 
+properties of the Python type are different. For eg, instances of all Python types 
+inheriting from a given CLI type, say System.IO.Stream, will be represented by a 
+generated instance type which inherits from System.IO.Stream. This is required for integration 
+with the CLI so that the instances can be passed to CLI methods which expect System.IO.Stream 
+as an argument.&nbsp;A single CLI types is used for all Python subtypes so that 
+Python functionality like dynamically changing the type of an instance or changing 
+the __bases__ of a type can be supported as well as possible in a way similar to 
+Python&apos;s new-style classes.</p>
+<h3><a name="NestedClass">5.2.3.&nbsp;&nbsp;
+Nested class declarations</a></h3>
+<p class="Normal">This is similar to Nested functions</p>
+<h2><a name="CLI">5.3.&nbsp;&nbsp;CLI types</a></h2>
+<p class="Normal">IronPython code can seamlessly access CLI types. Information about CLI types (System.Type) is
+represented by IronPython.Runtime.Types.ReflectedType, and provides the functionality of the Python &quot;type&quot;.</p>
+<p class="Normal">&nbsp;</p>
+<p class="Normal">Note that since the builtin types are really just CLI types implemented 
+by the engine, they too are represented by ReflectedType.</p>
+<h1><a name="Exceptions">6.&nbsp;&nbsp;Builtin exceptions</a></h1>
+<p class="Normal">Builtin Python exception are implemented by throwing a corresponding 
+CLI exception. The catch clauses in the Python code check for the CLI exception 
+type, and then wrap it in an instance of IronPython.Runtime.Exceptions.PythonException. This 
+allows Python code to catch exceptions thrown by CLI code.</p>
+<p class="Normal">&nbsp;</p>
+
+</body>
+
+</html>

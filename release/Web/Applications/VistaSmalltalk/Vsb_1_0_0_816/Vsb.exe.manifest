@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly manifestVersion="1.0" xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <asmv1:assemblyIdentity name="Vsb.exe" version="1.0.0.816" publicKeyToken="32bb8e3a28ca92b0" language="neutral" processorArchitecture="msil" type="win32" />
+    <application />
+    <entryPoint>
+        <assemblyIdentity name="Vsb" version="1.0.2554.27407" language="neutral" processorArchitecture="msil" />
+        <commandLine file="Vsb.exe" parameters="" />
+        <hostInBrowser xmlns="urn:schemas-microsoft-com:asm.v3" />
+    </entryPoint>
+    <trustInfo>
+        <security>
+            <applicationRequestMinimum>
+                <PermissionSet class="System.Security.PermissionSet" version="1" ID="Custom" SameSite="site">
+                    <IPermission class="System.Security.Permissions.FileDialogPermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Access="Open" />
+                    <IPermission class="System.Security.Permissions.IsolatedStorageFilePermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Allowed="ApplicationIsolationByUser" UserQuota="512000" />
+                    <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="Execution" />
+                    <IPermission class="System.Security.Permissions.UIPermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Window="SafeTopLevelWindows" Clipboard="OwnClipboard" />
+                    <IPermission class="System.Drawing.Printing.PrintingPermission, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" version="1" Level="SafePrinting" />
+                    <IPermission class="System.Security.Permissions.MediaPermission, WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" version="1" Audio="SafeAudio" Video="SafeVideo" Image="SafeImage" />
+                    <IPermission class="System.Security.Permissions.WebBrowserPermission, WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" version="1" Level="Safe" />
+                </PermissionSet>
+                <defaultAssemblyRequest permissionSetReference="Custom" />
+            </applicationRequestMinimum>
+        </security>
+    </trustInfo>
+    <dependency>
+        <dependentOS>
+            <osVersionInfo>
+                <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+            </osVersionInfo>
+        </dependentOS>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+            <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+            <assemblyIdentity name="PresentationFramework" version="3.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+            <assemblyIdentity name="WindowsBase" version="3.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+            <assemblyIdentity name="WindowsFormsIntegration" version="3.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Antlr.dll" size="106496">
+            <assemblyIdentity name="Antlr" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+            <hash>
+                <dsig:Transforms>
+                    <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+                </dsig:Transforms>
+                <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <dsig:DigestValue>9Pp2VTmgFp8zewYu373QQd8bCxI=</dsig:DigestValue>
+            </hash>
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Comm.dll" size="45056">
+            <assemblyIdentity name="Comm" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+            <hash>
+                <dsig:Transforms>
+                    <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+                </dsig:Transforms>
+                <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <dsig:DigestValue>CceeWbdopw0tHtPD5HHgXcijxp0=</dsig:DigestValue>
+            </hash>
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Desktop.dll" size="36864">
+            <assemblyIdentity name="Desktop" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+            <hash>
+                <dsig:Transforms>
+                    <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+                </dsig:Transforms>
+                <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <dsig:DigestValue>nqcm3WhqzvXpSPYBEgfTWNzHqvo=</dsig:DigestValue>
+            </hash>
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JabberNet.dll" size="241664">
+            <assemblyIdentity name="JabberNet" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
+            <hash>
+                <dsig:Transforms>
+                    <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+                </dsig:Transforms>
+                <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <dsig:DigestValue>12gVwlX4MG7vGM2TXT6oj/MyXXI=</dsig:DigestValue>
+            </hash>
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Utility.dll" size="69632">
+            <assemblyIdentity name="Utility" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+            <hash>
+                <dsig:Transforms>
+                    <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+                </dsig:Transforms>
+                <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <dsig:DigestValue>fcO+JVQEtB8NfVKEaYbew5KWnkU=</dsig:DigestValue>
+            </hash>
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Vsb.exe" size="20480">
+            <assemblyIdentity name="Vsb" version="1.0.2554.27407" language="neutral" processorArchitecture="msil" />
+            <hash>
+                <dsig:Transforms>
+                    <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+                </dsig:Transforms>
+                <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <dsig:DigestValue>XcE8paASXNx/VgvqTZGyrFEtpWM=</dsig:DigestValue>
+            </hash>
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Vscache.dll" size="32768">
+            <assemblyIdentity name="Vscache" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+            <hash>
+                <dsig:Transforms>
+                    <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+                </dsig:Transforms>
+                <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <dsig:DigestValue>/y1rUdueaZtHlbwArNb3rBGiwqo=</dsig:DigestValue>
+            </hash>
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Vsrun.dll" size="380928">
+            <assemblyIdentity name="Vsrun" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+            <hash>
+                <dsig:Transforms>
+                    <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+                </dsig:Transforms>
+                <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <dsig:DigestValue>RtcCEj++10rm+dOgeVrbxpFesfo=</dsig:DigestValue>
+            </hash>
+        </dependentAssembly>
+    </dependency>
+    <dependency>
+        <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Widgets.dll" size="94208">
+            <assemblyIdentity name="Widgets" version="1.0.2554.27382" language="neutral" processorArchitecture="msil" />
+            <hash>
+                <dsig:Transforms>
+                    <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+                </dsig:Transforms>
+                <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <dsig:DigestValue>PYJiNW364YBp8AJunYx/pH0EeKI=</dsig:DigestValue>
+            </hash>
+        </dependentAssembly>
+    </dependency>
+<publisherIdentity name="CN=MYCOMPUTER\Administrator" issuerKeyHash="c9fe0667e049bf75db094a9afb3c2b81273fbe22" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>y1R+oJD/vW3DIVkd2VtSx8hGWEY=</DigestValue></Reference></SignedInfo><SignatureValue>ZslfBhL+AM9FRtxmxQY5lchwnEotNe8E6YDxbQelp6yozPi5DMToqqIXNKT7nszqfPjP9q9H9YJu4/dn536MFRah8SnrwJkLbeWoZklMbyKxbf6o3o1akh+OVvwZKVS0qb8HotoiyarsUalsYECly3GzePwA4jmRimMBOQrhfQ0=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>yhciR7xOnidQf9A156z3WudSFjh/ufU/nOObXLbf6xNrUP1dZ9kH6SIHOURLkap+C6nnchnPxiIkxEZ9jSUu2ggFdyQW4OOL6q+UDNJmfWuX5Q3vkFgxe2HQ7qtXddlTe4Di/I0E5KK35Eq1roj79eFNonJ+FDT0fymkXB1jik0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="465846c8c7525bd91d5921c36dbdff90a07e54cb" Description="" Url=""><as:assemblyIdentity name="Vsb.exe" version="1.0.0.816" publicKeyToken="32bb8e3a28ca92b0" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=MYCOMPUTER\Administrator</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>CTIBRcLKajIpPuMH5TeHwN/JiiU=</DigestValue></Reference></SignedInfo><SignatureValue>NMJfH40MpS01PfsbuphNZFAzEhMy7e8e1Fsh5wBc80lbkHE1N68GsD278W3jpmiZfytLrxWqMLjvQIs678+HfrexVwddqrBZHCUpNaybeJmvviorLm0wpGMxcPwjBKaBtAnWo8WQ+7Y9jETam7DD+Ykh9Av1P0bC0rvMxh32594=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>yhciR7xOnidQf9A156z3WudSFjh/ufU/nOObXLbf6xNrUP1dZ9kH6SIHOURLkap+C6nnchnPxiIkxEZ9jSUu2ggFdyQW4OOL6q+UDNJmfWuX5Q3vkFgxe2HQ7qtXddlTe4Di/I0E5KK35Eq1roj79eFNonJ+FDT0fymkXB1jik0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB+TCCAWKgAwIBAgIQzN9qAblE0ZVDstgL7vfJtjANBgkqhkiG9w0BAQUFADA7MTkwNwYDVQQDHjAATQBZAEMATwBNAFAAVQBUAEUAUgBcAEEAZABtAGkAbgBpAHMAdAByAGEAdABvAHIwHhcNMDYxMDIwMjIwODU4WhcNMDcxMDIxMDQwODU4WjA7MTkwNwYDVQQDHjAATQBZAEMATwBNAFAAVQBUAEUAUgBcAEEAZABtAGkAbgBpAHMAdAByAGEAdABvAHIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMoXIke8Tp4nUH/QNees91rnUhY4f7n1P5zjm1y23+sTa1D9XWfZB+kiBzlES5Gqfgup53IZz8YiJMRGfY0lLtoIBXckFuDji+qvlAzSZn1rl+UN75BYMXth0O6rV3XZU3uA4vyNBOSit+RKta6I+/XhTaJyfhQ09H8ppFwdY4pNAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAgGcrpzPp7EIy3GtISP7KgNZ9e816kuV5yCP2o2lL6yOduoQ/LzabTetvDSR9PXg1z1tHKrToavHjSH8za8R8eS4lQOqWbwLSY6A1PTOYhfZu95viFe8H7WVgK63ItBMYx/a5Ck5ufYvUwLJiFB6q5KNG8syazokq4oXQiqQQrC4=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

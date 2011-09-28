@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<view:menu id="top-nav-menu" style="LtoR nav-menu" type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <li class="top-level selected">
+    <a href="@@base-uri@@">@@location.label@@<span>@</span>@@domain.label@@</a>
+  </li>
+</view:menu>

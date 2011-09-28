@@ -1,0 +1,10 @@
+stateversion 2
+name vsb:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1169706748.022:24jan2007-0.1
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+5
+7740f0feb0a315ae142c58ba59b7d30a config.vs.patch 578aa22528f79f8e28162e1d15319496083e2903 config /nuxleus.rpath.org@rpl:devel//nux:devel/17jan2007-0.2
+4543ee66c31608dfd97b41f99f0fc13e config.vs 9fa136f9d9b34b260c5a73be2fda945f74719438 config /nuxleus.rpath.org@rpl:devel//nux:devel/24jan2007-0.1
+948a39a503f34236307a290065634cb5 vsb.recipe 75351bcfd6ab2536a144befd4532d27d9fccbcba config /nuxleus.rpath.org@rpl:devel//nux:devel/24jan2007-0.1
+cddb5981b5a51830f3204234850b283f .htaccess c872456a512ac8ab671f27fe76f2538d00c2c38b config /nuxleus.rpath.org@rpl:devel/01dec2006-1
+7c0e3a24dcf98f382f3ec7fdbb71b744 vsb-24jan2007.tar.gz 98fd9b5f5b72949c541b103ab804a3b46adcf345 _ /nuxleus.rpath.org@rpl:devel//nux:devel/24jan2007-0.1

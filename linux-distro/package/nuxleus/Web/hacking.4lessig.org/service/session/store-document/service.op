@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/base.xslt"?>
+<service:operation xmlns:at="http://atomictalk.org" xmlns:session="http://xameleon.org/service/session" xmlns:header="http://xameleon.org/service/http/header" xmlns:service="http://xameleon.org/service" xmlns:operation="http://xameleon.org/service/operation" xmlns:aws="http://xameleon.org/function/aws" xmlns:param="http://xameleon.org/service/session/param">
+  <param:openid-name>{cookie:openid}</param:openid-name>
+  <param:openid-session-id>{cookie:guid}</param:openid-session-id>
+  <session:validate-request>
+    <operation:return-xml>
+      <session:generate-guid key="{$openid-session-id}" />
+    </operation:return-xml>
+  </session:validate-request>
+</service:operation>

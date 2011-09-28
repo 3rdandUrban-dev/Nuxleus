@@ -1,0 +1,197 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{92268E63-E20E-4ED1-86DB-B621712F9A80}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>
+    </RootNamespace>
+    <AssemblyName>Org.Mentalis.SecurityServices</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>http://localhost/Org.Mentalis.SecurityServices/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\lib\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ENABLECAS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Org.Mentalis.SecurityServices.xml</DocumentationFile>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\lib\</OutputPath>
+    <DefineConstants>TRACE;ENABLECAS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\..\..\docs\Org.Mentalis.SecurityServices.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>ENABLECAS</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>ENABLECAS</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>..\..\..\build\bin\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>ENABLECAS</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>ENABLECAS</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authentication\AlphaValidator.cs" />
+    <Compile Include="Authentication\AuthenticationStructures.cs" />
+    <Compile Include="Authentication\CharacterValidator.cs" />
+    <Compile Include="Authentication\Credential.cs" />
+    <Compile Include="Authentication\CredentialCollection.cs" />
+    <Compile Include="Authentication\CredentialException.cs" />
+    <Compile Include="Authentication\LengthValidator.cs" />
+    <Compile Include="Authentication\NumericValidator.cs" />
+    <Compile Include="Authentication\SymbolValidator.cs" />
+    <Compile Include="Cryptography\ARCFourManaged.cs" />
+    <Compile Include="Cryptography\ARCFourManagedTransform.cs" />
+    <Compile Include="Authentication\CharEnumerator.cs" />
+    <Compile Include="Cryptography\CryptoHandle.cs" />
+    <Compile Include="Cryptography\HMAC.cs" />
+    <Compile Include="Authentication\IValidator.cs" />
+    <Compile Include="Cryptography\MD2.cs" />
+    <Compile Include="Cryptography\MD2CryptoServiceProvider.cs" />
+    <Compile Include="Cryptography\MD4.cs" />
+    <Compile Include="Cryptography\MD4CryptoServiceProvider.cs" />
+    <Compile Include="Authentication\PasswordValidator.cs" />
+    <Compile Include="Cryptography\RC4.cs" />
+    <Compile Include="Cryptography\RC4CryptoServiceProvider.cs" />
+    <Compile Include="Cryptography\RC4UnmanagedTransform.cs" />
+    <Compile Include="Cryptography\RijndaelCryptoServiceProvider.cs" />
+    <Compile Include="Cryptography\RijndaelUnmanagedTransform.cs" />
+    <Compile Include="Cryptography\StringEncryption.cs" />
+    <Compile Include="Cryptography\SymmetricKey.cs" />
+    <Compile Include="Permissions\PermissionStructures.cs" />
+    <Compile Include="Permissions\SmartcardPermission.cs" />
+    <Compile Include="Permissions\SmartcardPermissionAttribute.cs" />
+    <Compile Include="Platform.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ResourceController.cs" />
+    <Compile Include="Resources\SecurityServicesMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecurityServicesMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Smartcard\ApduCommand.cs" />
+    <Compile Include="Smartcard\ApduReply.cs" />
+    <Compile Include="Smartcard\Atr.cs" />
+    <Compile Include="Smartcard\SmartcardException.cs" />
+    <Compile Include="Smartcard\SmartcardReader.cs" />
+    <Compile Include="Smartcard\SmartcardStructures.cs" />
+    <Compile Include="Smartcard\UI\InputPinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Smartcard\UI\SelectReaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Smartcard\VendorAttributes.cs" />
+    <Compile Include="NativeMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SecurityServicesMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecurityServicesMessages.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Smartcard\UI\InputPinForm.resx">
+      <DependentUpon>InputPinForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Smartcard\UI\SelectReaderForm.resx">
+      <DependentUpon>SelectReaderForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Extf.Net.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

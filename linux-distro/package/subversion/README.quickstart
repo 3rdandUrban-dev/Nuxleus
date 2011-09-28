@@ -1,0 +1,24 @@
+Setting up Subversion with http access
+
+1. Create the repository:
+
+   svnadmin create SVN_PARENT_PATH/myproject
+   chown --recursive apache.apache SVN_PARENT_PATH/myproject
+
+   All repositories created in SVN_PARENT_PATH will be accessible
+   trough http.
+
+2. Add users:
+
+   htpasswd SVN_CONF_DIR/users jane
+
+3. Enable subversion support in apache:
+
+   Remove comments from /etc/httpd/conf.d/subversion.conf and restart apache.
+
+
+Done! Your project should now be available at http://localhost/svn/myproject
+
+
+All users should now have full access (read and write) to the repository. It's
+possible to set up finer-grained permissions in SVN_CONF_DIR/useraccess.

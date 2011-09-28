@@ -1,0 +1,9 @@
+stateversion 2
+name mono-torrent:source
+version /nuxleus.rpath.org@nux:devel/1188844223.411:Beta4-3
+branch /nuxleus.rpath.org@nux:devel
+4
+f31440bd973117f55514e997a6389bec gacinstalllist 949961827decb3262998fe076d6963cd72fc0887 config /nuxleus.rpath.org@nux:devel/Beta4-2
+216d5ab1fa37be5d43d958880954d2cf monotorrent 93e0440efd5de1e38ff6c676cd88a3da1e048a14 config /nuxleus.rpath.org@nux:devel/Beta4-1
+724b458122cd14c875e4c56f940c777c mono-torrent.recipe 741c588ce4b1780e0a5d4d0c805640539cf3d190 config /nuxleus.rpath.org@nux:devel/Beta4-3
+d587e3e06b8052e204076760d2dfbec8 MonoTorrent.Beta4.zip fbd46fb93b084bc1893cbf1f013001b9656e6d3e autosource /nuxleus.rpath.org@nux:devel/Beta4-1

@@ -1,0 +1,38 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class IronPythonCommunityEdition(PackageRecipe):
+    name = 'ipce'
+    version = 'r6'
+
+    buildRequires = [ 
+        'PyXML:python', 
+        'mono:lib', 
+	'mono:runtime',
+	'mono:devel'
+       ]
+
+    def setup(r):
+        r.addArchive('http://mono.ximian.com/monobuild/preview/sources/IPCE/IPCE-%(version)s.zip')
+	#r.addArchive('%(name)-%(version)s.tar.gz')
+	r.addSource('makefile')
+	r.addSource('ipy')
+	r.addSource('ipyw')
+	r.addPatch('site.py.patch')
+	r.addPatch('cgi.py.patch')
+	r.addSource('ipce.pc')
+	r.Install('ipce.pc', '%(libdir)s/pkgconfig/ipce.pc')
+
+	#r.addSource('gac-install-list')
+	#r.Install('gac-install-list', '%(libdir)s/cli-gac/ipce.gacinstall')
+	#r.Config('%(libdir)s/cli-gac/ipce.gacinstall')
+
+	r.MakeInstall()
+	r.Requires(exceptions=r'\.*(py)')
+        r.Provides(exceptions=r'\.*(py)')
+	#r.Requires('%(libdir)s/cli-gac/ipce.gacinstall', 'cli-gac-tag:runtime')
+
+	#r.TagSpec('cli-gac', '%(libdir)s/cli-gac/ipce.gacinstall')

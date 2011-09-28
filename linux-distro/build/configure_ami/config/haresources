@@ -1,0 +1,1 @@
+@@PRIMARY_MACHINE@@ drbddisk::r0 Filesystem::/dev/drbd0::/data::xfs killnfsd nfslock nfs

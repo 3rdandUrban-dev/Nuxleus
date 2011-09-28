@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nuxleus</name>
+    </assembly>
+    <members>
+        <member name="T:Nuxleus.Ssh.Util">
+            <summary>
+            Summary description for Util.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Ssh.Util.GetInput">
+            <summary>
+            Get input from the user
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Ssh.SshRemoteExecution">
+            <summary>
+            Summary description for SshExeTest.
+            </summary>
+        </member>
+    </members>
+</doc>

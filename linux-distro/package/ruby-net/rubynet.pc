@@ -1,0 +1,13 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib/rubynet
+
+Name: Ruby.NET
+Description: The Ruby.NET Compiler and Runtime
+
+Version: 0.8.2.r86
+Libs:   -r:${libdir}/Interop.IWshRuntimeLibrary.dll \
+        -r:${libdir}/QUT.PERWAPI.dll \
+        -r:${libdir}/QUT.ShiftReduceParser.dll \
+        -r:${libdir}/QUT.SymbolWriter.dll \
+        -r:${libdir}/Ruby.NET.Runtime.dll \

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<model:collection id="search-box-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:collection="http://atomictalk.org/page/model/collection" xmlns:model="http://atomictalk.org/page/model">
+    <collection:item>
+      Your OpenID is: @@openid.url@@. You can now <a href="@@base-uri@@/login"
+    >login</a> to amp.fm.
+    </collection:item>
+</model:collection>

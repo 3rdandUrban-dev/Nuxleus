@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  COPYRIGHT: (c) 2006, M. David Peterson (mailto:m.david@xmlhacker.com; http://mdavid.name/)
+  LICENSE: The code contained in this file is licensed under The MIT License. Please see
+  http://www.opensource.org/licenses/mit-license.php for specific detail.
+-->
+<page:config 
+    xmlns:page="http://atomictalk.org/page"
+    xmlns:config="http://atomictalk.org/page/config" 
+    xmlns:advice="http://atomictalk.org/page/config/advice">
+    <config:advice>
+        <advice:TODO>TODO:@@space@@[$:comment::foobar:$]</advice:TODO>
+        <advice:date>November 18th, 2007</advice:date>
+        <advice:protocol>http://</advice:protocol>
+        <advice:space>&#160;</advice:space>
+        <advice:dot>.</advice:dot>
+        <advice:colon>:</advice:colon>
+        <advice:domain-name>localhost</advice:domain-name>
+        <advice:port>8080</advice:port>
+        <advice:domain>@@domain-name@@|$$test:@@root@@IfTrue:@@dot@@@@root@@IfFalse:@@empty@@$$|</advice:domain>
+        <advice:domain.label>amp.fm</advice:domain.label>
+        <advice:base-uri>@@protocol@@@@domain@@|$$test:@@port@@IfTrue:@@colon@@@@port@@IfFalse:@@empty@@$$|</advice:base-uri>
+        <advice:service-gateway>@@base-uri@@/service</advice:service-gateway>
+        <advice:openid-gateway>/gatekeeper/login?</advice:openid-gateway>
+        <advice:openid.return_location>http://dev.amp.fm/?</advice:openid.return_location>
+        <advice:search-summary>/summary?</advice:search-summary>
+        <advice:static>@@base-uri@@</advice:static>
+        <advice:static-css-browser>@@static@@/css/@@browser@@</advice:static-css-browser>
+        <advice:static-js-browser>@@static@@/js/@@browser@@</advice:static-js-browser>
+        <advice:empty />
+        <advice:lat>resource:ip-location/lat</advice:lat>
+        <advice:long>resource:ip-location/long</advice:long>
+        <advice:max-depth>8</advice:max-depth>
+        <advice:google-maps.key>ABQIAAAAEPQGOws5xNa--1d-oQQDjhTGATBBJj1ek54YiRFsu72FXrsCiBTXTbpwI990CeZRoqCkI4KdcuGiLQ</advice:google-maps.key>
+        <advice:search.box.label>Search @@domain.label@@</advice:search.box.label>
+        <advice:openid.label>Authenticate w/ OpenID</advice:openid.label>
+        <advice:browser compare="xsl:vendor" compare-with="Microsoft">ie</advice:browser>
+        <advice:browser compare="xsl:vendor" compare-with="Transformiix">mozilla</advice:browser>
+        <advice:browser compare="xsl:vendor" compare-with="libxslt">safari</advice:browser>
+        <advice:browser compare="xsl:vendor" compare-with="Opera">opera</advice:browser>
+        <advice:search-form.text>@value@|default:'Search...'|</advice:search-form.text>
+        <advice:search-form.input>@value@|default:'Go!'|</advice:search-form.input>
+        <advice:search-form.maxlength>@@maxlength@@|default:'255'|</advice:search-form.maxlength>
+        <advice:search-form.method>@method@|default:@@generate@@|</advice:search-form.method>
+        <advice:search-form.action>@action@|default:@@generate@@|</advice:search-form.action>
+        <advice:search-summary>summary/default.omx?</advice:search-summary>
+        <advice:target.default>@target@|default:@@generate@@|</advice:target.default>
+        <advice:name.default>@id@|default:@@generate@@|</advice:name.default>
+        <advice:class.default>@class@|default:@@empty@@|</advice:class.default>
+        <advice:id.default>@id@|default:@@generate@@|</advice:id.default>
+        <advice:toggle.id>control-center</advice:toggle.id>
+        <advice:toggle.duration>500</advice:toggle.duration>
+        <advice:onload.mySlider>mySlider.toggle()</advice:onload.mySlider>
+        <advice:atom>application/atom+xml</advice:atom>
+        <advice:bungee.app>fc0e61d2-0dea-4e3e-bc5f-4a9a29d70d74</advice:bungee.app>
+        <advice:bungee.grid>http://grid-den.bungeegrid.com</advice:bungee.grid>
+    </config:advice>
+</page:config>

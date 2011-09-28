@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<model:collection id="header" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:collection="http://atomictalk.org/page/model/collection" xmlns:model="http://atomictalk.org/page/model">
+    <collection:item id="top-nav" src="/page/view/menu/navigation/base.xml" />
+</model:collection>

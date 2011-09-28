@@ -1,0 +1,14 @@
+stateversion 2
+name Ruby.NET:source
+version /nuxleus.rpath.org@nux:devel/1202488789.235:svnr207-1
+branch /nuxleus.rpath.org@nux:devel
+9
+068b753a9419328ddc68390f34c22e5b build.sh a002311ea4d63a13d778449f037fa3934d5d7115 config /nuxleus.rpath.org@nux:devel/svnr103-1
+188019dc7136236d3676dabb74feaad6 Ruby.NET.recipe 556471a8c50809267fcefd6f4b52b0d29efd2a0b config /nuxleus.rpath.org@nux:devel/svnr207-1
+1ea29c9a098ac404b6352e632c453ffb Ruby.NET-svnr207.tar.gz 6b71969e4e7288a5679e4b15814dcbd658f7128c _ /nuxleus.rpath.org@nux:devel/svnr207-1
+21fa0f751ed0b94657eec7c3829b9aed rubynet cd4bf4d60b1f4da49987d66d175ce7b5fdf1b4ce config /nuxleus.rpath.org@nux:devel/svnr103-1
+2e4033c400cc771d6073d1a27e49c688 Ruby.NET-svnr103.tar.gz b9ec6d1a4aaf141fdc2eac44fd7317c14bccce38 _ /nuxleus.rpath.org@nux:devel/svnr103-2
+b66edd1bbc43d4552e526d9107767af2 rubynet.pc bd1c7c32e0bfedc35b310bd708b21a3b27e0bfd5 config /nuxleus.rpath.org@nux:devel/svnr103-1
+ce01681da5408d75c1df95c571ea9381 gacinstalllist d00ee44197ff951f91d9a71967d6798b2236ad3f config /nuxleus.rpath.org@nux:devel/svnr103-1
+d5c323830e6a0330eabe07c84e3882a1 rubynetc 07000efb1e89f90affe0eecd8dff9a51366687be config /nuxleus.rpath.org@nux:devel/svnr103-1
+db0840f7970e5448ce80d9273230982f rubylib-1.8.tar.bz2 65c4c90445f9aac818b84d200a95c46f8ec09bd3 _ /nuxleus.rpath.org@nux:devel/svnr103-1

@@ -1,0 +1,1152 @@
+﻿<!--
+///////////////////////////////////////////////////////////////////////////////
+//
+//  Page.xaml
+//
+//
+// © 2007 Microsoft Corporation. All Rights Reserved.
+//
+// This file is licensed as part of the Silverlight 1.1 SDK, for details look here: http://go.microsoft.com/fwlink/?LinkID=89145&clcid=0x409
+//
+///////////////////////////////////////////////////////////////////////////////
+-->
+
+<Canvas x:Name="parentCanvas"
+        xmlns="http://schemas.microsoft.com/client/2007" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        Loaded="Page_Loaded" 
+        x:Class="VideoLibrary.VideoLibraryCanvas;assembly=ClientBin/VideoLibrary.dll"
+        Width="1280"
+        Height="800"
+        >
+
+  <Canvas.RenderTransform>
+    <TransformGroup>
+      <TranslateTransform X="-140" Y="-100"/>
+      <ScaleTransform ScaleX="1.7" ScaleY="1.7" />
+      <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
+    </TransformGroup>
+  </Canvas.RenderTransform>
+
+  <Image Canvas.Left="(Canvas.Left)" Canvas.Top="(Canvas.Top)" Source="Assets/bg.jpg">
+       <Image.RenderTransform> 
+      <ScaleTransform ScaleY="0.6666"  ScaleX="0.6666"/> 
+    </Image.RenderTransform>    
+ </Image>
+  
+  <!-- Animations -->
+  <Canvas.Resources>
+      <Storyboard BeginTime="0" x:Name="listBoxCollapse">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="listbox">
+          <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,0.5" Value="0" KeyTime="00:00:00"/>
+          <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,0.5" Value="21.600000000000023" KeyTime="00:00:00.1250000"/>
+          <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,0.5" Value="-210.20000000000005" KeyTime="00:00:01"/>
+        </DoubleAnimationUsingKeyFrames>
+      </Storyboard>
+
+      <Storyboard BeginTime="0" x:Name="listBoxFlyout">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)" Storyboard.TargetName="listbox">
+          <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,0.5" Value="-210" KeyTime="00:00:00.1250000"/>
+          <SplineDoubleKeyFrame KeySpline="0.5,0.5,0.5,0.5" Value="0" KeyTime="00:00:01"/>
+        </DoubleAnimationUsingKeyFrames>
+      </Storyboard>
+
+      <!-- timer animation -->
+      <Storyboard BeginTime="0" x:Name="timer" Completed="TimerCompleted">
+        <DoubleAnimation Storyboard.TargetName="timerTarget" Storyboard.TargetProperty="(Canvas.Left)" From="0" To="1" AutoReverse="true" Duration="0:0:.1" />
+      </Storyboard>
+  </Canvas.Resources>
+
+  <!-- Dummy element used for timer -->
+  <Rectangle Opacity="0" x:Name="timerTarget"/>
+
+  
+
+  <!--<Rectangle Height="1280" Width="800">
+    <Rectangle.Fill>
+      <ImageBrush ImageSource="assets\bg.jpg"  Stretch="None" AlignmentX="Left" AlignmentY="Top" />
+      --><!--<LinearGradientBrush StartPoint="0.498,1.167" EndPoint="0.502,-0.167">
+        <GradientStop Color="#FF000000" Offset=".4"/>
+        <GradientStop Color="#FFFFFFFF" Offset="1"/>
+      </LinearGradientBrush>--><!--
+    </Rectangle.Fill>
+  </Rectangle>-->
+
+  <!-- ListBox -->
+  <Canvas x:Name="listbox">
+    <Rectangle Canvas.Left="412.778" Canvas.Top="124.7" Width="357" Height="259.5" RadiusX="4" RadiusY="4">
+      <Rectangle.Fill>
+        <LinearGradientBrush StartPoint="0.882122,0.107446" EndPoint="0.882122,1.00745">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FF72A7DA" Offset="0.0136719"/>
+            <GradientStop Color="#FF2F4151" Offset="0.9324922"/>
+            <GradientStop Color="#FF000914" Offset="0.964688"/>
+            <GradientStop Color="#FF001024" Offset="0.974766"/>
+            <GradientStop Color="#FF80A0C6" Offset="1"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Rectangle Canvas.Left="412.778" Canvas.Top="124.7" Width="362" Height="247.5" RadiusX="9" RadiusY="9" Fill="#FF4E6F8F" Stroke="#FF9ECFFF" StrokeThickness=".27"/>
+    <Rectangle Canvas.Left="560.778" Canvas.Top="133.7" Width="204.3" Height="230" Fill="black" StrokeThickness="0.666667" StrokeLineJoin="Round" Stroke="Gray"/>
+    <Rectangle x:Name="toggleButton" Canvas.Left="766.5" Canvas.Top="240" Width="8" Height="23" Fill="#FF4E6F8F" Stroke="#FF9ECFFF" StrokeThickness=".27"/>
+    <Canvas x:Name="expandButton" Canvas.Left="766.5" Canvas.Top="240" Opacity="0">
+      <Path Stroke="#FF9ECFFF" StrokeThickness=".47" Data="m 4,17 l 2.5,-5.5 -2.5,-5.5" />
+      <Path Stroke="#FF9ECFFF" StrokeThickness=".47" Data="m 2.2,17 l 2.5,-5.5 -2.5,-5.5" />
+    </Canvas>
+    <Canvas x:Name="collapseButton" Canvas.Left="766.5" Canvas.Top="240">
+      <Path Stroke="#FF9ECFFF" StrokeThickness=".47" Data="m 6.2,17 l -2.5,-5.5 2.5,-5.5" />
+      <Path Stroke="#FF9ECFFF" StrokeThickness=".47" Data="m 4.4,17 l -2.5,-5.5 2.5,-5.5" />
+    </Canvas>
+
+    <!-- Scrollbar -->
+    <Canvas Canvas.Left="753.778" Canvas.Top="145">
+      <!-- Track -->
+      <Rectangle  Width="10.7" Height="207.3" Fill="sc#1, 0.144741789, 0.144741789, 0.144741789" Stroke="Black" StrokeThickness=".2"/>
+    </Canvas>
+
+    <Canvas Canvas.Left="753.778" Canvas.Top="134.3">
+      <!-- Up button -->
+      <Rectangle  Width="10.7" Height="10.7">
+        <Rectangle.Fill>
+          <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+            <LinearGradientBrush.RelativeTransform>
+              <TransformGroup>
+                <TranslateTransform X="-0.5" Y="-0.5"/>
+                <SkewTransform AngleX="0" AngleY="0"/>
+                <RotateTransform Angle="-90"/>
+                <TranslateTransform X="0.5" Y="0.5"/>
+              </TransformGroup>
+            </LinearGradientBrush.RelativeTransform>
+            <GradientStop Color="sc#1, 0.01798122, 0.01798122, 0.01798122" Offset="0"/>
+            <GradientStop Color="sc#1, 0.144741789, 0.144741789, 0.144741789" Offset="0.76923076923076927"/>
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+      <Path Fill="gray" Data="M 5,3 l 2,4 -4,0 z" />
+    </Canvas>
+
+    <Canvas Canvas.Left="753.778" Canvas.Top="352.3">
+      <!-- down button -->
+      <Rectangle  Width="10.7" Height="10.7">
+        <Rectangle.Fill>
+          <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+            <LinearGradientBrush.RelativeTransform>
+              <TransformGroup>
+                <TranslateTransform X="-0.5" Y="-0.5"/>
+                <SkewTransform AngleX="0" AngleY="0"/>
+                <RotateTransform Angle="-90"/>
+                <TranslateTransform X="0.5" Y="0.5"/>
+              </TransformGroup>
+            </LinearGradientBrush.RelativeTransform>
+            <GradientStop Color="sc#1, 0.01798122, 0.01798122, 0.01798122" Offset="0"/>
+            <GradientStop Color="sc#1, 0.144741789, 0.144741789, 0.144741789" Offset="0.76923076923076927"/>
+          </LinearGradientBrush>
+        </Rectangle.Fill>
+      </Rectangle>
+      <Path Fill="gray" Data="M 5.5,7.5 l 2,-4 -4,0 z" />
+    </Canvas>
+
+    <Canvas Canvas.Left="753.778" Canvas.Top="145" x:Name="scrollThumb">
+      <!-- Thumb -->
+      <Rectangle x:Name="thumBackground" Width="10.7" Height="106.5" Fill="gray" Stroke="Black" StrokeThickness=".2"/>
+      <Rectangle Width="6" Height=".8" Canvas.Top="51" Canvas.Left="2.2" Fill="Black" Stroke="white" StrokeThickness=".2" />
+      <Rectangle Width="6" Height=".8" Canvas.Top="53" Canvas.Left="2.2" Fill="Black" Stroke="white" StrokeThickness=".2" />
+      <Rectangle Width="6" Height=".8" Canvas.Top="55" Canvas.Left="2.2" Fill="Black" Stroke="white" StrokeThickness=".2" />
+    </Canvas>
+
+    <!-- Item Clipping border -->
+    <Canvas Canvas.Left="561.778" Canvas.Top="134.6" Clip="m 0,0 l 204.3,0, 0,228.5, -204.3,0 z">
+      <!-- Items -->
+      <Canvas x:Name="items" Canvas.Top="0">
+        <Canvas x:Name="item1" Height="47" Width="192">
+          <Rectangle Height="1.5" Width="192" Fill="Gray" />
+          <Rectangle x:Name="itemBackground1" Canvas.Top="1.5" Height="45" Width="192" Fill="Black" />
+          <Path Canvas.Top="-194" Canvas.Left="-247" RenderTransformOrigin="0.5,0.5" Data="M4.6773382E-51,0.0091796015 C23,3.0091796 47.14751,5.4945412 65.394601,9.5 75.644601,11.75 101.65493,17.768594 112.8946,21 132.8946,26.75 148.4779,30.82318 160.6446,40.75 160.6446,41.41667 160.6446,27.08333 160.6446,27.75 L160.6446,2.7082562E-57" Height="40.7725639343262">
+            <Path.Fill>
+              <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                <LinearGradientBrush.RelativeTransform>
+                  <TransformGroup>
+                    <TranslateTransform X="-0.5" Y="-0.5"/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform X="0.5" Y="0.5"/>
+                    <TranslateTransform X="5.5511151231257827E-17" Y="5.5511151231257827E-17"/>
+                  </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF000000" Offset="0"/>
+                <GradientStop Color="sc#1, 0.072488264, 0.072488264, 0.072488264" Offset="0.9"/>
+              </LinearGradientBrush>
+            </Path.Fill>
+          </Path>
+          <Image Source="Assets/MikeHarsh.jpg" Canvas.Top="5" Canvas.Left="5" Stretch="Uniform" Width="48" Height="36" />
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="10" Canvas.Top="4.5" Canvas.Left="58" >Mike Harsh</TextBlock>
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top="17.5" Canvas.Left="58" >WPF/E</TextBlock>
+          <Canvas x:Name="play1" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+                <ScaleTransform x:Name="scale1" ScaleX="1" ScaleY="1" CenterX="10" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Ellipse Fill="black" Height="9" Width="9" StrokeThickness="1.4">
+              <Ellipse.Stroke>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Ellipse.Stroke>
+            </Ellipse>
+            <Path Data="m 3,2.3 l 4,2.2 -4,2.2 z">
+              <Path.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Path.Fill>
+            </Path>
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="10">Play</TextBlock>
+          </Canvas>
+          <Canvas x:Name="share1" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="shareScale1" ScaleX="1" ScaleY="1" CenterX="45" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Rectangle Canvas.Left="30" Height="7.5" Width="10.5" RadiusX="1.5" RadiusY="1.5">
+              <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Rectangle.Fill>
+            </Rectangle>
+            <Path Canvas.Left="30" Fill="sc#1, 0.539108, 0.539108, 0.539108" Data="m 4,7.4 l 3,0 1.5,2.5 z" />
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="42">Share</TextBlock>
+          </Canvas>
+        </Canvas>
+
+        <Canvas Canvas.Top="47" x:Name="item2">
+          <Rectangle Height="1.5" Width="192" Fill="Gray" />
+          <Rectangle x:Name="itemBackground2" Canvas.Top="1.5" Height="45" Width="192" Fill="Black" />
+          <Path Canvas.Top="-194" Canvas.Left="-247" RenderTransformOrigin="0.5,0.5" Data="M4.6773382E-51,0.0091796015 C23,3.0091796 47.14751,5.4945412 65.394601,9.5 75.644601,11.75 101.65493,17.768594 112.8946,21 132.8946,26.75 148.4779,30.82318 160.6446,40.75 160.6446,41.41667 160.6446,27.08333 160.6446,27.75 L160.6446,2.7082562E-57" Height="40.7725639343262">
+            <Path.Fill>
+              <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                <LinearGradientBrush.RelativeTransform>
+                  <TransformGroup>
+                    <TranslateTransform X="-0.5" Y="-0.5"/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform X="0.5" Y="0.5"/>
+                    <TranslateTransform X="5.5511151231257827E-17" Y="5.5511151231257827E-17"/>
+                  </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF000000" Offset="0"/>
+                <GradientStop Color="sc#1, 0.072488264, 0.072488264, 0.072488264" Offset="0.9"/>
+              </LinearGradientBrush>
+            </Path.Fill>
+          </Path>
+          <Image Source="Assets/MikeSwanson.jpg" Canvas.Top="5" Canvas.Left="5" Stretch="Uniform" Width="48" Height="36" />
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="10" Canvas.Top="4.5" Canvas.Left="58" >Mike Swanson</TextBlock>
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top="17.5" Canvas.Left="58" >Adobe Illustrator to XAML converter</TextBlock>
+          <Canvas x:Name="play2" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="scale2" ScaleX="1" ScaleY="1" CenterX="10" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Ellipse Fill="black" Height="9" Width="9" StrokeThickness="1.4">
+              <Ellipse.Stroke>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Ellipse.Stroke>
+            </Ellipse>
+            <Path Data="m 3,2.3 l 4,2.2 -4,2.2 z">
+              <Path.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Path.Fill>
+            </Path>
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="10">Play</TextBlock>
+          </Canvas>
+          <Canvas x:Name="share2" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="shareScale2" ScaleX="1" ScaleY="1" CenterX="45" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Rectangle Canvas.Left="30" Height="7.5" Width="10.5" RadiusX="1.5" RadiusY="1.5">
+              <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Rectangle.Fill>
+            </Rectangle>
+            <Path Canvas.Left="30" Fill="sc#1, 0.539108, 0.539108, 0.539108" Data="m 4,7.4 l 3,0 1.5,2.5 z" />
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="42">Share</TextBlock>
+          </Canvas>
+        </Canvas>
+
+        <Canvas Canvas.Top="94" x:Name="item3">
+          <Rectangle Height="1.5" Width="192" Fill="Gray" />
+          <Rectangle x:Name="itemBackground3" Canvas.Top="1.5" Height="45" Width="192" Fill="Black" />
+          <Path Canvas.Top="-194" Canvas.Left="-247" RenderTransformOrigin="0.5,0.5" Data="M4.6773382E-51,0.0091796015 C23,3.0091796 47.14751,5.4945412 65.394601,9.5 75.644601,11.75 101.65493,17.768594 112.8946,21 132.8946,26.75 148.4779,30.82318 160.6446,40.75 160.6446,41.41667 160.6446,27.08333 160.6446,27.75 L160.6446,2.7082562E-57" Height="40.7725639343262">
+            <Path.Fill>
+              <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                <LinearGradientBrush.RelativeTransform>
+                  <TransformGroup>
+                    <TranslateTransform X="-0.5" Y="-0.5"/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform X="0.5" Y="0.5"/>
+                    <TranslateTransform X="5.5511151231257827E-17" Y="5.5511151231257827E-17"/>
+                  </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF000000" Offset="0"/>
+                <GradientStop Color="sc#1, 0.072488264, 0.072488264, 0.072488264" Offset="0.9"/>
+              </LinearGradientBrush>
+            </Path.Fill>
+          </Path>
+          <Image Source="Assets/BillGates.jpg" Canvas.Top="5" Canvas.Left="5" Stretch="Uniform" Width="48" Height="36" />
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="10" Canvas.Top="4.5" Canvas.Left="58" >Bill Gates</TextBlock>
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top="17.5" Canvas.Left="58" >17 Minutes with Bill</TextBlock>
+          <Canvas x:Name="play3" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="scale3" ScaleX="1" ScaleY="1" CenterX="10" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Ellipse Fill="black" Height="9" Width="9" StrokeThickness="1.4">
+              <Ellipse.Stroke>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Ellipse.Stroke>
+            </Ellipse>
+            <Path Data="m 3,2.3 l 4,2.2 -4,2.2 z">
+              <Path.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Path.Fill>
+            </Path>
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="10">Play</TextBlock>
+          </Canvas>
+          <Canvas x:Name="share3" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="shareScale3" ScaleX="1" ScaleY="1" CenterX="45" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Rectangle Canvas.Left="30" Height="7.5" Width="10.5" RadiusX="1.5" RadiusY="1.5">
+              <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Rectangle.Fill>
+            </Rectangle>
+            <Path Canvas.Left="30" Fill="sc#1, 0.539108, 0.539108, 0.539108" Data="m 4,7.4 l 3,0 1.5,2.5 z" />
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="42">Share</TextBlock>
+          </Canvas>
+        </Canvas>
+
+        <Canvas Canvas.Top="141" x:Name="item4">
+          <Rectangle Height="1.5" Width="192" Fill="Gray" />
+          <Rectangle x:Name="itemBackground4" Canvas.Top="1.5" Height="45" Width="192" Fill="Black" />
+          <Path Canvas.Top="-194" Canvas.Left="-247" RenderTransformOrigin="0.5,0.5" Data="M4.6773382E-51,0.0091796015 C23,3.0091796 47.14751,5.4945412 65.394601,9.5 75.644601,11.75 101.65493,17.768594 112.8946,21 132.8946,26.75 148.4779,30.82318 160.6446,40.75 160.6446,41.41667 160.6446,27.08333 160.6446,27.75 L160.6446,2.7082562E-57" Height="40.7725639343262">
+            <Path.Fill>
+              <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                <LinearGradientBrush.RelativeTransform>
+                  <TransformGroup>
+                    <TranslateTransform X="-0.5" Y="-0.5"/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform X="0.5" Y="0.5"/>
+                    <TranslateTransform X="5.5511151231257827E-17" Y="5.5511151231257827E-17"/>
+                  </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF000000" Offset="0"/>
+                <GradientStop Color="sc#1, 0.072488264, 0.072488264, 0.072488264" Offset="0.9"/>
+              </LinearGradientBrush>
+            </Path.Fill>
+          </Path>
+          <Image Source="Assets/KatyHunter.jpg" Canvas.Top="5" Canvas.Left="5" Stretch="Uniform" Width="48" Height="36" />
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="10" Canvas.Top="4.5" Canvas.Left="58" >Katy Hunter</TextBlock>
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top="17.5" Canvas.Left="58" >Steve Ballmer's Speechwriter</TextBlock>
+          <Canvas x:Name="play4" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="scale4" ScaleX="1" ScaleY="1" CenterX="10" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Ellipse Fill="black" Height="9" Width="9" StrokeThickness="1.4">
+              <Ellipse.Stroke>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Ellipse.Stroke>
+            </Ellipse>
+            <Path Data="m 3,2.3 l 4,2.2 -4,2.2 z">
+              <Path.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Path.Fill>
+            </Path>
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="10">Play</TextBlock>
+          </Canvas>
+          <Canvas x:Name="share4" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="shareScale4" ScaleX="1" ScaleY="1" CenterX="45" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Rectangle Canvas.Left="30" Height="7.5" Width="10.5" RadiusX="1.5" RadiusY="1.5">
+              <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Rectangle.Fill>
+            </Rectangle>
+            <Path Canvas.Left="30" Fill="sc#1, 0.539108, 0.539108, 0.539108" Data="m 4,7.4 l 3,0 1.5,2.5 z" />
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="42">Share</TextBlock>
+          </Canvas>
+        </Canvas>
+
+        <Canvas Canvas.Top="188" x:Name="item5">
+          <Rectangle Height="1.5" Width="192" Fill="Gray" />
+          <Rectangle x:Name="itemBackground5" Canvas.Top="1.5" Height="45" Width="192" Fill="Black" />
+          <Path Canvas.Top="-194" Canvas.Left="-247" RenderTransformOrigin="0.5,0.5" Data="M4.6773382E-51,0.0091796015 C23,3.0091796 47.14751,5.4945412 65.394601,9.5 75.644601,11.75 101.65493,17.768594 112.8946,21 132.8946,26.75 148.4779,30.82318 160.6446,40.75 160.6446,41.41667 160.6446,27.08333 160.6446,27.75 L160.6446,2.7082562E-57" Height="40.7725639343262">
+            <Path.Fill>
+              <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                <LinearGradientBrush.RelativeTransform>
+                  <TransformGroup>
+                    <TranslateTransform X="-0.5" Y="-0.5"/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform X="0.5" Y="0.5"/>
+                    <TranslateTransform X="5.5511151231257827E-17" Y="5.5511151231257827E-17"/>
+                  </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF000000" Offset="0"/>
+                <GradientStop Color="sc#1, 0.072488264, 0.072488264, 0.072488264" Offset="0.9"/>
+              </LinearGradientBrush>
+            </Path.Fill>
+          </Path>
+          <Image Source="Assets/London.jpg" Canvas.Top="5" Canvas.Left="5" Stretch="Uniform" Width="48" Height="36" />
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="10" Canvas.Top="4.5" Canvas.Left="58" >London Niners</TextBlock>
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top="17.5" Canvas.Left="58" >Tour, Drinks and Debate</TextBlock>
+          <Canvas x:Name="play5" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="scale5" ScaleX="1" ScaleY="1" CenterX="10" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Ellipse Fill="black" Height="9" Width="9" StrokeThickness="1.4">
+              <Ellipse.Stroke>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Ellipse.Stroke>
+            </Ellipse>
+            <Path Data="m 3,2.3 l 4,2.2 -4,2.2 z">
+              <Path.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Path.Fill>
+            </Path>
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="10">Play</TextBlock>
+          </Canvas>
+          <Canvas x:Name="share5" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="shareScale5" ScaleX="1" ScaleY="1" CenterX="45" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Rectangle Canvas.Left="30" Height="7.5" Width="10.5" RadiusX="1.5" RadiusY="1.5">
+              <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Rectangle.Fill>
+            </Rectangle>
+            <Path Canvas.Left="30" Fill="sc#1, 0.539108, 0.539108, 0.539108" Data="m 4,7.4 l 3,0 1.5,2.5 z" />
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="42">Share</TextBlock>
+          </Canvas>
+        </Canvas>
+
+        <Canvas Canvas.Top="235" x:Name="item6">
+          <Rectangle Height="1.5" Width="192" Fill="Gray" />
+          <Rectangle x:Name="itemBackground6" Canvas.Top="1.5" Height="45" Width="192" Fill="Black" />
+          <Path Canvas.Top="-194" Canvas.Left="-247" RenderTransformOrigin="0.5,0.5" Data="M4.6773382E-51,0.0091796015 C23,3.0091796 47.14751,5.4945412 65.394601,9.5 75.644601,11.75 101.65493,17.768594 112.8946,21 132.8946,26.75 148.4779,30.82318 160.6446,40.75 160.6446,41.41667 160.6446,27.08333 160.6446,27.75 L160.6446,2.7082562E-57" Height="40.7725639343262">
+            <Path.Fill>
+              <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                <LinearGradientBrush.RelativeTransform>
+                  <TransformGroup>
+                    <TranslateTransform X="-0.5" Y="-0.5"/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform X="0.5" Y="0.5"/>
+                    <TranslateTransform X="5.5511151231257827E-17" Y="5.5511151231257827E-17"/>
+                  </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF000000" Offset="0"/>
+                <GradientStop Color="sc#1, 0.072488264, 0.072488264, 0.072488264" Offset="0.9"/>
+              </LinearGradientBrush>
+            </Path.Fill>
+          </Path>
+          <Image Source="Assets/RoryTeam.jpg" Canvas.Top="5" Canvas.Left="5" Stretch="Uniform" Width="48" Height="36" />
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="10" Canvas.Top="4.5" Canvas.Left="58" >Channel 9 Team</TextBlock>
+          <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top="17.5" Canvas.Left="58" >Rory Meets Da Team</TextBlock>
+          <Canvas x:Name="play6" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="scale6" ScaleX="1" ScaleY="1" CenterX="10" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Ellipse Fill="black" Height="9" Width="9" StrokeThickness="1.4">
+              <Ellipse.Stroke>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Ellipse.Stroke>
+            </Ellipse>
+            <Path Data="m 3,2.3 l 4,2.2 -4,2.2 z">
+              <Path.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Path.Fill>
+            </Path>
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="10">Play</TextBlock>
+          </Canvas>
+          <Canvas x:Name="share6" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="shareScale6" ScaleX="1" ScaleY="1" CenterX="45" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+              <Rectangle Canvas.Left="30" Height="7.5" Width="10.5" RadiusX="1.5" RadiusY="1.5">
+                <Rectangle.Fill>
+                  <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    <LinearGradientBrush.RelativeTransform>
+                      <TransformGroup>
+                        <TranslateTransform X="-0.5" Y="-0.5"/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform X="0.5" Y="0.5"/>
+                        <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                      </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                    <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                  </LinearGradientBrush>
+                </Rectangle.Fill>
+              </Rectangle>
+              <Path Canvas.Left="30" Fill="sc#1, 0.539108, 0.539108, 0.539108" Data="m 4,7.4 l 3,0 1.5,2.5 z" />
+              <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="42">Share</TextBlock>
+            </Canvas>
+          </Canvas>
+
+                 <Canvas Canvas.Top="282" x:Name="item7">
+            <Rectangle Height="1.5" Width="192" Fill="Gray" />
+            <Rectangle x:Name="itemBackground7" Canvas.Top="1.5" Height="45" Width="192" Fill="Black" />
+            <Path Canvas.Top="-194" Canvas.Left="-247" RenderTransformOrigin="0.5,0.5" Data="M4.6773382E-51,0.0091796015 C23,3.0091796 47.14751,5.4945412 65.394601,9.5 75.644601,11.75 101.65493,17.768594 112.8946,21 132.8946,26.75 148.4779,30.82318 160.6446,40.75 160.6446,41.41667 160.6446,27.08333 160.6446,27.75 L160.6446,2.7082562E-57" Height="40.7725639343262">
+              <Path.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="5.5511151231257827E-17"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="#FF000000" Offset="0"/>
+                  <GradientStop Color="sc#1, 0.072488264, 0.072488264, 0.072488264" Offset="0.9"/>
+                </LinearGradientBrush>
+              </Path.Fill>
+            </Path>
+            <Image Source="Assets/JacquelineRussell.jpg" Canvas.Top="5" Canvas.Left="5" Stretch="Uniform" Width="48" Height="36" />
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="10" Canvas.Top="4.5" Canvas.Left="58" >Jacqueline Russell</TextBlock>
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top="17.5" Canvas.Left="58" >Microsoft at Maker Faire</TextBlock>
+            <Canvas x:Name="play7" Canvas.Top="30" Canvas.Left="58">
+              <Canvas.RenderTransform>
+                <ScaleTransform x:Name="scale7" ScaleX="1" ScaleY="1" CenterX="10" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Ellipse Fill="black" Height="9" Width="9" StrokeThickness="1.4">
+              <Ellipse.Stroke>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Ellipse.Stroke>
+            </Ellipse>
+            <Path Data="m 3,2.3 l 4,2.2 -4,2.2 z">
+              <Path.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Path.Fill>
+            </Path>
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="10">Play</TextBlock>
+          </Canvas>
+          <Canvas x:Name="share7" Canvas.Top="30" Canvas.Left="58">
+            <Canvas.RenderTransform>
+              <ScaleTransform x:Name="shareScale7" ScaleX="1" ScaleY="1" CenterX="45" CenterY="4.5"/>
+            </Canvas.RenderTransform>
+            <Rectangle Canvas.Left="30" Height="7.5" Width="10.5" RadiusX="1.5" RadiusY="1.5">
+              <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                  <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                      <TranslateTransform X="-0.5" Y="-0.5"/>
+                      <RotateTransform Angle="-90"/>
+                      <TranslateTransform X="0.5" Y="0.5"/>
+                      <TranslateTransform X="5.5511151231257827E-17" Y="0"/>
+                    </TransformGroup>
+                  </LinearGradientBrush.RelativeTransform>
+                  <GradientStop Color="sc#1, 0.8771362, 0.8771362, 0.8771362" Offset="0.89743589743589747"/>
+                  <GradientStop Color="sc#1, 0.539108, 0.539108, 0.539108" Offset="0.64102564102564108"/>
+                </LinearGradientBrush>
+              </Rectangle.Fill>
+            </Rectangle>
+            <Path Canvas.Left="30" Fill="sc#1, 0.539108, 0.539108, 0.539108" Data="m 4,7.4 l 3,0 1.5,2.5 z" />
+            <TextBlock Foreground="gainsboro" FontFamily="Verdana" FontSize="7" Canvas.Top=".5" Canvas.Left="42">Share</TextBlock>
+          </Canvas>
+        </Canvas>
+
+ 
+        <!-- Selection Rectangle -->
+        <Rectangle x:Name="selectionRect" Width="192" Height="47" Stroke="White" StrokeThickness="1.5" Opacity="1"/>
+      </Canvas>
+    </Canvas>
+  </Canvas>
+
+  <!-- Bottom Row -->
+  <Canvas x:Name="Layer_1" Width="1056" Height="816">
+    <Path Canvas.Left="193.694" Canvas.Top="352.695" Width="261.333" Height="22.2222" Stretch="Fill" Data="F1 M 197.472,352.695L 451.25,352.695C 453.336,352.695 455.028,354.387 455.028,356.473L 455.028,371.14C 455.028,373.226 453.336,374.917 451.25,374.917L 197.472,374.917C 195.386,374.917 193.694,373.226 193.694,371.14L 193.694,356.473C 193.694,354.387 195.386,352.695 197.472,352.695 Z ">
+      <Path.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform ScaleX="1.365" ScaleY="1" />
+          <TranslateTransform Y="25" X="1.5"/>
+        </TransformGroup>
+      </Path.RenderTransform>
+      <Path.Fill>
+        <LinearGradientBrush StartPoint="0.882122,0.107446" EndPoint="0.882122,1.00745">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FF72A7DA" Offset="0.0136719"/>
+            <GradientStop Color="#FF2F4151" Offset="0.544922"/>
+            <GradientStop Color="#FF000914" Offset="0.554688"/>
+            <GradientStop Color="#FF001024" Offset="0.884766"/>
+            <GradientStop Color="#FF80A0C6" Offset="1"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Path.Fill>
+    </Path>
+
+    <!-- Bottom tab -->
+    <Path Canvas.Left="192.5" Canvas.Top="352.971" Width="264" Height="22.8181" Data="F1 M 264,0L 264,0.263489C 264,5.36661 259.863,9.50348 254.76,9.50348L 207.286,9.50348C 199.465,10.2639 199.215,12.3104 192.465,16.9686C 183.259,23.3219 176.354,22.8081 176.354,22.8081L 86.8801,22.8081C 86.8801,22.8081 79.9753,23.3219 70.769,16.9686C 64.0189,12.3104 63.7689,10.2639 55.9482,9.50348L 9.23999,9.50348C 4.13689,9.50348 0,5.36661 0,0.263489L 0,0 264,0 Z ">
+      <Path.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform ScaleX="1.365" ScaleY="1" />
+          <TranslateTransform Y="26.5" X="1.5"/>
+        </TransformGroup>
+      </Path.RenderTransform>
+      <Path.Fill>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+          <LinearGradientBrush.RelativeTransform>
+            <TransformGroup>
+              <RotateTransform Angle="90"/>
+            </TransformGroup>
+          </LinearGradientBrush.RelativeTransform>
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FF72A7DA" Offset="0.0146484"/>
+            <GradientStop Color="#FF2F4151" Offset="0.494141"/>
+            <GradientStop Color="#FF000914" Offset="0.5"/>
+            <GradientStop Color="#FF001024" Offset="0.884766"/>
+            <GradientStop Color="#FF80A0C6" Offset="1"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Path.Fill>
+    </Path>
+
+    <!-- Bottom tab Drop shadow -->
+    <Path Canvas.Left="192.5" Canvas.Top="352.971" Width="264" Height="22.8181" Fill="#FF9ECFFF" Data="F1 M 264,0L 264,0.263489C 264,5.36661 259.863,9.50348 254.76,9.50348L 207.286,9.50348C 199.465,10.2639 199.215,12.3104 192.465,16.9686C 183.259,23.3219 176.354,22.8081 176.354,22.8081L 86.8801,22.8081C 86.8801,22.8081 79.9753,23.3219 70.769,16.9686C 64.0189,12.3104 63.7689,10.2639 55.9482,9.50348L 9.23999,9.50348C 4.13689,9.50348 0,5.36661 0,0.263489L 0,0C 0,5.10309 4.13689,9.23999 9.23999,9.23999L 55.9482,9.23999C 63.7689,10.0004 64.0189,12.0469 70.769,16.7051C 79.9753,23.0584 86.8801,22.5446 86.8801,22.5446L 176.354,22.5446C 176.354,22.5446 183.259,23.0584 192.465,16.7051C 199.215,12.0469 199.465,10.0004 207.286,9.23999L 254.76,9.23999C 259.863,9.23999 264,5.10309 264,0 Z ">
+      <Path.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform ScaleX="1.365" ScaleY="1" />
+          <TranslateTransform Y="26.5" X="1.5"/>
+        </TransformGroup>
+      </Path.RenderTransform>
+    </Path>
+
+    <!-- Background -->
+    <Path Canvas.Left="165.43" Canvas.Top="114.636" Width="77.8506" Height="95.3559" Fill="#FF4E6F8F" Data="F1 M 10.5173,0L 77.8506,0L 77.8506,8.45618L 34.2945,8.45618L 34.2945,72.8889L 26.9722,95.3559C 26.9722,95.3559 31.5555,57.3142 0,50.6476"/>
+    <Rectangle Canvas.Left="192.778" Canvas.Top="114.7" Width="362" Height="271.5" RadiusX="9" RadiusY="9" Fill="#FF4E6F8F" />
+    <Rectangle Canvas.Left="554.578" Canvas.Top="121.7" Width=".2" Height="257.5"  Fill="#FF9ECFFF" />
+    <Ellipse Canvas.Left="149.73" Canvas.Top="114.7" Width="54" Height="53.1" Fill="#FF4E6F8F"/>
+
+    <!--Media Plane -->
+    <Canvas Canvas.Left="200.889" Canvas.Top="123.889" Width="345.3" Height="256" >
+      <Rectangle Width="345.3" Height="256" Fill="black" />
+      <MediaElement x:Name="mediaElement"  Width="345.3" Height="256" MediaEnded="HandleEnd"/>
+    </Canvas>
+
+    <!-- Media Border -->
+    <Rectangle Canvas.Left="200.556" Canvas.Top="123.555" Width="346.5" Height="256.5" StrokeThickness="0.666667" StrokeLineJoin="Round" Stroke="Gray"/>
+
+    <Canvas x:Name="Group" Canvas.Left="153.139" Canvas.Top="117.568" Width="47.4647" Height="46.6063">
+      <Ellipse Canvas.Left="0.927261" Canvas.Top="1.4234" Width="44.348" Height="44.348">
+        <Ellipse.Fill>
+          <!-- Yellow___Orange_Radial -->
+          <RadialGradientBrush RadiusX="1.08108" RadiusY="1.08108" Center="0.506757,0.516892" GradientOrigin="0.506757,0.516892">
+            <RadialGradientBrush.GradientStops>
+              <GradientStop Color="#FFFFFF00" Offset="0.190002"/>
+              <GradientStop Color="#FFFF7319" Offset="1"/>
+            </RadialGradientBrush.GradientStops>
+            <RadialGradientBrush.RelativeTransform>
+              <TransformGroup>
+                <RotateTransform CenterX="0.506757" CenterY="0.516892" Angle="90"/>
+              </TransformGroup>
+            </RadialGradientBrush.RelativeTransform>
+          </RadialGradientBrush>
+        </Ellipse.Fill>
+      </Ellipse>
+      <Canvas x:Name="Group_0" Canvas.Left="23.063" Canvas.Top="0" Width="22.9602" Height="23.5883">
+        <Path Canvas.Left="0" Canvas.Top="0" Width="22.8122" Height="23.5883" Fill="#FFFF9500" Data="F1 M 0,0C 13.0313,0 20.6419,8.96869 22.8122,17.9457L 0,23.5883L 0,0 Z "/>
+
+        <Path Canvas.Left="0" Canvas.Top="0" Width="22.9602" Height="23.5883" Data="F1 M 0,0C 13.0313,0 21.2831,10.0538 22.9602,18.0444L 0,23.5883L 0,0 Z ">
+          <Path.Fill>
+            <!-- black_red_out -->
+            <LinearGradientBrush StartPoint="0.870029,1.44021" EndPoint="0.629423,0.352857">
+              <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#FF000000" Offset="0"/>
+                <GradientStop Color="#FF880007" Offset="0.419922"/>
+                <GradientStop Color="#00FF2424" Offset="1"/>
+              </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Path.Fill>
+        </Path>
+
+      </Canvas>
+      <Path Canvas.Left="23.8768" Canvas.Top="8.91217" Width="21.4164" Height="30.2905" Data="F1 M 15.3295,0C 23.588,8.46887 23.4215,22.027 14.9605,30.2905L 0,14.9488L 15.3295,0 Z ">
+        <Path.Fill>
+          <LinearGradientBrush StartPoint="-0.0534888,-0.252811" EndPoint="-0.516179,0.737481">
+            <LinearGradientBrush.GradientStops>
+              <GradientStop Color="#00001524" Offset="0"/>
+              <GradientStop Color="#C4001524" Offset="0.473633"/>
+              <GradientStop Color="#FF3A505F" Offset="1"/>
+            </LinearGradientBrush.GradientStops>
+          </LinearGradientBrush>
+        </Path.Fill>
+      </Path>
+
+      <!-- Transport buttons -->
+      <Canvas x:Name="Group_1" Canvas.Left="0" Canvas.Top="0.374573" Width="46.2395" Height="46.2317">
+
+        <!-- Mute button -->
+        <Path x:Name="muteButton" Canvas.Left="8.23996" Canvas.Top="2.05614" Width="29.7714" Height="21.0481" Data="F1 M 0,6.16823C 8.22037,-2.05211 21.5461,-2.05614 29.7714,6.15651L 14.8799,21.0481L 0,6.16823 Z ">
+          <Path.Fill>
+            <RadialGradientBrush RadiusX="1.08391" RadiusY="0.84902" Center="0.032433,0.0143933" GradientOrigin="0.032433,0.0143933">
+              <RadialGradientBrush.GradientStops>
+                <GradientStop Color="#FF008BD6" Offset="0.189453"/>
+                <GradientStop Color="#FF00305C" Offset="1"/>
+              </RadialGradientBrush.GradientStops>
+              <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                  <SkewTransform CenterX="0.032433" CenterY="0.0143933" AngleX="15.6511" AngleY="0"/>
+                  <RotateTransform CenterX="0.032433" CenterY="0.0143933" Angle="70.8274"/>
+                </TransformGroup>
+              </RadialGradientBrush.RelativeTransform>
+            </RadialGradientBrush>
+          </Path.Fill>
+        </Path>
+
+        <!-- Skip Forward button -->
+        <Path x:Name="volumeUpButton" Canvas.Left="23.1353" Canvas.Top="8.23212" Width="21.0481" Height="29.7714" Data="F1 M 14.8798,0C 23.1002,8.2204 23.1042,21.5461 14.8916,29.7714L 0,14.8799L 14.8798,0 Z ">
+          <Path.Fill>
+            <RadialGradientBrush RadiusX="1.21667" RadiusY="1.63047" Center="-0.773673,-0.517443" GradientOrigin="-0.773673,-0.517443">
+              <RadialGradientBrush.GradientStops>
+                <GradientStop Color="#FF008BD6" Offset="0.189453"/>
+                <GradientStop Color="#FF00305C" Offset="1"/>
+              </RadialGradientBrush.GradientStops>
+              <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                  <SkewTransform CenterX="-0.773673" CenterY="-0.517443" AngleX="-9.19595" AngleY="0"/>
+                  <RotateTransform CenterX="-0.773673" CenterY="-0.517443" Angle="71.0848"/>
+                </TransformGroup>
+              </RadialGradientBrush.RelativeTransform>
+            </RadialGradientBrush>
+          </Path.Fill>
+        </Path>
+
+        <!-- Stop button -->
+        <Path x:Name="stopButton" Canvas.Left="8.2359" Canvas.Top="23.1274" Width="29.7714" Height="21.0481" Data="F1 M 29.7714,14.8799C 21.551,23.1002 8.22528,23.1042 0,14.8916L 14.8916,0L 29.7714,14.8799 Z ">
+          <Path.Fill>
+            <RadialGradientBrush RadiusX="1.12849" RadiusY="1.48136" Center="-0.726701,-0.712273" GradientOrigin="-0.726701,-0.712273">
+              <RadialGradientBrush.GradientStops>
+                <GradientStop Color="#FF008BD6" Offset="0.189453"/>
+                <GradientStop Color="#FF00305C" Offset="1"/>
+              </RadialGradientBrush.GradientStops>
+              <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                  <SkewTransform CenterX="-0.726701" CenterY="-0.712273" AngleX="10.7094" AngleY="0"/>
+                  <RotateTransform CenterX="-0.726701" CenterY="-0.712273" Angle="22.2872"/>
+                </TransformGroup>
+              </RadialGradientBrush.RelativeTransform>
+            </RadialGradientBrush>
+          </Path.Fill>
+        </Path>
+
+        <!-- Skip back button -->
+        <Path x:Name="volumeDownButton" Canvas.Left="2.05611" Canvas.Top="8.22827" Width="21.0481" Height="29.7714" Data="F1 M 6.16822,29.7714C -2.05213,21.551 -2.05611,8.22528 6.15651,0L 21.0481,14.8915L 6.16822,29.7714 Z ">
+          <Path.Fill>
+            <RadialGradientBrush RadiusX="2.19115" RadiusY="1.56226" Center="1.70761,0.485471" GradientOrigin="1.70761,0.485471">
+              <RadialGradientBrush.GradientStops>
+                <GradientStop Color="#FF008BD6" Offset="0.189453"/>
+                <GradientStop Color="#FF00305C" Offset="1"/>
+              </RadialGradientBrush.GradientStops>
+              <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                  <SkewTransform CenterX="1.70761" CenterY="0.485471" AngleX="5.19723" AngleY="0"/>
+                  <RotateTransform CenterX="1.70761" CenterY="0.485471" Angle="174.718"/>
+                </TransformGroup>
+              </RadialGradientBrush.RelativeTransform>
+            </RadialGradientBrush>
+          </Path.Fill>
+        </Path>
+      </Canvas>
+
+      <!-- Mute Icon -->
+      <Canvas x:Name="Group_2" Canvas.Left="20.2001" Canvas.Top="5.17487" Width="7.77571" Height="6.59979">
+        <Path Canvas.Left="4.55907" Canvas.Top="-2.2307e-005" Width="3.21664" Height="6.59984" StrokeThickness="0.459029" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" Stroke="#FFFFFFFF" Data="F1 M 0.229515,0.229514C 0.980354,0.229514 2.98713,0.878074 2.98713,3.52462C 2.98713,5.7355 1.18624,6.37032 0.285789,6.37032"/>
+        <Path Canvas.Left="4.36832" Canvas.Top="1.33726" Width="1.96515" Height="3.93767" StrokeThickness="0.459029" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" Stroke="#FFFFFFFF" Data="F1 M 0.229515,0.229514C 0.577888,0.229514 1.73563,0.596946 1.73563,2.09609C 1.73563,3.34847 0.673423,3.70815 0.255622,3.70815"/>
+        <Path Canvas.Left="0" Canvas.Top="0.346863" Width="3.43507" Height="6.02643" Fill="#FFFFFFFF" Data="F1 M 3.3019,0C 3.37544,0 3.43507,0.0596313 3.43507,0.13324L 3.43507,5.89331C 3.43507,5.96686 3.37544,6.02643 3.3019,6.02643L 2.54376,6.02643C 2.47021,6.02643 2.41058,5.96686 2.41058,5.89331L 2.41058,5.71893L 1.12935,4.03778L 0.25853,4.03778C 0.115738,4.03778 0,3.92194 0,3.77924L 0,2.30756C 0,2.16473 0.115738,2.04901 0.25853,2.04901L 1.04878,2.04901L 2.41058,0.305847L 2.41058,0.13324C 2.41058,0.0596313 2.47021,0 2.54376,0L 3.3019,0 Z "/>
+
+        <Canvas x:Name="muteIcon" Canvas.Top="-1.3" Canvas.Left="-1.5" Opacity="0">
+          <Ellipse Height="9.5" Width="9.5" Stroke="red" StrokeThickness="1.5" />
+          <Line X1="2" Y1="1" X2="7" Y2="7" Stroke="red" StrokeThickness="1.5" />
+        </Canvas>
+      </Canvas>
+
+      <!-- Volume up icon -->
+      <Canvas x:Name="Group_3" Canvas.Left="4.27043" Canvas.Top="21.5574" Width="38.1189" Height="19.2095">
+        <Canvas Canvas.Left="32.5" Canvas.Top="-2">
+          <Rectangle Width="1.3" Height="7"  RadiusX=".5" RadiusY=".5">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="-3.48129,2.97281" EndPoint="-1.72204,-1.76874">
+                <LinearGradientBrush.GradientStops>
+                  <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                  <GradientStop Color="#FF77E1FE" Offset="0.52"/>
+                  <GradientStop Color="#FF0027C4" Offset="1"/>
+                </LinearGradientBrush.GradientStops>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <Rectangle Canvas.Left="-2.8" Canvas.Top="2.8" Width="7" Height="1.3" RadiusX=".5" RadiusY=".5">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="-3.48129,2.97281" EndPoint="-1.72204,-1.76874">
+                <LinearGradientBrush.GradientStops>
+                  <GradientStop Color="#FF77E1FE" Offset=".9"/>
+                  <GradientStop Color="#FF0027C4" Offset=".89"/>
+                </LinearGradientBrush.GradientStops>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+        </Canvas>
+
+        <!-- Volume down icon -->
+        <Rectangle Canvas.Left="1" Canvas.Top="1.8" Width="6.5" Height="1.3" RadiusX=".5" RadiusY=".5">
+          <Rectangle.Fill>
+            <LinearGradientBrush StartPoint="-3.48129,2.97281" EndPoint="-1.72204,-1.76874">
+              <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                <GradientStop Color="#FF77E1FE" Offset="0.429688"/>
+              </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Stop button -->
+        <Path Canvas.Left="16.7193" Canvas.Top="14.3041" Width="4.90541" Height="4.9054" Data="F1 M 0.171692,0L 4.7337,0C 4.82854,0 4.90541,0.0768433 4.90541,0.171692L 4.90541,4.7337C 4.90541,4.82849 4.82854,4.9054 4.7337,4.9054L 0.171692,4.9054C 0.0768585,4.9054 0,4.82849 0,4.7337L 0,0.171692C 0,0.0768433 0.0768585,0 0.171692,0 Z ">
+          <Path.Fill>
+            <LinearGradientBrush StartPoint="-3.72414,-0.337041" EndPoint="-1.56624,-4.73179">
+              <LinearGradientBrush.GradientStops>
+                <GradientStop Color="#FFFFFFFF" Offset="0"/>
+                <GradientStop Color="#FF77E1FE" Offset="0.429688"/>
+                <GradientStop Color="#FF0027C4" Offset="1"/>
+              </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+          </Path.Fill>
+        </Path>
+      </Canvas>
+
+      <!-- Transport control button shading -->
+      <Path Canvas.Left="1.97278" Canvas.Top="2.3396" Width="42.2497" Height="42.2498" Data="F1 M 21.1248,0C 32.7916,0 42.2497,9.45807 42.2497,21.1249C 42.2497,32.7917 32.7918,42.2498 21.1248,42.2498C 9.45782,42.2498 0,32.7917 0,21.1249C 0,9.45807 9.45795,0 21.1248,0">
+        <Path.Fill>
+          <RadialGradientBrush RadiusX="0.502189" RadiusY="0.502189" Center="0.454723,0.444195" GradientOrigin="0.454723,0.444195">
+            <RadialGradientBrush.GradientStops>
+              <GradientStop Color="#00FFFFFF" Offset="0"/>
+              <GradientStop Color="#3BFFFFFF" Offset="0.40918"/>
+              <GradientStop Color="#00FFFFFF" Offset="0.579102"/>
+              <GradientStop Color="#00FFFFFF" Offset="0.939453"/>
+              <GradientStop Color="#61FFFFFF" Offset="1"/>
+            </RadialGradientBrush.GradientStops>
+            <RadialGradientBrush.RelativeTransform>
+              <TransformGroup>
+                <RotateTransform CenterX="0.454723" CenterY="0.444195" Angle="90"/>
+              </TransformGroup>
+            </RadialGradientBrush.RelativeTransform>
+          </RadialGradientBrush>
+        </Path.Fill>
+      </Path>
+
+      <!-- Play button -->
+      <Path x:Name="playButton" Canvas.Left="13.5341" Canvas.Top="13.9048" Width="19.1712" Height="19.1712" Data="F1 M 9.58559,0C 14.8795,0 19.1712,4.29169 19.1712,9.58557C 19.1712,14.8795 14.8795,19.1712 9.58559,19.1712C 4.29158,19.1712 0,14.8795 0,9.58557C 0,4.29169 4.29163,0 9.58559,0">
+        <Path.Fill>
+          <RadialGradientBrush RadiusX="0.910117" RadiusY="0.910121" Center="-0.236975,0.23395" GradientOrigin="-0.236975,0.23395">
+            <RadialGradientBrush.GradientStops>
+              <GradientStop Color="#FF6BC0F5" Offset="0"/>
+              <GradientStop Color="#FFFFFFFF" Offset="1"/>
+            </RadialGradientBrush.GradientStops>
+          </RadialGradientBrush>
+        </Path.Fill>
+      </Path>
+
+      <!-- Play button brushes -->
+      <Path >
+        <Path.Fill>
+          <RadialGradientBrush x:Name="playButtonHoverBrush" RadiusX="0.910117" RadiusY="0.910121" Center="1.236975,0.8" GradientOrigin="1.236975,0.8">
+            <RadialGradientBrush.GradientStops>
+              <GradientStop Color="#FF6BC0F5" Offset="1"/>
+              <GradientStop Color="#FFFFFFFF" Offset=".2"/>
+            </RadialGradientBrush.GradientStops>
+          </RadialGradientBrush>
+        </Path.Fill>
+      </Path>
+
+      <Path >
+        <Path.Fill>
+          <RadialGradientBrush x:Name="playButtonDownBrush" RadiusX="0.910117" RadiusY="0.910121" Center="-0.236975,0.23395" GradientOrigin="-0.236975,0.23395">
+            <RadialGradientBrush.GradientStops>
+              <GradientStop Color="#FFFFFFFF" Offset="0"/>
+              <GradientStop Color="#FF6BC0F5" Offset="1"/>
+            </RadialGradientBrush.GradientStops>
+          </RadialGradientBrush>
+        </Path.Fill>
+      </Path>
+
+      <!-- Play button icon -->
+      <Path x:Name="playIcon" Canvas.Left="20.417" Canvas.Top="19.2612" Width="8.04873" Height="8.67359" Data="F1 M 0,8.60958L 0,0.0640488C 0.153442,-0.0215225 0.402069,-0.0212784 0.555511,0.0643539L 7.93384,4.18197C 8.08676,4.2673 8.08728,4.40609 7.93385,4.49172L 0.555542,8.60934C 0.402069,8.69497 0.152924,8.69497 0,8.60958 Z ">
+        <Path.Fill>
+          <LinearGradientBrush StartPoint="-1.75447,-2.91132" EndPoint="-2.24632,-1.30395">
+            <LinearGradientBrush.GradientStops>
+              <GradientStop Color="#FF242424" Offset="0"/>
+              <GradientStop Color="#FFC7DDFF" Offset="1"/>
+            </LinearGradientBrush.GradientStops>
+          </LinearGradientBrush>
+        </Path.Fill>
+      </Path>
+
+      <!-- Pause icon -->
+      <Path x:Name="pauseIcon" Opacity="0" Canvas.Left="18.417" Canvas.Top="19.2612" Data="F1 M 2,0 l 2.5,0 0,8.6 -2.5,0 Z M 6,0 l 2.5,0 0,8.6 -2.5,0 Z">
+        <Path.Fill>
+          <LinearGradientBrush StartPoint="-1.75447,-2.91132" EndPoint="-2.24632,-1.30395">
+            <LinearGradientBrush.GradientStops>
+              <GradientStop Color="#FF242424" Offset="0"/>
+              <GradientStop Color="#FFC7DDFF" Offset="1"/>
+            </LinearGradientBrush.GradientStops>
+          </LinearGradientBrush>
+        </Path.Fill>
+      </Path>
+
+
+      <!-- More Transport control button shading -->
+      <Path Canvas.Left="3.55751" Canvas.Top="2.41693" Width="39.3819" Height="18.6958" Data="F1 M 19.5799,0C 28.9055,0 36.7903,6.00391 39.3754,14.2562C 39.6667,15.1869 30.016,18.836 20.0108,18.6917C 10.0057,18.5474 -0.354083,14.6086 0.00928974,13.5816C 2.80369,5.67828 10.5104,0 19.5799,0">
+        <Path.Fill>
+          <RadialGradientBrush RadiusX="1.1386" RadiusY="0.626614" Center="0.286717,-0.0471251" GradientOrigin="0.286717,-0.0471251">
+            <RadialGradientBrush.GradientStops>
+              <GradientStop Color="#FFFFFFFF" Offset="0"/>
+              <GradientStop Color="#00FFFFFF" Offset="1"/>
+            </RadialGradientBrush.GradientStops>
+            <RadialGradientBrush.RelativeTransform>
+              <TransformGroup>
+                <SkewTransform CenterX="0.286717" CenterY="-0.0471251" AngleX="29.5722" AngleY="0"/>
+                <RotateTransform CenterX="0.286717" CenterY="-0.0471251" Angle="78.3041"/>
+              </TransformGroup>
+            </RadialGradientBrush.RelativeTransform>
+          </RadialGradientBrush>
+        </Path.Fill>
+      </Path>
+
+      <Path Canvas.Left="43.5653" Canvas.Top="17.0416" Width="2.68507" Height="1.76282" Fill="#FF1C1C1C" Data="F1 M 2.68507,1.76282L 0,1.59973L 2.19661,0C 2.19661,0 2.51607,0.59613 2.68507,1.76282 Z "/>
+    </Canvas>
+
+    <!-- Progress Thumb -->
+    <Rectangle x:Name="progressThumb" Opacity=".55" Canvas.Left="212" Canvas.Top="368.5" Width="4" Height="10" RadiusX="1.5" RadiusY="1.5">
+      <Rectangle.Fill>
+        <!-- 2__wht__gry -->
+        <LinearGradientBrush StartPoint="0.489876,0.381109" EndPoint="0.489876,0.910053">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Color="#FFFFFFFF" Offset="0"/>
+            <GradientStop Color="#FFCFCFCF" Offset="1"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+
+    <!-- Playback progress -->
+    <Rectangle x:Name="progressRect" Opacity=".7" Canvas.Left="213.43" Canvas.Top="372.561" Width="0" Height="2.33334" Fill="gray" />
+    <!-- Progress border -->
+    <Rectangle Opacity=".6" Canvas.Left="213.23" Canvas.Top="372.361" Width="320.5" Height="2.73337" StrokeThickness="0.5" StrokeLineJoin="Round" Stroke="gray" />
+
+    <!-- Transport Button Canvases -->
+    <Canvas Canvas.Left="153.139" Canvas.Top="117.568" Width="47.4647" Height="46.6063">
+      <Canvas Canvas.Left="8.23996" Canvas.Top="2.05614" Width="29.7714" Height="21.0481" Background="black" Opacity=".01" Clip="F1 M 0,6.16823C 8.22037,-2.05211 21.5461,-2.05614 29.7714,6.15651L 14.8799,21.0481L 0,6.16823 Z" MouseEnter="MuteMouseEnter" MouseLeftButtonDown="MuteMouseDown" MouseLeftButtonUp="MuteMouseUp" MouseLeave="MuteMouseLeave"/>
+      <Canvas Canvas.Left="23.1353" Canvas.Top="8.23212" Width="21.0481" Height="29.7714" Background="black" Opacity=".01" Clip="F1 M 14.8798,0C 23.1002,8.2204 23.1042,21.5461 14.8916,29.7714L 0,14.8799L 14.8798,0 Z "  MouseEnter="VolumeUpMouseEnter" MouseLeftButtonDown="VolumeUpMouseDown" MouseLeftButtonUp="VolumeUpMouseUp" MouseLeave="VolumeUpMouseLeave" />
+      <Canvas Canvas.Left="8.2359" Canvas.Top="23.1274" Width="29.7714" Height="21.0481" Background="black" Opacity=".01" Clip="F1 M 29.7714,14.8799C 21.551,23.1002 8.22528,23.1042 0,14.8916L 14.8916,0L 29.7714,14.8799 Z " MouseEnter="StopMouseEnter" MouseLeftButtonDown="StopMouseDown" MouseLeftButtonUp="StopMouseUp" MouseLeave="StopMouseLeave" />
+      <Canvas Canvas.Left="2.05611" Canvas.Top="8.22827" Width="21.0481" Height="29.7714" Background="black" Opacity=".01" Clip="F1 M 6.16822,29.7714C -2.05213,21.551 -2.05611,8.22528 6.15651,0L 21.0481,14.8915L 6.16822,29.7714 Z " MouseEnter="VolumeDownMouseEnter" MouseLeftButtonDown="VolumeDownMouseDown" MouseLeftButtonUp="VolumeDownMouseUp" MouseLeave="VolumeDownMouseLeave" />
+      <Canvas Canvas.Left="13.5341" Canvas.Top="13.9048" Width="19.1712" Height="19.1712" Background="black" Opacity=".01" Clip="F1 M 9.58559,0C 14.8795,0 19.1712,4.29169 19.1712,9.58557C 19.1712,14.8795 14.8795,19.1712 9.58559,19.1712C 4.29158,19.1712 0,14.8795 0,9.58557C 0,4.29169 4.29163,0 9.58559,0" MouseEnter="PlayMouseEnter" MouseLeftButtonDown="PlayMouseDown" MouseLeftButtonUp="PlayMouseUp" MouseLeave="PlayMouseLeave" />
+    </Canvas>
+
+  </Canvas>
+</Canvas>

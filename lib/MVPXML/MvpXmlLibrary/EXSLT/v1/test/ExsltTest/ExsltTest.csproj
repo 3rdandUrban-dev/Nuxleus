@@ -1,0 +1,886 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{AC8B9015-E508-4E40-8E6D-C4FCF52CE4B0}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "ExsltTest"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Exe"
+                PreBuildEvent = ""
+                PostBuildEvent = ""
+                RootNamespace = "ExsltTest"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "true"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = ".\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = ".\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.0.3705\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.0.3705\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.0.3705\System.XML.dll"
+                />
+                <Reference
+                    Name = "nunit.framework"
+                    AssemblyName = "nunit.framework"
+                    HintPath = "..\..\..\Program Files\NUnit 2.2\bin\nunit.framework.dll"
+                    AssemblyFolderKey = "hklm\dn\nunit.framework"
+                />
+                <Reference
+                    Name = "XInclude"
+                    Project = "{3750FAB1-FD0E-425A-9DAA-87543A556319}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "Mvp.Xml.Exslt"
+                    AssemblyName = "Mvp.Xml.Exslt"
+                    HintPath = "..\..\src\Exslt\Mvp.Xml.Exslt.dll"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "AvailabilityTest.cmd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "ExsltCommonTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ExsltDatesAndTimesTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ExsltMathTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ExsltRandomTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ExsltRegularExpressionsTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ExsltSetsTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ExsltStringsTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ExsltTest.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ExsltUnitTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "GDNDatesAndTimesTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "GDNDynamicTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "GDNMathTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "GDNRegularExpressionsTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "GDNSetsTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "GDNStringsTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "results\EXSLT\Common\node-set.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Common\object-type.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\add.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\add-duration.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\date.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\date-time.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\day-abbreviation.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\day-in-month.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\day-in-week.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\day-in-year.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\day-name.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\day-of-week-in-month.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\difference.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\duration.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\format-date.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\hour-in-day.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\leap-year.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\minute-in-hour.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\month-abbreviation.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\month-in-year.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\month-name.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\parse-date.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\second-in-minute.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\seconds.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\sum.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\time.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\week-in-month.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\week-in-year.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\DatesAndTimes\year.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\abs.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\acos.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\asin.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\atan.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\atan2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\constant.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\cos.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\exp.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\highest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\log.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\lowest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\max.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\min.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\power.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\random.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\sin.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\sqrt.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Math\tan.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Random\random-sequence.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\RegularExpressions\match.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\RegularExpressions\replace.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\RegularExpressions\test.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Sets\difference.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Sets\distinct.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Sets\has-same-node.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Sets\intersection.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Sets\leading.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Sets\trailing.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Strings\align.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Strings\concat.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Strings\decode-uri.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Strings\encode-uri.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Strings\padding.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Strings\replace.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Strings\split.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\EXSLT\Strings\tokenize.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\DatesAndTimes\avg.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\DatesAndTimes\day-abbreviation.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\DatesAndTimes\day-name.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\DatesAndTimes\max.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\DatesAndTimes\min.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\DatesAndTimes\month-abbreviation.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\DatesAndTimes\month-name.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\Dynamic\evaluate.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\Math\avg.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\RegularExpressions\tokenize.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\Sets\subset.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\Strings\lowercase.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\GotDotNet\Strings\uppercase.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\availability.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\invoice.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\invoice-processor.xsl"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\regexp-match-test.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\test.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Common\node-set.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Common\object-type.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Common\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\add.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\add-duration.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\date.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\date-time.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\day-abbreviation.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\day-in-month.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\day-in-week.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\day-in-year.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\day-name.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\day-of-week-in-month.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\difference.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\duration.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\format-date.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\hour-in-day.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\leap-year.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\minute-in-hour.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\month-abbreviation.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\month-in-year.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\month-name.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\parse-date.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\second-in-minute.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\seconds.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\sum.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\time.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\week-in-month.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\week-in-year.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\DatesAndTimes\year.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\abs.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\acos.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\asin.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\atan.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\atan2.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\constant.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\cos.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\exp.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\highest.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\log.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\lowest.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\max.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\min.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\power.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\random.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\sin.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\sqrt.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Math\tan.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Random\random-sequence.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Random\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\RegularExpressions\match.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\RegularExpressions\replace.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\RegularExpressions\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\RegularExpressions\test.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Sets\difference.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Sets\distinct.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Sets\has-same-node.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Sets\intersection.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Sets\leading.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Sets\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Sets\trailing.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Strings\align.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Strings\concat.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Strings\decode-uri.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Strings\encode-uri.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Strings\padding.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Strings\replace.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Strings\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Strings\split.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\EXSLT\Strings\tokenize.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\DatesAndTimes\avg.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\DatesAndTimes\day-abbreviation.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\DatesAndTimes\day-name.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\DatesAndTimes\max.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\DatesAndTimes\min.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\DatesAndTimes\month-abbreviation.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\DatesAndTimes\month-name.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\DatesAndTimes\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\Dynamic\evaluate.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\Dynamic\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\Math\avg.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\Math\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\RegularExpressions\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\RegularExpressions\tokenize.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\Sets\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\Sets\subset.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\Strings\lowercase.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\Strings\source.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\GotDotNet\Strings\uppercase.xslt"
+                    BuildAction = "Content"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

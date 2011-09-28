@@ -1,0 +1,8 @@
+stateversion 2
+name git:source
+version /conary.rpath.com@rpl:devel//2//nuxleus.rpath.org@nux:devel/1247162044.328:1.6.3.3-0.0.4
+branch /conary.rpath.com@rpl:devel//2//nuxleus.rpath.org@nux:devel
+3
+52224eb6f421c8a62d55c283ea101b70 git-1.6.3.3.tar.bz2 a75b40f1901da654c027a6cb2594db4b1e8f5c2b autosource /conary.rpath.com@rpl:devel//2//nuxleus.rpath.org@nux:devel/1.6.3.3-0.0.1
+535a4b90fec6e278f395737021cf44fd git.recipe 090fc57685c2516519f3d6011d63b9a092ee94f0 config /conary.rpath.com@rpl:devel//2//nuxleus.rpath.org@nux:devel/1.6.3.3-0.0.4
+f77c77baecd5c78f8e3003b892a5e0ac git-htmldocs-1.6.3.3.tar.bz2 37c712839f718280bee574813571f12bbd2a8c21 autosource /conary.rpath.com@rpl:devel//2//nuxleus.rpath.org@nux:devel/1.6.3.3-0.0.1

@@ -1,0 +1,42 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class RubydotNET(CPackageRecipe):
+
+    buildRequires = [
+    'gawk:runtime',
+    'mono:runtime',
+    'mono:devel',
+    'pkgconfig:devel',
+    'mono:lib',
+    'cli-gac-tag:runtime'
+    ]
+
+    name = "IronRuby"
+    version = "svnr33M"
+
+    def setup(r):
+        r.addArchive('%(name)s-%(version)s.tar.gz')
+        r.addSource('ironruby.pc')
+        r.addSource('rbx')
+        r.addSource('ironruby.pc')
+        #r.addSource('gacinstalllist')
+	r.addSource('IronRuby.build')        
+        r.Make()
+        
+        r.MakeDirs('%(libdir)s/ironruby')
+        
+        r.Install('ironruby.pc', '%(libdir)s/pkgconfig/ironruby.pc')
+        r.Install('rbx', '%(bindir)s/rbx')
+        #r.Install('gacinstalllist', '%(libdir)s/cli-gac/ironruby.gacinstall')
+        r.Install('src/Microsoft.Scripting.dll', '%(libdir)s/ironruby/Microsoft.Scripting.dll', mode=0755)
+        r.Install('src/Ruby.dll', '%(libdir)s/ironruby/Ruby.dll', mode=0755)
+        r.Install('src/rbx.exe', '%(libdir)s/ironruby/rbx.exe', mode=0755)
+        r.Install('License.html', '%(libdir)s/ironbuby/License.html')
+        
+        #r.Requires('%(libdir)s/cli-gac/ironruby.gacinstall', 'cli-gac-tag:runtime')
+        
+        #r.TagSpec('cli-gac', '%(libdir)s/cli-gac/ironruby.gacinstall')

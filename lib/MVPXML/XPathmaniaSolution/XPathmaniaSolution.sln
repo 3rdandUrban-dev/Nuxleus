@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPathmania", "XPathmania\XPathmania.csproj", "{60FF5F89-79E1-400E-B7C6-DDA90C91B942}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Mvp.Xml XPathmania 1.0", "Mvp.Xml XPathMania 1.0\Mvp.Xml.XPathmania 1.0.vdproj", "{2CA364E6-1810-4627-B989-C2FC5969D414}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPathmania.CustomActionInstaller", "XPathmania.CustomActionInstaller\XPathmania.CustomActionInstaller.csproj", "{7006E222-1183-449B-ABA5-D1B460B754A3}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs01.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Mvp.Xml\u0020XPathMania\u00201.0\\Mvp.Xml.XPathmania\u00201.0.vdproj
+		SccProjectName1 = Mvp.Xml\u0020XPathMania\u00201.0
+		SccLocalPath1 = Mvp.Xml\u0020XPathMania\u00201.0
+		SccProjectUniqueName2 = XPathmania.CustomActionInstaller\\XPathmania.CustomActionInstaller.csproj
+		SccProjectName2 = XPathmania.CustomActionInstaller
+		SccLocalPath2 = XPathmania.CustomActionInstaller
+		SccProjectUniqueName3 = XPathmania\\XPathmania.csproj
+		SccProjectName3 = XPathmania
+		SccLocalPath3 = XPathmania
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60FF5F89-79E1-400E-B7C6-DDA90C91B942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60FF5F89-79E1-400E-B7C6-DDA90C91B942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60FF5F89-79E1-400E-B7C6-DDA90C91B942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60FF5F89-79E1-400E-B7C6-DDA90C91B942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CA364E6-1810-4627-B989-C2FC5969D414}.Debug|Any CPU.ActiveCfg = Debug
+		{2CA364E6-1810-4627-B989-C2FC5969D414}.Debug|Any CPU.Build.0 = Debug
+		{2CA364E6-1810-4627-B989-C2FC5969D414}.Release|Any CPU.ActiveCfg = Release
+		{2CA364E6-1810-4627-B989-C2FC5969D414}.Release|Any CPU.Build.0 = Release
+		{7006E222-1183-449B-ABA5-D1B460B754A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7006E222-1183-449B-ABA5-D1B460B754A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7006E222-1183-449B-ABA5-D1B460B754A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7006E222-1183-449B-ABA5-D1B460B754A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

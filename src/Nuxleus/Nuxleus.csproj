@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B0D68D3E-8ACE-4F33-9E85-F32CED622614}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuxleus</RootNamespace>
+    <AssemblyName>Nuxleus</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AssemblyOriginatorKeyFile>..\resources\Nuxleus.snk</AssemblyOriginatorKeyFile>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>1E6EFA42CE49681FC8D0DC38C3B8E1476A6D5940</ManifestCertificateThumbprint>
+    <ManifestKeyFile>Nuxleus_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <ReleaseVersion>0.4.2.1</ReleaseVersion>
+    <PublishUrl>http://localhost/Nuxleus/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationVersion>0.2.5.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\docs\Nuxleus.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+    </Reference>
+    <Reference Include="Upnp, Version=0.5.0.0, Culture=neutral, PublicKeyToken=667b6f9c0b93f26b">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Upnp.dll</HintPath>
+    </Reference>
+    <Reference Include="Tamir.SharpSSH, Version=1.1.1.14, Culture=neutral, PublicKeyToken=d220d21a741825be">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Tamir.SharpSSH.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="InvokeRequest.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\SshUtil\SshRemoteExecution.cs" />
+    <Compile Include="Utility\SshUtil\Util.cs" />
+    <Compile Include="ICommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nuxleus_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
+      <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
+      <Name>Nuxleus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Extension.Aws\Nuxleus.Extension.Aws.csproj">
+      <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
+      <Name>Nuxleus.Extension.Aws</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
+      <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
+      <Name>Nuxleus.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
+      <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>
+      <Name>Nuxleus.PubSub</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Service\Nuxleus.Service.csproj">
+      <Project>{2F4C9647-CD65-4DBF-A1D0-4127902E2097}</Project>
+      <Name>Nuxleus.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Web\Nuxleus.Web.csproj">
+      <Project>{9ADF199C-BEED-4673-8BB0-EE9C1C7FB826}</Project>
+      <Name>Nuxleus.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Xameleon\Xameleon.csproj">
+      <Project>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</Project>
+      <Name>Xameleon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>
+      </ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>
+      </ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>
+      </ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,142 @@
+namespace advice = "http://atomictalk.org/page/config/advice"
+namespace body = "http://atomictalk.org/page/output/body"
+namespace config = "http://atomictalk.org/page/config"
+namespace controller = "http://atomictalk.org/page/controller"
+namespace head = "http://atomictalk.org/page/output/head"
+namespace model = "http://atomictalk.org/page/model"
+namespace openid = "http://openid.name/"
+namespace page = "http://atomictalk.org/page"
+namespace resource = "http://atomictalk.org/page/resource"
+namespace session = "http://xameleon.org/session"
+namespace structure = "http://atomictalk.org/page/output/body/structure"
+namespace view = "http://atomictalk.org/page/view"
+
+start =
+    element page:root {
+        element page:config {
+            attribute src { text },
+            element config:advice {
+                element advice:page {
+                    element advice:title { text }
+                },
+                element advice:theme {
+                    attribute base { text },
+                    element advice:base { xsd:NMTOKEN },
+                    element advice:blue { xsd:NCName }
+                },
+                element advice:current-location {
+                    attribute base { text },
+                    element advice:label { text }
+                },
+                element advice:foo { text }
+            },
+            element config:session {
+                attribute src { text },
+                element session:id { text },
+                element session:nonce { text },
+                element session:openid {
+                    attribute src { text },
+                    element openid:uri { text },
+                    element openid:humanid { text }
+                }
+            }
+        },
+        element page:resource {
+            element resource:ip-location {
+                attribute entity { text },
+                attribute src { text },
+                attribute type { xsd:NCName }
+            },
+            element resource:lang {
+                attribute entity { text },
+                attribute src { text },
+                attribute type { xsd:NCName }
+            },
+            element resource:help-support {
+                attribute entity { text },
+                attribute href { text },
+                attribute type { xsd:NCName }
+            },
+            element resource:create-new-account {
+                attribute entity { text },
+                attribute href { text },
+                attribute type { xsd:NCName }
+            },
+            element resource:login {
+                attribute entity { text },
+                attribute href { text },
+                attribute type { xsd:NCName }
+            }
+        },
+        element page:model {
+            element model:foo {
+                attribute src { text }
+            },
+            element model:bar {
+                attribute src { text }
+            }
+        },
+        element page:view {
+            element view:foo {
+                attribute src { text },
+                attribute type { xsd:NCName }
+            },
+            element view:bar {
+                attribute src { text },
+                attribute type { xsd:NCName }
+            },
+            element view:baz {
+                attribute src { text },
+                attribute type { xsd:NCName }
+            },
+            element view:boo {
+                attribute src { text },
+                attribute type { xsd:NCName }
+            }
+        },
+        element page:controller {
+            element controller:foo {
+                attribute src { text }
+            },
+            element controller:bar {
+                attribute src { text }
+            }
+        },
+        element page:output {
+            element page:head {
+                element head:title { text },
+                element head:link {
+                    attribute href { xsd:anyURI },
+                    attribute rel { text },
+                    attribute title { text }?,
+                    attribute type { text }
+                }+,
+                element head:include {
+                    attribute fileType { xsd:NCName },
+                    attribute href { text }
+                }+
+            },
+            element page:body {
+                element body:function {
+                    attribute action { xsd:NCName },
+                    attribute call { text }
+                }+,
+                element body:structure {
+                    element structure:view {
+                        attribute id { xsd:NCName },
+                        element view:module {
+                            attribute id { xsd:NCName },
+                            attribute src { text }?,
+                            element view:container {
+                                attribute id { xsd:NCName }?,
+                                element view:item {
+                                    attribute id { xsd:NCName },
+                                    attribute src { text }
+                                }+
+                            }?
+                        }+
+                    }
+                }
+            }
+        }
+    }

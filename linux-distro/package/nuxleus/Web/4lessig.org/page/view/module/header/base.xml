@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<view:module class="base" id="header" xmlns:view="http://atomictalk.org/page/view" xmlns:pledge="http://4lessig.org/pledge">
+  <view:container>
+    <div id="pledge-count">
+      <span id="pledge">
+        <span class="count">
+          <pledge:count type="total"/>
+        </span> people have pledged support,  
+        <span class="count"><pledge:count type="district"/>
+        </span> in the 12th Congressional District of California.
+      </span>
+    </div>
+    <div>
+      <div id="top-bar"></div>
+      <div id="bottom-bar"></div>
+    </div>
+    <div id="lessig-body">
+      <div id="4lessig">
+        <div id="id4lessig-01">
+          <img src="images/4lessig_01.jpg" width="262" height="236" alt="" />
+        </div>
+        <div id="id4lessig-02">
+          <img src="images/4lessig_02.gif" width="762" height="236" alt="" />
+        </div>
+        <div id="id4lessig-03">
+          <img src="images/4lessig_03.png" width="1024" height="48" alt="" />
+        </div>
+      </div>
+    </div>
+  </view:container>
+</view:module>

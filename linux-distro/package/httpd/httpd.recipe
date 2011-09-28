@@ -1,0 +1,298 @@
+#
+# Copyright (c) 2004-2007 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+loadSuperClass('rpmpackage')
+class Httpd(RPMPackageRecipe, CPackageRecipe):
+    name = 'httpd'
+    version = '2.2.4'
+
+    buildRequires = [ 'db:devel', 'expat:devel', 'findutils:runtime',
+                      'perl:runtime', 'pkgconfig:devel', 'e2fsprogs:devel',
+                      'xmlto:runtime', 'autoconf:runtime', 'krb5:devel',
+                      'apr:devel', 'openldap:devel', 'sed:runtime',
+                      'apr-util:devel', 'pcre:devel', 'rsync:runtime',
+                      'distcache:devel', 'ed:runtime', 'sqlite:devel',
+                      'openssl:devel', 'zlib:devel', 'libtool:runtime',
+                      'which:runtime', 'openssl:runtime', 'perl:lib',
+                      'lynx:runtime', ]
+    rpmRelease = '6'
+    rpmUpVer = '2.2.3'
+    externalArchive = 'http://www.apache.org/dist/httpd/'
+    rpmPatches = []
+
+    def setup(r):
+        r.unpack()
+        r.macros.contentdir = '%(servicedir)s/www'
+        r.macros.suexec_caller = 'apache'
+        r.macros.mmn = '20051115'
+        r.macros.vstring = 'nuXleus'
+        r.macros.distro = 'nuXleus Release 0.2.3'
+        r.macros.htconfdir = '%(sysconfdir)s/httpd'
+        r.macros.cflags += " -DSSL_EXPERIMENTAL_ENGINE"
+        # point to the correct libtool
+        r.macros.apr_libtool = "$(apr-1-config --apr-libtool | sed -e 's|/bin/sh ||')"
+        r.macros.oldapachedir = '/usr/local/apache2'
+        r.macros.cflags += " $(pkg-config --cflags openssl)"
+        r.macros.ssl_libs = " $(pkg-config --libs openssl)"
+
+        r.addSource("Makefile.ssl")
+        r.addSource("modssl-req.conf")
+
+        r.addSource('index.html')
+        r.addSource('httpd.logrotate', rpm=r.srpm)
+        #r.addSource("httpd.init.patch", macros=True)
+        r.addSource('httpd.init')
+        r.addSource('httpd.conf')
+        r.addSource('ssl.conf', rpm=r.srpm,
+                    apply="sed -i -e 's,/etc/pki/tls,/etc/ssl,g' ssl.conf")
+        r.addSource('welcome.conf', rpm=r.srpm)
+        r.addSource('migration.xml', rpm=r.srpm)
+        r.addSource('migration.css', rpm=r.srpm)
+        r.addSource('html.xsl', rpm=r.srpm)
+        r.addSource('README.confd', rpm=r.srpm)
+        r.addSource('httpd-2.0.48-release.patch', rpm=r.srpm)
+        r.addPatch('config.layout.rpath', level=0, macros=True)
+
+        r.Replace(r'@RELEASE@', '%(vstring)s', 'httpd-2.0.48-release.patch')
+        #r.Run('patch -p1 < httpd-2.0.48-release.patch')
+
+        #r.Replace('/var', '%(servicedir)s', 'httpd.conf')
+
+        # Touch mod_ssl expression parser sources to prevent regenerating it
+        r.Run("touch modules/ssl/ssl_expr_*.[chyl]")
+
+
+        # Safety check: prevent build if defined MMN does not equal upstream MMN
+        r.Run("""
+        vmmn=`echo MODULE_MAGIC_NUMBER_MAJOR | cpp -include include/ap_mmn.h | sed -n '/^2/p'`
+        if test "${vmmn}" != "%(mmn)s"; then
+           echo Error: Upstream MMN is now ${vmmn}, packaged MMN is %(mmn)s.
+           echo Update the mmn macro and rebuild.
+           exit 1
+        fi""")
+
+
+        r.Run("echo Building for '%(distro)s' with MMN %(mmn)s and vendor string '%(vstring)s'")
+
+        r.Run('./buildconf')
+        # delete all lines after "Changes with Apache MPM"
+        r.Run("echo '1,/Changes with Apache MPM/wq' | ed CHANGES")
+        # Before configure; fix location of build dir in generated apxs
+        r.Replace(r'\@exp_installbuilddir\@', '%(libdir)s/httpd/build',
+                  'support/apxs.in')
+
+        # forcibly prevent use of bundled apr, apr-util
+        r.Remove('srclib/{apr,apr-util}', recursive=True)
+
+        # Build the migration guide
+        if Use.builddocs:
+            # update location of migration guide in apachectl
+            r.Replace(r'@DISTRO@', '%(distro)s', 'migration.xml')
+            r.Run("xmlto --skip-validation -x html.xsl html-nochunks migration.xml")
+
+        # enable optional modules only for main build
+        r.mpmbuild('prefork',
+                   ' --enable-mods-shared=all'
+                   ' --enable-ssl --with-ssl'
+                   ' --enable-distcache'
+                   ' --enable-deflate'
+                   ' --enable-proxy --enable-proxy-connect'
+                   ' --enable-proxy-http --enable-proxy-ftp'
+                   ' --enable-cache --enable-mem-cache'
+                   ' --enable-file-cache --enable-disk-cache'
+                   ' --enable-ldap --enable-auth-ldap'
+                   ' --enable-pie --with-pcre'
+                   ' --enable-logio'
+                   ' --enable-so'
+                   ' --enable-authn-alias'
+                   ' --enable-authnz-ldap')
+
+        # To prevent most modules being built statically into httpd.worker,
+        # easiest way seems to be enable them shared.
+        r.mpmbuild('worker', '--enable-mods-shared=all')
+
+        # Verify that the same modules were built into the two httpd binaries
+        r.Run('./prefork/httpd -l | grep -v prefork > prefork.mods')
+        r.Run('./worker/httpd -l | grep -v worker > worker.mods')
+        r.Run('''if ! diff -u prefork.mods worker.mods; then
+          echo Different modules built into httpd binaries, will not proceed
+          exit 1
+        fi''')
+
+
+
+        r.MakeInstall(dir='prefork')
+        # install worker binary
+        r.Install('worker/httpd', '%(sbindir)s/httpd.worker', mode=0755)
+        # install conf file/directory
+        r.Install('README.confd', '%(sysconfdir)s/httpd/conf.d/README')
+        r.Install('welcome.conf', '%(sysconfdir)s/httpd/conf.d/')
+        r.Install('httpd.conf', '%(htconfdir)s/conf/')
+
+        # modssl tasks
+        r.Install('ssl.conf', '%(sysconfdir)s/httpd/conf.d/')
+        # create a prototype session cache, zero-byte config files
+        # never put data in these files in the recipe!
+        r.Create('%(localstatedir)s/cache/mod_ssl/scache.{dir,pag,sem}')
+        r.Config('%(localstatedir)s/cache/mod_ssl/scache.(dir|pag|sem)')
+        # self signed certificate generation
+        r.MakeDirs("%(sysconfdir)s/ssl/pem")
+        r.Install('Makefile.ssl', "%(sysconfdir)s/ssl/pem/Makefile")
+        r.Install("modssl-req.conf", "%(sysconfdir)s/ssl/pem/")
+
+        # for holding mod_dav lock database
+        r.MakeDirs('%(localstatedir)s/lib/dav')
+        r.ComponentSpec('runtime', '%(localstatedir)s/lib/dav')
+
+        # create cache root
+        r.MakeDirs('%(localstatedir)s/cache/mod_proxy')
+
+        # move utilities to /usr/bin
+        r.Move('%(sbindir)s/{ab,htdbm,logresolve,htpasswd,htdigest}',
+               '%(bindir)s/')
+
+        # Make the MMN accessible to module packages
+        r.Run('echo %(mmn)s > %(destdir)s%(includedir)s/httpd/.mmn')
+        r.Install('prefork/build/config_vars.mk',
+                  '%(libdir)s/httpd/build/config_vars.mk')
+        r.Install('build/special.mk', '%(libdir)s/httpd/build/special.mk')
+        # Symlink won't work because %(apr_libtool) is a shell script
+        r.Run('ln -s %(apr_libtool)s'
+              ' %(destdir)s/%(libdir)s/httpd/build/libtool')
+
+        r.Install('index.html', '%(contentdir)s/error/noindex.html')
+        r.Install('httpd.init', '%(initdir)s/httpd')
+        r.Install('httpd.logrotate', '%(sysconfdir)s/logrotate.d/httpd')
+
+        # symlinks for /etc/httpd
+        r.MakeDirs('%(localstatedir)s/log/httpd')
+        r.Remove('%(sysconfdir)s/httpd/logs', recursive=True)
+        r.Symlink('%(localstatedir)s/log/httpd', '%(sysconfdir)s/httpd/logs')
+        r.Symlink('%(localstatedir)s/run', '%(sysconfdir)s/httpd/run')
+        r.Symlink('%(libdir)s/httpd/modules', '%(sysconfdir)s/httpd/modules')
+        r.Symlink('%(libdir)s/httpd/build', '%(sysconfdir)s/httpd/build')
+
+        r.Run('sed -i -e "s:\@docdir\@:%(thisdocdir)s:g" '
+              ' %(destdir)s%(initdir)s/httpd')
+
+        # fix manfile
+        r.Replace('%(oldapachedir)s', '/etc/httpd', '%(mandir)s/man8/httpd.8')
+
+        # sanitize config_vars file: relocate the build directory
+        # into libdir; reference correct libtool; fix EXTRA_INCLUDES
+        # needs to be sed for deleting lines
+        r.Run('sed -i'
+        ' -e "s|%(contentdir)s/build|%(libdir)s/httpd/build|g"'
+        ' -e "/AP_LIBS/d"'
+        ' -e "/abs_srcdir/d"'
+        ' -e "/^LIBTOOL/s|/bin/sh /[^ ]*/libtool|/bin/sh %(apr_libtool)s|"'
+        ' -e "/^installbuilddir/s| = .*$| = /etc/httpd/build|"'
+        ' -e "s|^EXTRA_INCLUDES.*$|EXTRA_INCLUDES = -I\$(includedir) -I\$(APR_INCLUDEDIR) -I%(includedir)s/openssl|g"'
+        ' %(destdir)s%(libdir)s/httpd/build/config_vars.mk')
+
+        if Use.builddocs:
+            r.Doc('migration.html', 'migration.css')
+        r.Doc('ABOUT_APACHE', 'VERSIONING')
+
+        r.SetModes('%(sbindir)s/suexec', 04510)
+        r.SetModes('%(localstatedir)s/{log/httpd,lib/dav,cache/mod_proxy}',
+                   '%(sysconfdir)s/httpd/conf/ssl.*',
+                   0700)
+        r.Ownership('root', 'apache', '%(sbindir)s/suexec')
+        r.Ownership('apache', 'apache',
+                    '%(localstatedir)s/lib/dav',
+                    '%(localstatedir)s/cache/mod_proxy')
+
+        r.ComponentSpec('manual', '%(contentdir)s/manual/')
+        r.ByDefault(exceptions=[':manual'])
+
+        # PACKAGE: mod_ssl
+        r.PackageSpec('mod_ssl',
+                      '%(libdir)s/httpd/modules/mod_ssl.so',
+                      '%(sysconfdir)s/httpd/conf.d/ssl.conf',
+                      '%(sysconfdir)s/httpd/conf/Makefile',
+                      '%(sysconfdir)s/httpd/conf/ssl\..*',
+                      '%(localstatedir)s/cache/mod_ssl/',
+                      '%(sysconfdir)s/ssl/pem/',
+                      )
+        r.ComponentSpec('runtime', '.*/mod_ssl.so')
+        r.Requires("make:runtime", "%(sysconfdir)s/ssl/pem/Makefile")
+        r.Requires("openssl:runtime", "%(sysconfdir)s/ssl/pem/Makefile")
+
+        # Remove unpackaged files
+        r.Run("find %(destdir)s/%(contentdir)s/manual \( "
+              " -name \*.xml -o -name \*.xml.* -o -name \*.ent"
+              " -o -name \*.xsl -o -name \*.dtd "
+              " \) -print0 | xargs -0 rm -f")
+
+        r.Remove('%(htconfdir)s/conf/extra/',
+                 '%(htconfdir)s/conf/original/', recursive=True)
+
+        r.Remove('%(libdir)s/*.exp',
+                 '%(libdir)s/httpd/modules/*.exp',
+                 '%(libdir)s/httpd/build/config.nice',
+                 '%(htconfdir)s/conf/mime.types',
+                 '%(bindir)s/ap?-config',
+                 '%(sbindir)s/{checkgid,dbmmanage}',
+                 '%(contentdir)s/{htdocs,cgi-bin}/*',
+                 '%(mandir)s/man1/dbmmanage.*')
+
+        # points to /var/run
+        r.DanglingSymlinks(exceptions='%(htconfdir)s/run')
+        # points to ssl certificate
+        r.DanglingSymlinks(exceptions='%(htconfdir)s/conf/Makefile')
+        # points to apr-utils libtool
+        r.DanglingSymlinks(exceptions='%(libdir)s/httpd/build/libtool')
+        # make sure permissions are correct
+        r.ExcludeDirectories(exceptions='%(contentdir)s/cgi-bin')
+        r.TagSpec('initscript', '%(initdir)s/')
+        r.Requires('grep:runtime', '%(initdir)s/')
+        r.Requires('make:runtime', '%(initdir)s/')
+
+        # Require mailcap (need /etc/mime.types)
+        r.Requires('mailcap:runtime', '%(initdir)s/')
+
+        # Requires bzip2:runtime because compresssion is turned on in logrotate
+        r.Requires('bzip2:runtime', '%(sysconfdir)s/logrotate.d/%(name)s')
+
+        # We remove the bundled apr functionality, so we must require
+        # the external version(s): <httpd/ap_config.h> #include's files
+        # from both of these troves.  (RPL-798)
+        r.Requires('apr:devel', '%(includedir)s/%(name)s/ap_config.h')
+        r.Requires('apr-util:devel', '%(includedir)s/%(name)s/ap_config.h')
+
+        # modules are shared libraries, but aren't linked to
+        r.Provides(exceptions='%(libdir)s/httpd/modules/')
+
+        # need empty html directory
+        r.MakeDirs('%(contentdir)s/html')
+        r.ExcludeDirectories(exceptions='%(contentdir)s/html')
+
+        # apxs and envvars are tools for building httpd modules
+        r.ComponentSpec('devel', '%(sbindir)s/(envvars.*|apxs)')
+        r.ComponentSpec('devel', '%(libdir)s/httpd/build/')
+        r.ComponentSpec('devel', '%(htconfdir)s/build')
+
+        r.SetModes('%(sbindir)s/envvars', '%(sbindir)s/envvars-std', 0755)
+
+    def mpmbuild(r, target, extraConfig):
+        r.Run('mkdir ' + target)
+        r.ManualConfigure(
+                ' --enable-layout=rPath'
+                ' --with-mpm=' + target +
+                ' --with-apr=%(prefix)s --with-apr-util=%(prefix)s'
+                ' --enable-suexec --with-suexec'
+                ' --with-suexec-caller=%(suexec_caller)s'
+                ' --with-suexec-docroot=%(contentdir)s'
+                ' --with-suexec-logfile=%(localstatedir)s/log/httpd/suexec.log'
+                ' --with-suexec-bin=%(sbindir)s/suexec'
+                ' --with-suexec-uidmin=500 --with-suexec-gidmin=100 '
+                + extraConfig,
+                configureName='../configure',
+                dir=target,
+                preConfigure='SSL_LIBS="%(ssl_libs)s" '
+                             'CFLAGS=$(echo "%(cflags)s")')
+        r.Make(dir=target, preMake="SSL_LIBS='%(ssl_libs)s'")

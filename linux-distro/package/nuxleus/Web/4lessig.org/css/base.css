@@ -1,0 +1,186 @@
+body {
+margin:0px;
+padding:0px;
+color:#333;
+background:#FFF;
+font-size: small;
+font-family: Georgia, Verdana, Geneva, Arial, sans-serif; 
+}
+h1 {
+color:#990000;
+font-size:36pt; 
+}
+img {
+border:0;
+}
+a {
+color:#CC3300;
+background-color:inherit;
+text-decoration:none;
+}
+a:hover {
+color:#333;
+text-decoration:underline;
+background-color:#FFFFEE;
+}
+ul {
+display:block;
+list-style-type:none;
+margin:0px;
+padding:0px;
+width:100%;
+}
+li {
+display:inline;
+width:auto;
+}
+ul.list li {
+display: block;
+}
+ul.TtoB li {
+display:block;
+}
+ul.LtoR li {
+display:inline;
+text-align: left;
+}
+ul.LtoR li:first-child {
+margin-left:5px;
+}
+ul.RtoL li {
+text-align: right;
+}
+.base {
+}
+
+#id4lessig-01 {
+position:absolute;
+left:0px;
+top:0px;
+width:262px;
+height:236px;
+}
+
+#id4lessig-02 {
+position:absolute;
+left:262px;
+top:0px;
+width:762px;
+height:236px;
+}
+
+#id4lessig-03 {
+position:absolute;
+left:0px;
+top:236px;
+width:1024px;
+height:48px;
+}
+
+#id4lessig-04 {
+position:absolute;
+left:0px;
+top:284px;
+width:1024px;
+height:484px;
+}
+
+
+#lessig-body{
+position:absolute;
+top:0;
+left:0;
+right:0;
+text-align:center;
+margin-right: auto;
+margin-left: auto;
+width:1024px;
+height:300px;
+}
+#4lessig {
+position:relative;
+}
+#top-bar {
+width:100%;
+height:172px;
+margin-top:29px;
+background:#003466;
+}
+#bottom-bar {
+width:100%;
+height:34px;
+border-top:1px solid #FFF;
+margin-top:0px;
+background:#4371A3;
+}
+#pledgeSupport {
+width:768px;
+margin:0 auto;
+text-align:center;
+margin-top:75px;
+z-index:100; 
+}
+#pledgeSupportDiv {
+width:500px;
+margin:0 auto;
+text-align:center;
+} 
+
+input.text {
+  width:358px;
+  text-align:left;
+}
+label {
+  width:100px;
+  color:#000;
+  font-size:small;
+  margin:0 .5em;
+}
+.row{
+ width:500px;
+ text-align:left;  
+ margin:5px 0;
+}
+.right {
+ text-align: right;
+ width:300px; 
+}
+.left {
+ text-align: left; 
+ width:100px;
+}
+.formRow{
+ width:400px;  
+ text-align:center;
+}
+#location{
+ width:212px; 
+}
+#zip{
+ width:75px; 
+}
+#submitForm{
+ text-align:center; 
+ margin:5px 0; 
+}
+#submitPledge{
+ width:130px;
+ margin-left:.5em; 
+}
+#email{
+ width:242px; 
+}
+#pledge-count {
+  position:absolute;
+  top:0;
+  right:0;
+  margin-right:.25em;
+  z-index:100;
+}
+#pledge {
+ color:#000;
+ font-size:x-large; 
+}
+.count {
+ color:#CC0000; 
+}

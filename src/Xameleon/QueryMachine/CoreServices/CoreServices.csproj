@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{454016BE-0E1C-4DFB-A22F-2E642A1AE9A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataEngine.CoreServices</RootNamespace>
+    <AssemblyName>CoreServices</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Qm.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;_NET_4_0</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;_NET_4_0</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug IL|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug IL\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DEBUG_IL</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug Parallel|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Parallel\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PARALLEL</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Parallel|AnyCPU' ">
+    <OutputPath>bin\Release Parallel\</OutputPath>
+    <DefineConstants>PARALLEL</DefineConstants>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Concurrent|AnyCPU' ">
+    <OutputPath>bin\Concurrent\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-1|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Release-1\</OutputPath>
+    <DefineConstants>TRACE;_NET_4_0</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\CoreServices.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Atom.cs" />
+    <Compile Include="BinaryBoolFunc.cs" />
+    <Compile Include="ControlAndForm.cs" />
+    <Compile Include="BinaryFunc.cs" />
+    <Compile Include="CompiledLambda.cs" />
+    <Compile Include="ControlCastForm.cs" />
+    <Compile Include="ControlCondForm.cs" />
+    <Compile Include="ControlInvokeForm.cs" />
+    <Compile Include="ControlLambdaQuoteForm.cs" />
+    <Compile Include="ControlLetForm.cs" />
+    <Compile Include="ControlPrognForm.cs" />
+    <Compile Include="ControlTrapForm.cs" />
+    <Compile Include="ControlWeakForm.cs" />
+    <Compile Include="FunctionLink.cs" />
+    <Compile Include="GlobalSymbols.cs" />
+    <Compile Include="IBindableObject.cs" />
+    <Compile Include="Integer.cs" />
+    <Compile Include="LambdaExpr.cs" />
+    <Compile Include="ILConverter.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="Executive.cs" />
+    <Compile Include="FuncBase.cs" />
+    <Compile Include="FuncDef.cs" />
+    <Compile Include="FuncName.cs" />
+    <Compile Include="Funcs.cs" />
+    <Compile Include="Generation\DebugILGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Generation\ILGen.cs" />
+    <Compile Include="Generation\KeyedQueue.cs" />
+    <Compile Include="Generation\TypeExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InvokeStatic.cs" />
+    <Compile Include="InvokeDelegate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MacroFunc.cs" />
+    <Compile Include="MemoryPool.cs" />
+    <Compile Include="MethodConverter.cs" />
+    <Compile Include="LocalAccess.cs" />
+    <Compile Include="NotOperator.cs" />
+    <Compile Include="NullFunc.cs" />
+    <Compile Include="ControlOrForm.cs" />
+    <Compile Include="ControlQuoteForm.cs" />
+    <Compile Include="PerfMonitor.cs" />
+    <Compile Include="Proxy\Bool.cs" />
+    <Compile Include="Proxy\BoolFactory.cs" />
+    <Compile Include="Proxy\ByteProxy.cs" />
+    <Compile Include="Proxy\ByteProxyFactory.cs" />
+    <Compile Include="Proxy\SByteProxy.cs" />
+    <Compile Include="Proxy\SByteProxyFactory.cs" />
+    <Compile Include="Proxy\UInt.cs" />
+    <Compile Include="Proxy\UIntFactory.cs" />
+    <Compile Include="Proxy\ULong.cs" />
+    <Compile Include="Proxy\ULongFactory.cs" />
+    <Compile Include="Proxy\UShort.cs" />
+    <Compile Include="Proxy\UShortFactory.cs" />
+    <Compile Include="Resolver.cs" />
+    <Compile Include="Runtime.cs" />
+    <Compile Include="ValueProxy.cs" />
+    <Compile Include="ValueProxyFactory.cs" />
+    <Compile Include="TypeUtils.cs" />
+    <Compile Include="Lisp.cs" />
+    <Compile Include="LispParser.cs" />
+    <Compile Include="LispTokenizer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Undefined.cs" />
+    <Compile Include="ValueConverter.cs" />
+    <Compile Include="SymbolLink.cs" />
+    <Compile Include="Proxy\DecimalProxy.cs" />
+    <Compile Include="Proxy\DecimalProxyFactory.cs" />
+    <Compile Include="Proxy\DoubleProxy.cs" />
+    <Compile Include="Proxy\DoubleProxyFactory.cs" />
+    <Compile Include="Proxy\Float.cs" />
+    <Compile Include="Proxy\FloatFactory.cs" />
+    <Compile Include="Proxy\IntegerProxy.cs" />
+    <Compile Include="Proxy\IntegerProxyFactory.cs" />
+    <Compile Include="Proxy\Int.cs" />
+    <Compile Include="Proxy\IntFactory.cs" />
+    <Compile Include="Proxy\Long.cs" />
+    <Compile Include="Proxy\LongFactory.cs" />
+    <Compile Include="Proxy\Short.cs" />
+    <Compile Include="Proxy\ShortFactory.cs" />
+    <Compile Include="Proxy\StringProxy.cs" />
+    <Compile Include="Proxy\StringProxyFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Qm.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

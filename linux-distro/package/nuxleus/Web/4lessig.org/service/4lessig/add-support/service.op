@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/controller/4lessig/add-support/base.xslt"?>
+<service:operation xmlns:operation="http://xameleon.org/service/operation" xmlns:param="http://xameleon.org/service/session/param" xmlns:lessig="http://xameleon.org/service/lessig" xmlns:service="http://xameleon.org/service">
+  <operation:lessig>
+    <lessig:add-support name="{query-string:name}" location="{query-string:location}"/> 
+  </operation:lessig>
+</service:operation>

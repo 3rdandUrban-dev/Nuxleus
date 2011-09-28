@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/base.xslt"?>
+<service:operation use-clientside-xslt="/service/service/transform/openid-redirect.xsl" xmlns:profile="http://nuxleus.com/profile" xmlns:at="http://atomictalk.org" xmlns:metadata="http://xameleon.org/service/metadata" xmlns:header="http://xameleon.org/service/http/header" xmlns:service="http://xameleon.org/service" xmlns:operation="http://xameleon.org/service/operation" xmlns:aws="http://xameleon.org/function/aws" xmlns:s3="http://xameleon.org/function/aws/s3" xmlns:param="http://xameleon.org/service/session/param">
+  <param:s3-bucket-name>session.amp.fm</param:s3-bucket-name>
+  <param:s3-folder-name>{cookie:openid}</param:s3-folder-name>
+  <param:s3-file-name>session</param:s3-file-name>
+  <param:s3-file-value>{cookie:guid}</param:s3-file-value>
+  <operation:aws>
+    <aws:s3>
+      <at:test>
+        <s3:check-for-existing-key folder="{$s3-folder-name}" file="{$s3-file-name}">
+          <at:IfTrue>
+            <param:key-value>
+              <s3:return-file-content />
+            </param:key-value>
+            <!-- 
+            <at:compare key-value="{$key-value}" compare-with="{$s3-file-value}">
+            
+            </at:compare> 
+            -->
+            <profile:return-profile name="{$s3-folder-name}"/>
+          </at:IfTrue>
+          <at:IfFalse>
+            <s3:write-file content="{$s3-file-value}" />
+          </at:IfFalse>
+        </s3:check-for-existing-key>
+      </at:test>
+    </aws:s3>
+  </operation:aws>
+</service:operation>

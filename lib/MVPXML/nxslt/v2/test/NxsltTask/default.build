@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<project name="NAnt" default="transform">
+    <target name="clean">
+       <delete>
+    <fileset>
+        <include name="out/*.*" />
+    </fileset>
+       </delete>
+    </target>
+    <target name="transform" depends="clean">
+        <loadtasks assembly="../../src/NxsltTasks/bin/Debug/XmlLab.NxsltTasks.dll" />
+
+<!--        <nxslt doc="books.xml" stylesheet="books.xsl" output="catalog.html" show-timings="true"
+         strip-whitespace="true" resolve-externals="true" resolve-xinclude="true" validate="true"
+         pretty-print="true" get-stylesheet-from-pi="true" resolver="foo" assembly-file="foo"
+         assembly-name="foo" multi-output="true" extentions="true" xml-credentials="dd"
+         xslt-credentials="foo" if="false">
+          <params>
+            <param name="foo" value="5"/>
+          </params>
+        </nxslt>-->
+
+        <!-- simple -->
+        <nxslt in="books.xml" style="books.xsl" out="out/catalog.html" />
+        <!-- timings -->
+        <nxslt in="books.xml" style="books.xsl" out="out/catalog2.html" showtimings="true" />
+        <!-- xinclude -->
+        <nxslt in="../../../../MvpXmlLibrary/XInclude/v2/test/tests/document.xml" out="out/document.html" />
+        <nxslt in="../../../../MvpXmlLibrary/XInclude/v2/test/tests/document.xml" 
+        resolvexinclude="false" out="out/document2.html" />
+        <!-- get stylesheet pi -->
+        <nxslt in="books.xml" getstylesheetfrompi="true" out="out/pi.html" />
+        <!-- resolver -->
+        <nxslt in="cache://ext.xml" style="books.xsl" out="out/resolver.html" resolver="Acme.Resolvers.CacheResolver"
+	assemblyfile="D:\projects2005\MVPXML\nxslt\v2\test\NxsltTask\lib\CacheResolver.dll"/>
+	<nxslt in="cache://ext.xml" style="books.xsl" out="out/resolver2.html" resolver="Acme.Resolvers.CacheResolver"
+	assemblyname="CacheResolver, Version=1.0.2161.33858, Culture=neutral, PublicKeyToken=49f505af2b7accbc"/>
+        <!-- params -->
+	<nxslt in="books.xml" style="books.xsl" out="out/params1.html">
+           <parameters>
+               <parameter name="param2" namespaceuri="foo ns" value="param2 value"/>
+               <parameter name="param1" namespaceuri="" value="param1 value"/>
+           </parameters>
+        </nxslt>		
+        <!-- mutexes -->
+        <nxslt in="books.xml" out="out/books-ident.xml">        
+        </nxslt>
+        <!-- infiles -->
+
+        <nxslt style="books.xsl" destdir="out">        
+        <infiles>
+        <include name="in/*.*" />
+        </infiles>
+        </nxslt>
+        <nxslt style="books.xsl" destdir="out" extension="xhtml">        
+        <infiles>
+        <include name="in/*.*" />
+        </infiles>
+        </nxslt>
+	<nxslt in="books.xml" style="books.xsl" out="out/ext1.html" extension="xhtml"/>        
+        <!-- multiout -->
+	<nxslt in="books.xml" style="multibooks.xsl" out="out/multiout.html" multioutput="true"/>        
+        <!-- extensions -->
+	<nxslt in="books.xml" style="ext.xsl" out="out/extobj.html">
+        <extensionobjects>
+	        <extensionobject namespaceuri="ext ns" typename="TestExtLib.MyExtensions" assembly="lib\TestExtLib.dll" />
+	</extensionobjects>
+	</nxslt>
+    </target>
+</project>

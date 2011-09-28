@@ -1,0 +1,7 @@
+stateversion 2
+name ejabberd:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1213207776.134:2.0.1_2-0.1
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+2
+38a2e3f8e38b71ede709715aa3e20fee ejabberd.recipe 6efaa7c844512dca5b9204e4347ac1bb77c20edd config /nuxleus.rpath.org@rpl:devel//nux:devel/2.0.1_2-0.1
+a514775f81db2edd8fb57447d95df212 ejabberd-2.0.1_2.tar.gz ececd0cfc3a8633dec97b42edbcec948a0fec2ff autosource /nuxleus.rpath.org@rpl:devel//nux:devel/2.0.1_2-0.1

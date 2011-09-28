@@ -1,0 +1,276 @@
+<html>
+  <head>
+    <title>Algorithm.Diff.UnifiedDiff</title>
+    <style>
+					a { text-decoration: none }
+				
+					.CollectionTitle { font-weight: bold }
+					.PageTitle { font-size: 150%; font-weight: bold }
+
+					.Summary { }
+					.Signature { }					
+					.Remarks { }
+					.Members { }
+					.Copyright { }
+					
+					.Section { font-size: 125%; font-weight: bold }
+					.SectionBox { margin-left: 2em }
+					.NamespaceName { display: block; font-size: 105%; font-weight: bold; color: #000066; border-bottom: 1px solid black }
+					.NamespaceName:hover { font-style: italic }
+					.NamespaceSumary { }
+					.MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+					.MemberSignature { font-family: monospace; margin-top: 1em; }
+					.MemberBox { }
+					.Subsection { font-size: 105%; font-weight: bold }
+					.SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+					
+					.SignatureTable { background-color: #c0c0c0; }
+					.EnumerationsTable th { background-color: #f2f2f2; }
+					.CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+					
+					.MembersListing td { margin: 0px; border: 1px solid black; padding: .25em }
+					
+					.TypesListing td { margin: 0px;  padding: .25em }
+					
+					.titlebar {
+						color: #efefef;
+						font-size: 14pt;
+						font-family: Trebuchet MS;
+						border: 0;
+						margin: 0;
+						padding: 1em;
+						background: #666666;
+					}
+					.titlebar a {
+						color: #efefef;
+					}
+				</style>
+  </head>
+  <body style="margin: 0px;">
+    <div class="titlebar">
+      <div class="CollectionTitle">
+        <a href="../index.html">Diff</a>
+			:
+			<a href="index.html">Algorithm.Diff Namespace</a></div>
+      <div class="PageTitle">UnifiedDiff</div>
+    </div>
+    <div style="padding: 1em">
+      <p class="Summary">A utility class for generating diffs in the unified diff format.</p>
+      <div class="Signature">
+        <table class="SignatureTable" cellspacing="0" width="100%">
+          <tr>
+            <td>
+              <table class="InnerSignatureTable" cellpadding="10" cellspacing="0" width="100%">
+                <tr bgcolor="#f2f2f2">
+                  <td>public class  <b>UnifiedDiff</b></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <br>
+        </br>
+      </div>
+      <div class="Remarks">
+        <div class="Subsection">Remarks</div>
+        <div class="SubsectionBox">This class has several static members for outputting <a href="../Algorithm.Diff/Diff.html">Algorithm.Diff.Diff</a>s in the unified diff format.</div>
+        <div class="Section">Members</div>
+        <div class="SectionBox">
+          <p>
+						See Also: Inherited members from
+						<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Object">object</a>.
+					</p>
+          <div class="Subsection" style="margin-bottom: .75em">Methods</div>
+          <div class="SubsectionBox">
+            <table Class="MembersListing">
+              <tr valign="top">
+                <td>static </td>
+                <td>
+                  <b>
+                    <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmUnifiedDiff.xmlElementm2m4m0m0m">WriteUnifiedDiff</a>
+                  </b>(<a href="../Algorithm.Diff/Diff.html">Diff</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.IO.TextWriter">System.IO.TextWriter</a>)<div>Writes a diff in unified diff format to a TextWriter.</div></td>
+              </tr>
+              <tr valign="top">
+                <td>static </td>
+                <td>
+                  <b>
+                    <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmUnifiedDiff.xmlElementm3m4m0m0m">WriteUnifiedDiff</a>
+                  </b>(<a href="../Algorithm.Diff/Diff.html">Diff</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.IO.TextWriter">System.IO.TextWriter</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Int32">int</a>)<div>Writes a diff in unified diff format to a TextWriter with the give file names and context.</div></td>
+              </tr>
+              <tr valign="top">
+                <td>static </td>
+                <td>
+                  <b>
+                    <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmUnifiedDiff.xmlElementm1m4m0m0m">WriteUnifiedDiff</a>
+                  </b>(<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.IO.TextWriter">System.IO.TextWriter</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Int32">int</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Boolean">bool</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Boolean">bool</a>)<div>Writes out a line-by-line diff in unified diff format for the two files, specifying whether the comparison is case-sensitive and whitespace-sensitive.</div></td>
+              </tr>
+              <tr valign="top">
+                <td>static </td>
+                <td>
+                  <b>
+                    <a href="#member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmUnifiedDiff.xmlElementm0m4m0m0m">WriteUnifiedDiff</a>
+                  </b>(<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>[], <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>[], <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.IO.TextWriter">System.IO.TextWriter</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Int32">int</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Boolean">bool</a>, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Boolean">bool</a>)<div>Writes out a line-by-line diff in unified diff format for the two documents, specifying whether the comparison is case-sensitive and whitespace-sensitive and the number of context lines.</div></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="Members">
+        <div class="Section">Member Details</div>
+        <div class="SectionBox">
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmUnifiedDiff.xmlElementm0m4m0m0m">
+          </a>
+          <div class="MemberName">WriteUnifiedDiff</div>
+          <div class="MemberSignature">public static <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Void">void</a> <b>WriteUnifiedDiff</b> (<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>[] leftLines, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a> leftName, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a>[] rightLines, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a> rightName, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.IO.TextWriter">System.IO.TextWriter</a> writer, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Int32">int</a> context, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Boolean">bool</a> caseSensitive, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Boolean">bool</a> compareWhitespace)</div>
+          <div class="MemberBox">
+            <p>Writes out a line-by-line diff in unified diff format for the two documents, specifying whether the comparison is case-sensitive and whitespace-sensitive and the number of context lines.</p>
+            <div class="Subsection">Parameters</div>
+            <div class="SubsectionBox">
+              <dl>
+                <dt>
+                  <i>leftLines</i>
+                </dt>
+                <dd>The lines of the left document.</dd>
+                <dt>
+                  <i>leftName</i>
+                </dt>
+                <dd>The name of the left document.</dd>
+                <dt>
+                  <i>rightLines</i>
+                </dt>
+                <dd>The lines of the right document.</dd>
+                <dt>
+                  <i>rightName</i>
+                </dt>
+                <dd>The name of the right document.</dd>
+                <dt>
+                  <i>writer</i>
+                </dt>
+                <dd>The output TextWriter.</dd>
+                <dt>
+                  <i>context</i>
+                </dt>
+                <dd>The number of context lines to include.</dd>
+                <dt>
+                  <i>caseSensitive</i>
+                </dt>
+                <dd>Whether the comparisons are case-sensitive.</dd>
+                <dt>
+                  <i>compareWhitespace</i>
+                </dt>
+                <dd>Whether the comparison should be aware of changes in whitespace.</dd>
+              </dl>
+            </div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">None.</div>
+            <hr size="1">
+            </hr>
+          </div>
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmUnifiedDiff.xmlElementm1m4m0m0m">
+          </a>
+          <div class="MemberName">WriteUnifiedDiff</div>
+          <div class="MemberSignature">public static <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Void">void</a> <b>WriteUnifiedDiff</b> (<a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a> leftFile, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a> rightFile, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.IO.TextWriter">System.IO.TextWriter</a> writer, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Int32">int</a> context, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Boolean">bool</a> caseSensitive, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Boolean">bool</a> compareWhitespace)</div>
+          <div class="MemberBox">
+            <p>Writes out a line-by-line diff in unified diff format for the two files, specifying whether the comparison is case-sensitive and whitespace-sensitive.</p>
+            <div class="Subsection">Parameters</div>
+            <div class="SubsectionBox">
+              <dl>
+                <dt>
+                  <i>leftFile</i>
+                </dt>
+                <dd>The file name for the left document.</dd>
+                <dt>
+                  <i>rightFile</i>
+                </dt>
+                <dd>The file name for the right document.</dd>
+                <dt>
+                  <i>writer</i>
+                </dt>
+                <dd>The output TextWriter.</dd>
+                <dt>
+                  <i>context</i>
+                </dt>
+                <dd>The number of lines of context to include.</dd>
+                <dt>
+                  <i>caseSensitive</i>
+                </dt>
+                <dd>Whether the comparisons are case-sensitive.</dd>
+                <dt>
+                  <i>compareWhitespace</i>
+                </dt>
+                <dd>Whether the comparison should be aware of changes in whitespace.</dd>
+              </dl>
+            </div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">None.</div>
+            <hr size="1">
+            </hr>
+          </div>
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmUnifiedDiff.xmlElementm2m4m0m0m">
+          </a>
+          <div class="MemberName">WriteUnifiedDiff</div>
+          <div class="MemberSignature">public static <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Void">void</a> <b>WriteUnifiedDiff</b> (<a href="../Algorithm.Diff/Diff.html">Diff</a> diff, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.IO.TextWriter">System.IO.TextWriter</a> writer)</div>
+          <div class="MemberBox">
+            <p>Writes a diff in unified diff format to a TextWriter.</p>
+            <div class="Subsection">Parameters</div>
+            <div class="SubsectionBox">
+              <dl>
+                <dt>
+                  <i>diff</i>
+                </dt>
+                <dd>A Diff object that already has the differences between two documents.</dd>
+                <dt>
+                  <i>writer</i>
+                </dt>
+                <dd>The output TextWriter.</dd>
+              </dl>
+            </div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">The default number of lines of context is used.</div>
+            <hr size="1">
+            </hr>
+          </div>
+          <a name="member_Monofilemx003Ammx002Fmmx002Fmmx002Fmhomemx002Fmtauberermx002Fmdevmx002Fmdiffmx002Fmdocmx002FmAlgorithm.Diffmx002FmUnifiedDiff.xmlElementm3m4m0m0m">
+          </a>
+          <div class="MemberName">WriteUnifiedDiff</div>
+          <div class="MemberSignature">public static <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Void">void</a> <b>WriteUnifiedDiff</b> (<a href="../Algorithm.Diff/Diff.html">Diff</a> diff, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.IO.TextWriter">System.IO.TextWriter</a> writer, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a> fromfile, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.String">string</a> tofile, <a href="&#xA;						http://mono.ximian.com:8080/monodoc.ashx?link=T:System.Int32">int</a> context)</div>
+          <div class="MemberBox">
+            <p>Writes a diff in unified diff format to a TextWriter with the give file names and context.</p>
+            <div class="Subsection">Parameters</div>
+            <div class="SubsectionBox">
+              <dl>
+                <dt>
+                  <i>diff</i>
+                </dt>
+                <dd>A Diff object that already has the differences between two documents.</dd>
+                <dt>
+                  <i>writer</i>
+                </dt>
+                <dd>The output TextWriter.</dd>
+                <dt>
+                  <i>fromfile</i>
+                </dt>
+                <dd>The name of the left document.</dd>
+                <dt>
+                  <i>tofile</i>
+                </dt>
+                <dd>The name of the right document.</dd>
+                <dt>
+                  <i>context</i>
+                </dt>
+                <dd>The number of lines of context to include.</dd>
+              </dl>
+            </div>
+            <div class="Subsection">Remarks</div>
+            <div class="SubsectionBox">None.</div>
+            <hr size="1">
+            </hr>
+          </div>
+        </div>
+      </div>
+      <hr size="1" />
+      <div class="Copyright">
+      </div>
+    </div>
+  </body>
+</html>

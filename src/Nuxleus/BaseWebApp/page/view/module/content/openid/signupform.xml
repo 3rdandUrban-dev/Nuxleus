@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container style="base list LtoR width" id="openid-container">
+    <view:item id="center" style="transparency-90">
+    @@openid.error.message@@
+      <form action="/signup" method="post">
+        <label class="openid-form-label">Login:</label>
+	<input type="text" value="" name="login" class="openid-single-input" />
+        <br />
+
+        <label class="openid-form-label">Password:</label>
+	<input type="password" value="" name="password" class="openid-single-input" />
+        <br />
+
+        <label class="openid-form-label">Confirm password:</label>
+	<input type="password" value="" name="confirm_password" class="openid-single-input" />
+        <br />
+
+	<input type="submit" class="Button submit"/>
+      </form>
+    </view:item>
+  </view:container>
+
+</view:module>
+

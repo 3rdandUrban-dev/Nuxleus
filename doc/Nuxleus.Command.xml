@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>obj/Debug/nux</name>
+    </assembly>
+    <members>
+        <member name="T:Nuxleus.Amp.Fm.Search">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.#ctor">
+            <remarks />
+        </member>
+        <member name="E:Nuxleus.Amp.Fm.Search.SearchTitleCompleted">
+            <remarks />
+        </member>
+        <member name="E:Nuxleus.Amp.Fm.Search.SearchArtistCompleted">
+            <remarks />
+        </member>
+        <member name="E:Nuxleus.Amp.Fm.Search.SearchGenreCompleted">
+            <remarks />
+        </member>
+        <member name="E:Nuxleus.Amp.Fm.Search.SearchLyricsCompleted">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchTitle(System.String,System.String[])">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchTitleAsync(System.String,System.String[])">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchTitleAsync(System.String,System.String[],System.Object)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchArtist(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchArtistAsync(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchArtistAsync(System.String,System.Object)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchGenre(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchGenreAsync(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchGenreAsync(System.String,System.Object)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchLyrics(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchLyricsAsync(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.SearchLyricsAsync(System.String,System.Object)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Amp.Fm.Search.CancelAsync(System.Object)">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Amp.Fm.ValueType">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Amp.Fm.SearchTitleCompletedEventHandler">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Amp.Fm.SearchTitleCompletedEventArgs">
+            <remarks />
+        </member>
+        <member name="P:Nuxleus.Amp.Fm.SearchTitleCompletedEventArgs.Result">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Amp.Fm.SearchArtistCompletedEventHandler">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Amp.Fm.SearchArtistCompletedEventArgs">
+            <remarks />
+        </member>
+        <member name="P:Nuxleus.Amp.Fm.SearchArtistCompletedEventArgs.Result">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Amp.Fm.SearchGenreCompletedEventHandler">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Amp.Fm.SearchGenreCompletedEventArgs">
+            <remarks />
+        </member>
+        <member name="P:Nuxleus.Amp.Fm.SearchGenreCompletedEventArgs.Result">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Amp.Fm.SearchLyricsCompletedEventHandler">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Amp.Fm.SearchLyricsCompletedEventArgs">
+            <remarks />
+        </member>
+        <member name="P:Nuxleus.Amp.Fm.SearchLyricsCompletedEventArgs.Result">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Web_References.Amp.Fm.Search">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.#ctor">
+            <remarks />
+        </member>
+        <member name="E:Nuxleus.Web_References.Amp.Fm.Search.SearchTitleCompleted">
+            <remarks />
+        </member>
+        <member name="E:Nuxleus.Web_References.Amp.Fm.Search.SearchArtistCompleted">
+            <remarks />
+        </member>
+        <member name="E:Nuxleus.Web_References.Amp.Fm.Search.SearchGenreCompleted">
+            <remarks />
+        </member>
+        <member name="E:Nuxleus.Web_References.Amp.Fm.Search.SearchLyricsCompleted">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchTitle(System.String,System.String[])">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchTitleAsync(System.String,System.String[])">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchTitleAsync(System.String,System.String[],System.Object)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchArtist(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchArtistAsync(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchArtistAsync(System.String,System.Object)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchGenre(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchGenreAsync(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchGenreAsync(System.String,System.Object)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchLyrics(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchLyricsAsync(System.String)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.SearchLyricsAsync(System.String,System.Object)">
+            <remarks />
+        </member>
+        <member name="M:Nuxleus.Web_References.Amp.Fm.Search.CancelAsync(System.Object)">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Web_References.Amp.Fm.ValueType">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Web_References.Amp.Fm.SearchTitleCompletedEventHandler">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Web_References.Amp.Fm.SearchTitleCompletedEventArgs">
+            <remarks />
+        </member>
+        <member name="P:Nuxleus.Web_References.Amp.Fm.SearchTitleCompletedEventArgs.Result">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Web_References.Amp.Fm.SearchArtistCompletedEventHandler">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Web_References.Amp.Fm.SearchArtistCompletedEventArgs">
+            <remarks />
+        </member>
+        <member name="P:Nuxleus.Web_References.Amp.Fm.SearchArtistCompletedEventArgs.Result">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Web_References.Amp.Fm.SearchGenreCompletedEventHandler">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Web_References.Amp.Fm.SearchGenreCompletedEventArgs">
+            <remarks />
+        </member>
+        <member name="P:Nuxleus.Web_References.Amp.Fm.SearchGenreCompletedEventArgs.Result">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Web_References.Amp.Fm.SearchLyricsCompletedEventHandler">
+            <remarks />
+        </member>
+        <member name="T:Nuxleus.Web_References.Amp.Fm.SearchLyricsCompletedEventArgs">
+            <remarks />
+        </member>
+        <member name="P:Nuxleus.Web_References.Amp.Fm.SearchLyricsCompletedEventArgs.Result">
+            <remarks />
+        </member>
+    </members>
+</doc>

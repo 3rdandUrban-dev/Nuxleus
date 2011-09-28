@@ -1,0 +1,13 @@
+1. Open Visual Studio command prompt
+
+2. Sign assembly using .spc and .pvk files:
+.NET v1.1:
+signcode -spc xmlmvpcert.spc -v xmlmvpkey.pvk -t http://timestamp.verisign.com/scripts/timstamp.dll Mvp.Xml.dll
+
+.NET v2.0:
+See signtool help.
+
+Note: "-t http://timestamp.verisign.com/scripts/timstamp.dll" is an optional.
+
+3. Verify signature
+chktrust -v Mvp.Xml.dll

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/transform/base.xslt"?>
+<service:operation xmlns:service="http://xameleon.org/service" xmlns:operation="http://xameleon.org/service/operation" xmlns:param="http://xameleon.org/service/session/param">
+  <operation:response message-format="xml:message">
+    <operation:echo xmlns:echo="http://xameleon.org/service/echo">
+      <echo:return-query-string />
+    </operation:echo>
+  </operation:response>
+</service:operation>

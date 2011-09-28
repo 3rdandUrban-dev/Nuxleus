@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/controller/proxy/return-images-by-tag-name/base.xslt"?>
+<service:operation xmlns:at="http://atomictalk.org" xmlns:metadata="http://xameleon.org/service/metadata" xmlns:header="http://xameleon.org/service/http/header" xmlns:service="http://xameleon.org/service" xmlns:operation="http://xameleon.org/service/operation" xmlns:proxy="http://xameleon.org/service/proxy" xmlns:param="http://xameleon.org/service/session/param">
+  <operation:proxy>
+    <proxy:return-images-by-tag-name uri="http://api.flickr.com/services/feeds/photos_public.gne?tags=" location="{query-string:location}" topic="{query-string:topic}"/>
+  </operation:proxy>
+</service:operation>

@@ -1,0 +1,3 @@
+buildLabel      nuxleus.rpath.org@nux:devel
+buildPath       ~/conary/nuxleus.rpath.org/builds
+lookaside       ~/conary/nuxleus.rpath.org/cache

@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<project xmlns="http://nant.sf.net/release/0.85/nant.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nant.sf.net/release/0.85/nant.xsd http://nant.sourceforge.net/release/0.85/nant.xsd" name="saxon9" default="all">
+  <property name="saxon.version" value="9.1.0.7"/>
+  <property name="pathsep" value=":" />
+  <property name="keyfile" value="../../resources/Extf.Net.snk"/>
+  <property name="saxon9-dir" value="${project::get-base-directory()}/Saxon" />
+  <property name="jar-dir" value="${project::get-base-directory()}/jars"/>
+  <property name="unix-directory" value="${project::get-base-directory()}/unix"/>
+  <property name="unix-bin-path" value="${unix-directory}/usr/local/wbin"/>
+  <property name="unix-patch" value="${unix-bin-path}/patch"/>
+  <property name="cp-stub-dir" value="${jar-dir}" />
+  <property name="javac-jars-dir" value="./javac-jars" />
+  <property name="jars-dir" value="./jars" />
+  <property name="dom4j-jar" value="${javac-jars-dir}/dom4j-1.6.1.jar"/>
+  <property name="jdom-jar" value="${javac-jars-dir}/jdom-1.0.jar"/>
+  <property name="xom-jar" value="${javac-jars-dir}/xom-1.1.jar"/>
+  <property name="stax-jar" value="${javac-jars-dir}/stax-api-1.0.1.jar"/>
+  <property name="servlet-jar" value="${javac-jars-dir}/servlet.jar"/>
+  <property name="ikvm.home" value="IKVM.NET/ikvm-0.40.0.1/bin"/>
+  <property name="lib.dir" value="../../lib"/>
+  <property name="build.release" value="false" unless="${property::exists('build.release')}"/>
+  <property name="doc.dir" value="../../docs"/>
+  <property name="build.dir" value="../../build/bin"/>
+  <if test="${platform::is-win32()}">
+    <property name="pathsep" value=";" />
+  </if>
+  <target name="checkout">
+    <exec program="svn" commandline="co https://saxon.svn.sourceforge.net/svnroot/saxon/tags/${saxon.version}" />
+  </target>
+  <target name="export">
+    <delete failonerror="false" dir="Saxon" />
+    <exec program="svn" commandline="export ${saxon.version}/bj Saxon" />
+  </target>
+  <target name="allsources" depends="checkout export">
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/ant" />
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/s9api" />
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/dom" />
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/jdom" />
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/dom4j" />
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/java" />
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/xom" />
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/xpath" />
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/xqj" />
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/pull/PullToStax.java" />
+    <delete failonerror="false" dir="Saxon/net/sf/saxon/pull/StaxBridge.java" />
+    <if test="${platform::is-win32()}">
+      <exec program="cmd" commandline="/c dir /s/b Saxon\*.java > allsources.lst" />
+    </if>
+    <if test="${platform::is-unix()}">
+      <exec output="allsources.lst" program="find" commandline="Saxon -name *.java" />
+    </if>
+  </target>
+  <target name="replace-javaonly-tokens">
+    <if failonerror="true" test="${replace::textinfile('Saxon/net/sf/saxon/Configuration.java', '/\*JAVAONLY\*/', '//')}">
+      <echo message="Successfully replaced text."/>
+    </if>
+  </target>
+  <target name="get-third-party-jars" description="Download third-party jar files.">
+    <if test="${not directory::exists(javac-jars-dir)}">
+      <mkdir dir="${javac-jars-dir}"/>
+    </if>
+    <call target="get-dom4j-jar" if="${not file::exists(dom4j-jar)}"/>
+    <call target="get-jdom-jar" if="${not file::exists(jdom-jar)}"/>
+    <call target="get-xom-jar" if="${not file::exists(xom-jar)}"/>
+    <call target="get-stax-jar" if="${not file::exists(stax-jar)}"/>
+    <call target="get-servlet-jar" if="${not file::exists(servlet-jar)}"/>
+  </target>
+  <target name="get-dom4j-jar">
+    <get src="http://mirrors.ibiblio.org/pub/mirrors/maven2/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar" dest="${dom4j-jar}" />
+  </target>
+  <target name="get-jdom-jar">
+    <get src="http://www.ibiblio.org/maven/jdom/jars/jdom-1.0.jar" dest="${jdom-jar}" />
+  </target>
+  <target name="get-xom-jar">
+    <get src="http://www.cafeconleche.org/XOM/xom-1.1.jar" dest="${xom-jar}" />
+  </target>
+  <target name="get-stax-jar">
+    <get src="http://dist.codehaus.org/stax/jars/stax-api-1.0.1.jar" dest="${stax-jar}" />
+  </target>
+  <target name="get-servlet-jar">
+    <get src="http://www.java2s.com/Code/JarDownload/servlet.jar.zip" dest="${servlet-jar}.zip" />
+    <unzip zipfile="${servlet-jar}.zip" todir="${javac-jars-dir}"/>
+    <delete failonerror="false" file="${servlet-jar}.zip" />
+  </target>
+  <target name="cp.depends" depends="allsources get-third-party-jars">
+    <property name="saxon9-dir" value="${project::get-base-directory()}/Saxon" />
+    <property name="allsources" value="allsources.lst" />
+  </target>
+  <target name="classes" depends="cp.depends replace-javaonly-tokens" description="Saxon9 Java Classes">
+    <delete>
+      <fileset basedir="${saxon9-dir}">
+        <include name="**.class"/>
+      </fileset>
+    </delete>
+    <delete>
+      <fileset basedir=".">
+        <include name="**.class"/>
+      </fileset>
+    </delete>
+    <exec program="javac" commandline="-g -target 1.5 -nowarn -cp ./jars/mscorlib.jar${pathsep}./jars/System.jar${pathsep}./jars/System.Xml.jar${pathsep}./jars/System.Security.jar${pathsep}./jars/IKVM.OpenJDK.ClassLibrary.jar${pathsep}./jars/IKVM.Runtime.jar${pathsep}./javac-jars/stax-api-1.0.1.jar${pathsep}./javac-jars/dom4j-1.6.1.jar${pathsep}./javac-jars/xom-1.1.jar${pathsep}./javac-jars/servlet.jar${pathsep}./javac-jars/jdom-1.0.jar @${allsources}" useruntimeengine="false" />
+  </target>
+  <target name="saxon9" depends="classes">
+    <if test="${not file::exists('./javac-jars/mscorlib.jar')}">
+      <copy file="./jars/mscorlib.jar" tofile="./javac-jars/mscorlib.jar" failonerror="true"/>
+    </if>
+    <exec program="ikvmc" useruntimeengine="false">
+      <arg value="-version:${saxon.version}" />
+      <arg value="-compressresources" />
+      <arg value="-opt:fields" />
+      <arg value="-strictfinalfieldsemantics" />
+      <arg value="-out:saxon9.dll" />
+            <!--<arg value="-exclude:exclude.lst" />-->
+      <arg value="-target:library" />
+            <!-- <arg value="-recurse:${jar-dir}/*.jar" /> -->
+      <arg value="-recurse:${javac-jars-dir}/*.jar" />
+      <arg value="-recurse:${saxon9-dir}/*.class" />
+      <arg value="-nowarn:0109"/>
+      <arg value="-nowarn:0105"/>
+            <!-- <arg value="-nowarn:0102"/> -->
+      <arg value="-keyfile:${keyfile}"/>
+      <arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.dll" />
+      <arg value="-r:${framework::get-assembly-directory(framework::get-target-framework())}/System.Xml.dll" />
+            <!-- <arg value="-resource:META-INF/MANIFEST.MF=META-INF/MANIFEST.MF" /> -->
+      <arg value="-resource:META-INF/services/javax.xml.transform.TransformerFactory=META-INF/services/javax.xml.transform.TransformerFactory" />
+      <arg value="-resource:META-INF/services/javax.xml.xpath.XPathFactory=META-INF/services/javax.xml.xpath.XPathFactory" />
+    </exec>
+    <copy file="saxon9.dll" tofile="${lib.dir}/saxon9.dll"/>
+  </target>
+  <target name="Saxon.Api" depends="saxon9">
+    <csc target="library" output="${build.dir}/${target::get-current-target()}.dll" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+      <sources>
+        <include name="${saxon.version}/bn/csource/api/Saxon.Api/*.cs"/>
+      </sources>
+      <references>
+        <include name="${lib.dir}/saxon9.dll"/>
+        <include name="${lib.dir}/IKVM.Runtime.dll"/>
+        <include name="${lib.dir}/IKVM.OpenJDK.Core.dll"/>
+        <include name="${lib.dir}/IKVM.OpenJDK.XML.dll"/>
+        <include name="${lib.dir}/IKVM.OpenJDK.Misc.dll"/>
+        <include name="${lib.dir}/IKVM.OpenJDK.SwingAWT.dll"/>
+        <include name="${lib.dir}/IKVM.OpenJDK.Util.dll"/>
+        <include name="${lib.dir}/IKVM.OpenJDK.Jdbc.dll"/>
+        <include name="${lib.dir}/IKVM.OpenJDK.Text.dll"/>
+        <include name="System.dll"/>
+        <include name="System.Xml.dll"/>
+      </references>
+    </csc>
+    <copy file="${build.dir}/${target::get-current-target()}.dll" tofile="${lib.dir}/${target::get-current-target()}.dll"/>
+  </target>
+  <target name="Transform">
+    <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+      <sources>
+        <include name="${saxon.version}/bn/csource/cmd/Transform.cs"/>
+      </sources>
+      <references>
+        <include name="${lib.dir}/Saxon.Api.dll"/>
+        <include name="${lib.dir}/saxon9.dll"/>
+        <include name="${lib.dir}/IKVM.Runtime.dll"/>
+        <include name="${lib.dir}/IKVM.OpenJDK.Charsets.dll"/>
+        <include name="System.dll"/>
+        <include name="System.Xml.dll"/>
+      </references>
+    </csc>
+    <copy file="${build.dir}/${target::get-current-target()}.exe" tofile="${lib.dir}/${target::get-current-target()}.exe"/>
+  </target>
+  <target name="Query">
+    <csc target="exe" output="${build.dir}/${target::get-current-target()}.exe" keyfile="${keyfile}" debug="${not build.release}" optimize="${build.release}" doc="${doc.dir}/${target::get-current-target()}.xml">
+      <sources>
+        <include name="${saxon.version}/bn/csource/cmd/Query.cs"/>
+      </sources>
+      <references>
+        <include name="${lib.dir}/Saxon.Api.dll"/>
+        <include name="${lib.dir}/saxon9.dll"/>
+        <include name="${lib.dir}/IKVM.Runtime.dll"/>
+        <include name="${lib.dir}/IKVM.OpenJDK.Charsets.dll"/>
+        <include name="System.dll"/>
+        <include name="System.Xml.dll"/>
+      </references>
+    </csc>
+    <copy file="${build.dir}/${target::get-current-target()}.exe" tofile="${lib.dir}/${target::get-current-target()}.exe"/>
+  </target>
+  <target name="all">
+    <call target="Saxon.Api" />
+    <call target="Transform" />
+    <call target="Query" />
+  </target>
+  <target name="clean">
+    <delete failonerror="false" file="allsources.lst" />
+    <delete failonerror="false" file="saxon9.dll" />
+    <delete failonerror="false" file="Saxon.Api.dll" />
+    <delete failonerror="false" file="Transform.exe" />
+    <delete failonerror="false" file="Query.exe" />
+    <delete failonerror="false" dir="Saxon" />
+  </target>
+  <script language="C#" prefix="replace">
+    <code>
+    <![CDATA[
+      [Function("textinfile")]
+      static public bool ReplaceInFile(string filePath, string searchText, string replaceText)
+      {
+        try {
+          string content;
+          using (System.IO.StreamReader reader = new StreamReader(filePath)) {
+            content = reader.ReadToEnd();
+          }
+          
+          content = System.Text.RegularExpressions.Regex.Replace( content, searchText, replaceText );
+          
+          using(System.IO.StreamWriter writer = new StreamWriter(filePath)){
+            writer.Write( content );
+          }
+          
+          return true;
+          
+        } catch {
+          return false;
+        }
+      }
+    ]]>
+    </code>
+  </script>
+</project>
+
+

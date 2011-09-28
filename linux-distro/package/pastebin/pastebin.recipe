@@ -1,0 +1,21 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+loadSuperClass('binarypackage=conary.rpath.com@rpl:devel')
+class PasteBin(BinaryPackageRecipe):
+
+    buildRequires = ['mono:runtime', 'pkgconfig:devel', 'mono:lib', 'mono:cil', 'mono:devel', 'Phalanger' ]
+
+    name = "pastebin"
+    version = "0.60"
+
+    def setup(r):
+	r.macros.nuxleusparentpath = '/srv'
+	r.macros.wwwroot = '/wwwroot/public_web'
+	r.addArchive('http://pastebin.com/pastebin.tar.gz', dir='%(nuxleusparentpath)s/%(wwwroot)s/')
+	r.Move('%(nuxleusparentpath)s/%(wwwroot)s/%(name)s-%(version)s', '%(nuxleusparentpath)s/%(wwwroot)s/%(name)s')
+	r.Requires(exceptions=r'\.*(php|py|vs|exe|dll|xbap|zip|st|deploy|xaml|xml|xsl|xslt|op|omx|config|aspx|asmx|asax)')
+	r.Provides(exceptions=r'\.*(php|py|vs|exe|dll|xbap|zip|st|deploy|xaml|xml|xsl|xslt|op|omx|config|aspx|asmx|asax)')

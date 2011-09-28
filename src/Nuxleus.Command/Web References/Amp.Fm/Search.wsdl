@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:s0="http://amp.fm/service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" name="Search" targetNamespace="http://amp.fm/service" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://amp.fm/service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfString">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SearchTitle">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="searchPhrase" type="xs:string" />
+            <xs:element minOccurs="0" maxOccurs="1" name="additionalSearchParams" type="s0:ArrayOfString" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="ArrayOfAnyType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SearchTitleResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="SearchTitleResult" type="s0:ArrayOfAnyType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchArtist">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="artistName" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchArtistResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="SearchArtistResult" type="s0:ArrayOfAnyType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchGenre">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="genre" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchGenreResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="SearchGenreResult" type="s0:ArrayOfAnyType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchLyrics">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="searchPhrase" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SearchLyricsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="1" name="SearchLyricsResult" type="s0:ArrayOfAnyType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ArrayOfAnyType" nillable="true" type="s0:ArrayOfAnyType" />
+    </xs:schema>
+    <xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ValueType" />
+      <xs:complexType name="Entity">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ValueType">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="1" name="Term" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Label" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="1" name="Scheme" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://amp.fm/service/AbstractTypes" targetNamespace="http://amp.fm/service/AbstractTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xs:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xs:complexType name="ArrayOfString">
+        <xs:complexContent mixed="false">
+          <xs:restriction base="soapenc:Array">
+            <xs:attribute xmlns:d7p1="http://schemas.xmlsoap.org/wsdl/" d7p1:arrayType="xs:string[]" ref="soapenc:arrayType" />
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="SearchTitleSoapIn">
+    <part name="parameters" element="s0:SearchTitle" />
+  </message>
+  <message name="SearchTitleSoapOut">
+    <part name="parameters" element="s0:SearchTitleResponse" />
+  </message>
+  <message name="SearchArtistSoapIn">
+    <part name="parameters" element="s0:SearchArtist" />
+  </message>
+  <message name="SearchArtistSoapOut">
+    <part name="parameters" element="s0:SearchArtistResponse" />
+  </message>
+  <message name="SearchGenreSoapIn">
+    <part name="parameters" element="s0:SearchGenre" />
+  </message>
+  <message name="SearchGenreSoapOut">
+    <part name="parameters" element="s0:SearchGenreResponse" />
+  </message>
+  <message name="SearchLyricsSoapIn">
+    <part name="parameters" element="s0:SearchLyrics" />
+  </message>
+  <message name="SearchLyricsSoapOut">
+    <part name="parameters" element="s0:SearchLyricsResponse" />
+  </message>
+  <message name="SearchTitleHttpGetIn">
+    <part name="searchPhrase" type="s:string" />
+    <part xmlns:q1="http://amp.fm/service/AbstractTypes" name="additionalSearchParams" type="q1:ArrayOfString" />
+  </message>
+  <message name="SearchTitleHttpGetOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="SearchArtistHttpGetIn">
+    <part name="artistName" type="s:string" />
+  </message>
+  <message name="SearchArtistHttpGetOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="SearchGenreHttpGetIn">
+    <part name="genre" type="s:string" />
+  </message>
+  <message name="SearchGenreHttpGetOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="SearchLyricsHttpGetIn">
+    <part name="searchPhrase" type="s:string" />
+  </message>
+  <message name="SearchLyricsHttpGetOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="SearchTitleHttpPostIn">
+    <part name="searchPhrase" type="s:string" />
+    <part xmlns:q2="http://amp.fm/service/AbstractTypes" name="additionalSearchParams" type="q2:ArrayOfString" />
+  </message>
+  <message name="SearchTitleHttpPostOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="SearchArtistHttpPostIn">
+    <part name="artistName" type="s:string" />
+  </message>
+  <message name="SearchArtistHttpPostOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="SearchGenreHttpPostIn">
+    <part name="genre" type="s:string" />
+  </message>
+  <message name="SearchGenreHttpPostOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <message name="SearchLyricsHttpPostIn">
+    <part name="searchPhrase" type="s:string" />
+  </message>
+  <message name="SearchLyricsHttpPostOut">
+    <part name="Body" element="s0:ArrayOfAnyType" />
+  </message>
+  <portType name="SearchSoap">
+    <operation name="SearchTitle">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of media file titles that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchTitleSoapIn" />
+      <output message="s0:SearchTitleSoapOut" />
+    </operation>
+    <operation name="SearchArtist">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of artists that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchArtistSoapIn" />
+      <output message="s0:SearchArtistSoapOut" />
+    </operation>
+    <operation name="SearchGenre">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of genres that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchGenreSoapIn" />
+      <output message="s0:SearchGenreSoapOut" />
+    </operation>
+    <operation name="SearchLyrics">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of media files whos associated lyrics contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchLyricsSoapIn" />
+      <output message="s0:SearchLyricsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SearchSoap12">
+    <operation name="SearchTitle">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of media file titles that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchTitleSoapIn" />
+      <output message="s0:SearchTitleSoapOut" />
+    </operation>
+    <operation name="SearchArtist">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of artists that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchArtistSoapIn" />
+      <output message="s0:SearchArtistSoapOut" />
+    </operation>
+    <operation name="SearchGenre">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of genres that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchGenreSoapIn" />
+      <output message="s0:SearchGenreSoapOut" />
+    </operation>
+    <operation name="SearchLyrics">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of media files whos associated lyrics contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchLyricsSoapIn" />
+      <output message="s0:SearchLyricsSoapOut" />
+    </operation>
+  </portType>
+  <portType name="SearchHttpGet">
+    <operation name="SearchTitle">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of media file titles that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchTitleHttpGetIn" />
+      <output message="s0:SearchTitleHttpGetOut" />
+    </operation>
+    <operation name="SearchArtist">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of artists that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchArtistHttpGetIn" />
+      <output message="s0:SearchArtistHttpGetOut" />
+    </operation>
+    <operation name="SearchGenre">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of genres that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchGenreHttpGetIn" />
+      <output message="s0:SearchGenreHttpGetOut" />
+    </operation>
+    <operation name="SearchLyrics">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of media files whos associated lyrics contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchLyricsHttpGetIn" />
+      <output message="s0:SearchLyricsHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="SearchHttpPost">
+    <operation name="SearchTitle">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of media file titles that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchTitleHttpPostIn" />
+      <output message="s0:SearchTitleHttpPostOut" />
+    </operation>
+    <operation name="SearchArtist">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of artists that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchArtistHttpPostIn" />
+      <output message="s0:SearchArtistHttpPostOut" />
+    </operation>
+    <operation name="SearchGenre">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of genres that contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchGenreHttpPostIn" />
+      <output message="s0:SearchGenreHttpPostOut" />
+    </operation>
+    <operation name="SearchLyrics">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of media files whos associated lyrics contain the specified search phrase</wsdl:documentation>
+      <input message="s0:SearchLyricsHttpPostIn" />
+      <output message="s0:SearchLyricsHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="SearchSoap" type="s0:SearchSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="SearchTitle">
+      <soap:operation soapAction="http://amp.fm/service/SearchTitle" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchArtist">
+      <soap:operation soapAction="http://amp.fm/service/SearchArtist" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchGenre">
+      <soap:operation soapAction="http://amp.fm/service/SearchGenre" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchLyrics">
+      <soap:operation soapAction="http://amp.fm/service/SearchLyrics" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SearchSoap12" type="s0:SearchSoap12">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="SearchTitle">
+      <soap12:operation soapAction="http://amp.fm/service/SearchTitle" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchArtist">
+      <soap12:operation soapAction="http://amp.fm/service/SearchArtist" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchGenre">
+      <soap12:operation soapAction="http://amp.fm/service/SearchGenre" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+    <operation name="SearchLyrics">
+      <soap12:operation soapAction="http://amp.fm/service/SearchLyrics" style="document" />
+      <input>
+        <soap12:body use="literal" />
+      </input>
+      <output>
+        <soap12:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SearchHttpGet" type="s0:SearchHttpGet">
+    <http:binding verb="GET" />
+    <operation name="SearchTitle">
+      <http:operation location="/SearchTitle" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchArtist">
+      <http:operation location="/SearchArtist" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchGenre">
+      <http:operation location="/SearchGenre" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchLyrics">
+      <http:operation location="/SearchLyrics" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="SearchHttpPost" type="s0:SearchHttpPost">
+    <http:binding verb="POST" />
+    <operation name="SearchTitle">
+      <http:operation location="/SearchTitle" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchArtist">
+      <http:operation location="/SearchArtist" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchGenre">
+      <http:operation location="/SearchGenre" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="SearchLyrics">
+      <http:operation location="/SearchLyrics" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Search">
+    <port name="SearchSoap" binding="s0:SearchSoap">
+      <soap:address location="http://dev.amp.fm:8080/service/search/default.asmx" />
+    </port>
+    <port name="SearchSoap12" binding="s0:SearchSoap12">
+      <soap12:address location="http://dev.amp.fm:8080/service/search/default.asmx" />
+    </port>
+    <port name="SearchHttpGet" binding="s0:SearchHttpGet">
+      <http:address location="http://dev.amp.fm:8080/service/search/default.asmx" />
+    </port>
+    <port name="SearchHttpPost" binding="s0:SearchHttpPost">
+      <http:address location="http://dev.amp.fm:8080/service/search/default.asmx" />
+    </port>
+  </service>
+</definitions>

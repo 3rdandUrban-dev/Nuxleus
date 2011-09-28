@@ -1,0 +1,7 @@
+stateversion 2
+name python25:source
+version /nuxleus.rpath.org@nux:devel/1230463611.166:2.5.4-1
+branch /nuxleus.rpath.org@nux:devel
+2
+07d75e7cae010993c9ad77e2f30f7063 Python-2.5.4.tar.bz2 2ad8edf5615e6395e8648960dfef8c080e2a52c6 autosource /nuxleus.rpath.org@nux:devel/2.5.4-1
+d0d8248f38ed184c3ddf6ca7d69cbc11 python25.recipe 3b351ef935f1eca436717a1b322f1d460f9c1133 config /nuxleus.rpath.org@nux:devel/2.5.4-1

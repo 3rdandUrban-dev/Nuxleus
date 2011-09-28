@@ -1,0 +1,9 @@
+stateversion 2
+name subversion:source
+version /conary.rpath.com@rpl:devel//2//nuxleus.rpath.org@nux:devel/1247161103.922:1.4.6-2.1.2
+branch /conary.rpath.com@rpl:devel//2//nuxleus.rpath.org@nux:devel
+4
+58db121df6ae1ea0d33093f1d017399b subversion-1.4.6.tar.bz2 9b70b8cd22195fae7e79a09ce4610569404e3c5c autosource /conary.rpath.com@rpl:devel/1.4.6-1
+72456027a23fd431f3059b3976a770ec useraccess 65a0ec153d5072e206595aaa3253b4d3b988f8a5 config /conary.rpath.com@rpl:devel/1.2.3-8
+ad9b45c940fca61503293b0f8b821ba4 subversion.conf e8fe727fc6561b75734c2f8468c3758324f8e47e config /conary.rpath.com@rpl:devel/1.2.3-8
+e43470e6156cd2182e57a8159da74ecd subversion.recipe 1d43bc25b0dd3286049b482f9a3af3febb644843 config /conary.rpath.com@rpl:devel//2//nuxleus.rpath.org@nux:devel/1.4.6-2.1.2

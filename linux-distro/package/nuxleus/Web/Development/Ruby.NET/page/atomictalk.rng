@@ -1,0 +1,49 @@
+namespace advice = "http://atomictalk.org/page/advice"
+namespace body = "http://atomictalk.org/page/output/body"
+namespace head = "http://atomictalk.org/page/output/head"
+namespace my = "http://xameleon.org/my"
+namespace page = "http://atomictalk.org/page"
+namespace view = "http://atomictalk.org/page/view"
+
+start =
+  element my:session {
+    element my:page {
+      element page:config {
+        attribute src { text },
+        element page:advice {
+          element advice:page-title { text },
+          element advice:location.label { xsd:NCName },
+          element advice:base.theme { xsd:NMTOKEN },
+          element advice:current-location { text },
+          element advice:current-location.label { text }
+        }
+      },
+      element page:output {
+        element page:head {
+          element head:title { text },
+          element head:link {
+            attribute href { xsd:anyURI },
+            attribute rel { text },
+            attribute title { text }?,
+            attribute type { text }
+          }+,
+          element head:include {
+            attribute fileType { xsd:NCName },
+            attribute href { text }
+          }+
+        },
+        element page:body {
+          element body:layout { container }
+        }
+      }
+    }
+  }
+container =
+  element view:container {
+    attribute id { xsd:NCName }?,
+    element view:module {
+      attribute id { xsd:NCName }?,
+      attribute src { text }?,
+      container?
+    }*
+  }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/page/controller/atomictalk/base.xsl"?>
+<my:session xmlns:my="http://xameleon.org/my" xmlns:doc="http://atomictalk.org/feed/doc">
+  <my:page xmlns:page="http://atomictalk.org/page" xmlns:output="http://atomictalk.org/page/output" xmlns:head="http://atomictalk.org/page/output/head" xmlns:body="http://atomictalk.org/page/output/body" xmlns:advice="http://atomictalk.org/page/advice">
+    <page:config src="/page/config/config.xml">
+      <page:advice>
+        <advice:page-title>@@domain.label@@</advice:page-title>
+        <advice:location.label>amp.fm</advice:location.label>
+        <advice:base.theme>993300-999999</advice:base.theme>
+        <advice:current-location>@@base-uri@@/@@location@@</advice:current-location>
+        <advice:current-location.label>your local scene</advice:current-location.label>
+        <advice:map.feed>http://feed.amp.fm/2007/10/20/gigs.atom</advice:map.feed>
+      </page:advice>
+    </page:config>
+    <page:output>
+      <page:head src="/page/output/head/base.xml">
+        <head:include fileType="javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=@@google.maps.key@@" />
+      </page:head>
+      <page:body src="/page/output/body/m/base.xml" />
+    </page:output>
+  </my:page>
+</my:session>

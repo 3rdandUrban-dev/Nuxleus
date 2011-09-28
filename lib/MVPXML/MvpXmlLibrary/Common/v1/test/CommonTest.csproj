@@ -1,0 +1,471 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{17955FFF-E5FC-43B8-B390-86E370658CB1}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "Mvp.Xml.Common.Test"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                PreBuildEvent = ""
+                PostBuildEvent = ""
+                RootNamespace = "Mvp.Xml.Tests"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\Debug\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "bin\Release\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+                <Reference
+                    Name = "nunit.framework"
+                    AssemblyName = "nunit.framework"
+                    HintPath = "..\..\..\..\..\Program Files\NUnit 2.2\bin\nunit.framework.dll"
+                    AssemblyFolderKey = "hklm\dn\nunit.framework"
+                />
+                <Reference
+                    Name = "Common"
+                    Project = "{12B8D3E3-4362-4E91-A3D2-37473083B47A}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "System.Management"
+                    AssemblyName = "System.Management"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Management.dll"
+                />
+                <Reference
+                    Name = "System.Configuration.Install"
+                    AssemblyName = "System.Configuration.Install"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Configuration.Install.dll"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "BaseReader.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "changelog.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DebuggingXmlTextReader.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "DebuggingXPathNavigator.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "DebugUtils.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Globals.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "IndexingXPathNavigatorTest.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "library.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Misc.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "northwind.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "PerfTest.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "pubs.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "pubsNs.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "pubsNs.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "pubsNs.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "pubsNs.xsx"
+                    DependentUpon = "pubsNs.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "XmlNodeFactoryTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlNodeListFactoryTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlParsedWriterTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XMLSchema2.htm"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XPathCacheTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPathCacheUsability.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPathSortBug.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "SubtreeeXPathNavigatorTests\nodecopy.xsl"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "SubtreeeXPathNavigatorTests\print_root.xsl"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "SubtreeeXPathNavigatorTests\test.xsl"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "SubtreeeXPathNavigatorTests\Tests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UpperLowerTests\Customer.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "UpperLowerTests\Customer.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UpperLowerTests\Customer.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "UpperLowerTests\Customer.xsx"
+                    DependentUpon = "Customer.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "UpperLowerTests\FirstUpperLowerTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlBaseAwareXmlTextReaderTests\relativeTest.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XmlBaseAwareXmlTextReaderTests\test.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XmlBaseAwareXmlTextReaderTests\Tests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlFragments\publishers.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XmlFragments\Tests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlNodeNavigatorTests\test.xsl"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XmlNodeNavigatorTests\Tests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\PerfCounterManagerTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\PerfCounterTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\StringSorterHelperTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\ThumbprintHelpers.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlAnyElementThumbprintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlArrayItemThumbprintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlArrayThumbprintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlAttributeOverridesThumbprinterTester.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlAttributeThumbprintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlChoiceIndetifierPrintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlDefaultValuePrintTest.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlElementThumbprintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlEnumAttributeThumbprintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlIgnoreThumbprintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlNamespaceThumbprintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlRootThumbprintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlSerializerCacheTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlSerializerCacheTests\XmlTextThumbprintTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlTransformingReaderTests\input.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XmlTransformingReaderTests\test.xsl"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XmlTransformingReaderTests\Tests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPathIteratorReaderTests\rss.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XPathIteratorReaderTests\Tests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\ImportedSchema1.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\ImportedSchema1.xsx"
+                    DependentUpon = "ImportedSchema1.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\ImportedSchema2.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\ImportedSchema2.xsx"
+                    DependentUpon = "ImportedSchema2.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\mixedNs.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\NamespaceValidation.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\pubspublishers.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\pubspublishers.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\pubspublishers.xsx"
+                    DependentUpon = "pubspublishers.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\pubstitles.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\pubstitles.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\pubstitles.xsx"
+                    DependentUpon = "pubstitles.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\RootSchema.xsd"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\RootSchema.xsx"
+                    DependentUpon = "RootSchema.xsd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "XPathNavigatorReaderTests\Tests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

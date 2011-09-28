@@ -1,0 +1,45 @@
+#view {
+  padding:.035em .25em .085em;
+}
+#view > ul {
+  padding:0 .28em .15em;
+  margin:0;
+}
+#view > ul > li > a {
+  padding:.15em .35em .18em;
+}
+#sub-nav {
+ margin-top:0em;
+ margin-bottom: 0em; 
+}
+#sub-nav > ul {
+padding:.15em 0 .1em;
+}
+#sub-nav-menu a {
+padding:.3em .5em .15em;
+}
+#sub-nav-menu a:hover {
+padding:.32em .5em .17em;
+}
+.menu a {
+  padding:.15em .5em;
+}
+.menu a:hover {
+  padding:.22em .5em;
+}
+.menu li.selected a {
+  padding:.45em .5em;
+  margin-right:.25em;
+}
+#top-nav-menu .domain a {
+  padding:0 .5em;
+}
+#search-box {
+ bottom:.4em;
+}
+#title {
+ border-bottom: 2px solid #993300; 
+}
+#openid {
+ bottom:.15em;
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xameleon</name>
+    </assembly>
+    <members>
+        <member name="T:Nuxleus.Transform.Transform">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Transform.Transform.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Nuxleus.ResultDocumentHandler.S3ResultDocumentHandler">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Nuxleus.ResultDocumentHandler.S3ResultDocumentHandler.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Nuxleus.ResultDocumentHandler.S3ResultDocumentHandler.#ctor(System.Collections.Hashtable)">
+            <summary>
+            </summary>
+            <param name="table"></param>
+        </member>
+        <member name="M:Xameleon.Function.Facebook.GetAuthenticationToken(System.Web.HttpContext)">
+            <summary>
+            First function to call in order to get the authentication token used to
+            sign the user in and open his session.
+            </summary>
+        </member>
+        <member name="M:Xameleon.Function.Facebook.SignInUser(System.Web.HttpContext)">
+            <summary>
+            Called to sign the user in and activate the acknowledge the authentication token.
+            This must be called before OpenUserSession.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.UrlResolver.S3XmlResolver">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Nuxleus.UrlResolver.NuxleusXmlResolver">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:Xameleon.Function.HttpWebResponseStream.GetResponseString(System.IO.Stream)">
+            <summary>
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

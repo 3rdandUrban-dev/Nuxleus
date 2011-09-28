@@ -1,0 +1,11 @@
+stateversion 2
+name lighttpd:source
+version /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1239467115.035:1.4.22-0.2
+branch /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel
+6
+02996f1c66cb02b02e625da6297d3bd6 lighttpd-1.4.22.tar.gz 2dd6f054edf61f0a7687ce47aac83445882cf1f7 autosource /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1.4.22-0.1
+5540f18e0b1e7c2426768a2abb441e7e error.log ae4424012e7b78ec09f2ecba6f4f387b3c82faf7 config /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1.4.18-0.2
+8321a7d62972de5d65a938806b8b113d access.log ae4424012e7b78ec09f2ecba6f4f387b3c82faf7 config /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1.4.18-0.2
+a2e64733df310179f027f3e8e8df703c lighttpd-1.4.11-ssl-buffer-fix.patch 299e751074a1667af9511666d65561f9bcbf63d1 config /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1.4.18-0.2
+c0c227d6682df7465303eba5b14ee682 lighttpd.conf 7cdb2cb38fddad58edbe1349eb2071cdb50a4755 config /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1.4.20-0.1
+fe2bce82fbf0a78f7e2bb7efc9fe55b2 lighttpd.recipe ad576111175c7fbc525bd94be1bdc6038810dad2 config /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1.4.22-0.2

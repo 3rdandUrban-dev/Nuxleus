@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:cf="http://www.microsoft.com/schemas/rss/core/2005" xmlns:vote="http://whattheyshouldhavesaid.org/vote">
+	<title>WhatTheyShouldHaveSaid.org</title>
+	<link rel="alternate" type="text/html" href="http://whattheyshouldhavesaid.org/question/1.html"/>
+	<link rel="self" type="application/atom+xml" href="http://whattheyshouldhavesaid.org/question/1.atom"/>
+	<link rel="next" type="application/atom+xml" title="" href="http://whattheyshouldhavesaid.org/question/2.atom"/>
+	<id>http://whattheyshouldhavesaid.org/question/1</id>
+	<updated>2008-10-11T00:15:11Z</updated>
+	<generator uri="http://xameleon.org/">Xameleon 0.2.5.9</generator>
+	<summary type="xhtml">
+		<div>
+			<p>With the economy on the downturn, and retired and older citizens and workers losing their incomes, what's the fastest, most positive solution to bail these people out of the economic ruin?</p>
+		</div>
+	</summary>
+	<entry>
+		<title>Response from Senator Obama</title>
+		<link rel="alternate" type="text/html" href="http://whattheyshouldhavesaid.org/answer/question/1/obama-response-1.html"/>
+		<id>http://whattheyshouldhavesaid.org/answer/question/1/obama-response-1</id>
+		<published>2008-10-11T00:13:02Z</published>
+		<updated>2008-10-11T00:15:11Z</updated>
+		<summary type="xhtml"/>
+		<author>
+			<name/>
+		</author>
+		<category term="presidential politics" scheme="http://personplacething.info/politics"/>
+		<vote:for>2</vote:for>
+		<vote:against>1</vote:against>
+		<content type="xhtml" xml:lang="en">
+			<div xmlns="http://www.w3.org/1999/xhtml">
+				<p class="participant-comment">Well, Allen, thank you very much for the question. I want to first obviously thank Belmont University. Tom, thank you, and to all of you who are participating tonight and those of you who sent e-mail questions in. I think everybody knows now we are in the worst financial crisis since the Great Depression. And a lot of you, I think, are worried about your jobs, your pensions, your retirement accounts, your ability to send your child or your grandchild to college. And I believe this is a final verdict on the failed economic policies of the last eight years, strongly promoted by President Bush and supported by Senator McCain, that essentially said that we should strip away regulations, consumer protections, let the market run wild, and prosperity would rain down on all of us. It hasn't worked out that way, and so now we've got to take some decisive action. Now step one was a rescue package that was passed last week. We've got to make sure that works properly, and that means strong oversight, making sure that investors -- taxpayers are getting their money back and treated as investors.</p>
+				<p class="participant-comment">It means that we are cracking down on CEOs and making sure that they're not getting bonuses or golden parachutes as a consequence of this package. And in fact, we just found out that AIG, a company that got a bailout, just a week after they got help went on a $400,000 junket. And I tell you what, the Treasury should demand that money back and those executives should be fired. But that's only step one. The middle class need a rescue package, and that means tax cuts for the middle class. It means help for homeowners so that they can stay in their homes. It means that we are helping state and local governments set up road projects and bridge projects that keep people in their jobs. And then long term we've got to fix our health care system, we've got to fix our energy system that is putting such an enormous burden on families. You need somebody working for you. And you've got to have somebody in Washington who's thinking about the middle class and not just those who can afford to hire lobbyists.</p>
+			</div>
+		</content>
+	</entry>
+</feed>

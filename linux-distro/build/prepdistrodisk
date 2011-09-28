@@ -1,0 +1,6 @@
+#!/bin/bash
+rm -f ./nuxleus.core.img
+dd if=/dev/zero of=./nuxleus.core.img bs=516096c count=4096
+losetup /dev/loop3 ./nuxleus.core.img
+fdisk -u -C4096 -S63 -H16 /dev/loop3
+

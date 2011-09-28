@@ -1,0 +1,16 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Xsp(AutoPackageRecipe):
+
+    buildRequires = [ 'gawk:runtime', 'mono:runtime', 'pkgconfig:devel', 'mono:lib', 'mono:cil', 'mono:devel' ]
+
+    name = "xsp"
+    version = "1.2.5"
+
+    def unpack(r):
+	r.addArchive('http://go-mono.com/sources%(name)s/%(name)s-%(version)s.tar.bz2')
+	#r.addArchive('http://mono.ximian.com/monobuild/preview/sources/xsp/xsp-%(version)s.tar.bz2')

@@ -1,0 +1,30 @@
+#
+# Copyright (c) 2005-2008 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Git(CPackageRecipe):
+    name = 'git'
+    version = '1.6.3.3'
+
+    buildRequires = [ 'asciidoc:runtime', 'curl:devel', 'expat:devel',
+        'openssl:devel', 'perl:devel', 'perl:runtime', 'perl-DBD-MySQL:perl',
+        'perl-DBD-Pg:perl', 'perl-DBI:perl', 'perl-URI:perl',
+        'perl-libwww-perl:perl', 'perl-DBD-SQLite:perl', 'zlib:devel',
+        'gettext:runtime', ]
+
+    def setup(r):
+        r.addArchive('http://kernel.org/pub/software/scm/%(name)s/%(name)s-%(version)s.tar.bz2')
+        r.addArchive('http://kernel.org/pub/software/scm/git/git-htmldocs-%(version)s.tar.bz2', dir='html')
+        r.Make('prefix=%(prefix)s all doc')
+        r.MakeInstall('prefix=%(prefix)s mandir=%(mandir)s install install-doc')
+        r.Doc('html/*')
+
+        r.Copy('gitweb/git*', '%(servicedir)s/www/cgi-bin/')
+        r.PackageSpec('gitweb', '%(servicedir)s/www/cgi-bin/.*')
+
+        # explicitly put git-repo-config into :runtime, so it isn't put in :devel
+        r.ComponentSpec('runtime', '%(bindir)s/git-repo-config',
+                                   '%(bindir)s/git-config')
+	r.LinkCount(exceptions=('/usr/bin/', '/usr/libexec/git-core/'))

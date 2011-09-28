@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns="http://www.w3.org/1999/xhtml" xmlns:geo="http://nuxleus.com/geo" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="content" style="base list LtoR width">
+    <view:item id="left">
+      <h2>Music</h2>
+      <doc:local-news topic="music"/>
+    </view:item>
+    <view:item id="center">
+      <view:container>
+        <view:module id="body" src="/page/view/form/event.xml"/>
+      </view:container>
+    </view:item>
+    <view:item id="right">
+      <h2>Film</h2>
+      <doc:local-news topic="film"/>
+    </view:item>
+  </view:container>
+</view:module>

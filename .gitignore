@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 *.rdb
 *~
@@ -14,3 +15,15 @@ App_Log
 
 vendor
 *.dylib
+=======
+bin
+obj
+.svn
+*.suo
+*.suo
+.DS_Store
+*.pidb
+*.pdb
+*.userprefs
+update-modules
+>>>>>>> 1c9f7b30d9b16dbd6968aad395edf261f5973dad

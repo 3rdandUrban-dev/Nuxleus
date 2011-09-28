@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <generator uri="http://brightcontent.net">Bright Content</generator>
+  <id>http://dev.amp.fm/feed.xml</id>
+  <title type="text">Amp.fm Blog</title>
+  <updated>2006-12-09T19:31:53.859000Z</updated>
+  <link href="http://sonicradar.com/blog/index.atom" rel="self"/>
+  <link href="http://sonicradar.com/blog/" type="text/html" rel="alternate"/>
+  <entry>
+    <author>
+      <name>Eric Larson</name>
+      <email>eric@ionrock.org</email>
+      <uri>http://ionrock.org/blog/</uri>
+    </author>
+    <id>urn:uuid:292079c6-1623-11dc-809e-0017f2ddcdba</id>
+    <updated>2007-06-08T19:48:38Z</updated>
+    <published>2007-06-08T19:48:38Z</published>
+    <title>Technology for the Sake of Humans</title>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">One interesting thing about technology is that it really is pointless outside of a user. Of course there are systems that function without human intervention, but at the end of day, systems function to help users. This is not a revelation or anything insanely profound, but just a little concept that it is good to bring to the forefront every once in a while. You know, to keep it real. </div>
+    </content>
+    <link href="http://sonicradar.com/blog/2007/06/08/Technology_for_the_Sake_of_Humans.atom" rel="self" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/06/08/Technology_for_the_Sake_of_Humans.atom" rel="edit" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/06/08/Technology_for_the_Sake_of_Humans/" rel="alternate" title="alternate"/>
+  </entry>
+  <entry>
+    <id>http://blog.sonicradar.com/2007/04/16/premature-optimization/</id>
+    <category term="General" scheme="http://blog.sonicradar.com"/>
+    <category term="mash-up" scheme="http://blog.sonicradar.com"/>
+    <category term="Atom" scheme="http://blog.sonicradar.com"/>
+    <title>Premature Optimization</title>
+    <published>2007-04-16T16:29:16Z</published>
+    <updated>2007-04-16T16:30:19Z</updated>
+    <summary type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">The web has been
+            optimized prematurely. People have thought about web applications in terms of PHP and
+            the result is the web as we have it today. It is due for a rewrite and many folks would
+            argue that Web 2.0 is just that, a rewrite of the web. In a way this is true [...]</div>
+    </summary>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <p>The web has been optimized prematurely.
+            People have thought about web applications in terms of PHP and the result is the web as
+            we have it today. It is due for a rewrite and many folks would argue that Web 2.0 is
+            just that, a rewrite of the web. In a way this is true but I would argue that Web 2.0
+            (we all love buzzwords right?) is really more of a <a href="http://docs.python.org/lib/module-unittest.html">unittest</a>
+            getting things ready for the actual code that will be written.</p>
+        <p>When I first became interested in computers, it was through <a href="http://www.linux.org/">Linux</a>. The command line was an
+            interesting application of sorts because there was elegance hidden behind simplicity. It
+            has been said that Google has taken this simplicity and essentially creating find + grep
+            for the web. The best thing about the command line was that it was an application that
+            other applications could use. It is this intrinsic design pattern in Unix that made it
+            such a powerful platform that emphasized reuse and never required optimizations before
+            necessary.</p>
+        <p>The web on the other hand has made a very
+            specific optimization to hold all the data on a central server to make sure there is no
+            redundancy. Bandwidth has been primarily the responsibility of the server because the
+            data has been placed there. The browser is the input device of choice, which arguably
+            presents security concerns, so no DELETEs or PUTs. Scaling pushed its way to the
+            forefront of web development prematurely and the resulting web applications have been
+            crippled by their own requirements, almost none of which were actually
+            required.</p>
+        <p>Before I go on, I should mention this is
+            not a rant against PHP or web developers. There are millions of applications on the web
+            that are amazing and effective. What I suggest is simply refactoring to take advantage
+            of new features and get rid of cruft that is not necessary anymore. With that
+            said…</p>
+        <p>The solution to this is to create
+            a shell for the web. We need stdout and stdin and everything should be a file.
+            Fortunately we already have the workings of it with Atom Publishing Protocol. APP
+            essentially gives life to a file, which is the basis of *nix where everything is a file.
+            APP makes no effort to stop data redundancy or implement a push architecture. APP
+            assumes the user’s client is doing a good job and tries to respect the
+            information it receives. In a nutshell, APP gives the web a file.</p>
+        <p>Within the scope of SonicRadar, this is crucial. If everything is a
+            file then musicians can mount their files in /home/MyBand and my application read from
+            /home/MyBand/shows to see when they are playing. Even though a network may or may not be
+            involved, I never know and I don’t care to know. If I want to see the
+            shows of different bands playing in my town, it is simply a matter of getting each file
+            and using grep. The idea here is that instead of every web application reimplementing
+            things like ls and cd, we create an environment for people to reuse the
+            basics.</p>
+        <p>This idea is not new of course. It is simply
+            within reach. SonicRadar will allow everyone to have a true
+            ‘~’ on the web instead of logging into the VPN just to
+            access a silly mapped ‘Z:’ drive.</p>
+      </div>
+    </content>
+    <author>
+      <name>Eric Larson</name>
+    </author>
+    <source>
+      <id>tag:google.com,2005:reader/feed/http://blog.sonicradar.com/feed/atom/</id>
+      <title>blog.sonicradar.com</title>
+    </source>
+    <link href="http://sonicradar.com/blog/2007/04/16/Premature_Optimization.atom" rel="self" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/04/16/Premature_Optimization.atom" rel="edit" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/04/16/Premature_Optimization/" rel="alternate" title="permalink"/>
+  </entry>
+  <entry>
+    <id>http://blog.sonicradar.com/2007/04/11/the-art-of-xforms/</id>
+    <category term="mash-up" scheme="http://blog.sonicradar.com"/>
+    <category term="Atom" scheme="http://blog.sonicradar.com"/>
+    <category term="xforms" scheme="http://blog.sonicradar.com"/>
+    <title>The Art of XForms</title>
+    <published>2007-04-11T14:59:18Z</published>
+    <updated>2007-04-11T14:59:18Z</updated>
+    <summary type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">I have high hopes
+            for XForms. As someone who is familiar with user interface design and interaction
+            design, I can honestly say that as a developer the cost/reward ratio is skewed. There is
+            a vast amount of work that is required to add features that are arguably inconsequential
+            to better usability. XForms has the ability [...]</div>
+    </summary>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <p>I have high hopes for XForms. As someone who is familiar
+            with user interface design and interaction design, I can honestly say that as a
+            developer the cost/reward ratio is skewed. There is a vast amount of work that is
+            required to add features that are arguably inconsequential to better usability. XForms
+            has the ability to reduce the amount work by doing the same type of rendering that the
+            browser provides for HTML. This is huge.</p>
+        <p>The impact
+            of this means that an interface can be created for a service almost as easily as HTML
+            can be created. I remember when I first learned HTML and saw how simple it was to create
+            a page. Nowadays you see wiki markup and a multitude of text formats that allow easy
+            translation from text to markup. It reflects the practiced boundary between style and
+            content, which has been critical in making the web what it is today. When you think of
+            things like Google Pages or any wiki, you see a situation where the user is asked to
+            provide content which gets styled. The result is that adding content has become easy
+            enough that we have Wikipedia and millions of bloggers.</p>
+        <p>The next step in this evolution is building forms to get user input and
+            send it to some service. PayPal has done this to some extent but they have had a pretty
+            simple model where a button gets the user 80% of what they need and usually is enough.
+            In a more complex service it would be nice to give someone an example piece of XML and
+            then create forms (via XForms) that submits the XML to the service. Before going on, you
+            should read that sentence again because there is a subtle point to
+            see…</p>
+        <p>The key phrase there is
+            “<strong>give someone an
+            example</strong>.” Instead of describing RELAX NG syntax to
+            a service, if someone provides a basic template for what the input should look like, a
+            person could copy and paste it into an XForms editor. The XForms editor creates a quick
+            sample template of the forms and you start adding requirements according to your own
+            needs. Better yet, someone can just give you the forms and be done with
+            it!</p>
+        <p>The result is that the creativity you see on the
+            web can be applied to interfaces without having to understand event models or callbacks.
+            Sure, there will probably be something of a geocities phase where text areas have
+            animated people walking around the cursor. But, soon after you will see people creating
+            innovative ways to gather data from users. More importantly, users will be able to
+            create their own custom world to use with their favorite services. It will be like the
+            world magically learned Lisp and the web browser became Emacs… You know
+            what I mean… Right? <img src="http://blog.sonicradar.com/wp-includes/images/smilies/icon_wink.gif" alt=";)"/></p>
+      </div>
+    </content>
+    <author>
+      <name>Eric Larson</name>
+    </author>
+    <source>
+      <id>tag:google.com,2005:reader/feed/http://blog.sonicradar.com/feed/atom/</id>
+      <title>blog.sonicradar.com</title>
+    </source>
+    <link href="http://sonicradar.com/blog/2007/04/11/The_Art_of_XForms.atom" rel="self" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/04/11/The_Art_of_XForms.atom" rel="edit" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/04/11/The_Art_of_XForms/" rel="alternate" title="permalink"/>
+  </entry>
+  <entry>
+    <id>http://blog.sonicradar.com/2007/04/09/go-figure/</id>
+    <category term="General" scheme="http://blog.sonicradar.com"/>
+    <title>Go figure</title>
+    <published>2007-04-09T21:06:51Z</published>
+    <updated>2007-04-10T12:38:31Z</updated>
+    <summary type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">Today I went to my
+            local HMV to browse their CDs. I don’t know if you are like me but I often
+            tell myself “you should note this album down and look up for it next time
+            you’ll get there”. Now if you’re anything like
+            me you never do such thing. So it’s usually when [...]</div>
+    </summary>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <p>Today I went to my local <a href="http://www.hmv.co.uk">HMV</a> to browse their CDs. I
+            don’t know if you are like me but I often tell myself “you
+            should note this album down and look up for it next time you’ll get
+            there”. Now if you’re anything like me you never do such
+            thing. So it’s usually when I end up at the store that I realize I wanted
+            to search for an artist’s album and fail to remember who and what. Anyway
+            today I was browsing their catalog without much idea of what I wanted except it had to
+            be someone I had never heard. I do so to force myself into listening to different
+            things. I ended up piling up around height CDs.</p>
+        <p>Now
+            considering the crazy prices HMV applies to some indie or rather unknown bands I wanted
+            to have an idea of what I would buy. I therefore headed towards their (unique) working
+            station where you search for an artist, album or song. If you’re lucky you
+            can listen to it. Hint, I said “If you’re
+            lucky”. Truth is most albums they actually upload there come from famous
+            bands and artists (well that’s far fetched a word in many cases but
+            that’s beside the point). So out of my height albums only one was
+            available to be listened to. I wasn’t moving forward, was
+            I?</p>
+        <p>Slightly pissed off, I went to ask one of the HMV
+            vendor what the hell was going on. He explained that the machine they used to convert
+            the songs to MP3 was broken and they didn’t know when they’d
+            get a new one. I blinked and I said “what’s the point for me
+            to come down here? I should just download the files from the Internet
+            instead.”. He nodded and looked sorry.</p>
+        <p>So here we are, huge chains like HMV, which are blaming the piracy and
+            those who don’t pay a penny, cannot even afford a descent streaming
+            system, allowing people to gage an album before spending their cash on
+            it.</p>
+        <p>I mean when an album costs £15 (around $30) you
+            tend to ensure you will like it as a whole. If I can’t do that at the
+            shop, I will do it online and then, what stops me from actually getting the file for
+            free anyway? </p>
+        <p>For free? Well yes because when I went
+            to the <a href="http://www.hmvdigital.com">HMV Digital</a>
+            website I got the following message:</p>
+        <blockquote>
+          <p>This site relies on ActiveX technology to
+            download music to your machine; at this time you need Internet Explorer version 6 or
+            greater running on Windows XP or Windows 2000 to purchase and download
+            music.</p>
+          <p>We hope to add Firefox support soon. In the
+            mean time, why not subscribe to our RSS feeds to keep up to date with the latest
+            releases.</p>
+        </blockquote>
+        <p>Now that means
+            that from Linux I can’t get to their service. Well too bad for them. (I
+            will pass on the blatant attempt to make me believe that they will either rewrite their
+            entire application without ActiveX or find a way to support ActiveX from within Firefox
+            natively).</p>
+        <p>Where does that leave us? Well as the
+            title says “Go figure.”.</p>
+        <p>Now I did buy three CDs anyway: Pearl Jam - Ten, Little Barrie - We are
+            little barrie, James Harries - Days Like These. I have not been disappointed so
+            far.</p>
+      </div>
+    </content>
+    <author>
+      <name>Sylvain Hellegouarch</name>
+    </author>
+    <source>
+      <id>tag:google.com,2005:reader/feed/http://blog.sonicradar.com/feed/atom/</id>
+      <title>blog.sonicradar.com</title>
+    </source>
+    <link href="http://sonicradar.com/blog/2007/04/09/Go_figure.atom" rel="self" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/04/09/Go_figure.atom" rel="edit" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/04/09/Go_figure/" rel="alternate" title="permalink"/>
+  </entry>
+  <entry>
+    <id>http://blog.sonicradar.com/2007/04/07/randomsounds-the-gateway-center-salt-lake-city-ut-bellevue-christian-concert-choir/</id>
+    <category term="random.sounds" scheme="http://blog.sonicradar.com"/>
+    <title>Random.Sounds: The Gateway Center, Salt Lake City, UT |
+            Bellevue Christian Concert Choir</title>
+    <published>2007-04-08T04:03:00Z</published>
+    <updated>2007-04-08T04:25:09Z</updated>
+    <summary type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">  I
+            was out for a walk earlier this afternoon and came across this incredible performance by
+            what I believe is the Bellevue Christian Concert Choir (I spoke with some of the
+            students afterwords (pictured below) and they mentioned they were from Bellevue
+            Christian School.) Video: Bellevue Christian Concert Choir @ The Gateway Center, Salt
+            Lake City, [...]</div>
+    </summary>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <p>I was out for a walk earlier this afternoon and came across this
+            incredible performance by what I believe is the <a href="http://www.bellevuechristian.org/content-en/programs/performing_arts.php">Bellevue
+            Christian Concert Choir</a> (I spoke with some of the students afterwords
+            (pictured below) and they mentioned they were from <a href="http://www.bellevuechristian.org/">Bellevue Christian
+            School</a>.)</p>
+        <p>
+               <embed width="412" src="http://images.soapbox.msn.com/flash/soapbox1_1.swf"
+                      flashvars="c=v&amp;amp;v=dcaf0a80-f385-4375-92cf-04a4e03b410f"
+                      allowScriptAccess="never"
+                      height="362"/>
+               <br/><a href="http://soapbox.msn.com/video.aspx?vid=dcaf0a80-f385-4375-92cf-04a4e03b410f" title="Bellevue Christian Concert Choir @ The Gateway Center, Salt Lake City, UT">Video:
+            Bellevue Christian Concert Choir @ The Gateway Center, Salt Lake City,
+            UT</a><p>Beyond the performance, and the acoustics of the
+            room, what I found most amazing about this experience was to see how many students had
+            digital cameras with them, and how many of those cameras were
+            video-enabled.</p><p><a href="http://blog.sonicradar.com/wp-content/uploads/2007/04/windowslivewriterrandomsoundsthegatewaycentersaltlakecity-12f38dsc0053362.jpg"><img src="http://blog.sonicradar.com/wp-content/uploads/2007/04/windowslivewriterrandomsoundsthegatewaycentersaltlakecity-12f38dsc00533-thumb42.jpg" style="border-right:0px;border-top:0px;border-left:0px;border-bottom:0px" border="0" width="447" height="350"/></a></p><p>We’re entering a whole new world, my friends, where
+            traditional media can no longer keep up with what’s going on around the
+            world at the same pace that 100 million info-hungry
+            ‘tweeners are as quickly, easily, and affordably equipped as
+            they both are and can be to report the news as it’s happening
+            to anyone with access to the internet.  Add to this an equivalent number of
+            30, 40, and 50 somethings, an increasingly technologically
+            savvy group of retired folk, and, of course, the popularity of sites such
+            as <a href="http://www.youtube.com/">YouTube</a> and I think
+            we can easily assume that within 10 years time the newscasts as we know them will be no
+            longer.</p><p>Just my opinion, of course, and I have every
+            reason to believe that these same media agencies will find ways to adapt. 
+            </p><p>But they’d better adapt quickly.
+            <img src="http://blog.sonicradar.com/wp-includes/images/smilies/icon_wink.gif" alt=";-)"/></p></p>
+      </div>
+    </content>
+    <author>
+      <name>M. David Peterson</name>
+    </author>
+    <source>
+      <id>tag:google.com,2005:reader/feed/http://blog.sonicradar.com/feed/atom/</id>
+      <title>blog.sonicradar.com</title>
+    </source>
+    <link href="http://sonicradar.com/blog/2007/04/08/Random_Sounds__The_Gateway_Center__Salt_Lake_City__UT____Bellevue_Christian_Concert_Choir.atom" rel="self" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/04/08/Random_Sounds__The_Gateway_Center__Salt_Lake_City__UT____Bellevue_Christian_Concert_Choir.atom" rel="edit" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/04/08/Random_Sounds__The_Gateway_Center__Salt_Lake_City__UT____Bellevue_Christian_Concert_Choir/" rel="alternate" title="permalink"/>
+  </entry>
+  <entry>
+    <id>http://blog.sonicradar.com/2007/04/04/offline-applications/</id>
+    <category term="General" scheme="http://blog.sonicradar.com"/>
+    <category term="mash-up" scheme="http://blog.sonicradar.com"/>
+    <category term="Atom" scheme="http://blog.sonicradar.com"/>
+    <title>Offline Applications</title>
+    <published>2007-04-04T15:58:00Z</published>
+    <updated>2007-04-04T15:58:00Z</updated>
+    <summary type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">There has been a
+            good deal of discussion recently regarding offline web applications. The impetus for
+            this conversation stem from Joyent’s Slingshot. Dave’s
+            response was that you don’t need offline web applications and in a way I
+            agree. Joyent’s response cleared up a good deal of confusion and put the
+            concept in context. The short [...]</div>
+    </summary>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <p>There has been a good deal of discussion
+            recently regarding offline web applications. The impetus for this conversation stem from
+            <a href="http://joyeur.com">Joyent’s</a><a href="http://joyeur.com/2007/03/22/joyent-slingshot">Slingshot</a>.
+            Dave’s response was that <a href="http://www.37signals.com/svn/posts/347-youre-not-on-a-fucking-plane-and-if-you-are-it-doesnt-matter">you
+            don’t need offline web applications</a> and in a way I
+            agree. Joyent’s <a href="http://joyeur.com/2007/04/02/slingshot-apologia-we-didnt-design-slingshot-for-planes">response</a>
+            cleared up a good deal of confusion and put the concept in context. The short and skinny
+            is that the offline web is partly about working on planes, but primarily is about one
+            means of interfacing with the user.</p>
+        <p>I should be
+            specific. If you have every programmed a user interface for Windows.Forms with
+            IronPython you quickly realize that Windows.Forms was not meant to typed by humans. The
+            classes are all designed to be created via Visual Studio. There is nothing wrong with it
+            of course and I am sure others would disagree with me. The issue is that designing a
+            user interface is complicated. Think about writing RTF, PostScript, XSL-FO, etc. and you
+            immediately see that making a visual image of something via a text based language is not
+            very easy.</p>
+        <p>The web browser helps a bit with this and
+            provides a valuable constraint. You don’t get tons of drag and drop
+            controls with datagrid views, but users don’t expect them. You
+            don’t have millions of event handlers (well you could, but you really
+            don’t need them) because the web is stateless. Separating design from
+            content is almost a given and there is an actual divide between the
+            “View” (the rendered HTML) and the
+            “Controller” (whatever the server is doing). The real
+            benefit of “offline” web applications is that you get to
+            program for the web without the web and that is appealing.</p>
+        <p>This is not a silver bullet of course. On the usability front it
+            potentially makes user interfaces inconsistent. Interesting usability concepts could
+            also be dropped on the floor simply be implementations are too difficult. Another issue
+            is that the platform is regulated by browser makers, which could potentially prevent UI
+            innovation. In a way both of these concerns are valid, but overall I think it really
+            doesn’t matter. Users have learned to use the web and appreciate the
+            benefits they get web applications such that browser based offline applications that
+            help to interact with online services will provide more than enough usefulness to make
+            almost any user interface worth learning. A user interface is nothing without a user, so
+            making applications that have users is a must before trying to make life better for the
+            users.</p>
+        <p>The concept of interaction with online
+            services is the critical aspect in this whole equation. The WS-* stack has proven itself
+            to somewhat ill suited for generic services, whereas the browser has become an amazing
+            platform for viewing and interacting with information. I believe the Atom Publishing
+            Protocol answers this need by providing a thin, atomic wrapper around the traditional
+            web based interface where clients can be much more affective. With this simple RESTful
+            protocol, offline client applications can easily provide customized interfaces to
+            services while happily staying within the confines of the web browser.</p>
+        <p>Within the context of SonicRadar, this means creating one system that
+            can be used online or offline through the browser. It means that individuality is no
+            long adding another class to an application on a server. Instead it means providing a
+            new service or creating a new interface to a service. In a way this small distinction is
+            of little consequence to users, but as people more and more accustomed to having their
+            data available online all the times it becomes increasingly important to have control
+            over that data.</p>
+        <p>By the way, control is
+            <strong>not</strong> storage of the data. Control is how you
+            interact with data. As a problem solver, I can invert the problem to see another angle
+            in how to solve it. As a web user I am provided a proprietary portal to canned
+            information. What I want is to have many ways to see information. Aggregators provide
+            this very functionality and considering the success of RSS/Atom feeds, I think applying
+            this principle to the entire web makes sense. Offline web applications make this
+            possible because the technology used to provide the services can be used on the client
+            as is and there no longer is a constant battle between developers and the
+            system’s of their users.</p>
+        <p>Java, C#,
+            Python, Ruby, PHP, etc. all allow programmers to write code without worrying about the
+            operating system. This was not the goal. The goal was to allow programmers to write code
+            without worry about the
+            <strong>user’s</strong> operating system. The
+            client side web continues this tradition and I am on board.</p>
+      </div>
+    </content>
+    <author>
+      <name>Eric Larson</name>
+    </author>
+    <source>
+      <id>tag:google.com,2005:reader/feed/http://blog.sonicradar.com/feed/atom/</id>
+      <title>blog.sonicradar.com</title>
+    </source>
+    <link href="http://sonicradar.com/blog/2007/04/04/Offline_Applications.atom" rel="self" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/04/04/Offline_Applications.atom" rel="edit" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/04/04/Offline_Applications/" rel="alternate" title="permalink"/>
+  </entry>
+  <entry>
+    <id>http://blog.sonicradar.com/2007/03/29/open-source-on-the-web/</id>
+    <category term="General" scheme="http://blog.sonicradar.com"/>
+    <category term="mash-up" scheme="http://blog.sonicradar.com"/>
+    <category term="social network" scheme="http://blog.sonicradar.com"/>
+    <title>Open Source on the Web</title>
+    <published>2007-03-29T14:51:08Z</published>
+    <updated>2007-03-29T14:51:08Z</updated>
+    <summary type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">I read this article
+            from Dare regarding Open Source being “dead” because social
+            software requires some central element. In a way I agree with him. Social software is
+            essentially just a web application that has many users. It is not the software itself
+            that makes it helpful, it is the marriage of technology and a [...]</div>
+    </summary>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <p>I read <a href="http://www.25hoursaday.com/weblog/PermaLink.aspx?guid=69141977-7514-443d-800b-1f95c1ff8dbe">this</a>
+            article from Dare regarding Open Source being “dead” because
+            social software requires some central element. In a way I agree with him. Social
+            software is essentially just a web application that has many users. It is not the
+            software itself that makes it helpful, it is the marriage of technology and a bountiful
+            user base that gives it value.</p>
+        <p>The assumption is the
+            browser will always be the interface for social software. I do not think the browser is
+            going away. But I do think that other types of clients will become more important as
+            social software continues to create more than social situations. My favorite example of
+            this is MySpace and the abuse of the profile section. A custom MySpace profile manager
+            would be a nice little application to have for creating slick themes. It would be nice
+            as well to aggregate parts of MySpace to other sites (this would be especially helpful
+            to musicians I think). At this point MySpace breaks down because the entire profile
+            customization system is essentially just a hack. MySpace could benefit by producing a
+            real API for customization that the clients can implement.</p>
+        <p>This really is just the traditional “Web
+            3.0″ kind of talk. The idea of moving beyond mash-ups into real deal
+            aggregation of disparate content for a cohesive message. I am doubting MySpace will lead
+            the charge into this kind of space, but you never know. I do think the Open Source
+            community will (and has) lead this movement. Sure they will not be writing the great web
+            service that folks are using, but they will be writing the clients and specs that users
+            enjoy.</p>
+      </div>
+    </content>
+    <author>
+      <name>Eric Larson</name>
+    </author>
+    <source>
+      <id>tag:google.com,2005:reader/feed/http://blog.sonicradar.com/feed/atom/</id>
+      <title>blog.sonicradar.com</title>
+    </source>
+    <link href="http://sonicradar.com/blog/2007/03/29/Open_Source_on_the_Web.atom" rel="self" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/03/29/Open_Source_on_the_Web.atom" rel="edit" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/03/29/Open_Source_on_the_Web/" rel="alternate" title="permalink"/>
+  </entry>
+  <entry>
+    <id>http://blog.sonicradar.com/2007/03/27/on-punk/</id>
+    <category term="General" scheme="http://blog.sonicradar.com"/>
+    <title>On Punk</title>
+    <published>2007-03-27T22:21:19Z</published>
+    <updated>2007-03-27T22:22:14Z</updated>
+    <summary type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">My musical
+            background stems primarily from punk. As I have gotten older and arguably less
+            ‘punk’, I have made an effort to understand what the essence
+            of punk truly is. To me, punk encompasses two primary concepts. Community To be
+            “punk” is to be a part of a community. The idea is that
+            without some audience for [...]</div>
+    </summary>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <p>My musical background stems primarily from punk. As I have gotten
+            older and arguably less ‘punk’, I have made an effort to
+            understand what the essence of punk truly is. To me, punk encompasses two primary
+            concepts.</p>
+        <p>
+          <strong>Community</strong>
+        </p>
+        <p>To be “punk” is to be a part of a
+            community. The idea is that without some audience for actions, there is no way to
+            recognize whether you are acting “punk” or not. Beyond the
+            obviousness of an audience, a punk mentality involves a respect for other persons. I say
+            “persons” because the respect is not necessarily for a group
+            of people. Instead, it is important to have respect for each and every
+            person’s individuality.</p>
+        <p>Before going on
+            I should mention that the “punk” I grew up on was the breed
+            from DC. Minor Threat and Dischord helped define my concept of punk, which was then
+            confirmed as I moved through other punk genres. In other words, I never wore a leather
+            jacket, squatted, did heroin, shaved my head/had a mohawk or did any of the other
+            potentially traditionally punk activities.</p>
+        <p>
+          <strong>Questions</strong>
+        </p>
+        <p>In order to be punk you really need to be wary of belief. I am not
+            saying you shouldn’t believe in something, but rather that a person who is
+            punk believes in something because they have asked questions and found answers that
+            drove them to believe something. This is also the root of “questioning
+            authority” or “questioning societal norms” or
+            any other more obvious punk mantra.</p>
+        <p>To sum it up,
+            being punk is respecting others and making an effort to understand.</p>
+        <p>Now, I mention this here because up until this point I have discussed
+            the “business” side of music and it is important that folks
+            do not misinterpret who I am. My music is my art and it is how I can express myself and
+            provide something other people can relate to and enjoy. I have found in my questioning
+            of the music industry, that the numerical majority of people involved are honest and
+            caring folks that share in my passions. I know many people see the music industry as a
+            terrible place where musicians lose their souls and sacrifice their integrity for a
+            fleeting few moments of fame while record companies make big bucks at the expense of
+            real of people. While this happens, the majority of people who work in the music
+            industry (this includes the bookers, indie labels, publicists, promoters, musicians,
+            designers, etc.) barely scrape by out of their love of music.</p>
+        <p>While it may not appear very ‘punk’ to try
+            and help improve the music industry as a whole, it is punk to try. I think every person
+            who goes on a tour, puts out a record or simply goes to see a band live is worth the
+            time if their passion for music can be supported. So, if you think I am always talking
+            like a capitalistic jerk who cares nothing for artistic expression, please have a bit of
+            perspective. I want friends of mine who tour and run labels to have insurance. I want
+            local bands in town to not need to go to the pharmaceutical testing labs every month to
+            pay for recordings. I want clubs to be able to pay touring bands enough for gas *and*
+            food. In other words, no one is saying that folks need huge houses, tons of cars and
+            plastic surgery, simply a reasonable wage for a ton of hard work.</p>
+      </div>
+    </content>
+    <author>
+      <name>Eric Larson</name>
+    </author>
+    <source>
+      <id>tag:google.com,2005:reader/feed/http://blog.sonicradar.com/feed/atom/</id>
+      <title>blog.sonicradar.com</title>
+    </source>
+    <link href="http://sonicradar.com/blog/2007/03/27/On_Punk.atom" rel="self" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/03/27/On_Punk.atom" rel="edit" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/03/27/On_Punk/" rel="alternate" title="permalink"/>
+  </entry>
+  <entry>
+    <id>http://blog.sonicradar.com/2007/03/27/welcome-to-ffado/</id>
+    <category term="General" scheme="http://blog.sonicradar.com"/>
+    <title>Welcome to FFADO</title>
+    <published>2007-03-27T20:43:55Z</published>
+    <updated>2007-03-27T20:44:46Z</updated>
+    <summary type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">FreeBoB is now
+            named FFADO which stands for Free Firewire Audio Drivers. FreeBoB is a project that aims
+            at providing support for audio devices using FireWire and espacially the BeBoB firmware.
+            I cannot praise enough for that project considering those guys allowed me to use my
+            M-Audio FireWire Solo on my beloved Linux distribution. They seem [...]</div>
+    </summary>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <p><a href="http://freebob.sourceforge.net">FreeBoB</a> is now named
+            <strong>FFADO</strong> which stands for
+            <em>Free Firewire Audio Drivers</em>. FreeBoB is a project
+            that aims at providing support for audio devices using FireWire and espacially the
+            <a href="http://freebob.sourceforge.net/index.php/BeBoB">BeBoB</a>
+            firmware. I cannot praise enough for that project considering those guys allowed me to
+            use my <a href="http://www.m-audio.com/products/en_us/FireWireSolo-main.html">M-Audio
+            FireWire Solo</a> on my beloved <a href="http://www.mepis.org/">Linux
+            distribution</a>.</p>
+        <p>They seem to be
+            changing their name because they plan on supporting any audio device using FireWire.
+            This is a huge news for the entire community and we must welcome their
+            decision.</p>
+        <p>I would like to say that the support of
+            high end audio devices under Linux is usually poor from the vendors themselves and they
+            should be ashamed since the platform is fantastic for performing audio and music
+            work.</p>
+      </div>
+    </content>
+    <author>
+      <name>Sylvain Hellegouarch</name>
+    </author>
+    <source>
+      <id>tag:google.com,2005:reader/feed/http://blog.sonicradar.com/feed/atom/</id>
+      <title>blog.sonicradar.com</title>
+    </source>
+    <link href="http://sonicradar.com/blog/2007/03/27/Welcome_to_FFADO.atom" rel="self" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/03/27/Welcome_to_FFADO.atom" rel="edit" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/03/27/Welcome_to_FFADO/" rel="alternate" title="permalink"/>
+  </entry>
+  <entry>
+    <id>http://blog.sonicradar.com/2007/03/22/working-musicians/</id>
+    <category term="General" scheme="http://blog.sonicradar.com"/>
+    <title>Working Musicians</title>
+    <published>2007-03-22T15:38:20Z</published>
+    <updated>2007-03-22T15:38:20Z</updated>
+    <summary type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">I read an article
+            on TechCrunch regarding how it was good that CD sales were down. There is an idea major
+            labels make huge margins and the lowered CD sales is the market correcting that. The
+            more I think about these topics the more I wish there was more research on the subject
+            because there [...]</div>
+    </summary>
+    <content type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">
+        <p>I read an article on <a href="http://www.techcrunch.com/2007/03/21/good-news-cd-music-sales-down-20-from-2006/">TechCrunch</a>
+            regarding how it was good that CD sales were down. There is an idea major labels make
+            huge margins and the lowered CD sales is the market correcting that. The more I think
+            about these topics the more I wish there was more research on the subject because there
+            is no way to speak authoritatively without really knowing what the books look like.
+            Specifically, the article mentions it will be good when labels realize they cannot make
+            huge profits. Part of me thinks this is good, but overall I wonder then who will make
+            money because if artists are not making it when there is an abundance of funds, I am
+            doubting anything will improve when there is less money to go around.</p>
+        <p>One theme I see in articles like this is the lack of understanding
+            regarding the amount of work that goes into making a band successful. From the actual
+            music to the company hired to create a slick MySpace theme, there are tons of people
+            involved and most of the time the money must be paid up front without any guarantees on
+            how the record will do. It is similar to venture capital firms in that if the company
+            does not do well, they are simply out of luck. I wonder if there are other industries
+            that have been built off of a rather fickle marketplace and still have relatively
+            traditional profit margins.</p>
+      </div>
+    </content>
+    <author>
+      <name>Eric Larson</name>
+    </author>
+    <source>
+      <id>tag:google.com,2005:reader/feed/http://blog.sonicradar.com/feed/atom/</id>
+      <title>blog.sonicradar.com</title>
+    </source>
+    <link href="http://sonicradar.com/blog/2007/03/22/Working_Musicians.atom" rel="self" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/03/22/Working_Musicians.atom" rel="edit" title="atom"/>
+    <link href="http://sonicradar.com/blog/2007/03/22/Working_Musicians/" rel="alternate" title="permalink"/>
+  </entry>
+</feed>

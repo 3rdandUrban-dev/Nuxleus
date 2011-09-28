@@ -1,0 +1,27 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class IkvmDev(AutoPackageRecipe):
+
+    buildRequires = [ 'mono:runtime', 'mono:lib', 'pkgconfig:devel' ]
+
+    name = "ikvm-dev"
+    version = "0.32.0.0"
+
+    def setup(r):
+        r.addArchive('http://www.frijters.net/%(name)s-%(version)s.zip')
+        r.addSource('makefile')
+	r.addSource('ikvm-dev')
+        r.addSource('ikvmc-dev')
+        r.addSource('ikvmstub-dev')
+	r.Install('gac-install-list', '%(libdir)s/cli-gac/ikvm.gacinstall')
+        r.addSource('ikvm-dev.pc')
+	r.Install('ikvm-dev.pc', '%(libdir)s/pkgconfig/ikvm-dev.pc')
+        
+        r.MakeInstall()
+
+        
+

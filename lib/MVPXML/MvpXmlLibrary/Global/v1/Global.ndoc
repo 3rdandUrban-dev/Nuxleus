@@ -1,0 +1,44 @@
+<project SchemaVersion="1.3">
+    <assemblies>
+        <assembly location=".\v1\bin\Release\Mvp.Xml.dll" documentation=".\v1\bin\Release\Mvp.Xml.xml" />
+    </assemblies>
+    <documenters>
+        <documenter name="JavaDoc">
+            <property name="Title" value="Mvp.Xml API Documentation" />
+            <property name="OutputDirectory" value="D:\projects\Mvp.Xml\WebSite\api\" />
+            <property name="CleanIntermediates" value="True" />
+        </documenter>
+        <documenter name="LaTeX">
+            <property name="OutputDirectory" value=".\doc\" />
+            <property name="TextFileFullName" value="Documentation.tex" />
+            <property name="TexFileBaseName" value="Documentation" />
+            <property name="LatexCompiler" value="latex" />
+            <property name="TexFileFullPath" value=".\doc\Documentation.tex" />
+        </documenter>
+        <documenter name="LinearHtml">
+            <property name="OutputDirectory" value=".\doc\" />
+            <property name="Title" value="An NDoc Documented Class Library" />
+        </documenter>
+        <documenter name="MSDN">
+            <property name="OutputDirectory" value="D:\projects\Mvp.Xml\WebSite\api\" />
+            <property name="HtmlHelpName" value="Mvp.Xml API Documentation" />
+            <property name="Title" value="Mvp.Xml API Documentation" />
+            <property name="OutputTarget" value="Web" />
+            <property name="SdkLinksOnWeb" value="True" />
+            <property name="FooterHtml" value="&lt;div&gt;©2005 &lt;a href=&quot;http://mvp-xml.sf.net&quot;&gt;Mvp.Xml Project&lt;/a&gt;&lt;/div&gt;" />
+            <property name="DocumentProtected" value="False" />
+            <property name="IncludeAssemblyVersion" value="True" />
+            <property name="CopyrightText" value="Mvp.Xml Project" />
+            <property name="CopyrightHref" value="http://mvp-xml.sf.net" />
+            <property name="CleanIntermediates" value="True" />
+        </documenter>
+        <documenter name="VS.NET 2003">
+            <property name="OutputDirectory" value=".\doc\" />
+            <property name="HtmlHelpName" value="Documentation" />
+            <property name="Title" value="An NDoc documented library" />
+        </documenter>
+        <documenter name="XML">
+            <property name="OutputFile" value=".\doc\doc.xml" />
+        </documenter>
+    </documenters>
+</project>

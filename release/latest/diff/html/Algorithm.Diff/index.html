@@ -1,0 +1,184 @@
+<html>
+  <head>
+    <title>Diff</title>
+    <style>
+					a { text-decoration: none }
+				
+					.CollectionTitle { font-weight: bold }
+					.PageTitle { font-size: 150%; font-weight: bold }
+
+					.Summary { }
+					.Signature { }					
+					.Remarks { }
+					.Members { }
+					.Copyright { }
+					
+					.Section { font-size: 125%; font-weight: bold }
+					.SectionBox { margin-left: 2em }
+					.NamespaceName { display: block; font-size: 105%; font-weight: bold; color: #000066; border-bottom: 1px solid black }
+					.NamespaceName:hover { font-style: italic }
+					.NamespaceSumary { }
+					.MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+					.MemberSignature { font-family: monospace; margin-top: 1em; }
+					.MemberBox { }
+					.Subsection { font-size: 105%; font-weight: bold }
+					.SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+					
+					.SignatureTable { background-color: #c0c0c0; }
+					.EnumerationsTable th { background-color: #f2f2f2; }
+					.CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+					
+					.MembersListing td { margin: 0px; border: 1px solid black; padding: .25em }
+					
+					.TypesListing td { margin: 0px;  padding: .25em }
+					
+					.titlebar {
+						color: #efefef;
+						font-size: 14pt;
+						font-family: Trebuchet MS;
+						border: 0;
+						margin: 0;
+						padding: 1em;
+						background: #666666;
+					}
+					.titlebar a {
+						color: #efefef;
+					}
+				</style>
+  </head>
+  <body style="margin: 0px;">
+    <div class="titlebar">
+      <div class="CollectionTitle">
+        <a href="../index.html">Diff</a>
+      </div>
+      <div class="PageTitle">Algorithm.Diff Namespace
+				</div>
+    </div>
+    <div style="padding: 1em">
+      <p class="Summary">
+      </p>
+      <div class="Signature">
+      </div>
+      <div class="Remarks">
+        <div class="Section">Algorithm.Diff Namespace</div>
+        <p>
+<p>Use the <a href="../Algorithm.Diff/Diff.html">Algorithm.Diff.Diff</a> class to compare two arbitrary lists of data.  Normally the lists will be of characters, to perform a character-level comparison, or of strings, to perform a line-by-line comparison, of two strings.  However, any object type may be used, and comparisons among objects in the lists will be made with the Equals method of the objects.  Comparisons can also be performed according to a user-supplied IComparer and IHashCodeProvider.</p>
+
+<p>For three-way diffs, see the <a href="../Algorithm.Diff/Merge.html">Algorithm.Diff.Merge</a> class.</p>
+
+<p>The <a href="../Algorithm.Diff/Patch.html">Algorithm.Diff.Patch</a> class is used to store a compact representation of a Diff, containing only what is needed to transform the first list into the second list.  For string-based lists, it can be serialized into and deserialzed from an XML format.</p>
+
+<p>The <a href="../Algorithm.Diff/Merge.html">Algorithm.Diff.Merge</a> class represents a set of diffs against a shared original list.  It is used to merge multiple revisions of the same document, for instance in performing n-way diffs.</p>
+
+<p>The Diff class was translated into C# from the Perl module Algorithm::Diff. The Algorithm::Diff documentation says: "It uses an intelligent algorithm similar to (or identical to) the one used by the Unix "diff" program.  It is guaranteed to find the *smallest possible* set of differences."</p>
+</p>
+        <table class="TypesListing" style="margin-top: 1em">
+          <tr>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./Diff.html">Diff</a>
+            </td>
+            <td>Computes the differences between two arbitrary lists.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./Diff+Hunk.html">Diff+Hunk</a>
+            </td>
+            <td>A hunk is a segment of a diff.  It relates a region of the base document to a region of the changed document.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./Hunk.html">Hunk</a>
+            </td>
+            <td>To be added.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./IDiff.html">IDiff</a>
+            </td>
+            <td>An interface representing objects that return <a href="&#xA;						javascript:alert(&quot;Documentation not found.&quot;)&#xA;					">Algorithm.Diff+Hunk</a> objects.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./Merge.html">Merge</a>
+            </td>
+            <td>A set of diffs all based on a common original document.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./Merge+Conflict.html">Merge+Conflict</a>
+            </td>
+            <td>A segment of a document returned by Algorithm.Diff.Merge.MergeLists for which there were conflicts among the revisions.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./Merge+Hunk.html">Merge+Hunk</a>
+            </td>
+            <td>A segment of the orginal document in which no revised documents had changes, or one or more revised documents had changes.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./NodeInterface.html">NodeInterface</a>
+            </td>
+            <td>This is a utility class for structured diffs and is not yet documented.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./Patch.html">Patch</a>
+            </td>
+            <td>A compactly represented difference between an original document and a revision.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./Patch+Hunk.html">Patch+Hunk</a>
+            </td>
+            <td>A hunk is a segment of a patch. It relates a region of the base document to a region of the changed document.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./Range.html">Range</a>
+            </td>
+            <td>A window into another list.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./StructuredDiff.html">StructuredDiff</a>
+            </td>
+            <td>This class is not yet documented.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./TextDiff.html">TextDiff</a>
+            </td>
+            <td>Provides a differencing algorithm that is specialized for text documents.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./UnifiedDiff.html">UnifiedDiff</a>
+            </td>
+            <td>A utility class for generating diffs in the unified diff format.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./XmlOutputNodeInterface.html">XmlOutputNodeInterface</a>
+            </td>
+            <td>The is used for structured diffs and is not yet documented.</td>
+          </tr>
+          <tr valign="top">
+            <td>
+              <a href="./XmlOutputStructuredDiff.html">XmlOutputStructuredDiff</a>
+            </td>
+            <td>This is a utility class for structured diffs and is not yet documented.</td>
+          </tr>
+        </table>
+      </div>
+      <div class="Members">
+      </div>
+      <hr size="1" />
+      <div class="Copyright">See http://taubz.for.net/code/diff.</div>
+    </div>
+  </body>
+</html>

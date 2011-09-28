@@ -1,0 +1,7 @@
+<parts>
+    <item SKU="1001" name="Hairdrier" price="39.99"/>
+    <item SKU="1001" name="Lawnmower" price="299.99"/>
+    <item SKU="1001" name="Spade" price="19.99"/>
+    <item SKU="1001" name="Electric drill" price="99.99"/>
+    <item SKU="1001" name="Screwdriver" price="9.99"/>
+</parts>

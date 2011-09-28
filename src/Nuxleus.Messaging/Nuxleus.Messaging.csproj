@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuxleus.Messaging</RootNamespace>
+    <AssemblyName>Nuxleus.Messaging</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AssemblyOriginatorKeyFile>Nuxleus.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.*</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ReleaseVersion>0.4.2.1</ReleaseVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\docs\Nuxleus.Messaging.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ALAZ.SystemEx.dll</HintPath>
+    </Reference>
+    <Reference Include="ALAZ.SystemEx.NetEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Memcached.ClientLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK, Version=1.3.1.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\AWSSDK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <!--<Compile Include="Core\DispatchHandler.cs" />
+    <Compile Include="Core\NuxleusCoreHandler.cs" />
+    <Compile Include="Core\ReceiverHandler.cs" />
+    <Compile Include="LLUP\BlipPostOffice.cs" />
+    <Compile Include="LLUP\Filters\Expiry.cs" />
+    <Compile Include="LLUP\INotificationIndex.cs" />
+    <Compile Include="LLUP\InternalReceiverHandler.cs" />
+    <Compile Include="LLUP\IRouterFilter.cs" />
+    <Compile Include="LLUP\ISubscriber.cs" />
+    <Compile Include="LLUP\Notification.cs" />
+    <Compile Include="LLUP\PublisherHandler.cs" />
+    <Compile Include="LLUP\RouterHandler.cs" />
+    <Compile Include="LLUP\SubscriberHandler.cs" />
+    <Compile Include="LLUP\Subscribers\AtomFeed.cs" />
+    <Compile Include="LoadBalancer\LoadBalancer.cs" />
+    <Compile Include="Message\IMessage.cs" />
+    <Compile Include="Message\Message.cs" />
+    <Compile Include="Message\MessageClient.cs" />
+    <Compile Include="Message\MessageServer.cs" />
+    <Compile Include="Message\MessageService.cs" />
+    <Compile Include="Notification\Notification.cs" />
+    <Compile Include="PostOffice\IPostOffice.cs" />
+    <Compile Include="PostOffice\PostOffice.cs" />
+    <Compile Include="QS\BlipMessageServerHander.cs" />
+    <Compile Include="QS\QSToLLUPHandler.cs" />
+    <Compile Include="Server\ReplicationHandler.cs" />
+    <Compile Include="Server\ReplicationMessage.cs" />-->
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Message\*.cs" />
+    <Compile Include="QS\*.cs" />
+    <Compile Include="Core\*.cs" />
+    <Compile Include="LLUP\*.cs" />
+    <Compile Include="LLUP\Filters\*.cs" />
+    <Compile Include="LLUP\Subscribers\*.cs" />
+    <Compile Include="LoadBalancer\*.cs" />
+    <Compile Include="Notification\*.cs" />
+    <Compile Include="PostOffice\*.cs" />
+    <Compile Include="Server\*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuxleus.Core\Nuxleus.Core.csproj">
+      <Project>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</Project>
+      <Name>Nuxleus.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
+      <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>
+      <Name>Nuxleus.PubSub</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nuxleus.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

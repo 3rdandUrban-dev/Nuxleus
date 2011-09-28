@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/atompub.add.xslt"?>
+<service:operation xmlns:operation="http://xameleon.org/service/operation" 
+                   xmlns:atompub="http://xameleon.org/service/atompub" 
+                   xmlns:add="http://xameleon.org/service/atompub/add" 
+                   xmlns:service="http://xameleon.org/service" 
+                   xmlns:param="http://xameleon.org/service/session/param">
+  <param:content-type>{header:ContentType}</param:content-type>
+  <param:slug>{header:Slug}</param:slug>
+  <param:title>{header:Slug}</param:title>
+  <param:request-body>{request:input-stream}</param:request-body>
+  <param:content-length>{request:content-length}</param:content-length>
+  <param:desc>{form:description}</param:desc>
+  <operation:atompub>
+    <atompub:add content-type="{$content-type}" content-length="{$content-length}">
+      <add:entry title="{$slug}" slug="{$slug}">
+        <add:request-body>{$desc}</add:request-body>
+      </add:entry>
+    </atompub:add>
+  </operation:atompub>
+</service:operation>

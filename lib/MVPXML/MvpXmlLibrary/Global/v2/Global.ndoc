@@ -1,0 +1,25 @@
+<project SchemaVersion="1.3">
+    <assemblies>
+        <assembly location=".\bin\Release\Mvp.Xml.dll" documentation=".\bin\Release\Mvp.xml" />
+    </assemblies>
+    <documenters>
+        <documenter name="MSDN">
+            <property name="OutputTarget" value="Web" />
+            <property name="OutputDirectory" value="D:\projects\Mvp.Xml\WebSite\api\2.0\" />
+            <property name="HtmlHelpName" value="Mvp.Xml v2.0 API Documentation" />
+            <property name="Title" value="Mvp.Xml v2.0 API Documentation" />
+            <property name="FooterHtml" value="&lt;div&gt;© 2005 &lt;a href=&quot;http://www.mvpxml.org&quot;&gt;Mvp.Xml Project&lt;/a&gt;&lt;/div&gt;" />
+            <property name="SdkLinksOnWeb" value="True" />
+            <property name="DocumentProtected" value="False" />
+            <property name="AssemblyVersionInfo" value="AssemblyVersion" />
+            <property name="CopyrightText" value="(c) 2005 Mvp.Xml Project" />
+            <property name="CopyrightHref" value="http://www.mvpxml.org" />
+            <property name="DocumentAttributes" value="False" />
+            <property name="CleanIntermediates" value="True" />
+        </documenter>
+        <documenter name="XML">
+            <property name="OutputFile" value=".\doc\doc.xml" />
+            <property name="DocumentAttributes" value="False" />
+        </documenter>
+    </documenters>
+</project>

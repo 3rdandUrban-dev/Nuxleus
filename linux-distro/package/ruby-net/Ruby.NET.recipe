@@ -1,0 +1,54 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class RubydotNET(CPackageRecipe):
+
+    buildRequires = [
+    'gawk:runtime',
+    'mono:runtime',
+    'mono:devel',
+    'pkgconfig:devel',
+    'mono:lib',
+    'cli-gac-tag:runtime'
+    ]
+
+    name = "Ruby.NET"
+    version = "svnr103"
+
+    def setup(r):
+        r.addArchive('%(name)s-%(version)s.tar.gz')
+	r.addArchive('rubylib-1.8.tar.bz2', dir='%(libdir)s/rubynet/')
+        r.addSource('rubynet')
+        r.addSource('rubynetc')
+        r.addSource('rubynet.pc')
+        r.addSource('gacinstalllist')
+        
+        r.Make()
+        
+        r.MakeDirs('%(libdir)s/rubynet')
+        
+        r.Install('rubynet.pc', '%(libdir)s/pkgconfig/rubynet.pc')
+        r.Install('rubynet', '%(bindir)s/rubynet')
+        r.Install('rubynetc', '%(bindir)s/rubynetc')
+        r.Install('gacinstalllist', '%(libdir)s/cli-gac/rubynet.gacinstall')
+        r.Install('bin/gppg.exe',                          '%(libdir)s/rubynet/gppg.exe', mode=0644)
+        r.Install('bin/Interop.IWshRuntimeLibrary.dll',    '%(libdir)s/rubynet/Interop.IWshRuntimeLibrary.dll', mode=0644)
+        r.Install('bin/QUT.PERWAPI.dll',                   '%(libdir)s/rubynet/QUT.PERWAPI.dll', mode=0644)
+        r.Install('bin/QUT.ShiftReduceParser.dll',         '%(libdir)s/rubynet/QUT.ShiftReduceParser.dll', mode=0644)
+        r.Install('bin/QUT.SymbolWriter.dll',              '%(libdir)s/rubynet/QUT.SymbolWriter.dll', mode=0644)
+        r.Install('bin/RubyCompiler.exe',                  '%(libdir)s/rubynet/RubyCompiler.exe', mode=0644)
+        r.Install('bin/RubyCompiler.exe.mdb',              '%(libdir)s/rubynet/RubyCompiler.exe.mdb', mode=0644)
+        r.Install('bin/Ruby.exe',                          '%(libdir)s/rubynet/Ruby.exe', mode=0644)
+        r.Install('bin/Ruby.exe.mdb',                      '%(libdir)s/rubynet/Ruby.exe.mdb', mode=0644)
+        r.Install('bin/Ruby.NET.Runtime.dll',              '%(libdir)s/rubynet/Ruby.NET.Runtime.dll', mode=0644)
+        r.Install('bin/Ruby.NET.Runtime.dll.mdb',          '%(libdir)s/rubynet/Ruby.NET.Runtime.dll.mdb', mode=0644)
+        
+        r.Requires(exceptDeps=r'CIL\:\ QUT\.SymbolWriter\(0\.0\.0\.0\)')
+        
+        r.Requires('%(libdir)s/cli-gac/rubynet.gacinstall', 'cli-gac-tag:runtime')
+        r.Requires(exceptions=r'\.*(rb)')
+        r.Provides(exceptions=r'\.*(rb)')        
+        r.TagSpec('cli-gac', '%(libdir)s/cli-gac/rubynet.gacinstall')

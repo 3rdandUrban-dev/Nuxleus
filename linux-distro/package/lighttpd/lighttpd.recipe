@@ -1,0 +1,26 @@
+#
+# Copyright (c) 2006-2007 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class LightTPD(AutoPackageRecipe):
+    name = 'lighttpd'
+    version = '1.4.17'
+
+    buildRequires = ['bzip2:devel', 'pcre:devel', 'zlib:devel', 'pcre:devel',
+            'pkgconfig:devel', 'chkconfig:runtime', 'openssl:devel', ]
+
+    def unpack(r):
+        r.addArchive('http://www.lighttpd.net/download/')
+	r.addSource('lighttpd.conf')
+
+    def configure(r):
+        r.Configure('--with-openssl')
+
+    def policy(r):
+        r.Install('doc/rc.lighttpd.redhat', '%(initdir)s/lighttpd')
+        r.Install('doc/sysconfig.lighttpd', '%(sysconfdir)s/sysconfig/lighttpd')
+	r.Install('lighttpd.conf', '%(sysconfdir)s/lighttpd/lighttpd.conf')
+
+	r.TagSpec('initscript', '%(initdir)s/')

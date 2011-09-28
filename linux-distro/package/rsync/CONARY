@@ -1,0 +1,7 @@
+stateversion 2
+name rsync:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1247125394.646:3.0.6-0.1
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+2
+0fce85ba475d76fb1bc6fc0a21ebb91a rsync.recipe 00765dfc113a610be63e4323d8ccebc550c703cd config /nuxleus.rpath.org@rpl:devel//nux:devel/3.0.6-0.1
+1ca22436224307910fa713efd2d81ef9 rsync-3.0.6.tar.gz 87d18b67665b6562504a7fd3a900eafe4acc62f6 autosource /nuxleus.rpath.org@rpl:devel//nux:devel/3.0.6-0.1

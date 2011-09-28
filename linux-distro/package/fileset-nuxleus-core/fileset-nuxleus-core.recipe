@@ -1,0 +1,28 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class FilesetNuxleusCore(FilesetRecipe):
+    name = 'fileset-nuxleus-core'
+    version = '0.1.8'
+
+    def setup(r):
+        ver = 'conary.rpath.com@rpl:1'
+
+	r.addFile('/bin/bash', 'bash:runtime', versionStr = ver)
+        r.addFile('/sbin/nash', 'mkinitrd:runtime', versionStr = ver)
+        r.addFile('/sbin/insmod', 'module-init-tools:runtime', versionStr = ver)
+        r.addFile('/sbin/{udev.static,udevstart}', 'udev:runtime', versionStr = ver)
+	r.addFile('/usr/lib/syslinux/isolinux.bin', 'syslinux:lib', versionStr = ver)
+	r.addFile('/lib/libtermcap.so.2.0.8', 'libtermcap:lib', versionStr = ver)
+	r.addFile('/lib/libdl-2.3.6.so', 'glibc:lib', versionStr = ver)
+	r.addFile('/lib/tls/libc-2.3.6.so', 'glibc:lib', versionStr = ver)
+	r.addFile('/lib/ld-2.3.6.so', 'glibc:lib', versionStr = ver)
+	r.addFile('/usr/lib/libgthread-2.0.so.0.800.3', 'glib:lib', versionStr = ver)
+	r.addFile('/usr/lib/libgmodule-2.0.so.0.800.3', 'glib:lib', versionStr = ver)
+	r.addFile('/usr/lib/libglib-2.0.so.0.800.3', 'glib:lib', versionStr = ver)
+	r.addFile('/lib/tls/libpthread-2.3.6.so', 'glibc:lib', versionStr = ver)
+	r.addFile('/lib/tls/libm-2.3.6.so', 'glibc:lib', versionStr = ver)
+	#r.addFile('/root/.wapi/shared_fileshare-\(none\)-Linux-i686-36-11-0', 'mono:runtime', versionStr = 'nuxleus.rpath.org@nux:devel')

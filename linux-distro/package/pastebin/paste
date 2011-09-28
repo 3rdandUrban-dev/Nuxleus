@@ -1,0 +1,82 @@
+#!/usr/bin/env ruby
+
+$langs = [
+	'text', 'actionscript', 'ada', 'apache', 'applescript', 'asm', 'asp', 'bash', 'c',
+	'c_mac', 'caddcl', 'cadlisp', 'cpp', 'csharp', 'cfm', 'css', 'd', 'delphi', 'diff',
+	'dos', 'eiffel', 'fortran', 'freebasic', 'gml', 'html4strict', 'ini', 'java', 'javascript',
+	'lisp', 'lua', 'matlab', 'mpasm', 'mysql', 'nsis', 'objc', 'ocaml', 'oobas', 'oracle8',
+	'pascal', 'perl', 'php', 'python', 'qbasic', 'robots', 'ruby', 'scheme', 'smarty',
+	'sql', 'tcl', 'vb', 'vbnet', 'visualfoxpro', 'xml'
+]
+
+$name = 'Anonymous'
+$expiry = 'm'
+$lang = 'text'
+$file = nil
+
+def usage()
+	puts """monoport [-n:name] [-e:d|m|f] [-l:lang] [file]
+
+	-n:name     the author's name (Anonymous by default)
+
+	-e:d|m|f    how long will the post live,
+					d: a day
+					m: a month (default)
+					f: forever
+
+	-l:lang     the lang of the post (text by default), in:
+
+#{$langs.join(', ')}
+
+	if file is not specified, monoport reads from stdin.
+"""
+end
+
+def version()
+	puts 'paste commandline derived from monoport, Copyright (C) 2007 Jb Evain, public domain.  See http://evain.net/blog/articles/2007/08/18/monoport-from-the-shell for more information.'
+end
+
+ARGV.each do |arg|
+	if arg.index('-n:')
+		$name = arg[3..-1]
+	elsif arg.index('-e:')
+		e = arg[3..-1]
+		$expiry = e if ['d', 'm', 'f'].include?(e)
+	elsif arg.index('-l:')
+		l = arg[3..-1]
+		$lang = l if $langs.include?(l)
+	elsif arg.index('--help')
+		usage()
+	elsif arg.index('--version')
+		version()
+	elsif File::exists?(arg)
+		$file = arg
+	end
+end
+
+require 'net/http'
+require 'uri'
+
+def request_parameters()
+	p = {'parent_pid' => '', 'paste' => 'Send', 'format' => $lang, 'poster' => $name }
+	case $expiry
+	when 'd'
+		p['expiry_day'] = 'd'
+	when 'm'
+		p['expiry_month'] = 'm'
+	when 'f'
+		p['expiry_forever'] = 'f'
+	end
+	p['code2'] = $file.nil? ? $stdin.read() : File.read($file)
+	return p
+end
+
+response = Net::HTTP::post_form(
+	URI.parse('http://monoport.com/pastebin.php'), request_parameters())
+
+case response
+when Net::HTTPRedirection
+	puts "#{response['location']}"
+else
+	puts 'failed'
+end

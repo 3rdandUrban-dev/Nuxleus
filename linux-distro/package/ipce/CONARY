@@ -1,0 +1,16 @@
+stateversion 2
+name ipce:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1188509077.926:r6-0.2
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+11
+06a4d2d67a610a8dfc765fde18c8bff7 ipce-r4.tar.gz af05ff7ded3c597911ba864b1e632cd577d086a8 _ /nuxleus.rpath.org@rpl:devel/r4-3
+8aff6fc38d9b400cd048e6116785e128 IPCE-r6.zip e4a04db63b54311be420c3f52e12e83568d76a2c autosource /nuxleus.rpath.org@rpl:devel//nux:devel/r6-0.1
+2543775b5da16a6336382a9add3e5897 ipce.recipe 6572dcdbafc85dbe65315a98112deaebddb89d34 config /nuxleus.rpath.org@rpl:devel//nux:devel/r6-0.2
+501625a1d3712c52920c46673df65fc3 site.py.patch 1a847e59262643aedc7d0c80acb6eb3a1b925c37 config /nuxleus.rpath.org@rpl:devel//nux:devel/r5-0.2
+66532e13e4e762c944c13d067858ccfb cgi.py.patch 4a73db1f21e1fee8478f2ad5d07e8b1e90e28da2 config /nuxleus.rpath.org@rpl:devel//nux:devel/r5-0.2
+6ddeef2bc61a6a27aa7fdfa2f308ddee ipyw ce3ee5cd12d99c8b2412bf5223dca7028fed4521 config /nuxleus.rpath.org@rpl:devel//nux:devel/r5-0.1
+36cd5b03b8918ee67702ff7d07e71217 ipce.pc 93bb37c136008e1319313146430045a10b223fb1 config /nuxleus.rpath.org@rpl:devel//nux:devel/r5-0.1
+938e91165759e2d13675c2b4c15d6844 makefile eacd9419ee3344cbe45552f37ba14085bec5fb73 config /nuxleus.rpath.org@rpl:devel//nux:devel/r5-0.1
+d6b5e12631c763fb45cd421d6d3ddfcd gac-install-list 1d7808079315e9b1f0d87b072a4a97f191dff64d config /nuxleus.rpath.org@rpl:devel//nux:devel/r5-0.1
+2480eae9299f240a366ec76eb086aa2a build.sh c1a4fda20d563ac19b54550eb372c95e36891ae7 config /nuxleus.rpath.org@rpl:devel//nux:devel/r5-0.4
+6c984d1002f093eb24775a770d9a6c15 ipy 14d35c07f4a6ff919d785724b04a54c9079418c3 config /nuxleus.rpath.org@rpl:devel//nux:devel/r5-0.1

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:sx="http://feedsync.org/2007/feedsync">
+	<channel>
+		<title>todolist.xml</title>
+		<description>Sample to do list</description>
+		<link>http://www.example.com/index.html</link>
+		<item>
+			<sx:sync id="101" updates="1" deleted="false" noconflicts="false"><sx:history sequence="1" when="2007-11-29T06:27:11Z" by="fsRSSConvert.js"/></sx:sync><title>Pay Bills</title>
+			<description>Electric, Gas and Water Bills</description>
+		</item>
+	</channel>
+</rss>

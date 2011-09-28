@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atom:entry xmlns:atom="http://www.w3.org/2005/Atom">
+  <atom:id>urn:uuid:a40a605f-3edd-4c6c-87f3-06504ea457e5</atom:id>
+  <atom:title type="text">dsfg</atom:title>
+  <atom:updated>2006-10-08T15:32:47.111935Z</atom:updated>
+  <atom:published>2006-10-08T15:32:47.111895Z</atom:published>
+  <atom:author>
+    <atom:name>Sylvain Hellegouarch</atom:name>
+  </atom:author>
+  <atom:category term="test" scheme="http://blah/" label="Test" />
+  <atom:category term="indie" scheme="http://blah/" label="Indie" />
+  <atom:summary type="text"></atom:summary>
+</atom:entry>

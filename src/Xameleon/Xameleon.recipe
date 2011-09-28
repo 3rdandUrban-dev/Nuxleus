@@ -1,0 +1,22 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+loadSuperClass('binarypackage=conary.rpath.com@rpl:devel')
+class Xameleon(BinaryPackageRecipe):
+    name = 'Xameleon'
+    version = '0.2.3.svnr939'
+
+    buildRequires = [
+        
+       ]
+
+    def unpack(r):
+        r.macros.apacheparentpath = '/srv'
+	r.macros.wwwroot = 'webapp'
+        r.addArchive('%(name)s-%(version)s.tar.gz', dir='%(apacheparentpath)s/')
+	r.addArchive('fxsl-xslt2.tar.gz', dir='%(apacheparentpath)s/%(wwwroot)s')
+	r.addSource('.htaccess', dest='%(apacheparentpath)s/%(wwwroot)s/.htaccess')
+        r.Requires(exceptions=r'\.*(py|vs|exe|dll|xbap|zip|st|deploy|xaml|xml|xsl|xslt|op|omx|config|aspx|asmx|asax)')
+        r.Provides(exceptions=r'\.*(py|vs|exe|dll|xbap|zip|st|deploy|xaml|xml|xsl|xslt|op|omx|config|aspx|asmx|asax)')

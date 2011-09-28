@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/base.xslt"?>
+<service:operation 
+  xmlns:service="http://xameleon.org/service" 
+  xmlns:operation="http://xameleon.org/service/operation" 
+  xmlns:param="http://xameleon.org/service/session/param">
+  <operation:response message-format="xml:opensearch" memcache-result="true" memcache-result-expires="24h">
+    <operation:search xmlns:search="http://xameleon.org/service/search">
+      <search:return-artist-info-from-music-brainz artist="{query-string:artist}"/>
+    </operation:search>
+  </operation:response>
+</service:operation>

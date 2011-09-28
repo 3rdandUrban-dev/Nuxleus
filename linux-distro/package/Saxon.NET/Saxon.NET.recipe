@@ -1,0 +1,39 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class SaxonNET(AutoPackageRecipe):
+    name = 'Saxon.NET'
+    version = '9.1.0.7'
+
+    buildRequires = [
+        'mono:lib',
+        'mono:runtime',
+        'mono:devel',
+        'ikvmbin:lib',
+        'ikvmbin:runtime',
+        'cli-gac-tag:runtime'
+       ]
+
+    def setup(r):
+        #r.addArchive('build.tar.gz')
+	r.addSource('makefile')
+	r.addSource('Extf.Net.snk')
+	r.addSource('transform')
+        r.addSource('query')
+        r.addSource('build.sh')
+	r.addSource('saxon.pc')
+	r.addSource('saxon9.dll')
+	r.Install('saxon.pc', '%(libdir)s/pkgconfig/saxon.pc')
+        r.addSource('gacinstalllist')
+	r.Install('gacinstalllist', '%(libdir)s/cli-gac/saxon.gacinstall')
+        r.Config('%(libdir)s/cli-gac/saxon.gacinstall')
+	#r.Run('cd build; nant -t:mono-1.0')
+        r.Make()
+        r.MakeInstall()
+
+        r.Requires('%(libdir)s/cli-gac/saxon.gacinstall', 'cli-gac-tag:runtime')
+        
+        r.TagSpec('cli-gac', '%(libdir)s/cli-gac/saxon.gacinstall')

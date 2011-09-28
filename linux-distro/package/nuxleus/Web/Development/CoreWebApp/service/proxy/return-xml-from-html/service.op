@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/controller/proxy/base.xslt"?>
+<service:operation xmlns:service="http://xameleon.org/service" xmlns:operation="http://xameleon.org/service/operation"
+    xmlns:param="http://xameleon.org/service/session/param">
+    <operation:proxy xmlns:proxy="http://xameleon.org/service/proxy">
+        <proxy:return-xml-from-html uri="{query-string:uri}" />
+    </operation:proxy>
+</service:operation>

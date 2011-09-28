@@ -1,0 +1,8 @@
+#!/bin/sh
+rm -f file-parent-package-list
+touch file-parent-package-list
+for name in `cat rootfs.list`; do
+	file=${name##.}
+	fileparentpackage=`conary q --path=$file`
+	echo $file:$fileparentpackage >> file-parent-package-list
+done

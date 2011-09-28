@@ -1,0 +1,24 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class IronPythonCommunityEdition(AutoPackageRecipe):
+    name = 'IronPython-MS-Dev'
+    version = '1.1a1'
+
+    buildRequires = [ 
+        'PyXML:python', 
+        'mono:lib',
+		'mono:runtime',
+        'sgmlop:python',
+        'pycrypto:python'
+       ]
+
+    def setup(r):
+        r.addArchive('http://s3.amazonaws.com/IronPython/IronPython-%(version)s-Bin.zip')
+        r.addSource('makefile')
+        r.addSource('ipy-dev', macros=True, dest='%(bindir)s/ipy-dev', mode=0755)
+        r.addSource('ipyw-dev', macros=True, dest='%(bindir)s/ipyw-dev', mode=0755)
+        r.addSource('site.py', macros=True, dest='%(libdir)s/ironpython-1.1-dev/Lib/site.py')

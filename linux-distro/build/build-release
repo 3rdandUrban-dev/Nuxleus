@@ -1,0 +1,2 @@
+#!/bin/bash
+./prep; ./prepdistrodisk; ./create; ./build-dep-list; ./remove-duplicate-library-dependencies; ./sync-dir; ./sync-lib-deps; ./dd;

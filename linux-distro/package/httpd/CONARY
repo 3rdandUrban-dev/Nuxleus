@@ -1,0 +1,15 @@
+stateversion 2
+name httpd:source
+version /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/1189378062.548:2.2.4-2.5
+branch /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel
+10
+2b815071d4663e38ccd9ca8f498975f1 httpd.init.patch a85210325688b66c775f78f068bc691fadd717ac config /conary.rpath.com@rpl:devel/2.2.4-1
+4ba46dfeb11448f116853bbf33b219b5 httpd.init 56cd7fd3bef8d5c6cb0b28290ba4d492e36ed599 config /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/2.2.4-2.1
+6024dcd8c2ed1a4a0889cbacd944d144 httpd-2.2.3-6.src.rpm 26e290938d81322cf7d6e98fb537d5fe08cf2ada autosource /conary.rpath.com@rpl:devel/2.2.3-10
+7888252732f49b7ec0c7092d712f8c86 Makefile.ssl aa832f4e1e7b96e394bb0efb1493ee7320822fa1 config /conary.rpath.com@rpl:devel/2.2.4-1
+7e5f2f5fc4ea095cbf6d1a62aec16d17 modssl-req.conf 0055900276077c867dba4f6cd20419ff2d87d30c config /conary.rpath.com@rpl:devel/2.2.4-1
+c610a20c84bd30913e07063d0788f316 httpd-2.2.4.tar.bz2 933b3e9b5ee967b335caa9673daf718bc1053e04 autosource /conary.rpath.com@rpl:devel/2.2.4-1
+d1f2e1a9c5d98f092ca150e326e65418 index.html 6f67bfb47358ab2948799fbdd5b8174d0a9f45fc config /conary.rpath.com@rpl:devel/2.2.4-1
+eca66c4f97f9bfdc0fe736b36b80e11c httpd.conf d72a9a5cdeda7bb0da231afbfcc81f65004dae58 config /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/2.2.4-2.5
+f2b95b15bf77e1bed3f0e155b9d458f3 httpd.recipe 3a81cce01d43382e74a62185eba6ed38dc0b910f config /conary.rpath.com@rpl:devel//nuxleus.rpath.org@nux:devel/2.2.4-2.3
+f6ba6ef81036e353472da473f8551647 config.layout.rpath 8b8a2d86ef3c869e85c686c907cc2d39d58c0b71 config /conary.rpath.com@rpl:devel/2.2.3-14

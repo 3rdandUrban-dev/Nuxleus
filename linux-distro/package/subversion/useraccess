@@ -1,0 +1,12 @@
+#
+# SVN_CONF_DIR/useraccess. Subversion user authorization
+#
+
+#
+# Grant all users in SVN_CONF_DIR/users full access (read
+# and write) to all repositories.
+#
+
+
+[/]
+* = rw

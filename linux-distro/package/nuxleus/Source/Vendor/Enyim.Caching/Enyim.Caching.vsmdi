@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestLists xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006" xmlns:custom="http://microsoft.com/schemas/VisualStudio/TeamTest/2006/XsltFunctions">
+  <TestList name="Lists of Tests" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <RunConfiguration name="Local Test Run" storage="localtestrun.testrunconfig" id="5324c468-b0c9-4664-8fc7-767ed081d0d6" type="Microsoft.VisualStudio.TestTools.Common.TestRunConfiguration" />
+  </TestList>
+  <TestList name="Tests Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+    <TestLinks>
+      <TestLink enabled="false" name="ExpirationTest" storage="memcachedtest\bin\debug\memcachedtest.dll" id="4a6f4f75-f1c3-3230-baf7-5cec50e777d9" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+</TestLists>

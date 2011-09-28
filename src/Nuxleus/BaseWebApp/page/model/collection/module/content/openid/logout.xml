@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<model:collection id="search-box-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:collection="http://atomictalk.org/page/model/collection" xmlns:model="http://atomictalk.org/page/model">
+    <collection:item id="center">
+        <span>You may logout from the OpenID server by clicking the following button.</span>
+        <form action="/logout" method="post">
+            <input type="submit" value="Logout" class="Button submit" />
+        </form>
+    </collection:item>
+</model:collection>

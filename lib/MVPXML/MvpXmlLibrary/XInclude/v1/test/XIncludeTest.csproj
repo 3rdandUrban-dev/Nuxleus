@@ -1,0 +1,1873 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{D766C1F9-D2DA-4088-9AE1-52EA369B555F}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "Mvp.Xml.XInclude.Test"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                PreBuildEvent = ""
+                PostBuildEvent = ""
+                RootNamespace = "Mvp.Xml.XInclude.Test"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\Debug\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "bin\Release\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "nunit.framework"
+                    AssemblyName = "nunit.framework"
+                    HintPath = "C:\Program Files\NUnit 2.2\bin\nunit.framework.dll"
+                    AssemblyFolderKey = "hklm\dn\nunit.framework"
+                />
+                <Reference
+                    Name = "XInclude"
+                    Project = "{3750FAB1-FD0E-425A-9DAA-87543A556319}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "C:\WINNT\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "Elliotte_Rusty_HaroldTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "EntryPoint.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "FourThoughtTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "generate-tests.cmd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "LTG_Edinburgh_UnivTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "NISTTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "RedhatTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "TestsGen.xslt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XIncludeReaderTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XIncludeSyntaxTests.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "results\caching.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\document.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\fallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\filenotfound.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\includesitself.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\includesitself-nohref-text.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\langtest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\loop.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\nonxmlchar.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\resolver.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\test-Martin.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\working_example.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\working_example2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "results\xpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\binary.bin"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "tests\caching.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\count.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\data.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\disclaimer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\document.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\fallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\fallbacknotchildinclude.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\filenotfound.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\includechildofinclude.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\includesitself.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\includesitself-nohref-text.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\langtest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\loop.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\nohref.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\nonxmlchar.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\resolver.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\russian.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\table.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\test2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\test-Martin.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\twofallbacks.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\unknownparseattr.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\working_example.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\working_example2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "tests\xpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\README.cvs"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\report.html"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\testcases.dtd"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\testdescr.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\xinclude.xsl"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\EdUni\result\book.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\EdUni\result\extract.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\EdUni\result\lang.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\EdUni\test\book.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\EdUni\test\chap1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\EdUni\test\chap2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\EdUni\test\extract.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\EdUni\test\lang.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\EdUni\test\lang-samples.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\result\XInclude\include1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\result\XInclude\include2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\result\XInclude\include3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\result\XInclude\include4.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\result\XInclude\include5.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\result\XInclude\include6.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\result\XInclude\include7.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include4.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include5.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include6.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\ft-include7.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\include1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\include2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\include3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\FourThought\test\XInclude\docs\include4.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\acceptascii.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\acceptenglish.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\acceptfrench.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\accepthtml.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\acceptjis.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\acceptplaintext.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\badelementschemedata.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\c1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\c1a.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\c1b.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\c2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\c2a.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\c2b.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\c2c.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\c2d.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\c3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\c5.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\d1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\disclaimer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\EBCDIC.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\emptyfallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\encodingheuristicstest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\fallbacktest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\fallbacktest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\goodiri.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\ignoresfragmentid.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\includedocumentwithintradocumentreferences.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\includefromsamedocumentwithbase.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\langtest1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\langtest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\langtest3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\latin1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\legalcircle.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\lineends.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\marshtest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\marshtestwithxmlbase.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\metafallbacktest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\metafallbacktest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\metafallbacktest5.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\metafallbacktest6.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\metafallbacktestwithxpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\metafallbacktestwithxpointer2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\metafallbacktotexttest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\namespacetest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\onlyxpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\paralleltest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\recursewithinsamedocument.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\resolvethruxpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\roottest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\roottest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\simple.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\test.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\tobintop.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\triple.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\UnicodeBigUnmarked.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\UnicodeLittleUnmarked.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\unrecognizedschemewithfallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\utf16.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\utf16.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\UTF16BigEndianWithByteOrderMark.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\UTF16LittleEndianWithByteOrderMark.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\UTF32BE.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\UTF32LE.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\UTF8WithByteOrderMark.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\xmlbasetest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\xmlbasetest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\xmlbasetest3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\xpointeroverridesfragmentid.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\xptrdandtumblertest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\xptrfallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\xptridandtumblertest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\xptridtest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\xptridtest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\result\xptrtumblertest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\acceptenglish.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\acceptfrench.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\accepthtml.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\acceptplaintext.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\badaccept1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\badaccept2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\badelementschemedata.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\badiri.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\badiri2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\badparseattribute.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\badxptr.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\badxptr2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\badxptr3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\badxptr4.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\baseinclude.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\bdisclaimer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\c1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\c2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\c3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\c5.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\circle1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\circle2a.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\circle2b.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\circleback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\circlepointer1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\circlepointer2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\circlepointer3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\colonizedschemename.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\count.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\d1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\data.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\disclaimer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\docwithid.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\docwithidandtumbler.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\EBCDIC.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\emptyfallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\encodingheuristicstest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\extraattributes.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\fallbackbadparseattribute.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\fallbackbadxpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\fallbackcontainsfallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\fallbackinternalxpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\fallbacknohreforparse.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\fallbacktest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\fallbacktest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\fallbacktest3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\fallbacktotext.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\fallbackxpointerpointsnowhere.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\french.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\french2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\goodiri.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\ignoresfragmentid.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\includedocumentwithintradocumentreferences.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\includefromsamedocumentwithbase.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\internalcircular.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\internalcircularviaancestor.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\langtest1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\langtest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\langtest3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\laterfailure.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\laterfailure2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\latin1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\legalcircle.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\lineends.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\lineends.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\marshtest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\marshtestwithxmlbase.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\marshtestwithxmlbaseandemptyhref.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\meaninglessfragmentid.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbacktest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbacktest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbacktest3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbacktest4.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbacktest5.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbacktest6.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbacktestwithfragmentid.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbacktestwithxpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbacktestwithxpointer2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbacktotexttest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metafallbackwithbadxpointertest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\metamissingfallbacktestwithxpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\missingfile.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\missinghref.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\multiplefallbacks.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\multiplefallbacks2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\nakedfallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\namespaceinner.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\namespacetest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\nestedxinclude.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\nestedxincludenamespace.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\nofallbacktest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\nolang.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\onedown.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\onlyxpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\paralleltest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\parseequalxml.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\recursewithinsamedocument.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\red.dtd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\resolvethruxpointer.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\rootfailuretest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\roottest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\roottest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\simple.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\simple2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\test.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\test0.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\test2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\test3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\tobinbottom.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\tobinmiddle.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\tobintop.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\toplevel.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\UCS4BE.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\ucs4bigendian.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\UCS4LE.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\ucs4littleendian.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\UnicodeBigUnmarked.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\UnicodeLittleUnmarked.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\unrecognizedscheme.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\unrecognizedschemewithfallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\utf16.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\utf16.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\utf16be.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\utf16be.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\UTF16BigEndianWithByteOrderMark.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\utf16le.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\UTF16LittleEndianWithByteOrderMark.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\UTF32BE.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\UTF32LE.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\utf8.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\utf8bom.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\UTF8WithByteOrderMark.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xmlbasetest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xmlbasetest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xmlbasetest3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xpointeroverridesfragmentid.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xpointerselectsnonelements.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xpointerwithpercentescape.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptr2tumblertest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptrdoubletumblertest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptrfallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptridandtumblertest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptridtest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptridtest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptrsyntaxerrorbutfallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptrtumblerfailsbutfallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptrtumblertest.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptrtumblertest2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\xptrtumblertest3.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\a\a.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\b\b.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\basedata\red.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\text\EBCDIC.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\text\UnicodeBigUnmarked.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\text\UnicodeLittleUnmarked.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\text\UTF32BE.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\text\UTF32LE.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Harold\test\text\UTF8.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\result\XInclude\docids.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\result\XInclude\fallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\result\XInclude\include.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\result\XInclude\nodes.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\result\XInclude\recursive.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\result\XInclude\txtinclude.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\docs\docids.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\docs\fallback.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\docs\include.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\docs\nodes.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\docs\recursive.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\docs\txtinclude.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\ents\ids.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\ents\inc.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\ents\something.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\ents\something.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Imaq\test\XInclude\ents\sub-inc.ent"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-01.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-02.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-04.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-06.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-07.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-09.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-10.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-13.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-14.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-16.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-17.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-18.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-19.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-20.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-21.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-22.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-26.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-27.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-28.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-29.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-30.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-31.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-34.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-35.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-36.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-37.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-38.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-39.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-40.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-49.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-50.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-51.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-52.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\result\nist-include-55.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-01.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-02.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-03.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-04.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-05.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-06.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-07.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-08.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-09.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-10.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-11.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-12.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-13.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-14.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-15.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-16.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-17.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-18.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-19.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-20.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-21.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-22.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-23.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-24.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-25.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-26.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-27.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-28.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-29.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-30.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-31.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-32.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-33.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-34.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-35.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-36.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-37.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-38.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-39.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-40.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-41.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-42.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-43.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-44.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-45.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-46.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-47.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-48.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-49.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-50.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-51.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-52.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-53.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-54.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-55.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\docs\nist-include-56.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\004.ent"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\books.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\chapter.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\extref.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\getnodes.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\idtst.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\include.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\include1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\morebooks.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\nwf1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\nwf2.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\nwfsomething.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\part1.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\prtids.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\ptrtst.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\reluriref.ent"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\something.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\something.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\spec.dtd"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "XInclude-Test-Suite\Nist\test\ents\unparent.xml"
+                    BuildAction = "Content"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

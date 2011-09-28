@@ -1,0 +1,9 @@
+stateversion 2
+name Amplee:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1169919078.697:svn.r248-0.1
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+4
+f45bcb5af9043e9244305e91d203d109 Amplee.recipe efd4cd0930043c27c0aad8f65b7b9955c6ab64ce config /nuxleus.rpath.org@rpl:devel//nux:devel/svn.r248-0.1
+57dc7c21c95625b2ea3860d4a91ec3bb Amplee-svn.r248.tar.gz 27de35fcf3ef452fbf22e2768af1433a2ac9c00d _ /nuxleus.rpath.org@rpl:devel//nux:devel/svn.r248-0.1
+2b9666893176805a4cc692ea39b391f3 Amplee-svn.r231.tar.gz 4a25ec308e411fd875b8626e3f5a91a308684e21 _ /nuxleus.rpath.org@rpl:devel//nux:devel/svn.r231-0.1
+e5b72c1025c000a41f63158e2acd6438 build.sh 24b9f1367419f6e533d3425727749ec045de78f4 config /nuxleus.rpath.org@rpl:devel//nux:devel/svn.r231-0.1

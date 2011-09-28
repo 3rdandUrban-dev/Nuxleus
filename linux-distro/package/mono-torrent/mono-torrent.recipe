@@ -1,0 +1,33 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class MonoTorrent(AutoPackageRecipe):
+    name = 'mono-torrent'
+    version = 'Beta4'
+
+    buildRequires = [
+        'mono:runtime',
+	'mono:devel',
+	'mono:cil',
+	'cli-gac-tag:runtime'
+       ]
+
+    def setup(r):
+	r.addArchive('http://www.monotorrent.com/Files/MonoTorrent.%(version)s.zip')
+	r.Install('../MonoTorrent.dll', '%(libdir)s/mono-torrent/MonoTorrent.dll')
+	r.Install('../Upnp.dll', '%(libdir)s/mono-torrent/Upnp.dll')
+	r.Install('../Mono.Security.dll', '%(libdir)s/mono-torrent/Mono.Security.dll')
+	r.Install('../MonoTorrent.exe', '%(libdir)s/mono-torrent/MonoTorrent.exe')
+	r.addSource('monotorrent', macros=True, dest='%(bindir)s/monotorrent', mode=0755)
+	#r.Install('mono-torrent.pc', '%(libdir)s/pkgconfig/mono-torrent.pc')
+        r.addSource('gacinstalllist')
+        r.Install('gacinstalllist', '%(libdir)s/cli-gac/mono-torrent.gacinstall')
+        r.Config('%(libdir)s/cli-gac/mono-torrent.gacinstall')
+
+        r.Requires('%(libdir)s/cli-gac/mono-torrent.gacinstall', 'cli-gac-tag:runtime')
+
+        r.TagSpec('cli-gac', '%(libdir)s/cli-gac/mono-torrent.gacinstall')
+

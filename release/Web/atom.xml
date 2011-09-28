@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>the nuxle.us project</title>
+    <subtitle>xml:messaging@the.atomic.level</subtitle>
+    <link rel="self" type="application/atom+xml" href="http://nuxle.us/atom.xml"/>
+    <updated>2005-12-31T10:01:43Z</updated>
+    <author>
+        <name>M. David Peterson</name>
+        <email>m.david@xmlhacker.com</email>
+    </author>
+    <id>tag:nuxle.us,2005://1</id>
+    <generator version="0.1">xameleon</generator>
+    <rights>Copyright (c) 2006, M. David Peterson and the nuxle.us project community.  All text-based (including HTML and XHTML markup) content and documentation contained in this data feed is licensed under a Creative Commons Attribution 2.5 License.  Please attribute all content and documentation to either 'M. David Peterson' or 'the nuxle.us project community' based on the copyright information contained within each entry.  For specific details of the rights reserved as well as your rights and requirements to use this content for both commercial and non-commercial purposes please visit http://creativecommons.org/licenses/by/2.5/</rights>
+    <entry>
+        <title>PlaceHolder</title>
+        <link rel="alternate" type="text/plain" href="http://nuxle.us/"/>
+        <published>2005-12-31T10:01:43Z</published>
+        <updated>2005-12-31T10:01:43Z</updated>
+        <id>tag:nuxle.us,2005://1</id>
+        <summary type="text">Summary Placholder</summary>
+        <category scheme="http://nuxle.us/category" label="nuxle.us" term="the nuxle.us project"/>
+        <content type="text/plain" xml:lang="en" xml:base="http://nuxle.us/"> Place holder.</content>
+    </entry>
+</feed>

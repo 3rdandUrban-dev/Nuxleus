@@ -1,0 +1,37 @@
+#view-mode-menu {
+  margin:.15em 0 .1em;
+}
+#sub-nav {
+ margin-top:0em;
+ margin-bottom: 0em; 
+}
+#sub-nav > ul {
+  padding:.2em 0;
+}
+#sub-nav-menu a {
+  padding:.35em .5em .13em;
+  font-weight:600;
+}
+#sub-nav-menu a:hover {
+padding:.35em .5em .15em;
+}
+.menu a {
+  padding:.15em .5em;
+}
+.menu a:hover {
+  padding:.22em .5em;
+}
+.menu li.selected a {
+  padding:.4em .5em .35em;
+  margin-right:.25em;
+}
+#top-nav-menu .domain a {
+  padding:0 .75em;
+  margin-top:.1em;
+}
+#search-box {
+ 
+}
+#title {
+ 
+}

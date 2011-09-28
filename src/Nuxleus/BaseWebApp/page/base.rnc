@@ -1,0 +1,103 @@
+namespace session = "http://xameleon.org/session"
+namespace openid = "http://openid.name/"
+namespace entity = "http://atomictalk.org/entity"
+namespace page = "http://atomictalk.org/page"
+namespace config = "http://atomictalk.org/page/config"
+namespace advice = "http://atomictalk.org/page/config/advice"
+namespace resource = "http://atomictalk.org/page/resource"
+namespace model = "http://atomictalk.org/page/model"
+namespace view = "http://atomictalk.org/page/view"
+namespace controller = "http://atomictalk.org/page/controller"
+namespace output = "http://atomictalk.org/page/output"
+namespace head = "http://atomictalk.org/page/output/head"
+namespace body = "http://atomictalk.org/page/output/body"
+namespace structure = "http://atomictalk.org/page/output/body/structure"
+
+start =
+    element entity:page {
+        element page:config {
+            attribute src { text }?,
+            element config:advice {
+                element advice:* { text?,
+                    attribute base { text }?,
+                    element advice:* { text }*
+                }+
+            },
+            element config:session {
+                attribute src { text },
+                element session:id { text },
+                element session:nonce { text },
+                element session:openid {
+                    attribute src { text },
+                    element openid:uri { text },
+                    element openid:humanid { text }
+                }
+            }
+        },
+        element page:resource {
+            element resource:* {
+                attribute entity { text },
+                attribute src { text }?,
+                attribute href { text }?,
+                attribute type { xsd:NCName },
+                element * { text?,
+                    attribute scheme { text },
+                    attribute label { text },
+                    attribute term { text }
+                }*
+            }+
+        },
+        element page:model {
+            element model:* {
+                attribute src { text }
+            }+
+        },
+        element page:view {
+            element view:* {
+                attribute src { text },
+                attribute type { xsd:NCName }
+            }+
+        },
+        element page:controller {
+            element controller:* {
+                attribute src { text }
+            }+
+        },
+        element page:output {
+            element output:head {
+                element head:title { text },
+                element head:link {
+                    attribute href { xsd:anyURI },
+                    attribute rel { text },
+                    attribute title { text }?,
+                    attribute type { text }
+                }+,
+                element head:include {
+                    attribute fileType { xsd:NCName },
+                    attribute href { text }
+                }+
+            },
+            element output:body {
+                element body:function {
+                    attribute action { xsd:NCName },
+                    attribute call { text }
+                }+,
+                element body:structure {
+                    element structure:view {
+                        attribute id { xsd:NCName },
+                        element view:module {
+                            attribute id { xsd:NCName },
+                            attribute src { text }?,
+                            element view:container {
+                                attribute id { xsd:NCName }?,
+                                element view:item {
+                                    attribute id { xsd:NCName },
+                                    attribute src { text }
+                                }+
+                            }?
+                        }+
+                    }
+                }
+            }
+        }
+    }

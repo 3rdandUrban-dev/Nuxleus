@@ -1,0 +1,23 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Mod_mono(CPackageRecipe):
+
+    buildRequires = [ 'gawk:runtime', 'mono:runtime', 'pkgconfig:devel', 'mono:lib', 'apr:devel' ]
+
+    name = "mod_mono"
+    version = "1.2.5"
+
+    def setup(r):
+        #r.addArchive('http://mono.ximian.com/monobuild/preview/sources/mod_mono/mod_mono-1.2.5.tar.bz2')
+	r.addArchive('http://go-mono.com/sources/%(name)s/%(name)s-%(version)s.tar.bz2')
+	r.addPatch('mod_mono.conf.patch')
+	r.Configure()
+	#r.Configure('--with-apr-config=/usr/bin/apr-1-config')
+	r.Make()
+	r.MakeInstall()
+	r.Move('%(sysconfdir)s/httpd/conf/mod_mono.conf', '%(sysconfdir)s/httpd/conf.d/mod_mono.conf' )
+	#r.Install('mod_mono.conf', '%(sysconfdir)s/httpd/conf.d/mod_mono.conf')

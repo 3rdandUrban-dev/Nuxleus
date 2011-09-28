@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<view:menu type="xhtml" style="nav-menu RtoL" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <view:container>
+    <!-- <view:item>
+      <object type="application/x-shockwave-flash" width="400" height="15" data="/xspf/xspf_player_slim.swf?playlist_url=/playlist.xml">
+        <param name="movie" value="/xspf/xspf_player_slim.swf?playlist_url=/playlist.xml" />
+      </object>
+    </view:item> -->
+    <!-- <view:item>
+      <a href="/home/playlists/">
+      My Playlists
+    </a>
+    </view:item>
+    <view:item>
+      <a href="/home/events/">
+      My Events
+    </a>
+    </view:item>
+    <view:item>
+      <a href="/home/clipboard/">
+      My Clipboard
+    </a>
+    </view:item>
+    <view:item>
+      <a href="/home/friends/">
+      My Friends
+    </a>
+    </view:item>
+    <view:item>
+      <a href="/home/friends/">
+      My Feed Subscriptions
+    </a>
+    </view:item>
+    <view:item>
+      <a href="/home/toolbox/">
+      My Toolbox
+    </a>
+    </view:item> -->
+  </view:container>
+</view:menu>

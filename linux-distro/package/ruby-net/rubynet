@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/mono /usr/lib/rubynet/Ruby.exe -I/usr/lib/rubynet/rubylib-1.8 "$@"

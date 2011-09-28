@@ -1,0 +1,282 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.20706</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A800D9F1-D877-4076-99BA-CBD73BCFB203}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Xameleon</RootNamespace>
+    <AssemblyName>Xameleon</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\amplee-integration\WebApp\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\docs\Xameleon.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\WebApp\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\docs\Xameleon.xml</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IKVM.GNU.Classpath, Version=0.34.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\IKVM.GNU.Classpath.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=0.34.0.3, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython, Version=2.0.0.200, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=2.0.0.200, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=2.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.0.0.200, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Mono.Posix.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\trunk\Dependencies\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Mvp.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="saxon8, Version=8.9.0.3, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\saxon8.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\applicationserver.cs">
+      <Link>WebServer\Mono.WebServer\applicationserver.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\baseapplicationhost.cs">
+      <Link>WebServer\Mono.WebServer\baseapplicationhost.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\baserequestbroker.cs">
+      <Link>WebServer\Mono.WebServer\baserequestbroker.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\iapplicationhost.cs">
+      <Link>WebServer\Mono.WebServer\iapplicationhost.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\initialworkerrequest.cs">
+      <Link>WebServer\Mono.WebServer\initialworkerrequest.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\iwebsource.cs">
+      <Link>WebServer\Mono.WebServer\iwebsource.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\lingeringnetworkstream.cs">
+      <Link>WebServer\Mono.WebServer\lingeringnetworkstream.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\monoworkerrequest.cs">
+      <Link>WebServer\Mono.WebServer\monoworkerrequest.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\xspapplicationhost.cs">
+      <Link>WebServer\Mono.WebServer\xspapplicationhost.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\xspworkerrequest.cs">
+      <Link>WebServer\Mono.WebServer\xspworkerrequest.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\VPathToHost.cs">
+      <Link>WebServer\Mono.WebServer\VPathToHost.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\XSPWebSource.cs">
+      <Link>WebServer\Mono.WebServer\XSPWebSource.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\XSPRequestBroker.cs">
+      <Link>WebServer\Mono.WebServer\XSPRequestBroker.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\XSPWorker.cs">
+      <Link>WebServer\Mono.WebServer\XSPWorker.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\HttpErrors.cs">
+      <Link>WebServer\Mono.WebServer\HttpErrors.cs</Link>
+    </Compile>
+    <Compile Include="..\vendorextensions\mono\xsp\mono.webserver\Paths.cs">
+      <Link>WebServer\Mono.WebServer\Paths.cs</Link>
+    </Compile>
+    <Compile Include="Amplee\Categories.cs" />
+    <Compile Include="Amplee\Category.cs" />
+    <Compile Include="Amplee\Collection.cs" />
+    <Compile Include="Amplee\Member.cs" />
+    <Compile Include="Amplee\Service.cs" />
+    <Compile Include="Amplee\StoreManager.cs" />
+    <Compile Include="Amplee\Workspace.cs" />
+    <Compile Include="Asp.Net\Server.cs" />
+    <Compile Include="Atom\Author.cs" />
+    <Compile Include="Atom\Entry.cs" />
+    <Compile Include="Atom\Link.cs" />
+    <Compile Include="Atom\TextConstruct.cs" />
+    <Compile Include="Authentication\Authenticate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Bucker\createqueue.cs" />
+    <Compile Include="Bucker\deletemessage.cs" />
+    <Compile Include="Bucker\deletequeue.cs" />
+    <Compile Include="Bucker\getmessage.cs" />
+    <Compile Include="Bucker\listmessages.cs" />
+    <Compile Include="Bucker\listqueue.cs" />
+    <Compile Include="Bucker\message.cs" />
+    <Compile Include="Bucker\pushmessage.cs" />
+    <Compile Include="Bucker\queueclient.cs" />
+    <Compile Include="Configuration\AspNetAwsConfiguration.cs" />
+    <Compile Include="Configuration\Configuration.cs" />
+    <Compile Include="Configuration\AspNetXameleonTransform.cs" />
+    <Compile Include="Configuration\AwsS3.cs" />
+    <Compile Include="Configuration\AwsS3Collection.cs" />
+    <Compile Include="Configuration\AspNetBungeeConfiguration.cs" />
+    <Compile Include="Configuration\BungeeApp.cs" />
+    <Compile Include="Configuration\BungeeAppCollection.cs" />
+    <Compile Include="Configuration\AspNetMemcachedConfiguration.cs" />
+    <Compile Include="Configuration\BaseSetting.cs" />
+    <Compile Include="Configuration\BaseSettingCollection.cs" />
+    <Compile Include="Configuration\PreCompiledXsltCollection.cs" />
+    <Compile Include="Configuration\PreCompiledXslt.cs" />
+    <Compile Include="Configuration\MemcachedPoolConfigCollection.cs" />
+    <Compile Include="Configuration\MemcachedPoolConfig.cs" />
+    <Compile Include="Configuration\MemcachedServer.cs" />
+    <Compile Include="Configuration\MemcachedServerCollection.cs" />
+    <Compile Include="Configuration\XsltParams.cs" />
+    <Compile Include="Configuration\XsltParamCollection.cs" />
+    <Compile Include="Configuration\AwsKeyCollection.cs" />
+    <Compile Include="Configuration\AwsKey.cs" />
+    <Compile Include="Cryptography\Hash.cs" />
+    <Compile Include="Cryptography\HashcodeGenerator.cs" />
+    <Compile Include="Document\DocumentResult.cs" />
+    <Compile Include="Document\S3Document.cs" />
+    <Compile Include="Function\HashcodeGenerator.cs" />
+    <Compile Include="Function\HttpSgmlToXml.cs" />
+    <Compile Include="Function\HttpWebRequest.cs" />
+    <Compile Include="Function\S3ObjectCompare.cs" />
+    <Compile Include="Function\HttpResponseCollection.cs" />
+    <Compile Include="Function\HttpRequestCollection.cs" />
+    <Compile Include="Function\FileStream.cs" />
+    <Compile Include="Function\HttpWebResponseStream.cs" />
+    <Compile Include="HttpHandler\XamelonHttpAsyncHandler.cs" />
+    <Compile Include="Memcached\Memcached.cs" />
+    <Compile Include="Storage\FS.cs" />
+    <Compile Include="Storage\IStorage.cs" />
+    <Compile Include="Transform\XsltTransformationManager.cs" />
+    <Compile Include="HttpApplication\Global.cs" />
+    <Compile Include="HttpModule\AsyncRequestLogHttpModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ResultDocumentHandler\S3ResultDocumentHandler.cs" />
+    <Compile Include="SemWeb\Select.cs" />
+    <Compile Include="Transform\AsyncProcess.cs" />
+    <Compile Include="Transform\BaseXsltContext.cs" />
+    <Compile Include="Transform\TransformServiceAsyncResult.cs" />
+    <Compile Include="Transform\Context.cs" />
+    <Compile Include="Transform\Transform.cs" />
+    <Compile Include="Utility\S3\AWSAuthConnection.cs" />
+    <Compile Include="Utility\S3\Bucket.cs" />
+    <Compile Include="Utility\S3\CommonPrefixEntry.cs" />
+    <Compile Include="Utility\S3\GetResponse.cs" />
+    <Compile Include="Utility\S3\ListAllMyBucketsResponse.cs" />
+    <Compile Include="Utility\S3\ListBucketResponse.cs" />
+    <Compile Include="Utility\S3\ListEntry.cs" />
+    <Compile Include="Utility\S3\Owner.cs" />
+    <Compile Include="Utility\S3\QueryStringAuthGenerator.cs" />
+    <Compile Include="Utility\S3\Response.cs" />
+    <Compile Include="Utility\S3\S3Object.cs" />
+    <Compile Include="Utility\S3\Utils.cs" />
+    <Compile Include="UrlResolver\S3XmlUrlResolver.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Configuration\App.config" />
+    <None Include="Extf.Net.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Utility\S3\README" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GlobalClip\GlobalClip.csproj">
+      <Project>{9B9C08A7-0E8A-45AA-AEB4-7A5796DB1C26}</Project>
+      <Name>GlobalClip</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VendorExtensions\GotDotNet\SgmlReader\sgmlreaderdll\SgmlReaderDll8.csproj">
+      <Project>{499527FF-AE52-450F-B3E3-4AD53E1712AD}</Project>
+      <Name>SgmlReaderDll8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VendorExtensions\memcached\memecacheddotnet\clientlib\Memcached.ClientLibrary.csproj">
+      <Project>{4770D032-9B06-450D-8B00-7200D8330397}</Project>
+      <Name>Memcached.ClientLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VendorExtensions\Saxonica\Saxon.Api\Saxon.Api.csproj">
+      <Project>{A0598E7E-BF5D-4E6A-91A2-6E6A63CC9F9E}</Project>
+      <Name>Saxon.Api</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Service\" />
+    <Folder Include="WSGI\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

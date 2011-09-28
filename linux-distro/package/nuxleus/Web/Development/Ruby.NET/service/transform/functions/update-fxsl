@@ -1,0 +1,3 @@
+#!/bin/sh
+cd fxsl-xslt2/f
+cvs up 

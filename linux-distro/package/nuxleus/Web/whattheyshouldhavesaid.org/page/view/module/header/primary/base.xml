@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<view:module xmlns:view="http://atomictalk.org/page/view" xmlns:render="http://atomictalk.org/render"
+    xmlns:doc="http://atomictalk.org/feed/doc" class="base" id="header">
+    <view:container>
+        <div id="main-container">
+            <div style="position:absolute;top:5px;right:5px;">
+                <form id="openid-login" method="get" action="http://whattheyshouldhavesaid.org/gatekeeper/login?" target="_top">
+                    <input id="openid-text" type="text" name="uname" class="single-input" maxlength="255" value="Authenticate w/ OpenID"
+                        onclick="if (this.value == 'Authenticate w/ OpenID') this.value = ''; return true;"
+                        onblur="if (this.value == '') this.value = 'Authenticate w/ OpenID'; return true;" />
+                    <input type="hidden" name="return_location" value="http://whattheyshouldhavesaid.org/?" />
+                    <button class="Button submit">
+                        <span class="ButtonLabel">Submit</span>
+                    </button>
+                </form>
+            </div>
+            <div id="top-bar">
+                <div id="title">
+                    <h1 class="title">
+                        <a href="/">WhatTheyShouldHaveSaid.org</a>
+                    </h1>
+                </div>
+                <div class="question">
+                    <h2 class="participant moderator">Debates</h2>
+                </div>
+                <div>
+                    <render:xslt id="debates" controller="list" model="/debate/index" />
+                </div>
+            </div>
+            <div id="bottom-bar"> </div>
+        </div>
+    </view:container>
+</view:module>

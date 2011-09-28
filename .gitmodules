@@ -1,0 +1,147 @@
+[submodule "lib/module/log4net"]
+	path = lib/module/log4net
+	url = git://git.apache.org/log4net.git
+[submodule "lib/module/dotnetopenid"]
+	path = lib/module/dotnetopenid
+	url = git://github.com/AArnott/dotnetopenid.git
+[submodule "lib/module/jQuery-SoundManager"]
+	path = lib/module/jQuery-SoundManager
+	url = git://github.com/adriengibrat/jQuery-SoundManager.git
+[submodule "lib/module/node-uuid"]
+	path = lib/module/node-uuid
+	url = git://github.com/broofa/node-uuid.git
+[submodule "lib/module/fu-sharp"]
+	path = lib/module/fu-sharp
+	url = git://github.com/chakrit/fu-sharp.git
+[submodule "lib/module/wikidot"]
+	path = lib/module/wikidot
+	url = git://github.com/gabrys/wikidot.git
+[submodule "lib/module/apachai"]
+	path = lib/module/apachai
+	url = git://github.com/garuma/apachai.git
+[submodule "lib/module/GitSharp"]
+	path = lib/module/GitSharp
+	url = git://github.com/henon/GitSharp.git
+[submodule "lib/module/main"]
+	path = lib/module/main
+	url = git://github.com/IronLanguages/main.git
+[submodule "lib/module/libev-sharp"]
+	path = lib/module/libev-sharp
+	url = git://github.com/jacksonh/libev-sharp.git
+[submodule "lib/module/manos"]
+	path = lib/module/manos
+	url = git://github.com/jacksonh/manos.git
+[submodule "lib/module/jquery"]
+	path = lib/module/jquery
+	url = git://github.com/jquery/jquery.git
+[submodule "lib/module/jquery-mobile"]
+	path = lib/module/jquery-mobile
+	url = git://github.com/jquery/jquery-mobile.git
+[submodule "lib/module/jquery-ui"]
+	path = lib/module/jquery-ui
+	url = git://github.com/jquery/jquery-ui.git
+[submodule "lib/module/AWSSDKForNet-extended"]
+	path = lib/module/AWSSDKForNet-extended
+	url = git://github.com/mdavid/AWSSDKForNet-extended.git
+[submodule "lib/module/closure-library"]
+	path = lib/module/closure-library
+	url = git://github.com/mdavid/closure-library.git
+[submodule "lib/module/DarwinStreamingServer-Linux"]
+	path = lib/module/DarwinStreamingServer-Linux
+	url = git://github.com/mdavid/DarwinStreamingServer-Linux.git
+[submodule "lib/module/DDay.iCal"]
+	path = lib/module/DDay.iCal
+	url = git://github.com/mdavid/DDay.iCal.git
+[submodule "lib/module/MCloud"]
+	path = lib/module/MCloud
+	url = git://github.com/mdavid/MCloud.git
+[submodule "lib/module/protobuf-net"]
+	path = lib/module/protobuf-net
+	url = git://github.com/mdavid/protobuf-net.git
+[submodule "lib/module/Rx.NET"]
+	path = lib/module/Rx.NET
+	url = git://github.com/mdavid/Rx.NET.git
+[submodule "lib/module/sharpssh"]
+	path = lib/module/sharpssh
+	url = git://github.com/mdavid/sharpssh.git
+[submodule "lib/module/monotorrent"]
+	path = lib/module/monotorrent
+	url = git://github.com/mono/monotorrent.git
+[submodule "lib/module/taglib-sharp"]
+	path = lib/module/taglib-sharp
+	url = git://github.com/mono/taglib-sharp.git
+[submodule "lib/module/SoundManager2"]
+	path = lib/module/SoundManager2
+	url = git://github.com/scottschiller/SoundManager2.git
+[submodule "lib/module/ServiceStack.Benchmarks"]
+	path = lib/module/ServiceStack.Benchmarks
+	url = git://github.com/ServiceStack/ServiceStack.Benchmarks.git
+[submodule "lib/module/ServiceStack.Contrib"]
+	path = lib/module/ServiceStack.Contrib
+	url = git://github.com/ServiceStack/ServiceStack.Contrib.git
+[submodule "lib/module/ServiceStack.Examples"]
+	path = lib/module/ServiceStack.Examples
+	url = git://github.com/ServiceStack/ServiceStack.Examples.git
+[submodule "lib/module/ServiceStack.Extras"]
+	path = lib/module/ServiceStack.Extras
+	url = git://github.com/ServiceStack/ServiceStack.Extras.git
+[submodule "lib/module/ServiceStack"]
+	path = lib/module/ServiceStack
+	url = git://github.com/ServiceStack/ServiceStack.git
+[submodule "lib/module/ServiceStack.Logging"]
+	path = lib/module/ServiceStack.Logging
+	url = git://github.com/ServiceStack/ServiceStack.Logging.git
+[submodule "lib/module/ServiceStack.OrmLite"]
+	path = lib/module/ServiceStack.OrmLite
+	url = git://github.com/ServiceStack/ServiceStack.OrmLite.git
+[submodule "lib/module/ServiceStack.Owin"]
+	path = lib/module/ServiceStack.Owin
+	url = git://github.com/ServiceStack/ServiceStack.Owin.git
+[submodule "lib/module/ServiceStack.Redis"]
+	path = lib/module/ServiceStack.Redis
+	url = git://github.com/ServiceStack/ServiceStack.Redis.git
+[submodule "lib/module/ServiceStack.RedisWebServices"]
+	path = lib/module/ServiceStack.RedisWebServices
+	url = git://github.com/ServiceStack/ServiceStack.RedisWebServices.git
+[submodule "lib/module/ServiceStack.Text"]
+	path = lib/module/ServiceStack.Text
+	url = git://github.com/ServiceStack/ServiceStack.Text.git
+[submodule "lib/module/simplegeo-dotnet"]
+	path = lib/module/simplegeo-dotnet
+	url = git://github.com/simplegeo/simplegeo-dotnet.git
+[submodule "lib/module/clrzmq"]
+	path = lib/module/clrzmq
+	url = git://github.com/zeromq/clrzmq.git
+[submodule "lib/module/zeromq2"]
+	path = lib/module/zeromq2
+	url = git://github.com/zeromq/zeromq2.git
+[submodule "lib/module/redis"]
+	path = lib/module/redis
+	url = git://github.com/antirez/redis.git
+[submodule "lib/module/DataTables-AutoFill"]
+	path = lib/module/DataTables-AutoFill
+	url = git://github.com/DataTables/AutoFill.git
+[submodule "lib/module/DataTables-ColReorder"]
+	path = lib/module/DataTables-ColReorder
+	url = git://github.com/DataTables/ColReorder.git
+[submodule "lib/module/DataTables-ColVis"]
+	path = lib/module/DataTables-ColVis
+	url = git://github.com/DataTables/ColVis.git
+[submodule "lib/module/DataTables-DataTables"]
+	path = lib/module/DataTables-DataTables
+	url = git://github.com/DataTables/DataTables.git
+[submodule "lib/module/DataTables-FixedColumns"]
+	path = lib/module/DataTables-FixedColumns
+	url = git://github.com/DataTables/FixedColumns.git
+[submodule "lib/module/DataTables-FixedHeader"]
+	path = lib/module/DataTables-FixedHeader
+	url = git://github.com/DataTables/FixedHeader.git
+[submodule "lib/module/DataTables-JSDoc-DataTables"]
+	path = lib/module/DataTables-JSDoc-DataTables
+	url = git://github.com/DataTables/JSDoc-DataTables.git
+[submodule "lib/module/DataTables-KeyTable"]
+	path = lib/module/DataTables-KeyTable
+	url = git://github.com/DataTables/KeyTable.git
+[submodule "lib/module/DataTables-TableTools"]
+	path = lib/module/DataTables-TableTools
+	url = git://github.com/DataTables/TableTools.git

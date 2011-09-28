@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+
+# via a tutorial from Mark Nielsen
+# Published in Issue 105 of Linux Gazette, August 2004
+# Article: http://linuxgazette.net/105/nielsen.html
+# Mark Nielsen: http://linuxgazette.net/authors/nielsen.html
+# Linux Gazette: http://linuxgazette.net/
+# Copyright: Copyright © 2004, Mark Nielsen. Released under the Open Publication license unless otherwise 
+# noted in the body of the article. Linux Gazette is not produced, sponsored, or endorsed by its prior host, SSC, Inc.
+# Open Publication License: http://www.opencontent.org/openpub/
+# Please also see: http://linuxgazette.net/copying.html
+
+
+open(FILE,"deduped-dep-list");
+my @Lines = <FILE>;
+close FILE;
+(@Lines) = grep($_ =~ /[a-zA-Z0-9]/, @Lines);
+
+my $Home = "new_image";
+foreach my $Line (@Lines) {
+    chomp $Line;
+    my $Reverse = reverse $Line;
+    my (@Temp) = split(/\//, $Reverse, 2);
+    my $Dir = reverse($Temp[1]);
+    print `mkdir -vp $Home/$Dir`;
+    $Command = "rsync -av --ignore-existing $Line* $Home/$Dir/" ;
+    $Command2 = "rsync -av --copy-links --ignore-existing $Line* $Home/$Dir/";
+    print "$Command\n";
+    print `$Command`;
+    print "$Command2\n";
+    print `$Command2`;
+}

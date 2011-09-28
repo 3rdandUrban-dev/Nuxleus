@@ -1,0 +1,19 @@
+#
+# Copyright (c) 2005-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class bridge(PackageRecipe):
+    name = 'bridge'
+    version = 'svnr541'
+
+    buildRequires = ['Amara:python' ]
+
+    def setup(r):
+        r.addArchive('%(name)s-%(version)s.tar.gz')
+	r.Environment('PYTHONPATH', '%(destdir)s/usr/lib/python2.5/site-packages')
+        r.Run('mkdir -p %(destdir)s/usr/lib/python2.5/site-packages')
+        r.Run('/usr/bin/python2.5 setup.py install --root=%(destdir)s')
+        
+

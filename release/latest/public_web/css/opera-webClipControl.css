@@ -1,0 +1,42 @@
+/* Copyright 2006 Microsoft Corporation.  Microsoft's copyrights in this work are licensed under the Creative Commons */
+/* Attribution-ShareAlike 2.5 License.  To view a copy of this license visit http://creativecommons.org/licenses/by-sa/2.5 */
+
+/* Note:  Update all links with the local domain / IP - otherwise, this won't work correctly in some browsers. */
+.CopyPasteInput     { position: absolute; overflow:hidden; top:0px; left:0px; width:16px; height:15px;padding:0px; z-index:100; cursor:pointer; filter:alpha(opacity=0); KHTMLOpacity:0; MozOpacity:0; opacity:0; }
+
+.webClipControlDiv {
+background: url(http://spaces.live.com/editorial/rayozzie/demo/liveclip/liveclipsample/control/liveclipboard-icon-16x16.png) left top no-repeat;
+width:16px;
+height:16px;
+z-index:99;
+}
+
+ /* \*/
+* html .webClipControlDiv {
+background: none;
+float: left;
+width: 16px;
+height:16px;
+z-index:99;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://spaces.live.com/editorial/rayozzie/demo/liveclip/liveclipsample/control/liveclipboard-icon-16x16.png', sizingMethod='scale'); 
+}
+/* */
+
+
+.webClipControlSelectedDiv {
+background: url(http://spaces.live.com/editorial/rayozzie/demo/liveclip/liveclipsample/control/liveclipboard-icon-16x16Selected.png) left top no-repeat;
+width:16px;
+height:16px;
+z-index:99;
+}
+
+ /* \*/
+* html .webClipControlSelectedDiv {
+background: none;
+float: left;
+width: 16px;
+height:16px;
+z-index:99;
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://spaces.live.com/editorial/rayozzie/demo/liveclip/liveclipsample/control/liveclipboard-icon-16x16Selected.png', sizingMethod='scale'); 
+}
+/* */

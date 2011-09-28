@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/base.xslt"?>
+<service:operation xmlns:operation="http://xameleon.org/service/operation" 
+                   xmlns:atompub="http://xameleon.org/service/atompub" 
+                   xmlns:add="http://xameleon.org/service/atompub/add" 
+                   xmlns:service="http://xameleon.org/service" 
+                   xmlns:param="http://xameleon.org/service/session/param">
+  <param:content-type>{header:ContentType}</param:content-type>
+  <param:slug>{header:Slug}</param:slug>
+  <param:request-body>{request:input-stream}</param:request-body>
+  <param:content-length>{request:content-length}</param:content-length>
+  <param:desc>{form:ev_comment_desc}</param:desc>
+  <param:author>{form:ev_comment_name}</param:author>
+  <param:uri>{form:ev_base_uri}</param:uri>
+  <param:path>{form:ev_base_path}</param:path>
+  <param:title>{form:ev_comment_title}</param:title>
+  <operation:atompub>
+    <atompub:add content-type="{$content-type}" content-length="{$content-length}">
+      <add:entry title="{$title}" slug="{$slug}" author="{$author}" uri="{$uri}" path="{$path}">
+        <add:request-body>{$desc}</add:request-body>
+      </add:entry>
+    </atompub:add>
+  </operation:atompub>
+</service:operation>

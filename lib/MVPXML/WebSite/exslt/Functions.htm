@@ -1,0 +1,843 @@
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>EXSLT.NET 
+                1.3 Function List</title>
+    <style type="text/css">
+                    body { font-family: Verdana, Arial, helvetica;}
+                    .module-table {
+                        width: 100%;
+                    }                    
+                </style>
+  </head>
+  <body>
+    <h2>EXSLT.NET 1.3 Function List</h2>
+    <hr>
+    <div>EXSLT Modules:</div>
+    <ol>
+      <li>
+        <a href="#Dates and Times">Dates and Times</a>
+      </li>
+      <li>
+        <a href="#Common">Common</a>
+      </li>
+      <li>
+        <a href="#Math">Math</a>
+      </li>
+      <li>
+        <a href="#Random">Random</a>
+      </li>
+      <li>
+        <a href="#Regular Expressions">Regular Expressions</a>
+      </li>
+      <li>
+        <a href="#Sets">Sets</a>
+      </li>
+      <li>
+        <a href="#Strings">Strings</a>
+      </li>
+    </ol>
+    <div>Additional modules:</div>
+    <ol>
+      <li>
+        <a href="#GotDotNet Dates and Times">GotDotNet Dates and Times</a>
+      </li>
+      <li>
+        <a href="#GotDotNet Math">GotDotNet Math</a>
+      </li>
+      <li>
+        <a href="#GotDotNet Regular Expressions">GotDotNet Regular Expressions</a>
+      </li>
+      <li>
+        <a href="#GotDotNet Sets">GotDotNet Sets</a>
+      </li>
+      <li>
+        <a href="#GotDotNet Strings">GotDotNet Strings</a>
+      </li>
+      <li>
+        <a href="#GotDotNet Dynamic">GotDotNet Dynamic</a>
+      </li>
+    </ol>
+    <hr>
+    <p>
+      <a name="Dates and Times">
+        <div class="module-name">
+          <b>Module:</b> Dates and Times</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://exslt.org/dates-and-times</div>
+      <div class="module-homepage">
+        <b>Homepage:</b> <a href="http://exslt.org/date/index.html">http://exslt.org/date/index.html</a></div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/format-date/index.html">date:format-date</a>
+          </td>
+          <td align="center">formatDate</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/parse-date/index.html">date:parse-date</a>
+          </td>
+          <td align="center">parseDate</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/date-time/index.html">date:date-time</a>
+          </td>
+          <td align="center">dateTime</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/date/index.html">date:date</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/time/index.html">date:time</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/year/index.html">date:year</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/leap-year/index.html">date:leap-year</a>
+          </td>
+          <td align="center">leapYear</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/month-in-year/index.html">date:month-in-year</a>
+          </td>
+          <td align="center">monthInYear</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/month-name/index.html">date:month-name</a>
+          </td>
+          <td align="center">monthName</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/month-abbreviation/index.html">date:month-abbreviation</a>
+          </td>
+          <td align="center">monthAbbreviation</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/week-in-year/index.html">date:week-in-year</a>
+          </td>
+          <td align="center">weekInYear</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/week-in-month/index.html">date:week-in-month</a>
+          </td>
+          <td align="center">weekInMonth</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/day-in-year/index.html">date:day-in-year</a>
+          </td>
+          <td align="center">dayInYear</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/day-in-month/index.html">date:day-in-month</a>
+          </td>
+          <td align="center">dayInMonth</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/day-of-week-in-month/index.html">date:day-of-week-in-month</a>
+          </td>
+          <td align="center">dayOfWeekInMonth</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/day-in-week/index.html">date:day-in-week</a>
+          </td>
+          <td align="center">dayInWeek</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/day-name/index.html">date:day-name</a>
+          </td>
+          <td align="center">dayName</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/day-abbreviation/index.html">date:day-abbreviation</a>
+          </td>
+          <td align="center">dayAbbreviation</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/hour-in-day/index.html">date:hour-in-day</a>
+          </td>
+          <td align="center">hourInDay</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/minute-in-hour/index.html">date:minute-in-hour</a>
+          </td>
+          <td align="center">minuteInHour</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/second-in-minute/index.html">date:second-in-minute</a>
+          </td>
+          <td align="center">secondInMinute</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/difference/index.html">date:difference</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/add/index.html">date:add</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/add-duration/index.html">date:add-duration</a>
+          </td>
+          <td align="center">addDuration</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/sum/index.html">date:sum</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/seconds/index.html">date:seconds</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/date/functions/duration/index.html">date:duration</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="Common">
+        <div class="module-name">
+          <b>Module:</b> Common</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://exslt.org/common</div>
+      <div class="module-homepage">
+        <b>Homepage:</b> <a href="http://exslt.org/exsl/index.html">http://exslt.org/exsl/index.html</a></div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/exsl/functions/node-set/index.html">exsl:node-set</a>
+          </td>
+          <td align="center">nodeSet</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/exsl/functions/object-type/index.html">exsl:object-type</a>
+          </td>
+          <td align="center">objectType</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="Math">
+        <div class="module-name">
+          <b>Module:</b> Math</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://exslt.org/math</div>
+      <div class="module-homepage">
+        <b>Homepage:</b> <a href="http://exslt.org/math/index.html">http://exslt.org/math/index.html</a></div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/min/index.html">math:min</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/max/index.html">math:max</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/highest/index.html">math:highest</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/lowest/index.html">math:lowest</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/abs/index.html">math:abs</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/sqrt/index.html">math:sqrt</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/power/index.html">math:power</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/constant/index.html">math:constant</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/log/index.html">math:log</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/random/index.html">math:random</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/sin/index.html">math:sin</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/cos/index.html">math:cos</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/tan/index.html">math:tan</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/asin/index.html">math:asin</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/acos/index.html">math:acos</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/atan/index.html">math:atan</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/atan2/index.html">math:atan2</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/math/functions/exp/index.html">math:exp</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="Random">
+        <div class="module-name">
+          <b>Module:</b> Random</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://exslt.org/random</div>
+      <div class="module-homepage">
+        <b>Homepage:</b> <a href="http://exslt.org/random/index.html">http://exslt.org/random/index.html</a></div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/random/functions/random-sequence/index.html">random:random-sequence</a>
+          </td>
+          <td align="center">randomSequence</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="Regular Expressions">
+        <div class="module-name">
+          <b>Module:</b> Regular Expressions</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://exslt.org/regular-expressions</div>
+      <div class="module-homepage">
+        <b>Homepage:</b> <a href="http://exslt.org/regexp/index.html">http://exslt.org/regexp/index.html</a></div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/regexp/functions/test/index.html">regexp:test</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/regexp/functions/match/index.html">regexp:match</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/regexp/functions/replace/index.html">regexp:replace</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="Sets">
+        <div class="module-name">
+          <b>Module:</b> Sets</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://exslt.org/sets</div>
+      <div class="module-homepage">
+        <b>Homepage:</b> <a href="http://exslt.org/set/index.html">http://exslt.org/set/index.html</a></div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/set/functions/difference/index.html">set:difference</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/set/functions/intersection/index.html">set:intersection</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/set/functions/distinct/index.html">set:distinct</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/set/functions/has-same-node/index.html">set:has-same-node</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/set/functions/leading/index.html">set:leading</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/set/functions/trailing/index.html">set:trailing</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="Strings">
+        <div class="module-name">
+          <b>Module:</b> Strings</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://exslt.org/strings</div>
+      <div class="module-homepage">
+        <b>Homepage:</b> <a href="http://exslt.org/str/index.html">http://exslt.org/str/index.html</a></div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/str/functions/tokenize/index.html">str:tokenize</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/str/functions/replace/index.html">str:replace</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/str/functions/padding/index.html">str:padding</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/str/functions/align/index.html">str:align</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/str/functions/encode-uri/index.html">str:encode-uri</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/str/functions/decode-uri/index.html">str:decode-uri</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/str/functions/concat/index.html">str:concat</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="http://exslt.org/str/functions/split/index.html">str:split</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="GotDotNet Dates and Times">
+        <div class="module-name">
+          <b>Module:</b> GotDotNet Dates and Times</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://gotdotnet.com/exslt/dates-and-times</div>
+      <div class="note">
+        <b>Note:</b> These functions are not part of EXSLT.</div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNDatesAndTimes-avg.xml">date2:avg</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNDatesAndTimes-min.xml">date2:min</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNDatesAndTimes-max.xml">date2:max</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNDatesAndTimes-day-name.xml">date2:day-name</a>
+          </td>
+          <td align="center">dayName</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNDatesAndTimes-day-abbreviation.xml">date2:day-abbreviation</a>
+          </td>
+          <td align="center">dayAbbreviation</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNDatesAndTimes-month-name.xml">date2:month-name</a>
+          </td>
+          <td align="center">monthName</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNDatesAndTimes-month-abbreviation.xml">date2:month-abbreviation</a>
+          </td>
+          <td align="center">monthAbbreviation</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="GotDotNet Math">
+        <div class="module-name">
+          <b>Module:</b> GotDotNet Math</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://gotdotnet.com/exslt/math</div>
+      <div class="note">
+        <b>Note:</b> These functions are not part of EXSLT.</div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNMath-avg.xml">math2:avg</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="GotDotNet Regular Expressions">
+        <div class="module-name">
+          <b>Module:</b> GotDotNet Regular Expressions</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://gotdotnet.com/exslt/regular-expressions</div>
+      <div class="note">
+        <b>Note:</b> These functions are not part of EXSLT.</div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNRegularExpressions-tokenize.xml">regexp2:tokenize</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="GotDotNet Sets">
+        <div class="module-name">
+          <b>Module:</b> GotDotNet Sets</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://gotdotnet.com/exslt/sets</div>
+      <div class="note">
+        <b>Note:</b> These functions are not part of EXSLT.</div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNSets-subset.xml">set2:subset</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="GotDotNet Strings">
+        <div class="module-name">
+          <b>Module:</b> GotDotNet Strings</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://gotdotnet.com/exslt/strings</div>
+      <div class="note">
+        <b>Note:</b> These functions are not part of EXSLT.</div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNStrings-uppercase.xml">str2:uppercase</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNStrings-lowercase.xml">str2:lowercase</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+    <p>
+      <a name="GotDotNet Dynamic">
+        <div class="module-name">
+          <b>Module:</b> GotDotNet Dynamic</div>
+      </a>
+      <div class="module-ns">
+        <b>Namespace:</b> http://gotdotnet.com/exslt/dynamic</div>
+      <div class="note">
+        <b>Note:</b> These functions are not part of EXSLT.</div>
+      <table border="1" class="module-table">
+        <tr>
+          <th>Function name</th>
+          <th>Alias</th>
+          <th>Supported</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="GDNDynamic-evaluate.xml">dyn2:evaluate</a>
+          </td>
+          <td align="center">-</td>
+          <td align="center" style="color:green;">yes</td>
+        </tr>
+      </table>
+    </p>
+    <hr>
+  </body>
+</html>

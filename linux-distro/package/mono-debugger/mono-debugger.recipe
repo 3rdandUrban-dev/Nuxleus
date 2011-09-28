@@ -1,0 +1,16 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class MonoDebugger(AutoPackageRecipe):
+
+    buildRequires = ['libtermcap:devel', 'gawk:runtime', 'mono:runtime', 'pkgconfig:devel', 'mono:lib', 'mono:cil', 'mono:devel' ]
+
+    name = "mono-debugger"
+    version = "0.50"
+
+    def unpack(r):
+	r.addArchive('http://go-mono.com/sources/%(name)s/%(name)s-%(version)s.tar.bz2')
+	#r.addArchive('http://mono.ximian.com/monobuild/preview/sources/%(name)s/%(name)s-%(version)s.tar.bz2')

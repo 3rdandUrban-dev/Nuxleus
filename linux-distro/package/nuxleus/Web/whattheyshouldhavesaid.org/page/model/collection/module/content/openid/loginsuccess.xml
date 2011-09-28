@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<model:collection id="search-box-container" type="xhtml" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:collection="http://atomictalk.org/page/model/collection" xmlns:model="http://atomictalk.org/page/model">
+    <collection:item id="center">
+      Welcome @@openid.username@@.
+    </collection:item>
+</model:collection>

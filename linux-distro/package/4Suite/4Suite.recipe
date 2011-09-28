@@ -1,0 +1,39 @@
+#
+# Copyright (c) 2004, 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+loadRecipe('python.recipe')
+class FourSuite(PackageRecipe):
+
+	buildRequires = [ 
+	'glib:devel', 
+	'python25:devel', 
+	'PyXML:python',
+	'python-setuptools:python',
+	'glibc:devel' 
+	]
+        
+	name = '4Suite'
+	version = '1.0.2'
+
+	def setup(r):
+		r.addArchive('%(name)s-XML-%(version)s.tar.bz2')
+		r.Environment('PYTHONPATH', '%(destdir)s/usr/lib/python2.5/site-packages')
+		r.Run('mkdir -p %(destdir)s/usr/lib/python2.5/site-packages')
+		r.Run('/usr/bin/python2.5 setup.py install --root=%(destdir)s')
+		
+		r.Requires(exceptDeps=r'python\:\ Ft.Lib.Uuid')
+		r.Requires(exceptDeps=r'python\:\ Ft.Lib')
+		r.Requires(exceptDeps=r'python\:\ Ft')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Lib._4xupdate')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Xslt._4xslt')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Xslt._4xpath')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Xslt._4xml')
+		r.Requires(exceptDeps=r'4Suite\:\python')
+		r.Requires(exceptDeps=r'python-setuptools\:\python')
+		r.Requires(exceptions=r'\.*(py)')
+        	r.Provides(exceptions=r'\.*(py)')
+		r.ComponentSpec('lib', '%(libdir)s/python2.5/.*')
+

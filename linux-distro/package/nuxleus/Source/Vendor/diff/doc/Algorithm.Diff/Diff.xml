@@ -1,0 +1,148 @@
+<Type Name="Diff" FullName="Algorithm.Diff.Diff">
+  <TypeSignature Language="C#" Value="public class Diff : Algorithm.Diff.IDiff" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Algorithm.Diff.IDiff</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Diff (System.Collections.IList left, System.Collections.IList right, System.Collections.IComparer comparer, System.Collections.IHashCodeProvider hashcoder);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="left" Type="System.Collections.IList" />
+        <Parameter Name="right" Type="System.Collections.IList" />
+        <Parameter Name="comparer" Type="System.Collections.IComparer" />
+        <Parameter Name="hashcoder" Type="System.Collections.IHashCodeProvider" />
+      </Parameters>
+      <Docs>
+        <summary>Compares two lists using a user-supplied comparer and hash code provider.</summary>
+        <param name="left">The first list of objects.  The objects may be of any time, not just characters or strings.</param>
+        <param name="right">The second list of objects.  The objects may be of any time, not just characters or strings.To be added.</param>
+        <param name="comparer">Null to use the objects' own <see cref="M:System.Object.Equals" /> method to determine equality among objects in the lists, or a <see cref="T:System.Collections.IComparer" /> object to use to perform equality tests.</param>
+        <param name="hashcoder">Null to use the objects' own <see cref="M:System.Object.GetHashCode" /> method to determine hash codes for the objects in the lists, or a <see cref="T:System.Collections.IHashCodeProvider" /> object to use to provide the hash codes.</param>
+        <remarks>
+          <para>The Diff object will be initialized as the comparison between the two lists, using the comparison and hash code provider objects if supplied.</para>
+
+<para>Both the comparison and hash code provider objects are optional, and if one is provided it is not strictly necessary to provide the other.  However, it must be the case that when two objects are considered equal (either by their own Equals method or by the user-given comparer), then they must have the same hash code.  It is generally the case that when a comparer object is provided, a hash code provider must be given as well.</para>
+
+<para>Comparer objects are supposed to return -1, 0, or 1 depending on whether the first object is "less" than the second, equal, or greater.  The Diff class is not concerned with the ordering of objects, so a comparer used here can return either 1 or -1 when the two objects being compared are not equal.</para></remarks>
+      </Docs>
+    </Member>
+    
+  <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Diff (string leftFile, string rightFile, bool caseSensitive, bool compareWhitespace);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="leftFile" Type="System.String" />
+        <Parameter Name="rightFile" Type="System.String" />
+        <Parameter Name="caseSensitive" Type="System.Boolean" />
+        <Parameter Name="compareWhitespace" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="leftFile">The path to the left file.</param>
+        <param name="rightFile">The path to the right file.</param>
+        <param name="caseSensitive">Whether to treat changes in case as differences.</param>
+        <param name="compareWhitespace">Whether to treat changes in whitespace as differences.</param>
+        <summary>Performs a line-by-line comparison of two files.</summary>
+        <remarks>The Diff object is initialized as a comparison between the two documents.  Comparisons are made using the current culture settings.</remarks>
+      </Docs>
+    </Member>
+  <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Diff (string[] left, string[] right, bool caseSensitive, bool compareWhitespace);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="left" Type="System.String[]" />
+        <Parameter Name="right" Type="System.String[]" />
+        <Parameter Name="caseSensitive" Type="System.Boolean" />
+        <Parameter Name="compareWhitespace" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <summary>Compares two lists of strings, i.e. performs a line-by-line comparison of two documents.</summary>
+        <param name="left">The lines of the first document.</param>
+        <param name="right">The lines of the second document.</param>
+        <param name="caseSensitive">Whether to perform a case-sensitive comparison.</param>
+        <param name="compareWhitespace">Whether to compare changes in whitespace.</param>
+        <remarks>The Diff object is initialized as a comparison between the two documents.  Comparisons are made using the current culture settings.</remarks>
+      </Docs>
+    </Member>
+  
+  
+  
+  <Member MemberName="CreatePatch">
+      <MemberSignature Language="C#" Value="public Algorithm.Diff.Patch CreatePatch ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Algorithm.Diff.Patch</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Creates a <see cref="T:Algorithm.Diff.Patch" /> object for the diff.</summary>
+        <returns>A patch object for the diff.</returns>
+        <remarks>A Patch can generate more compact representations of diffs.</remarks>
+      </Docs>
+    </Member>
+  <Member MemberName="Left">
+      <MemberSignature Language="C#" Value="public System.Collections.IList Left { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.IList</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The list used as the left document.</summary>
+        <value>The left document.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  <Member MemberName="Right">
+      <MemberSignature Language="C#" Value="public System.Collections.IList Right { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.IList</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The list used as the right document.</summary>
+        <value>The right document.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>Computes the differences between two arbitrary lists.</summary>
+    <remarks>
+      <para>Use this class to compare two arbitrary lists of data.  Normally the lists will be of characters, to perform a character-level comparison, or of strings, to perform a line-by-line comparison, of two strings.</para>
+
+<para>Any object type may be contained in the lists, and comparisons among objects in the lists will be made with the <see cref="M:System.Object.Equals" /> method of the objects.  If the Equals method is overridden, the the <see cref="M:System.Object.GetHashCode" /> method must also be overridden so that any two objects considered equal always have the same hash code.</para>
+
+<para>A user-supplied <see cref="T:System.Collections.IComparer" /> and <see cref="T:System.Collections.IHashCodeProvider" /> may be supplied to control how equality between elements in the list is determined.</para>
+
+<para>The differences between the lists are computed when the Diff object is constructed.  The differences themselves are represented as <see cref="T:Algorithm.Diff.Diff+Hunk" /> objects.  To access the hunks, use a for-each over the Diff object.  Each hunk represents a range of corresponding elements in the two lists.</para>
+
+<code lang="C#">using Algorithm.Diff;
+
+// Performs a line-by-line, case-sensitive, whitespace-ignoring comparison.
+diff = new Diff(file1.Split('\n'), file2.Split('\n'), true, false);
+
+// Compares the contents of two ILists, using the objects' own Equals() methods
+ArrayList list1 = ...;
+ArrayList list2 = ...;
+diff = new Diff(list1, list2)
+
+// Compares the contents of two ILists, using custom comparison and hash code generation functions
+diff = new Diff(list1, list2, comparer, hashcoder)
+
+foreach (Diff.Hunk hunk in diff) {
+	Console.WriteLine(hunk);
+}
+</code>
+
+</remarks>
+  </Docs>
+</Type>

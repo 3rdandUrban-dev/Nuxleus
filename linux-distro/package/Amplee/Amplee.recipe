@@ -1,0 +1,23 @@
+#
+# Copyright (c) 2005-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Amplee(PackageRecipe):
+    name = 'Amplee'
+    version = 'svn.r248'
+
+    buildRequires = [ 
+	    'python-setuptools:python', 
+	    'bridge:python', 
+	    'CherryPy:python', 
+	    'boto:python', 
+	    'mutagen:python',
+	    'uuid:lib'	
+    ]
+
+    def setup(r):
+        #r.addArchive('http://www.defuze.org/oss/amplee/amplee-%(version)s.tar.gz')
+	r.addArchive('%(name)s-%(version)s.tar.gz')
+	r.PythonSetup()

@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XInclude", "src\XInclude.csproj", "{3750FAB1-FD0E-425A-9DAA-87543A556319}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XIncludeTest", "test\XIncludeTest.csproj", "{D766C1F9-D2DA-4088-9AE1-52EA369B555F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{3750FAB1-FD0E-425A-9DAA-87543A556319}.Debug.ActiveCfg = Debug|.NET
+		{3750FAB1-FD0E-425A-9DAA-87543A556319}.Debug.Build.0 = Debug|.NET
+		{3750FAB1-FD0E-425A-9DAA-87543A556319}.Release.ActiveCfg = Release|.NET
+		{3750FAB1-FD0E-425A-9DAA-87543A556319}.Release.Build.0 = Release|.NET
+		{D766C1F9-D2DA-4088-9AE1-52EA369B555F}.Debug.ActiveCfg = Debug|.NET
+		{D766C1F9-D2DA-4088-9AE1-52EA369B555F}.Debug.Build.0 = Debug|.NET
+		{D766C1F9-D2DA-4088-9AE1-52EA369B555F}.Release.ActiveCfg = Release|.NET
+		{D766C1F9-D2DA-4088-9AE1-52EA369B555F}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

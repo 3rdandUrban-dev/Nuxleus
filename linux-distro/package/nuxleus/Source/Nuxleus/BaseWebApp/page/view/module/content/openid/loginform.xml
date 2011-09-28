@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc"
+  xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="openid-container" style="base list TtoB">
+    <view:item id="center">
+    <span>@@openid.error.message@@</span>
+
+    <span>You must authenticate with the OpenID server before continuing.</span>
+      <form action="/login" method="post">
+<input type="hidden" value="@@openid.redirect_to@@" name="redirect_to" />
+<label class="openid-form-label">Login:</label>
+<input type="text" value="@@openid.username@@" name="login" class="openid-single-input" />
+<br />
+
+<label class="openid-form-label">Password:</label>
+<input type="password" value="" name="password"  class="openid-single-input"/>
+<br />
+
+<input type="submit" class="Button submit"/>
+</form>
+    </view:item>
+  </view:container>
+</view:module>

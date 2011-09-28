@@ -1,0 +1,11 @@
+#!/bin/sh
+rm -f dep-list
+touch dep-list
+for name in `cat bin-dir-list`; do
+	for name in $name*; do
+  		#ldd $name | cut -d ' ' -f3 | cut -d '.' -f1 >> dep-list 
+		ldd $name | sed '/>  (/d;s/^[^/]*\(\/[^ ][^ ]*\) .*$/\1/' | cut -d ' ' -f3 | cut -d '.' -f1 >> dep-list
+	done
+done
+
+sed -n '/^\//p' < dep-list | sort -u > deduped-dep-list

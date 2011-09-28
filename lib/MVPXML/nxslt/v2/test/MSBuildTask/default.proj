@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+    <PropertyGroup>
+    <SubXsl>books.xsl</SubXsl>
+    <XslName>$(SubXsl)</XslName>
+    </PropertyGroup>
+
+        <UsingTask TaskName="Nxslt"
+              AssemblyFile="../../src/NxsltTasks/bIn/Release/XmlLab.NxsltTasks.dll" />
+
+    <PropertyGroup>
+      <XsltParameters>
+         <Parameter Name="param1" Value="value111"/>
+	 <Parameter Name="param2" NamespaceUri="foo ns" Value="value222"/>
+      </XsltParameters>
+      <XsltExtensions>
+	 <ExtensionObject NamespaceUri="ext ns" TypeName="TestExtLib.MyExtensions" 
+		Assembly="lib\TestExtLib.dll" />
+      </XsltExtensions>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <XmlFiles Include="in\*.*"/>
+    </ItemGroup>
+
+
+    <Target Name="transform">
+	
+        <Nxslt In="books.xml" Style="books.xsl" Out="out/catalog.html" />
+	<!-- timIngs -->
+        <Nxslt In="books.xml" Style="books.xsl" Out="out/catalog2.html" ShowTimings="true" />
+        <!-- xInclude -->
+        <Nxslt In="../../../../MvpXmlLibrary/XInclude/v2/test/tests/document.xml" Out="out/document.html" />
+        <Nxslt In="../../../../MvpXmlLibrary/XInclude/v2/test/tests/document.xml" 
+        ResolvexInclude="false" Out="out/document2.html" />
+        <!-- get Stylesheet pi -->
+        <Nxslt In="books.xml" GetStylesheetFromPi="true" Out="out/pi.html" />
+        <!-- resolver -->
+        <Nxslt In="cache://ext.xml" Style="books.xsl" Out="Out/resolver.html" Resolver="Acme.Resolvers.CacheResolver"
+	AssemblyFile="D:\projects2005\MVPXML\Nxslt\v2\test\NxsltTask\lib\CacheResolver.dll"/>
+	<Nxslt In="cache://ext.xml" Style="books.xsl" Out="out/resolver2.html" Resolver="Acme.Resolvers.CacheResolver"
+	AssemblyName="CacheResolver, Version=1.0.2161.33858, Culture=neutral, PublicKeyToken=49f505af2b7accbc"/>
+        <!-- params -->
+	<Nxslt In="books.xml" Style="books.xsl" Out="Out/params1.html" Parameters="$(XsltParameters)">
+        </Nxslt>
+	<Nxslt In="books.xml" Style="$(XslName)" Out="Out/prop.html" />
+        <Nxslt In="books.xml" Style="multibooks.xsl" Out="Out/multiOut.html" MultiOutput="true"/>
+	<Nxslt In="books.xml" Out="Out/books-ident.xml">        
+        </Nxslt>
+        <Nxslt In="books.xml" Style="books.xsl" Out="Out/ext1.html" extension="xhtml"/>
+	<Nxslt In="books.xml" Style="ext.xsl" Out="Out/extobj.html" ExtensionObjects="$(XsltExtensions)" />
+        <Nxslt In="@(XmlFiles)" Style="books.xsl" DestDir="Out"/>        
+        <Nxslt In="@(XmlFiles)" Style="books.xsl" DestDir="Out" Extension="xhtml"/>        
+    </Target>
+
+</Project>

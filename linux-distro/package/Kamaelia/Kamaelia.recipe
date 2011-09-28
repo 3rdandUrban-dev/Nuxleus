@@ -1,0 +1,23 @@
+#
+# Copyright (c) 2005-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Kamaelia(PackageRecipe):
+    name = 'Kamaelia'
+    version = '0.5.0'
+
+    buildRequires = [ 
+    'python-setuptools:python', 
+    ]
+
+    def setup(r):
+        r.addArchive('http://webapp.nuxle.us/app/deps/kamaelia/Kamaelia-0.5.0.tar.gz')
+        r.Run('python setup.py install --root=%(destdir)s --prefix=%(prefix)s')
+        r.ComponentRequires({'python': set(('runtime',))})
+    def policy(r):  
+    # Break out the Tk-related stuff into its own package
+        r.PackageSpec('%(name)s-tk', 'tk.*')
+       
+

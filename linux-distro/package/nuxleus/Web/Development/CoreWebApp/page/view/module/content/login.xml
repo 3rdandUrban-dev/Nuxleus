@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc"
+  xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="login-container" style="base list TtoB">
+    <view:item id="login" style="center">
+      <h2>@@openid.error.message@@</h2>
+      <form action="/gatekeeper/login" method="get" target="_top" maxlength="255">
+        <input type="hidden" name="return_location" value="http://dev.amp.fm/m?" />
+        <label for="login" class="input-label-left">Enter your OpenID: </label><input type="text" value="" class="openid-input" id="login" name="uname"/>
+        <button class="Button submit">
+          <span class="ButtonLabel">log me in</span>
+        </button>
+      </form>
+      <br />
+      <span><a href="http://openid.amp.fm/signup" title="Signup for an OpenID account at amp.fm">Create an OpenID account</a></span>
+    </view:item>
+  </view:container>
+</view:module>

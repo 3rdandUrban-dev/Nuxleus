@@ -1,0 +1,7 @@
+stateversion 2
+name mono-debugger:source
+version /nuxleus.rpath.org@nux:devel/1217780044.761:2.0-1
+branch /nuxleus.rpath.org@nux:devel
+2
+17a6eaec09cd19218747fc182bfee773 mono-debugger-2.0.tar.bz2 35ba2712d67a687ef2f746928417c02ee22e3c90 autosource /nuxleus.rpath.org@nux:devel/2.0-1
+7e60ffc2bfd40650560582f7776b6488 mono-debugger.recipe 589fbb5d52b1d57724f3411e04cfbed4e7691437 config /nuxleus.rpath.org@nux:devel/2.0-1

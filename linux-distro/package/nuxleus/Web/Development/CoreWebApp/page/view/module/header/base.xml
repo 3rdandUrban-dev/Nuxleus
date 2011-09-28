@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<view:module class="base" id="header" xmlns:view="http://atomictalk.org/page/view" xmlns:pledge="http://4lessig.org/pledge">
+  <view:container>
+    <div>
+      <div id="top-bar"></div>
+      <div id="bottom-bar"></div>
+    </div>
+  </view:container>
+</view:module>

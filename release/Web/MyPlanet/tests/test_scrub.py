@@ -1,0 +1,84 @@
+#!/usr/bin/env python
+
+import unittest, StringIO, time
+from copy import deepcopy
+from planet.scrub import scrub
+from planet import feedparser, config
+
+feed = '''
+<feed xmlns='http://www.w3.org/2005/Atom'>
+  <author><name>F&amp;ouml;o</name></author>
+  <entry xml:lang="en">
+    <id>ignoreme</id>
+    <author><name>F&amp;ouml;o</name></author>
+    <updated>%d-12-31T23:59:59Z</updated>
+    <title>F&amp;ouml;o</title>
+    <summary>F&amp;ouml;o</summary>
+    <content>F&amp;ouml;o</content>
+    <source>
+      <author><name>F&amp;ouml;o</name></author>
+    </source>
+  </entry>
+</feed>
+''' % (time.gmtime()[0] + 1)
+
+configData = '''
+[testfeed]
+name_type = html
+title_type = html
+summary_type = html
+content_type = html
+'''
+
+class ScrubTest(unittest.TestCase):
+
+    def test_scrub_ignore(self):
+        base = feedparser.parse(feed)
+
+        self.assertTrue(base.entries[0].has_key('id'))
+        self.assertTrue(base.entries[0].has_key('updated'))
+        self.assertTrue(base.entries[0].has_key('updated_parsed'))
+        self.assertTrue(base.entries[0].summary_detail.has_key('language'))
+
+        config.parser.readfp(StringIO.StringIO(configData))
+        config.parser.set('testfeed', 'ignore_in_feed', 'id updated xml:lang')
+        data = deepcopy(base)
+        scrub('testfeed', data)
+
+        self.assertFalse(data.entries[0].has_key('id'))
+        self.assertFalse(data.entries[0].has_key('updated'))
+        self.assertFalse(data.entries[0].has_key('updated_parsed'))
+        self.assertFalse(data.entries[0].summary_detail.has_key('language'))
+
+    def test_scrub_type(self):
+        base = feedparser.parse(feed)
+
+        self.assertEqual('F&ouml;o', base.feed.author_detail.name)
+
+        config.parser.readfp(StringIO.StringIO(configData))
+        data = deepcopy(base)
+        scrub('testfeed', data)
+
+        self.assertEqual('F\xc3\xb6o', data.feed.author_detail.name)
+        self.assertEqual('F\xc3\xb6o', data.entries[0].author_detail.name)
+        self.assertEqual('F\xc3\xb6o', data.entries[0].source.author_detail.name)
+
+        self.assertEqual('text/html', data.entries[0].title_detail.type)
+        self.assertEqual('text/html', data.entries[0].summary_detail.type)
+        self.assertEqual('text/html', data.entries[0].content[0].type)
+
+    def test_scrub_future(self):
+        base = feedparser.parse(feed)
+        self.assertEqual(1, len(base.entries))
+        self.assertTrue(base.entries[0].has_key('updated'))
+
+        config.parser.readfp(StringIO.StringIO(configData))
+        config.parser.set('testfeed', 'future_dates', 'ignore_date')
+        data = deepcopy(base)
+        scrub('testfeed', data)
+        self.assertFalse(data.entries[0].has_key('updated'))
+
+        config.parser.set('testfeed', 'future_dates', 'ignore_entry')
+        data = deepcopy(base)
+        scrub('testfeed', data)
+        self.assertEqual(0, len(data.entries))

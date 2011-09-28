@@ -1,0 +1,40 @@
+#
+# Copyright (c) 2005-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Amara(PackageRecipe):
+    	name = 'Amara'
+    	version = '1.2.0.2'
+
+    	buildRequires = [ ]
+
+    	def setup(r):
+		r.addArchive('ftp://ftp.4suite.org/pub/Amara/Amara-1.2.0.2.tar.bz2')
+		r.Environment('PYTHONPATH', '%(destdir)s/usr/lib/python2.5/site-packages')
+        	r.Run('mkdir -p %(destdir)s/usr/lib/python2.5/site-packages')
+        	r.Run('/usr/bin/python2.5 setup.py install --single-version-externally-managed --root=%(destdir)s')
+    		r.Requires(exceptDeps=r'python\:\ Ft')
+		r.Requires(exceptDeps=r'python\:\ Ft.Lib')
+		r.Requires(exceptDeps=r'python\:\ Ft.Lib.Uri')
+		r.Requires(exceptDeps=r'python\:\ Ft.Lib.Uuid')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Domlette')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.InputSource')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Lib')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Lib.XmlString')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Sax')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.XPath')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.XPath.Context')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.XPath.Conversions')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.XPath.ParsedNodeTest ')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Xslt')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Xslt.OutputParameters')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Xslt.Processor')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Xslt.XPatterns')
+		r.Requires(exceptDeps=r'python\:\ Ft.Xml.Xslt.XmlWriter')
+		r.Requires(exceptDeps=r'python\:\ pkg\_resources')
+		r.Requires(exceptions=r'\.*(py)')
+		r.Provides(exceptions=r'\.*(py)')
+

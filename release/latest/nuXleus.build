@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="Xameleon" default="all">
+  <target name="Xameleon">
+    <csc target="library" output="./public_web/bin/Xameleon.dll" unsafe="True">
+      <sources>
+        <include name="Xameleon/**/*.cs"/>
+        <include name="Xameleon/HttpHandler/XameleonAsyncHttpHandler.cs"/>
+        <include name="Vendor/Mono/xsp/Mono.WebServer/*.cs"/>
+      </sources>
+      <resources dynamicprefix="true">
+        <include name="Xameleon/Properties/**/*.resx"/>
+      </resources>
+      <references>
+        <include name="System.Drawing.dll"/>
+        <include name="System.Data.dll"/>
+        <include name="System.dll"/>
+        <include name="System.Xml.dll"/>
+        <include name="System.Configuration.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.Web.Services.dll"/>
+        <include name="./Dependencies/IKVM.OpenJDK.ClassLibrary.dll"/>
+        <include name="./Dependencies/IKVM.Runtime.dll"/>
+        <include name="./Dependencies/Lucene.Net.dll"/>
+        <include name="./Dependencies/Memcached.ClientLibrary.dll"/>
+        <include name="./Dependencies/Mono.Posix.dll"/>
+        <include name="./Dependencies/Mono.Security.dll"/>
+        <include name="./Dependencies/Mvp.Xml.dll"/>
+        <include name="./Dependencies/Saxon.Api.dll"/>
+        <include name="./Dependencies/saxon8.dll"/>
+        <include name="./Dependencies/SgmlReaderDll.dll"/>
+        <include name="./Dependencies/agsXMPP.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="XSP" depends="Xameleon">
+    <csc target="exe" output="./public_web/bin/xsp2.exe">
+      <sources>
+        <include name="XSP/**/*.cs"/> </sources>
+      <references>
+        <include name="./public_web/bin/Xameleon.dll"/>
+        <include name="./Dependencies/Mono.Posix.dll"/>
+        <include name="./Dependencies/Mono.Security.dll"/>
+        <include name="System.Web.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="AmpleeTest" depends="Xameleon">
+    <csc target="exe" output="./public_web/bin/AmpleeTest.exe">
+      <sources>
+        <include name="AmpleeConsole/Program.cs"/>
+      </sources>
+      <references>
+        <include name="./public_web/bin/Xameleon.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="LLUPTest" depends="Xameleon">
+    <csc target="exe" output="./public_web/bin/LLUPTest.exe">
+      <sources>
+        <include name="LLUPConsole/Program.cs"/>
+      </sources>
+      <references>
+        <include name="./public_web/bin/Xameleon.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="Nuxleus" depends="Xameleon">
+    <csc target="library" output="./public_web/bin/Nuxleus.dll">
+      <sources>
+        <include name="Nuxleus/**/*.cs"/>
+      </sources>
+      <references>
+        <include name="./public_web/bin/Xameleon.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="Watcher" depends="Nuxleus">
+    <csc target="exe" output="./public_web/bin/Watcher.exe">
+      <sources>
+        <include name="FileSystemWatcher/Watcher.cs"/>
+      </sources>
+      <references>
+        <include name="./public_web/bin/Nuxleus.dll"/>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
+  <target name="all">
+    <call target="Xameleon"/>
+    <call target="XSP"/>
+    <call target="AmpleeTest"/>
+    <call target="LLUPTest"/>
+    <call target="Nuxleus"/>
+    <call target="Watcher"/>
+  </target>
+  <target name="clean">
+    <delete failonerror="false" file="./public_web/bin/Xameleon.dll"/>
+    <delete failonerror="false" file="./public_web/bin/xsp2.exe"/>
+    <delete failonerror="false" file="./public_web/bin/Nuxleus.dll"/>
+    <delete failonerror="false" file="./public_web/bin/Watcher.exe"/>
+    <delete failonerror="false" file="./public_web/bin/AmpleeTest.exe"/>
+    <delete failonerror="false" file="./public_web/bin/LLUPTest.exe"/>
+  </target>
+</project>

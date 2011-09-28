@@ -1,0 +1,7 @@
+stateversion 2
+name http_load:source
+version /nuxleus.rpath.org@nux:devel/1189052051.549:12mar2006-1
+branch /nuxleus.rpath.org@nux:devel
+2
+92a4c56b124de9994cc3e465d5b25398 http_load.recipe ff43f98a2bfaf52758a6cad52af59e6cdd8b258c config /nuxleus.rpath.org@nux:devel/12mar2006-1
+59f801ea3b58dd7e6369ccccfc423ec9 http_load-12mar2006.tar.gz 39c286e3ee2137e90a777cbd31ecb97605802c0b autosource /nuxleus.rpath.org@nux:devel/12mar2006-1

@@ -1,0 +1,564 @@
+#!/bin/sh
+PRIVATE_KEY_FILE="not-set"
+PRIMARY_MACHINE="not-set"
+SECONDARY_MACHINE="not-set"
+PRIMARY_EXTERNAL_MACHINE_NAME="not-set"
+SECONDARY_EXTERNAL_MACHINE_NAME="not-set"
+ACTIVE_MACHINE_NAME="not-set"
+VTUN_PASSWORD="not-set"
+HEARTBEAT_PASSPHRASE="not-set"
+VOLUME_DEVICE="/dev/sda2"
+VOLUME_GROUP_NAME="not-set"
+LOGICAL_VOLUME_ONE="not-set"
+LOGICAL_VOLUME_TWO="not-set"
+DRBD_OVERWRITE_PEER=""
+VTUN_CLIENT_CONFIG_FILE="/usr/local/etc/vtund-client.conf"
+VTUN_SERVER_CONFIG_FILE="/usr/local/etc/vtund-server.conf"
+BASE_VTUN_SUBNET="10.3.0"
+VTUN_SERVER_VIRTUAL_IP_CLASS_D_BASE=1
+VTUN_CLIENT_VIRTUAL_IP_CLASS_D_BASE=100
+PRIMARY_MACHINE_IP="not-set"
+SECONDARY_MACHINE_IP="not-set"
+
+usage() {
+cat <<END
+
+SYNOPSIS
+  ./configure -pk -pm -sm [-vd] -vp -vsp [-vsp] -hp -vg -lv1 -lv2 [--overwrite-data-of-peer]
+
+SUMMARY
+  Configures each of the nodes in a given two node DRBD configuration as well as each specified VTun server node to use LVM, DRBD, 
+  NFS, Heartbeat, and VTun for fail-over data persistence and network mountable read/write access.
+
+OPTIONS
+  -pk/--private-key                   Filename of private key to use when logging in to each machine in the configuration.
+                                      
+  -pm/--primary-machine               Internal:External machine name of the primary machine in the DRBD configuration.
+                                      The two machine names should be separated by a colon.
+                                      
+  -sm/--secondary-machine             Internal:External machine name of the secondary machine in the DRBD configuration.
+                                      The two machine names should be separated by a colon.
+                           
+  -amn/--active-machine-name          The machine name that the active node should use across the virtual network. This
+                                      is different than the internal name of the primary machine, and should represent something
+                                      distinctive and easy for you to recognize.
+                                      
+  -vp/--vtun-password                 The password that should be used between client and server when establishing
+                                      a point-to-point tunnel.
+                                      
+  -hp/--heartbeat-passphrase          The passphrase to be used by heartbeat when establishing a connection with
+                                      its paired node.
+                                      
+  -vd/--volume-device                 The device to act as the LVM physical volume.
+                                      
+  -vg/--volume-group-name             The name of the LVM volume group to use in the configuration.
+                                      
+  -lv1/--logical-volume-one           The name of the first/primary logical volume to use in the configuration.
+                                      This is the primary read/write volume that will be used in the DRBD configuration.
+                                      
+  -lv2/--logical-volume-two           The name of the second/backup logical volume to use in the configuration.
+                                      This will be used when making snapshots of the primary volume for purpose of backup.
+                                      
+  -vsp/--vtun-server-profile          The internal machine name, external machine name, and profile name to be used in the 
+                                      VTun client and server configuration file. This should use the format 
+                                      INTERNAL-MACHINE-NAME:EXTERNAL-MACHINE-NAME:profile_name.
+                                      
+                                      Optionally you can add a fourth argument with the value of "yes" or "no" which specifies 
+                                      whether or not VTun should be installed on the remote machine.  The default is no.
+                                      
+  --overwrite-data-of-peer            Overwrite any data contained on the DRBD secondary peer.  For safety, by default this 
+                                      is set to no, but for this to work on a new two node configuration, you MUST use this
+                                      switch or DRBD will refuse to mark the primary node as primary until both devices
+                                      are in sync.  This would then require human intervention, which defeats the purpose of 
+                                      this script.
+                                      
+  -u/--usage/-h/--help/-?             Prints this menu and exits.
+  
+END
+}
+log_info() {
+        echo `date`:$CURRENT_PROCESS":INFO: "$1
+}
+log_warn() {
+        echo `date`:$CURRENT_PROCESS":WARN: "$1
+}
+log_error() {
+        echo `date`:$CURRENT_PROCESS":ERROR: "$1
+}
+get_ip_from_machine() {
+  echo `ssh -i $PRIVATE_KEY_FILE -o StrictHostKeyChecking=no root@$1 ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | cut -d ' ' -f1`
+}
+get_ip_from_machine_name() {
+  echo $1 | sed -e "s/ip-//g" -e "s/-/./g"
+}
+append_vtun_profile_to_haresources() {
+  echo "VTun::$1::$2::$3 \\" >> config/haresources
+}
+generate_vtun_profile() {
+  cat <<END
+  $1 {
+    passwd  $2;
+    type  tun;
+    proto tcp;
+    up {
+      ifconfig
+      "%% $3 pointopoint $4 mtu 1450";
+    };
+    down {
+      ifconfig "%% down";
+    };
+  }
+END
+}
+configure_ssh() {
+  if [ ! -r ${HOME}/.ssh/id_rsa.pub ]; then
+    ssh-keygen -b 2048 -t rsa -N ""
+  fi
+  cat ~/.ssh/id_rsa.pub | ssh -i $PRIVATE_KEY_FILE -o StrictHostKeyChecking=no root@$1 "cat - >> .ssh/authorized_keys" 
+}
+add_libferris_rpm_repos(){
+  ssh root@$1 cd /etc/yum.repos.d/; wget http://download.opensuse.org/repositories/home:/monkeyiq/Fedora_8/home:monkeyiq.repo
+}
+install_xalan_c_rpm() {
+  ssh root@$1 cd /tmp; \
+    wget http://download.opensuse.org/repositories/home:/monkeyiq/Fedora_8/i386/xalan-c-1.10-50005.1.i386.rpm; \
+    rpm -i xalan-c-1.10-50005.1.i386.rpm; \
+    rm -f xalan-c-1.10-50005.1.i386.rpm;
+}
+create_raid_0_large(){
+  ssh root@$1 yes | mdadm --create /dev/md0 --level 0 --raid-devices 2 /dev/sdb /dev/sdc
+  ssh root@$1 echo 'DEVICE /dev/sdb /dev/sdc' > /etc/mdadm.conf
+  configure_mdadm
+}
+create_raid_0_xlarge(){
+  ssh root@$1 yes | mdadm --create /dev/md0 --level 0 --raid-devices 4 /dev/sdb /dev/sdc /dev/sdd /dev/sde
+  ssh root@$1 echo 'DEVICE /dev/sdb /dev/sdc /dev/sdd /dev/sde' > /etc/mdadm.conf
+  configure_mdadm
+}
+configure_mdadm(){
+  ssh root@$1 mdadm --detail --scan >> /etc/mdadm.conf 
+}
+update_fedora_8() {
+  ssh root@$1 "yum -y update; yum -y update; yum -y install flex heartbeat xfsprogs lzo lzo-devel zlib-devel openssl-devel byacc system-config-nfs svn xerces-c bison"
+}
+install_libferris() {
+  ssh root@$1 yum -y libferris 
+}
+unmount_mnt() {
+  ssh root@$1 "umount /mnt"
+}
+configure_lvm(){
+  log_info "Creating Physical Volume on device: $VOLUME_DEVICE"
+  ssh root@$1 pvcreate $VOLUME_DEVICE
+  log_info "Creating Volume Group: $VOLUME_GROUP_NAME"
+  ssh root@$1 vgcreate $VOLUME_GROUP_NAME $VOLUME_DEVICE
+  log_info "Determining PE of Volume Group: $VOLUME_GROUP_NAME"
+  PE=`ssh root@$1 vgdisplay $VOLUME_GROUP_NAME | grep "Total PE" | sed -e "s/Total PE//g" -e "s/ //g"`
+  PE_DISK_SIZE=`echo $(($PE / 2))`
+  log_info "Total PE size is: $PE"
+  log_info "Each Logical Volume will be set to: $PE_DISK_SIZE"
+  log_info "Creating Logial Volume: $LOGICAL_VOLUME_ONE"
+  ssh root@$1 lvcreate -l $PE_DISK_SIZE $VOLUME_GROUP_NAME -n $LOGICAL_VOLUME_ONE
+  log_info "Creating Logial Volume: $LOGICAL_VOLUME_TWO"
+  ssh root@$1 lvcreate -l $PE_DISK_SIZE $VOLUME_GROUP_NAME -n $LOGICAL_VOLUME_TWO
+}
+install_drbd(){
+  log_info "Downloading, extracting, and installing the precompiled DRBD modules"
+  scp get-install-config-drbd root@$1:get-install-config-drbd.sh
+  ssh root@$1 sh ./get-install-config-drbd.sh
+}
+create_drbd_meta_data_loopback() {
+  log_info "Creating DRBD meta-data loop back file"
+  ssh root@$1 dd if=/dev/zero of=/var/drbd-meta bs=512K count=512
+  log_info "Attaching DRBD meta-data loop back file"
+  ssh root@$1 losetup /dev/loop0 /var/drbd-meta
+}
+configure_drbd() {
+  sed -e "s/@@PRIMARY_MACHINE@@/$PRIMARY_MACHINE/g" \
+      -e "s/@@SECONDARY_MACHINE@@/$SECONDARY_MACHINE/g" \
+      -e "s/@@VOLUME_GROUP_NAME@@/$VOLUME_GROUP_NAME/g" \
+      -e "s/@@LOGICAL_VOLUME_ONE@@/$LOGICAL_VOLUME_ONE/g" \
+      -e "s/@@PRIMARY_MACHINE_IP@@/$PRIMARY_MACHINE_IP/g" \
+      -e "s/@@SECONDARY_MACHINE_IP@@/$SECONDARY_MACHINE_IP/g" \
+      config/drbd.conf | ssh root@$1 "cat - > /etc/drbd.conf" 
+}
+create_drbd_meta_data_disk() {
+  ssh root@$1 "yes | drbdadm create-md r0"
+}
+bring_up_drbd() {
+  ssh root@$1 "yes | drbdadm up all"
+}
+create_data_dir() {
+  ssh root@$1 mkdir /data
+}
+configure_primary_drbd_node() {
+  ssh root@$1 "yes | drbdadm -- $DRBD_OVERWRITE_PEER primary r0"
+}
+create_xfs_file_system() {
+  ssh root@$1 mkfs.xfs -f -b size=512 /dev/drbd0
+}
+mount_drbd_device() {
+  ssh root@$1 mount /dev/drbd0 /data;
+}
+configure_primary_nfs_file_system() {
+  ssh root@$1 "mv /var/lib/nfs/ /data/; \
+  ln -s /data/nfs /var/lib/nfs; \
+  mkdir /data/export; \
+  umount /data"
+}
+configure_secondary_nfs_file_system() {
+  ssh root@$1 "rm -rf /var/lib/nfs; \
+              ln -s /data/nfs/ /var/lib/nfs" 
+}
+configure_vtun_server_list() {
+  for server_vars in `cat vtun_server_list`; do configure_vtun_server $server_vars; done;
+}
+install_vtun(){
+  ssh root@$1 "wget http://superb-east.dl.sourceforge.net/sourceforge/vtun/vtun-3.0.1.tar.gz; \
+                tar xf vtun-3.0.1.tar.gz; \
+                cd vtun-3.0.1; \
+                ./configure; make; make install; modprobe tun"
+}
+configure_vtun_client() {
+  cp config/vtund-template.conf vtund-client.conf
+  cat vtund-client.conf.temp >> vtund-client.conf
+  cat vtund-client.conf | ssh root@$1 "cat - > /usr/local/etc/vtund-client.conf"
+}
+configure_vtun_server() {
+  EXTERNAL_SERVER_MACHINE_NAME=`echo $1 | cut -d ':' -f1`
+  SERVER_IP=`echo $1 | cut -d ':' -f2`
+  PROFILE=`echo $1 | cut -d ':' -f3`
+  VTUN_CLIENT_VIRTUAL_IP=`echo $1 | cut -d ':' -f4`
+  VTUN_SERVER_VIRTUAL_IP=`echo $1 | cut -d ':' -f5`
+  INSTALL_VTUN=`echo $1 | cut -d ':' -f6`
+  configure_ssh $EXTERNAL_SERVER_MACHINE_NAME
+  generate_vtun_profile $PROFILE $VTUN_PASSWORD $VTUN_CLIENT_VIRTUAL_IP $VTUN_SERVER_VIRTUAL_IP >> vtund-client.conf.temp
+  echo "VTun::$SERVER_IP::$PROFILE::$VTUN_CLIENT_CONFIG_FILE" >> haresources.temp
+  update_fedora_8 $EXTERNAL_SERVER_MACHINE_NAME;
+  if test $INSTALL_VTUN = "yes"; then
+    scp ./install-vtun root@$EXTERNAL_SERVER_MACHINE_NAME:
+    ssh root@$EXTERNAL_SERVER_MACHINE_NAME "./install-vtun; mkdir /data; rm -f install-vtun"
+  fi
+  generate_vtun_profile $PROFILE $VTUN_PASSWORD $VTUN_SERVER_VIRTUAL_IP $VTUN_CLIENT_VIRTUAL_IP | cat - config/vtund-template.conf | ssh root@$EXTERNAL_SERVER_MACHINE_NAME "cat - >> $VTUN_SERVER_CONFIG_FILE"
+  echo "$ACTIVE_MACHINE_NAME:/data/export /data nfs rsize=8192,wsize=8192,timeo=20,hard,intr,nolock,udp 0 0" | ssh root@$EXTERNAL_SERVER_MACHINE_NAME "cat - >> /etc/fstab"
+  echo "$VTUN_CLIENT_VIRTUAL_IP $ACTIVE_MACHINE_NAME" | ssh root@$EXTERNAL_SERVER_MACHINE_NAME "cat - >> /etc/hosts"
+  echo "/data   10.3.0.0/255.255.0.0(rw,sync,no_root_squash,no_all_squash)" | ssh root@$EXTERNAL_SERVER_MACHINE_NAME "cat - >> /etc/exports; exportfs -a"
+  ssh root@$EXTERNAL_SERVER_MACHINE_NAME "vtund -f $VTUN_SERVER_CONFIG_FILE -s -L $SERVER_IP"
+  echo $EXTERNAL_SERVER_MACHINE_NAME >> mountlist
+}
+start_vtun_server() {
+   ssh root@$1 "vtund -f $VTUN_SERVER_CONFIG_FILE -s -L $2" 
+}
+configure_system(){
+  log_info "Adding /data/export and proper IP permissions to /etc/exports on $1"
+  echo "/data/export   10.3.0.0/255.255.0.0(rw,sync,no_root_squash,no_all_squash)" | ssh root@$1 "cat - >> /etc/exports"
+  log_info "Adding proper IP:NETMASK rules to /etc/hosts.allow"
+  echo "10.251.0.0:255.255.0.0" | ssh root@$1 "cat - >> /etc/hosts.allow"
+  ssh root@$1 mkdir /var/run/heartbeat/rsctmp/
+}
+configure_services() {
+  ssh root@$1 "chkconfig rpcbind on; chkconfig drbd off; chkconfig heartbeat off; chkconfig nfs off; chkconfig nfslock off;"
+}
+configure_heartbeat() {
+  sed -e "s/@@HEARTBEAT_PASSPHRASE@@/$HEARTBEAT_PASSPHRASE/g" config/authkeys | ssh root@$1 "cat - > /etc/ha.d/authkeys; chmod 600 /etc/ha.d/authkeys"
+  sed -e "s/@@PAIRED_MACHINES_IP@@/$2/g" \
+      -e "s/@@PRIMARY_MACHINE@@/$PRIMARY_MACHINE/g" \
+      -e "s/@@SECONDARY_MACHINE@@/$SECONDARY_MACHINE/g" \
+      config/ha.cf | ssh root@$1 "cat - > /etc/ha.d/ha.cf"
+  cat config/haresources haresources.temp | tr '\n' ' ' | sed -e "s/@@PRIMARY_MACHINE@@/$PRIMARY_MACHINE/g" | ssh root@$1 "cat - > /etc/ha.d/haresources"
+}
+generate_cib_xml() {
+  ssh root@$1 "rm -f /var/lib/heartbeat/crm/cib.xml*; /usr/lib/heartbeat/haresources2cib.py >> /dev/null"
+}
+install_heartbeat_scripts() {
+  cat scripts/VTun.etc | ssh root@$1 "cat - > /etc/ha.d/resource.d/VTun; chmod +x /etc/ha.d/resource.d/VTun"
+  cat scripts/VTun.ocf | ssh root@$1 "cat - > /usr/share/ocf/resource.d/heartbeat/VTun; chmod +x /usr/share/ocf/resource.d/heartbeat/VTun"
+  cat scripts/killnfsd.etc | ssh root@$1 "cat - > /etc/ha.d/resource.d/killnfsd; chmod +x /etc/ha.d/resource.d/killnfsd"
+  cat scripts/killnfsd.ocf | ssh root@$1 "cat - > /usr/share/ocf/resource.d/heartbeat/killnfsd; chmod +x /usr/share/ocf/resource.d/heartbeat/killnfsd"
+}
+append_hosts_allow() {
+  echo "10.0.0.0:255.0.0.0" | ssh root@$1 "cat - >> /etc/hosts.allow"
+}
+append_rc_local() {
+  echo "modprobe tun; modprobe drbd; losetup /dev/loop0 /var/drbd-meta; service drbd start; service heartbeat start" | ssh root@$1 "cat - >> /etc/rc.local"
+}
+start_services() {
+  ssh root@$1 "modprobe tun; modprobe drbd; service rpcbind start; service drbd start; service heartbeat start"
+}
+mount_volumes() {
+  for machine in `cat mountlist`; do ssh root@$machine mount -a ; done;
+}
+cleanup_files() {
+  rm -f haresources.temp vtund-client.conf.temp vtund-client.conf vtun_server_list mountlist
+}
+
+while [ "$#" -gt "0" ]
+do
+  case $1 in
+    -pk|--private-key)
+      shift
+      PRIVATE_KEY_FILE=$1
+      ;;
+    -pm|--primary-machine)
+      shift
+      PRIMARY_MACHINE=`echo $1 | cut -d ':' -f1 | cut -d '.' -f1`
+      PRIMARY_EXTERNAL_MACHINE_NAME=`echo $1 | cut -d ':' -f2`
+      PRIMARY_MACHINE_IP=`get_ip_from_machine $PRIMARY_EXTERNAL_MACHINE_NAME`
+      ;;
+    -sm|--secondary-machine)
+      shift
+      SECONDARY_MACHINE=`echo $1 | cut -d ':' -f1 | cut -d '.' -f1`
+      SECONDARY_EXTERNAL_MACHINE_NAME=`echo $1 | cut -d ':' -f2`
+      SECONDARY_MACHINE_IP=`get_ip_from_machine $SECONDARY_EXTERNAL_MACHINE_NAME`
+      ;;
+    -amn|--active-machine-name)
+      shift
+      ACTIVE_MACHINE_NAME=$1
+      ;;
+    -vp|--vtun-password)
+      shift
+      VTUN_PASSWORD=`echo $1 | tr ' ' '_'`
+      ;;
+    -vsp|--vtun-server-profile)
+      shift
+      INTERNAL_SERVER_MACHINE_NAME=`echo $1 | cut -d ':' -f1`
+      EXTERNAL_SERVER_MACHINE_NAME=`echo $1 | cut -d ':' -f2`
+      SERVER_IP=`get_ip_from_machine $EXTERNAL_SERVER_MACHINE_NAME`
+      PROFILE=`echo $1 | cut -d ':' -f3`
+      INSTALL_VTUN=`echo $1 | cut -d ':' -f4`
+      VTUN_CLIENT_VIRTUAL_IP="$BASE_VTUN_SUBNET.$VTUN_CLIENT_VIRTUAL_IP_CLASS_D_BASE"
+      VTUN_SERVER_VIRTUAL_IP="$BASE_VTUN_SUBNET.$VTUN_SERVER_VIRTUAL_IP_CLASS_D_BASE"
+      VTUN_CLIENT_VIRTUAL_IP_CLASS_D_BASE=$(($VTUN_CLIENT_VIRTUAL_IP_CLASS_D_BASE+1))
+      VTUN_SERVER_VIRTUAL_IP_CLASS_D_BASE=$(($VTUN_SERVER_VIRTUAL_IP_CLASS_D_BASE+1))
+      echo "$EXTERNAL_SERVER_MACHINE_NAME:$SERVER_IP:$PROFILE:$VTUN_CLIENT_VIRTUAL_IP:$VTUN_SERVER_VIRTUAL_IP:$INSTALL_VTUN" >> vtun_server_list
+      ;;
+    -hp|--heartbeat-passphrase)
+      shift
+      HEARTBEAT_PASSPHRASE=`echo $1 | tr ' ' '_'`
+      ;;
+    -vd|--volume-device)
+      shift
+      VOLUME_DEVICE=$1
+      ;;
+    -vg|--volume-group-name)
+      shift
+      VOLUME_GROUP_NAME=$1
+      ;;
+    -lv1|--logical-volume-one)
+      shift
+      LOGICAL_VOLUME_ONE=$1
+      ;;
+    -lv2|--logical-volume-two)
+      shift
+      LOGICAL_VOLUME_TWO=$1
+      ;;
+    --overwrite-data-of-peer)
+      DRBD_OVERWRITE_PEER="--overwrite-data-of-peer"
+      ;;
+    -u|--usage|-h|--help|-?)
+      usage
+      exit 0 ;;
+    *)
+      echo "parameter $1 is unknown" 
+      exit 1 ;;
+  esac
+  shift
+done
+
+if test $PRIMARY_MACHINE = "not-set"; then
+  echo "--primary-machine needs to be set"
+  exit 1
+fi
+if test $SECONDARY_MACHINE = "not-set"; then
+  echo "--secondary-machine needs to be set"
+  exit 1
+fi
+if test $ACTIVE_MACHINE_NAME = "not-set"; then
+  echo "--active-machine-name needs to be set"
+  exit 1
+fi
+if test $VTUN_PASSWORD = "not-set"; then
+  echo "--vtun-password needs to be set"
+  exit 1
+fi
+if test $HEARTBEAT_PASSPHRASE = "not-set"; then
+  echo "--heartbeat-passphrase needs to be set"
+  exit 1
+fi
+if test $VOLUME_GROUP_NAME = "not-set"; then
+  echo "--volume-group-name needs to be set"
+  exit 1
+fi
+if test $LOGICAL_VOLUME_ONE = "not-set"; then
+  echo "--logical-volume-one needs to be set"
+  exit 1
+fi
+if test $LOGICAL_VOLUME_TWO = "not-set"; then
+  echo "--logical-volume-two needs to be set"
+  exit 1
+fi
+if test $PRIMARY_MACHINE_IP = "not-set"; then
+  echo "--primary-machine-ip could not be determined"
+  exit 1
+fi
+if test $SECONDARY_MACHINE_IP = "not-set"; then
+  echo "--secondary-machine-ip could not be determined"
+  exit 1
+fi
+
+CURRENT_PROCESS="INITIALIZATION"
+log_info "Initializing AMI Configuration"
+
+CURRENT_PROCESS="CONFIGURE:VTUN_SERVER_LIST"
+log_info "Configuring each of the VTun servers"
+configure_vtun_server_list
+
+CURRENT_PROCESS="SSH"
+log_info "Configuring SSH on $PRIMARY_EXTERNAL_MACHINE_NAME"
+configure_ssh $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Configuring SSH on $SECONDARY_EXTERNAL_MACHINE_NAME"
+configure_ssh $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="UPDATE:FEDORA"
+log_info "Updating Fedora on $PRIMARY_EXTERNAL_MACHINE_NAME"
+update_fedora_8 $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Updating Fedora on $SECONDARY_EXTERNAL_MACHINE_NAME"
+update_fedora_8 $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="UNMOUNT:/MNT"
+log_info "Unmount /mnt on $PRIMARY_EXTERNAL_MACHINE_NAME"
+unmount_mnt $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Unmount /mnt on $SECONDARY_EXTERNAL_MACHINE_NAME"
+unmount_mnt $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CONFIGURE:LVM"
+log_info "Configuring LVM on $PRIMARY_EXTERNAL_MACHINE_NAME"
+configure_lvm $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Configuring LVM on $SECONDARY_EXTERNAL_MACHINE_NAME"
+configure_lvm $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="INSTALL:DRBD"
+log_info "Installing DRBD on $PRIMARY_EXTERNAL_MACHINE_NAME"
+install_drbd $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Installing DRBD on $SECONDARY_EXTERNAL_MACHINE_NAME"
+install_drbd $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CREATE:DRBD_META_DATA_LOOPBACK"
+log_info "Creating DRBD meta-data loopback on $PRIMARY_EXTERNAL_MACHINE_NAME"
+create_drbd_meta_data_loopback $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Creating DRBD meta-data loopback on $SECONDARY_EXTERNAL_MACHINE_NAME"
+create_drbd_meta_data_loopback $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CONFIGURE:DRBD"
+log_info "Configuring DRBD on $PRIMARY_EXTERNAL_MACHINE_NAME"
+configure_drbd $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Configuring DRBD on $SECONDARY_EXTERNAL_MACHINE_NAME"
+configure_drbd $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CREATE:DRBD_META_DATA_DISK"
+log_info "Creating DRBD meta-data disk on $PRIMARY_EXTERNAL_MACHINE_NAME"
+create_drbd_meta_data_disk $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Creating DRBD meta-data disk on $SECONDARY_EXTERNAL_MACHINE_NAME"
+create_drbd_meta_data_disk $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="BRING_UP:DRBD"
+log_info "Bringing up DRBD on $PRIMARY_EXTERNAL_MACHINE_NAME"
+bring_up_drbd $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Bringing up DRBD on $SECONDARY_EXTERNAL_MACHINE_NAME"
+bring_up_drbd $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CREATE:DATA_DIR"
+log_info "Creating /data directory on $PRIMARY_EXTERNAL_MACHINE_NAME"
+create_data_dir $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Creating /data directory on $SECONDARY_EXTERNAL_MACHINE_NAME"
+create_data_dir $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CONFIGURE:PRIMARY_DRBD_NODE"
+log_info "Configuring primary DRBD node on $PRIMARY_EXTERNAL_MACHINE_NAME"
+configure_primary_drbd_node $PRIMARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CREATE:XFS_FILE_SYSTEM"
+log_info "Creating XFS file system on $PRIMARY_EXTERNAL_MACHINE_NAME"
+create_xfs_file_system $PRIMARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="MOUNT:DRBD_DEVICE"
+log_info "Mounting DRBD device on $PRIMARY_EXTERNAL_MACHINE_NAME"
+mount_drbd_device $PRIMARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CONFIGURE:PRIMARY_NFS_FILE_SYSTEM"
+log_info "Configuring primary NFS file system on $PRIMARY_EXTERNAL_MACHINE_NAME"
+configure_primary_nfs_file_system $PRIMARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CONFIGURE:SECONDARY_NFS_FILE_SYSTEM"
+log_info "Configuring secondary NFS file system on $SECONDARY_EXTERNAL_MACHINE_NAME"
+configure_secondary_nfs_file_system $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="INSTALL:VTUN"
+log_info "Installing VTun on $PRIMARY_EXTERNAL_MACHINE_NAME"
+install_vtun $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Installing VTun on $SECONDARY_EXTERNAL_MACHINE_NAME"
+install_vtun $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CONFIGURE:VTUN_CLIENT"
+log_info "Configuring VTun client on $PRIMARY_EXTERNAL_MACHINE_NAME"
+configure_vtun_client $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Configuring VTun client on $SECONDARY_EXTERNAL_MACHINE_NAME"
+configure_vtun_client $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CONFIGURE:SYSTEM"
+log_info "Configuring system files on $PRIMARY_EXTERNAL_MACHINE_NAME"
+configure_system $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Configuring system files on $SECONDARY_EXTERNAL_MACHINE_NAME"
+configure_system $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CONFIGURE:SERVICES"
+log_info "Configuring services on $PRIMARY_EXTERNAL_MACHINE_NAME"
+configure_services $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Configuring services on $SECONDARY_EXTERNAL_MACHINE_NAME"
+configure_services $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="CONFIGURE:HEARTBEAT"
+log_info "Configuring Heartbeat on $PRIMARY_EXTERNAL_MACHINE_NAME"
+configure_heartbeat $PRIMARY_EXTERNAL_MACHINE_NAME $SECONDARY_MACHINE_IP
+log_info "Configuring Heartbeat on $SECONDARY_EXTERNAL_MACHINE_NAME"
+configure_heartbeat $SECONDARY_EXTERNAL_MACHINE_NAME $PRIMARY_MACHINE_IP
+
+CURRENT_PROCESS="INSTALL:HEARTBEAT_SCRIPTS"
+log_info "Installing Heartbeat scripts on $PRIMARY_EXTERNAL_MACHINE_NAME"
+install_heartbeat_scripts $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Installing Heartbeat scripts on $SECONDARY_EXTERNAL_MACHINE_NAME"
+install_heartbeat_scripts $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="GENERATE:CIB_XML"
+log_info "Generating cib.xml on $PRIMARY_EXTERNAL_MACHINE_NAME"
+generate_cib_xml $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Generating cib.xml on $SECONDARY_EXTERNAL_MACHINE_NAME"
+generate_cib_xml $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="APPEND:HOSTS_ALLOW"
+log_info "Appending hosts.allow on $PRIMARY_EXTERNAL_MACHINE_NAME"
+append_hosts_allow $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Appending hosts.allow on $SECONDARY_EXTERNAL_MACHINE_NAME"
+append_hosts_allow $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="APPEND:RC_LOCAL"
+log_info "Appending rc.local on $PRIMARY_EXTERNAL_MACHINE_NAME"
+append_rc_local $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Appending rc.local on $SECONDARY_EXTERNAL_MACHINE_NAME"
+append_rc_local $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="START:SERVICES"
+log_info "Starting services on $PRIMARY_EXTERNAL_MACHINE_NAME"
+start_services $PRIMARY_EXTERNAL_MACHINE_NAME
+log_info "Starting services on $SECONDARY_EXTERNAL_MACHINE_NAME"
+start_services $SECONDARY_EXTERNAL_MACHINE_NAME
+
+CURRENT_PROCESS="MOUNT:VOLUMES"
+log_info "Mounting volumes on $PRIMARY_EXTERNAL_MACHINE_NAME and $SECONDARY_EXTERNAL_MACHINE_NAME"
+mount_volumes
+
+CURRENT_PROCESS="CLEANUP:FILES"
+log_info "Cleaning up files on local machine"
+cleanup_files
+
+log_info "AMI Configuration Complete"

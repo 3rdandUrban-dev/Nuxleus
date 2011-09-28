@@ -1,0 +1,5 @@
+buildLabel	nuxleus.rpath.org@nux:devel
+buildPath	/home/mdavid/conary/nuxleus.rpath.org/builds
+lookaside	/home/mdavid/conary/nuxleus.rpath.org/cache
+user	nuxleus.rpath.org	xmlhacker	CMax92100
+

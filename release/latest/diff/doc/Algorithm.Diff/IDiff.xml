@@ -1,0 +1,42 @@
+<Type Name="IDiff" FullName="Algorithm.Diff.IDiff">
+  <TypeSignature Language="C#" Value="public interface IDiff : System.Collections.IEnumerable" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.IEnumerable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Members>
+    <Member MemberName="Left">
+      <MemberSignature Language="C#" Value="public System.Collections.IList Left { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.IList</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The list used as the left document in the diff.</summary>
+        <value>The left document.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Right">
+      <MemberSignature Language="C#" Value="public System.Collections.IList Right { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.IList</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The list used as the right document in the diff.</summary>
+        <value>The right document.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>An interface representing objects that return <see cref="T:Algorithm.Diff+Hunk" /> objects.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+</Type>

@@ -1,0 +1,68 @@
+#
+# Copyright (c) 2004-2008 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+# Get python version from this label
+loadInstalled('python')
+
+class Subversion(CPackageRecipe):
+    name = 'subversion'
+    version = '1.4.6'
+
+    buildRequires = [ 'autoconf:runtime', 'libtool:runtime', 'python:devel',
+                      'python:runtime', 'db:devel', 'apr:devel',
+                      'apr-util:devel', 'neon:devel', 'httpd:devel',
+                      'swig:runtime', 'which:runtime', 'krb5:devellib',
+                      'expat:devel', 'libxml2:devel', 'zlib:devel',
+                      'gettext:runtime', 'krb5:devel', 'httpd:runtime',
+                      'e2fsprogs:devel', 'openldap:devel', 'perl:runtime',
+                      'openssl:devel', 'sqlite:devel', ]
+
+    if Use.builddocs:
+        buildRequires.extend(['texinfo:runtime', 'docbook-xsl:data'])
+
+    def setup(r):
+        r.disableParallelMake()
+
+        # svnparentpath is the directory containing the repositories
+
+        r.macros.svnparentpath = '%(servicedir)s/subversion'
+        r.macros.svnconfdir = '%(sysconfdir)s/subversion'
+
+        r.macros.pydir = Python.sitepkgs
+        r.macros.swigdirs = "swig_pydir=%(pydir)s/libsvn swig_pydir_extra=%(pydir)s/svn"
+
+        r.addArchive('http://subversion.tigris.org/tarballs/', keyid='1706FD6E')
+        r.addSource('subversion.conf', dest='%(sysconfdir)s/httpd/conf.d/subversion.conf')
+        r.addSource('useraccess', dest='%(svnconfdir)s/useraccess')
+
+        r.Replace(('SVN_PARENT_PATH','%(svnparentpath)s'),('SVN_CONF_DIR','%(svnconfdir)s'),
+                  '%(sysconfdir)s/httpd/conf.d/subversion.conf',
+                  '%(svnconfdir)s/useraccess')
+
+        r.Create('%(svnconfdir)s/users')
+        r.Configure('--with-neon=%(prefix)s '
+                    '--with-apr=%(prefix)s '
+                    '--with-apr-util=%(prefix)s '
+                    '--with-berkeley-db '
+                    '--disable-mod-activation ')
+        r.Make('LIBTOOL=%(bindir)s/libtool')
+        r.MakeInstall()
+        r.Make('swig-py %(swigdirs)s')
+        r.Make('install-swig-py %(swigdirs)s', preMake='DESTDIR=%(destdir)s')
+        r.Make('swig-pl')
+        #r.Make('check-swig-pl')
+	r.Make('install-swig-pl', preMake='DESTDIR=%(destdir)s')
+	
+	r.MakeDirs('%(svnparentpath)s')
+
+        r.PackageSpec('mod_dav_svn',
+                      '%(sysconfdir)s/httpd/conf.d/subversion.conf',
+                      '%(libdir)s/httpd/',
+                      '%(svnconfdir)s/')
+        r.ComponentSpec('python', '%(libdir)s/libsvn_swig_py.*', '%(pydir)s/')
+
+        r.ExcludeDirectories(exceptions='%(svnparentpath)s')
+        r.Requires('apr-util:lib(berkeley-db)', '%(bindir)s/svn')

@@ -1,0 +1,25 @@
+diff -ur lighttpd-1.4.11.orig/src/connections.c lighttpd-1.4.11/src/connections.c
+--- lighttpd-1.4.11.orig/src/connections.c	2006-04-05 09:58:23.855619500 -0400
++++ lighttpd-1.4.11/src/connections.c	2006-04-05 10:10:27.248828750 -0400
+@@ -1177,6 +1177,13 @@
+ 	if (con->state == CON_STATE_READ ||
+ 	    con->state == CON_STATE_READ_POST) {
+ 		connection_handle_read_state(srv, con);
++                /** 
++                 * if SSL_read() is not readin in the full packet we won't get 
++                 * a fdevent as the low-level has already fetched everything. 
++                 * 
++                 * we have to call the state-engine to read the rest of the packet 
++                 */ 
++                if (con->is_readable) joblist_append(srv, con); 
+ 	}
+ 	
+ 	if (con->state == CON_STATE_WRITE &&
+@@ -1567,6 +1574,7 @@
+ 			}
+ 			
+ 			connection_handle_read_state(srv, con);
++			if (con->is_readable) joblist_append(srv, con);
+ 			break;
+ 		case CON_STATE_WRITE:
+ 			if (srv->srvconf.log_state_handling) {

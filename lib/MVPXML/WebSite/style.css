@@ -1,0 +1,22 @@
+body 
+{
+	font-family: 'Trebuchet MS' , Verdana, 'Lucida Console' , Garamond, 'Times New Roman';
+	font-size: 9pt;
+}
+
+h1
+{
+	font-weight: bold;
+	font-size: 20pt;
+	background-color: #99ccff;
+	text-indent: 15px;
+}
+
+h2
+{
+	font-weight: bold;
+	font-size: 12pt;
+	background-color: #99ccff;
+	text-indent: 15px;
+}
+

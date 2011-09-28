@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for name in `cat empty-dir-list`; do
+		mkdir -p new_image$name
+done
+

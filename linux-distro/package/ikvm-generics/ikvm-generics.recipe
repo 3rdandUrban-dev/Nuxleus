@@ -1,0 +1,26 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class IkvmGenerics(AutoPackageRecipe):
+
+    buildRequires = [ 'mono:runtime', 'mono:lib', 'pkgconfig:devel' ]
+
+    name = "ikvm-generics"
+    version = "0.32.0.0"
+
+    def setup(r):
+        r.addArchive('http://www.frijters.net/ikvmbin-generics-%(version)s.zip')
+        r.addSource('makefile')
+	r.addSource('ikvm-generics')
+        r.addSource('ikvmc-generics')
+        r.addSource('ikvmstub-generics')
+        r.addSource('ikvm-generics.pc')
+	r.Install('ikvm-generics.pc', '%(libdir)s/pkgconfig/ikvm-generics.pc')
+        
+        r.MakeInstall()
+
+        
+

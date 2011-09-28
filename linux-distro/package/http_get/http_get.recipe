@@ -1,0 +1,17 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class HttpGet(CPackageRecipe):
+
+    buildRequires = [ ]
+
+    name = "http_get"
+    version = "29jun2005"
+
+    def setup(r):
+	r.addArchive('http://www.acme.com/software/%(name)s/%(name)s_%(version)s.tar.gz')
+	r.Make()
+	r.Install('http_get', '%(bindir)s/http_get')	

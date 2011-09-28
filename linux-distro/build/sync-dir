@@ -1,0 +1,11 @@
+#!/bin/sh
+
+for name in `cat sync-dir-list`; do
+	for name in `cat $name`; do
+		mydir=new_image/${name##/mnt}
+		rm -rf $mydir
+		mkdir -p $mydir
+		rsync -a $name/* $mydir
+	done
+done
+

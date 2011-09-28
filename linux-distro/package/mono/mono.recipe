@@ -1,0 +1,115 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Mono(CPackageRecipe):
+    name = 'mono'
+    version = '2.4.2.1'
+    buildRequires = [ 
+            'zlib:devel', 
+            'glib:devel', 
+            'bison:runtime',
+            'pkgconfig:devel' 
+    ]
+
+    def setup(r):
+	#r.addArchive('http://mono.ximian.com/monobuild/snapshot/snapshot_sources/mono/mono-%(version)s.tar.bz2')
+	#r.addArchive('http://mono.ximian.com/monobuild/preview/sources/mono/%(name)s-%(version)s.tar.bz2')
+	r.addArchive('http://ftp.novell.com/pub/mono/sources/%(name)s/%(name)s-%(version)s.tar.bz2')
+	r.disableParallelMake()
+	
+	conf = '--with-gc=included --with-ikvm-native=yes --with-preview=yes --with-moonlight=yes'
+
+        if Use.xen:
+		conf += ' --with-xen_opt=yes'
+
+	if Arch.x86_64:
+		conf += ' --with-large-heap=yes'
+
+	r.Configure(conf)
+
+	r.Replace(('^runpath_var=.*', 'runpath_var=""'),
+
+                  ('^hardcode_libdir_flag_spec=.*',
+
+                   'hardcode_libdir_flag_spec=""'), 'libtool')
+
+        r.Make()
+
+
+
+        r.MakeInstall()
+
+        r.Move('%(datadir)s/jay', '%(thisdocdir)s/')
+
+
+
+        # RPM scripts are not necessary
+
+        r.Remove('%(bindir)s/mono-find-{provides,requires}')
+
+
+
+        # libtool wrappers currently get installed instead of the real things
+
+        #r.Install('mono/dis/.libs/monodis', '%(bindir)s/')
+
+        #r.Install('mono/monograph/.libs/monograph', '%(bindir)s/')
+
+
+
+        # The mono libraries that provide CIL: dependencies have an
+
+        # implicit requirement on the mono interpreter
+
+        r.Requires('%(bindir)s/mono', r'.*\.(dll|exe)')
+
+
+
+        r.ComponentSpec('devel', '%(bindir)s/monodis',
+
+                                 '%(mandir)s/man1/monodis.1.*',
+
+                                 '%(bindir)s/ilasm.*',
+
+                                 '%(mandir)s/man1/ilasm.1.*',
+
+                                 '%(bindir)s/genxs.*',
+
+                                 '%(mandir)s/man1/genxs.1.*',
+
+                                 '%(bindir)s/al.*',
+
+                                 '%(bindir)s/makecert',
+
+                                 '%(bindir)s/MakeCert.exe',
+
+                                 '%(mandir)s/man1/makecert.1.*',
+
+                                 '%(bindir)s/monop.*',
+
+                                 '%(mandir)s/man1/monop.1.*',
+
+                                 '%(bindir)s/cert2spc.*',
+
+                                 '%(mandir)s/man1/cert2spc.1.*',
+
+                                 '%(bindir)s/signcode.*',
+
+                                 '%(mandir)s/man1/signcode.1.*',
+
+                                 '%(bindir)s/secutil.*',
+
+                                 '%(mandir)s/man1/secutil.1.*',
+
+                                 '%(bindir)s/pedump',
+
+                                 '%(bindir)s/monoresgen.*',
+
+                                 '%(bindir)s/resgen',
+
+                                 '%(libdir)s/libmono-profiler-cov.so.*')
+	r.PkgConfigRequires(exceptions='.*.pc')
+	

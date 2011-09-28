@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<view:module class="base" id="header" xmlns:view="http://atomictalk.org/page/view">
+  <view:container style="bg-fade">
+    <view:item id="top-nav" src="/page/view/menu/navigation/base.xml" />
+  </view:container>
+</view:module>

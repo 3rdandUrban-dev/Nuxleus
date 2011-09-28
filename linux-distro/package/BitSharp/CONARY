@@ -1,0 +1,11 @@
+stateversion 2
+name BitSharp:source
+version /nuxleus.rpath.org@nux:devel/1171774868.413:PreBeta2-1
+branch /nuxleus.rpath.org@nux:devel
+6
+5353bc1c53fb287af64571f174d94ff8 monotorrent a61bce3f2b99428e88bed1e5dce4062f626fbf97 config /nuxleus.rpath.org@nux:devel/PreBeta2.zip-1
+c47af48ed3e67800d737128a47303c93 build.sh 1e1d798a7ca69a1cebf8282520352068cac49596 config /nuxleus.rpath.org@nux:devel/PreBeta2.zip-1
+6b389b97e1fe352a6d3e12a3918cff37 BitSharp.recipe f15e2792719cbb0bd2c5d9f735509fb3acf0a651 config /nuxleus.rpath.org@nux:devel/PreBeta2-1
+bf71fdd888fb8303db75420f57cba0e0 MonoTorrent.PreBeta2.zip 8942510556e33ad8db403694cb7e9aa933af0f9f autosource /nuxleus.rpath.org@nux:devel/PreBeta2-1
+5ed51dad9eab680801864d5d65b763a9 BitSharp.tar.gz 111f9614e6222e6ed2f5851353b7f052dab27831 _ /nuxleus.rpath.org@nux:devel/PreBeta2.zip-1
+5ad46983e260c1149c5a266ac887af94 monotorrent-tracker b98afc1920e0315c8cd9402a97b102895ffe6ffc config /nuxleus.rpath.org@nux:devel/svn-3

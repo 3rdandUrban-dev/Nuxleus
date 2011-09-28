@@ -1,0 +1,7 @@
+stateversion 2
+name boto:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1177123960.988:0.8d-0.1
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+2
+f80fac1344191110109a9472c915b25c boto.recipe a5eedce47d442c421e13ac43bb5adccc6e8a363c config /nuxleus.rpath.org@rpl:devel//nux:devel/0.8d-0.1
+903a5e1343daf75f924a33e2965d749d boto-0.8d.tar.gz 2278940813f2308e12cc48ce9945622bdf9f6488 autosource /nuxleus.rpath.org@rpl:devel//nux:devel/0.8d-0.1

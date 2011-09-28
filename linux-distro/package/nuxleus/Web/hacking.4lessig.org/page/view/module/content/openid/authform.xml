@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<view:module class="base" id="instance" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container id="content" style="base list LtoR width">
+    <view:item id="center">
+<br />
+    <table>
+              <tr><td>Your identity:</td><td>@@openid.url@@</td></tr>
+              <tr><td>Authorization request for:</td><td>@@openid.trust@@</td></tr>
+            </table>
+            <p>Allow this authentication to proceed?</p>
+            <form method="post" action="/trust">
+              <input type="hidden" name="request_id" value="@@openid.request_id@@" />
+              <input type="submit" name="allow_forever" value="Allow Forever" class="Button submit"/>
+              <input type="submit" name="allow_once" value="Allow Once" class="Button submit"/>
+              <input type="submit" name="deny" value="Deny" class="Button submit"/>
+            </form>
+    </view:item>
+  </view:container>
+</view:module>

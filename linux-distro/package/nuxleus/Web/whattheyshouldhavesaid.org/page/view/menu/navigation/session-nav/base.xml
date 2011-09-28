@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<view:menu id="session-nav-menu" style="list menu nav-menu RtoL" type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <view:item>
+    <img src="/images/3rdWorld-icon.png" width="64" height="64"/>
+  </view:item>
+  <view:item>
+    <img src="/images/black_world.png" width="64" height="64"/>
+  </view:item>
+  <view:item>
+    <img src="/images/rouages2.png" width="64" height="64"/>
+  </view:item>
+  <view:item>
+    <img src="/images/black_firefox.png" width="64" height="64"/>
+  </view:item>
+</view:menu>

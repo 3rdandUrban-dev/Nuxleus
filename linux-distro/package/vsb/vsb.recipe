@@ -1,0 +1,20 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+loadSuperClass('binarypackage=conary.rpath.com@rpl:devel')
+class Vsb(BinaryPackageRecipe):
+    name = 'vsb'
+    version = '24jan2007'
+
+    buildRequires = [
+        
+       ]
+
+    def unpack(r):
+        r.macros.apacheparentpath = '/srv/web/apps/xbap'
+        r.addArchive('%(name)s-%(version)s.tar.gz', dir='%(apacheparentpath)s/%(name)s/')
+	r.addSource('.htaccess', dest='%(apacheparentpath)s/%(name)s/.htaccess')
+        r.Requires(exceptions=r'\.*(vs|exe|dll|xbap|zip|st|deploy)')
+        r.Provides(exceptions=r'\.*(vs|exe|dll|xbap|zip|st|deploy)')

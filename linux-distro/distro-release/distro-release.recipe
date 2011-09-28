@@ -1,0 +1,45 @@
+#
+# Copyright (c) 2004-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class DistroRelease(PackageRecipe):
+    name = 'distro-release'
+    version = '0.2.3.4'
+
+    if Use.bootstrap:
+        clearBuildReqs()
+
+    def setup(r):
+        release = "nuXleus Web Application & Messaging Server release %(version)s" %r.macros
+        issue = 'nuXleus Web Appplication & Messaging Server release %(version)s\nKernel \\r on an \\m\n'
+
+        r.addArchive('use.tar.gz')
+        r.Create('%(sysconfdir)s/distro-release', contents=release)
+        r.Create('%(sysconfdir)s/issue', contents=issue + '\n')
+        r.Create('%(sysconfdir)s/issue.net', contents=issue)
+
+        # Distributions can set configuration values for arches
+        # and use flags here by defining them below in %(sysconfdir)s/conary/distro/arch
+        # and %(sysconfdir)s/conary/distro/use.
+
+        if not Arch.x86:
+            r.Create('%(sysconfdir)s/conary/distro/use/dietlibc',
+                     contents='sense prefernot')
+            r.Create('%(sysconfdir)s/conary/distro/use/grub.static',
+                     contents='sense preferred')
+            r.Create('%(sysconfdir)s/conary/distro/use/kernel.pae',
+                     contents='sense prefernot')
+        else:
+            r.Create('%(sysconfdir)s/conary/distro/use/grub.static',
+                     contents='sense prefernot')
+        r.Install('*', '%(sysconfdir)s/conary/distro/use/')
+
+        # Xen flags
+        if Use.xen:
+            r.Create('%(sysconfdir)s/conary/distro/use/xen')
+        if Use.dom0:
+            r.Create('%(sysconfdir)s/conary/distro/use/dom0')
+        if Use.domU:
+            r.Create('%(sysconfdir)s/conary/distro/use/domU')

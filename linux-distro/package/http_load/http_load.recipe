@@ -1,0 +1,17 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class HttpLoad(CPackageRecipe):
+
+    buildRequires = [ ]
+
+    name = "http_load"
+    version = "12mar2006"
+
+    def setup(r):
+	r.addArchive('http://www.acme.com/software/%(name)s/%(name)s-%(version)s.tar.gz')
+	r.Make()
+	r.Install('http_load', '%(bindir)s/http_load')	

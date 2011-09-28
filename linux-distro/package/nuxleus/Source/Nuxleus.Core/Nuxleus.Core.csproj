@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4F34941D-B6EE-47A4-B6E8-7F8BB2A58D75}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuxleus.Core</RootNamespace>
+    <AssemblyName>Nuxleus.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\resources\Extf.Net.snk</AssemblyOriginatorKeyFile>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\build\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=1.0.0.244, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8974f7aaf62d3d0f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Authentication\AmazonWebServices\AWSAuthConnection.cs" />
+    <Compile Include="Authentication\Facebook\Facebook.cs" />
+    <Compile Include="Core\Cryptography\Hash.cs" />
+    <Compile Include="Core\Cryptography\HashcodeGenerator.cs" />
+    <Compile Include="Drawing\CropImage.cs" />
+    <Compile Include="Drawing\ImageResize.cs" />
+    <Compile Include="Extension\**\*.cs" />
+    <Compile Include="Configuration\AspNetAwsConfiguration.cs" />
+    <Compile Include="Configuration\AspNetBungeeConfiguration.cs" />
+    <Compile Include="Configuration\AspNetMemcachedConfiguration.cs" />
+    <Compile Include="Configuration\AspNetQueueServerConfiguration.cs" />
+    <Compile Include="Configuration\AspNetXameleonTransform.cs" />
+    <Compile Include="Configuration\AwsKey.cs" />
+    <Compile Include="Configuration\AwsKeyCollection.cs" />
+    <Compile Include="Configuration\AwsS3.cs" />
+    <Compile Include="Configuration\AwsS3Collection.cs" />
+    <Compile Include="Configuration\BaseSetting.cs" />
+    <Compile Include="Configuration\BaseSettingCollection.cs" />
+    <Compile Include="Configuration\BungeeApp.cs" />
+    <Compile Include="Configuration\BungeeAppCollection.cs" />
+    <Compile Include="Configuration\Configuration.cs" />
+    <Compile Include="Configuration\MemcachedPoolConfig.cs" />
+    <Compile Include="Configuration\MemcachedPoolConfigCollection.cs" />
+    <Compile Include="Configuration\MemcachedServer.cs" />
+    <Compile Include="Configuration\MemcachedServerCollection.cs" />
+    <Compile Include="Configuration\PreCompiledXslt.cs" />
+    <Compile Include="Configuration\PreCompiledXsltCollection.cs" />
+    <Compile Include="Configuration\XsltParamCollection.cs" />
+    <Compile Include="Configuration\XsltParams.cs" />
+    <Compile Include="Core\Async\Async.cs" />
+    <Compile Include="Core\Entity\Entity.cs" />
+    <Compile Include="Core\Entity\IEntity.cs" />
+    <Compile Include="Core\Entity\IPerson.cs" />
+    <Compile Include="Core\Entity\Person.cs" />
+    <Compile Include="Core\IO\Clipboard\Cache.cs" />
+    <Compile Include="Core\IO\Clipboard\Clipboard.cs" />
+    <Compile Include="Core\IO\Clipboard\ClipData.cs" />
+    <Compile Include="Core\IO\Clipboard\ClipItem.cs" />
+    <Compile Include="Core\IO\Clipboard\Copy.cs" />
+    <Compile Include="Core\IO\Clipboard\Credentials.cs" />
+    <Compile Include="Core\IO\Clipboard\GlobalClip.cs" />
+    <Compile Include="Core\IO\Clipboard\Init.cs" />
+    <Compile Include="Core\IO\Clipboard\Paste.cs" />
+    <Compile Include="Core\IO\Clipboard\Provider.cs" />
+    <Compile Include="Core\IO\Clipboard\Resources.cs" />
+    <Compile Include="Core\IO\Clipboard\Serializer.cs" />
+    <Compile Include="Core\IO\Clipboard\SessionVariables.cs" />
+    <Compile Include="Core\IO\FileSystem\Watcher.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Core\IO\Memcached\Memcached.cs" />
+    <Compile Include="Core\IO\Storage\FS.cs" />
+    <Compile Include="Core\IO\Storage\FSStorage.cs" />
+    <Compile Include="Core\IO\Storage\IStorage.cs" />
+    <Compile Include="Core\IO\Storage\MemcachedStorage.cs" />
+    <Compile Include="Core\IO\Storage\Storage.cs" />
+    <Compile Include="Logging\Log.cs" />
+    <Compile Include="MetaData\Attributes\Label.cs" />
+    <Compile Include="MetaData\Attributes\Message.cs" />
+    <Compile Include="Core\Handler\ExceptionHandler.cs" />
+    <Compile Include="Core\Agent\**\*.cs" />
+    <Compile Include="Core\LoadBalancer\IEnumerableIAsyncWorkerQueue.cs" />
+    <Compile Include="Core\LoadBalancer\TaskWorkerQueue.cs" />
+    <Compile Include="Core\LoadBalancer\WorkerQueue.cs" />
+    <Compile Include="Core\Log\Log.cs" />
+    <Compile Include="Core\Net\AwsBaseConnection\HttpQueryConnection.cs" />
+    <Compile Include="Core\Net\AwsBaseConnection\IAwsConnection.cs" />
+    <Compile Include="Core\Async\NuxleusAsyncResult.cs" />
+    <Compile Include="Core\Operation\IOperation.cs" />
+    <Compile Include="Core\LoadBalancer\ProcessQueue.cs" />
+    <Compile Include="Core\Request\IRequest.cs" />
+    <Compile Include="Core\Response\IResponse.cs" />
+    <Compile Include="Core\Result\IResult.cs" />
+    <Compile Include="Core\Scope\HandlerBase.cs" />
+    <Compile Include="Core\Scope\LoggerScope.cs" />
+    <Compile Include="Core\Scope\ProfilerScope.cs" />
+    <Compile Include="Core\Scope\Scope.cs" />
+    <Compile Include="Service\Core.cs" />
+    <Compile Include="Service\HttpWebService.cs" />
+    <Compile Include="Core\Task\ITask.cs" />
+    <Compile Include="Core\Transaction\ITransaction.cs" />
+    <Compile Include="Core\Transaction\Transactional.cs" />
+    <Compile Include="Process\DarcsProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Process\SVNProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Process\ZorbaProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Diff\Diff.cs" />
+    <Compile Include="Utility\Diff\Merge.cs" />
+    <Compile Include="Utility\Diff\Patch.cs" />
+    <Compile Include="Utility\Diff\StructuredDiff.cs" />
+    <Compile Include="Utility\Diff\TextDiff.cs" />
+    <Compile Include="Utility\Diff\UnifiedDiff.cs" />
+    <Compile Include="Utility\Format\Base64FormatProvider.cs" />
+    <Compile Include="Utility\RevisionControl\RevisionControlManager.cs" />
+    <Compile Include="Utility\Utility\JSMin.cs" />
+    <Compile Include="Utility\Utility\S3\AWSAuthConnection.cs" />
+    <Compile Include="Utility\Utility\S3\Bucket.cs" />
+    <Compile Include="Utility\Utility\S3\CommonPrefixEntry.cs" />
+    <Compile Include="Utility\Utility\S3\GetResponse.cs" />
+    <Compile Include="Utility\Utility\S3\GetTimeStamp.cs" />
+    <Compile Include="Utility\Utility\S3\ListAllMyBucketsResponse.cs" />
+    <Compile Include="Utility\Utility\S3\ListBucketResponse.cs" />
+    <Compile Include="Utility\Utility\S3\ListEntry.cs" />
+    <Compile Include="Utility\Utility\S3\Owner.cs" />
+    <Compile Include="Utility\Utility\S3\QueryStringAuthGenerator.cs" />
+    <Compile Include="Utility\Utility\S3\Response.cs" />
+    <Compile Include="Utility\Utility\S3\S3Object.cs" />
+    <Compile Include="Utility\Utility\S3\Utils.cs" />
+    <Compile Include="Utility\Utility\StringMatching.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Configuration\App.config" />
+    <None Include="Utility\Utility\S3\README" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Authentication\OAuth\" />
+    <Folder Include="Command\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

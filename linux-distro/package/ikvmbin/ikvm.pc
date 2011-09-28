@@ -1,0 +1,26 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib/ikvm
+
+Name: IKVM.NET
+Description: An implementation of a Java VM and Compiler for Mono and the Microsoft .NET Framework developed by Jeroen Frijters (http://weblog.ikvm.net)
+
+Version: 0.40.0.1
+Libs:   -r:${libdir}/IKVM.Runtime.dll \
+-r:${libdir}/JVM.DLL \
+-r:${libdir}/IKVM.AWT.WinForms.dll \
+-r:${libdir}/ICSharpCode.SharpZipLib.dll \
+-r:${libdir}/IKVM.AWT.WinForms.dll \
+-r:${libdir}/IKVM.OpenJDK.Charsets.dll \
+-r:${libdir}/IKVM.OpenJDK.Corba.dll \
+-r:${libdir}/IKVM.OpenJDK.Core.dll \
+-r:${libdir}/IKVM.OpenJDK.Jdbc.dll \
+-r:${libdir}/IKVM.OpenJDK.Management.dll \
+-r:${libdir}/IKVM.OpenJDK.Misc.dll \
+-r:${libdir}/IKVM.OpenJDK.Security.dll \
+-r:${libdir}/IKVM.OpenJDK.SwingAWT.dll \
+-r:${libdir}/IKVM.OpenJDK.Text.dll \
+-r:${libdir}/IKVM.OpenJDK.Util.dll \
+-r:${libdir}/IKVM.OpenJDK.XML.dll \
+-r:${libdir}/IKVM.Runtime.JNI.dll \
+-r:${libdir}/IKVM.Runtime.dll \

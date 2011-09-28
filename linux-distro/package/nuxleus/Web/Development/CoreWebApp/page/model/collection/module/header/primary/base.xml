@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<model:workspace id="top-nav" style="TtoB" type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:model="http://atomictalk.org/page/model">
+	<model:collection id="top-login-module" style="width" src="/page/model/collection/menu/navigation/top-login.xml"/>
+	<model:collection id="top-sub-nav-module" style="width" src="/page/model/collection/menu/navigation/top-sub-nav.xml"/>
+	<model:collection id="get-plugged-in" style="width" src="/page/model/collection/module/get-plugged-in.xml"/>
+	<model:collection id="search-module" style="width" src="/page/model/collection/search/base.xml"/>
+</model:workspace>

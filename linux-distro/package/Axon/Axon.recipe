@@ -1,0 +1,17 @@
+#
+# Copyright (c) 2005-2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Axon(PackageRecipe):
+    name = 'Axon'
+    version = '1.5.1'
+
+    buildRequires = [ 'python-setuptools:python', 'Kamaelia:python' ]
+
+    def setup(r):
+        r.addArchive('http://webapp.nuxle.us/app/deps/kamaelia/Axon-1.5.1.tar.gz')
+        r.Run('python setup.py install --root=%(destdir)s --prefix=%(prefix)s')
+        r.ComponentRequires({'python': set(('runtime',))})
+

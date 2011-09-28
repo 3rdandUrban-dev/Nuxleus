@@ -1,0 +1,113 @@
+<Type Name="UnifiedDiff" FullName="Algorithm.Diff.UnifiedDiff">
+  <TypeSignature Language="C#" Value="public class UnifiedDiff" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Members>
+    
+    
+    <Member MemberName="WriteUnifiedDiff">
+      <MemberSignature Language="C#" Value="public static void WriteUnifiedDiff (string[] leftLines, string leftName, string[] rightLines, string rightName, System.IO.TextWriter writer, int context, bool caseSensitive, bool compareWhitespace);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="leftLines" Type="System.String[]" />
+        <Parameter Name="leftName" Type="System.String" />
+        <Parameter Name="rightLines" Type="System.String[]" />
+        <Parameter Name="rightName" Type="System.String" />
+        <Parameter Name="writer" Type="System.IO.TextWriter" />
+        <Parameter Name="context" Type="System.Int32" />
+        <Parameter Name="caseSensitive" Type="System.Boolean" />
+        <Parameter Name="compareWhitespace" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="leftLines">The lines of the left document.</param>
+        <param name="leftName">The name of the left document.</param>
+        <param name="rightLines">The lines of the right document.</param>
+        <param name="rightName">The name of the right document.</param>
+        <param name="writer">The output TextWriter.</param>
+        <param name="context">The number of context lines to include.</param>
+        <param name="caseSensitive">Whether the comparisons are case-sensitive.</param>
+        <param name="compareWhitespace">Whether the comparison should be aware of changes in whitespace.</param>
+        <summary>Writes out a line-by-line diff in unified diff format for the two documents, specifying whether the comparison is case-sensitive and whitespace-sensitive and the number of context lines.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteUnifiedDiff">
+      <MemberSignature Language="C#" Value="public static void WriteUnifiedDiff (string leftFile, string rightFile, System.IO.TextWriter writer, int context, bool caseSensitive, bool compareWhitespace);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="leftFile" Type="System.String" />
+        <Parameter Name="rightFile" Type="System.String" />
+        <Parameter Name="writer" Type="System.IO.TextWriter" />
+        <Parameter Name="context" Type="System.Int32" />
+        <Parameter Name="caseSensitive" Type="System.Boolean" />
+        <Parameter Name="compareWhitespace" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="leftFile">The file name for the left document.</param>
+        <param name="rightFile">The file name for the right document.</param>
+        <param name="writer">The output TextWriter.</param>
+        <param name="context">The number of lines of context to include.</param>
+        <param name="caseSensitive">Whether the comparisons are case-sensitive.</param>
+        <param name="compareWhitespace">Whether the comparison should be aware of changes in whitespace.</param>
+        <summary>Writes out a line-by-line diff in unified diff format for the two files, specifying whether the comparison is case-sensitive and whitespace-sensitive.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteUnifiedDiff">
+      <MemberSignature Language="C#" Value="public static void WriteUnifiedDiff (Algorithm.Diff.Diff diff, System.IO.TextWriter writer);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="diff" Type="Algorithm.Diff.Diff" />
+        <Parameter Name="writer" Type="System.IO.TextWriter" />
+      </Parameters>
+      <Docs>
+        <param name="diff">A Diff object that already has the differences between two documents.</param>
+        <param name="writer">The output TextWriter.</param>
+        <summary>Writes a diff in unified diff format to a TextWriter.</summary>
+        <remarks>The default number of lines of context is used.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteUnifiedDiff">
+      <MemberSignature Language="C#" Value="public static void WriteUnifiedDiff (Algorithm.Diff.Diff diff, System.IO.TextWriter writer, string fromfile, string tofile, int context);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="diff" Type="Algorithm.Diff.Diff" />
+        <Parameter Name="writer" Type="System.IO.TextWriter" />
+        <Parameter Name="fromfile" Type="System.String" />
+        <Parameter Name="tofile" Type="System.String" />
+        <Parameter Name="context" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="diff">A Diff object that already has the differences between two documents.</param>
+        <param name="writer">The output TextWriter.</param>
+        <param name="fromfile">The name of the left document.</param>
+        <param name="tofile">The name of the right document.</param>
+        <param name="context">The number of lines of context to include.</param>
+        <summary>Writes a diff in unified diff format to a TextWriter with the give file names and context.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>A utility class for generating diffs in the unified diff format.</summary>
+    <remarks>This class has several static members for outputting <see cref="T:Algorithm.Diff.Diff" />s in the unified diff format.</remarks>
+  </Docs>
+</Type>

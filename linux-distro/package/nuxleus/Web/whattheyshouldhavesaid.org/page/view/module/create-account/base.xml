@@ -1,0 +1,5 @@
+<view:module id="top-sub-nav" type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <view:container style="LtoR" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+    <view:item id="associate-profile" src="/page/view/module/profile/associate-profile-name/base.xml" />
+  </view:container>
+</view:module>

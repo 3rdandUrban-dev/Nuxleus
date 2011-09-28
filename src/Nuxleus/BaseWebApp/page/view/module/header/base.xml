@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<view:module xmlns:view="http://atomictalk.org/page/view" xmlns:render="http://atomictalk.org/render"
+    xmlns:doc="http://atomictalk.org/feed/doc" class="base" id="header">
+    <view:container>
+        <div id="main-container">
+            <div style="position:absolute;top:5px;right:5px;">
+                <form id="openid-login" method="get" action="http://whattheyshouldhavesaid.org/gatekeeper/login?" target="_top">
+                    <input id="openid-text" type="text" name="uname" class="single-input" maxlength="255" value="Authenticate w/ OpenID"
+                        onclick="if (this.value == 'Authenticate w/ OpenID') this.value = ''; return true;"
+                        onblur="if (this.value == '') this.value = 'Authenticate w/ OpenID'; return true;" />
+                    <input type="hidden" name="return_location" value="http://whattheyshouldhavesaid.org/?" />
+                    <button class="Button submit">
+                        <span class="ButtonLabel">Submit</span>
+                    </button>
+                </form>
+            </div>
+            <div id="top-bar">
+                <div id="title">
+                    <h1 class="title">
+                        <a href="/">WhatTheyShouldHaveSaid.org</a>
+                    </h1>
+                </div>
+                <div>
+                    <table style="width:100%;">
+                        <tr style="width:100%;">
+                            <td style="width:50%;text-align:left;vertical-align:top;">
+                                <a class="navigation" href="#previous" rel="">&#xAB; Previous Question</a>
+                            </td>
+                            <td style="width:50%;text-align:right;vertical-align:top;">
+                                <a class="navigation" href="#next" rel="/question/1:answer">Next Question &#xBB;</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="question">
+                    <h2 class="participant moderator">Lead-in Question, Moderated by Mr. Brokaw</h2>
+                    <p class="moderator-comment"
+                        >Q. With the economy on the downturn, and retired and older citizens and workers losing their incomes, what's the fastest, most positive solution to bail these people out of the economic ruin?</p>
+                </div>
+            </div>
+            <div id="bottom-bar">
+                <table style="width:100%;margin:0 auto;">
+                    <tr style="width:100%;">
+                        <td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-right:1px solid #999;">
+                            <h2 class="participant candidate democrat">Senator Obama</h2>
+                            <render:xslt id="obama-1" controller="answer" model="/question/1/obama.1" />
+                        </td>
+                        <td style="width:.5%;" />
+                        <td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;">
+                            <div class="suggestion-form">
+                                <form class="ajaxForm" id="suggestion-form-obama" method="POST" action="/service/atompub/add/" target="_top">
+                                    <div>
+                                        <h2 class="what democrat">What should have Senator Obama said?</h2>
+                                    </div>
+                                    <div>
+                                        <p class="policy"
+                                            >We encourage you to share your thoughts in regards to how you feel Senator Obama should have responded to this question. However, comments that are obscene, overly personal, racist or otherwise inappropriate will be removed.</p>
+                                    </div>
+                                    <div class="suggestion-container">
+                                        <textarea class="suggestion" name="suggestion" id="what-should-obama-have-said"> </textarea>
+                                        <input type="hidden" id="slug" name="slug" value="/question/1/obama" />
+                                        <input type="hidden" name="name" value="/question/1/obama" />
+                                        <input type="hidden" name="base_uri" value="http://whattheyshouldhavesaid.org" />
+                                        <input type="hidden" name="base_path" value="/question/1/obama" />
+                                        <input type="hidden" name="title" value="/question/1/obama/foo" />
+                                    </div>
+                                    <div class="submit-container">
+                                        <input class="submit-suggestion democrat" type="submit" name="submit"
+                                            id="submitMySuggestionForMcCain" value="Submit" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="test" />
+                            <a href="#foobar" rel="plus" class="vote">plus</a>:<a href="#foobar" rel="minus" class="vote">minus</a>
+                        </td>
+                    </tr>
+                </table>
+                <div class="question">
+                    <h2 class="participant moderator">Mr. Brokaw</h2>
+                    <p class="moderator-comment">Senator McCain?</p>
+                </div>
+                <table style="width:100%;margin:0 auto;">
+                    <tr style="width:100%;">
+                        <td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-right:1px solid #999;">
+                            <div class="suggestion-form">
+                                <form class="ajaxForm" id="suggestion-form-mccain" name="suggestion-form-mccain" method="POST"
+                                    action="/service/atompub/add" target="_top">
+                                    <div>
+                                        <h2 class="what republican">What should have Senator McCain said?</h2>
+                                    </div>
+                                    <div>
+                                        <p class="policy"
+                                            >We encourage you to share your thoughts in regards to how you feel Senator McCain should have responded to this question. However, comments that are obscene, overly personal, racist or otherwise inappropriate will be removed.</p>
+                                    </div>
+                                    <div class="suggestion-container">
+                                        <textarea class="suggestion" name="suggestion" id="what-should-mccain-have-said"> </textarea>
+                                    </div>
+                                    <div class="submit-container">
+                                        <input class="submit-suggestion republican" type="submit" name="submit"
+                                            id="submitMySuggestionForMcCain" value="Submit" />
+                                    </div>
+                                </form>
+                            </div>
+                        </td>
+                        <td style="width:.5%;" />
+                        <td style="width:49.75%;text-align:center;vertical-align:top;padding:10px;border-left:1px solid #999;">
+                            <h2 class="participant candidate republican">Senator McCain</h2>
+                            <render:xslt id="mccain-1" controller="answer" model="/question/1/mccain.1" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </view:container>
+</view:module>

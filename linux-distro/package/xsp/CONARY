@@ -1,0 +1,7 @@
+stateversion 2
+name xsp:source
+version /nuxleus.rpath.org@rpl:devel//nux:devel/1246352004.118:2.4.2-0.1
+branch /nuxleus.rpath.org@rpl:devel//nux:devel
+2
+6376c66bb251509adc8fc1963997c9bd xsp-2.4.2.tar.bz2 501a2353b94f87e7755c763d86c4b45026741a41 autosource /nuxleus.rpath.org@rpl:devel//nux:devel/2.4.2-0.1
+f5acf00b3cc5315d2c96d4d5104d236c xsp.recipe 685961d9179a2cec209dd2d0f1efb990c60bfca9 config /nuxleus.rpath.org@rpl:devel//nux:devel/2.4.2-0.1

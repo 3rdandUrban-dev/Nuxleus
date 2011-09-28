@@ -1,0 +1,8 @@
+stateversion 2
+name start-stop-daemon:source
+version @NEW@
+branch /nuxleus.rpath.org@nux:devel
+3
+15917eb080d1c6c29e9748e358cef864 start-stop-daemon-9.18.2.tar.bz2 3030303030303030303030303030303030303030 _ @NEW@
+243ede3eadf0187cbe2c12e6a643b075 Makefile 3030303030303030303030303030303030303030 config @NEW@
+40f5d920132d85054326fbfaea7bb8f9 start-stop-daemon.recipe 3030303030303030303030303030303030303030 config @NEW@

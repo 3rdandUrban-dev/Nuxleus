@@ -1,0 +1,132 @@
+<Type Name="Merge+Hunk" FullName="Algorithm.Diff.Merge+Hunk">
+  <TypeSignature Language="C#" Value="public class Hunk : Algorithm.Diff.Hunk" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Algorithm.Diff.Hunk</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Members>
+    <Member MemberName="Changes">
+      <MemberSignature Language="C#" Value="public Algorithm.Diff.Diff+Hunk[] Changes (int index);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Algorithm.Diff.Diff+Hunk[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <summary>Returns the set of changes made in this hunk in a particular revised document.</summary>
+        <param name="index">The index of the revised document as it was provided to the constructor of this Merge.</param>
+        <returns>An array of diff hunks between the original document and the revised document with the given index, for the changes in the region represented by this hunk.</returns>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    
+    <Member MemberName="ChangedIndex">
+      <MemberSignature Language="C#" Value="public int ChangedIndex ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The index of the revised document with the changes in this hunk.</summary>
+        <returns>The index of the revised document with the changes in this hunk, if there are no conflicts.  If there are conflicts, an exception is thrown.</returns>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Original">
+      <MemberSignature Language="C#" Value="public Algorithm.Diff.Range Original ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Algorithm.Diff.Range</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the range from the original document represented by this hunk.</summary>
+        <returns>The range from the original document represented by this hunk.</returns>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Range">
+      <MemberSignature Language="C#" Value="public Algorithm.Diff.Range Range (int index);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Algorithm.Diff.Range</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <summary>Returns the range in one of the revised documents represented by this hunk.</summary>
+        <param name="index">The index of the revised document, as it was provided to the constructor of this Merge.</param>
+        <returns>The range in one of the revised documents represented by this hunk.</returns>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsRangeSame">
+      <MemberSignature Language="C#" Value="public bool IsRangeSame (int index);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <summary>Returns whether the revised document had any changes in this hunk.</summary>
+        <param name="index">The index of the revised document, as it was provided to the constructor of this Merge.</param>
+        <returns>True if the original document and the revised document are equal in the range of this hunk.</returns>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Same">
+      <MemberSignature Language="C#" Value="public bool Same { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether no revised documents had any changes in this region.</summary>
+        <value>True if no revised documents had any changes in this hunk.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  <Member MemberName="Conflict">
+      <MemberSignature Language="C#" Value="public bool Conflict { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether there is a conflict in this hunk.</summary>
+        <value>True if two or more revised documents had changes in this region.  False otherwise.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  <Member MemberName="ChangesHunks">
+      <MemberSignature Language="C#" Value="public Algorithm.Diff.Diff+Hunk[] ChangesHunks (int index);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Algorithm.Diff.Diff+Hunk[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>A segment of the orginal document in which no revised documents had changes, or one or more revised documents had changes.</summary>
+    <remarks>See <see cref="T:Algorithm.Diff.Diff+Hunk" />.</remarks>
+  </Docs>
+</Type>

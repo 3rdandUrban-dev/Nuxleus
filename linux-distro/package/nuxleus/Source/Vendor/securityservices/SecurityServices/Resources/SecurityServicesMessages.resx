@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Error_AcquireCSP" xml:space="preserve">
+    <value>Couldn't acquire crypto service provider context.</value>
+  </data>
+  <data name="Error_AlgNotSupp" xml:space="preserve">
+    <value>The Cryptographic Service Provider does not support the selected algorithm.</value>
+  </data>
+  <data name="Error_BigKey" xml:space="preserve">
+    <value>The key is too big.</value>
+  </data>
+  <data name="Error_CannotReadSeekWrite" xml:space="preserve">
+    <value>The stream does not support reading, writing or seeking.</value>
+  </data>
+  <data name="Error_CredentialDelete" xml:space="preserve">
+    <value>An error occurred while trying to delete the credential (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_CredentialEnumeration" xml:space="preserve">
+    <value>An error occurred while trying to enumerate the credentials (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_CredentialMaxPersistence" xml:space="preserve">
+    <value>An error occurred while trying to get the maximum credential persistence level (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_CredentialRead" xml:space="preserve">
+    <value>An error occurred while trying to read the credential (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_CredentialRename" xml:space="preserve">
+    <value>An error occurred while trying to rename the credential (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_CredentialWrite" xml:space="preserve">
+    <value>An error occurred while writing the credential (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_Decrypt" xml:space="preserve">
+    <value>An error occurred while decrypting the data.</value>
+  </data>
+  <data name="Error_Disposed" xml:space="preserve">
+    <value>The specified object has been disposed.</value>
+  </data>
+  <data name="Error_Encrypt" xml:space="preserve">
+    <value>An error occurred while encrypting the data.</value>
+  </data>
+  <data name="Error_EnumEnded" xml:space="preserve">
+    <value>The enumeration has finished.</value>
+  </data>
+  <data name="Error_EnumNotStarted" xml:space="preserve">
+    <value>The enumeration has not been initialized yet.</value>
+  </data>
+  <data name="Error_GetKeyParams" xml:space="preserve">
+    <value>Cannot retrieve the key parameters.</value>
+  </data>
+  <data name="Error_HashData" xml:space="preserve">
+    <value>The data could not be hashed.</value>
+  </data>
+  <data name="Error_HashRead" xml:space="preserve">
+    <value>The hash value could not be read.</value>
+  </data>
+  <data name="Error_InvalidCipherMode" xml:space="preserve">
+    <value>The specified cipher mode is invalid.</value>
+  </data>
+  <data name="Error_InvalidHash" xml:space="preserve">
+    <value>The message hash does not correspond to the message body.</value>
+  </data>
+  <data name="Error_InvalidIVSize" xml:space="preserve">
+    <value>The specified IV is invalid.</value>
+  </data>
+  <data name="Error_InvalidKeySize" xml:space="preserve">
+    <value>The specified key is invalid.</value>
+  </data>
+  <data name="Error_InvalidPaddingMode" xml:space="preserve">
+    <value>The specified padding mode is invalid.</value>
+  </data>
+  <data name="Error_InvalidXMLBadVersion" xml:space="preserve">
+    <value>The version number embedded in the XML string is invalid.</value>
+  </data>
+  <data name="Error_KeyExport" xml:space="preserve">
+    <value>Unable to export the key.</value>
+  </data>
+  <data name="Error_KeygenFailed" xml:space="preserve">
+    <value>An error occurred while generating a cryptographic key.</value>
+  </data>
+  <data name="Error_KeyImport" xml:space="preserve">
+    <value>Unable to import the key.</value>
+  </data>
+  <data name="Error_KeyLength" xml:space="preserve">
+    <value>Unable to get the key length.</value>
+  </data>
+  <data name="Error_NotAPermissionElement" xml:space="preserve">
+    <value>The XML element was not a permission element.</value>
+  </data>
+  <data name="Error_ParamInvalid" xml:space="preserve">
+    <value>The specified parameter is invalid.</value>
+  </data>
+  <data name="Error_ParamNull" xml:space="preserve">
+    <value>The specified parameter is a null reference.</value>
+  </data>
+  <data name="Error_ParamOutOfRange" xml:space="preserve">
+    <value>The parameter was out of range.</value>
+  </data>
+  <data name="Error_PrivateKeyAlg" xml:space="preserve">
+    <value>Unable to get the private key's algorithm.</value>
+  </data>
+  <data name="Error_Randomizer" xml:space="preserve">
+    <value>Could not generate random data.</value>
+  </data>
+  <data name="Error_RequiresFIPS" xml:space="preserve">
+    <value>The requested algorithm is not FIPS validated.</value>
+  </data>
+  <data name="Error_SetKeyParams" xml:space="preserve">
+    <value>Cannot set the key parameters.</value>
+  </data>
+  <data name="Error_SmartcardAlreadyConnected" xml:space="preserve">
+    <value>A connection to a smartcard has already been established.</value>
+  </data>
+  <data name="Error_SmartcardConnect" xml:space="preserve">
+    <value>An error occurred while trying to connect to the smartcard (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_SmartcardEstablishContext" xml:space="preserve">
+    <value>An error occurred while trying to establish the smartcard reader context (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_SmartcardGetAttributes" xml:space="preserve">
+    <value>An error occurred while retrieving the attributes from the card reader (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_SmartcardGetStatus" xml:space="preserve">
+    <value>An error occurred while refreshing the smartcard reader status (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_SmartcardLock" xml:space="preserve">
+    <value>An error occurred while trying to lock the smartcard (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_SmartcardNotConnected" xml:space="preserve">
+    <value>A connection to a smartcard is required.</value>
+  </data>
+  <data name="Error_SmartcardReconnect" xml:space="preserve">
+    <value>An error occurred while trying to reconnect to the smartcard (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_SmartcardTransmit" xml:space="preserve">
+    <value>An error occurred while sending data to the smartcard (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_SmartcardUnlock" xml:space="preserve">
+    <value>An error occurred while trying to unlock the smartcard (error code {0}, error message "{1}").</value>
+  </data>
+  <data name="Error_Transform" xml:space="preserve">
+    <value>An error occurred while transforming the data.</value>
+  </data>
+  <data name="Error_UnsupportedOS" xml:space="preserve">
+    <value>Your operating system is too old. {0} or higher is required.</value>
+  </data>
+  <data name="Info_DeviceSerial" xml:space="preserve">
+    <value>Serial Number: {0}</value>
+  </data>
+  <data name="Info_DeviceType" xml:space="preserve">
+    <value>Device Type: {0}</value>
+  </data>
+  <data name="Info_DeviceVendor" xml:space="preserve">
+    <value>Vendor: {0}</value>
+  </data>
+  <data name="Info_DeviceVersion" xml:space="preserve">
+    <value>Version: {0}</value>
+  </data>
+  <data name="PinForm_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="PinForm_Caption" xml:space="preserve">
+    <value>Enter your PIN...</value>
+  </data>
+  <data name="PinForm_Description" xml:space="preserve">
+    <value>Please enter the PIN of your smartcard.</value>
+  </data>
+  <data name="PinForm_InvalidPin" xml:space="preserve">
+    <value>The PIN you entered is invalid. It contains illegal characters, or is of a wrong length. Please try again.</value>
+  </data>
+  <data name="PinForm_InvalidPinTitle" xml:space="preserve">
+    <value>Invalid PIN...</value>
+  </data>
+  <data name="PinForm_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="PinForm_PIN" xml:space="preserve">
+    <value>PIN:</value>
+  </data>
+  <data name="SelectReaderForm_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SelectReaderForm_Caption" xml:space="preserve">
+    <value>Select reader...</value>
+  </data>
+  <data name="SelectReaderForm_Description" xml:space="preserve">
+    <value>Please select the smartcard reader you wish to use.</value>
+  </data>
+  <data name="SelectReaderForm_Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="SelectReaderForm_Inserted" xml:space="preserve">
+    <value>Available smartcard:</value>
+  </data>
+  <data name="SelectReaderForm_NoCard" xml:space="preserve">
+    <value>No card</value>
+  </data>
+  <data name="SelectReaderForm_NoCardDesc" xml:space="preserve">
+    <value>There is no card in the smartcard reader.</value>
+  </data>
+  <data name="SelectReaderForm_NoReaders" xml:space="preserve">
+    <value>No smartcard readers have been found on this system.</value>
+  </data>
+  <data name="SelectReaderForm_NoReadersTitle" xml:space="preserve">
+    <value>No readers...</value>
+  </data>
+  <data name="SelectReaderForm_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="SelectReaderForm_Readers" xml:space="preserve">
+    <value>Smartcard readers:</value>
+  </data>
+  <data name="SelectReaderForm_Status" xml:space="preserve">
+    <value>Smartcard status:</value>
+  </data>
+  <data name="SelectReaderForm_UnknownCard" xml:space="preserve">
+    <value>Unknown card</value>
+  </data>
+  <data name="SelectReaderForm_UnknownCardDesc" xml:space="preserve">
+    <value>The inserted card is of an unknown type.</value>
+  </data>
+  <data name="SelectReaderForm_UnknownStatus" xml:space="preserve">
+    <value>Unknown status</value>
+  </data>
+  <data name="SelectReaderForm_UnknownStatusDesc" xml:space="preserve">
+    <value>The status of the smartcard reader is unknown.</value>
+  </data>
+  <data name="SelectReaderForm_ValidCard" xml:space="preserve">
+    <value>Valid card</value>
+  </data>
+  <data name="SelectReaderForm_ValidCardDesc" xml:space="preserve">
+    <value>The inserted card is a valid smart card.</value>
+  </data>
+</root>

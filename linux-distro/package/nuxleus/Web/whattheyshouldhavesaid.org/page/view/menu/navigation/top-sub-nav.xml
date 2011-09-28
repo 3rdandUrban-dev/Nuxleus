@@ -1,0 +1,6 @@
+<view:module id="top-sub-nav" type="application/atomictalk+xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:doc="http://atomictalk.org/feed/doc" xmlns:view="http://atomictalk.org/page/view">
+  <view:container style="RtoL" type="xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+    <!-- <view:item id="associate-profile" src="/page/view/module/profile/associate-profile-name/base.xml" /> -->
+    <doc:session.openid href="/service/session/generate-request-guid" base-uri="@@base-uri@@"/>
+  </view:container>
+</view:module>

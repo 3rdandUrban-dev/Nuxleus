@@ -1,0 +1,806 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		606349FE0C5AC0D600A1C30C /* Server.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349790C5AC0D500A1C30C /* Server.cs */; };
+		606349FF0C5AC0D600A1C30C /* AtomEntry.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063497B0C5AC0D500A1C30C /* AtomEntry.cs */; };
+		60634A000C5AC0D600A1C30C /* AspNetAwsConfiguration.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063497E0C5AC0D500A1C30C /* AspNetAwsConfiguration.cs */; };
+		60634A010C5AC0D600A1C30C /* AspNetBungeeConfiguration.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063497F0C5AC0D500A1C30C /* AspNetBungeeConfiguration.cs */; };
+		60634A020C5AC0D600A1C30C /* AspNetMemcachedConfiguration.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349800C5AC0D500A1C30C /* AspNetMemcachedConfiguration.cs */; };
+		60634A030C5AC0D600A1C30C /* AspNetXameleonTransform.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349810C5AC0D500A1C30C /* AspNetXameleonTransform.cs */; };
+		60634A040C5AC0D600A1C30C /* AwsKey.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349820C5AC0D500A1C30C /* AwsKey.cs */; };
+		60634A050C5AC0D600A1C30C /* AwsKeyCollection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349830C5AC0D500A1C30C /* AwsKeyCollection.cs */; };
+		60634A060C5AC0D600A1C30C /* AwsS3.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349840C5AC0D600A1C30C /* AwsS3.cs */; };
+		60634A070C5AC0D600A1C30C /* AwsS3Collection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349850C5AC0D600A1C30C /* AwsS3Collection.cs */; };
+		60634A080C5AC0D600A1C30C /* BaseSetting.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349860C5AC0D600A1C30C /* BaseSetting.cs */; };
+		60634A090C5AC0D600A1C30C /* BaseSettingCollection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349870C5AC0D600A1C30C /* BaseSettingCollection.cs */; };
+		60634A0A0C5AC0D600A1C30C /* BungeeApp.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349880C5AC0D600A1C30C /* BungeeApp.cs */; };
+		60634A0B0C5AC0D600A1C30C /* BungeeAppCollection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349890C5AC0D600A1C30C /* BungeeAppCollection.cs */; };
+		60634A0C0C5AC0D600A1C30C /* Configuration.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063498A0C5AC0D600A1C30C /* Configuration.cs */; };
+		60634A0D0C5AC0D600A1C30C /* MemcachedPoolConfig.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063498B0C5AC0D600A1C30C /* MemcachedPoolConfig.cs */; };
+		60634A0E0C5AC0D600A1C30C /* MemcachedPoolConfigCollection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063498C0C5AC0D600A1C30C /* MemcachedPoolConfigCollection.cs */; };
+		60634A0F0C5AC0D600A1C30C /* MemcachedServer.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063498D0C5AC0D600A1C30C /* MemcachedServer.cs */; };
+		60634A100C5AC0D600A1C30C /* MemcachedServerCollection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063498E0C5AC0D600A1C30C /* MemcachedServerCollection.cs */; };
+		60634A110C5AC0D600A1C30C /* PreCompiledXslt.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063498F0C5AC0D600A1C30C /* PreCompiledXslt.cs */; };
+		60634A120C5AC0D600A1C30C /* PreCompiledXsltCollection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349900C5AC0D600A1C30C /* PreCompiledXsltCollection.cs */; };
+		60634A130C5AC0D600A1C30C /* XsltParamCollection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349910C5AC0D600A1C30C /* XsltParamCollection.cs */; };
+		60634A140C5AC0D600A1C30C /* XsltParams.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349920C5AC0D600A1C30C /* XsltParams.cs */; };
+		60634A150C5AC0D600A1C30C /* HashcodeGenerator.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349940C5AC0D600A1C30C /* HashcodeGenerator.cs */; };
+		60634A160C5AC0D600A1C30C /* DocumentResult.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349980C5AC0D600A1C30C /* DocumentResult.cs */; };
+		60634A170C5AC0D600A1C30C /* S3Document.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349990C5AC0D600A1C30C /* S3Document.cs */; };
+		60634A180C5AC0D600A1C30C /* FileStream.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063499C0C5AC0D600A1C30C /* FileStream.cs */; };
+		60634A190C5AC0D600A1C30C /* HashcodeGenerator.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063499D0C5AC0D600A1C30C /* HashcodeGenerator.cs */; };
+		60634A1A0C5AC0D600A1C30C /* HttpRequestCollection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063499E0C5AC0D600A1C30C /* HttpRequestCollection.cs */; };
+		60634A1B0C5AC0D600A1C30C /* HttpResponseCollection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 6063499F0C5AC0D600A1C30C /* HttpResponseCollection.cs */; };
+		60634A1C0C5AC0D600A1C30C /* HttpSgmlToXml.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349A00C5AC0D600A1C30C /* HttpSgmlToXml.cs */; };
+		60634A1D0C5AC0D600A1C30C /* HttpWebRequest.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349A10C5AC0D600A1C30C /* HttpWebRequest.cs */; };
+		60634A1E0C5AC0D600A1C30C /* HttpWebResponseStream.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349A20C5AC0D600A1C30C /* HttpWebResponseStream.cs */; };
+		60634A1F0C5AC0D600A1C30C /* S3ObjectCompare.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349A30C5AC0D600A1C30C /* S3ObjectCompare.cs */; };
+		60634A200C5AC0D600A1C30C /* Global.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349A50C5AC0D600A1C30C /* Global.cs */; };
+		60634A210C5AC0D600A1C30C /* AsyncSaxonHttpHandler.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349A70C5AC0D600A1C30C /* AsyncSaxonHttpHandler.cs */; };
+		60634A250C5AC0D600A1C30C /* AsyncRequestLogHttpModule.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349AC0C5AC0D600A1C30C /* AsyncRequestLogHttpModule.cs */; };
+		60634A260C5AC0D600A1C30C /* AssemblyInfo.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349AE0C5AC0D600A1C30C /* AssemblyInfo.cs */; };
+		60634A270C5AC0D600A1C30C /* Resources.Designer.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349AF0C5AC0D600A1C30C /* Resources.Designer.cs */; };
+		60634A280C5AC0D600A1C30C /* Settings.Designer.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349B10C5AC0D600A1C30C /* Settings.Designer.cs */; };
+		60634A290C5AC0D600A1C30C /* S3ResultDocumentHandler.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349B40C5AC0D600A1C30C /* S3ResultDocumentHandler.cs */; };
+		60634A2A0C5AC0D600A1C30C /* Select.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349B60C5AC0D600A1C30C /* Select.cs */; };
+		60634A2B0C5AC0D600A1C30C /* Authentication.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349B80C5AC0D600A1C30C /* Authentication.cs */; };
+		60634A2C0C5AC0D600A1C30C /* AsyncProcess.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349BA0C5AC0D600A1C30C /* AsyncProcess.cs */; };
+		60634A2D0C5AC0D600A1C30C /* Context.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349BB0C5AC0D600A1C30C /* Context.cs */; };
+		60634A2F0C5AC0D600A1C30C /* Transform.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349BD0C5AC0D600A1C30C /* Transform.cs */; };
+		60634A300C5AC0D600A1C30C /* TransformServiceAsyncResult.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349BE0C5AC0D600A1C30C /* TransformServiceAsyncResult.cs */; };
+		60634A310C5AC0D600A1C30C /* XsltTransformationManager.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349BF0C5AC0D600A1C30C /* XsltTransformationManager.cs */; };
+		60634A320C5AC0D600A1C30C /* S3XmlUrlResolver.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349C10C5AC0D600A1C30C /* S3XmlUrlResolver.cs */; };
+		60634A330C5AC0D600A1C30C /* AWSAuthConnection.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349C40C5AC0D600A1C30C /* AWSAuthConnection.cs */; };
+		60634A340C5AC0D600A1C30C /* Bucket.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349C50C5AC0D600A1C30C /* Bucket.cs */; };
+		60634A350C5AC0D600A1C30C /* CommonPrefixEntry.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349C60C5AC0D600A1C30C /* CommonPrefixEntry.cs */; };
+		60634A360C5AC0D600A1C30C /* GetResponse.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349C70C5AC0D600A1C30C /* GetResponse.cs */; };
+		60634A370C5AC0D600A1C30C /* GetTimeStamp.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349C80C5AC0D600A1C30C /* GetTimeStamp.cs */; };
+		60634A380C5AC0D600A1C30C /* ListAllMyBucketsResponse.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349C90C5AC0D600A1C30C /* ListAllMyBucketsResponse.cs */; };
+		60634A390C5AC0D600A1C30C /* ListBucketResponse.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349CA0C5AC0D600A1C30C /* ListBucketResponse.cs */; };
+		60634A3A0C5AC0D600A1C30C /* ListEntry.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349CB0C5AC0D600A1C30C /* ListEntry.cs */; };
+		60634A3B0C5AC0D600A1C30C /* Owner.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349CC0C5AC0D600A1C30C /* Owner.cs */; };
+		60634A3C0C5AC0D600A1C30C /* QueryStringAuthGenerator.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349CD0C5AC0D600A1C30C /* QueryStringAuthGenerator.cs */; };
+		60634A3D0C5AC0D600A1C30C /* Response.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349CF0C5AC0D600A1C30C /* Response.cs */; };
+		60634A3E0C5AC0D600A1C30C /* S3Object.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349D00C5AC0D600A1C30C /* S3Object.cs */; };
+		60634A3F0C5AC0D600A1C30C /* Utils.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349D10C5AC0D600A1C30C /* Utils.cs */; };
+		60634A400C5AC0D600A1C30C /* Reference.cs in Sources */ = {isa = PBXBuildFile; fileRef = 606349E00C5AC0D600A1C30C /* Reference.cs */; };
+		60634A710C5AC73200A1C30C /* BaseXsltContext.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634A700C5AC73200A1C30C /* BaseXsltContext.cs */; };
+		60634AAE0C5AC9B600A1C30C /* ApplicationServer.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634A970C5AC9B600A1C30C /* ApplicationServer.cs */; };
+		60634AAF0C5AC9B600A1C30C /* BaseApplicationHost.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634A9A0C5AC9B600A1C30C /* BaseApplicationHost.cs */; };
+		60634AB00C5AC9B600A1C30C /* BaseRequestBroker.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634A9B0C5AC9B600A1C30C /* BaseRequestBroker.cs */; };
+		60634AB10C5AC9B600A1C30C /* IApplicationHost.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634A9C0C5AC9B600A1C30C /* IApplicationHost.cs */; };
+		60634AB20C5AC9B600A1C30C /* InitialWorkerRequest.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634A9D0C5AC9B600A1C30C /* InitialWorkerRequest.cs */; };
+		60634AB30C5AC9B600A1C30C /* IWebSource.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634A9E0C5AC9B600A1C30C /* IWebSource.cs */; };
+		60634AB40C5AC9B600A1C30C /* LingeringNetworkStream.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634A9F0C5AC9B600A1C30C /* LingeringNetworkStream.cs */; };
+		60634AB50C5AC9B600A1C30C /* MonoWorkerRequest.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634AA10C5AC9B600A1C30C /* MonoWorkerRequest.cs */; };
+		60634AB60C5AC9B600A1C30C /* Tracing.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634AA20C5AC9B600A1C30C /* Tracing.cs */; };
+		60634AB70C5AC9B600A1C30C /* XSPApplicationHost.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634AA50C5AC9B600A1C30C /* XSPApplicationHost.cs */; };
+		60634AB80C5AC9B600A1C30C /* XSPWorkerRequest.cs in Sources */ = {isa = PBXBuildFile; fileRef = 60634AA60C5AC9B600A1C30C /* XSPWorkerRequest.cs */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		08D1CF8F0A943432003EF5EB /* Xameleon.dll */ = {isa = PBXFileReference; explicitFileType = compiled.mono.library; includeInIndex = 0; path = Xameleon.dll; sourceTree = BUILT_PRODUCTS_DIR; };
+		606349770C5AC0D500A1C30C /* app.config */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = app.config; path = ../app.config; sourceTree = "<group>"; };
+		606349790C5AC0D500A1C30C /* Server.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Server.cs; sourceTree = "<group>"; };
+		6063497B0C5AC0D500A1C30C /* AtomEntry.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AtomEntry.cs; sourceTree = "<group>"; };
+		6063497D0C5AC0D500A1C30C /* App.config */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = App.config; sourceTree = "<group>"; };
+		6063497E0C5AC0D500A1C30C /* AspNetAwsConfiguration.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AspNetAwsConfiguration.cs; sourceTree = "<group>"; };
+		6063497F0C5AC0D500A1C30C /* AspNetBungeeConfiguration.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AspNetBungeeConfiguration.cs; sourceTree = "<group>"; };
+		606349800C5AC0D500A1C30C /* AspNetMemcachedConfiguration.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AspNetMemcachedConfiguration.cs; sourceTree = "<group>"; };
+		606349810C5AC0D500A1C30C /* AspNetXameleonTransform.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AspNetXameleonTransform.cs; sourceTree = "<group>"; };
+		606349820C5AC0D500A1C30C /* AwsKey.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AwsKey.cs; sourceTree = "<group>"; };
+		606349830C5AC0D500A1C30C /* AwsKeyCollection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AwsKeyCollection.cs; sourceTree = "<group>"; };
+		606349840C5AC0D600A1C30C /* AwsS3.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AwsS3.cs; sourceTree = "<group>"; };
+		606349850C5AC0D600A1C30C /* AwsS3Collection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AwsS3Collection.cs; sourceTree = "<group>"; };
+		606349860C5AC0D600A1C30C /* BaseSetting.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = BaseSetting.cs; sourceTree = "<group>"; };
+		606349870C5AC0D600A1C30C /* BaseSettingCollection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = BaseSettingCollection.cs; sourceTree = "<group>"; };
+		606349880C5AC0D600A1C30C /* BungeeApp.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = BungeeApp.cs; sourceTree = "<group>"; };
+		606349890C5AC0D600A1C30C /* BungeeAppCollection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = BungeeAppCollection.cs; sourceTree = "<group>"; };
+		6063498A0C5AC0D600A1C30C /* Configuration.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Configuration.cs; sourceTree = "<group>"; };
+		6063498B0C5AC0D600A1C30C /* MemcachedPoolConfig.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = MemcachedPoolConfig.cs; sourceTree = "<group>"; };
+		6063498C0C5AC0D600A1C30C /* MemcachedPoolConfigCollection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = MemcachedPoolConfigCollection.cs; sourceTree = "<group>"; };
+		6063498D0C5AC0D600A1C30C /* MemcachedServer.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = MemcachedServer.cs; sourceTree = "<group>"; };
+		6063498E0C5AC0D600A1C30C /* MemcachedServerCollection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = MemcachedServerCollection.cs; sourceTree = "<group>"; };
+		6063498F0C5AC0D600A1C30C /* PreCompiledXslt.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = PreCompiledXslt.cs; sourceTree = "<group>"; };
+		606349900C5AC0D600A1C30C /* PreCompiledXsltCollection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = PreCompiledXsltCollection.cs; sourceTree = "<group>"; };
+		606349910C5AC0D600A1C30C /* XsltParamCollection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = XsltParamCollection.cs; sourceTree = "<group>"; };
+		606349920C5AC0D600A1C30C /* XsltParams.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = XsltParams.cs; sourceTree = "<group>"; };
+		606349940C5AC0D600A1C30C /* HashcodeGenerator.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = HashcodeGenerator.cs; sourceTree = "<group>"; };
+		606349960C5AC0D600A1C30C /* Xameleon.xml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = Xameleon.xml; sourceTree = "<group>"; };
+		606349980C5AC0D600A1C30C /* DocumentResult.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = DocumentResult.cs; sourceTree = "<group>"; };
+		606349990C5AC0D600A1C30C /* S3Document.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = S3Document.cs; sourceTree = "<group>"; };
+		6063499A0C5AC0D600A1C30C /* Extf.Net.snk */ = {isa = PBXFileReference; lastKnownFileType = file; name = Extf.Net.snk; path = ../Extf.Net.snk; sourceTree = "<group>"; };
+		6063499C0C5AC0D600A1C30C /* FileStream.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = FileStream.cs; sourceTree = "<group>"; };
+		6063499D0C5AC0D600A1C30C /* HashcodeGenerator.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = HashcodeGenerator.cs; sourceTree = "<group>"; };
+		6063499E0C5AC0D600A1C30C /* HttpRequestCollection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = HttpRequestCollection.cs; sourceTree = "<group>"; };
+		6063499F0C5AC0D600A1C30C /* HttpResponseCollection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = HttpResponseCollection.cs; sourceTree = "<group>"; };
+		606349A00C5AC0D600A1C30C /* HttpSgmlToXml.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = HttpSgmlToXml.cs; sourceTree = "<group>"; };
+		606349A10C5AC0D600A1C30C /* HttpWebRequest.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = HttpWebRequest.cs; sourceTree = "<group>"; };
+		606349A20C5AC0D600A1C30C /* HttpWebResponseStream.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = HttpWebResponseStream.cs; sourceTree = "<group>"; };
+		606349A30C5AC0D600A1C30C /* S3ObjectCompare.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = S3ObjectCompare.cs; sourceTree = "<group>"; };
+		606349A50C5AC0D600A1C30C /* Global.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Global.cs; sourceTree = "<group>"; };
+		606349A70C5AC0D600A1C30C /* AsyncSaxonHttpHandler.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AsyncSaxonHttpHandler.cs; sourceTree = "<group>"; };
+		606349AC0C5AC0D600A1C30C /* AsyncRequestLogHttpModule.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AsyncRequestLogHttpModule.cs; sourceTree = "<group>"; };
+		606349AE0C5AC0D600A1C30C /* AssemblyInfo.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AssemblyInfo.cs; sourceTree = "<group>"; };
+		606349AF0C5AC0D600A1C30C /* Resources.Designer.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Resources.Designer.cs; sourceTree = "<group>"; };
+		606349B00C5AC0D600A1C30C /* Resources.resx */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = Resources.resx; sourceTree = "<group>"; };
+		606349B10C5AC0D600A1C30C /* Settings.Designer.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Settings.Designer.cs; sourceTree = "<group>"; };
+		606349B20C5AC0D600A1C30C /* Settings.settings */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = Settings.settings; sourceTree = "<group>"; };
+		606349B40C5AC0D600A1C30C /* S3ResultDocumentHandler.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = S3ResultDocumentHandler.cs; sourceTree = "<group>"; };
+		606349B60C5AC0D600A1C30C /* Select.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Select.cs; sourceTree = "<group>"; };
+		606349B80C5AC0D600A1C30C /* Authentication.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Authentication.cs; sourceTree = "<group>"; };
+		606349BA0C5AC0D600A1C30C /* AsyncProcess.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AsyncProcess.cs; sourceTree = "<group>"; };
+		606349BB0C5AC0D600A1C30C /* Context.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Context.cs; sourceTree = "<group>"; };
+		606349BD0C5AC0D600A1C30C /* Transform.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Transform.cs; sourceTree = "<group>"; };
+		606349BE0C5AC0D600A1C30C /* TransformServiceAsyncResult.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = TransformServiceAsyncResult.cs; sourceTree = "<group>"; };
+		606349BF0C5AC0D600A1C30C /* XsltTransformationManager.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = XsltTransformationManager.cs; sourceTree = "<group>"; };
+		606349C10C5AC0D600A1C30C /* S3XmlUrlResolver.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = S3XmlUrlResolver.cs; sourceTree = "<group>"; };
+		606349C40C5AC0D600A1C30C /* AWSAuthConnection.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = AWSAuthConnection.cs; sourceTree = "<group>"; };
+		606349C50C5AC0D600A1C30C /* Bucket.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Bucket.cs; sourceTree = "<group>"; };
+		606349C60C5AC0D600A1C30C /* CommonPrefixEntry.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = CommonPrefixEntry.cs; sourceTree = "<group>"; };
+		606349C70C5AC0D600A1C30C /* GetResponse.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = GetResponse.cs; sourceTree = "<group>"; };
+		606349C80C5AC0D600A1C30C /* GetTimeStamp.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = GetTimeStamp.cs; sourceTree = "<group>"; };
+		606349C90C5AC0D600A1C30C /* ListAllMyBucketsResponse.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = ListAllMyBucketsResponse.cs; sourceTree = "<group>"; };
+		606349CA0C5AC0D600A1C30C /* ListBucketResponse.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = ListBucketResponse.cs; sourceTree = "<group>"; };
+		606349CB0C5AC0D600A1C30C /* ListEntry.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = ListEntry.cs; sourceTree = "<group>"; };
+		606349CC0C5AC0D600A1C30C /* Owner.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Owner.cs; sourceTree = "<group>"; };
+		606349CD0C5AC0D600A1C30C /* QueryStringAuthGenerator.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = QueryStringAuthGenerator.cs; sourceTree = "<group>"; };
+		606349CE0C5AC0D600A1C30C /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		606349CF0C5AC0D600A1C30C /* Response.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Response.cs; sourceTree = "<group>"; };
+		606349D00C5AC0D600A1C30C /* S3Object.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = S3Object.cs; sourceTree = "<group>"; };
+		606349D10C5AC0D600A1C30C /* Utils.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Utils.cs; sourceTree = "<group>"; };
+		606349D40C5AC0D600A1C30C /* AccessControl.xsd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = AccessControl.xsd; sourceTree = "<group>"; };
+		606349D50C5AC0D600A1C30C /* AddGrantResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = AddGrantResponse.datasource; sourceTree = "<group>"; };
+		606349D60C5AC0D600A1C30C /* CreateQueueResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = CreateQueueResponse.datasource; sourceTree = "<group>"; };
+		606349D70C5AC0D600A1C30C /* DeleteMessageResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = DeleteMessageResponse.datasource; sourceTree = "<group>"; };
+		606349D80C5AC0D600A1C30C /* DeleteQueueResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = DeleteQueueResponse.datasource; sourceTree = "<group>"; };
+		606349D90C5AC0D600A1C30C /* GetVisibilityTimeoutResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = GetVisibilityTimeoutResponse.datasource; sourceTree = "<group>"; };
+		606349DA0C5AC0D600A1C30C /* ListGrantsResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = ListGrantsResponse.datasource; sourceTree = "<group>"; };
+		606349DB0C5AC0D600A1C30C /* ListQueuesResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = ListQueuesResponse.datasource; sourceTree = "<group>"; };
+		606349DC0C5AC0D600A1C30C /* PeekMessageResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = PeekMessageResponse.datasource; sourceTree = "<group>"; };
+		606349DD0C5AC0D600A1C30C /* QueueService.wsdl */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = QueueService.wsdl; sourceTree = "<group>"; };
+		606349DE0C5AC0D600A1C30C /* QueueService.xsd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = QueueService.xsd; sourceTree = "<group>"; };
+		606349DF0C5AC0D600A1C30C /* ReceiveMessageResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = ReceiveMessageResponse.datasource; sourceTree = "<group>"; };
+		606349E00C5AC0D600A1C30C /* Reference.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Reference.cs; sourceTree = "<group>"; };
+		606349E10C5AC0D600A1C30C /* Reference.map */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = Reference.map; sourceTree = "<group>"; };
+		606349E20C5AC0D600A1C30C /* RemoveGrantResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = RemoveGrantResponse.datasource; sourceTree = "<group>"; };
+		606349E30C5AC0D600A1C30C /* SendMessageResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = SendMessageResponse.datasource; sourceTree = "<group>"; };
+		606349E40C5AC0D600A1C30C /* SetVisibilityTimeoutResponse.datasource */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = SetVisibilityTimeoutResponse.datasource; sourceTree = "<group>"; };
+		606349EE0C5AC0D600A1C30C /* categories.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = categories.pbxbtree; sourceTree = "<group>"; };
+		606349EF0C5AC0D600A1C30C /* cdecls.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = cdecls.pbxbtree; sourceTree = "<group>"; };
+		606349F00C5AC0D600A1C30C /* decls.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = decls.pbxbtree; sourceTree = "<group>"; };
+		606349F10C5AC0D600A1C30C /* files.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = files.pbxbtree; sourceTree = "<group>"; };
+		606349F20C5AC0D600A1C30C /* imports.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = imports.pbxbtree; sourceTree = "<group>"; };
+		606349F30C5AC0D600A1C30C /* pbxindex.header */ = {isa = PBXFileReference; lastKnownFileType = file; path = pbxindex.header; sourceTree = "<group>"; };
+		606349F40C5AC0D600A1C30C /* protocols.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = protocols.pbxbtree; sourceTree = "<group>"; };
+		606349F50C5AC0D600A1C30C /* refs.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = refs.pbxbtree; sourceTree = "<group>"; };
+		606349F70C5AC0D600A1C30C /* control */ = {isa = PBXFileReference; lastKnownFileType = file; path = control; sourceTree = "<group>"; };
+		606349F80C5AC0D600A1C30C /* strings */ = {isa = PBXFileReference; lastKnownFileType = file; path = strings; sourceTree = "<group>"; };
+		606349F90C5AC0D600A1C30C /* subclasses.pbxbtree */ = {isa = PBXFileReference; lastKnownFileType = file; path = subclasses.pbxbtree; sourceTree = "<group>"; };
+		606349FB0C5AC0D600A1C30C /* Xameleon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Xameleon.xcodeproj; sourceTree = "<group>"; };
+		60634A700C5AC73200A1C30C /* BaseXsltContext.cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.csharp; name = BaseXsltContext.cs; path = ../HttpApplication/BaseXsltContext.cs; sourceTree = "<group>"; };
+		60634A970C5AC9B600A1C30C /* ApplicationServer.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = ApplicationServer.cs; sourceTree = "<group>"; };
+		60634A980C5AC9B600A1C30C /* AssemblyInfo.cs.in */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = AssemblyInfo.cs.in; sourceTree = "<group>"; };
+		60634A990C5AC9B600A1C30C /* AssemblyInfo2.cs.in */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = AssemblyInfo2.cs.in; sourceTree = "<group>"; };
+		60634A9A0C5AC9B600A1C30C /* BaseApplicationHost.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = BaseApplicationHost.cs; sourceTree = "<group>"; };
+		60634A9B0C5AC9B600A1C30C /* BaseRequestBroker.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = BaseRequestBroker.cs; sourceTree = "<group>"; };
+		60634A9C0C5AC9B600A1C30C /* IApplicationHost.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = IApplicationHost.cs; sourceTree = "<group>"; };
+		60634A9D0C5AC9B600A1C30C /* InitialWorkerRequest.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = InitialWorkerRequest.cs; sourceTree = "<group>"; };
+		60634A9E0C5AC9B600A1C30C /* IWebSource.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = IWebSource.cs; sourceTree = "<group>"; };
+		60634A9F0C5AC9B600A1C30C /* LingeringNetworkStream.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = LingeringNetworkStream.cs; sourceTree = "<group>"; };
+		60634AA10C5AC9B600A1C30C /* MonoWorkerRequest.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = MonoWorkerRequest.cs; sourceTree = "<group>"; };
+		60634AA20C5AC9B600A1C30C /* Tracing.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = Tracing.cs; sourceTree = "<group>"; };
+		60634AA50C5AC9B600A1C30C /* XSPApplicationHost.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = XSPApplicationHost.cs; sourceTree = "<group>"; };
+		60634AA60C5AC9B600A1C30C /* XSPWorkerRequest.cs */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.csharp; path = XSPWorkerRequest.cs; sourceTree = "<group>"; };
+		60634B210C5AF60A00A1C30C /* Web.config */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Web.config; path = ../../WebApp/Web.config; sourceTree = SOURCE_ROOT; };
+		60634B220C5AF60A00A1C30C /* Global.asax */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = Global.asax; path = ../../WebApp/Global.asax; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		08D1CF8D0A943432003EF5EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08D1CF7C0A94341D003EF5EB = {
+			isa = PBXGroup;
+			children = (
+				08D1CF950A94343C003EF5EB /* Sources */,
+				08D1CF900A943432003EF5EB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		08D1CF900A943432003EF5EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				08D1CF8F0A943432003EF5EB /* Xameleon.dll */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		08D1CF950A94343C003EF5EB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				60634B230C5AF61800A1C30C /* ASP.NET-Config_Files */,
+				606349EA0C5AC0D600A1C30C /* Xcode */,
+				6063497A0C5AC0D500A1C30C /* Atom */,
+				6063497C0C5AC0D500A1C30C /* Configuration */,
+				606349930C5AC0D600A1C30C /* Cryptography */,
+				606349950C5AC0D600A1C30C /* docs */,
+				606349970C5AC0D600A1C30C /* Document */,
+				6063499A0C5AC0D600A1C30C /* Extf.Net.snk */,
+				6063499B0C5AC0D600A1C30C /* Function */,
+				606349A40C5AC0D600A1C30C /* HttpApplication */,
+				606349A60C5AC0D600A1C30C /* HttpHandler */,
+				606349AB0C5AC0D600A1C30C /* HttpModule */,
+				606349AD0C5AC0D600A1C30C /* Properties */,
+				606349B30C5AC0D600A1C30C /* ResultDocumentHandler */,
+				606349B50C5AC0D600A1C30C /* SemWeb */,
+				606349B70C5AC0D600A1C30C /* Service */,
+				606349B90C5AC0D600A1C30C /* Transform */,
+				606349C00C5AC0D600A1C30C /* UrlResolver */,
+				606349C20C5AC0D600A1C30C /* Utility */,
+				606349D20C5AC0D600A1C30C /* Web References */,
+				606349E50C5AC0D600A1C30C /* WebServer */,
+				606349780C5AC0D500A1C30C /* Asp.Net */,
+				606349770C5AC0D500A1C30C /* app.config */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		606349780C5AC0D500A1C30C /* Asp.Net */ = {
+			isa = PBXGroup;
+			children = (
+				606349790C5AC0D500A1C30C /* Server.cs */,
+			);
+			name = Asp.Net;
+			path = ../Asp.Net;
+			sourceTree = "<group>";
+		};
+		6063497A0C5AC0D500A1C30C /* Atom */ = {
+			isa = PBXGroup;
+			children = (
+				6063497B0C5AC0D500A1C30C /* AtomEntry.cs */,
+			);
+			name = Atom;
+			path = ../Atom;
+			sourceTree = "<group>";
+		};
+		6063497C0C5AC0D500A1C30C /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				6063497D0C5AC0D500A1C30C /* App.config */,
+				6063497E0C5AC0D500A1C30C /* AspNetAwsConfiguration.cs */,
+				6063497F0C5AC0D500A1C30C /* AspNetBungeeConfiguration.cs */,
+				606349800C5AC0D500A1C30C /* AspNetMemcachedConfiguration.cs */,
+				606349810C5AC0D500A1C30C /* AspNetXameleonTransform.cs */,
+				606349820C5AC0D500A1C30C /* AwsKey.cs */,
+				606349830C5AC0D500A1C30C /* AwsKeyCollection.cs */,
+				606349840C5AC0D600A1C30C /* AwsS3.cs */,
+				606349850C5AC0D600A1C30C /* AwsS3Collection.cs */,
+				606349860C5AC0D600A1C30C /* BaseSetting.cs */,
+				606349870C5AC0D600A1C30C /* BaseSettingCollection.cs */,
+				606349880C5AC0D600A1C30C /* BungeeApp.cs */,
+				606349890C5AC0D600A1C30C /* BungeeAppCollection.cs */,
+				6063498A0C5AC0D600A1C30C /* Configuration.cs */,
+				6063498B0C5AC0D600A1C30C /* MemcachedPoolConfig.cs */,
+				6063498C0C5AC0D600A1C30C /* MemcachedPoolConfigCollection.cs */,
+				6063498D0C5AC0D600A1C30C /* MemcachedServer.cs */,
+				6063498E0C5AC0D600A1C30C /* MemcachedServerCollection.cs */,
+				6063498F0C5AC0D600A1C30C /* PreCompiledXslt.cs */,
+				606349900C5AC0D600A1C30C /* PreCompiledXsltCollection.cs */,
+				606349910C5AC0D600A1C30C /* XsltParamCollection.cs */,
+				606349920C5AC0D600A1C30C /* XsltParams.cs */,
+			);
+			name = Configuration;
+			path = ../Configuration;
+			sourceTree = "<group>";
+		};
+		606349930C5AC0D600A1C30C /* Cryptography */ = {
+			isa = PBXGroup;
+			children = (
+				606349940C5AC0D600A1C30C /* HashcodeGenerator.cs */,
+			);
+			name = Cryptography;
+			path = ../Cryptography;
+			sourceTree = "<group>";
+		};
+		606349950C5AC0D600A1C30C /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				606349960C5AC0D600A1C30C /* Xameleon.xml */,
+			);
+			name = docs;
+			path = ../docs;
+			sourceTree = "<group>";
+		};
+		606349970C5AC0D600A1C30C /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				606349980C5AC0D600A1C30C /* DocumentResult.cs */,
+				606349990C5AC0D600A1C30C /* S3Document.cs */,
+			);
+			name = Document;
+			path = ../Document;
+			sourceTree = "<group>";
+		};
+		6063499B0C5AC0D600A1C30C /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				6063499C0C5AC0D600A1C30C /* FileStream.cs */,
+				6063499D0C5AC0D600A1C30C /* HashcodeGenerator.cs */,
+				6063499E0C5AC0D600A1C30C /* HttpRequestCollection.cs */,
+				6063499F0C5AC0D600A1C30C /* HttpResponseCollection.cs */,
+				606349A00C5AC0D600A1C30C /* HttpSgmlToXml.cs */,
+				606349A10C5AC0D600A1C30C /* HttpWebRequest.cs */,
+				606349A20C5AC0D600A1C30C /* HttpWebResponseStream.cs */,
+				606349A30C5AC0D600A1C30C /* S3ObjectCompare.cs */,
+			);
+			name = Function;
+			path = ../Function;
+			sourceTree = "<group>";
+		};
+		606349A40C5AC0D600A1C30C /* HttpApplication */ = {
+			isa = PBXGroup;
+			children = (
+				606349A50C5AC0D600A1C30C /* Global.cs */,
+			);
+			name = HttpApplication;
+			path = ../HttpApplication;
+			sourceTree = "<group>";
+		};
+		606349A60C5AC0D600A1C30C /* HttpHandler */ = {
+			isa = PBXGroup;
+			children = (
+				606349A70C5AC0D600A1C30C /* AsyncSaxonHttpHandler.cs */,
+			);
+			name = HttpHandler;
+			path = ../HttpHandler;
+			sourceTree = "<group>";
+		};
+		606349AB0C5AC0D600A1C30C /* HttpModule */ = {
+			isa = PBXGroup;
+			children = (
+				606349AC0C5AC0D600A1C30C /* AsyncRequestLogHttpModule.cs */,
+			);
+			name = HttpModule;
+			path = ../HttpModule;
+			sourceTree = "<group>";
+		};
+		606349AD0C5AC0D600A1C30C /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				606349AE0C5AC0D600A1C30C /* AssemblyInfo.cs */,
+				606349AF0C5AC0D600A1C30C /* Resources.Designer.cs */,
+				606349B00C5AC0D600A1C30C /* Resources.resx */,
+				606349B10C5AC0D600A1C30C /* Settings.Designer.cs */,
+				606349B20C5AC0D600A1C30C /* Settings.settings */,
+			);
+			name = Properties;
+			path = ../Properties;
+			sourceTree = "<group>";
+		};
+		606349B30C5AC0D600A1C30C /* ResultDocumentHandler */ = {
+			isa = PBXGroup;
+			children = (
+				606349B40C5AC0D600A1C30C /* S3ResultDocumentHandler.cs */,
+			);
+			name = ResultDocumentHandler;
+			path = ../ResultDocumentHandler;
+			sourceTree = "<group>";
+		};
+		606349B50C5AC0D600A1C30C /* SemWeb */ = {
+			isa = PBXGroup;
+			children = (
+				606349B60C5AC0D600A1C30C /* Select.cs */,
+			);
+			name = SemWeb;
+			path = ../SemWeb;
+			sourceTree = "<group>";
+		};
+		606349B70C5AC0D600A1C30C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				606349B80C5AC0D600A1C30C /* Authentication.cs */,
+			);
+			name = Service;
+			path = ../Service;
+			sourceTree = "<group>";
+		};
+		606349B90C5AC0D600A1C30C /* Transform */ = {
+			isa = PBXGroup;
+			children = (
+				60634A700C5AC73200A1C30C /* BaseXsltContext.cs */,
+				606349BA0C5AC0D600A1C30C /* AsyncProcess.cs */,
+				606349BB0C5AC0D600A1C30C /* Context.cs */,
+				606349BD0C5AC0D600A1C30C /* Transform.cs */,
+				606349BE0C5AC0D600A1C30C /* TransformServiceAsyncResult.cs */,
+				606349BF0C5AC0D600A1C30C /* XsltTransformationManager.cs */,
+			);
+			name = Transform;
+			path = ../Transform;
+			sourceTree = "<group>";
+		};
+		606349C00C5AC0D600A1C30C /* UrlResolver */ = {
+			isa = PBXGroup;
+			children = (
+				606349C10C5AC0D600A1C30C /* S3XmlUrlResolver.cs */,
+			);
+			name = UrlResolver;
+			path = ../UrlResolver;
+			sourceTree = "<group>";
+		};
+		606349C20C5AC0D600A1C30C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				606349C30C5AC0D600A1C30C /* S3 */,
+			);
+			name = Utility;
+			path = ../Utility;
+			sourceTree = "<group>";
+		};
+		606349C30C5AC0D600A1C30C /* S3 */ = {
+			isa = PBXGroup;
+			children = (
+				606349C40C5AC0D600A1C30C /* AWSAuthConnection.cs */,
+				606349C50C5AC0D600A1C30C /* Bucket.cs */,
+				606349C60C5AC0D600A1C30C /* CommonPrefixEntry.cs */,
+				606349C70C5AC0D600A1C30C /* GetResponse.cs */,
+				606349C80C5AC0D600A1C30C /* GetTimeStamp.cs */,
+				606349C90C5AC0D600A1C30C /* ListAllMyBucketsResponse.cs */,
+				606349CA0C5AC0D600A1C30C /* ListBucketResponse.cs */,
+				606349CB0C5AC0D600A1C30C /* ListEntry.cs */,
+				606349CC0C5AC0D600A1C30C /* Owner.cs */,
+				606349CD0C5AC0D600A1C30C /* QueryStringAuthGenerator.cs */,
+				606349CE0C5AC0D600A1C30C /* README */,
+				606349CF0C5AC0D600A1C30C /* Response.cs */,
+				606349D00C5AC0D600A1C30C /* S3Object.cs */,
+				606349D10C5AC0D600A1C30C /* Utils.cs */,
+			);
+			path = S3;
+			sourceTree = "<group>";
+		};
+		606349D20C5AC0D600A1C30C /* Web References */ = {
+			isa = PBXGroup;
+			children = (
+				606349D30C5AC0D600A1C30C /* AmazonAWS.SQS */,
+			);
+			name = "Web References";
+			path = "../Web References";
+			sourceTree = "<group>";
+		};
+		606349D30C5AC0D600A1C30C /* AmazonAWS.SQS */ = {
+			isa = PBXGroup;
+			children = (
+				606349D40C5AC0D600A1C30C /* AccessControl.xsd */,
+				606349D50C5AC0D600A1C30C /* AddGrantResponse.datasource */,
+				606349D60C5AC0D600A1C30C /* CreateQueueResponse.datasource */,
+				606349D70C5AC0D600A1C30C /* DeleteMessageResponse.datasource */,
+				606349D80C5AC0D600A1C30C /* DeleteQueueResponse.datasource */,
+				606349D90C5AC0D600A1C30C /* GetVisibilityTimeoutResponse.datasource */,
+				606349DA0C5AC0D600A1C30C /* ListGrantsResponse.datasource */,
+				606349DB0C5AC0D600A1C30C /* ListQueuesResponse.datasource */,
+				606349DC0C5AC0D600A1C30C /* PeekMessageResponse.datasource */,
+				606349DD0C5AC0D600A1C30C /* QueueService.wsdl */,
+				606349DE0C5AC0D600A1C30C /* QueueService.xsd */,
+				606349DF0C5AC0D600A1C30C /* ReceiveMessageResponse.datasource */,
+				606349E00C5AC0D600A1C30C /* Reference.cs */,
+				606349E10C5AC0D600A1C30C /* Reference.map */,
+				606349E20C5AC0D600A1C30C /* RemoveGrantResponse.datasource */,
+				606349E30C5AC0D600A1C30C /* SendMessageResponse.datasource */,
+				606349E40C5AC0D600A1C30C /* SetVisibilityTimeoutResponse.datasource */,
+			);
+			path = AmazonAWS.SQS;
+			sourceTree = "<group>";
+		};
+		606349E50C5AC0D600A1C30C /* WebServer */ = {
+			isa = PBXGroup;
+			children = (
+				606349E60C5AC0D600A1C30C /* Mono.WebServer */,
+			);
+			name = WebServer;
+			path = ../WebServer;
+			sourceTree = "<group>";
+		};
+		606349E60C5AC0D600A1C30C /* Mono.WebServer */ = {
+			isa = PBXGroup;
+			children = (
+				60634A960C5AC9B600A1C30C /* Mono.WebServer */,
+			);
+			path = Mono.WebServer;
+			sourceTree = "<group>";
+		};
+		606349EA0C5AC0D600A1C30C /* Xcode */ = {
+			isa = PBXGroup;
+			children = (
+				606349EB0C5AC0D600A1C30C /* build */,
+				606349FB0C5AC0D600A1C30C /* Xameleon.xcodeproj */,
+			);
+			name = Xcode;
+			sourceTree = "<group>";
+		};
+		606349EB0C5AC0D600A1C30C /* build */ = {
+			isa = PBXGroup;
+			children = (
+				606349EC0C5AC0D600A1C30C /* Xameleon.build */,
+			);
+			path = build;
+			sourceTree = "<group>";
+		};
+		606349EC0C5AC0D600A1C30C /* Xameleon.build */ = {
+			isa = PBXGroup;
+			children = (
+				606349ED0C5AC0D600A1C30C /* Xameleon.pbxindex */,
+			);
+			path = Xameleon.build;
+			sourceTree = "<group>";
+		};
+		606349ED0C5AC0D600A1C30C /* Xameleon.pbxindex */ = {
+			isa = PBXGroup;
+			children = (
+				606349EE0C5AC0D600A1C30C /* categories.pbxbtree */,
+				606349EF0C5AC0D600A1C30C /* cdecls.pbxbtree */,
+				606349F00C5AC0D600A1C30C /* decls.pbxbtree */,
+				606349F10C5AC0D600A1C30C /* files.pbxbtree */,
+				606349F20C5AC0D600A1C30C /* imports.pbxbtree */,
+				606349F30C5AC0D600A1C30C /* pbxindex.header */,
+				606349F40C5AC0D600A1C30C /* protocols.pbxbtree */,
+				606349F50C5AC0D600A1C30C /* refs.pbxbtree */,
+				606349F60C5AC0D600A1C30C /* strings.pbxstrings */,
+				606349F90C5AC0D600A1C30C /* subclasses.pbxbtree */,
+			);
+			path = Xameleon.pbxindex;
+			sourceTree = "<group>";
+		};
+		606349F60C5AC0D600A1C30C /* strings.pbxstrings */ = {
+			isa = PBXGroup;
+			children = (
+				606349F70C5AC0D600A1C30C /* control */,
+				606349F80C5AC0D600A1C30C /* strings */,
+			);
+			path = strings.pbxstrings;
+			sourceTree = "<group>";
+		};
+		606349FC0C5AC0D600A1C30C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		60634A960C5AC9B600A1C30C /* Mono.WebServer */ = {
+			isa = PBXGroup;
+			children = (
+				60634A970C5AC9B600A1C30C /* ApplicationServer.cs */,
+				60634A980C5AC9B600A1C30C /* AssemblyInfo.cs.in */,
+				60634A990C5AC9B600A1C30C /* AssemblyInfo2.cs.in */,
+				60634A9A0C5AC9B600A1C30C /* BaseApplicationHost.cs */,
+				60634A9B0C5AC9B600A1C30C /* BaseRequestBroker.cs */,
+				60634A9C0C5AC9B600A1C30C /* IApplicationHost.cs */,
+				60634A9D0C5AC9B600A1C30C /* InitialWorkerRequest.cs */,
+				60634A9E0C5AC9B600A1C30C /* IWebSource.cs */,
+				60634A9F0C5AC9B600A1C30C /* LingeringNetworkStream.cs */,
+				60634AA10C5AC9B600A1C30C /* MonoWorkerRequest.cs */,
+				60634AA20C5AC9B600A1C30C /* Tracing.cs */,
+				60634AA50C5AC9B600A1C30C /* XSPApplicationHost.cs */,
+				60634AA60C5AC9B600A1C30C /* XSPWorkerRequest.cs */,
+			);
+			name = Mono.WebServer;
+			path = ../../VendorExtensions/Mono/xsp/Mono.WebServer;
+			sourceTree = SOURCE_ROOT;
+		};
+		60634B230C5AF61800A1C30C /* ASP.NET-Config_Files */ = {
+			isa = PBXGroup;
+			children = (
+				60634B220C5AF60A00A1C30C /* Global.asax */,
+				60634B210C5AF60A00A1C30C /* Web.config */,
+			);
+			name = "ASP.NET-Config_Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		08D1CF8E0A943432003EF5EB /* Xameleon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08D1CF920A943433003EF5EB /* Build configuration list for PBXNativeTarget "Xameleon" */;
+			buildPhases = (
+				08D1CF8C0A943432003EF5EB /* Sources */,
+				08D1CF8D0A943432003EF5EB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Xameleon;
+			productName = Xameleon;
+			productReference = 08D1CF8F0A943432003EF5EB /* Xameleon.dll */;
+			productType = "com.mono.product-type.library";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08D1CF7E0A94341D003EF5EB /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 08D1CF7F0A94341D003EF5EB /* Build configuration list for PBXProject "Xameleon" */;
+			hasScannedForEncodings = 0;
+			mainGroup = 08D1CF7C0A94341D003EF5EB;
+			productRefGroup = 08D1CF900A943432003EF5EB /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 606349FC0C5AC0D600A1C30C /* Products */;
+					ProjectRef = 606349FB0C5AC0D600A1C30C /* Xameleon.xcodeproj */;
+				},
+			);
+			targets = (
+				08D1CF8E0A943432003EF5EB /* Xameleon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		08D1CF8C0A943432003EF5EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				606349FE0C5AC0D600A1C30C /* Server.cs in Sources */,
+				606349FF0C5AC0D600A1C30C /* AtomEntry.cs in Sources */,
+				60634A000C5AC0D600A1C30C /* AspNetAwsConfiguration.cs in Sources */,
+				60634A010C5AC0D600A1C30C /* AspNetBungeeConfiguration.cs in Sources */,
+				60634A020C5AC0D600A1C30C /* AspNetMemcachedConfiguration.cs in Sources */,
+				60634A030C5AC0D600A1C30C /* AspNetXameleonTransform.cs in Sources */,
+				60634A040C5AC0D600A1C30C /* AwsKey.cs in Sources */,
+				60634A050C5AC0D600A1C30C /* AwsKeyCollection.cs in Sources */,
+				60634A060C5AC0D600A1C30C /* AwsS3.cs in Sources */,
+				60634A070C5AC0D600A1C30C /* AwsS3Collection.cs in Sources */,
+				60634A080C5AC0D600A1C30C /* BaseSetting.cs in Sources */,
+				60634A090C5AC0D600A1C30C /* BaseSettingCollection.cs in Sources */,
+				60634A0A0C5AC0D600A1C30C /* BungeeApp.cs in Sources */,
+				60634A0B0C5AC0D600A1C30C /* BungeeAppCollection.cs in Sources */,
+				60634A0C0C5AC0D600A1C30C /* Configuration.cs in Sources */,
+				60634A0D0C5AC0D600A1C30C /* MemcachedPoolConfig.cs in Sources */,
+				60634A0E0C5AC0D600A1C30C /* MemcachedPoolConfigCollection.cs in Sources */,
+				60634A0F0C5AC0D600A1C30C /* MemcachedServer.cs in Sources */,
+				60634A100C5AC0D600A1C30C /* MemcachedServerCollection.cs in Sources */,
+				60634A110C5AC0D600A1C30C /* PreCompiledXslt.cs in Sources */,
+				60634A120C5AC0D600A1C30C /* PreCompiledXsltCollection.cs in Sources */,
+				60634A130C5AC0D600A1C30C /* XsltParamCollection.cs in Sources */,
+				60634A140C5AC0D600A1C30C /* XsltParams.cs in Sources */,
+				60634A150C5AC0D600A1C30C /* HashcodeGenerator.cs in Sources */,
+				60634A160C5AC0D600A1C30C /* DocumentResult.cs in Sources */,
+				60634A170C5AC0D600A1C30C /* S3Document.cs in Sources */,
+				60634A180C5AC0D600A1C30C /* FileStream.cs in Sources */,
+				60634A190C5AC0D600A1C30C /* HashcodeGenerator.cs in Sources */,
+				60634A1A0C5AC0D600A1C30C /* HttpRequestCollection.cs in Sources */,
+				60634A1B0C5AC0D600A1C30C /* HttpResponseCollection.cs in Sources */,
+				60634A1C0C5AC0D600A1C30C /* HttpSgmlToXml.cs in Sources */,
+				60634A1D0C5AC0D600A1C30C /* HttpWebRequest.cs in Sources */,
+				60634A1E0C5AC0D600A1C30C /* HttpWebResponseStream.cs in Sources */,
+				60634A1F0C5AC0D600A1C30C /* S3ObjectCompare.cs in Sources */,
+				60634A200C5AC0D600A1C30C /* Global.cs in Sources */,
+				60634A210C5AC0D600A1C30C /* AsyncSaxonHttpHandler.cs in Sources */,
+				60634A250C5AC0D600A1C30C /* AsyncRequestLogHttpModule.cs in Sources */,
+				60634A260C5AC0D600A1C30C /* AssemblyInfo.cs in Sources */,
+				60634A270C5AC0D600A1C30C /* Resources.Designer.cs in Sources */,
+				60634A280C5AC0D600A1C30C /* Settings.Designer.cs in Sources */,
+				60634A290C5AC0D600A1C30C /* S3ResultDocumentHandler.cs in Sources */,
+				60634A2A0C5AC0D600A1C30C /* Select.cs in Sources */,
+				60634A2B0C5AC0D600A1C30C /* Authentication.cs in Sources */,
+				60634A2C0C5AC0D600A1C30C /* AsyncProcess.cs in Sources */,
+				60634A2D0C5AC0D600A1C30C /* Context.cs in Sources */,
+				60634A2F0C5AC0D600A1C30C /* Transform.cs in Sources */,
+				60634A300C5AC0D600A1C30C /* TransformServiceAsyncResult.cs in Sources */,
+				60634A310C5AC0D600A1C30C /* XsltTransformationManager.cs in Sources */,
+				60634A320C5AC0D600A1C30C /* S3XmlUrlResolver.cs in Sources */,
+				60634A330C5AC0D600A1C30C /* AWSAuthConnection.cs in Sources */,
+				60634A340C5AC0D600A1C30C /* Bucket.cs in Sources */,
+				60634A350C5AC0D600A1C30C /* CommonPrefixEntry.cs in Sources */,
+				60634A360C5AC0D600A1C30C /* GetResponse.cs in Sources */,
+				60634A370C5AC0D600A1C30C /* GetTimeStamp.cs in Sources */,
+				60634A380C5AC0D600A1C30C /* ListAllMyBucketsResponse.cs in Sources */,
+				60634A390C5AC0D600A1C30C /* ListBucketResponse.cs in Sources */,
+				60634A3A0C5AC0D600A1C30C /* ListEntry.cs in Sources */,
+				60634A3B0C5AC0D600A1C30C /* Owner.cs in Sources */,
+				60634A3C0C5AC0D600A1C30C /* QueryStringAuthGenerator.cs in Sources */,
+				60634A3D0C5AC0D600A1C30C /* Response.cs in Sources */,
+				60634A3E0C5AC0D600A1C30C /* S3Object.cs in Sources */,
+				60634A3F0C5AC0D600A1C30C /* Utils.cs in Sources */,
+				60634A400C5AC0D600A1C30C /* Reference.cs in Sources */,
+				60634A710C5AC73200A1C30C /* BaseXsltContext.cs in Sources */,
+				60634AAE0C5AC9B600A1C30C /* ApplicationServer.cs in Sources */,
+				60634AAF0C5AC9B600A1C30C /* BaseApplicationHost.cs in Sources */,
+				60634AB00C5AC9B600A1C30C /* BaseRequestBroker.cs in Sources */,
+				60634AB10C5AC9B600A1C30C /* IApplicationHost.cs in Sources */,
+				60634AB20C5AC9B600A1C30C /* InitialWorkerRequest.cs in Sources */,
+				60634AB30C5AC9B600A1C30C /* IWebSource.cs in Sources */,
+				60634AB40C5AC9B600A1C30C /* LingeringNetworkStream.cs in Sources */,
+				60634AB50C5AC9B600A1C30C /* MonoWorkerRequest.cs in Sources */,
+				60634AB60C5AC9B600A1C30C /* Tracing.cs in Sources */,
+				60634AB70C5AC9B600A1C30C /* XSPApplicationHost.cs in Sources */,
+				60634AB80C5AC9B600A1C30C /* XSPWorkerRequest.cs in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		08D1CF800A94341D003EF5EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				CS_LIBRARIES = "../../WebApp/bin $(inherited)";
+				CS_REFERENCEDASSEMBLIES = "SgmlReaderDll.dll saxon8.dll System.Drawing System.Web.Services Extf.Net.dll Microsoft.Scripting.dll $(inherited) IKVM.GNU.Classpath.dll System.Configuration System.Web IKVM.Runtime.dll Mono.Security.dll Mono.Posix.dll Saxon.Api.dll IronPython.dll Memcached.ClientLibrary.dll";
+				CS_UNSAFE = YES;
+			};
+			name = Debug;
+		};
+		08D1CF810A94341D003EF5EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				CS_LIBRARIES = "../../WebApp/bin $(inherited)";
+				CS_REFERENCEDASSEMBLIES = "SgmlReaderDll.dll saxon8.dll System.Drawing System.Web.Services Extf.Net.dll Microsoft.Scripting.dll $(inherited) IKVM.GNU.Classpath.dll System.Configuration System.Web IKVM.Runtime.dll Mono.Security.dll Mono.Posix.dll Saxon.Api.dll IronPython.dll Memcached.ClientLibrary.dll";
+				CS_UNSAFE = YES;
+			};
+			name = Release;
+		};
+		08D1CF930A943433003EF5EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				EXECUTABLE_EXTENSION = .exe;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Xameleon;
+				TARGET_TYPE = "-target:library";
+			};
+			name = Debug;
+		};
+		08D1CF940A943433003EF5EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				EXECUTABLE_EXTENSION = .exe;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Xameleon;
+				TARGET_TYPE = "-target:library";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		08D1CF7F0A94341D003EF5EB /* Build configuration list for PBXProject "Xameleon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08D1CF800A94341D003EF5EB /* Debug */,
+				08D1CF810A94341D003EF5EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08D1CF920A943433003EF5EB /* Build configuration list for PBXNativeTarget "Xameleon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08D1CF930A943433003EF5EB /* Debug */,
+				08D1CF940A943433003EF5EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08D1CF7E0A94341D003EF5EB /* Project object */;
+}

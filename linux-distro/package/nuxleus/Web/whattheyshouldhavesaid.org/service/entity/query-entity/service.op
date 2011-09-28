@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/service/transform/base.xslt"?>
+<service:operation xmlns:service="http://xameleon.org/service" xmlns:operation="http://xameleon.org/service/operation" xmlns:proxy="http://xameleon.org/service/proxy" xmlns:param="http://xameleon.org/service/session/param">
+  <param:uri>http://api.hostip.info/?ip=</param:uri>
+  <param:return>{query-string:return}</param:return>
+  <param:ip>{server-variable:REMOTE_ADDR}</param:ip>
+  <operation:response content-type="text/xml" format="xml">
+    <proxy:get-geo-info-by-ip uri="{$uri}" />
+  </operation:response>
+</service:operation>

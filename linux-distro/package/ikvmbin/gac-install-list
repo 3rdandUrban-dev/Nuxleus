@@ -1,0 +1,14 @@
+/usr/lib/ikvm/IKVM.Runtime.dll
+/usr/lib/ikvm/IKVM.AWT.WinForms.dll
+/usr/lib/ikvm/ICSharpCode.SharpZipLib.dll
+/usr/lib/ikvm/IKVM.OpenJDK.Charsets.dll
+/usr/lib/ikvm/IKVM.OpenJDK.Corba.dll
+/usr/lib/ikvm/IKVM.OpenJDK.Core.dll
+/usr/lib/ikvm/IKVM.OpenJDK.Jdbc.dll
+/usr/lib/ikvm/IKVM.OpenJDK.Management.dll
+/usr/lib/ikvm/IKVM.OpenJDK.Misc.dll
+/usr/lib/ikvm/IKVM.OpenJDK.Security.dll
+/usr/lib/ikvm/IKVM.OpenJDK.SwingAWT.dll
+/usr/lib/ikvm/IKVM.OpenJDK.Text.dll
+/usr/lib/ikvm/IKVM.OpenJDK.Util.dll
+/usr/lib/ikvm/IKVM.OpenJDK.XML.dll

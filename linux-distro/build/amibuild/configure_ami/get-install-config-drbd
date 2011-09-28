@@ -1,0 +1,4 @@
+#!/bin/sh
+wget http://nuxleus.com/drbd-8.2.5.`uname -m`.precompiled.tar.bz2
+tar xf drbd-8.2.5.`uname -m`.precompiled.tar.bz2
+cd drbd-8.2.5; make install; modprobe drbd; rm -f get-drbd

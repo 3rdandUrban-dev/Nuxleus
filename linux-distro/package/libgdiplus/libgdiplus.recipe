@@ -1,0 +1,23 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class LibGdiPlus(AutoPackageRecipe):
+
+    buildRequires = [ 'gawk:runtime', 'mono:runtime', 
+		      'pkgconfig:devel', 'mono:lib',
+		      'fontconfig:devel', 'freetype:devel', 
+		      'libungif:devel', 'glib:devel', 
+		      'libXau:devel', 'libXdmcp:devel', 
+		      'libexif:devel', 'libjpeg:devel', 
+		      'libtiff:devel', 'zlib:devel' ]
+
+    name = "libgdiplus"
+    version = "2.4.2"
+
+    def unpack(r):
+	r.addArchive('http://ftp.novell.com/pub/mono/sources/%(name)s/%(name)s-%(version)s.tar.bz2')
+	#r.addArchive('http://go-mono.com/sources/%(name)s/%(name)s-%(version)s.tar.bz2')
+	#r.addArchive('http://mono.ximian.com/monobuild/preview/sources/%(name)s/%(name)s-%(version)s.tar.bz2')

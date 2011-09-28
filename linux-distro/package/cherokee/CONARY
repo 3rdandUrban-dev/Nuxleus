@@ -1,0 +1,10 @@
+stateversion 2
+name cherokee:source
+version /nuxleus.rpath.org@nux:devel/1247128772.801:0.99.20-1
+branch /nuxleus.rpath.org@nux:devel
+5
+0abecbf0ecaa7d753a8452c63c7d37c8 cherokee-0.7.0.tar.gz 4bb154283869724996006e6e66f10b9f11219274 _ /nuxleus.rpath.org@nux:devel/0.7.0-1
+21aa9b84792b79ca6654f09b188bdfc2 cherokee-0.8.1.tar.gz 0b0d198cbd79325c39424631c081570aafa100c9 _ /nuxleus.rpath.org@nux:devel/0.8.1-1
+75dfd0bc3627e0adcae0482712dbe027 cherokee.init c802f0035a233ba54f89c46e487f859aac12b1e3 config /nuxleus.rpath.org@nux:devel/0.6.1-2
+8235609142ec09b8a87639b538f64fb7 cherokee.recipe 428f4ce511b7d2b0115367bd420d9ec3e1e3ee26 config /nuxleus.rpath.org@nux:devel/0.99.20-1
+87e41fde2fd6867dccf70ae53848658e cherokee-0.99.20.tar.gz 7212c77324ee171900b38dd7a994dd1f93944eb7 autosource /nuxleus.rpath.org@nux:devel/0.99.20-1

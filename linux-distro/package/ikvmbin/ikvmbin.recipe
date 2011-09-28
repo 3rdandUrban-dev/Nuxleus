@@ -1,0 +1,68 @@
+#
+# Copyright (c) 2006 rPath, Inc.
+# This file is distributed under the terms of the MIT License.
+# A copy is available at http://www.rpath.com/permanent/mit-license.html
+#
+
+class Ikvmbin(AutoPackageRecipe):
+
+    buildRequires = ['mono:devel', 'mono:cil', 'mono:runtime', 'mono:lib', 'pkgconfig:devel', 'cli-gac-tag' ]
+
+    name = "ikvmbin"
+    version = "0.40.0.1"
+
+    def setup(r):
+        r.addArchive('http://www.frijters.net/%(name)s-%(version)s.zip')
+        r.addSource('makefile')
+	r.addSource('ikvm')
+        r.addSource('ikvmc')
+        r.addSource('ikvmstub')
+	r.addSource('IKVM.Runtime.jar')
+	r.addSource('IKVM.OpenJDK.Charsets.jar')
+	r.addSource('IKVM.OpenJDK.Corba.jar')
+	r.addSource('IKVM.OpenJDK.Core.jar')
+	r.addSource('IKVM.OpenJDK.Jdbc.jar')
+	r.addSource('IKVM.OpenJDK.Management.jar')
+	r.addSource('IKVM.OpenJDK.Misc.jar')
+	r.addSource('IKVM.OpenJDK.Security.jar')
+	r.addSource('IKVM.OpenJDK.SwingAWT.jar')
+	r.addSource('IKVM.OpenJDK.Text.jar')
+	r.addSource('IKVM.OpenJDK.Util.jar')
+	r.addSource('IKVM.OpenJDK.XML.jar')
+	r.addSource('System.jar')
+	r.addSource('System.Xml.jar')
+	r.addSource('mscorlib.jar')
+        r.addSource('gac-install-list')
+	r.Install('gac-install-list', '%(libdir)s/cli-gac/ikvm.gacinstall')
+        r.Config('%(libdir)s/cli-gac/ikvm.gacinstall')
+        r.addSource('ikvm.pc')
+	r.Install('ikvm.pc', '%(libdir)s/pkgconfig/ikvm.pc')
+        
+        r.MakeInstall()
+        r.Requires(exceptDeps=r'java\:\ gnu\.java\.beans\.decoder\.AssemblyException')
+        r.Requires(exceptDeps=r'java\:\ java\.lang\.VMThread\$InterruptProc')
+        r.Requires(exceptDeps=r'java\:\ gnu\.javax\.net\.ssl\.provider\.MacException')
+	r.Requires(exceptDeps=r'java\:\ java\.lang\.Comparable')
+	r.Requires(exceptDeps=r'java\:\ java\.lang\.Enum')
+	r.Requires(exceptDeps=r'java\:\ java\.lang\.Object')
+	r.Requires(exceptDeps=r'java\:\ java\.lang\.String')
+	r.Requires(exceptDeps=r'java\:\ java\.lang\.UnsatisfiedLinkError')
+	r.Requires(exceptDeps=r'java\:\ java\.lang\.annotation\.Annotation')
+	r.Requires(exceptDeps=r'java\:\ java\.lang\.Throwable')
+	r.Requires(exceptDeps=r'java\:\ cli\.System\.Configuration\.ConfigurationElement')
+	r.Requires(exceptDeps=r'java\:\ cli\.System\.Configuration\.ConfigurationElementCollection')
+	r.Requires(exceptDeps=r'java\:\ cli\.System\.Configuration\.ConfigurationSection')
+	r.Requires(exceptDeps=r'java\:\ cli\.System\.Configuration\.ConfigurationSectionGroup')
+	r.Requires(exceptDeps=r'java\:\ cli\.System\.Configuration\.Internal\.IConfigErrorInfo')
+	r.Requires(exceptDeps=r'java\:\ cli\.System\.Configuration\.Provider\.ProviderBase')
+	r.Requires(exceptDeps=r'java\:\ cli\.System\.Configuration\.Provider\.ProviderCollection')
+	r.Requires(exceptDeps=r'java\:\ com\.sun\.jndi\.ldap\.Ber\$DecodeException')
+	r.Requires(exceptDeps=r'java\:\ com\.sun\.jndi\.ldap\.Ber\$EncodeException')
+	r.Requires(exceptDeps=r'java\:\ com\.sun\.org\.apache\.xalan\.internal\.xsltc\.cmdline\.getopt\.IllegalArgumentException')
+	r.Requires(exceptDeps=r'java\:\ com\.sun\.org\.apache\.xalan\.internal\.xsltc\.cmdline\.getopt\.MissingOptArgException')
+	r.Requires(exceptDeps=r'CIL\:\ ISymWrapper\(2\.0\.0\.0\)')
+	r.Requires('%(libdir)s/cli-gac/ikvm.gacinstall', 'cli-gac-tag')
+        r.TagSpec('cli-gac', '%(libdir)s/cli-gac/ikvm.gacinstall')
+
+        
+

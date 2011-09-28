@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib/rubynet
+
+Name: IronRuby
+Description: The IronRuby Compiler, Runtime, and Interactive Console from Microsoft
+
+Version: pre-1.0-svn30
+Libs:   -r:${libdir}/Microsoft.Scripting.dll \
+        -r:${libdir}/Ruby.dll \

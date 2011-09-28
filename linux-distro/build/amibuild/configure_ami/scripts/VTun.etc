@@ -1,0 +1,63 @@
+#!/bin/sh
+#
+# Resource script for VTun
+#
+# Author: M. David Peterson <m.david@xmlhacker.com>
+#
+# Description: Establishes a point-to-point tunnel with specified IP of VTun server.
+#
+#    Note: This command requires an argument, unlike normal init scripts.
+#
+#    This can be given in the haresources file as:
+#
+#        VTun::10.251.126.214::/usr/local/etc/vtund-client.conf::my_tunnel
+#
+#    The above connects to 10.251.126.214 and establishes a relationship as defined by the my_tunnel profile contained in /usr/local/etc/vtund-client.conf
+#
+#      OCF parameters are as below:
+#        OCF_RESKEY_vtunServerIP
+#        OCF_RESKEY_vtunClientConfig
+#        OCF_RESKEY_vtunProfile
+#
+# License:  GNU General Public License (GPL)
+#
+# Copyright:    (C) 2008 M. David Peterson
+
+# Source function library.
+. /etc/ha.d/resource.d//hto-mapfuncs
+
+usage() {
+  echo "Usage: $0 <server_ip> <vtun_config_file> <vtun_client_profile> $LEGAL_ACTIONS"
+  exit 1
+}
+
+case "$#" in
+  0|1|2)      
+      echo "VTun server IP and VTun client profile are required."
+      usage
+      ;;
+  3)
+      cmd=$3
+      OCF_RESKEY_vtunServerIP=$1
+      OCF_RESKEY_vtunProfile=$2
+      OCF_RESKEY_vtunClientConfig="/usr/local/etc/vtund-client.conf"
+      export OCF_RESKEY_vtunServerIP OCF_RESKEY_vtunProfile OCF_RESKEY_vtunClientConfig
+      ;;
+  4)
+      cmd=$4
+      OCF_RESKEY_vtunServerIP=$1
+      OCF_RESKEY_vtunProfile=$2
+      OCF_RESKEY_vtunClientConfig=$3
+      export OCF_RESKEY_vtunServerIP OCF_RESKEY_vtunProfile OCF_RESKEY_vtunClientConfig
+      ;;
+  *)    
+      echo "Additional parameters found: $# but max. 3 are allowed!"
+      usage
+      ;;
+esac
+
+OCF_TYPE=VTun
+OCF_RESOURCE_INSTANCE=${OCF_TYPE}_${OCF_RESKEY_vtunProfile}
+export OCF_TYPE OCF_RESOURCE_INSTANCE
+
+ra_execocf $cmd

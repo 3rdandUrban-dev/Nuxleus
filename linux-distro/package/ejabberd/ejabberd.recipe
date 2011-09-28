@@ -1,0 +1,12 @@
+class EjabberdRecipe(CPackageRecipe):
+    name = 'ejabberd'
+    version = '1.1.4'
+
+    buildRequires = ['erlang:runtime', 'openssl:devel', 'zlib:devel', 'expat:devel', 'krb5:devel' ]
+
+    def setup(r):
+        r.addArchive('http://www.process-one.net/en/projects/ejabberd/download/%(version)s/ejabberd-%(version)s.tar.gz')
+	r.macros.cflags = '-I/usr/kerberos/include/'
+	r.Configure(dir="src")
+        r.Make(dir="src")
+        r.MakeInstall(dir="src")

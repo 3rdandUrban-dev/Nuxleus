@@ -1,0 +1,9 @@
+stateversion 2
+name pussh:source
+version /nuxleus.rpath.org@nux:devel/1166162808.441:1.05-1
+branch /nuxleus.rpath.org@nux:devel
+4
+4f96fadea11eab020ce480ad5c21983c pussh_1.05.tar.gz bfe112c7907e123ee4853c4c2867629204e8896c autosource /nuxleus.rpath.org@nux:devel/1.05-1
+97de14d343d1a659e9c4dfb177e0eb17 binpussh 972cb4affa903e939da40ccbf0a279df1078ccd6 config /nuxleus.rpath.org@nux:devel/1.05-1
+eee76411839e31b0298073211e830a3c pussh.recipe 990e733ce5515e18c54b8ecdd31329fa2a9df382 config /nuxleus.rpath.org@nux:devel/1.05-1
+af3863c082c23b6f459ac5fbdd7628fd makefile 590d3d5887c628e50af775ee33140c7bf4272b26 config /nuxleus.rpath.org@nux:devel/1.05-1

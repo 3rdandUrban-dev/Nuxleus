@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<view:module class="base" id="160x600-adsense" xmlns="http://www.w3.org/1999/xhtml" xmlns:view="http://atomictalk.org/page/view">
+  <view:script type="javascript">
+    <![CDATA[
+    google_ad_client = "pub-5176870901224890";
+    //728x15, created 12/16/07
+    google_ad_slot = "9960523539";
+    google_ad_width = 728;
+    google_ad_height = 15;
+    ]]>
+  </view:script>
+  <view:script type="javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"/>
+</view:module>

@@ -1,0 +1,7 @@
+stateversion 2
+name memcached:source
+version /contrib.rpath.org@rpl:devel//1//nuxleus.rpath.org@nux:devel/1246350664.172:1.2.8-0.0.1
+branch /contrib.rpath.org@rpl:devel//1//nuxleus.rpath.org@nux:devel
+2
+abfabf8411e48cfead4ad3a8dc6fb928 memcached-1.2.8.tar.gz fe591f6a0468b60ce8c2a415a9bd1da0a448d525 autosource /contrib.rpath.org@rpl:devel//1//nuxleus.rpath.org@nux:devel/1.2.8-0.0.1
+eadb1846d19ee91db6f6bf1e21b42b90 memcached.recipe fce132861d33635337e6812a79c3fedd72bbb870 config /contrib.rpath.org@rpl:devel//1//nuxleus.rpath.org@nux:devel/1.2.8-0.0.1

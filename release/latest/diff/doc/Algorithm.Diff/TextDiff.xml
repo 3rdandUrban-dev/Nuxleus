@@ -1,0 +1,77 @@
+<Type Name="TextDiff" FullName="Algorithm.Diff.TextDiff">
+  <TypeSignature Language="C#" Value="public class TextDiff : Algorithm.Diff.IDiff" />
+  <AssemblyInfo>
+    <AssemblyName>Diff</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Algorithm.Diff.IDiff</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TextDiff (string left, string right);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="left" Type="System.String" />
+        <Parameter Name="right" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="left">The left document.</param>
+        <param name="right">The right document.</param>
+        <summary>Constructs a case-sensitive diff between the two documents.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TextDiff (string left, string right, System.Collections.IComparer comparer);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="left" Type="System.String" />
+        <Parameter Name="right" Type="System.String" />
+        <Parameter Name="comparer" Type="System.Collections.IComparer" />
+      </Parameters>
+      <Docs>
+        <param name="left">The left document.</param>
+        <param name="right">The right document.</param>
+        <param name="comparer">A comparer object to compare substrings of the documents, or <see langword="null" /> to use the default string comparer.</param>
+        <summary>Compares two documents using a comparer object to perform string comparisons.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Left">
+      <MemberSignature Language="C#" Value="public System.Collections.IList Left { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.IList</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The left document.</summary>
+        <value>The left document.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Right">
+      <MemberSignature Language="C#" Value="public System.Collections.IList Right { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.IList</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The right document.</summary>
+        <value>The right document.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <Docs>
+    <summary>Provides a differencing algorithm that is specialized for text documents.</summary>
+    <remarks>
+      <para>The TextDiff class provides a structured diff for text documents.  It performs line-by-line, word-by-word, and character-by-character comparisons between a base document and a changed document.</para>
+<para>TextDiff provides cleaner differences than a normal character-by-character diff because it is aware of correspondences of words and lines between the two documents.  It will recognize words and lines as being unchanged in cases where a normal character diff may generate fewer hunks, though those hunks less accurately reflect the kind of changes a human would make to a document.</para></remarks>
+  </Docs>
+</Type>

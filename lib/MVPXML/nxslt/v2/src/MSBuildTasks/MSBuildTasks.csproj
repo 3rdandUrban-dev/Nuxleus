@@ -1,0 +1,290 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{812F5DEC-1559-417B-B4AA-652D02150724}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XmlLab.NxsltTasks.MSBuild</RootNamespace>
+    <AssemblyName>XmlLab.NxsltTasks.MSBuild</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\nxslt.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\sr.cs">
+      <Link>Common\sr.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xmlbaseawarexmltextreader.cs">
+      <Link>Common\xmlbaseawarexmltextreader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xmlnamespaces.cs">
+      <Link>Common\xmlnamespaces.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xmlnodelistfactory.cs">
+      <Link>Common\xmlnodelistfactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xmlprefix.cs">
+      <Link>Common\xmlprefix.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xpath\dynamiccontext.cs">
+      <Link>Common\XPath\dynamiccontext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xpath\emptyxpathnodeiterator.cs">
+      <Link>Common\XPath\emptyxpathnodeiterator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xpath\ihasxpathnavigator.cs">
+      <Link>Common\XPath\ihasxpathnavigator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xpath\subtreeexpathnavigator.cs">
+      <Link>Common\XPath\subtreeexpathnavigator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xpath\xpathcache.cs">
+      <Link>Common\XPath\xpathcache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xpath\xpathnavigatoriterator.cs">
+      <Link>Common\XPath\xpathnavigatoriterator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\common\v2\src\xpath\xpathvariable.cs">
+      <Link>Common\XPath\xpathvariable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\exsltcontext.cs">
+      <Link>Exslt\exsltcontext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\exsltcontextfunction.cs">
+      <Link>Exslt\exsltcontextfunction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\exsltdatesandtimes.cs">
+      <Link>Exslt\exsltdatesandtimes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\exsltmath.cs">
+      <Link>Exslt\exsltmath.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\exsltnamespaces.cs">
+      <Link>Exslt\exsltnamespaces.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\exsltrandom.cs">
+      <Link>Exslt\exsltrandom.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\exsltregularexpressions.cs">
+      <Link>Exslt\exsltregularexpressions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\exsltsets.cs">
+      <Link>Exslt\exsltsets.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\exsltstrings.cs">
+      <Link>Exslt\exsltstrings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\exslttransform.cs">
+      <Link>Exslt\exslttransform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\gdndatesandtimes.cs">
+      <Link>Exslt\gdndatesandtimes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\gdndynamic.cs">
+      <Link>Exslt\gdndynamic.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\gdnmath.cs">
+      <Link>Exslt\gdnmath.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\gdnregularexpressions.cs">
+      <Link>Exslt\gdnregularexpressions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\gdnsets.cs">
+      <Link>Exslt\gdnsets.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\gdnstrings.cs">
+      <Link>Exslt\gdnstrings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\multioutput\multixmltextwriter.cs">
+      <Link>Exslt\MultiOutput\multixmltextwriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\multioutput\outputstate.cs">
+      <Link>Exslt\MultiOutput\outputstate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\xsl\ixmltransform.cs">
+      <Link>Common\Xsl\ixmltransform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\xsl\mvpxsltransform.cs">
+      <Link>Common\Xsl\mvpxsltransform.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\exslt\v2\src\exslt\xsl\xslreader.cs">
+      <Link>Common\Xsl\xslreader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xinclude\v2\src\sr.cs">
+      <Link>XInclude\sr.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xinclude\v2\src\textincludingreader.cs">
+      <Link>XInclude\textincludingreader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xinclude\v2\src\textutils.cs">
+      <Link>XInclude\textutils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xinclude\v2\src\xincludeexception.cs">
+      <Link>XInclude\xincludeexception.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xinclude\v2\src\xincludekeywords.cs">
+      <Link>XInclude\xincludekeywords.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xinclude\v2\src\xincludingreader.cs">
+      <Link>XInclude\xincludingreader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xinclude\v2\src\xincludingreaderstate.cs">
+      <Link>XInclude\xincludingreaderstate.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\elementschemapointerpart.cs">
+      <Link>XPointer\elementschemapointerpart.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\lexutils.cs">
+      <Link>XPointer\lexutils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\pointer.cs">
+      <Link>XPointer\pointer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\pointerpart.cs">
+      <Link>XPointer\pointerpart.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\schemabasedpointer.cs">
+      <Link>XPointer\schemabasedpointer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\shorthandpointer.cs">
+      <Link>XPointer\shorthandpointer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\sr.cs">
+      <Link>XPointer\sr.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\xmlnsschemapointerpart.cs">
+      <Link>XPointer\xmlnsschemapointerpart.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\xpath1schemapointerpart.cs">
+      <Link>XPointer\xpath1schemapointerpart.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\xpointerexception.cs">
+      <Link>XPointer\xpointerexception.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\xpointerlexer.cs">
+      <Link>XPointer\xpointerlexer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\xpointerparser.cs">
+      <Link>XPointer\xpointerparser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\xpointerreader.cs">
+      <Link>XPointer\xpointerreader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\xpointerschema.cs">
+      <Link>XPointer\xpointerschema.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\mvpxmllibrary\xpointer\v2\src\xpointerschemapointerpart.cs">
+      <Link>XPointer\xpointerschemapointerpart.cs</Link>
+    </Compile>
+    <Compile Include="..\NXsltArgumentsParser.cs">
+      <Link>NXsltArgumentsParser.cs</Link>
+    </Compile>
+    <Compile Include="..\NxsltCommandLineParsingException.cs">
+      <Link>NxsltCommandLineParsingException.cs</Link>
+    </Compile>
+    <Compile Include="..\NxsltException.cs">
+      <Link>NxsltException.cs</Link>
+    </Compile>
+    <Compile Include="..\NxsltMain.cs">
+      <Link>NxsltMain.cs</Link>
+    </Compile>
+    <Compile Include="..\NXsltOptions.cs">
+      <Link>NXsltOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\NXsltTimings.cs">
+      <Link>NXsltTimings.cs</Link>
+    </Compile>
+    <Compile Include="..\Properties\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Reporter.cs">
+      <Link>Reporter.cs</Link>
+    </Compile>
+    <Compile Include="..\TypeUtils.cs">
+      <Link>TypeUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\Utils.cs">
+      <Link>Utils.cs</Link>
+    </Compile>
+    <Compile Include="Nxslt.cs" />
+    <Compile Include="NXsltStrings.Designer.cs">
+      <DependentUpon>NXsltStrings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="NxsltTaskException.cs" />
+    <Compile Include="TaskReporter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NXsltStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NXsltStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>XmlLab.nxslt</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\nxslt.snk">
+      <Link>nxslt.snk</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>@echo ########### nxslt Custom Build Event has started
+@echo ########### Setting environment variables
+call "$(DevEnvDir)..\Tools\vsvars32.bat"
+@echo ########### Disassembing...
+ildasm "$(TargetFileName)" /out=nxslt.il /nobar
+@echo ########### Renaming EXSLT methods... 
+"$(ProjectDir)../MethodRenamer.exe" nxslt.il nxslt.fixed.il
+@echo ########### Assembling library back...
+ilasm nxslt.fixed.il /RESOURCE=nxslt.res /DLL /OUTPUT="$(TargetFileName)" /KEY="$(ProjectDir)../nxslt.snk"
+@echo ########### Cleaning...
+del nxslt.res
+del *.il
+del *.resources
+@echo ########### nxslt Custom Build Event has finished
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

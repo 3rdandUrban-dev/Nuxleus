@@ -1,0 +1,29 @@
+--- config.layout.rpath	2004-11-21 13:50:36.000000000 -0500
++++ config.layout	2006-11-23 20:09:45.000000000 -0500
+@@ -322,3 +322,26 @@
+     installbuilddir: ${prefix}/etc/apache2/build
+     errordir:      ${datadir}/error
+ </Layout>
++
++<Layout rPath>
++    prefix:        %(sysconfdir)s/httpd
++    exec_prefix:   %(exec_prefix)s
++    bindir:        %(bindir)s
++    sbindir:       %(sbindir)s
++    libdir:        %(libdir)s
++    libexecdir:    %(libdir)s/httpd/modules
++    mandir:        %(mandir)s
++    sysconfdir:    ${prefix}/conf
++    datadir:       %(contentdir)s
++    installbuilddir: ${libdir}/httpd/build
++    errordir:      ${datadir}/error
++    iconsdir:      ${datadir}/icons
++    htdocsdir:     ${datadir}/htdocs
++    manualdir:     ${datadir}/manual
++    cgidir:        ${datadir}/cgi-bin
++    includedir:    %(includedir)s/httpd
++    localstatedir: %(localstatedir)s
++    runtimedir:    ${localstatedir}/run
++    logfiledir:    ${localstatedir}/log/httpd
++    proxycachedir: ${localstatedir}/cache/mod_proxy
++</Layout>

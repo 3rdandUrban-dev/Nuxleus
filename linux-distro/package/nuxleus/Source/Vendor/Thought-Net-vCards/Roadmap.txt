@@ -1,0 +1,23 @@
+
+Upcoming Plans
+--------------
+
+Version 0.4 (late September 2007)
+
+  - This release will focus on stabilization: bug fixes,
+    updated documentation, more unit tests, and rebranding
+    the library under a more generic name.  No major
+    enhancements are expected unless significent elements
+    are missing.
+
+
+Version 0.5 (October or November 2007)
+
+  - Support for hCard and RDF formats.
+  - Feel free to work on these formats now (inherit from vCardWriter/vCardReader).
+
+
+Version 0.6 and beyond...
+
+  - Send your suggestions.
+

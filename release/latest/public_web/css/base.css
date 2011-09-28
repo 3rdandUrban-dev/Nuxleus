@@ -1,0 +1,35 @@
+body {
+
+}
+
+ul {
+  display:block;
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  width:100%;
+}
+li {
+  display:inline;
+  width:auto;
+  font-size:medium;
+}
+ul.list li {
+  display: block;
+}
+ul.TtoB li {
+  display:block;
+}
+ul.LtoR li {
+  display:inline;
+  text-align: left;
+}
+ul.RtoL li {
+  text-align: right;
+  display:inline;
+}
+.base {
+  margin:0;
+  padding:0;
+}
+

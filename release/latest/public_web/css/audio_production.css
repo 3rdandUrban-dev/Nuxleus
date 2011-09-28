@@ -1,0 +1,65 @@
+#header {
+    background: #FFF url( "/images/bg-brown.png" ) top repeat-x;
+}
+#sub-nav-top > ul {
+    border-top: 1px solid #663300;
+    border-bottom: 1px solid #663300;
+}
+#sub-nav-top li a:hover {
+    background-color: #663300;
+}
+#sub-nav-top li.selected a {
+    color: #663300;
+    border-right: 1px solid #663300;
+    border-left: 1px solid #663300;
+}
+#sub-nav-top li.selected a:hover {
+    background-color: #FFF;
+}
+#sub-nav > ul {
+    border-bottom: 1px solid #663300;
+}
+#sub-nav > ul li:hover > a {
+    color: #663300;
+    border-left: 1px solid #663300;
+    border-right: 1px solid #663300;
+}
+#query {
+    border: 1px solid #663300;
+    color: #663300;
+}
+#go {
+    border: 1px solid #663300;
+    color: #663300;
+}
+#view {
+  background-color: #663300;
+}
+#view > ul > li {
+  color:#333;
+  background-color:inherit;
+}
+#view > ul > li.selected > a {
+  color:#FFF;                                                                       
+  background-color:#663300;
+}
+#view > ul > li.selected > a:hover {
+  color:#FFF;
+  background-color:#660000;
+}
+#view > ul > li > a:hover {
+  color:#FFF;
+  background-color:#660000;
+}
+#view > ul > li > a {
+  color:#FFF;
+  background-color:#663300;
+}
+#top-navigation li.current > a {
+  color:#FFF;
+  background-color:#660000;
+}
+#top-navigation li.current > a:hover {
+    color: #FFF;
+    background-color: #663300;
+}
