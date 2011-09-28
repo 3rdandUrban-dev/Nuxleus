@@ -15,10 +15,6 @@ namespace Nuxleus.Core
         }
     }
 
-<<<<<<< HEAD
-=======
-    //[SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.AllFlags)]
->>>>>>> 1c9f7b30d9b16dbd6968aad395edf261f5973dad
     public static class Log
     {
 
