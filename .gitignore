@@ -13,3 +13,4 @@ App_Log
 .svn
 
 vendor
+*.dylib

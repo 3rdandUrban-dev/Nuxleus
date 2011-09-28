@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -20,6 +20,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -31,12 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
@@ -89,19 +87,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Saxon.Api.dll</HintPath>
-    </Reference>
-    <Reference Include="saxon9, Version=9.1.0.8, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\saxon9.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Dynamic" />
     <Reference Include="ServiceStack.Common, Version=1.0.4189.30552, Culture=neutral, PublicKeyToken=null">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ServiceStack.Common.dll</HintPath>
@@ -130,7 +118,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\ServiceStack.Text.dll</HintPath>
     </Reference>
-    <Reference Include="protobuf-net, Version=2.0.0.423, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8acf8976f212e552">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Saxon.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="saxon9, Version=9.1.0.8, Culture=neutral, PublicKeyToken=8acf8976f212e552">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\saxon9.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.0.0.431, Culture=neutral, PublicKeyToken=257b51d87d2e4d67">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\protobuf-net.dll</HintPath>
     </Reference>
@@ -234,6 +230,7 @@
     <Compile Include="Nuxleus.Core\Core\Singleton\SingletonProvider.cs" />
     <Compile Include="Nuxleus.Core\Extension\ExtensionMethods.cs" />
     <Compile Include="Nuxleus.Core\Extension\Log\Log.cs" />
+    <Compile Include="Nuxleus.Core\Extension\StringCryptographyExtensions.cs" />
     <Compile Include="Nuxleus.Core\Extension\StringUtils\Substring.cs" />
     <Compile Include="Nuxleus.Core\Extension\StringUtils\Translate.cs" />
     <Compile Include="Nuxleus.Core\MetaData\Attributes\Label.cs" />
@@ -247,7 +244,9 @@
     <Compile Include="Nuxleus.Core\Process\ZorbaProcess.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Nuxleus.Core\Process\NuxleusProcess.cs" />
+    <Compile Include="Nuxleus.Core\Process\NuxleusProcess.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Nuxleus.Core\Service\Core.cs" />
     <Compile Include="Nuxleus.Core\Service\HttpWebService.cs" />
     <Compile Include="Nuxleus.Core\Utility\Diff\Diff.cs" />
@@ -452,7 +451,9 @@
     <Compile Include="Nuxleus.Web\XmlServiceOperation\XmlServiceOperationReader.cs" />
     <Compile Include="Nuxleus.Web\XPathServiceOperationNavigator\XPathServiceOperationNavigator.cs" />
     <Compile Include="Nuxleus.Web\Agent.cs" />
-    <Compile Include="Nuxleus.Service\Authentication\Authenticate.cs" />
+    <Compile Include="Nuxleus.Service\Authentication\Authenticate.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Nuxleus.Service\Drawing\NuxleusImageResizeProcessManager.cs" />
     <Compile Include="Nuxleus.Service\FileSystem\Watcher\FileSystemWatcherService.cs">
       <SubType>Component</SubType>
@@ -460,7 +461,9 @@
     <Compile Include="Nuxleus.Service\FileSystem\Watcher\Watcher.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Nuxleus.Service\FileSystem\Replication\Replication.cs" />
+    <Compile Include="Nuxleus.Service\FileSystem\Replication\Replication.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Nuxleus.Service\FileSystem\RevisionControl\RevisionControlManager.cs" />
     <Compile Include="Nuxleus.Service\LLUP\PublisherService.cs">
       <SubType>Component</SubType>
@@ -598,33 +601,30 @@
     <Compile Include="Nuxleus.Extension.Linq\Query\QueryableExtensions.cs" />
     <Compile Include="Nuxleus.Extension.Linq\Query\Utils.cs" />
     <Compile Include="Nuxleus.Extension.Xml\Nuxleus.Extension.Xml.XPath\GetAttribute.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Nuxleus.Core\" />
-    <Folder Include="Nuxleus.Core\" />
-    <Folder Include="Nuxleus.Core\Authentication\OAuth\" />
     <Folder Include="Nuxleus.Core\Core\IO\Storage\Cache\Memcached\" />
     <Folder Include="Nuxleus.Core\Core\IO\Storage\Cache\Redis\" />
-    <Folder Include="Nuxleus.Core\Core\Singleton\" />
-    <Folder Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Member\" />
-    <Folder Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Content\" />
-    <Folder Include="..\" />
     <Folder Include="Nuxleus.Extension\" />
-    <Folder Include="Nuxleus.Geo\" />
-    <Folder Include="Nuxleus.Messaging\" />
-    <Folder Include="Nuxleus.PubSub\" />
-    <Folder Include="Nuxleus.Web\" />
-    <Folder Include="Nuxleus.Service\" />
-    <Folder Include="Nuxleus.Xameleon\" />
-    <Folder Include="Properties\" />
-    <Folder Include="Nuxleus.Extension.Xml\Nuxleus.Extension.Xml.XPath\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nuxleus.Core\Configuration\App.config" />
     <None Include="Nuxleus.Core\Utility\Utility\S3\README" />
     <None Include="app.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

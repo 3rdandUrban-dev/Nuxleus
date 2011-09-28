@@ -2,25 +2,25 @@ using System;
 
 namespace Nuxleus.Core
 {
-    public class SingletonProvider <T> where T:new()
-    {
-        SingletonProvider ()
-        {
-        }
+	public class SingletonProvider <T> where T:new()
+	{
+		SingletonProvider ()
+		{
+		}
 
-        public static T Instance {
-            get { return SingletonCreator.instance; }
-        }
+		public static T Instance {
+			get { return SingletonCreator.instance; }
+		}
 
-        class SingletonCreator
-        {
-            static SingletonCreator ()
-            {
-            }
+		class SingletonCreator
+		{
+			static SingletonCreator ()
+			{
+			}
 
-            internal static readonly T instance = new T ();
-        }
-    }
+			internal static readonly T instance = new T ();
+		}
+	}
 	
 
 }
