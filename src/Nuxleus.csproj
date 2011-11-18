@@ -233,6 +233,9 @@
     <Compile Include="Nuxleus.Core\Extension\StringCryptographyExtensions.cs" />
     <Compile Include="Nuxleus.Core\Extension\StringUtils\Substring.cs" />
     <Compile Include="Nuxleus.Core\Extension\StringUtils\Translate.cs" />
+    <Compile Include="Nuxleus.Core\Net\ConfigurationUtility.cs" />
+    <Compile Include="Nuxleus.Core\Net\FileOperations.cs" />
+    <Compile Include="Nuxleus.Core\Net\HttpFileOperations.cs" />
     <Compile Include="Nuxleus.Core\MetaData\Attributes\Label.cs" />
     <Compile Include="Nuxleus.Core\MetaData\Attributes\Message.cs" />
     <Compile Include="Nuxleus.Core\Process\DarcsProcess.cs">

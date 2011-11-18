@@ -15,4 +15,14 @@ namespace Nuxleus.Core
         IEnumerable<IAsync> InvokeAsync();
         IResponse Invoke();
     }
+
+    public interface ITask<T>
+    {
+        Guid TaskID { get; }
+        ITransaction Transaction { get; }
+        HttpStatusCode StatusCode { get; set; }
+        T Result { get; set; }
+        IEnumerable<IAsync> InvokeAsync();
+        IResponse Invoke();
+    }
 }
