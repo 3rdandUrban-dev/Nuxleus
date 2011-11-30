@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Nuxleus.Core</RootNamespace>
     <AssemblyName>Nuxleus.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,97 +36,76 @@
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
-    </Reference>
-    <Reference Include="ALAZ.SystemEx.NetEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
-    </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Data" />
-    <Reference Include="DDay.iCal, Version=1.0.2.0, Culture=neutral, PublicKeyToken=b287ad3b61754bec">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\DDay.iCal.dll</HintPath>
-    </Reference>
-    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\EcmaScript.NET.modified.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Mvp.Xml.dll</HintPath>
-    </Reference>
-    <Reference Include="SgmlReaderDll, Version=1.8.7.17911, Culture=neutral, PublicKeyToken=46b2db9ca481831b">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
-    </Reference>
-    <Reference Include="taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\taglib-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Thought.vCards, Version=0.4.0.0, Culture=neutral, PublicKeyToken=b34606f0aa925886">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Thought.vCards.dll</HintPath>
-    </Reference>
-    <Reference Include="Yahoo.Yui.Compressor, Version=1.4.1.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
-    <Reference Include="ServiceStack.Common, Version=1.0.4189.30552, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ALAZ.SystemEx">
+      <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
+    </Reference>
+    <Reference Include="ALAZ.SystemEx.NetEx">
+      <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
+    </Reference>
+    <Reference Include="DDay.iCal">
+      <HintPath>..\lib\DDay.iCal.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET.modified">
+      <HintPath>..\lib\EcmaScript.NET.modified.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Memcached.ClientLibrary">
+      <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvp.Xml">
+      <HintPath>..\lib\Mvp.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="SgmlReaderDll">
+      <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
+    </Reference>
+    <Reference Include="taglib-sharp">
+      <HintPath>..\lib\taglib-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Thought.vCards">
+      <HintPath>..\lib\Thought.vCards.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
       <HintPath>..\lib\ServiceStack.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack, Version=2.2.6.30553, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ServiceStack">
       <HintPath>..\lib\ServiceStack.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=1.0.4189.30552, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ServiceStack.Interfaces">
       <HintPath>..\lib\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.OrmLite, Version=2.2.0.9049, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ServiceStack.OrmLite">
       <HintPath>..\lib\ServiceStack.OrmLite.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Redis, Version=2.2.0.8979, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ServiceStack.Redis">
       <HintPath>..\lib\ServiceStack.Redis.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4189.30554, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ServiceStack.ServiceInterface">
       <HintPath>..\lib\ServiceStack.ServiceInterface.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Text, Version=2.2.4.38332, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="ServiceStack.Text">
       <HintPath>..\lib\ServiceStack.Text.dll</HintPath>
     </Reference>
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8acf8976f212e552">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Saxon.Api">
       <HintPath>..\lib\Saxon.Api.dll</HintPath>
     </Reference>
-    <Reference Include="saxon9, Version=9.1.0.8, Culture=neutral, PublicKeyToken=8acf8976f212e552">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="saxon9">
       <HintPath>..\lib\saxon9.dll</HintPath>
     </Reference>
-    <Reference Include="protobuf-net, Version=2.0.0.431, Culture=neutral, PublicKeyToken=257b51d87d2e4d67">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="protobuf-net">
       <HintPath>..\lib\protobuf-net.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -228,11 +206,6 @@
     <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Tag.cs" />
     <Compile Include="Nuxleus.Core\Core\IO\Storage\FileSystem\RevisionControl\Git\Commit.cs" />
     <Compile Include="Nuxleus.Core\Core\Singleton\SingletonProvider.cs" />
-    <Compile Include="Nuxleus.Core\Extension\ExtensionMethods.cs" />
-    <Compile Include="Nuxleus.Core\Extension\Log\Log.cs" />
-    <Compile Include="Nuxleus.Core\Extension\StringCryptographyExtensions.cs" />
-    <Compile Include="Nuxleus.Core\Extension\StringUtils\Substring.cs" />
-    <Compile Include="Nuxleus.Core\Extension\StringUtils\Translate.cs" />
     <Compile Include="Nuxleus.Core\Net\ConfigurationUtility.cs" />
     <Compile Include="Nuxleus.Core\Net\FileOperations.cs" />
     <Compile Include="Nuxleus.Core\Net\HttpFileOperations.cs" />
@@ -609,6 +582,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\AsyncExtensionMethods\Invoke.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\ByteExtensionMethods\IntegerTransforms.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\ByteExtensionMethods\StringTransforms.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\IntegerExtensionMethods\EndianTransforms.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\ObjectExtensionMethods\Attributes.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\ObjectExtensionMethods\Log.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\Convert.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\Cryptography.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\Substring.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\Translate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

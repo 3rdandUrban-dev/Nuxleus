@@ -1,9 +1,6 @@
 [submodule "lib/module/log4net"]
 	path = lib/module/log4net
 	url = git://git.apache.org/log4net.git
-[submodule "lib/module/dotnetopenid"]
-	path = lib/module/dotnetopenid
-	url = git://github.com/AArnott/dotnetopenid.git
 [submodule "lib/module/jQuery-SoundManager"]
 	path = lib/module/jQuery-SoundManager
 	url = git://github.com/adriengibrat/jQuery-SoundManager.git
@@ -25,9 +22,6 @@
 [submodule "lib/module/main"]
 	path = lib/module/main
 	url = git://github.com/IronLanguages/main.git
-[submodule "lib/module/libev-sharp"]
-	path = lib/module/libev-sharp
-	url = git://github.com/jacksonh/libev-sharp.git
 [submodule "lib/module/manos"]
 	path = lib/module/manos
 	url = git://github.com/jacksonh/manos.git
@@ -145,3 +139,21 @@
 [submodule "lib/module/DataTables-TableTools"]
 	path = lib/module/DataTables-TableTools
 	url = git://github.com/DataTables/TableTools.git
+[submodule "lib/module/EnyimMemcached"]
+	path = lib/module/EnyimMemcached
+	url = https://github.com/enyim/EnyimMemcached.git
+[submodule "lib/module/NLog"]
+	path = lib/module/NLog
+	url = https://github.com/jkowalski/NLog.git
+[submodule "lib/module/underscore"]
+	path = lib/module/underscore
+	url = git://github.com/documentcloud/underscore.git
+[submodule "lib/module/prototype.js"]
+	path = lib/module/prototype.js
+	url = git://github.com/sstephenson/prototype.git
+[submodule "lib/module/data.js"]
+	path = lib/module/data.js
+	url = https://github.com/michael/data.git
+[submodule "lib/module/dejavis.js"]
+	path = lib/module/dejavis.js
+	url = https://github.com/michael/dejavis
