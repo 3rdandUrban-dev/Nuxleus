@@ -5,7 +5,7 @@ using System.Xml;
 using Nuxleus.Geo;
 using Nuxleus.Core;
 using System.Collections.Generic;
-using Memcached.ClientLibrary;
+using Enyim.Caching;
 using System.IO;
 using Nuxleus.Geo.MaxMind;
 

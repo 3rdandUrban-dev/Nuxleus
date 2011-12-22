@@ -24,8 +24,7 @@ namespace Nuxleus.Storage {
             }
 
             if (info.MemcachedResourceInfo != null) {
-                info.MemcachedResourceInfo.Client.Set(info.MemcachedResourceInfo.Key,
-                                      info.Data);
+                info.MemcachedResourceInfo.Client.Store(Enyim.Caching.Memcached.StoreMode.Set, info.MemcachedResourceInfo.Key, info.Data);
             }
         }
     }

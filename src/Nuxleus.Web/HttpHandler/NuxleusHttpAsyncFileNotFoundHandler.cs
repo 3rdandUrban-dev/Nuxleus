@@ -13,7 +13,8 @@ using System.Web.Caching;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Collections;
-using Memcached.ClientLibrary;
+using Enyim.Caching;
+using Enyim.Caching.Memcached;
 using System.Text;
 using Saxon.Api;
 using System.Xml;
@@ -159,7 +160,7 @@ namespace Nuxleus.Web.HttpHandler {
                 }
                 m_transformContext.Clear();
                 if (!m_CONTENT_IS_MEMCACHED && m_USE_MEMCACHED)
-                    m_memcachedClient.Set(m_transformContext.GetRequestHashcode(true), output, DateTime.Now.AddHours(1));
+                    m_memcachedClient.Store(StoreMode.Set, m_transformContext.GetRequestHashcode(true), output, DateTime.Now.AddHours(1));
                 if ((bool)m_context.Application["debug"])
                     m_context.Response.Write((string)m_context.Application["debugOutput"]);
             }

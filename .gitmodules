@@ -157,3 +157,27 @@
 [submodule "lib/module/dejavis.js"]
 	path = lib/module/dejavis.js
 	url = https://github.com/michael/dejavis
+[submodule "lib/module/underscore.string"]
+	path = lib/module/underscore.string
+	url = https://github.com/epeli/underscore.string.git
+[submodule "lib/module/backbone.js"]
+	path = lib/module/backbone.js
+	url = https://github.com/documentcloud/backbone/
+[submodule "lib/module/sgmlreader"]
+	path = lib/module/sgmlreader
+	url = https://github.com/MindTouch/SGMLReader.git
+[submodule "lib/module/tweetsharp"]
+	path = lib/module/tweetsharp
+	url = https://github.com/danielcrenna/tweetsharp.git
+[submodule "lib/module/pusherclientdotnet"]
+	path = lib/module/pusherclientdotnet
+	url = https://github.com/leggetter/PusherClientDotNet.git
+[submodule "lib/module/pusherrestdotnet"]
+	path = lib/module/pusherrestdotnet
+	url = https://github.com/grahamscott/pusherrestdotnet.git
+[submodule "lib/module/history.js"]
+	path = lib/module/history.js
+	url = https://github.com/balupton/history.js.git
+[submodule "lib/module/zepto"]
+	path = lib/module/zepto
+	url = https://github.com/madrobby/zepto.git

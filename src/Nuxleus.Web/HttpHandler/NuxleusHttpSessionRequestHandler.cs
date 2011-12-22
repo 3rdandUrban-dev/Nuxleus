@@ -1,7 +1,8 @@
 using System;
 using System.Web;
 using System.Xml;
-using Memcached.ClientLibrary;
+using Enyim.Caching;
+using Enyim.Caching.Memcached;
 using Nuxleus.Core;
 using Nuxleus.Geo;
 using Nuxleus.Geo.MaxMind;
@@ -46,11 +47,12 @@ namespace Nuxleus.Web.HttpHandler {
                 }
 
                 if (useMemcached && client != null) {
-                    if (client.KeyExists(hostAddress)) {
-                        location = new LatLongLocation(((String)client.Get(hostAddress)).Split(new char[] { '|' }));
+                    object keyValue;
+                    if (client.TryGet(hostAddress, out keyValue)) {
+                        location = new LatLongLocation(((String)keyValue).Split(new char[] { '|' }));
                     } else {
                         location = new LatLongLocation(GetIPLocation(hostAddress));
-                        client.Add(hostAddress, LatLongLocation.ToDelimitedString("|", location));
+                        client.Store(StoreMode.Add, hostAddress, LatLongLocation.ToDelimitedString("|", location));
                     }
                 } else {
                     location = new LatLongLocation(GetIPLocation(hostAddress));

@@ -28,7 +28,3 @@ namespace Nuxleus.Utility.Format
         }
     }
 }
-
-
-
-

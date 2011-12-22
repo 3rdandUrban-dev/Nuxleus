@@ -8,7 +8,7 @@ using Nuxleus.Configuration;
 using System.Net;
 using Xameleon.Function;
 using System.Collections;
-using Memcached.ClientLibrary;
+using Enyim.Caching;
 using System.Text;
 using Nuxleus.Cryptography;
 using System.Reflection;

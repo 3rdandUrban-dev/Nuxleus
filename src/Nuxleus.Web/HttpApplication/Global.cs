@@ -6,7 +6,7 @@ using System.Text;
 using System.Web;
 using System.Xml;
 using System.Xml.XPath;
-using Memcached.ClientLibrary;
+using Enyim.Caching;
 using Nuxleus.Bucker;
 using Nuxleus.Configuration;
 using Nuxleus.Cryptography;
@@ -196,7 +196,7 @@ namespace Nuxleus.Web.HttpApplication
         protected void Application_End (object sender, EventArgs e)
         {
             QueueClientPool.Shutdown ();
-            SockIOPool.GetInstance ().Shutdown ();
+            //SockIOPool.GetInstance ().Shutdown ();
         }
     }
 

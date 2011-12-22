@@ -10,7 +10,8 @@ using System.IO;
 using System.Text;
 using System.Web;
 using System.Xml.XPath;
-using Memcached.ClientLibrary;
+using Enyim.Caching;
+using Enyim.Caching.Memcached;
 using Nuxleus.Bucker;
 using Nuxleus.Cryptography;
 using Nuxleus.Memcached;    
@@ -146,10 +147,12 @@ namespace Nuxleus.Web.HttpHandler {
                             this.LogDebug("If-None-Match: {0}, RequestHashCode: {1}", context.Request.Headers["If-None-Match"], m_requestHashcode);
                             this.LogDebug(context.Request.Path);
                             if (context.Request.Headers["If-None-Match"] == m_requestHashcode) {
+                                object lastModified;
                                 this.LogDebug("They matched.");
-                                this.LogDebug("Use memcached: {0}, KeyExists: {1}, XmlSource Changed: {2}", m_USE_MEMCACHED, m_memcachedClient.KeyExists(m_lastModifiedKey), hasXmlSourceChanged);
+                                this.LogDebug("Use memcached: {0}, KeyExists: {1}, XmlSource Changed: {2}", m_USE_MEMCACHED, m_memcachedClient.TryGet(m_lastModifiedKey, out lastModified), hasXmlSourceChanged);
                                 this.LogDebug("Last Modified Key Value: {0}", m_lastModifiedKey);
-                                if (m_USE_MEMCACHED && m_memcachedClient.KeyExists(m_lastModifiedKey) && !hasXmlSourceChanged) {
+                                if (m_USE_MEMCACHED && m_memcachedClient.TryGet(m_lastModifiedKey, out lastModified) && !hasXmlSourceChanged)
+                                {
                                     m_lastModifiedDate = (string)m_memcachedClient.Get(m_lastModifiedKey);
                                     this.LogDebug("Last Modified Date: {0}", m_lastModifiedDate);
                                     if (context.Request.Headers["If-Modified-Since"] == m_lastModifiedDate) {
@@ -232,8 +235,8 @@ namespace Nuxleus.Web.HttpHandler {
             }
             if (!m_CONTENT_IS_MEMCACHED && m_USE_MEMCACHED) {
                 this.LogDebug("Adding Last Modified Key: {0}", m_lastModifiedKey);
-                m_memcachedClient.Set(m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(24));
-                m_memcachedClient.Set(m_lastModifiedKey, m_lastModifiedDate);
+                m_memcachedClient.Store(StoreMode.Set, m_context.GetRequestHashcode(true).ToString(), output, DateTime.Now.AddHours(24));
+                m_memcachedClient.Store(StoreMode.Set, m_lastModifiedKey, m_lastModifiedDate);
             }
             //}
             m_stopwatch.Stop();

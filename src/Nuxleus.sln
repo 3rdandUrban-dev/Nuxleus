@@ -11,14 +11,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9A91AA26-7396-4524-9ACB-5FA2D3B5D128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A91AA26-7396-4524-9ACB-5FA2D3B5D128}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A91AA26-7396-4524-9ACB-5FA2D3B5D128}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A91AA26-7396-4524-9ACB-5FA2D3B5D128}.Release|Any CPU.Build.0 = Release|Any CPU
 		{22C0B1F3-C835-4B30-B0B2-370831A33F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{22C0B1F3-C835-4B30-B0B2-370831A33F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22C0B1F3-C835-4B30-B0B2-370831A33F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22C0B1F3-C835-4B30-B0B2-370831A33F54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A91AA26-7396-4524-9ACB-5FA2D3B5D128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A91AA26-7396-4524-9ACB-5FA2D3B5D128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A91AA26-7396-4524-9ACB-5FA2D3B5D128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A91AA26-7396-4524-9ACB-5FA2D3B5D128}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Nuxleus.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,7 +17,7 @@
   <property name="saxon.platform.name.java" value="J" unless="${property::exists('saxon.platform.name.java')}"/>
   <property name="saxon.platform.name.net" value="N" unless="${property::exists('saxon.platform.name.net')}"/>
   <property name="saxon.release.name" value="${saxon.product.name}-${saxon.series.name}-${saxon.version}${saxon.platform.name.net}" unless="${property::exists('saxon.release.name')}"/>
-  <property name="ikvm.version" value="0.42.0.3" unless="${property::exists('ikvm.version')}"/>
+  <property name="ikvm.version" value="7.0.4335.0" unless="${property::exists('ikvm.version')}"/>
   <property name="ikvm.product.name" value="IKVM.NET" unless="${property::exists('ikvm.product.name')}"/>
   <property name="ikvm.release.name" value="${ikvm.product.name}-${ikvm.version}" unless="${property::exists('ikvm.release.name')}"/>
 
@@ -130,7 +130,7 @@ http\://jdom.org/jaxp/xpath/jdom:       net.sf.saxon.xpath.XPathFactoryImpl</ech
         <include name="**.class"/>
       </fileset>
     </delete>
-    <exec program="javac" commandline="-g -target 1.5 -nowarn -cp ${jars.dir}/IKVM.OpenJDK.ClassLibrary.jar${pathsep}${jars.dir}/mscorlib.jar${pathsep}/${jars.dir}/System.jar${pathsep}${jars.dir}/System.Xml.jar @${allsources}"/>
+    <exec program="javac" commandline="-g -target 1.5 -nowarn -cp ${jars.dir}/ikvm-api.jar${pathsep}${jars.dir}/IKVM.OpenJDK.Core.jar${pathsep}${jars.dir}/mscorlib.jar${pathsep}/${jars.dir}/System.jar${pathsep}${jars.dir}/System.Xml.jar @${allsources}"/>
   </target>
   
   <target name="saxon9" depends="classes">

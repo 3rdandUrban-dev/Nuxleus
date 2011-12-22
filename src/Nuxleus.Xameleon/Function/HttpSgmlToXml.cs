@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
-using Memcached.ClientLibrary;
+using Enyim.Caching;
+using Enyim.Caching.Memcached;
 using Nuxleus.Transform;
 using Sgml;
 
@@ -91,16 +92,16 @@ namespace Xameleon.Function
                             if ((bool)context.Application["usememcached"])
                             {
                                 MemcachedClient m_client = (MemcachedClient)context.Application["memcached"];
-
-                                if (m_client.KeyExists(eTag))
+                                object keyValue;
+                                if (m_client.TryGet(eTag, out keyValue))
                                 {
-                                    sr.InputStream = GetStreamFromHtmlString((string)m_client.Get(eTag));
+                                    sr.InputStream = GetStreamFromHtmlString((string)keyValue);
                                 }
 
                                 else
                                 {
                                     sr.Href = decodedUri;
-                                    m_client.Add(eTag, sr.ReadOuterXml(), DateTime.Now.AddMinutes(60));
+                                    m_client.Store(StoreMode.Add, eTag, sr.ReadOuterXml(), DateTime.Now.AddMinutes(60));
                                 }
 
                             }

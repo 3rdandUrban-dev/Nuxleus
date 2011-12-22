@@ -10,14 +10,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Memcached.ClientLibrary;
+using Enyim.Caching;
+using Enyim.Caching.Memcached;
 using Nuxleus.Bucker;
 
 using ALAZ.SystemEx.NetEx.SocketsEx;
 
-namespace Nuxleus.Messaging.QS {
+namespace Nuxleus.Messaging.QS
+{
 
-    public class BlipMessageServerHandler {
+    public class BlipMessageServerHandler
+    {
 
         private static DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToUniversalTime();
         private static char[] comma = { ',' };
@@ -27,37 +30,41 @@ namespace Nuxleus.Messaging.QS {
         private string rootQueueId = null;
         private IList<IntPtr> clientsToDisconnect = new List<IntPtr>();
 
-        public BlipMessageServerHandler ( string[] servers, string rootQueueId ) {
+        public BlipMessageServerHandler(string[] servers, string rootQueueId)
+        {
             this.rootQueueId = rootQueueId;
 
-            SockIOPool pool = SockIOPool.GetInstance("bucker-queue-server");
-            pool.SetServers(servers);
-            pool.InitConnections = 3;
-            pool.MinConnections = 3;
-            pool.MaxConnections = 5;
+            //SockIOPool pool = SockIOPool.GetInstance("bucker-queue-server");
+            //pool.SetServers(servers);
+            //pool.InitConnections = 3;
+            //pool.MinConnections = 3;
+            //pool.MaxConnections = 5;
 
-            pool.SocketConnectTimeout = 1000;
-            pool.SocketTimeout = 3000;
-            pool.MaintenanceSleep = 30;
-            pool.Failover = true;
-            pool.Nagle = false;
-            pool.Initialize();
+            //pool.SocketConnectTimeout = 1000;
+            //pool.SocketTimeout = 3000;
+            //pool.MaintenanceSleep = 30;
+            //pool.Failover = true;
+            //pool.Nagle = false;
+            //pool.Initialize();
 
             mc = new MemcachedClient();
-            mc.PoolName = "bucker-queue-server";
-            mc.EnableCompression = false;
+            //mc..PoolName = "bucker-queue-server";
+            //mc.EnableCompression = false;
 
-            mc.Add(rootQueueId, String.Empty);
+            //mc.Add(rootQueueId, String.Empty);
         }
 
-        public void Close () {
-            SockIOPool pool = SockIOPool.GetInstance("bucker-queue-server");
-            pool.Shutdown();
+        public void Close()
+        {
+            //SockIOPool pool = SockIOPool.GetInstance("bucker-queue-server");
+            //pool.Shutdown();
         }
 
-        public MessageService Service {
+        public MessageService Service
+        {
             get { return service; }
-            set {
+            set
+            {
                 service = value;
                 service.Received += new MessageEventHandler(this.MessageReceived);
                 service.Sent += new QueueEventHandler(this.MessageSent);
@@ -66,7 +73,8 @@ namespace Nuxleus.Messaging.QS {
             }
         }
 
-        private void FailureRaised ( ISocketConnection sender, Exception ex ) {
+        private void FailureRaised(ISocketConnection sender, Exception ex)
+        {
             // since the client generated an exceptipon we will disconnect it
             // as soon as the error message below is sent
             clientsToDisconnect.Add(sender.SocketHandle);
@@ -81,17 +89,21 @@ namespace Nuxleus.Messaging.QS {
             sender.BeginSend(Nuxleus.Bucker.Message.Serialize(m));
         }
 
-        private void MessageSent ( ISocketConnection sender ) {
+        private void MessageSent(ISocketConnection sender)
+        {
             // In case the last message sent to the client was to warn it an error occured
             // we should have its handle in there and just close the connection
-            if (clientsToDisconnect.Contains(sender.SocketHandle)) {
+            if (clientsToDisconnect.Contains(sender.SocketHandle))
+            {
                 clientsToDisconnect.Remove(sender.SocketHandle);
                 sender.BeginDisconnect();
             }
         }
 
-        private Nuxleus.Bucker.Message CheckQueueId ( string queueId ) {
-            if ((queueId == null) || (queueId == String.Empty)) {
+        private Nuxleus.Bucker.Message CheckQueueId(string queueId)
+        {
+            if ((queueId == null) || (queueId == String.Empty))
+            {
                 Nuxleus.Bucker.Message m = new Nuxleus.Bucker.Message();
                 m.Type = "error";
                 m.Op = null;
@@ -105,8 +117,10 @@ namespace Nuxleus.Messaging.QS {
             return null;
         }
 
-        private Nuxleus.Bucker.Message CheckMessageId ( string messageId ) {
-            if ((messageId == null) || (messageId == String.Empty)) {
+        private Nuxleus.Bucker.Message CheckMessageId(string messageId)
+        {
+            if ((messageId == null) || (messageId == String.Empty))
+            {
                 Nuxleus.Bucker.Message m = new Nuxleus.Bucker.Message();
                 m.Type = "error";
                 m.Op = null;
@@ -120,13 +134,15 @@ namespace Nuxleus.Messaging.QS {
             return null;
         }
 
-        private Nuxleus.Bucker.Message CheckQueue ( string queueId ) {
+        private Nuxleus.Bucker.Message CheckQueue(string queueId)
+        {
             Nuxleus.Bucker.Message err = CheckQueueId(queueId);
             if (err != null)
                 return err;
 
             string queues = (string)mc.Get(rootQueueId);
-            if ((queues == null) || (queues == String.Empty) || !queues.Contains(queueId)) {
+            if ((queues == null) || (queues == String.Empty) || !queues.Contains(queueId))
+            {
                 Nuxleus.Bucker.Message m = new Nuxleus.Bucker.Message();
                 m.Type = "error";
                 m.Op = null;
@@ -141,27 +157,32 @@ namespace Nuxleus.Messaging.QS {
         }
 
 
-        private Nuxleus.Bucker.Message HandleNewQueueRequest ( Nuxleus.Bucker.Message m ) {
+        private Nuxleus.Bucker.Message HandleNewQueueRequest(Nuxleus.Bucker.Message m)
+        {
             Nuxleus.Bucker.Message err = CheckQueueId(m.QueueId);
             if (err != null)
                 return err;
 
             string queues = (string)mc.Get(rootQueueId);
-            if (queues == null) { // just in case
+            if (queues == null)
+            { // just in case
                 queues = String.Empty;
             }
 
-            if (!queues.Contains(m.QueueId)) {
-                mc.Add(m.QueueId, String.Empty);
-                mc.Add(String.Format("{0}.new", m.QueueId), String.Empty);
-                if (queues == String.Empty) {
-                    queues = m.QueueId;
-                } else {
-                    queues = String.Format("{0},{1}", queues, m.QueueId);
-                }
-                mc.Set(rootQueueId, queues);
+            if (!queues.Contains(m.QueueId))
+            {
+                //mc.Add(m.QueueId, String.Empty);
+                //mc.Add(String.Format("{0}.new", m.QueueId), String.Empty);
+                //if (queues == String.Empty) {
+                //    queues = m.QueueId;
+                //} else {
+                //    queues = String.Format("{0},{1}", queues, m.QueueId);
+                //}
+                //mc.Set(rootQueueId, queues);
                 m.Type = "response";
-            } else {
+            }
+            else
+            {
                 // Houston we have a conflict!
                 string qid = m.QueueId;
 
@@ -177,7 +198,8 @@ namespace Nuxleus.Messaging.QS {
             return m;
         }
 
-        private Nuxleus.Bucker.Message HandleDeleteQueueRequest ( Nuxleus.Bucker.Message m ) {
+        private Nuxleus.Bucker.Message HandleDeleteQueueRequest(Nuxleus.Bucker.Message m)
+        {
             Nuxleus.Bucker.Message err = CheckQueueId(m.QueueId);
             if (err != null)
                 return err;
@@ -185,8 +207,10 @@ namespace Nuxleus.Messaging.QS {
             string qid = m.QueueId;
             string keys = (string)mc.Get(qid);
 
-            if ((keys != null) && (keys != String.Empty)) {
-                if (m.Op.Force == false) {
+            if ((keys != null) && (keys != String.Empty))
+            {
+                if (m.Op.Force == false)
+                {
                     m = new Nuxleus.Bucker.Message();
                     m.Type = "error";
                     m.Op = null;
@@ -195,34 +219,39 @@ namespace Nuxleus.Messaging.QS {
                     m.Error.Code = 400;
                     m.Error.Message = String.Format("'{0}' is not empty. Either delete all the messages first or set the force attribute on the 'op' element", qid);
                     return m;
-                } else {
+                }
+                else
+                {
                     // Deleting all the messages attached to that queue
                     string[] keysList = keys.Split(',');
-                    foreach (string key in keysList) {
-                        mc.Delete(String.Format("{0}.visibility", key));
-                        mc.Delete(key);
+                    foreach (string key in keysList)
+                    {
+                        mc.Remove(String.Format("{0}.visibility", key));
+                        mc.Remove(key);
                     }
                 }
             }
 
-            mc.Delete(qid);
-            mc.Delete(String.Format("{0}.new", qid));
+            mc.Remove(qid);
+            mc.Remove(String.Format("{0}.new", qid));
 
             string queues = (string)mc.Get(rootQueueId);
             if (queues == null)
                 queues = String.Empty;
-            if (queues.Contains(qid)) {
+            if (queues.Contains(qid))
+            {
                 queues = queues.Replace(qid, "");
                 queues = queues.Replace(",,", "");
                 queues = queues.Trim(comma);
-                mc.Set(rootQueueId, queues);
+                mc.Store(StoreMode.Set, rootQueueId, queues);
             }
 
             m.Type = "response";
             return m;
         }
 
-        private Nuxleus.Bucker.Message HandleListQueuesRequest ( Nuxleus.Bucker.Message m ) {
+        private Nuxleus.Bucker.Message HandleListQueuesRequest(Nuxleus.Bucker.Message m)
+        {
             string queues = (string)mc.Get(rootQueueId);
             if (queues == null)
                 queues = String.Empty;
@@ -231,9 +260,12 @@ namespace Nuxleus.Messaging.QS {
             Nuxleus.Bucker.Message lm = new Nuxleus.Bucker.Message();
             lm.Type = "response";
             lm.Op.Type = OperationType.ListQueues;
-            if (queues == String.Empty) {
+            if (queues == String.Empty)
+            {
                 lm.Queues = new string[0];
-            } else {
+            }
+            else
+            {
                 lm.Queues = new string[queuesList.Length];
                 Array.Copy(queuesList, lm.Queues, queuesList.Length);
             }
@@ -241,7 +273,8 @@ namespace Nuxleus.Messaging.QS {
             return lm;
         }
 
-        private Nuxleus.Bucker.Message HandleListMessagesRequest ( Nuxleus.Bucker.Message m ) {
+        private Nuxleus.Bucker.Message HandleListMessagesRequest(Nuxleus.Bucker.Message m)
+        {
             Nuxleus.Bucker.Message err = CheckQueue(m.QueueId);
             if (err != null)
                 return err;
@@ -249,24 +282,30 @@ namespace Nuxleus.Messaging.QS {
             string qid = m.QueueId;
 
             m.Type = "response";
-            m.QueueId = m.QueueId;
+            //m.QueueId = m.QueueId;
             m.Op.Type = OperationType.ListMessages;
 
             string keys = (string)mc.Get(String.Format("{0}.new", m.QueueId));
-            if ((keys == null) || (keys == String.Empty)) {
+            if ((keys == null) || (keys == String.Empty))
+            {
                 m.Messages = new string[0];
-            } else {
+            }
+            else
+            {
                 string[] unread = keys.Split(',');
                 int count = 10;
-                if (unread.Length < 10) {
+                if (unread.Length < 10)
+                {
                     count = unread.Length;
                 }
                 int index = 0;
                 m.Messages = new string[count];
-                foreach (string mid in unread) {
-                    m.Messages[index]  = mid;
+                foreach (string mid in unread)
+                {
+                    m.Messages[index] = mid;
                     index++;
-                    if (index == 10) {
+                    if (index == 10)
+                    {
                         break;
                     }
                 }
@@ -275,14 +314,17 @@ namespace Nuxleus.Messaging.QS {
             return m;
         }
 
-        private double UnixTimestampNow {
-            get {
+        private double UnixTimestampNow
+        {
+            get
+            {
                 TimeSpan ts = DateTime.UtcNow - origin;
                 return ts.TotalSeconds;
             }
         }
 
-        private Nuxleus.Bucker.Message HandlePushMessageRequest ( Nuxleus.Bucker.Message m ) {
+        private Nuxleus.Bucker.Message HandlePushMessageRequest(Nuxleus.Bucker.Message m)
+        {
             Nuxleus.Bucker.Message err = CheckQueue(m.QueueId);
             if (err != null)
                 return err;
@@ -291,25 +333,31 @@ namespace Nuxleus.Messaging.QS {
             string payload = m.Payload;
             if (payload == null)
                 payload = String.Empty;
-            mc.Set(mid, payload);
+            mc.Store(StoreMode.Set, mid, payload);
 
-            mc.Set(String.Format("{0}.visibility", mid), UnixTimestampNow);
+            mc.Store(StoreMode.Set, String.Format("{0}.visibility", mid), UnixTimestampNow);
 
             string keys = (string)mc.Get(m.QueueId);
-            if ((keys == null) || (keys == String.Empty)) {
+            if ((keys == null) || (keys == String.Empty))
+            {
                 keys = mid;
-            } else {
+            }
+            else
+            {
                 keys = String.Format("{0},{1}", keys, mid);
             }
-            mc.Set(m.QueueId, keys);
+            mc.Store(StoreMode.Set, m.QueueId, keys);
 
             keys = (string)mc.Get(String.Format("{0}.new", m.QueueId));
-            if ((keys == null) || (keys == String.Empty)) {
+            if ((keys == null) || (keys == String.Empty))
+            {
                 keys = mid;
-            } else {
+            }
+            else
+            {
                 keys = String.Format("{0},{1}", keys, mid);
             }
-            mc.Set(String.Format("{0}.new", m.QueueId), keys);
+            mc.Store(StoreMode.Set, String.Format("{0}.new", m.QueueId), keys);
 
             m.Type = "response";
             m.MessageId = mid;
@@ -317,7 +365,8 @@ namespace Nuxleus.Messaging.QS {
             return m;
         }
 
-        private Nuxleus.Bucker.Message HandleDeleteMessageRequest ( Nuxleus.Bucker.Message m ) {
+        private Nuxleus.Bucker.Message HandleDeleteMessageRequest(Nuxleus.Bucker.Message m)
+        {
             Nuxleus.Bucker.Message err = CheckQueue(m.QueueId);
             if (err != null)
                 return err;
@@ -329,21 +378,23 @@ namespace Nuxleus.Messaging.QS {
             string keys = (string)mc.Get(String.Format("{0}", m.QueueId));
             if (keys == null)
                 keys = String.Empty;
-            if (keys.Contains(m.MessageId)) {
+            if (keys.Contains(m.MessageId))
+            {
                 keys = keys.Replace(m.MessageId, "");
                 keys = keys.Replace(",,", "");
                 keys = keys.Trim(comma);
-                mc.Set(m.QueueId, keys);
+                mc.Store(StoreMode.Set, m.QueueId, keys);
             }
 
-            mc.Delete(String.Format("{0}.visibility", m.MessageId));
-            mc.Delete(m.MessageId);
+            mc.Remove(String.Format("{0}.visibility", m.MessageId));
+            mc.Remove(m.MessageId);
 
             m.Type = "response";
             return m;
         }
 
-        private Nuxleus.Bucker.Message HandleGetMessageRequest ( Nuxleus.Bucker.Message m ) {
+        private Nuxleus.Bucker.Message HandleGetMessageRequest(Nuxleus.Bucker.Message m)
+        {
             Nuxleus.Bucker.Message err = CheckQueue(m.QueueId);
             if (err != null)
                 return err;
@@ -355,9 +406,11 @@ namespace Nuxleus.Messaging.QS {
             string unreadKey = String.Format("{0}.new", m.QueueId);
 
             string[] keys = { m.QueueId, unreadKey, m.MessageId };
-            Hashtable result = mc.GetMultiple(keys);
+            IDictionary<string,object> result = mc.Get(keys);
 
-            if (!mc.KeyExists(m.QueueId)) {
+            object keyValue;
+            if (!mc.TryGet(m.QueueId, out keyValue))
+            {
                 m.Type = "error";
                 m.Op = null;
                 m.Error = new Nuxleus.Bucker.Error();
@@ -369,31 +422,39 @@ namespace Nuxleus.Messaging.QS {
 
             string mids = (string)result[m.QueueId];
 
-            if (mc.KeyExists(m.MessageId)) {
-                if (m.Op.Peek == false) {
+            object messageValue;
+            if (mc.TryGet(m.MessageId, out messageValue))
+            {
+                if (m.Op.Peek == false)
+                {
                     string unread = (string)result[unreadKey];
-                    if (unread.Contains(m.MessageId)) {
+                    if (unread.Contains(m.MessageId))
+                    {
                         unread = unread.Replace(m.MessageId, "");
                         unread = unread.Replace(",,", "");
                         unread = unread.Trim(comma);
-                        mc.Set(unreadKey, unread);
+                        mc.Store(StoreMode.Set, unreadKey, unread);
                     }
                 }
                 string visibilityKey = String.Format("{0}.visibility", m.MessageId);
                 double visibilityTimeout = (double)mc.Get(visibilityKey);
                 double now = UnixTimestampNow;
-                if (now > visibilityTimeout) {
+                if (now > visibilityTimeout)
+                {
                     if (m.Op.Peek == false)
-                        mc.Set(visibilityKey, now + 30);
+                        mc.Store(StoreMode.Set, visibilityKey, now + 30);
                     string payload = String.Empty;
-                    if (result.ContainsKey(m.MessageId)) {
+                    if (result.ContainsKey(m.MessageId))
+                    {
                         payload = (string)result[m.MessageId];
                         if (payload == null)
                             payload = String.Empty;
                     }
                     m.Type = "response";
                     m.Payload = payload;
-                } else {
+                }
+                else
+                {
                     err = new Nuxleus.Bucker.Message();
                     err.Type = "error";
                     err.Op = null;
@@ -402,7 +463,9 @@ namespace Nuxleus.Messaging.QS {
                     err.Error.Code = 404;
                     err.Error.Message = String.Format("'{0}' is not visible", m.MessageId);
                 }
-            } else {
+            }
+            else
+            {
                 err = new Nuxleus.Bucker.Message();
                 err.Type = "error";
                 err.Op = null;
@@ -415,8 +478,10 @@ namespace Nuxleus.Messaging.QS {
             return m;
         }
 
-        private void MessageReceived ( ISocketConnection sender, IMessage message ) {
-            if (clientsToDisconnect.Contains(sender.SocketHandle)) {
+        private void MessageReceived(ISocketConnection sender, IMessage message)
+        {
+            if (clientsToDisconnect.Contains(sender.SocketHandle))
+            {
                 // if the client has been scheduled to be closed we don't process any of its
                 // incoming data
                 return;
@@ -425,7 +490,8 @@ namespace Nuxleus.Messaging.QS {
             Nuxleus.Bucker.Message m = Nuxleus.Bucker.Message.Parse(message.InnerMessage);
             Nuxleus.Bucker.Message responseToSend = null;
 
-            switch (m.Op.Type) {
+            switch (m.Op.Type)
+            {
                 case OperationType.GetMessage:
                     responseToSend = HandleGetMessageRequest(m);
                     break;
@@ -458,7 +524,8 @@ namespace Nuxleus.Messaging.QS {
                     break;
             }
 
-            if (responseToSend != null) {
+            if (responseToSend != null)
+            {
                 sender.BeginSend(Nuxleus.Bucker.Message.Serialize(responseToSend));
                 responseToSend = null;
             }

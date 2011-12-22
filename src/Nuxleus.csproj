@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,6 +9,21 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Nuxleus.Core</RootNamespace>
     <AssemblyName>Nuxleus.Core</AssemblyName>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -19,7 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -28,9 +43,115 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\lib\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="CoreServices">
+      <HintPath>..\lib\CoreServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Couchbase">
+      <HintPath>..\lib\Couchbase.dll</HintPath>
+    </Reference>
+    <Reference Include="Data.Remote">
+      <HintPath>..\lib\Data.Remote.dll</HintPath>
+    </Reference>
+    <Reference Include="DiffieHellman">
+      <HintPath>..\lib\DiffieHellman.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching.Log4NetAdapter">
+      <HintPath>..\lib\Enyim.Caching.Log4NetAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching.NLogAdapter">
+      <HintPath>..\lib\Enyim.Caching.NLogAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\lib\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
+      <HintPath>..\lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IronMath">
+      <HintPath>..\lib\IronMath.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython">
+      <HintPath>..\lib\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules">
+      <HintPath>..\lib\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="IronRuby">
+      <HintPath>..\lib\IronRuby.dll</HintPath>
+    </Reference>
+    <Reference Include="IronRuby.Libraries">
+      <HintPath>..\lib\IronRuby.Libraries.dll</HintPath>
+    </Reference>
+    <Reference Include="IronRuby.Libraries.Yaml">
+      <HintPath>..\lib\IronRuby.Libraries.Yaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\lib\Lucene.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Membase">
+      <HintPath>..\lib\Membase.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic">
+      <HintPath>..\lib\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>..\lib\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.AspNet">
+      <HintPath>..\lib\Microsoft.Scripting.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata">
+      <HintPath>..\lib\Microsoft.Scripting.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NGit">
+      <HintPath>..\lib\NGit.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\lib\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="NSch">
+      <HintPath>..\lib\NSch.dll</HintPath>
+    </Reference>
+    <Reference Include="Org.Mentalis.Security">
+      <HintPath>..\lib\Org.Mentalis.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Org.Mentalis.SecurityServices">
+      <HintPath>..\lib\Org.Mentalis.SecurityServices.dll</HintPath>
+    </Reference>
+    <Reference Include="QueryMachine.Export">
+      <HintPath>..\lib\QueryMachine.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="QueryMachine.XQuery">
+      <HintPath>..\lib\QueryMachine.XQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="QueryMachine.XQuery.OpenXML">
+      <HintPath>..\lib\QueryMachine.XQuery.OpenXML.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\lib\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\lib\System.Data.SQLite.DLL</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
@@ -60,9 +181,6 @@
     <Reference Include="log4net">
       <HintPath>..\lib\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Memcached.ClientLibrary">
-      <HintPath>..\lib\Memcached.ClientLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Mvp.Xml">
       <HintPath>..\lib\Mvp.Xml.dll</HintPath>
     </Reference>
@@ -72,8 +190,14 @@
     <Reference Include="taglib-sharp">
       <HintPath>..\lib\taglib-sharp.dll</HintPath>
     </Reference>
+    <Reference Include="Tamir.SharpSSH">
+      <HintPath>..\lib\Tamir.SharpSSH.dll</HintPath>
+    </Reference>
     <Reference Include="Thought.vCards">
       <HintPath>..\lib\Thought.vCards.dll</HintPath>
+    </Reference>
+    <Reference Include="Upnp">
+      <HintPath>..\lib\Upnp.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor">
       <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
@@ -107,6 +231,15 @@
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK">
+      <HintPath>..\lib\AWSSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="IKVM.Runtime, Version=0.46.0.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
+      <HintPath>..\lib\IKVM.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\lib\mysql.data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -582,22 +715,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Nuxleus.Extension\ExtensionMethods\AsyncExtensionMethods\Invoke.cs" />
-    <Compile Include="Nuxleus.Extension\ExtensionMethods\ByteExtensionMethods\IntegerTransforms.cs" />
-    <Compile Include="Nuxleus.Extension\ExtensionMethods\ByteExtensionMethods\StringTransforms.cs" />
-    <Compile Include="Nuxleus.Extension\ExtensionMethods\IntegerExtensionMethods\EndianTransforms.cs" />
-    <Compile Include="Nuxleus.Extension\ExtensionMethods\ObjectExtensionMethods\Attributes.cs" />
-    <Compile Include="Nuxleus.Extension\ExtensionMethods\ObjectExtensionMethods\Log.cs" />
-    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\Convert.cs" />
-    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\Cryptography.cs" />
-    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\Substring.cs" />
-    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\Translate.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\ObjectExtensionMethods\Object_Attributes.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\ObjectExtensionMethods\Object_Log.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\String_Convert.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\String_Cryptography.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\String_Substring.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\StringExtensionMethods\String_Translate.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\IntegerExtensionMethods\Integer_EndianTransforms.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\ByteExtensionMethods\Byte_StringTransforms.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\ByteExtensionMethods\Byte_IntegerTransforms.cs" />
+    <Compile Include="Nuxleus.Extension\ExtensionMethods\ITaskExtensionMethods\ITask_Invoke.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Nuxleus.Core\Core\IO\Storage\Cache\Memcached\" />
     <Folder Include="Nuxleus.Core\Core\IO\Storage\Cache\Redis\" />
-    <Folder Include="Nuxleus.Extension\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nuxleus.Core\Configuration\App.config" />
@@ -612,5 +744,27 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
 </Project>
