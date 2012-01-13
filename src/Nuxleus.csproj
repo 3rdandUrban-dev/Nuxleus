@@ -46,112 +46,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\lib\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="BouncyCastle.Crypto">
-      <HintPath>..\lib\BouncyCastle.Crypto.dll</HintPath>
-    </Reference>
-    <Reference Include="CoreServices">
-      <HintPath>..\lib\CoreServices.dll</HintPath>
-    </Reference>
     <Reference Include="Couchbase">
       <HintPath>..\lib\Couchbase.dll</HintPath>
     </Reference>
-    <Reference Include="Data.Remote">
-      <HintPath>..\lib\Data.Remote.dll</HintPath>
-    </Reference>
-    <Reference Include="DiffieHellman">
-      <HintPath>..\lib\DiffieHellman.dll</HintPath>
-    </Reference>
-    <Reference Include="DocumentFormat.OpenXml">
-      <HintPath>..\lib\DocumentFormat.OpenXml.dll</HintPath>
-    </Reference>
-    <Reference Include="Elmah">
-      <HintPath>..\lib\Elmah.dll</HintPath>
-    </Reference>
-    <Reference Include="Enyim.Caching.Log4NetAdapter">
-      <HintPath>..\lib\Enyim.Caching.Log4NetAdapter.dll</HintPath>
-    </Reference>
-    <Reference Include="Enyim.Caching.NLogAdapter">
-      <HintPath>..\lib\Enyim.Caching.NLogAdapter.dll</HintPath>
-    </Reference>
-    <Reference Include="Facebook">
-      <HintPath>..\lib\Facebook.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.84.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73">
-      <HintPath>..\lib\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="IronMath">
-      <HintPath>..\lib\IronMath.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython">
-      <HintPath>..\lib\IronPython.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython.Modules">
-      <HintPath>..\lib\IronPython.Modules.dll</HintPath>
-    </Reference>
-    <Reference Include="IronRuby">
-      <HintPath>..\lib\IronRuby.dll</HintPath>
-    </Reference>
-    <Reference Include="IronRuby.Libraries">
-      <HintPath>..\lib\IronRuby.Libraries.dll</HintPath>
-    </Reference>
-    <Reference Include="IronRuby.Libraries.Yaml">
-      <HintPath>..\lib\IronRuby.Libraries.Yaml.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net">
-      <HintPath>..\lib\Lucene.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="Membase">
-      <HintPath>..\lib\Membase.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Dynamic">
-      <HintPath>..\lib\Microsoft.Dynamic.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Scripting">
-      <HintPath>..\lib\Microsoft.Scripting.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Scripting.AspNet">
-      <HintPath>..\lib\Microsoft.Scripting.AspNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Scripting.Metadata">
-      <HintPath>..\lib\Microsoft.Scripting.Metadata.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="NGit">
-      <HintPath>..\lib\NGit.dll</HintPath>
-    </Reference>
-    <Reference Include="Npgsql">
-      <HintPath>..\lib\Npgsql.dll</HintPath>
-    </Reference>
-    <Reference Include="NSch">
-      <HintPath>..\lib\NSch.dll</HintPath>
-    </Reference>
-    <Reference Include="Org.Mentalis.Security">
-      <HintPath>..\lib\Org.Mentalis.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Org.Mentalis.SecurityServices">
-      <HintPath>..\lib\Org.Mentalis.SecurityServices.dll</HintPath>
-    </Reference>
-    <Reference Include="QueryMachine.Export">
-      <HintPath>..\lib\QueryMachine.Export.dll</HintPath>
-    </Reference>
-    <Reference Include="QueryMachine.XQuery">
-      <HintPath>..\lib\QueryMachine.XQuery.dll</HintPath>
-    </Reference>
-    <Reference Include="QueryMachine.XQuery.OpenXML">
-      <HintPath>..\lib\QueryMachine.XQuery.OpenXML.dll</HintPath>
-    </Reference>
-    <Reference Include="RazorEngine">
-      <HintPath>..\lib\RazorEngine.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\lib\System.Data.SQLite.DLL</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
@@ -162,42 +60,19 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Design" />
     <Reference Include="ALAZ.SystemEx">
       <HintPath>..\lib\ALAZ.SystemEx.dll</HintPath>
     </Reference>
     <Reference Include="ALAZ.SystemEx.NetEx">
       <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
     </Reference>
-    <Reference Include="DDay.iCal">
-      <HintPath>..\lib\DDay.iCal.dll</HintPath>
-    </Reference>
-    <Reference Include="EcmaScript.NET.modified">
-      <HintPath>..\lib\EcmaScript.NET.modified.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\lib\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Mvp.Xml">
-      <HintPath>..\lib\Mvp.Xml.dll</HintPath>
-    </Reference>
     <Reference Include="SgmlReaderDll">
       <HintPath>..\lib\SgmlReaderDll.dll</HintPath>
-    </Reference>
-    <Reference Include="taglib-sharp">
-      <HintPath>..\lib\taglib-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Tamir.SharpSSH">
-      <HintPath>..\lib\Tamir.SharpSSH.dll</HintPath>
-    </Reference>
-    <Reference Include="Thought.vCards">
-      <HintPath>..\lib\Thought.vCards.dll</HintPath>
-    </Reference>
-    <Reference Include="Upnp">
-      <HintPath>..\lib\Upnp.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor">
       <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
@@ -205,14 +80,8 @@
     <Reference Include="ServiceStack.Common">
       <HintPath>..\lib\ServiceStack.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack">
-      <HintPath>..\lib\ServiceStack.dll</HintPath>
-    </Reference>
     <Reference Include="ServiceStack.Interfaces">
       <HintPath>..\lib\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.OrmLite">
-      <HintPath>..\lib\ServiceStack.OrmLite.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Redis">
       <HintPath>..\lib\ServiceStack.Redis.dll</HintPath>
@@ -220,26 +89,14 @@
     <Reference Include="ServiceStack.ServiceInterface">
       <HintPath>..\lib\ServiceStack.ServiceInterface.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Text">
-      <HintPath>..\lib\ServiceStack.Text.dll</HintPath>
-    </Reference>
     <Reference Include="Saxon.Api">
       <HintPath>..\lib\Saxon.Api.dll</HintPath>
-    </Reference>
-    <Reference Include="saxon9">
-      <HintPath>..\lib\saxon9.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\lib\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="AWSSDK">
       <HintPath>..\lib\AWSSDK.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.Runtime, Version=0.46.0.1, Culture=neutral, PublicKeyToken=13235d27fcbfff58">
-      <HintPath>..\lib\IKVM.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data">
-      <HintPath>..\lib\mysql.data.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

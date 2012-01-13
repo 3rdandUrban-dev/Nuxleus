@@ -3,28 +3,18 @@
 // Please see http://www.opensource.org/licenses/mit-license.php for specific detail.
 
 using System;
-using System.IO;
-using System.Data;
-using System.Configuration;
-using System.Threading;
-using System.Security.Principal;
-using System.Web;
-using System.Web.Caching;
-using System.Web.Security;
-using System.Web.SessionState;
 using System.Collections;
-using Enyim.Caching;
+using System.IO;
 using System.Text;
-using Saxon.Api;
+using System.Web;
 using System.Xml;
-using Nuxleus.Configuration;
-using Nuxleus.Transform;
-using System.Collections.Generic;
-using Nuxleus.Memcached;
-using Nuxleus.Cryptography;
+using Enyim.Caching;
+using Enyim.Caching.Memcached;
 using Nuxleus.Bucker;
 using Nuxleus.Core;
-using Enyim.Caching.Memcached;
+using Nuxleus.Cryptography;
+using Nuxleus.Memcached;
+using Nuxleus.Transform;
 
 namespace Nuxleus.Web.HttpHandler
 {

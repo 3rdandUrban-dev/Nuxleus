@@ -1,0 +1,38 @@
+﻿2011-12-26 00:42:27,449 [1] ERROR SilverlightPolicyServer - The specified policyFile doesn't exist! /Users/mdavid/Projects/amp.fm_private/src/Nuxleus/lib/SuperSocket/Policy\silverlight.xml
+2011-12-26 00:42:27,462 [1] ERROR SuperSocket - Failed to setup server instance!
+2011-12-26 00:42:27,462 [1] ERROR SuperSocket - Failed to initialize server SilverlightPolicyServer!
+2011-12-26 00:48:42,348 [1] ERROR SilverlightPolicyServer - The specified policyFile doesn't exist! /Users/mdavid/Projects/amp.fm_private/src/Nuxleus/lib/SuperSocket/Policy\silverlight.xml
+2011-12-26 00:48:42,379 [1] ERROR SuperSocket - Failed to setup server instance!
+2011-12-26 00:48:42,379 [1] ERROR SuperSocket - Failed to initialize server SilverlightPolicyServer!
+2011-12-26 00:49:56,168 [4] ERROR SilverlightPolicyServer - System.Net.Sockets.SocketException: Access denied
+  at System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end) [0x00000] in <filename unknown>:0 
+  at SuperSocket.SocketEngine.AsyncSocketServer`2[SuperSocket.Facility.PolicyServer.PolicySession,SuperSocket.SocketBase.Command.BinaryCommandInfo].StartListen () [0x00000] in <filename unknown>:0 
+2011-12-26 00:49:56,209 [1] ERROR SuperSocket - Failed to start SilverlightPolicyServer server!
+2011-12-26 00:49:56,210 [5] ERROR FlashPolicyServer - System.Net.Sockets.SocketException: Access denied
+  at System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end) [0x00000] in <filename unknown>:0 
+  at SuperSocket.SocketEngine.AsyncSocketServer`2[SuperSocket.Facility.PolicyServer.PolicySession,SuperSocket.SocketBase.Command.BinaryCommandInfo].StartListen () [0x00000] in <filename unknown>:0 
+2011-12-26 00:49:56,210 [1] ERROR SuperSocket - Failed to start FlashPolicyServer server!
+2011-12-26 00:52:09,886 [4] ERROR SilverlightPolicyServer - System.Net.Sockets.SocketException: Access denied
+  at System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end) [0x00000] in <filename unknown>:0 
+  at SuperSocket.SocketEngine.AsyncSocketServer`2[SuperSocket.Facility.PolicyServer.PolicySession,SuperSocket.SocketBase.Command.BinaryCommandInfo].StartListen () [0x00000] in <filename unknown>:0 
+2011-12-26 00:52:09,910 [1] ERROR SuperSocket - Failed to start SilverlightPolicyServer server!
+2011-12-26 00:52:09,911 [5] ERROR FlashPolicyServer - System.Net.Sockets.SocketException: Access denied
+  at System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end) [0x00000] in <filename unknown>:0 
+  at SuperSocket.SocketEngine.AsyncSocketServer`2[SuperSocket.Facility.PolicyServer.PolicySession,SuperSocket.SocketBase.Command.BinaryCommandInfo].StartListen () [0x00000] in <filename unknown>:0 
+2011-12-26 00:52:09,911 [1] ERROR SuperSocket - Failed to start FlashPolicyServer server!
+2011-12-26 00:52:42,930 [4] ERROR SilverlightPolicyServer - System.Net.Sockets.SocketException: Access denied
+  at System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end) [0x00000] in <filename unknown>:0 
+  at SuperSocket.SocketEngine.AsyncSocketServer`2[SuperSocket.Facility.PolicyServer.PolicySession,SuperSocket.SocketBase.Command.BinaryCommandInfo].StartListen () [0x00000] in <filename unknown>:0 
+2011-12-26 00:52:42,951 [1] ERROR SuperSocket - Failed to start SilverlightPolicyServer server!
+2011-12-26 00:52:42,953 [5] ERROR FlashPolicyServer - System.Net.Sockets.SocketException: Access denied
+  at System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end) [0x00000] in <filename unknown>:0 
+  at SuperSocket.SocketEngine.AsyncSocketServer`2[SuperSocket.Facility.PolicyServer.PolicySession,SuperSocket.SocketBase.Command.BinaryCommandInfo].StartListen () [0x00000] in <filename unknown>:0 
+2011-12-26 00:52:42,953 [1] ERROR SuperSocket - Failed to start FlashPolicyServer server!
+2011-12-26 00:54:37,450 [4] ERROR SilverlightPolicyServer - System.Net.Sockets.SocketException: Access denied
+  at System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end) [0x00000] in <filename unknown>:0 
+  at SuperSocket.SocketEngine.AsyncSocketServer`2[SuperSocket.Facility.PolicyServer.PolicySession,SuperSocket.SocketBase.Command.BinaryCommandInfo].StartListen () [0x00000] in <filename unknown>:0 
+2011-12-26 00:54:37,487 [1] ERROR SuperSocket - Failed to start SilverlightPolicyServer server!
+2011-12-26 00:54:37,488 [5] ERROR FlashPolicyServer - System.Net.Sockets.SocketException: Access denied
+  at System.Net.Sockets.Socket.Bind (System.Net.EndPoint local_end) [0x00000] in <filename unknown>:0 
+  at SuperSocket.SocketEngine.AsyncSocketServer`2[SuperSocket.Facility.PolicyServer.PolicySession,SuperSocket.SocketBase.Command.BinaryCommandInfo].StartListen () [0x00000] in <filename unknown>:0 
+2011-12-26 00:54:37,488 [1] ERROR SuperSocket - Failed to start FlashPolicyServer server!

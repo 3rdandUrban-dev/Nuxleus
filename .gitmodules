@@ -181,3 +181,33 @@
 [submodule "lib/module/zepto"]
 	path = lib/module/zepto
 	url = https://github.com/madrobby/zepto.git
+[submodule "lib/module/facebook/connect-js"]
+	path = lib/module/facebook/connect-js
+	url = https://github.com/facebook/connect-js.git
+[submodule "lib/module/couchbase/geocouch"]
+	path = lib/module/couchbase/geocouch
+	url = https://github.com/couchbase/geocouch.git
+[submodule "lib/module/couchbase/couchbase-net-client"]
+	path = lib/module/couchbase/couchbase-net-client
+	url = https://github.com/couchbase/couchbase-net-client.git
+[submodule "lib/module/couchbase/couchdb"]
+	path = lib/module/couchbase/couchdb
+	url = https://github.com/couchbase/couchdb.git
+[submodule "lib/module/pusher-js"]
+	path = lib/module/pusher-js
+	url = https://github.com/pusher/pusher-js
+[submodule "lib/module/pusher/html5-realtime-push-notifications"]
+	path = lib/module/pusher/html5-realtime-push-notifications
+	url = https://github.com/pusher/html5-realtime-push-notifications.git
+[submodule "lib/module/pusher/html5-realtime-activity-streams"]
+	path = lib/module/pusher/html5-realtime-activity-streams
+	url = https://github.com/pusher/html5-realtime-activity-streams.git
+[submodule "lib/module/pusher/backbone-todo-app"]
+	path = lib/module/pusher/backbone-todo-app
+	url = https://github.com/pusher/backbone-todo-app.git
+[submodule "lib/module/pusher/pusher-realtime-data"]
+	path = lib/module/pusher/pusher-realtime-data
+	url = https://github.com/pusher/pusher-realtime-data.git
+[submodule "lib/module/pusher/notify"]
+	path = lib/module/pusher/notify
+	url = https://github.com/pusher/notify.git
