@@ -23,7 +23,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
-using Nuxleus.Core;
+
 
 namespace Nuxleus.Geo.MaxMind
 {
@@ -82,7 +82,7 @@ namespace Nuxleus.Geo.MaxMind
         "TH","TJ","TK","TM","TN","TO","TL","TR","TT","TV","TW","TZ","UA","UG",
         "UM","US","UY","UZ","VA","VC","VE","VG","VI","VN","VU","WF","WS","YE",
         "YT","RS","ZA","ZM","ME","ZW","A1","A2","O1","AX","GG","IM","JE","BL",
-	"MF"};
+  "MF"};
 
         private static String[] countryName = {
             "N/A","Asia/Pacific Region","Europe","Andorra","United Arab Emirates",
@@ -135,8 +135,8 @@ namespace Nuxleus.Geo.MaxMind
             "Vanuatu","Wallis and Futuna","Samoa","Yemen","Mayotte","Serbia",
             "South Africa","Zambia","Montenegro","Zimbabwe","Anonymous Proxy",
             "Satellite Provider","Other",
-	    "Aland Islands","Guernsey","Isle of Man","Jersey","Saint Barthelemy",
-	    "Saint Martin"};
+      "Aland Islands","Guernsey","Isle of Man","Jersey","Saint Barthelemy",
+      "Saint Martin"};
 
         public LookupService(String databaseFile, int options)
         {

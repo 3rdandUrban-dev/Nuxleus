@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -54,16 +54,15 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Nuxleus\lib\log4net\1.2.10\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.Xml.Linq">
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-    </Reference>
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +72,16 @@
     <Compile Include="Amp.Fm\Service\Search.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ExtensionMethods\ByteExtensionMethods\Byte_IntegerTransforms.cs" />
+    <Compile Include="ExtensionMethods\ByteExtensionMethods\Byte_StringTransforms.cs" />
+    <Compile Include="ExtensionMethods\IntegerExtensionMethods\Integer_EndianTransforms.cs" />
+    <Compile Include="ExtensionMethods\ITaskExtensionMethods\ITask_Invoke.cs" />
+    <Compile Include="ExtensionMethods\ObjectExtensionMethods\Object_Attributes.cs" />
+    <Compile Include="ExtensionMethods\ObjectExtensionMethods\Object_Log.cs" />
+    <Compile Include="ExtensionMethods\StringExtensionMethods\String_Convert.cs" />
+    <Compile Include="ExtensionMethods\StringExtensionMethods\String_Cryptography.cs" />
+    <Compile Include="ExtensionMethods\StringExtensionMethods\String_Substring.cs" />
+    <Compile Include="ExtensionMethods\StringExtensionMethods\String_Translate.cs" />
     <Compile Include="Facebook\AuthToken.cs" />
     <Compile Include="Facebook\Facebook.cs" />
     <Compile Include="Facebook\Friends.cs" />

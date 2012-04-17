@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -54,36 +54,21 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Enyim.Caching">
+      <HintPath>..\..\lib\Enyim.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\..\Nuxleus\lib\log4net\1.2.10\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
     </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
     </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-    </Reference>
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Memcached.ClientLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="protobuf-net, Version=1.0.0.261, Culture=neutral, PublicKeyToken=257b51d87d2e4d67">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\protobuf-net.dll</HintPath>
-    </Reference>
     <Reference Include="System.Configuration" />
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\log4net.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\AmazonWebServices\AWSAuthConnection.cs" />
@@ -204,10 +189,6 @@
     <Compile Include="Core\IO\Storage\FileSystem\FS.cs" />
     <Compile Include="Core\IO\Storage\FileSystem\FSStorage.cs" />
     <Compile Include="Core\IO\Storage\Memory\Memcached\MemcachedStorage.cs" />
-    <Compile Include="Extension\ExtensionMethods.cs" />
-    <Compile Include="Extension\Log\Log.cs" />
-    <Compile Include="Extension\StringUtils\Substring.cs" />
-    <Compile Include="Extension\StringUtils\Translate.cs" />
     <Compile Include="Core\Agent\IAgent.cs" />
     <Compile Include="Core\Agent\LoadBalancer\LoadBalancer.cs" />
     <Compile Include="Core\Agent\Notification\Notification.cs" />
@@ -236,8 +217,6 @@
     <!--<Folder Include="Core\Agent\" />-->
     <Folder Include="Core\IO\Storage\Cache\Memcached\" />
     <Folder Include="Core\IO\Storage\Cache\Redis\" />
-    <Folder Include="Authentication\OAuth\" />
-    <Folder Include="Core\Singleton\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

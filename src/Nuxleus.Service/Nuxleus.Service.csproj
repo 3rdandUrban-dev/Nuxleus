@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -56,27 +56,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core">
     </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
-    <Reference Include="ALAZ.SystemEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ALAZ.SystemEx.dll</HintPath>
-    </Reference>
     <Reference Include="ALAZ.SystemEx.NetEx, Version=3.5.0.0, Culture=neutral, PublicKeyToken=ada2b06348b160e4">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
-    </Reference>
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
