@@ -132,7 +132,7 @@ namespace Nuxleus.Service.Drawing
                 m_logWriter.WriteLine ("Content Length: {0}", fileResponse.ContentLength);
                 m_logWriter.WriteLine ("Content Type: {0}", fileResponse.ContentType);
                 Stream imageStream = (Stream)fileResponse.GetResponseStream ();
-                Dictionary<string, MemoryStream > result = new JpegImageResize (imageStream).InvokeProcess ();
+                Dictionary<string, MemoryStream > result = new ConvertImage.JpegImageResize (imageStream).InvokeProcess ();
                 m_logWriter.WriteLine ("Total images in result dictionary: {0}", result.Count);
 
                 int status = 0;
