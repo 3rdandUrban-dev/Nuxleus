@@ -56,9 +56,11 @@
       <Private>True</Private>
       <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="protobuf-net, Version=2.0.0.480, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\protobuf-net.2.0.0.480\lib\net40\protobuf-net.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\amp.fm_private\src\Nuxleus\lib\RavenDB\EmbeddedClient\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\..\amp.fm_private\src\Nuxleus\lib\protobuf-net\v2\r480\mono\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=99312999b7803895, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -73,8 +75,8 @@
     <Reference Include="ServiceStack.Interfaces">
       <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\ServiceStack\ServiceStack-v3.67\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Plugins.ProtoBuf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\ServiceStack.Plugins.ProtoBuf.3.5.7\lib\net35\ServiceStack.Plugins.ProtoBuf.dll</HintPath>
+    <Reference Include="ServiceStack.Plugins.ProtoBuf">
+      <HintPath>..\..\amp.fm_private\src\Nuxleus\lib\ServiceStack\ServiceStack-v3.67\ServiceStack.Plugins.ProtoBuf.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Redis">
       <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\ServiceStack\ServiceStack-v3.67\ServiceStack.Redis.dll</HintPath>
@@ -82,10 +84,11 @@
     <Reference Include="ServiceStack.ServiceInterface">
       <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\ServiceStack\ServiceStack-v3.67\ServiceStack.ServiceInterface.dll</HintPath>
     </Reference>
-    <Reference Include="SgmlReaderDll">
-      <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\module\sgmlreader\sgmlreaderdll\bin\release\SgmlReaderDll.dll</HintPath>
+    <Reference Include="SgmlReaderDll, Version=1.8.8.14830, Culture=neutral, PublicKeyToken=46b2db9ca481831b, processorArchitecture=MSIL">
+      <HintPath>..\..\amp.fm_private\src\Nuxleus\lib\SgmlReaderDll.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
@@ -105,7 +108,7 @@
       <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
     </Reference>
     <Reference Include="WebActivator">
-      <HintPath>..\..\..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+      <HintPath>..\..\amp.fm_private\src\Nuxleus\lib\WebActivator.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor">
       <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
