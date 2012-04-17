@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -55,97 +55,34 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Enyim.Caching, Version=2.12.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\Enyim.Caching.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
     </Reference>
-    <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
     </Reference>
     <Reference Include="System.Configuration" />
-    <Reference Include="taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\taglib-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Memcached.ClientLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42c0400964dcc297">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Memcached.ClientLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Mvp.Xml.dll</HintPath>
-    </Reference>
     <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=b4f48c20dc9faff6">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Saxon.NET\Saxon.Api.dll</HintPath>
-    </Reference>
-    <Reference Include="DDay.iCal, Version=1.0.2.0, Culture=neutral, PublicKeyToken=b287ad3b61754bec">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\DDay.iCal.dll</HintPath>
     </Reference>
     <Reference Include="SgmlReaderDll, Version=1.8.7.17911, Culture=neutral, PublicKeyToken=46b2db9ca481831b">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\SgmlReaderDll.dll</HintPath>
     </Reference>
-    <Reference Include="Thought.vCards, Version=0.4.0.0, Culture=neutral, PublicKeyToken=b34606f0aa925886">
-      <HintPath>..\..\lib\Thought.vCards.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="Yahoo.Yui.Compressor, Version=1.4.1.0, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Yahoo.Yui.Compressor.dll</HintPath>
-    </Reference>
-    <Reference Include="EcmaScript.NET.modified, Version=0.1.1.0, Culture=neutral, PublicKeyToken=7d53ba4f537753a5">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Data.Sqlite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack\Mono.Data.Sqlite.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Common, Version=1.0.4112.42739, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack\ServiceStack.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack, Version=2.0.9.42849, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack\ServiceStack.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=1.0.4112.42739, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.OrmLite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack\ServiceStack.OrmLite.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.OrmLite.Sqlite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack\ServiceStack.OrmLite.Sqlite.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack\ServiceStack.OrmLite.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Redis, Version=2.0.9.195, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack\ServiceStack.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4107.42502, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack\ServiceStack.ServiceInterface.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Text, Version=2.0.9.42099, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack\ServiceStack.Text.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -276,13 +213,13 @@
       <Project>{058E925F-6FD0-4FAF-AA97-22D48D62923E}</Project>
       <Name>Nuxleus.Extension.Aws</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nuxleus.Extension\Nuxleus.Extension.csproj">
+      <Project>{CAE57117-5177-4523-AB3D-40294E8A6553}</Project>
+      <Name>Nuxleus.Extension</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuxleus.Geo\Nuxleus.Geo.csproj">
       <Project>{9054928F-69AF-4448-BEC0-591BC9393AE8}</Project>
       <Name>Nuxleus.Geo</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuxleus.Messaging\Nuxleus.Messaging.csproj">
-      <Project>{AED10FB5-FA04-4C28-9BF4-26C2278175E7}</Project>
-      <Name>Nuxleus.Messaging</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuxleus.PubSub\Nuxleus.PubSub.csproj">
       <Project>{5C9AF3AF-8B80-41FB-8407-747CB0FE4144}</Project>

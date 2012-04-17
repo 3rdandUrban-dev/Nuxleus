@@ -9,7 +9,6 @@ using System.Text;
 using Nuxleus.Service;
 using System.Security;
 using System.Security.Permissions;
-using System.ServiceProcess;
 using System.Xml;
 using System.IO;
 using Nuxleus.Service.FileQueue;
