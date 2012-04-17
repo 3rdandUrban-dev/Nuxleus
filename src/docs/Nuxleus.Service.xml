@@ -4,6 +4,115 @@
         <name>Nuxleus.Service</name>
     </assembly>
     <members>
+        <member name="F:Nuxleus.Service.FileSystemWatcherService.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.FileSystemWatcherService.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.FileSystemWatcherService.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.FileSystemWatcherService.OnStart(System.String[])">
+            <summary>
+            Set things in motion so your service can do its work.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.FileSystemWatcherService.OnStop">
+            <summary>
+            Stop this service.
+            </summary>
+        </member>
+        <member name="T:Nuxleus.Service.Authenticate">
+            <summary>
+            Summary description for Authenticate service
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.NuxleusCoreService.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.NuxleusCoreService.OnStart(System.String[])">
+            <summary>
+            Set things in motion so your service can do its work.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.NuxleusCoreService.OnStop">
+            <summary>
+            Stop this service.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.QsToLLUPService.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.QsToLLUPService.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.QsToLLUPService.OnStart(System.String[])">
+            <summary>
+            Set things in motion so your service can do its work.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.QsToLLUPService.OnStop">
+            <summary>
+            Stop this service.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.LLUPPublisherService.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.LLUPPublisherService.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.LLUPPublisherService.OnStart(System.String[])">
+            <summary>
+            Set things in motion so your service can do its work.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.LLUPPublisherService.OnStop">
+            <summary>
+            Stop this service.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.BlipQueueServerService.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.BlipQueueServerService.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.BlipQueueServerService.OnStart(System.String[])">
+            <summary>
+            Set things in motion so your service can do its work.
+            </summary>
+        </member>
+        <member name="M:Nuxleus.Service.BlipQueueServerService.OnStop">
+            <summary>
+            Stop this service.
+            </summary>
+        </member>
         <member name="M:Nuxleus.Service.ReplicationService.InitializeComponent">
             <summary> 
             Required method for Designer support - do not modify 
@@ -41,63 +150,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="M:Nuxleus.Service.LLUPPublisherService.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.LLUPPublisherService.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.LLUPPublisherService.OnStart(System.String[])">
-            <summary>
-            Set things in motion so your service can do its work.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.LLUPPublisherService.OnStop">
-            <summary>
-            Stop this service.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.LLUPSubscriberService.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.LLUPSubscriberService.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.LLUPSubscriberService.OnStart(System.String[])">
-            <summary>
-            Set things in motion so your service can do its work.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.LLUPSubscriberService.OnStop">
-            <summary>
-            Stop this service.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.NuxleusCoreService.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.NuxleusCoreService.OnStart(System.String[])">
-            <summary>
-            Set things in motion so your service can do its work.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.NuxleusCoreService.OnStop">
-            <summary>
-            Stop this service.
-            </summary>
-        </member>
         <member name="M:Nuxleus.Service.FileQueueWatcherService.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
@@ -109,27 +161,6 @@
             </summary>
         </member>
         <member name="M:Nuxleus.Service.FileQueueWatcherService.OnStop">
-            <summary>
-            Stop this service.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.BlipQueueServerService.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.BlipQueueServerService.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.BlipQueueServerService.OnStart(System.String[])">
-            <summary>
-            Set things in motion so your service can do its work.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.BlipQueueServerService.OnStop">
             <summary>
             Stop this service.
             </summary>
@@ -155,54 +186,23 @@
             Stop this service.
             </summary>
         </member>
-        <member name="M:Nuxleus.Service.QsToLLUPService.InitializeComponent">
+        <member name="M:Nuxleus.Service.LLUPSubscriberService.InitializeComponent">
             <summary> 
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="M:Nuxleus.Service.QsToLLUPService.Dispose(System.Boolean)">
+        <member name="M:Nuxleus.Service.LLUPSubscriberService.Dispose(System.Boolean)">
             <summary>
             Clean up any resources being used.
             </summary>
         </member>
-        <member name="M:Nuxleus.Service.QsToLLUPService.OnStart(System.String[])">
+        <member name="M:Nuxleus.Service.LLUPSubscriberService.OnStart(System.String[])">
             <summary>
             Set things in motion so your service can do its work.
             </summary>
         </member>
-        <member name="M:Nuxleus.Service.QsToLLUPService.OnStop">
-            <summary>
-            Stop this service.
-            </summary>
-        </member>
-        <member name="T:Nuxleus.Service.Authenticate">
-            <summary>
-            Summary description for Authenticate service
-            </summary>
-        </member>
-        <member name="F:Nuxleus.Service.FileSystemWatcherService.components">
-            <summary> 
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.FileSystemWatcherService.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.FileSystemWatcherService.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.FileSystemWatcherService.OnStart(System.String[])">
-            <summary>
-            Set things in motion so your service can do its work.
-            </summary>
-        </member>
-        <member name="M:Nuxleus.Service.FileSystemWatcherService.OnStop">
+        <member name="M:Nuxleus.Service.LLUPSubscriberService.OnStop">
             <summary>
             Stop this service.
             </summary>

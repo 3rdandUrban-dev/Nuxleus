@@ -1,17 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Security.Permissions;
-using System.Diagnostics;
-using Nuxleus.Drawing.Utility;
 using System.Web;
-using System.Drawing;
 using System.Xml;
+using Nuxleus.Drawing.Utility;
 using Nuxleus.Utility.S3;
-using System.Globalization;
 
 namespace Nuxleus.Service.Drawing
 {
@@ -135,7 +132,7 @@ namespace Nuxleus.Service.Drawing
                 m_logWriter.WriteLine ("Content Length: {0}", fileResponse.ContentLength);
                 m_logWriter.WriteLine ("Content Type: {0}", fileResponse.ContentType);
                 Stream imageStream = (Stream)fileResponse.GetResponseStream ();
-                Dictionary<string, MemoryStream > result = new ConvertImage.JpegImageResize (imageStream).InvokeProcess ();
+                Dictionary<string, MemoryStream > result = new JpegImageResize (imageStream).InvokeProcess ();
                 m_logWriter.WriteLine ("Total images in result dictionary: {0}", result.Count);
 
                 int status = 0;
