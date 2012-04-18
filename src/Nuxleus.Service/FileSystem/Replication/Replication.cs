@@ -19,15 +19,15 @@ namespace Nuxleus.Service
     {
         Container components = null;
         MessageServer server;
-	ReplicationHandler handler = null;
+        ReplicationHandler handler = null;
 
         public ReplicationService(int port)
         {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
             server = new MessageServer(port, "\n");
-	    handler = new ReplicationHandler();
-	    handler.Service = server.Service;
+            handler = new ReplicationHandler();
+            handler.Service = server.Service;
         }
 
         // The main entry point for the process
@@ -203,8 +203,8 @@ namespace Nuxleus.Service
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-																					  this.serviceProcessInstaller1,
-																					  this.serviceInstaller1});
+                                            this.serviceProcessInstaller1,
+                                            this.serviceInstaller1});
 
         }
         #endregion

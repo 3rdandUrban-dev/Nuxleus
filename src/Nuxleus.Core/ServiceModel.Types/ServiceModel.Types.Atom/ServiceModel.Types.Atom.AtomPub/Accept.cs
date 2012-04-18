@@ -12,12 +12,15 @@
 
 using System.Xml;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 namespace Nuxleus.ServiceModel.Types.AtomPub
 {
+    [DataContract(Name = "accept", Namespace = "http://www.w3.org/2007/app")]
     public class Accept
     {
         [XmlText]
+        [DataMember]
         public string Value;
     }
 }

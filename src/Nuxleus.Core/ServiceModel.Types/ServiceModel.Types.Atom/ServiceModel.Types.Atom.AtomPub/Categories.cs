@@ -13,16 +13,20 @@
 using System.Xml;
 using System.Xml.Serialization;
 using Nuxleus.ServiceModel.Types.Atom;
+using System.Runtime.Serialization;
 
 namespace Nuxleus.ServiceModel.Types.AtomPub
 {
 
+    [DataContract(Name = "categories", Namespace = "http://www.w3.org/2007/app")]
     public class Categories
     {
         [XmlAttribute("fixed")]
+        [DataMember(Name = "fixed")]
         public string Fixed;
 
         [XmlElement(ElementName = "category", Namespace = "http://www.w3.org/2005/Atom")]
+        [DataMember(Name = "category")]
         public Category[] Category;
     }
 

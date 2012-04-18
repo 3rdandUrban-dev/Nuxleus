@@ -1,3 +1,0 @@
-    <!ELEMENT foo (bar)>
-    
-    <!ENTITY bar "hello there">

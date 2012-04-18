@@ -1,1 +1,0 @@
-ExsltTest tests\test.xml tests\availability.xslt FunctionsAvailability.html

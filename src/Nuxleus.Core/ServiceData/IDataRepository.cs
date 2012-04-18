@@ -12,33 +12,33 @@ using System;
 using Nuxleus.ServiceModel.Operations;
 using Nuxleus.ServiceModel.Types;
 using Nuxleus.ServiceInterface;
-using Nuxleus.ServiceModel.Types.Account;
+////using Nuxleus.ServiceModel.Types.Account;
 
 namespace Nuxleus.Data
 {
     public interface IDataRepository
     {
-        AccountInfo CreateAccount (Account account);
+        //AccountInfo CreateAccount (Account account);
 
-        AccountInfo GetAccount (String accountName);
+        //AccountInfo GetAccount (String accountName);
 
-        AccountInfo UpdateAccount (Account account);
+        //AccountInfo UpdateAccount (Account account);
 
-        AccountInfo DeleteAccount (String accountName);
+        //AccountInfo DeleteAccount (String accountName);
 
-        AccountInfo GetOrCreateAccount (Account account);
+        //AccountInfo GetOrCreateAccount (Account account);
 
-        AccountProfileNameInfo GetProfileNameAvailability (AccountProfileNameStatus accountName);
+        //AccountProfileNameInfo GetProfileNameAvailability (AccountProfileNameStatus accountName);
 
-        EntityStatsInfo GetEntityStats (long accountId);
+        //EntityStatsInfo GetEntityStats (long accountId);
 
-        ArtistInfo CreateArtist (Artist artist);
+        //ArtistInfo CreateArtist (Artist artist);
 
-        ArtistInfo GetArtist (Artist artist);
+        //ArtistInfo GetArtist (Artist artist);
 
-        ArtistInfo UpdateArtist (Artist artist);
+        //ArtistInfo UpdateArtist (Artist artist);
 
-        ArtistInfo DeleteArtist (Artist artist);
+        //ArtistInfo DeleteArtist (Artist artist);
 
         //List<Question> GetAllQuestions();
 
@@ -69,7 +69,7 @@ namespace Nuxleus.Data
         //List<User> GetUsersByIds(IEnumerable<long> userIds);
 
         //SiteStats GetSiteStats();
-		
+
         //void DeleteQuestion(long questionId);
 
         //void DeleteAnswer(long questionId, long answerId);
