@@ -1,19 +1,8 @@
 using System;
-using System.Collections;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.ServiceProcess;
-using System.IO;
-using System.Threading;
-using System.Reflection;
-using System.Text;
-using System.Runtime.Remoting;
-using System.Runtime.Remoting.Messaging;
-using System.Configuration.Install;
 using Nuxleus.Messaging;
 using Nuxleus.Messaging.QS;
-using Nuxleus.Messaging.LLUP;
-using Nuxleus.Logging;
 
 namespace Nuxleus.Service
 {
@@ -22,34 +11,35 @@ namespace Nuxleus.Service
         Container components = null;
         MessageClient qsConnection = null;
         MessageServer pubServer = null;
-	QSToLLUPHandler handler = null;
+        QSToLLUPHandler handler = null;
 
 
-	public QsToLLUPService(string qsIp, int qsPort, int pubPort, string[] monitoredQueues)
-	  {
+        public QsToLLUPService(string qsIp, int qsPort, int pubPort, string[] monitoredQueues)
+        {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
 
             qsConnection = new MessageClient(qsIp, qsPort, "\r\n\r\n");
             pubServer = new MessageServer(pubPort, "\r\n");
 
-	    handler = new QSToLLUPHandler();
-	    
-	    handler.PollService = qsConnection.Service;
-	    handler.DispatcherService = pubServer.Service;
+            handler = new QSToLLUPHandler();
 
-	    foreach(string queueId in monitoredQueues) {
-	      handler.MonitoredQueues.Add(queueId);
-	    }
-	  }
+            handler.PollService = qsConnection.Service;
+            handler.DispatcherService = pubServer.Service;
+
+            foreach (string queueId in monitoredQueues)
+            {
+                handler.MonitoredQueues.Add(queueId);
+            }
+        }
 
         // The main entry point for the process
         public static void Main(object[] args)
         {
             ServiceBase[] ServicesToRun;
-	    string[] queues = ((string)args[3]).Split(',');
+            string[] queues = ((string)args[3]).Split(',');
             ServicesToRun = new ServiceBase[] { new QsToLLUPService((string)args[0], (int)args[1], 
-								    (int)args[2], queues) };
+                    (int)args[2], queues) };
             ServiceBase.Run(ServicesToRun);
         }
 
@@ -87,7 +77,7 @@ namespace Nuxleus.Service
             try
             {
                 Log.Write("Starting nuXleus llup publisher servers...");
-		pubServer.Start();
+                pubServer.Start();
                 qsConnection.Open();
             }
             catch (Exception ex)
@@ -104,9 +94,9 @@ namespace Nuxleus.Service
             try
             {
                 Log.Write("Stopping nuXleus llup publisher servers...");
-		handler.StopMonitoring();
+                handler.StopMonitoring();
                 qsConnection.Close();
-		pubServer.Stop();
+                pubServer.Stop();
                 this.Dispose();
             }
             catch (Exception ex)

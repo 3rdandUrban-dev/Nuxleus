@@ -12,7 +12,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Configuration.Install;
 using Nuxleus.Messaging;
 using Nuxleus.Messaging.LLUP;
-using Nuxleus.Logging;
+//using Nuxleus.Logging;
 
 namespace Nuxleus.Service
 {
@@ -20,32 +20,34 @@ namespace Nuxleus.Service
     {
         Container components = null;
         MessageClient[] boundTo = null;
-	SubscriberHandler sub = null;
-	ISubscriber[] subscribers = null;
+        SubscriberHandler sub = null;
+        ISubscriber[] subscribers = null;
 
-	public LLUPSubscriberService(string[] bindAddresses, ISubscriber[] subscribers)
-	  {
+        public LLUPSubscriberService(string[] bindAddresses, ISubscriber[] subscribers)
+        {
             // This call is required by the Windows.Forms Component Designer.
             InitializeComponent();
 
             boundTo = new MessageClient[bindAddresses.Length];
 
-	    sub = new SubscriberHandler();
+            sub = new SubscriberHandler();
 
-	    int index = 0;
-	    foreach(string address in bindAddresses) {
-	      string[] ipAndPort = address.Split(':');
-	      MessageClient routerToBindTo = new MessageClient(ipAndPort[0], Convert.ToInt32(ipAndPort[1]), "\r\n");
-	      sub.AddService(routerToBindTo.Service);
-	      
-	      boundTo[index] = routerToBindTo;
-	      index++;
-	    }
+            int index = 0;
+            foreach (string address in bindAddresses)
+            {
+                string[] ipAndPort = address.Split(':');
+                MessageClient routerToBindTo = new MessageClient(ipAndPort[0], Convert.ToInt32(ipAndPort[1]), "\r\n");
+                sub.AddService(routerToBindTo.Service);
 
-	    this.subscribers = subscribers;
-	    foreach(ISubscriber s in subscribers) {
-	      s.Handler = sub;
-	    }
+                boundTo[index] = routerToBindTo;
+                index++;
+            }
+
+            this.subscribers = subscribers;
+            foreach (ISubscriber s in subscribers)
+            {
+                s.Handler = sub;
+            }
         }
 
         // The main entry point for the process
@@ -90,12 +92,14 @@ namespace Nuxleus.Service
             try
             {
                 Log.Write("Starting nuXleus llup router servers...");
-		 foreach(ISubscriber s in subscribers) {
-		   s.Start();
-		 }
-		 foreach(MessageClient client in boundTo) {
-		   client.Open();
-		 }
+                foreach (ISubscriber s in subscribers)
+                {
+                    s.Start();
+                }
+                foreach (MessageClient client in boundTo)
+                {
+                    client.Open();
+                }
             }
             catch (Exception ex)
             {
@@ -111,13 +115,15 @@ namespace Nuxleus.Service
             try
             {
                 Log.Write("Stopping nuXleus llup router servers...");
-		 foreach(MessageClient client in boundTo) {
-		   sub.RemoveService(client.Service);
-		   client.Close();
-		 }
-		 foreach(ISubscriber s in subscribers) {
-		   s.Stop();
-		 }
+                foreach (MessageClient client in boundTo)
+                {
+                    sub.RemoveService(client.Service);
+                    client.Close();
+                }
+                foreach (ISubscriber s in subscribers)
+                {
+                    s.Stop();
+                }
                 this.Dispose();
             }
             catch (Exception ex)

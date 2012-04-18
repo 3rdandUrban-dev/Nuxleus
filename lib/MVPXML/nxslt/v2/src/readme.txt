@@ -1,1 +1,0 @@
-See http://www.xmllab.net for documentation.
