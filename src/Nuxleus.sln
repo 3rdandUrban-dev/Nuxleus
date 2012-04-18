@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{203AFF
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialBootstrapApi", "ServiceStack\SocialBootstrap\src\SocialBootstrapApi\SocialBootstrapApi.csproj", "{EFF33E09-C279-4BAD-BA7C-466A8683CA09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "amp.fm", "amp.fm", "{B0A49A7D-56D2-4CD8-9951-CA12A2BB72E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{B0ED20C2-B68E-41EF-9ECE-111409FC48BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0ED20C2-B68E-41EF-9ECE-111409FC48BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0ED20C2-B68E-41EF-9ECE-111409FC48BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFF33E09-C279-4BAD-BA7C-466A8683CA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFF33E09-C279-4BAD-BA7C-466A8683CA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFF33E09-C279-4BAD-BA7C-466A8683CA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFF33E09-C279-4BAD-BA7C-466A8683CA09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
