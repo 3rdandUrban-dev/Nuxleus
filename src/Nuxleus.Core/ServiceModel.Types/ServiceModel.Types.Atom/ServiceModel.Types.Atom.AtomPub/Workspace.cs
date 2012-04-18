@@ -11,16 +11,17 @@
 */
 using System.Xml;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 namespace Nuxleus.ServiceModel.Types.AtomPub
 {
+    [DataContract(Name = "workspace", Namespace = "http://www.w3.org/2007/app")]
     public partial class Workspace
     {
-        [XmlElement(ElementName = "title", Namespace = "http://www.w3.org/2005/Atom",
-             IsNullable = false)]
+        [DataMember(Name = "title", IsRequired = true)]
         public string Title;
 
-        [XmlElement(ElementName = "collection")]
+        [DataMember(Name = "collection")]
         public Collection[] Collections;
     }
 }

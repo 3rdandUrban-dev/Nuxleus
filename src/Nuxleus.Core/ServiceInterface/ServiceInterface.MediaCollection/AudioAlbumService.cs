@@ -12,7 +12,7 @@ namespace Nuxleus.ServiceInterface
     {
         public IDataRepository Repository { get; set; }
 
-        public override object OnGet (AudioAlbum request)
+        public override object OnGet(AudioAlbum request)
         {
             return new AudioAlbumResponse
             {
@@ -20,7 +20,7 @@ namespace Nuxleus.ServiceInterface
             };
         }
 
-        public override object OnPost (AudioAlbum request)
+        public override object OnPost(AudioAlbum request)
         {
             return new AudioAlbumResponse
             {
@@ -28,7 +28,7 @@ namespace Nuxleus.ServiceInterface
             };
         }
 
-        public override object OnPut (AudioAlbum request)
+        public override object OnPut(AudioAlbum request)
         {
             return new AudioAlbumResponse
             {
@@ -36,7 +36,7 @@ namespace Nuxleus.ServiceInterface
             };
         }
 
-        public override object OnDelete (AudioAlbum request)
+        public override object OnDelete(AudioAlbum request)
         {
             return new AudioAlbumResponse
             {

@@ -8,16 +8,10 @@
 // The code contained in this file is licensed under The MIT License
 // Please see http://www.opensource.org/licenses/mit-license.php for specific detail.
 */
-using System;
 using System.Security.Cryptography;
 using System.Text;
-using Nuxleus.ServiceModel.Operations;
-using Nuxleus.ServiceModel.Types;
-using ServiceStack.Common.Extensions;
-using ServiceStack.Common.Utils;
 using ServiceStack.Redis;
-using Nuxleus.ServiceInterface;
-using Nuxleus.ServiceModel.Types.Account;
+//using Nuxleus.ServiceModel.Types.Account;
 
 namespace Nuxleus.Data
 {
@@ -26,9 +20,9 @@ namespace Nuxleus.Data
         //Definition of all the redis keys that are used for indexes
         static class TagIndex
         {
-            public static string Questions (string tag)
+            public static string Questions(string tag)
             {
-                return "urn:tags>q:" + tag.ToLower ();
+                return "urn:tags>q:" + tag.ToLower();
             }
 
             public static string All { get { return "urn:tags"; } }
@@ -36,12 +30,12 @@ namespace Nuxleus.Data
 
         static class QuestionUserIndex
         {
-            public static string UpVotes (long questionId)
+            public static string UpVotes(long questionId)
             {
                 return "urn:q>user+:" + questionId;
             }
 
-            public static string DownVotes (long questionId)
+            public static string DownVotes(long questionId)
             {
                 return "urn:q>user-:" + questionId;
             }
@@ -49,17 +43,17 @@ namespace Nuxleus.Data
 
         static class UserQuestionIndex
         {
-            public static string Questions (long userId)
+            public static string Questions(long userId)
             {
                 return "urn:user>q:" + userId;
             }
 
-            public static string UpVotes (long userId)
+            public static string UpVotes(long userId)
             {
                 return "urn:user>q+:" + userId;
             }
 
-            public static string DownVotes (long userId)
+            public static string DownVotes(long userId)
             {
                 return "urn:user>q-:" + userId;
             }
@@ -67,12 +61,12 @@ namespace Nuxleus.Data
 
         static class AnswerUserIndex
         {
-            public static string UpVotes (long answerId)
+            public static string UpVotes(long answerId)
             {
                 return "urn:a>user+:" + answerId;
             }
 
-            public static string DownVotes (long answerId)
+            public static string DownVotes(long answerId)
             {
                 return "urn:a>user-:" + answerId;
             }
@@ -80,17 +74,17 @@ namespace Nuxleus.Data
 
         static class UserAnswerIndex
         {
-            public static string Answers (long userId)
+            public static string Answers(long userId)
             {
                 return "urn:user>a:" + userId;
             }
 
-            public static string UpVotes (long userId)
+            public static string UpVotes(long userId)
             {
                 return "urn:user>a+:" + userId;
             }
 
-            public static string DownVotes (long userId)
+            public static string DownVotes(long userId)
             {
                 return "urn:user>a-:" + userId;
             }
@@ -99,80 +93,80 @@ namespace Nuxleus.Data
         static readonly long BaseAccountID = 3369267136000;
         static string AccountHashSalt = "db00fa4ee0655e0e6d728c6b173cb96b"; //md5 of "account@amp.fm";
         static Encoding encoding = UTF8Encoding.UTF8;
-        static HMACMD5 hmacProvider = new HMACMD5 (encoding.GetBytes (AccountHashSalt));
+        static HMACMD5 hmacProvider = new HMACMD5(encoding.GetBytes(AccountHashSalt));
 
         IRedisClientsManager RedisManager { get; set; }
 
-        public HybridDataRepository (IRedisClientsManager redisManager)
+        public HybridDataRepository(IRedisClientsManager redisManager)
         {
             RedisManager = redisManager;
         }
 
-        public AccountInfo GetOrCreateAccount (Account request)
-        {
+        //public AccountInfo GetOrCreateAccount (Account request)
+        //{
 
-            if (request.ProfileName.IsNullOrEmpty ())
-                throw new ArgumentNullException ("ProfileName");
+        //    if (request.ProfileName.IsNullOrEmpty ())
+        //        throw new ArgumentNullException ("ProfileName");
 
-            string lowerCaseAccountName = request.ProfileName.ToLower ();
-            request.AccountSettings.ProfileName = lowerCaseAccountName;
+        //    string lowerCaseAccountName = request.ProfileName.ToLower ();
+        //    request.AccountSettings.ProfileName = lowerCaseAccountName;
 
-            var userIdAliasKey = "id:UserAccount:ProfileName:" + lowerCaseAccountName;
+        //    var userIdAliasKey = "id:UserAccount:ProfileName:" + lowerCaseAccountName;
 
-            using (var redis = RedisManager.GetClient()) {
+        //    using (var redis = RedisManager.GetClient()) {
 
-                //Get a typed version of redis client that works with <Account>
-                var redisAccounts = redis.As<AccountInfo> ();
+        //        //Get a typed version of redis client that works with <Account>
+        //        var redisAccounts = redis.As<AccountInfo> ();
 
-                //Find user by DisplayName if exists
-                var userKey = redis.GetValue (userIdAliasKey);
-                if (userKey != null)
-                    return redisAccounts.GetValue (userKey);
+        //        //Find user by DisplayName if exists
+        //        var userKey = redis.GetValue (userIdAliasKey);
+        //        if (userKey != null)
+        //            return redisAccounts.GetValue (userKey);
 
-                //Generate Id for New User
-                
-                string internalAccountIdString = String.Format ("{0}:{1}", BaseAccountID + redisAccounts.GetNextSequence (), lowerCaseAccountName);
-                string internalAccountId = Convert.ToBase64String (hmacProvider.ComputeHash (encoding.GetBytes (internalAccountIdString)));
-                
-                AccountInfo accountInfo = new AccountInfo{ ProfileName = lowerCaseAccountName, InternalAccountId = internalAccountId, AccountSettings = request.AccountSettings };
-                redisAccounts.Store (accountInfo);
+        //        //Generate Id for New User
 
-                //Save reference to User key using the AccountName alias
-                redis.SetEntry (userIdAliasKey, accountInfo.CreateUrn ());
+        //        string internalAccountIdString = String.Format ("{0}:{1}", BaseAccountID + redisAccounts.GetNextSequence (), lowerCaseAccountName);
+        //        string internalAccountId = Convert.ToBase64String (hmacProvider.ComputeHash (encoding.GetBytes (internalAccountIdString)));
 
-                return accountInfo;//redisAccounts.GetById(user.InternalAccountId);
-            }
-        }
+        //        AccountInfo accountInfo = new AccountInfo{ ProfileName = lowerCaseAccountName, InternalAccountId = internalAccountId, AccountSettings = request.AccountSettings };
+        //        redisAccounts.Store (accountInfo);
 
-        public EntityStatsInfo GetEntityStats (long entityId)
-        {
-            using (var redis = RedisManager.GetClient()) {
-                return new EntityStatsInfo
-                {
-                    EntityId = entityId,
-                    QuestionsCount = redis.GetSetCount(UserQuestionIndex.Questions(entityId)),
-                    AnswersCount = redis.GetSetCount(UserAnswerIndex.Answers(entityId)),
-                };
-            }
-        }
+        //        //Save reference to User key using the AccountName alias
+        //        redis.SetEntry (userIdAliasKey, accountInfo.CreateUrn ());
 
-        public AccountProfileNameInfo GetProfileNameAvailability (AccountProfileNameStatus accountProfileNameStatus)
-        {
-            if (accountProfileNameStatus.ProfileName.IsNullOrEmpty ())
-                throw new ArgumentNullException ("ProfileName");
+        //        return accountInfo;//redisAccounts.GetById(user.InternalAccountId);
+        //    }
+        //}
 
-            string lowerCaseAccountName = accountProfileNameStatus.ProfileName.ToLower ();
-            var userIdAliasKey = "id:UserAccount:ProfileName:" + lowerCaseAccountName;
+        //public EntityStatsInfo GetEntityStats (long entityId)
+        //{
+        //    using (var redis = RedisManager.GetClient()) {
+        //        return new EntityStatsInfo
+        //        {
+        //            EntityId = entityId,
+        //            QuestionsCount = redis.GetSetCount(UserQuestionIndex.Questions(entityId)),
+        //            AnswersCount = redis.GetSetCount(UserAnswerIndex.Answers(entityId)),
+        //        };
+        //    }
+        //}
 
-            AccountProfileNameInfo accountNameInfo = new AccountProfileNameInfo { ProfileName = lowerCaseAccountName, IsAvailable = false };
+        //public AccountProfileNameInfo GetProfileNameAvailability (AccountProfileNameStatus accountProfileNameStatus)
+        //{
+        //    if (accountProfileNameStatus.ProfileName.IsNullOrEmpty ())
+        //        throw new ArgumentNullException ("ProfileName");
 
-            using (var redis = RedisManager.GetClient()) {
-                if (redis.GetValue (userIdAliasKey) == null)
-                    accountNameInfo.IsAvailable = true;
+        //    string lowerCaseAccountName = accountProfileNameStatus.ProfileName.ToLower ();
+        //    var userIdAliasKey = "id:UserAccount:ProfileName:" + lowerCaseAccountName;
 
-                return accountNameInfo;
-            }
-        }
+        //    AccountProfileNameInfo accountNameInfo = new AccountProfileNameInfo { ProfileName = lowerCaseAccountName, IsAvailable = false };
+
+        //    using (var redis = RedisManager.GetClient()) {
+        //        if (redis.GetValue (userIdAliasKey) == null)
+        //            accountNameInfo.IsAvailable = true;
+
+        //        return accountNameInfo;
+        //    }
+        //}
 
         #region Old Code
         //public List<Question> GetAllQuestions()
@@ -456,44 +450,44 @@ namespace Nuxleus.Data
         //}
         #endregion
 
-        public AccountInfo CreateAccount (Account account)
-        {
-            throw new NotImplementedException ();
-        }
+        //public AccountInfo CreateAccount (Account account)
+        //{
+        //    throw new NotImplementedException ();
+        //}
 
-        public AccountInfo GetAccount (string accountName)
-        {
-            throw new NotImplementedException ();
-        }
+        //public AccountInfo GetAccount (string accountName)
+        //{
+        //    throw new NotImplementedException ();
+        //}
 
-        public AccountInfo UpdateAccount (Account account)
-        {
-            throw new NotImplementedException ();
-        }
+        //public AccountInfo UpdateAccount (Account account)
+        //{
+        //    throw new NotImplementedException ();
+        //}
 
-        public AccountInfo DeleteAccount (string accountName)
-        {
-            throw new NotImplementedException ();
-        }
+        //public AccountInfo DeleteAccount (string accountName)
+        //{
+        //    throw new NotImplementedException ();
+        //}
 
-        public ArtistInfo CreateArtist (Artist artist)
-        {
-            throw new NotImplementedException ();
-        }
+        //public ArtistInfo CreateArtist (Artist artist)
+        //{
+        //    throw new NotImplementedException ();
+        //}
 
-        public ArtistInfo GetArtist (Artist artist)
-        {
-            throw new NotImplementedException ();
-        }
+        //public ArtistInfo GetArtist (Artist artist)
+        //{
+        //    throw new NotImplementedException ();
+        //}
 
-        public ArtistInfo UpdateArtist (Artist artist)
-        {
-            throw new NotImplementedException ();
-        }
+        //public ArtistInfo UpdateArtist (Artist artist)
+        //{
+        //    throw new NotImplementedException ();
+        //}
 
-        public ArtistInfo DeleteArtist (Artist artist)
-        {
-            throw new NotImplementedException ();
-        }
+        //public ArtistInfo DeleteArtist (Artist artist)
+        //{
+        //    throw new NotImplementedException ();
+        //}
     }
 }

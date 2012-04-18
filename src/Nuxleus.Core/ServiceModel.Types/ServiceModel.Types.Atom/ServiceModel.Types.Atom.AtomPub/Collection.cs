@@ -11,23 +11,23 @@
 */
 using System.Xml;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 namespace Nuxleus.ServiceModel.Types.AtomPub
 {
-
+    [DataContract(Name = "collection", Namespace = "http://www.w3.org/2005/Atom")]
     public partial class Collection
     {
-        [XmlElement(ElementName = "title", Namespace = "http://www.w3.org/2005/Atom",
-             IsNullable = false)]
+        [DataMember(Name = "title", IsRequired = true )]
         public string Title;
 
-        [XmlAttribute("href")]
+        [DataMember(Name = "href")]
         public string Href;
 
-        [XmlElement(ElementName = "accept")]
+        [DataMember(Name = "accept")]
         public Accept[] Accepts;
 
-        [XmlElement(ElementName = "categories")]
+        [DataMember(Name = "categories")]
         public Categories[] Categories;
     }
 

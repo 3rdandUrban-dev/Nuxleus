@@ -11,7 +11,7 @@ using System.Runtime.Remoting;
 using System.Runtime.Remoting.Messaging;
 using System.Configuration.Install;
 using Nuxleus.Service.Drawing;
-using Nuxleus.Logging;
+//using Nuxleus.Logging;
 using Nuxleus.Service.FileQueue;
 
 namespace Nuxleus.Service {

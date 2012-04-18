@@ -24,6 +24,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,46 +48,73 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Couchbase">
-      <HintPath>..\lib\Couchbase.dll</HintPath>
+    <Reference Include="AWSSDK, Version=1.4.7.0, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
+      <HintPath>.\packages\AWSSDK.1.4.7.0\lib\AWSSDK.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\log4net\1.2.10\log4net.dll</HintPath>
+    <Reference Include="Enyim.Caching, Version=2.11.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\packages\Membase.2.14\lib\net35\Enyim.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching.Log4NetAdapter, Version=2.11.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\packages\EnyimMemcached-log4net.2.11\lib\net35\Enyim.Caching.Log4NetAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching.NLogAdapter, Version=2.11.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\packages\EnyimMemcached-NLog.2.11\lib\net35\Enyim.Caching.NLogAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Membase">
+      <HintPath>.\packages\Membase.2.14\lib\net35\Membase.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>.\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\amp.fm_private\src\Nuxleus\lib\RavenDB\EmbeddedClient\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>.\packages\Newtonsoft.Json.4.5.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
-      <HintPath>..\..\amp.fm_private\src\Nuxleus\lib\protobuf-net\v2\r480\mono\protobuf-net.dll</HintPath>
+      <HintPath>.\packages\protobuf-net.2.0.0.480\lib\mono\protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="Saxon.Api, Version=0.0.0.0, Culture=neutral, PublicKeyToken=99312999b7803895, processorArchitecture=MSIL">
+    <Reference Include="Saxon.Api">
+      <HintPath>..\lib\Saxon.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\Saxon.NET\Saxon.Api.dll</HintPath>
+      <HintPath>.\packages\ServiceStack.3.7.3\lib\net35\ServiceStack.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack">
-      <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\ServiceStack\ServiceStack-v3.67\ServiceStack.dll</HintPath>
+    <Reference Include="ServiceStack.Common, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>.\packages\ServiceStack.Common.3.7.3\lib\net35\ServiceStack.Common.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Common">
-      <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\ServiceStack\ServiceStack-v3.67\ServiceStack.Common.dll</HintPath>
+    <Reference Include="ServiceStack.Interfaces, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>.\packages\ServiceStack.Common.3.7.3\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Interfaces">
-      <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\ServiceStack\ServiceStack-v3.67\ServiceStack.Interfaces.dll</HintPath>
+    <Reference Include="ServiceStack.Logging.Elmah">
+      <HintPath>.\packages\ServiceStack.Logging.Elmah.1.0.3.0\lib\net35\ServiceStack.Logging.Elmah.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Plugins.ProtoBuf">
-      <HintPath>..\..\amp.fm_private\src\Nuxleus\lib\ServiceStack\ServiceStack-v3.67\ServiceStack.Plugins.ProtoBuf.dll</HintPath>
+    <Reference Include="ServiceStack.Logging.Log4Net">
+      <HintPath>.\packages\ServiceStack.Logging.Log4Net.1.0.3.0\lib\net35\ServiceStack.Logging.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Redis">
-      <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\ServiceStack\ServiceStack-v3.67\ServiceStack.Redis.dll</HintPath>
+    <Reference Include="ServiceStack.Plugins.ProtoBuf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>.\packages\ServiceStack.Plugins.ProtoBuf.3.6.9\lib\net35\ServiceStack.Plugins.ProtoBuf.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.ServiceInterface">
-      <HintPath>\\psf\Home\Projects\amp.fm_private\src\Nuxleus\lib\ServiceStack\ServiceStack-v3.67\ServiceStack.ServiceInterface.dll</HintPath>
+    <Reference Include="ServiceStack.RazorEngine, Version=2.1.4490.2209, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\packages\ServiceStack.3.7.3\lib\net35\ServiceStack.RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="SgmlReaderDll, Version=1.8.8.14830, Culture=neutral, PublicKeyToken=46b2db9ca481831b, processorArchitecture=MSIL">
-      <HintPath>..\..\amp.fm_private\src\Nuxleus\lib\SgmlReaderDll.dll</HintPath>
+    <Reference Include="ServiceStack.Redis, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>.\packages\ServiceStack.Redis.3.7.3\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4490.2209, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\packages\ServiceStack.3.7.3\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="SgmlReaderDll">
+      <HintPath>.\packages\SgmlReader.1.8.8\lib\4.0\SgmlReaderDll.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -108,7 +137,7 @@
       <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
     </Reference>
     <Reference Include="WebActivator">
-      <HintPath>..\..\amp.fm_private\src\Nuxleus\lib\WebActivator.dll</HintPath>
+      <HintPath>.\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor">
       <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
@@ -257,37 +286,19 @@
     <Compile Include="Nuxleus.Core\Utility\Utility\S3\Utility.cs" />
     <Compile Include="Nuxleus.Core\ServiceData\HybridDataRepository.cs" />
     <Compile Include="Nuxleus.Core\ServiceData\IDataRepository.cs" />
-    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Account\AccountProfileNameStatusService.cs" />
-    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Account\AccountService.cs" />
-    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Account\AccountStatsService.cs" />
     <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Admin\RepositoryResetService.cs" />
-    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Entity\ArtistService.cs" />
-    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Entity\ArtistStatsService.cs" />
-    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Entity\ArtistVotesService.cs" />
     <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Media\AudioTrackService.cs" />
-    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Media\AudioTrackVotesService.cs" />
-    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.Media\AudioTrackStatsService.cs" />
     <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.MediaCollection\AudioAlbumService.cs" />
-    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.MediaCollection\AudioAlbumStatsService.cs" />
-    <Compile Include="Nuxleus.Core\ServiceInterface\ServiceInterface.MediaCollection\AudioAlbumVotesService.cs" />
-    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Account\Account.cs" />
-    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Account\AccountProfileNameStatus.cs" />
-    <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Entity\Artist.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Media\AudioTrack.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Media\Photo.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.Media\GraphicImage.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.MediaCollection\PhotoAlbum.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Operation\ServiceModel.Operations.MediaCollection\AudioAlbum.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Content\Content.cs" />
-    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Event\Event.cs" />
-    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Location\Location.cs" />
-    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Member\Member.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Message\Message.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Message\ServiceModel.Types.Message.LLUP\BlipMessage.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Message\ServiceModel.Types.Message.LLUP\Relevance.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Message\ServiceModel.Types.Message.LLUP\Scope.cs" />
-    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Session\Session.cs" />
-    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Session\_SessionDataReference.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Accept.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Categories.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomPub\Collection.cs" />
@@ -307,8 +318,6 @@
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Rights.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\Summary.cs" />
     <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Atom\ServiceModel.Types.Atom.AtomSyndication\TextConstruct.cs" />
-    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Account\AccountInfo.cs" />
-    <Compile Include="Nuxleus.Core\ServiceModel.Types\ServiceModel.Types.Account\AccountProfileNameInfo.cs" />
     <Compile Include="Nuxleus.Geo\IPLocation\IPLocation.cs" />
     <Compile Include="Nuxleus.Geo\LatLongByName\City.cs" />
     <Compile Include="Nuxleus.Geo\LatLongLocation\ILatLongLocation.cs" />
@@ -641,4 +650,5 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

@@ -25,7 +25,7 @@ namespace Nuxleus.ServiceModel.Operations.Media
             "DELETE {ImageName} contained within the {CollectionID} collection.\n"
         )
     ]
-    public class GraphicImage    : IEntity
+    public class GraphicImage : IEntity
     {
         public string Name { get; set; }
 

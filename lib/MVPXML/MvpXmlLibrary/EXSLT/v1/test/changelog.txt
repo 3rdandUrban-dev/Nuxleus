@@ -1,5 +1,0 @@
----------------------------------------------------------
-October 15, 2005
-
-Initial setup.
-Will contain tests for the project.
