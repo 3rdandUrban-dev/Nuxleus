@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
+using SuperSocket.ClientEngine;
 
 namespace WebSocket4Net
 {
@@ -167,12 +168,31 @@ namespace WebSocket4Net
 
             IJsonExecutor executor = GetExecutor(name, token);
 
-            if (executor != null)
+            if (executor == null)
+                return;
+
+            object value;
+
+            try
             {
-                if(!executor.Type.IsPrimitive)
-                    executor.Execute(this, token, DeserializeObject(parameter, executor.Type));
+                if (!executor.Type.IsPrimitive)
+                    value = DeserializeObject(parameter, executor.Type);
                 else
-                    executor.Execute(this, token, Convert.ChangeType(parameter, executor.Type, null));
+                    value = Convert.ChangeType(parameter, executor.Type, null);
+            }
+            catch (Exception exc)
+            {
+                m_WebSocket_Error(this, new ErrorEventArgs(new Exception("DeserializeObject exception", exc)));
+                return;
+            }
+
+            try
+            {
+                executor.Execute(this, token, value);
+            }
+            catch (Exception exce)
+            {
+                m_WebSocket_Error(this, new ErrorEventArgs(new Exception("Message handling exception", exce)));
             }
         }
 
@@ -246,8 +266,13 @@ namespace WebSocket4Net
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentNullException("name");
 
-            if(content != null)
-                m_WebSocket.Send(string.Format(m_QueryTemplateC, name, SerializeObject(content)));
+            if (content != null)
+            {
+                if (!content.GetType().IsPrimitive)
+                    m_WebSocket.Send(string.Format(m_QueryTemplateC, name, SerializeObject(content)));
+                else
+                    m_WebSocket.Send(string.Format(m_QueryTemplateC, name, content));
+            }
             else
                 m_WebSocket.Send(name);
         }
@@ -311,6 +336,20 @@ namespace WebSocket4Net
             return Query<T>(name, content, new JsonExecutorFull<T>(executor));
         }
 
+        /// <summary>
+        /// Queries the specified name.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name">The name.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="executor">The executor.</param>
+        /// <param name="state">The callback state.</param>
+        /// <returns></returns>
+        public string Query<T>(string name, object content, Action<JsonWebSocket, T, object> executor, object state)
+        {
+            return Query<T>(name, content, new JsonExecutorWithSenderAndState<T>(executor, state));
+        }
+
         string Query<T>(string name, object content, IJsonExecutor executor)
         {
             if (string.IsNullOrEmpty(name))
@@ -321,7 +360,12 @@ namespace WebSocket4Net
             RegisterExecutor<T>(name, token.ToString(), executor);
 
             if (content != null)
-                m_WebSocket.Send(string.Format(m_QueryTemplateA, name, token, SerializeObject(content)));
+            {
+                if (!content.GetType().IsPrimitive)
+                    m_WebSocket.Send(string.Format(m_QueryTemplateA, name, token, SerializeObject(content)));
+                else
+                    m_WebSocket.Send(string.Format(m_QueryTemplateA, name, token, content));
+            }
             else
                 m_WebSocket.Send(string.Format(m_QueryTemplateB, name, token));
 
