@@ -24,7 +24,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -48,24 +48,24 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AForge">
-      <HintPath>..\..\..\packages\AForge.2.2.4\lib\AForge.dll</HintPath>
-    </Reference>
     <Reference Include="AForge.Imaging">
-      <HintPath>..\..\..\packages\AForge.Imaging.2.2.4\lib\AForge.Imaging.dll</HintPath>
+      <HintPath>packages\AForge.Imaging.2.2.4\lib\AForge.Imaging.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Math">
-      <HintPath>..\..\..\packages\AForge.Math.2.2.4\lib\AForge.Math.dll</HintPath>
+      <HintPath>packages\AForge.Math.2.2.4\lib\AForge.Math.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Video">
-      <HintPath>..\..\..\packages\AForge.Video.2.2.4\lib\AForge.Video.dll</HintPath>
+      <HintPath>packages\AForge.Video.2.2.4\lib\AForge.Video.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Video.DirectShow">
-      <HintPath>..\..\..\packages\AForge.Video.DirectShow.2.2.4.1\lib\AForge.Video.DirectShow.dll</HintPath>
+      <HintPath>packages\AForge.Video.DirectShow.2.2.4.1\lib\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
-    <Reference Include="AWSSDK, Version=1.4.8.1, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
+    <Reference Include="AWSSDK, Version=1.4.8.2, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\AWSSDK.1.4.8.1\lib\AWSSDK.dll</HintPath>
+      <HintPath>packages\AWSSDK.1.4.8.2\lib\AWSSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="DDay.iCal">
+      <HintPath>..\lib\DDay.iCal.dll</HintPath>
     </Reference>
     <Reference Include="Enyim.Caching, Version=2.11.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -91,29 +91,52 @@
       <HintPath>.\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>..\..\..\packages\mongocsharpdriver.1.4.1\lib\net35\MongoDB.Bson.dll</HintPath>
+      <HintPath>packages\mongocsharpdriver.1.4.1\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>..\..\..\packages\mongocsharpdriver.1.4.1\lib\net35\MongoDB.Driver.dll</HintPath>
+      <HintPath>packages\mongocsharpdriver.1.4.1\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>.\packages\Newtonsoft.Json.4.5.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="MonoTorrent">
+      <HintPath>..\lib\MonoTorrent.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoTorrent.Dht">
+      <HintPath>..\lib\MonoTorrent.Dht.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvp.Xml">
+      <HintPath>..\lib\Mvp.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.4.5.4\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NGit">
+      <HintPath>..\lib\NGit.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>.\packages\protobuf-net.2.0.0.480\lib\mono\protobuf-net.dll</HintPath>
     </Reference>
+    <Reference Include="QueryMachine.Export">
+      <HintPath>..\lib\QueryMachine.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="QueryMachine.XQuery">
+      <HintPath>..\lib\QueryMachine.XQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="QueryMachine.XQuery.OpenXML">
+      <HintPath>..\lib\QueryMachine.XQuery.OpenXML.dll</HintPath>
+    </Reference>
     <Reference Include="Saxon.Api">
       <HintPath>..\lib\Saxon.Api.dll</HintPath>
     </Reference>
+    <Reference Include="saxon9, Version=9.1.0.8, Culture=neutral, PublicKeyToken=99312999b7803895, processorArchitecture=MSIL">
+      <HintPath>..\lib\saxon9.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\packages\ServiceStack.3.7.3\lib\net35\ServiceStack.dll</HintPath>
+      <HintPath>packages\ServiceStack.3.7.4\lib\net35\ServiceStack.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Common, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>.\packages\ServiceStack.Common.3.7.3\lib\net35\ServiceStack.Common.dll</HintPath>
+      <HintPath>packages\ServiceStack.Common.3.7.4\lib\net35\ServiceStack.Common.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Interfaces, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>.\packages\ServiceStack.Common.3.7.3\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+      <HintPath>packages\ServiceStack.Common.3.7.4\lib\net35\ServiceStack.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Logging.Elmah">
       <HintPath>.\packages\ServiceStack.Logging.Elmah.1.0.3.0\lib\net35\ServiceStack.Logging.Elmah.dll</HintPath>
@@ -121,22 +144,54 @@
     <Reference Include="ServiceStack.Logging.Log4Net">
       <HintPath>.\packages\ServiceStack.Logging.Log4Net.1.0.3.0\lib\net35\ServiceStack.Logging.Log4Net.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=3.7.5.16983, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\ServiceStack.OrmLite.SqlServer.3.7.5\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer">
+      <HintPath>packages\ServiceStack.OrmLite.SqlServer.3.7.5\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Plugins.ProtoBuf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>.\packages\ServiceStack.Plugins.ProtoBuf.3.6.9\lib\net35\ServiceStack.Plugins.ProtoBuf.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.RazorEngine, Version=2.1.4490.2209, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ServiceStack.RazorEngine, Version=2.1.4498.20344, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\packages\ServiceStack.3.7.3\lib\net35\ServiceStack.RazorEngine.dll</HintPath>
+      <HintPath>packages\ServiceStack.3.7.4\lib\net35\ServiceStack.RazorEngine.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Redis, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>.\packages\ServiceStack.Redis.3.7.3\lib\net35\ServiceStack.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4490.2209, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ServiceStack.Redis, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\packages\ServiceStack.3.7.3\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+      <HintPath>packages\ServiceStack.Redis.3.7.4\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4498.20342, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\ServiceStack.3.7.4\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
     </Reference>
     <Reference Include="SgmlReaderDll">
       <HintPath>.\packages\SgmlReader.1.8.8\lib\4.0\SgmlReaderDll.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Data">
+      <HintPath>packages\Simple.Data.Core.0.16.1.0\lib\net40\Simple.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Data.MongoDB">
+      <HintPath>packages\Simple.Data.MongoDB.0.12.0.1\lib\net40\Simple.Data.MongoDB.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.Data.OData">
+      <HintPath>packages\Simple.Data.OData.0.2.2.0\lib\net40\Simple.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.NExtLib">
+      <HintPath>packages\Simple.Data.OData.0.2.2.0\lib\net40\Simple.NExtLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Simple.OData">
+      <HintPath>packages\Simple.Data.OData.0.2.2.0\lib\net40\Simple.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.Common">
+      <HintPath>..\lib\SuperSocket.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.SocketBase">
+      <HintPath>..\lib\SuperSocket.SocketBase.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperWebSocket">
+      <HintPath>..\lib\SuperWebSocket.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -158,8 +213,17 @@
     <Reference Include="ALAZ.SystemEx.NetEx">
       <HintPath>..\lib\ALAZ.SystemEx.NetEx.dll</HintPath>
     </Reference>
+    <Reference Include="Thought.vCards">
+      <HintPath>..\lib\Thought.vCards.dll</HintPath>
+    </Reference>
     <Reference Include="WebActivator">
       <HintPath>.\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="Ximpleware.VTDXml">
+      <HintPath>..\lib\Ximpleware.VTDXml.dll</HintPath>
+    </Reference>
+    <Reference Include="XimpleWare.VTDXml.Light">
+      <HintPath>..\lib\XimpleWare.VTDXml.Light.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor">
       <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
@@ -671,11 +735,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\jquery-1.7.2-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.7.2.js" />
-    <Content Include="Scripts\jquery-1.7.2.min.js" />
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>

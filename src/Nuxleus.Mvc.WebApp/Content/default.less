@@ -1,0 +1,202 @@
+@import "css/variables.less"; // Modify this for custom colors, font-sizes, etc 
+@import "css/mixins.less";
+
+/* Override some defaults */
+html, body {
+  background-color: #eee; 
+}
+body {  
+  padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
+}
+footer {
+  border: none;
+}
+.container > footer p {
+  text-align: center; /* center align it with the container */
+}
+a {
+  cursor: pointer;
+} 
+
+.media-grid {
+  margin-left: -@gridGutterWidth;
+  margin-bottom: 0;
+  .clearfix();
+  li {
+    display: inline;
+  }
+  a {
+    float: left;
+    padding: 4px;
+    margin: 0 0 @baseline @gridGutterWidth;
+    border: 1px solid #ddd;
+    .border-radius(4px);
+    .box-shadow(0 1px 1px rgba(0,0,0,.075));
+    img {
+      display: block;
+    }
+    &:hover {
+      border-color: @linkColor;
+      .box-shadow(0 1px 4px rgba(0,105,214,.25));
+    }
+  }
+}
+
+/* Page header tweaks */   
+.page-header {
+  background-color: #f5f5f5;   
+  padding: 20px 20px 10px;  
+  margin: -20px -20px 20px;
+} 
+
+.topbar .btn {
+  border: 0;
+}
+
+#by-link { 
+    color: #999;
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  font-size: 11px;
+}
+#by-link {
+  text-decoration: none;
+}
+/* end bootstrap customizations */
+ 
+html, body {
+  color: #555; 
+}
+      
+#signed-in, .signed-out, .signed-in, 
+#register-login, #register-signed-in, #page-loading, .app-loading
+{
+    display: none;
+}      
+
+.authenticated #signed-in { display: block; }
+
+.registered    #register-login { display: block; }
+.authenticated #register-login { display: none; }
+.authenticated #intro          { display: none; }
+
+.authenticated #signup, 
+.registered    #signup  { display: none; }
+
+#twitter .signed-in  { display: none; }
+.authenticated-twitter #twitter .signed-in  { display: block; }
+
+.authenticated-twitter  #twitter-signin  { display: none; }
+.authenticated-facebook #facebook-signin { display: none; }
+
+.directmessages { display: none; }
+.self .directmessages { display: list-item; }
+
+#intro {
+  padding: 0 10px 10px 20px; 
+  margin: 0 0 20px -20px;
+}
+
+#intro, #twitter {
+  min-width: 500px;
+}
+
+#page-body {
+  min-height: 950px;
+}
+
+#page-loading
+{
+  position: absolute;
+  margin: 160px 0 0 200px;
+  text-align: center;
+  opacity: 0.6;
+}
+#page-loading b {
+  background: url(img/loader.gif) no-repeat 40px 50%;
+  font: normal 20px arial;
+  color: #444;
+  padding: 15px 80px;
+  display: block;
+}
+
+#gravatar {
+  cursor: pointer;
+}
+
+.loading #page-loading {
+  display: block;
+}
+
+#login.error INPUT {
+  background-color: darkred;
+}
+.error, .error .help-inline {
+  color: darkred;
+}
+#register {
+  input[type=text] {
+    margin: 0 0 10px 0;	
+  }
+  label.checkbox {
+    margin-left: 15px;
+  }
+  .actions { 
+    padding: 10px 0 0 0;
+  }
+}
+
+.form-stacked {
+  padding: 0;
+}
+
+.fade-when-loading {
+  opacity: 1;
+  .transition(opacity 1s cubic-bezier(0.190, 1.000, 0.220, 1.000)); /* easeOutExpo */
+}
+.loading.fade-when-loading {
+  .opacity(20);
+}
+
+.form-stacked div.clearfix.error {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+form.error>input, form.error>textarea {
+  border-color: #EE5F5B;
+  background: #FDDFDE;
+}
+
+b[data-error], b[data-error-field] {
+}
+
+#twitter-signin {
+  padding: 10px 0 0 0;
+}
+
+#user-profile {
+}
+
+.tw-item IMG, .tw-current IMG {
+  width:  58px;
+  height: 58px;
+}
+DIV.tw-item, DIV.tw-item > DIV {
+  display:block;
+}
+.tw-item .span9 {
+  padding-left: 20px;
+}
+.tw-item .span2 {
+  text-align: right;
+}
+.tw-current {
+  padding: 20px 0 20px 10px;
+}
+.tw-current .span1 {
+  padding-left: 15px;
+}
+.tw-current .span9 {
+  margin: 0 0 0 10px;
+}
