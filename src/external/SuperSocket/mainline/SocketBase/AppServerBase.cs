@@ -24,9 +24,9 @@ namespace SuperSocket.SocketBase
     /// </summary>
     /// <typeparam name="TAppSession">The type of the app session.</typeparam>
     /// <typeparam name="TRequestInfo">The type of the request info.</typeparam>
-    public abstract class AppServerBase<TAppSession, TRequestInfo> : IAppServer<TAppSession, TRequestInfo>, ICommandSource<ICommand<TAppSession, TRequestInfo>>
-        where TRequestInfo : IRequestInfo
-        where TAppSession : IAppSession<TAppSession, TRequestInfo>, new()
+    public abstract class AppServerBase<TAppSession, TRequestInfo> : IAppServer<TAppSession, TRequestInfo>, ICommandSource<ICommand<TAppSession, TRequestInfo>>, IRawDataProcessor<TAppSession>
+        where TRequestInfo : class, IRequestInfo
+        where TAppSession : AppSession<TAppSession, TRequestInfo>, IAppSession, new()
     {
         /// <summary>
         /// Null appSession instance
@@ -41,7 +41,7 @@ namespace SuperSocket.SocketBase
         /// <summary>
         /// Gets the certificate of current server.
         /// </summary>
-        public virtual X509Certificate Certificate { get; protected set; }
+        public X509Certificate Certificate { get; private set; }
 
         /// <summary>
         /// Gets or sets the request filter factory.
@@ -71,6 +71,11 @@ namespace SuperSocket.SocketBase
         /// Gets the logger assosiated with this object.
         /// </summary>
         public ILog Logger { get; private set; }
+
+        /// <summary>
+        /// Gets the bootstrap of this appServer instance.
+        /// </summary>
+        protected IBootstrap Bootstrap { get; private set; }
 
         private static bool m_ThreadPoolConfigured = false;
 
@@ -219,7 +224,7 @@ namespace SuperSocket.SocketBase
         /// <param name="config">The socket server instance config.</param>
         /// <param name="socketServerFactory">The socket server factory.</param>
         /// <returns></returns>
-        public bool Setup(IRootConfig rootConfig, IServerConfig config, ISocketServerFactory socketServerFactory)
+        protected virtual bool Setup(IRootConfig rootConfig, IServerConfig config, ISocketServerFactory socketServerFactory)
         {
             return Setup(rootConfig, config, socketServerFactory, null);
         }
@@ -232,7 +237,7 @@ namespace SuperSocket.SocketBase
         /// <param name="socketServerFactory">The socket server factory.</param>
         /// <param name="requestFilterFactory">The request filter factory.</param>
         /// <returns></returns>
-        public virtual bool Setup(IRootConfig rootConfig, IServerConfig config, ISocketServerFactory socketServerFactory, IRequestFilterFactory<TRequestInfo> requestFilterFactory)
+        protected virtual bool Setup(IRootConfig rootConfig, IServerConfig config, ISocketServerFactory socketServerFactory, IRequestFilterFactory<TRequestInfo> requestFilterFactory)
         {
             if (rootConfig == null)
                 throw new ArgumentNullException("rootConfig");
@@ -314,6 +319,24 @@ namespace SuperSocket.SocketBase
         }
 
         /// <summary>
+        /// Setups the specified root config.
+        /// </summary>
+        /// <param name="bootstrap">The bootstrap.</param>
+        /// <param name="rootConfig">The SuperSocket root config.</param>
+        /// <param name="config">The socket server instance config.</param>
+        /// <param name="socketServerFactory">The socket server factory.</param>
+        /// <returns></returns>
+        bool IAppServer.Setup(IBootstrap bootstrap, IRootConfig rootConfig, IServerConfig config, ISocketServerFactory socketServerFactory)
+        {
+            if (bootstrap == null)
+                throw new ArgumentNullException("bootstrap");
+
+            Bootstrap = bootstrap;
+
+            return Setup(rootConfig, config, socketServerFactory);
+        }
+
+        /// <summary>
         /// Setups the request filter factory.
         /// </summary>
         /// <param name="config">The config.</param>
@@ -386,15 +409,27 @@ namespace SuperSocket.SocketBase
 
                 if (configProtocol != SslProtocols.None)
                 {
-                    if (config.Certificate == null || !config.Certificate.IsEnabled)
+                    try
+                    {
+                        var certificate = GetCertificate(config);
+
+                        if (certificate == null)
+                        {
+                            if (Logger.IsErrorEnabled)
+                                Logger.Error("Certificate cannot be null if you have set secure protocol!");
+
+                            return false;
+                        }
+
+                        Certificate = certificate;
+                    }
+                    catch (Exception e)
                     {
                         if (Logger.IsErrorEnabled)
-                            Logger.Error("There is no certificate defined and enabled!");
+                            Logger.Error("Failed to initialize certificate!", e);
+
                         return false;
                     }
-
-                    if (!SetupCertificate(config))
-                        return false;
                 }
 
                 BasicSecurity = configProtocol;
@@ -405,6 +440,31 @@ namespace SuperSocket.SocketBase
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Gets the certificate from server configuguration.
+        /// </summary>
+        /// <param name="config">The config.</param>
+        /// <returns></returns>
+        protected virtual X509Certificate GetCertificate(IServerConfig config)
+        {
+            if (config.Certificate == null || !config.Certificate.IsEnabled)
+            {
+                if (Logger.IsErrorEnabled)
+                    Logger.Error("There is no certificate defined and enabled!");
+                return null;
+            }
+
+            if (string.IsNullOrEmpty(config.Certificate.FilePath) && string.IsNullOrEmpty(config.Certificate.Thumbprint))
+            {
+                if (Logger.IsErrorEnabled)
+                    Logger.Error("Failed to initialize certificate! The attributes 'filePath' or 'thumbprint' is required!");
+
+                return null;
+            }
+
+            return CertificateManager.Initialize(config.Certificate);
         }
 
         /// <summary>
@@ -533,36 +593,6 @@ namespace SuperSocket.SocketBase
         }
 
         /// <summary>
-        /// Setups the TLS/SSL certificate.
-        /// </summary>
-        /// <param name="config">The config.</param>
-        /// <returns></returns>
-        private bool SetupCertificate(IServerConfig config)
-        {
-            try
-            {
-                if (config.Certificate.IsEnabled && string.IsNullOrEmpty(config.Certificate.FilePath) && string.IsNullOrEmpty(config.Certificate.Thumbprint))
-                {
-                    if (Logger.IsErrorEnabled)
-                        Logger.Error("Failed to initialize certificate! The attributes 'filePath' or 'thumbprint' is required!");
-
-                    return false;
-                }
-
-                Certificate = CertificateManager.Initialize(config.Certificate);
-                return true;
-            }
-            catch (Exception e)
-            {
-                if (Logger.IsErrorEnabled)
-                    Logger.Error("Failed to initialize certificate!", e);
-
-                return false;
-            }
-        }
-
-
-        /// <summary>
         /// Gets the name of the server instance.
         /// </summary>
         public string Name
@@ -656,12 +686,45 @@ namespace SuperSocket.SocketBase
                 return null;
         }
 
+
+        private Func<TAppSession, byte[], int, int, bool> m_RawDataReceivedHandler;
+
+        /// <summary>
+        /// Gets or sets the raw binary data received event handler.
+        /// TAppSession: session
+        /// byte[]: receive buffer
+        /// int: receive buffer offset
+        /// int: receive lenght
+        /// bool: whether process the received data further
+        /// </summary>
+        event Func<TAppSession, byte[], int, int, bool> IRawDataProcessor<TAppSession>.RawDataReceived
+        {
+            add { m_RawDataReceivedHandler += value; }
+            remove { m_RawDataReceivedHandler -= value; }
+        }
+
+        /// <summary>
+        /// Called when [raw data received].
+        /// </summary>
+        /// <param name="session">The session.</param>
+        /// <param name="buffer">The buffer.</param>
+        /// <param name="offset">The offset.</param>
+        /// <param name="length">The length.</param>
+        internal bool OnRawDataReceived(IAppSession session, byte[] buffer, int offset, int length)
+        {
+            var handler = m_RawDataReceivedHandler;
+            if (handler == null)
+                return true;
+
+            return handler((TAppSession)session, buffer, offset, length);
+        }
+
         private RequestHandler<TAppSession, TRequestInfo> m_RequestHandler;
 
         /// <summary>
         /// Occurs when a full request item received.
         /// </summary>
-        protected event RequestHandler<TAppSession, TRequestInfo> RequestHandler
+        public event RequestHandler<TAppSession, TRequestInfo> RequestHandler
         {
             add { m_RequestHandler += value; }
             remove { m_RequestHandler -= value; }
@@ -715,7 +778,7 @@ namespace SuperSocket.SocketBase
 
                     //Command filter may close the session,
                     //so detect whether session is connected before execute command
-                    if (session.Status != SessionStatus.Disconnected)
+                    if (session.Connected)
                     {
                         command.ExecuteCommand(session, requestInfo);
 
@@ -754,7 +817,7 @@ namespace SuperSocket.SocketBase
         /// </summary>
         /// <param name="session">The session.</param>
         /// <param name="requestInfo">The request info.</param>
-        void IAppServer<TAppSession, TRequestInfo>.ExecuteCommand(IAppSession<TRequestInfo> session, TRequestInfo requestInfo)
+        internal void ExecuteCommand(IAppSession<TRequestInfo> session, TRequestInfo requestInfo)
         {
             this.ExecuteCommand((TAppSession)session, requestInfo);
         }
@@ -813,9 +876,49 @@ namespace SuperSocket.SocketBase
 
             var appSession = new TAppSession();
             appSession.Initialize(this, socketSession, RequestFilterFactory.CreateFilter(this, socketSession));
-            socketSession.Closed += new EventHandler<SocketSessionClosedEventArgs>(OnSocketSessionClosed);
+            socketSession.Closed += OnSocketSessionClosed;
+
+            OnNewSessionConnected(appSession);
 
             return appSession;
+        }
+
+
+        private Action<TAppSession> m_NewSessionConnected;
+
+        /// <summary>
+        /// The action which will be executed after a new session connect
+        /// </summary>
+        public event Action<TAppSession> NewSessionConnected
+        {
+            add { m_NewSessionConnected += value; }
+            remove { m_NewSessionConnected -= value; }
+        }
+
+        /// <summary>
+        /// Called when [new session connected].
+        /// </summary>
+        /// <param name="session">The session.</param>
+        protected virtual void OnNewSessionConnected(TAppSession session)
+        {
+            var handler = m_NewSessionConnected;
+            if (handler == null)
+                return;
+
+            handler.BeginInvoke(session, OnNewSessionConnectedCallback, handler);
+        }
+
+        private void OnNewSessionConnectedCallback(IAsyncResult result)
+        {
+            try
+            {
+                var handler = (Action<TAppSession>)result.AsyncState;
+                handler.EndInvoke(result);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e);
+            }
         }
 
         /// <summary>
@@ -831,11 +934,56 @@ namespace SuperSocket.SocketBase
         /// <summary>
         /// Called when [socket session closed].
         /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="SuperSocket.SocketBase.SocketSessionClosedEventArgs"/> instance containing the event data.</param>
-        internal protected virtual void OnSocketSessionClosed(object sender, SocketSessionClosedEventArgs e)
+        /// <param name="session">The socket session.</param>
+        /// <param name="reason">The reason.</param>
+        private void OnSocketSessionClosed(ISocketSession session, CloseReason reason)
         {
+            if (Logger.IsInfoEnabled)
+                Logger.Info(session, "This session was closed!");
 
+            OnSessionClosed((TAppSession)session.AppSession, reason);
+        }
+
+        private Action<TAppSession, CloseReason> m_SessionClosed;
+        /// <summary>
+        /// Gets/sets the session closed event handler.
+        /// </summary>
+        public event Action<TAppSession, CloseReason> SessionClosed
+        {
+            add { m_SessionClosed += value; }
+            remove { m_SessionClosed -= value; }
+        }
+
+        /// <summary>
+        /// Called when [session closed].
+        /// </summary>
+        /// <param name="session">The appSession.</param>
+        /// <param name="reason">The reason.</param>
+        protected virtual void OnSessionClosed(TAppSession session, CloseReason reason)
+        {
+            session.Connected = false;
+
+            var handler = m_SessionClosed;
+
+            if (handler != null)
+            {
+                handler.BeginInvoke(session, reason, OnNewSessionClosedCallback, handler);
+            }
+
+            session.OnSessionClosed(reason);
+        }
+
+        private void OnNewSessionClosedCallback(IAsyncResult result)
+        {
+            try
+            {
+                var handler = (Action<TAppSession, CloseReason>)result.AsyncState;
+                handler.EndInvoke(result);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e);
+            }
         }
 
         /// <summary>
@@ -881,17 +1029,6 @@ namespace SuperSocket.SocketBase
             {
                 throw new NotSupportedException();
             }
-        }
-
-        /// <summary>
-        /// Gets the service instance.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        protected T GetService<T>()
-            where T : class
-        {
-            return ServiceLocator.GetService<T>();
         }
 
         #region IDisposable Members

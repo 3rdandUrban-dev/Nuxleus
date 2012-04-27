@@ -57,11 +57,12 @@ namespace SuperSocket.SocketBase
         /// <summary>
         /// Setups the specified root config.
         /// </summary>
+        /// <param name="bootstrap">The bootstrap.</param>
         /// <param name="rootConfig">The SuperSocket root config.</param>
         /// <param name="config">The socket server instance config.</param>
         /// <param name="socketServerFactory">The socket server factory.</param>
         /// <returns></returns>
-        bool Setup(IRootConfig rootConfig, IServerConfig config, ISocketServerFactory socketServerFactory);
+        bool Setup(IBootstrap bootstrap, IRootConfig rootConfig, IServerConfig config, ISocketServerFactory socketServerFactory);
 
         /// <summary>
         /// Starts this server instance.
@@ -142,6 +143,24 @@ namespace SuperSocket.SocketBase
     }
 
     /// <summary>
+    /// The raw data processor
+    /// </summary>
+    /// <typeparam name="TAppSession">The type of the app session.</typeparam>
+    public interface IRawDataProcessor<TAppSession>
+        where TAppSession : IAppSession
+    {
+        /// <summary>
+        /// Gets or sets the raw binary data received event handler.
+        /// TAppSession: session
+        /// byte[]: receive buffer
+        /// int: receive buffer offset
+        /// int: receive lenght
+        /// bool: whether process the received data further
+        /// </summary>
+        event Func<TAppSession, byte[], int, int, bool> RawDataReceived;
+    }
+
+    /// <summary>
     /// The interface for AppServer
     /// </summary>
     /// <typeparam name="TAppSession">The type of the app session.</typeparam>
@@ -160,6 +179,16 @@ namespace SuperSocket.SocketBase
         /// </summary>
         /// <returns></returns>
         IEnumerable<TAppSession> GetAllSessions();
+
+        /// <summary>
+        /// Gets/sets the new session connected event handler.
+        /// </summary>
+        event Action<TAppSession> NewSessionConnected;
+
+        /// <summary>
+        /// Gets/sets the session closed event handler.
+        /// </summary>
+        event Action<TAppSession, CloseReason> SessionClosed;
     }
 
     /// <summary>
@@ -169,13 +198,11 @@ namespace SuperSocket.SocketBase
     /// <typeparam name="TRequestInfo">The type of the request info.</typeparam>
     public interface IAppServer<TAppSession, TRequestInfo> : IAppServer<TAppSession>
         where TRequestInfo : IRequestInfo
-        where TAppSession : IAppSession<TRequestInfo>
+        where TAppSession : IAppSession, IAppSession<TAppSession, TRequestInfo>, new()
     {
         /// <summary>
-        /// Executes the command.
+        /// Occurs when [request comming].
         /// </summary>
-        /// <param name="session">The session.</param>
-        /// <param name="requestInfo">The request info.</param>
-        void ExecuteCommand(IAppSession<TRequestInfo> session, TRequestInfo requestInfo);
+        event RequestHandler<TAppSession, TRequestInfo> RequestHandler;
     }
 }
