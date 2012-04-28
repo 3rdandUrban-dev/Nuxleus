@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -36,11 +36,15 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mono.C5">
+      <HintPath>C:\Program Files\Mono-2.11\lib\mono\4.5\Mono.C5.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.CSharp">
+      <HintPath>C:\Program Files\Mono-2.11\lib\mono\4.5\Mono.CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Posix" />
-    <Reference Include="Mono.CSharp" />
-    <Reference Include="Mono.C5" />
     <Reference Include="Nini, Version=1.1.0.0, Culture=neutral, PublicKeyToken=c9892194e1b9ec1b">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\Nini.dll</HintPath>
@@ -168,11 +172,7 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
-  <ItemGroup>
-    <Folder Include="Manos.Threading\" />
-    <Folder Include="Manos.IO\" />
-    <Folder Include="Manos.Collections\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Manos.IO\Manos.IO.csproj">
       <Project>{5E2AA984-1C9C-4890-BEF6-CC2981C49AFF}</Project>
