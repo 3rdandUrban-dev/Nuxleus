@@ -48,38 +48,11 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AWSSDK, Version=1.4.8.2, Culture=neutral, PublicKeyToken=cd2d24cd2bace800, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\AWSSDK.1.4.8.2\lib\AWSSDK.dll</HintPath>
-    </Reference>
     <Reference Include="DDay.iCal">
       <HintPath>..\lib\DDay.iCal.dll</HintPath>
     </Reference>
-    <Reference Include="Enyim.Caching, Version=2.11.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\packages\Membase.2.14\lib\net35\Enyim.Caching.dll</HintPath>
-    </Reference>
-    <Reference Include="Enyim.Caching.Log4NetAdapter, Version=2.11.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\packages\EnyimMemcached-log4net.2.11\lib\net35\Enyim.Caching.Log4NetAdapter.dll</HintPath>
-    </Reference>
-    <Reference Include="Enyim.Caching.NLogAdapter, Version=2.11.0.0, Culture=neutral, PublicKeyToken=cec98615db04012e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\packages\EnyimMemcached-NLog.2.11\lib\net35\Enyim.Caching.NLogAdapter.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Membase">
-      <HintPath>.\packages\Membase.2.14\lib\net35\Membase.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="MongoDB.Bson">
-      <HintPath>packages\mongocsharpdriver.1.4.1\lib\net35\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>packages\mongocsharpdriver.1.4.1\lib\net35\MongoDB.Driver.dll</HintPath>
+      <HintPath>packages\Membase.2.14\lib\net35\Membase.dll</HintPath>
     </Reference>
     <Reference Include="MonoTorrent">
       <HintPath>..\lib\MonoTorrent.dll</HintPath>
@@ -90,14 +63,11 @@
     <Reference Include="Mvp.Xml">
       <HintPath>..\lib\Mvp.Xml.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.4.5.4\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="NGit">
       <HintPath>..\lib\NGit.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
-      <HintPath>.\packages\protobuf-net.2.0.0.480\lib\mono\protobuf-net.dll</HintPath>
+      <HintPath>packages\protobuf-net.2.0.0.480\lib\mono\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="QueryMachine.Export">
       <HintPath>..\lib\QueryMachine.Export.dll</HintPath>
@@ -111,45 +81,17 @@
     <Reference Include="Saxon.Api">
       <HintPath>..\lib\Saxon.Api.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\ServiceStack.3.7.4\lib\net35\ServiceStack.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Common, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\ServiceStack.Common.3.7.4\lib\net35\ServiceStack.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Interfaces, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\ServiceStack.Common.3.7.4\lib\net35\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
     <Reference Include="ServiceStack.Logging.Elmah">
-      <HintPath>.\packages\ServiceStack.Logging.Elmah.1.0.3.0\lib\net35\ServiceStack.Logging.Elmah.dll</HintPath>
+      <HintPath>packages\ServiceStack.Logging.Elmah.1.0.3.0\lib\net35\ServiceStack.Logging.Elmah.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Logging.Log4Net">
-      <HintPath>.\packages\ServiceStack.Logging.Log4Net.1.0.3.0\lib\net35\ServiceStack.Logging.Log4Net.dll</HintPath>
+      <HintPath>packages\ServiceStack.Logging.Log4Net.1.0.3.0\lib\net35\ServiceStack.Logging.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.OrmLite, Version=3.7.5.16983, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ServiceStack.OrmLite.SqlServer.3.7.5\lib\ServiceStack.OrmLite.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.OrmLite.SqlServer">
-      <HintPath>packages\ServiceStack.OrmLite.SqlServer.3.7.5\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Plugins.ProtoBuf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>.\packages\ServiceStack.Plugins.ProtoBuf.3.6.9\lib\net35\ServiceStack.Plugins.ProtoBuf.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.RazorEngine, Version=2.1.4498.20344, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ServiceStack.3.7.4\lib\net35\ServiceStack.RazorEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Redis, Version=3.7.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ServiceStack.Redis.3.7.4\lib\net35\ServiceStack.Redis.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.ServiceInterface, Version=1.0.4498.20342, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\ServiceStack.3.7.4\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\..\..\packages\ServiceStack.Text.3.7.6\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="SgmlReaderDll">
-      <HintPath>.\packages\SgmlReader.1.8.8\lib\4.0\SgmlReaderDll.dll</HintPath>
+      <HintPath>packages\SgmlReader.1.8.8\lib\4.0\SgmlReaderDll.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data">
       <HintPath>packages\Simple.Data.Core.0.16.1.0\lib\net40\Simple.Data.dll</HintPath>
@@ -199,7 +141,7 @@
       <HintPath>..\lib\Thought.vCards.dll</HintPath>
     </Reference>
     <Reference Include="WebActivator">
-      <HintPath>.\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+      <HintPath>packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
     </Reference>
     <Reference Include="Ximpleware.VTDXml">
       <HintPath>..\lib\Ximpleware.VTDXml.dll</HintPath>
@@ -209,6 +151,58 @@
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor">
       <HintPath>..\lib\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK">
+      <HintPath>..\..\..\packages\AWSSDK.1.4.10.0\lib\AWSSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching">
+      <HintPath>packages\Membase.2.14\lib\net35\Enyim.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching.Log4NetAdapter">
+      <HintPath>packages\EnyimMemcached-log4net.2.11\lib\net35\Enyim.Caching.Log4NetAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching.NLogAdapter">
+      <HintPath>packages\EnyimMemcached-NLog.2.11\lib\net35\Enyim.Caching.NLogAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure" />
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\packages\mongocsharpdriver.1.4.2\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\packages\mongocsharpdriver.1.4.2\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.4.5.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack">
+      <HintPath>..\..\..\packages\ServiceStack.3.7.7\lib\net35\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\..\..\packages\ServiceStack.Common.3.7.7\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\..\..\packages\ServiceStack.Common.3.7.7\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\..\..\packages\ServiceStack.OrmLite.SqlServer.3.7.6\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\packages\ServiceStack.OrmLite.SqlServer.3.7.6\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Plugins.ProtoBuf, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>packages\ServiceStack.Plugins.ProtoBuf.3.6.9\lib\net35\ServiceStack.Plugins.ProtoBuf.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.RazorEngine">
+      <HintPath>..\..\..\packages\ServiceStack.3.7.7\lib\net35\ServiceStack.RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\..\..\packages\ServiceStack.Redis.3.7.7\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\..\..\packages\ServiceStack.3.7.7\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
